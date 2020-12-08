@@ -1,4 +1,4 @@
-ember-gwr
+ember-ebau-gwr
 ==============================================================================
 
 [Short description of the addon.]
@@ -16,7 +16,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-gwr
+ember install ember-ebau-gwr
 ```
 
 

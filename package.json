@@ -1,12 +1,13 @@
 {
-  "name": "ember-gwr",
+  "name": "ember-ebau-gwr",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember engine to integrate ebau-gwr into an ember app.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-engine"
   ],
-  "repository": "",
-  "license": "MIT",
+  "repository": "https://github.com/adfinis-sygroup/ember-ebau-gwr",
+  "license": "AGPL-3.0",
   "author": "",
   "directories": {
     "doc": "doc",
@@ -23,10 +24,19 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "@ember/render-modifiers": "^1.0.2",
     "ember-cli-babel": "^7.22.1",
-    "ember-cli-htmlbars": "^5.3.1"
+    "ember-cli-htmlbars": "^5.3.1",
+    "ember-concurrency": "^1.3.0",
+    "ember-concurrency-decorators": "^2.0.2",
+    "ember-intl": "^5.5.1",
+    "ember-pikaday": "^3.0.0",
+    "ember-truth-helpers": "^3.0.0",
+    "ember-uikit": "^2.2.2"
   },
   "devDependencies": {
+    "@adfinis-sygroup/eslint-config": "^1.3.2",
+    "@adfinis-sygroup/semantic-release-config": "^3.1.0",
     "@ember/optional-features": "^2.0.0",
     "@glimmer/component": "^1.0.2",
     "@glimmer/tracking": "^1.0.2",
@@ -36,24 +46,33 @@
     "ember-cli": "~3.22.0",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-inject-live-reload": "^2.0.2",
+    "ember-cli-moment-shim": "^3.8.0",
+    "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.0",
     "ember-disable-prototype-extensions": "^1.1.3",
+    "ember-engines": "^0.8.8",
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.1",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-modifier": "^2.1.1",
     "ember-qunit": "^4.6.0",
     "ember-resolver": "^8.0.2",
     "ember-source": "~3.22.0",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^2.14.0",
+    "ember-template-lint-plugin-prettier": "^2.0.0",
+    "ember-test-selectors": "^5.0.0",
     "ember-try": "^1.4.0",
-    "eslint": "^7.11.0",
-    "eslint-plugin-ember": "^9.3.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-ember": "^9.6.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
-    "qunit-dom": "^1.5.0"
+    "qunit-dom": "^1.5.0",
+    "sass": "^1.29.0"
   },
   "engines": {
     "node": "10.* || >= 12"
@@ -63,5 +82,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "release": {
+    "extends": "@adfinis-sygroup/semantic-release-config"
   }
 }

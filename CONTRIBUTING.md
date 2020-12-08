@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-gwr`
+* `cd ember-ebau-gwr`
 * `npm install`
 
 ## Linting
