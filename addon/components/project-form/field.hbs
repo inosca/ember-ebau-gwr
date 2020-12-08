@@ -1,0 +1,27 @@
+<ProjectForm::Label
+  @attr={{@attr}}
+  @required={{@required}}
+  @noMargin={{@noMargin}}
+>
+  {{#if this.showDiff}}
+    <ProjectForm::Diff
+      @current={{get @project @attr}}
+      @new={{get @importData @attr}}
+      @updateProjectField={{fn this.updateProjectField @attr}}
+    />
+  {{else}}
+    {{#let (component this.componentName) as |InputField|}}
+      <InputField
+        @attr={{@attr}}
+        @required={{@required}}
+        @value={{get @project @attr}}
+        @options={{@options}}
+        @update={{fn this.updateProjectField @attr}}
+        disabled={{this.disableInput}}
+        readonly={{this.disableInput}}
+        ...attributes
+        {{on "input" (fn this.updateProjectField @attr)}}
+      />
+    {{/let}}
+  {{/if}}
+</ProjectForm::Label>

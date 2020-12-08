@@ -1,0 +1,15 @@
+<select
+  class="uk-width-1 {{configured-classes "select"}}"
+  name={{@attr}}
+  required={{@required}}
+  ...attributes
+>
+  <option value="">
+    {{t (concat "ember-gwr.projectForm." @attr "Placeholder")}}
+  </option>
+  {{#each @options as |optionValue|}}
+    <option selected={{eq optionValue @value}} value={{optionValue}}>
+      {{optionValue}}
+    </option>
+  {{/each}}
+</select>

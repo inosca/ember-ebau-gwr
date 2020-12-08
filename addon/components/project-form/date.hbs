@@ -1,0 +1,10 @@
+<PikadayInput
+  @format="DD.MM.YYYY"
+  @placeholder={{t "ember-gwr.projectForm.datePlaceholder"}}
+  @value={{@value}}
+  @onSelection={{@update}}
+  class="uk-width-1 {{configured-classes "date-picker"}}"
+  name={{@attr}}
+  required={{@required}}
+  ...attributes
+/>
