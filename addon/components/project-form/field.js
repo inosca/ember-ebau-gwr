@@ -26,7 +26,6 @@ export default class ProjectFormFieldComponent extends Component {
   updateProjectField(attr, eventOrValue) {
     const value = eventOrValue?.target?.value ?? eventOrValue;
 
-    console.log("update", attr, value);
     set(this.args.project, attr, value);
 
     if (this.args.importData) {

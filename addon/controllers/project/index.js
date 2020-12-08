@@ -1,70 +1,65 @@
 import Controller from "@ember/controller";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
-import { action } from "@ember/object";
+import EmberObject, { action } from "@ember/object";
+import {
+  Project,
+  Client,
+  Address,
+  Identification,
+  PersonIdetification,
+} from "ember-ebau-gwr/models";
 
 export default class ProjectIndexController extends Controller {
-  queryParams = ["createNewProject", "import"];
+  queryParams = ["import"];
 
-  @tracked createNewProject = false;
   @tracked import = false;
-  @tracked hasExistingProject = false;
 
-  @tracked isLoadin;
-
-  constructor(...args) {
-    super(...args);
-    this.fetchProject.perform();
+  get isNewProject() {
+    return !Boolean(this.model.eprodid);
   }
 
-  get displayLanding() {
-    return !this.createNewProject && !this.hasExistingProject;
-  }
-
-  @lastValue("fetchProject") project;
+  @lastValue("fetchCalumaData") importData;
   @task
-  *fetchProject() {
-    console.log("fertching project");
-    const project = yield localStorage.getItem("project");
-    if (!project) {
-      return {
-        realestateIdentification: {},
-        client: { identification: { personIdentification: {} }, address: {} },
-      };
-    }
-    this.hasExistingProject = true;
-    return yield JSON.parse(project);
+  *fetchCalumaData() {
+    const importData = new Project({
+      constructionProjectDescription:
+        "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
+      typeOfConstruction: "Elektrizitätswerke",
+      totalCostsOfProject: 10000,
+      typeOfPermit: "Bewilligungsgrund 2",
+      projectAnnouncementDate: "11.12.2019",
+      typeOfClient: this.typeOfClient,
+      client: new Client({
+        address: new Address({ street: "Gässli", houseNumber: 5 }),
+        identification: new Identification({
+          personIdentification: new PersonIdetification({
+            officialName: "Müller",
+          }),
+        }),
+      }),
+    });
+
+    return importData;
   }
 
-  @lastValue("importCalumaData") importData;
   @task
   *importCalumaData() {
-    if (this.import) {
-      const importData = {
-        typeOfConstructionProject: this.typeOfConstructionProject,
-        constructionProjectDescription:
-          "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
-        typeOfConstruction: "Elektrizitätswerke",
-        totalCostsOfProject: 10000,
-        typeOfPermit: "Bewilligungsgrund 2",
-        projectAnnouncementDate: "11.12.2019",
-        realestateIdentification: this.realestateIdentification,
-        typeOfClient: this.typeOfClient,
-        client: {
-          address: { street: "Gässli", houseNumber: 5 },
-          identification: {
-            personIdentification: { officialName: "Müller" },
-          },
-        },
-      };
-
-      if (this.createNewProject) {
-        this.project = { ...this.project, ...importData };
-        this.saveProject();
-      } else {
-        return importData;
-      }
-    }
+    this.model.constructionProjectDescription =
+      "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.";
+    this.model.typeOfConstruction = "Elektrizitätswerke";
+    this.model.totalCostsOfProject = 10000;
+    this.model.typeOfPermit = "Bewilligungsgrund 2";
+    this.model.projectAnnouncementDate = "11.12.2019";
+    this.model.typeOfClient = this.typeOfClient;
+    this.model.client = new Client({
+      address: new Address({ street: "Gässli", houseNumber: 5 }),
+      identification: new Identification({
+        personIdentification: new PersonIdetification({
+          officialName: "Müller",
+        }),
+      }),
+    });
   }
 
   @action
@@ -74,10 +69,13 @@ export default class ProjectIndexController extends Controller {
   }
 
   @action
-  saveProject() {
-    localStorage.setItem("project", JSON.stringify(this.project));
-    this.import = false;
-    this.createNewProject = false;
-    this.fetchProject.perform();
+  saveProject(event) {
+    console.log("save", this.model);
+
+    this.model.eprodid = 12;
+    this.model.officialConstructionProjectFileNo = 202001;
+    this.model.extensionOfOfficialConstructionProjectFileNo = 1;
+    localStorage.setItem("project", this.model.serialize());
+    this.transitionToRoute("project", { queryParams: { import: false } });
   }
 }
