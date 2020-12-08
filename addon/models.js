@@ -53,6 +53,7 @@ export class Address extends Model {
     "town",
     "country",
   ];
+
   @tracked street;
   @tracked houseNumber;
   @tracked swissZipCode;
@@ -90,6 +91,7 @@ export class Project extends Model {
     "realestateIdentification",
     "client",
   ];
+
   @tracked eprodid;
   @tracked officialConstructionProjectFileNo;
   @tracked extensionOfOfficialConstructionProjectFileNo;
