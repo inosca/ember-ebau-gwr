@@ -5,52 +5,67 @@ ember-gwr:
     createNewProject: Neues Projekt erfassen
     linkExistingProject: Bestehendes Projekt verknüpfen
 
-  projectForm:
-    required: (Erforderlich)
-    title: Bauprojekt {id}
-    eprodid: EPRODID
-    officialConstructionProjectFileNo: Amtliche Baudossiernummer
-    extensionOfOfficialConstructionProjectFileNo: Amtliche Baudossiernr. Zusatz
-    constructionProjectDescription: Umschreibung Bauprojekts
-    typeOfConstructionProject: Bauprojekttyp
-    typeOfConstructionProjectPlaceholder: Wählen Sie einen Bauprojekttyp...
-    typeOfConstruction: Bauwerkstyp
-    typeOfConstructionPlaceholder: Wählen Sie einen Bauwerkstyp...
-    totalCostsOfProject: Projektkosten total
-    typeOfPermit: Bewilligungsgrund
-    typeOfPermitPlaceholder: Wählen Sie den Bewilligungsgrund...
-    constructionSurveyDeptNo: Erhebungsstellennummer
-    constructionLocalisation: Bauort
-    constructionLocalisationPlaceholder: Wählen Sie den Bauort...
+  nav:
+    projectDetails: Projektdetails
+    linkedBuildings: Verlinkte Gebäude
 
+  projectForm:
+    save: Speichern
+    cancelImport: Import abbrechen
+    applyAll: Alles übernehmen
+    importFromCaluma: Daten vom Ebau übernehmen
+
+    required: (Erforderlich)
     dates: Daten
     datePlaceholder: Wählen Sie ein Datum...
-    projectAnnouncementDate: Datum Baueingabe
-    buildingPermitIssueDate: Datum Baubewilligung
-    projectStartDate: Datum Baubeginn
-    projectCompletionDate: Datum Bauende
-    projectSuspensionDate: Datum Sistierung
-    constructionAuthorisationDeniedDate: Datum Ablehnung
-    nonRealisationDate: Datum Nichtrealisierung
-    withdrawalDate: Datum Rückzung des Baugesuchs
+    title: Bauprojekt {id}
+    realEstateHeading: Grundstücksidentifikation
+    clientHeading: Auftraggeber
 
-    realestateIdentification:
-      heading: Grundstücksidentifikation
-      egrid: EGRID
-      number: Grundstücksnummer
+    diff:
+      existingData: Existierende Daten im GWR
+      importedData: Importierte Daten
+      apply: Übernehmen
 
-    typeOfClient: Typ der Auftraggeber
-    typeOfClientPlaceholder: Wählen Sie den Typ des Auftraggeber...
-    client:
-      heading: Auftraggeber
-      identification:
-        personIdentification:
-          officialName: Name
-          firstName: Vorname
-      address:
-        street: Strasse
-        houseNumber: Nummer
-        swissZipCode: PLZ
-        town: Stadt
-        country: Land
+    fields:
+      eprodid: EPRODID
+      officialConstructionProjectFileNo: Amtliche Baudossiernummer
+      extensionOfOfficialConstructionProjectFileNo: Amtliche Baudossiernr. Zusatz
+      constructionProjectDescription: Umschreibung Bauprojekts
+      typeOfConstructionProject: Bauprojekttyp
+      typeOfConstructionProjectPlaceholder: Wählen Sie einen Bauprojekttyp...
+      typeOfConstruction: Bauwerkstyp
+      typeOfConstructionPlaceholder: Wählen Sie einen Bauwerkstyp...
+      totalCostsOfProject: Projektkosten total
+      typeOfPermit: Bewilligungsgrund
+      typeOfPermitPlaceholder: Wählen Sie den Bewilligungsgrund...
+      constructionSurveyDeptNo: Erhebungsstellennummer
+      constructionLocalisation: Bauort
+      constructionLocalisationPlaceholder: Wählen Sie den Bauort...
 
+      projectAnnouncementDate: Datum Baueingabe
+      buildingPermitIssueDate: Datum Baubewilligung
+      projectStartDate: Datum Baubeginn
+      projectCompletionDate: Datum Bauende
+      projectSuspensionDate: Datum Sistierung
+      constructionAuthorisationDeniedDate: Datum Ablehnung
+      nonRealisationDate: Datum Nichtrealisierung
+      withdrawalDate: Datum Rückzung des Baugesuchs
+
+      realestateIdentification:
+        egrid: EGRID
+        number: Grundstücksnummer
+
+      typeOfClient: Typ der Auftraggeber
+      typeOfClientPlaceholder: Wählen Sie den Typ des Auftraggeber...
+      client:
+        identification:
+          personIdentification:
+            officialName: Name
+            firstName: Vorname
+        address:
+          street: Strasse
+          houseNumber: Nummer
+          swissZipCode: PLZ
+          town: Stadt
+          country: Land

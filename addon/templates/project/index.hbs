@@ -13,13 +13,13 @@
         type="button"
         {{on "click" (perform this.importCalumaData)}}
       >
-        Alles übernehmen
+        {{t "ember-gwr.projectForm.applyAll"}}
       </button>
       <LinkTo
         @query={{hash import=false}}
         class={{configured-classes "button"}}
       >
-        Import abbrechen
+        {{t "ember-gwr.projectForm.cancelImport"}}
       </LinkTo>
     </div>
   {{else if this.isNewProject}}
@@ -28,14 +28,14 @@
       type="button"
       {{on "click" (perform this.importCalumaData)}}
     >
-      Daten vom Ebau importieren
+      {{t "ember-gwr.projectForm.importFromCaluma"}}
     </button>
   {{else}}
     <LinkTo
       @query={{hash import=true}}
       class={{configured-classes "button" "button-primary"}}
     >
-      Daten vom Ebau importieren
+      {{t "ember-gwr.projectForm.importFromCaluma"}}
     </LinkTo>
   {{/if}}
 </h2>
@@ -159,7 +159,7 @@
   </div>
 
   <h3>
-    {{t "ember-gwr.projectForm.realestateIdentification.heading"}}
+    {{t "ember-gwr.projectForm.realEstateHeading"}}
   </h3>
   <Field
     type="number"
@@ -169,7 +169,7 @@
   <Field type="number" @attr="realestateIdentification.egrid" />
 
   <h3>
-    {{t "ember-gwr.projectForm.client.heading"}}
+    {{t "ember-gwr.projectForm.clientHeading"}}
   </h3>
 
   <Field
