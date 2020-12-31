@@ -9,7 +9,8 @@
   </option>
   {{#each @options as |optionValue|}}
     <option selected={{eq optionValue @value}} value={{optionValue}}>
-      {{optionValue}}
+      {{t (concat "ember-gwr.projectForm.fields." @attr "Options." optionValue)
+      }}
     </option>
   {{/each}}
 </select>

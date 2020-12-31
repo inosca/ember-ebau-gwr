@@ -3,7 +3,7 @@
     {{#if this.isNewProject}}
       {{t "ember-gwr.landingPage.createNewProject"}}
     {{else}}
-      {{t "ember-gwr.projectForm.title" id=@model.eprodid}}
+      {{t "ember-gwr.projectForm.title" id=@model.EPROID}}
     {{/if}}
   </span>
   {{#if this.import}}
@@ -49,15 +49,10 @@
   {{#unless this.isNewProject}}
     <div class="uk-flex uk-flex-wrap uk-flex-between">
       <div class="uk-width-1-4@m uk-width-1">
-        <Field type="number" readonly @attr="eprodid" disabled />
+        <Field type="number" readonly @attr="EPROID" disabled />
       </div>
       <div class="uk-width-1-4@m uk-width-1">
-        <Field
-          type="number"
-          readonly
-          disabled
-          @attr="officialConstructionProjectFileNo"
-        />
+        <Field readonly disabled @attr="officialConstructionProjectFileNo" />
       </div>
       <div class="uk-width-1-4@m uk-width-1">
         <Field
@@ -70,18 +65,13 @@
     </div>
   {{/unless}}
 
-  <Field
-    @inputType="select"
-    @required={{true}}
-    @attr="typeOfConstructionProject"
-    @options={{array "Hochbau" "Tiefbau"}}
-  />
+  <Field @attr="constructionLocalisation.municipalityName" disabled readonly />
 
   <Field
     @inputType="select"
     @required={{true}}
-    @attr="constructionLocalisation"
-    @options={{array "Altdorf" "Leuzigen"}}
+    @attr="typeOfConstructionProject"
+    @options={{this.choiceOptions.typeOfConstructionProjectOptions}}
   />
 
   <Field
@@ -96,7 +86,7 @@
     @inputType="select"
     @required={{true}}
     @attr="typeOfPermit"
-    @options={{array "Bewilligungsgrund 1" "Bewilligungsgrund 2"}}
+    @options={{this.choiceOptions.typeOfPermitOptions}}
   />
 
   <Field
@@ -107,12 +97,12 @@
     @attr="totalCostsOfProject"
   />
 
-  <Field type="number" @required={{true}} @attr="constructionSurveyDeptNo" />
+  <Field type="number" @required={{true}} @attr="constructionSurveyDept" />
 
   <Field
     @inputType="select"
     @attr="typeOfConstruction"
-    @options={{array "Wasserversorgungsanlagen"}}
+    @options={{this.choiceOptions.typeOfConstructionOptions}}
   />
 
   <h3>
@@ -176,7 +166,7 @@
     @inputType="select"
     @required={{true}}
     @attr="typeOfClient"
-    @options={{array "Auftraggeber Typ 1" "Auftraggeber Typ 2"}}
+    @options={{this.choiceOptions.typeOfClientOptions}}
   />
 
   <div class="uk-flex uk-margin">

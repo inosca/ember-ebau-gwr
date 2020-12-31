@@ -7,4 +7,9 @@ module.exports = EngineAddon.extend({
   lazyLoading: {
     enabled: false,
   },
+  autoImport: {
+    alias: {
+      handlebars: "handlebars/dist/handlebars",
+    },
+  },
 });

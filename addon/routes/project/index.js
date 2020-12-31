@@ -3,7 +3,7 @@ import {
   Project,
   Client,
   RealestateIdentification,
-} from "ember-ebau-gwr/models";
+} from "ember-ebau-gwr/models/models";
 
 export default class ProjectIndexRoute extends Route {
   async model() {

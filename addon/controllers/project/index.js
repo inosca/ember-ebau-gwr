@@ -7,16 +7,32 @@ import {
   Client,
   Address,
   Identification,
-  PersonIdetification,
-} from "ember-ebau-gwr/models";
+  PersonIdentification,
+} from "ember-ebau-gwr/models/models";
+import {
+  typeOfClientOptions,
+  typeOfConstructionOptions,
+  typeOfConstructionProjectOptions,
+  typeOfPermitOptions,
+} from "ember-ebau-gwr/models/options";
+import { inject as service } from "@ember/service";
 
 export default class ProjectIndexController extends Controller {
   queryParams = ["import"];
 
+  @service constructionProject;
+
   @tracked import = false;
 
+  choiceOptions = {
+    typeOfClientOptions,
+    typeOfConstructionOptions,
+    typeOfConstructionProjectOptions,
+    typeOfPermitOptions,
+  };
+
   get isNewProject() {
-    return !Boolean(this.model.eprodid);
+    return !Boolean(this.model.EPROID);
   }
 
   @lastValue("fetchCalumaData") importData;
@@ -33,7 +49,7 @@ export default class ProjectIndexController extends Controller {
       client: new Client({
         address: new Address({ street: "Gässli", houseNumber: 5 }),
         identification: new Identification({
-          personIdentification: new PersonIdetification({
+          personIdentification: new PersonIdentification({
             officialName: "Müller",
           }),
         }),
@@ -55,7 +71,7 @@ export default class ProjectIndexController extends Controller {
     this.model.client = new Client({
       address: new Address({ street: "Gässli", houseNumber: 5 }),
       identification: new Identification({
-        personIdentification: new PersonIdetification({
+        personIdentification: new PersonIdentification({
           officialName: "Müller",
         }),
       }),
@@ -70,10 +86,7 @@ export default class ProjectIndexController extends Controller {
 
   @action
   saveProject(event) {
-    this.model.eprodid = 12;
-    this.model.officialConstructionProjectFileNo = 202001;
-    this.model.extensionOfOfficialConstructionProjectFileNo = 1;
-    localStorage.setItem("project", this.model.serialize());
+    this.constructionProject.update(this.model);
     this.transitionToRoute("project", { queryParams: { import: false } });
   }
 }

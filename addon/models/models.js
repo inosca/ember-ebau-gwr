@@ -34,7 +34,7 @@ export class RealestateIdentification extends Model {
   @tracked egrid;
 }
 
-export class PersonIdetification extends Model {
+export class PersonIdentification extends Model {
   fieldToSerialize = ["officialName", "firstName"];
   @tracked officialName;
   @tracked firstName;
@@ -42,7 +42,7 @@ export class PersonIdetification extends Model {
 
 export class Identification extends Model {
   fieldToSerialize = ["personIdentification"];
-  @tracked personIdentification = new PersonIdetification();
+  @tracked personIdentification = new PersonIdentification();
 }
 
 export class Address extends Model {
