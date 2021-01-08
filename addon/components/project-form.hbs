@@ -1,0 +1,14 @@
+<form ...attributes {{on "submit" this.submit}}>
+  {{yield
+    (component "project-form/field" project=@project importData=@importData)
+  }}
+
+  <button type="submit" class={{configured-classes "button" "button-primary"}}>
+    Speichern
+  </button>
+  {{#if @importData}}
+    <LinkTo @query={{hash import=false}} class={{configured-classes "button"}}>
+      Import abbrechen
+    </LinkTo>
+  {{/if}}
+</form>

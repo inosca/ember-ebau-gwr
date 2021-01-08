@@ -1,0 +1,41 @@
+<div class={{configured-classes "diff-highlight"}}>
+  <div class="uk-margin">
+    <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
+      <span class={{configured-classes "diff-meta-text"}}>
+        Existierende Daten im GWR
+      </span>
+      <button
+        type="button"
+        class={{configured-classes "button" "button-small"}}
+        {{on "click" (fn @updateProjectField @current)}}
+      >
+        Übernehmen
+      </button>
+    </div>
+    <input
+      class="uk-width-1 {{configured-classes "input"}}"
+      disabled
+      readonly
+      value={{@current}}
+    />
+  </div>
+  <div>
+    <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
+      <span class={{configured-classes "diff-meta-text"}}>
+        Importierte Daten
+      </span>
+      <button
+        type="button"
+        class={{configured-classes "button" "button-small"}}
+        {{on "click" (fn @updateProjectField this.newValue)}}
+      >
+        Übernehmen
+      </button>
+    </div>
+    <input
+      class="uk-width-1 {{configured-classes "input"}}"
+      value={{this.newValue}}
+      {{on "input" this.updateNewValue}}
+    />
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+  <div class="uk-flex uk-flex-column uk-width-2-3">
+    <h2>
+      {{t "ember-gwr.landingPage.heading"}}
+    </h2>
+
+    <p>
+      {{t "ember-gwr.landingPage.infoText"}}
+    </p>
+
+    <div class="uk-flex uk-flex-between">
+      <div class="uk-margin-large-right">
+        <LinkTo @route="project.index" class={{configured-classes "button"}}>
+          {{t "ember-gwr.landingPage.createNewProject"}}
+        </LinkTo>
+      </div>
+      <div>
+        <LinkTo
+          @route="project.link-existing"
+          class={{configured-classes "button"}}
+        >
+          {{t "ember-gwr.landingPage.linkExistingProject"}}
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>
