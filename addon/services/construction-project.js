@@ -64,6 +64,8 @@ export default class BuildingProjectService extends XMLApiService {
         body,
       }
     );
+    const xml = await response.text();
+    return new ConstructionProject(xml);
   }
 
   async create(project) {
@@ -78,5 +80,7 @@ export default class BuildingProjectService extends XMLApiService {
         body,
       }
     );
+    const xml = await response.text();
+    return new ConstructionProject(xml);
   }
 }

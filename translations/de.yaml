@@ -46,7 +46,7 @@ ember-gwr:
         municipalityName: Gemeinde
 
       realestateIdentification:
-        egrid: EGRID
+        EGRID: EGRID
         number: Grundstücksnummer
 
       client:

@@ -69,7 +69,7 @@ export default class ProjectIndexController extends Controller {
 
   @action
   saveProject() {
-    this.isNewProject
+    this.model = this.isNewProject
       ? this.constructionProject.create(this.model)
       : this.constructionProject.update(this.model);
     this.transitionToRoute("project", { queryParams: { import: false } });
