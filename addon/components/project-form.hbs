@@ -4,11 +4,11 @@
   }}
 
   <button type="submit" class={{configured-classes "button" "button-primary"}}>
-    Speichern
+    {{t "ember-gwr.projectForm.save"}}
   </button>
   {{#if @importData}}
     <LinkTo @query={{hash import=false}} class={{configured-classes "button"}}>
-      Import abbrechen
+      {{t "ember-gwr.projectForm.cancelImport"}}
     </LinkTo>
   {{/if}}
 </form>

@@ -19,68 +19,77 @@ function serialize(fields = [], noJson = false) {
   return noJson ? result : JSON.stringify(result);
 }
 
-export class RealestateIdentification {
+export class Model {
+  constructor(...args) {
+    constructor.apply(this, args);
+  }
+  serialize(noJson) {
+    return serialize.call(this, this.fieldToSerialize, noJson);
+  }
+}
+
+export class RealestateIdentification extends Model {
+  fieldToSerialize = ["number", "egrid"];
   @tracked number;
   @tracked egrid;
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(this, ["number", "egrid"], noJson);
-  }
 }
 
-export class PersonIdetification {
+export class PersonIdetification extends Model {
+  fieldToSerialize = ["officialName", "firstName"];
   @tracked officialName;
   @tracked firstName;
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(this, ["officialName", "firstName"], noJson);
-  }
 }
 
-export class Identification {
+export class Identification extends Model {
+  fieldToSerialize = ["personIdentification"];
   @tracked personIdentification = new PersonIdetification();
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(this, ["personIdentification"], noJson);
-  }
 }
 
-export class Address {
+export class Address extends Model {
+  fieldToSerialize = [
+    "street",
+    "houseNumber",
+    "swissZipCode",
+    "town",
+    "country",
+  ];
   @tracked street;
   @tracked houseNumber;
   @tracked swissZipCode;
   @tracked town;
   @tracked country;
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(
-      this,
-      ["street", "houseNumber", "swissZipCode", "town", "country"],
-      noJson
-    );
-  }
 }
 
-export class Client {
+export class Client extends Model {
+  fieldToSerialize = ["identification", "address"];
   @tracked identification = new Identification();
   @tracked address = new Address();
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(this, ["identification", "address"], noJson);
-  }
 }
 
-export class Project {
+export class Project extends Model {
+  fieldToSerialize = [
+    "eprodid",
+    "officialConstructionProjectFileNo",
+    "extensionOfOfficialConstructionProjectFileNo",
+    "typeOfClient",
+    "typeOfConstruction",
+    "typeOfConstructionProject",
+    "typeOfPermit",
+    "constructionLocalisation",
+    "constructionProjectDescription",
+    "totalCostsOfProject",
+    "constructionSurveyDeptNo",
+    "withdrawalDate",
+    "projectStartDate",
+    "constructionAuthorisationDeniedDate",
+    "nonRealisationDate",
+    "projectCompletionDate",
+    "projectSuspensionDate",
+    "buildingPermitIssueDate",
+    "projectAnnouncementDate",
+    "realestateIdentification",
+    "client",
+  ];
   @tracked eprodid;
   @tracked officialConstructionProjectFileNo;
   @tracked extensionOfOfficialConstructionProjectFileNo;
@@ -106,36 +115,4 @@ export class Project {
 
   @tracked realestateIdentification = new RealestateIdentification();
   @tracked client = new Client();
-  constructor(...args) {
-    constructor.apply(this, args);
-  }
-  serialize(noJson) {
-    return serialize.call(
-      this,
-      [
-        "eprodid",
-        "officialConstructionProjectFileNo",
-        "extensionOfOfficialConstructionProjectFileNo",
-        "typeOfClient",
-        "typeOfConstruction",
-        "typeOfConstructionProject",
-        "typeOfPermit",
-        "constructionLocalisation",
-        "constructionProjectDescription",
-        "totalCostsOfProject",
-        "constructionSurveyDeptNo",
-        "withdrawalDate",
-        "projectStartDate",
-        "constructionAuthorisationDeniedDate",
-        "nonRealisationDate",
-        "projectCompletionDate",
-        "projectSuspensionDate",
-        "buildingPermitIssueDate",
-        "projectAnnouncementDate",
-        "realestateIdentification",
-        "client",
-      ],
-      noJson
-    );
-  }
 }

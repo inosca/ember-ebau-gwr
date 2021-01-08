@@ -70,8 +70,6 @@ export default class ProjectIndexController extends Controller {
 
   @action
   saveProject(event) {
-    console.log("save", this.model);
-
     this.model.eprodid = 12;
     this.model.officialConstructionProjectFileNo = 202001;
     this.model.extensionOfOfficialConstructionProjectFileNo = 1;

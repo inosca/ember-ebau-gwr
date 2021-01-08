@@ -2,14 +2,14 @@
   <div class="uk-margin">
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
       <span class={{configured-classes "diff-meta-text"}}>
-        Existierende Daten im GWR
+        {{t "ember-gwr.projectForm.diff.existingData"}}
       </span>
       <button
         type="button"
         class={{configured-classes "button" "button-small"}}
         {{on "click" (fn @updateProjectField @current)}}
       >
-        Übernehmen
+        {{t "ember-gwr.projectForm.diff.apply"}}
       </button>
     </div>
     <input
@@ -22,14 +22,14 @@
   <div>
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
       <span class={{configured-classes "diff-meta-text"}}>
-        Importierte Daten
+        {{t "ember-gwr.projectForm.diff.importData"}}
       </span>
       <button
         type="button"
         class={{configured-classes "button" "button-small"}}
         {{on "click" (fn @updateProjectField this.newValue)}}
       >
-        Übernehmen
+        {{t "ember-gwr.projectForm.diff.apply"}}
       </button>
     </div>
     <input
