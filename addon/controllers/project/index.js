@@ -1,22 +1,9 @@
 import Controller from "@ember/controller";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
-import EmberObject, { action } from "@ember/object";
-
-import {
-  ConstructionProject,
-  Client,
-  Address,
-  Identification,
-  PersonIdentification,
-} from "ember-ebau-gwr/models";
-import {
-  typeOfClientOptions,
-  typeOfConstructionOptions,
-  typeOfConstructionProjectOptions,
-  typeOfPermitOptions,
-} from "ember-ebau-gwr/models/options";
-import { inject as service } from "@ember/service";
+import Options from "ember-ebau-gwr/models/options";
 
 export default class ProjectIndexController extends Controller {
   queryParams = ["import"];
@@ -25,15 +12,10 @@ export default class ProjectIndexController extends Controller {
 
   @tracked import = false;
 
-  choiceOptions = {
-    typeOfClientOptions,
-    typeOfConstructionOptions,
-    typeOfConstructionProjectOptions,
-    typeOfPermitOptions,
-  };
+  choiceOptions = Options;
 
   get isNewProject() {
-    return !Boolean(this.model.EPROID);
+    return !this.model.EPROID;
   }
 
   @lastValue("fetchCalumaData") importData;
@@ -80,15 +62,13 @@ export default class ProjectIndexController extends Controller {
   }
 
   @action
-  cancelMerge(attr, value) {
+  cancelMerge() {
     this.import = false;
     this.fetchProject.perform();
   }
 
   @action
-  saveProject(event) {
-    debugger;
-    console.log(this.model, this.model.isNew);
+  saveProject() {
     this.isNewProject
       ? this.constructionProject.create(this.model)
       : this.constructionProject.update(this.model);

@@ -1,8 +1,8 @@
 import { tracked } from "@glimmer/tracking";
 
-import RealestateIdentification from "./realestate-identification";
-import ConstructionLocalisation from "./construction-localisation";
 import Client from "./client";
+import ConstructionLocalisation from "./construction-localisation";
+import RealestateIdentification from "./realestate-identification";
 import XMLModel from "./xml-model";
 
 export default class ConstructionProject extends XMLModel {

@@ -103,3 +103,10 @@ export const typeOfPermitOptions = [
   5063,
   5071,
 ];
+
+export default {
+  typeOfClientOptions,
+  typeOfConstructionOptions,
+  typeOfConstructionProjectOptions,
+  typeOfPermitOptions,
+};

@@ -1,6 +1,6 @@
-import XMLApiService from "./xml-api";
-
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
+
+import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
   async getToken() {
@@ -64,12 +64,10 @@ export default class BuildingProjectService extends XMLApiService {
         body,
       }
     );
-    console.log(await response.text());
   }
 
   async create(project) {
     const body = this.buildXMLRequest("addConstructionProject", project);
-    console.log(body);
     const response = await fetch(
       `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
       {
@@ -80,6 +78,5 @@ export default class BuildingProjectService extends XMLApiService {
         body,
       }
     );
-    console.log(await response.text());
   }
 }

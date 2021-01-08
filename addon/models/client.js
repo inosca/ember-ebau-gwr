@@ -1,6 +1,6 @@
 import { tracked } from "@glimmer/tracking";
-import Identification from "ember-ebau-gwr/models/identification";
 import Address from "ember-ebau-gwr/models/address";
+import Identification from "ember-ebau-gwr/models/identification";
 
 import XMLModel from "./xml-model";
 
