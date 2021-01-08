@@ -1,4 +1,5 @@
 import { tracked } from "@glimmer/tracking";
+
 import XMLModel from "./xml-model";
 
 export default class ConstructionLocalisation extends XMLModel {
@@ -6,17 +7,17 @@ export default class ConstructionLocalisation extends XMLModel {
   @tracked municipalityName;
   @tracked cantonAbbreviation;
 
-  constructor(...args) {
-    super(...args);
-
+  setFieldsFromXML() {
     this.municipalityId = this.getFieldFromXML(
-      "constructionLocalisation.municipalityId"
+      "constructionLocalisation municipalityId"
     );
     this.municipalityName = this.getFieldFromXML(
-      "constructionLocalisation.municipalityName"
+      "constructionLocalisation municipalityName"
     );
     this.cantonAbbreviation = this.getFieldFromXML(
-      "constructionLocalisation.cantonAbbreviation"
+      "constructionLocalisation cantonAbbreviation"
     );
   }
+
+  static template = ``;
 }

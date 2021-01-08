@@ -1,11 +1,23 @@
 import XMLApiService from "./xml-api";
+
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 
 export default class BuildingProjectService extends XMLApiService {
   async getToken() {
-    const username = localStorage.getItem("username") ?? prompt("Username:"),
-      password = localStorage.getItem("password") ?? prompt("Password:"),
-      wsk_id = localStorage.getItem("wsk_id") ?? prompt("wsk_id:");
+    const username = localStorage.getItem("username"),
+      password = localStorage.getItem("password"),
+      wsk_id = localStorage.getItem("wsk_id");
+
+    if (!username) {
+      localStorage.setItem("username", prompt("Username:"));
+    }
+    if (!password) {
+      localStorage.setItem("password", prompt("Password:"));
+    }
+    if (!wsk_id) {
+      localStorage.setItem("wsk_id", prompt("wsk_id:"));
+    }
+
     const { token } = await fetch(
       "http://localhost:8010/proxy/regbl/api/ech0216/2/tokenWS",
       {
@@ -20,10 +32,6 @@ export default class BuildingProjectService extends XMLApiService {
         }),
       }
     ).then((response) => response.json());
-
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
-    localStorage.setItem("wsk_id", wsk_id);
 
     return token;
   }
@@ -56,5 +64,22 @@ export default class BuildingProjectService extends XMLApiService {
         body,
       }
     );
+    console.log(await response.text());
+  }
+
+  async create(project) {
+    const body = this.buildXMLRequest("addConstructionProject", project);
+    console.log(body);
+    const response = await fetch(
+      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
+      {
+        method: "post",
+        headers: {
+          token: await this.getToken(),
+        },
+        body,
+      }
+    );
+    console.log(await response.text());
   }
 }

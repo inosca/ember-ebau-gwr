@@ -1,5 +1,6 @@
 import Service from "@ember/service";
-import { partials, templates } from "ember-ebau-gwr/xml/templates";
+import Models from "ember-ebau-gwr/models";
+import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
 import Handlebars, { compile } from "handlebars";
 
 export default class XMLApiService extends Service {
@@ -13,27 +14,25 @@ export default class XMLApiService extends Service {
   }
 
   buildXMLRequest(type, model, reason = "Modification enregistrement") {
-    const modelName = model.constructor.name;
-
     // Compile the needed templates on the fly so only
     // the ones used are compiled to remove a bit of over head.
-    if (!this.hbs.partials[modelName]) {
-      this.hbs.registerPartial(modelName, this.hbs.compile(model.template));
-    }
-
     if (!this.compiledTemplates[type]) {
-      this.compiledTemplates[type] = compile(templates[type]);
+      this.compiledTemplates[type] = compile(Templates[type]);
     }
 
     return this.compiledTemplates[type](
-      { modelName, model, reason },
+      { model, reason },
       { allowProtoPropertiesByDefault: true }
     );
   }
 
   setupHandlebarsPartials() {
-    Object.keys(partials).forEach((key) => {
-      this.hbs.registerPartial(key, compile(partials[key]));
+    Object.keys(Partials).forEach((key) => {
+      this.hbs.registerPartial(key, compile(Partials[key]));
+    });
+
+    Object.keys(Models).forEach((key) => {
+      this.hbs.registerPartial(key, compile(Models[key].template));
     });
   }
 }
