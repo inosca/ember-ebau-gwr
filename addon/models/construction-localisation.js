@@ -7,17 +7,23 @@ export default class ConstructionLocalisation extends XMLModel {
   @tracked municipalityName;
   @tracked cantonAbbreviation;
 
-  setFieldsFromXML() {
-    this.municipalityId = this.getFieldFromXML(
-      "constructionLocalisation municipalityId"
-    );
-    this.municipalityName = this.getFieldFromXML(
-      "constructionLocalisation municipalityName"
-    );
-    this.cantonAbbreviation = this.getFieldFromXML(
-      "constructionLocalisation cantonAbbreviation"
-    );
+  constructor(...args) {
+    super(...args);
+    this.setFieldsFromXML({
+      namespace: "constructionLocalisation",
+      fields: {
+        municipalityId: Number,
+        municipalityName: String,
+        cantonAbbreviation: String,
+      },
+    });
   }
 
-  static template = ``;
+  static template = `
+  <ns2:constructionLocalisation>
+    <ns2:municipalityId>{{model.municipalityId}}</ns2:municipalityId>
+    <ns2:municipalityName>{{model.municipalityName}}</ns2:municipalityName>
+    <ns2:cantonAbbreviation>{{model.cantonAbbreviation}}</ns2:cantonAbbreviation>
+  </ns2:constructionLocalisation>
+  `;
 }

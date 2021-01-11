@@ -16,6 +16,9 @@ export default class ConstructionProject extends XMLModel {
   @tracked typeOfPermit;
 
   @tracked constructionProjectDescription;
+  @tracked projectFreeText1;
+  @tracked projectFreeText2;
+  @tracked constructionProjectDescription;
   @tracked totalCostsOfProject;
   @tracked constructionSurveyDept;
 
@@ -32,49 +35,36 @@ export default class ConstructionProject extends XMLModel {
   @tracked client = new Client();
   @tracked constructionLocalisation = new ConstructionLocalisation();
 
-  setFieldsFromXML() {
-    const simpleNumberFields = [
-      "EPROID",
-      "typeOfClient",
-      "typeOfConstruction",
-      "typeOfConstructionProject",
-      "typeOfPermit",
-      "totalCostsOfProject",
-    ];
-    simpleNumberFields.forEach((field) => {
-      this[field] = this.getFieldFromXML(
-        `constructionProject ${field}`,
-        Number
-      );
+  constructor(...args) {
+    super(...args);
+    this.setFieldsFromXML({
+      namespace: "constructionProject",
+      fields: {
+        EPROID: Number,
+        typeOfClient: Number,
+        typeOfConstruction: Number,
+        typeOfConstructionProject: Number,
+        typeOfPermit: Number,
+        totalCostsOfProject: Number,
+        officialConstructionProjectFileNo: String,
+        extensionOfOfficialConstructionProjectFileNo: String,
+        constructionProjectDescription: String,
+        constructionSurveyDept: String,
+        withdrawalDate: String,
+        projectStartDate: String,
+        constructionAuthorisationDeniedDate: String,
+        nonRealisationDate: String,
+        projectCompletionDate: String,
+        projectSuspensionDate: String,
+        buildingPermitIssueDate: String,
+        projectAnnouncementDate: String,
+        projectFreeText1: String,
+        projectFreeText2: String,
+        realestateIdentification: RealestateIdentification,
+        client: Client,
+        constructionLocalisation: ConstructionLocalisation,
+      },
     });
-
-    const simpleStringFields = [
-      "officialConstructionProjectFileNo",
-      "extensionOfOfficialConstructionProjectFileNo",
-      "constructionProjectDescription",
-      "constructionSurveyDept",
-      "withdrawalDate",
-      "projectStartDate",
-      "constructionAuthorisationDeniedDate",
-      "nonRealisationDate",
-      "projectCompletionDate",
-      "projectSuspensionDate",
-      "buildingPermitIssueDate",
-      "projectAnnouncementDate",
-    ];
-    simpleStringFields.forEach((field) => {
-      this[field] = this.getFieldFromXML(`constructionProject ${field}`);
-    });
-
-    this.realestateIdentification = new RealestateIdentification(
-      this.getFieldFromXML("constructionProject realestateIdentification")
-    );
-    this.client = new Client(
-      this.getFieldFromXML("constructionProject client")
-    );
-    this.constructionLocalisation = new ConstructionLocalisation(
-      this.getFieldFromXML("constructionProject constructionLocalisation")
-    );
   }
 
   static template = `

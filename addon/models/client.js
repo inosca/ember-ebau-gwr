@@ -8,6 +8,17 @@ export default class Client extends XMLModel {
   @tracked identification = new Identification();
   @tracked address = new Address();
 
+  constructor(...args) {
+    super(...args);
+    this.setFieldsFromXML({
+      namespace: "client",
+      fields: {
+        identification: Identification,
+        address: Address,
+      },
+    });
+  }
+
   static template = `
   <ns2:client>
    {{> Identification model=model.identification}}

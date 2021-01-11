@@ -9,6 +9,20 @@ export default class Address extends XMLModel {
   @tracked town;
   @tracked country;
 
+  constructor(...args) {
+    super(...args);
+    this.setFieldsFromXML({
+      namespace: "address",
+      fields: {
+        street: String,
+        houseNumber: Number,
+        swissZipCode: Number,
+        town: String,
+        country: String,
+      },
+    });
+  }
+
   static template = `
   <address>
     <ns5:street>{{model.street}}</ns5:street>

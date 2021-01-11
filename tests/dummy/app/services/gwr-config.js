@@ -1,6 +1,10 @@
 import Service from "@ember/service";
 
 export default class GwrConfigService extends Service {
+  municipalityId = 546; // Münchenbuchsee for testing
+  municipalityName = "Münchenbuchsee";
+  cantonAbbreviation= "BE";
+
   get cssClasses() {
     return {
       button: ["uk-button", "uk-button-default"],
