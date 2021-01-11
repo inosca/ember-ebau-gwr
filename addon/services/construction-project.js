@@ -21,14 +21,14 @@ export default class BuildingProjectService extends XMLApiService {
     const { token } = await fetch(
       "http://localhost:8010/proxy/regbl/api/ech0216/2/tokenWS",
       {
-        method: "post",
+        method: "POST",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
           username,
           password,
-          wsk_id,
+          wsk_id: Number(wsk_id),
         }),
       }
     ).then((response) => response.json());
