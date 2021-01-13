@@ -14,10 +14,6 @@ export default class ProjectIndexController extends Controller {
 
   choiceOptions = Options;
 
-  get isNewProject() {
-    return !this.model.EPROID;
-  }
-
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
@@ -68,10 +64,10 @@ export default class ProjectIndexController extends Controller {
   }
 
   @action
-  saveProject() {
-    this.model = this.isNewProject
+  async saveProject() {
+    this.model = await (this.model.isNew
       ? this.constructionProject.create(this.model)
-      : this.constructionProject.update(this.model);
+      : this.constructionProject.update(this.model));
     this.transitionToRoute("project", { queryParams: { import: false } });
   }
 }

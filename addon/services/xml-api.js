@@ -1,6 +1,7 @@
 import Service from "@ember/service";
 import Models from "ember-ebau-gwr/models";
 import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
+import * as Helpers from "ember-ebau-gwr/xml/helpers";
 import Handlebars, { compile } from "handlebars";
 
 export default class XMLApiService extends Service {
@@ -33,6 +34,10 @@ export default class XMLApiService extends Service {
 
     Object.keys(Models).forEach((key) => {
       this.hbs.registerPartial(key, compile(Models[key].template));
+    });
+
+    Object.keys(Helpers).forEach((key) => {
+      this.hbs.registerHelper(key, Helpers[key]);
     });
   }
 }

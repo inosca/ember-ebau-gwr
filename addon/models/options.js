@@ -104,9 +104,16 @@ export const typeOfPermitOptions = [
   5071,
 ];
 
+export const kindOfWork = [
+  6001, // Neubau
+  6002, // Umbau
+  6007, // Abbruch
+];
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
   typeOfConstructionProjectOptions,
   typeOfPermitOptions,
+  kindOfWork,
 };

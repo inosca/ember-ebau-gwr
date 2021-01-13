@@ -23,10 +23,20 @@ export default class RealestateIdentification extends XMLModel {
     });
   }
 
+  // TODO on a new project we can somehow not set the egrid
+
   static template = `
   <ns2:realestateIdentification>
-    <ns2:number>{{model.number}}</ns2:number>
-    <ns2:EGRID>{{model.EGRID}}</ns2:EGRID>
+    <number>{{model.number}}</number>
+    {{#if model.numberSuffix}}
+      <numberSuffix>{{model.numberSuffix}}</numberSuffix>
+    {{/if}}
+    {{#if model.subDistrict}}
+      <subDistrict>{{model.subDistrict}}</subDistrict>
+    {{/if}}
+    {{#if model.lot}}
+      <lot>{{model.lot}}</lot>
+    {{/if}}
   </ns2:realestateIdentification>
   `;
 }

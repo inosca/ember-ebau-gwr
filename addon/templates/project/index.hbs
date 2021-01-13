@@ -1,6 +1,6 @@
 <h2 class="uk-flex uk-flex-between">
   <span>
-    {{#if this.isNewProject}}
+    {{#if this.model.isNew}}
       {{t "ember-gwr.landingPage.createNewProject"}}
     {{else}}
       {{t "ember-gwr.projectForm.title" id=@model.EPROID}}
@@ -22,7 +22,7 @@
         {{t "ember-gwr.projectForm.cancelImport"}}
       </LinkTo>
     </div>
-  {{else if this.isNewProject}}
+  {{else if this.model.isNew}}
     <button
       class={{configured-classes "button" "button-primary"}}
       type="button"
@@ -46,7 +46,7 @@
   @onSubmit={{this.saveProject}}
   {{did-insert (perform this.fetchCalumaData)}} as |Field|
 >
-  {{#unless this.isNewProject}}
+  {{#unless this.model.isNew}}
     <div class="uk-flex uk-flex-wrap uk-flex-between">
       <div class="uk-width-1-4@m uk-width-1">
         <Field type="number" readonly @attr="EPROID" disabled />

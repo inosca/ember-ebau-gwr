@@ -66,65 +66,71 @@ export default class ConstructionProject extends XMLModel {
       },
     });
   }
-
   static template = `
   <ns2:constructionProject>
-    {{#if model.isNew}}
-      <ns2:officialConstructionProjectFileNo>{{model.officialConstructionProjectFileNo}}</ns2:officialConstructionProjectFileNo>
-    {{/if}}
-
+    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
+    <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
     <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
-    <ns2:typeOfConstruction>{{model.typeOfConstruction}}</ns2:typeOfConstruction>
+    <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
     <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
+    <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
 
-    {{#if model.withdrawalDate}}
-      <ns2:withdrawalDate>{{model.withdrawalDate}}</ns2:withdrawalDate>
+    {{#if model.buildingPermitIssueDate}}
+      <ns2:buildingPermitIssueDate>{{echDate model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
     {{/if}}
     {{#if model.projectStartDate}}
-      <ns2:projectStartDate>{{model.projectStartDate}}</ns2:projectStartDate>
-    {{/if}}
-    {{#if model.model}}
-      <ns2:model>{{model.model}}</ns2:model>
-    {{/if}}
-    {{#if model.nonRealisationDate}}
-      <ns2:nonRealisationDate>{{model.nonRealisationDate}}</ns2:nonRealisationDate>
+      <ns2:projectStartDate>{{echDate model.projectStartDate}}</ns2:projectStartDate>
     {{/if}}
     {{#if model.projectCompletionDate}}
-      <ns2:projectCompletionDate>{{model.projectCompletionDate}}</ns2:projectCompletionDate>
+      <ns2:projectCompletionDate>{{echDate model.projectCompletionDate}}</ns2:projectCompletionDate>
     {{/if}}
+
+    {{! These fields are accepted by the api but it seems like theire not actually written.}}
     {{#if model.projectSuspensionDate}}
-      <ns2:projectSuspensionDate>{{model.projectSuspensionDate}}</ns2:projectSuspensionDate>
+      <ns2:projectSuspensionDate>{{echDate model.projectSuspensionDate}}</ns2:projectSuspensionDate>
+    {{/if}}
+    {{#if model.constructionAuthorisationDeniedDate}}
+      <ns2:constructionAuthorisationDeniedDate>{{echDate model.constructionAuthorisationDeniedDate}}</ns2:constructionAuthorisationDeniedDate>
+    {{/if}}
+    {{#if model.withdrawalDate}}
+      <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
     {{/if}}
 
-    {{#if model.isNew}}
-      <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
-      <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
-      <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
-      <ns2:constructionSurveyDept>{{this.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    {{!--
+    These fields cause errors as of this comment:
 
-      {{#if model.projectStartDate}}
-        <ns2:buildingPermitIssueDate>{{model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
-      {{/if}}
-
-      {{#if model.projectAnnouncementDate}}
-        <ns2:projectAnnouncementDate>{{model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
-      {{/if}}
+    {{#if model.nonRealisationDate}}
+      <ns2:nonRealisationDate>{{echDate model.nonRealisationDate}}</ns2:nonRealisationDate>
     {{/if}}
-
-    {{> RealestateIdentification model=model.realestateIdentification}}
     {{> Client model=model.client}}
+    {{> ConstructionLocalisation model=model.constructionLocalisation}}
+    {{> RealestateIdentification model=model.realestateIdentification}}
+    --}}
+  </ns2:constructionProject>
+  `;
+
+  // TODO merge this and the normal template. this is currently not used and just for
+  // keeping a version of the xml template that at least returns no errors on a addConstructionProject call.
+  static createTemplateTest = `
+  <ns2:constructionProject>
+    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
+    <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
+    <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
+    <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
+    <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
+    <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
+
+
+    {{!> Client model=model.client}}
+    {{!> ConstructionLocalisation model=model.constructionLocalisation}}
+    {{!> RealestateIdentification model=model.realestateIdentification}}
+
+    <ns2:buildingProjectLink>
+      <ns2:kindOfWork>6002</ns2:kindOfWork>
+    </ns2:buildingProjectLink>
 
   </ns2:constructionProject>
   `;
 }
-// Stuff that returns an error from the api. Maybe can only be set on creation?
-// {{#if model.projectStartDate}}
-//   <ns2:buildingPermitIssueDate>{{model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
-// {{/if}}
-// {{#if model.projectAnnouncementDate}}
-//   <ns2:projectAnnouncementDate>{{model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
-// {{/if}}
-// <ns2:typeOfConstructionProject>${this.typeOfConstructionProject}</ns2:typeOfConstructionProject>
-// <ns2:typeOfPermit>${this.typeOfPermit}</ns2:typeOfPermit>
-// <ns2:constructionProjectDescription>${this.constructionProjectDescription}</ns2:constructionProjectDescription>
-// <ns2:constructionSurveyDept>${this.constructionSurveyDept}</ns2:constructionSurveyDept>
