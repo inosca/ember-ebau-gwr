@@ -68,9 +68,8 @@ export default class BuildingProjectService extends XMLApiService {
       const xml = await response.text();
       console.log(xml);
       return new ConstructionProject(xml);
-    } else {
-      return project;
     }
+    return project;
   }
 
   async create(project) {

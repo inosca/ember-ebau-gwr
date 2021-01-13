@@ -1,7 +1,7 @@
 import Service from "@ember/service";
 import Models from "ember-ebau-gwr/models";
-import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
 import * as Helpers from "ember-ebau-gwr/xml/helpers";
+import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
 import Handlebars, { compile } from "handlebars";
 
 export default class XMLApiService extends Service {
