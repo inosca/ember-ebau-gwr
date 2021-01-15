@@ -11,7 +11,7 @@
       <button
         class={{configured-classes "button"}}
         type="button"
-        {{on "click" (perform this.importCalumaData)}}
+        {{on "click" this.importCalumaData}}
       >
         {{t "ember-gwr.projectForm.applyAll"}}
       </button>
@@ -26,7 +26,7 @@
     <button
       class={{configured-classes "button" "button-primary"}}
       type="button"
-      {{on "click" (perform this.importCalumaData)}}
+      {{on "click" this.importCalumaData}}
     >
       {{t "ember-gwr.projectForm.importFromCaluma"}}
     </button>

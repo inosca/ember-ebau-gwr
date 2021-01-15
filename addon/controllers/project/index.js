@@ -17,7 +17,7 @@ export default class ProjectIndexController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
-    const importData = {
+    const importData = yield {
       constructionProjectDescription:
         "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
       typeOfConstruction: "Elektrizitätswerke",
@@ -37,8 +37,7 @@ export default class ProjectIndexController extends Controller {
     return importData;
   }
 
-  @task
-  *importCalumaData() {
+  importCalumaData() {
     this.model.typeOfConstructionProject = 6010;
     this.model.constructionProjectDescription =
       "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.";

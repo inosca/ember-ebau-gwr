@@ -4,17 +4,21 @@ import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
   async getToken() {
+    // TODO Workaround for nonexistent login for now
     const username = localStorage.getItem("username"),
       password = localStorage.getItem("password"),
       wsk_id = localStorage.getItem("wsk_id");
 
     if (!username) {
+      //eslint-disable-next-line no-alert
       localStorage.setItem("username", prompt("Username:"));
     }
     if (!password) {
+      //eslint-disable-next-line no-alert
       localStorage.setItem("password", prompt("Password:"));
     }
     if (!wsk_id) {
+      //eslint-disable-next-line no-alert
       localStorage.setItem("wsk_id", prompt("wsk_id:"));
     }
 
@@ -66,7 +70,6 @@ export default class BuildingProjectService extends XMLApiService {
     );
     if (response.ok) {
       const xml = await response.text();
-      console.log(xml);
       return new ConstructionProject(xml);
     }
     return project;
