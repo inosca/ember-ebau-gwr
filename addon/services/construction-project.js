@@ -90,4 +90,19 @@ export default class BuildingProjectService extends XMLApiService {
     const xml = await response.text();
     return new ConstructionProject(xml);
   }
+
+  async search(query = {}) {
+    const queryXML = this.buildXMLRequest("getConstructionProject", query);
+    const response = await fetch(
+      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
+      {
+        headers: {
+          token: await this.getToken(),
+          query: queryXML,
+        },
+      }
+    );
+    const xml = await response.text();
+    return xml;
+  }
 }

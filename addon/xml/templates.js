@@ -17,6 +17,13 @@ const addConstructionProject =
   </ns2:addConstructionProject>
 {{/base}}`;
 
+// prettier-ignore
+const getConstructionProject =
+`{{#>base}}
+  <ns2:getConstructionProject>
+  </ns2:getConstructionProject>
+{{/base}}`;
+
 const header = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`;
 
 // prettier-ignore
@@ -41,5 +48,9 @@ const base =
   {{> @partial-block}}
 {{/delivery}}`;
 
-export const Templates = { modifyConstructionProject, addConstructionProject };
+export const Templates = {
+  modifyConstructionProject,
+  addConstructionProject,
+  getConstructionProject,
+};
 export const Partials = { header, delivery, base };
