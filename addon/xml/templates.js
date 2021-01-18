@@ -21,6 +21,7 @@ const addConstructionProject =
 const getConstructionProject =
 `{{#>base}}
   <ns2:getConstructionProject>
+    <ns2:constructionSurveyDept>134200</ns2:constructionSurveyDept>
   </ns2:getConstructionProject>
 {{/base}}`;
 

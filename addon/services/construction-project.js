@@ -92,7 +92,10 @@ export default class BuildingProjectService extends XMLApiService {
   }
 
   async search(query = {}) {
-    const queryXML = this.buildXMLRequest("getConstructionProject", query);
+    const queryXML = this.buildXMLRequest(
+      "getConstructionProject",
+      query
+    ).replace(/\r?\n|\r/g, "");
     const response = await fetch(
       `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
       {
@@ -102,7 +105,15 @@ export default class BuildingProjectService extends XMLApiService {
         },
       }
     );
-    const xml = await response.text();
-    return xml;
+    const parser = new DOMParser();
+    const searchDocument = parser.parseFromString(
+      await response.text(),
+      "application/xml"
+    );
+
+    const projectList = searchDocument
+      .querySelectorAll("constructionProject")
+      .map((element) => new ConstructionProject(element));
+    return projectList;
   }
 }
