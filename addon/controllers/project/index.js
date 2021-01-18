@@ -37,13 +37,14 @@ export default class ProjectIndexController extends Controller {
     return importData;
   }
 
+  @action
   importCalumaData() {
     this.model.typeOfConstructionProject = 6010;
     this.model.constructionProjectDescription =
       "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.";
     this.model.typeOfPermit = 5002;
     this.model.totalCostsOfProject = 10000;
-    this.model.constructionSurveyDept = 81298;
+    this.model.constructionSurveyDept = 134200;
     this.model.typeOfConstruction = 6223;
     this.model.projectAnnouncementDate = "11.12.2019";
     this.model.realestateIdentification.number = 83289;
@@ -67,6 +68,6 @@ export default class ProjectIndexController extends Controller {
     this.model = await (this.model.isNew
       ? this.constructionProject.create(this.model)
       : this.constructionProject.update(this.model));
-    this.transitionToRoute("project", { queryParams: { import: false } });
+    this.import = false;
   }
 }

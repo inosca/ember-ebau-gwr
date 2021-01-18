@@ -3,7 +3,7 @@
     {{#if this.model.isNew}}
       {{t "ember-gwr.landingPage.createNewProject"}}
     {{else}}
-      {{t "ember-gwr.projectForm.title" id=@model.EPROID}}
+      {{t "ember-gwr.projectForm.title" id=this.model.EPROID}}
     {{/if}}
   </span>
   {{#if this.import}}
@@ -41,7 +41,7 @@
 </h2>
 
 <ProjectForm
-  @project={{@model}}
+  @project={{this.model}}
   @importData={{if this.import this.importData}}
   @onSubmit={{this.saveProject}}
   {{did-insert (perform this.fetchCalumaData)}} as |Field|

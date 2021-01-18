@@ -1,9 +1,9 @@
 import Service from "@ember/service";
 
 export default class GwrConfigService extends Service {
-  municipalityId = 546; // Münchenbuchsee for testing
-  municipalityName = "Münchenbuchsee";
-  cantonAbbreviation = "BE";
+  municipalityId = 1342; // Münchenbuchsee for testing
+  municipalityName = "Galgenen";
+  cantonAbbreviation = "SZ";
 
   get cssClasses() {
     return {

@@ -66,7 +66,34 @@ export default class ConstructionProject extends XMLModel {
       },
     });
   }
+  //TODO merge these two templates but for now keep them seperate for easier testing and figuring out how the api works.
+  // The order of the fields seems to be important. Sometimes fields in wrong orders throw errors.
   static template = `
+  {{#if model.isNew}}
+  <ns2:constructionProject>
+    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
+    {{> ConstructionLocalisation model=model.constructionLocalisation}}
+    {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
+    {{> RealestateIdentification model=model.realestateIdentification}}
+    <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
+    <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
+    <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
+    <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
+    <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
+
+
+    {{!--
+    These fields return errors which i have not figured out yet.
+    {{> Client model=model.client}}
+    --}}
+
+    <ns2:buildingProjectLink>
+      <ns2:kindOfWork>6002</ns2:kindOfWork>
+    </ns2:buildingProjectLink>
+
+  </ns2:constructionProject>
+  {{else}}
   <ns2:constructionProject>
     <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
     <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
@@ -108,29 +135,6 @@ export default class ConstructionProject extends XMLModel {
     {{> RealestateIdentification model=model.realestateIdentification}}
     --}}
   </ns2:constructionProject>
-  `;
-
-  // TODO merge this and the normal template. this is currently not used and just for
-  // keeping a version of the xml template that at least returns no errors on a addConstructionProject call.
-  static createTemplateTest = `
-  <ns2:constructionProject>
-    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
-    <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
-    <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
-    <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
-    <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
-    <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
-    <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
-
-
-    {{!> Client model=model.client}}
-    {{!> ConstructionLocalisation model=model.constructionLocalisation}}
-    {{!> RealestateIdentification model=model.realestateIdentification}}
-
-    <ns2:buildingProjectLink>
-      <ns2:kindOfWork>6002</ns2:kindOfWork>
-    </ns2:buildingProjectLink>
-
-  </ns2:constructionProject>
+  {{/if}}
   `;
 }
