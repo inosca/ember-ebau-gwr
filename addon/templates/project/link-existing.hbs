@@ -1,9 +1,32 @@
 <h1>
   Link existing
 </h1>
-<button {{on "click" (perform this.search)}}>
-  Search
-</button>
 <button {{on "click" this.linkTestProject}}>
   Link Test Project
 </button>
+
+<Search::Filters @search={{fn (perform this.search)}} as |Field|>
+  <Field @attr="constructionSurveyDept" />
+</Search::Filters>
+
+<Search::ResultTable
+  @results={{this.searchResults}}
+  @loading={{this.search.isRunning}} as |Row|
+>
+  <Search::ResultTable::Head as |Header|>
+    <Header
+      class="uk-table-shrink"
+      @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
+    />
+    <Header
+      class="uk-table-expand"
+      @label={{
+        t "ember-gwr.constructionProject.fields.constructionProjectDescription"
+      }}
+    />
+  </Search::ResultTable::Head>
+  <Row as |Field|>
+    <Field @attr="EPROID" />
+    <Field @attr="constructionProjectDescription" />
+  </Row>
+</Search::ResultTable>

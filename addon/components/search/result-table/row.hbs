@@ -1,0 +1,7 @@
+<tbody>
+  {{#each @results as |result|}}
+    <tr ...attributes>
+      {{yield (component "search/result-table/row/field" data=result)}}
+    </tr>
+  {{/each}}
+</tbody>
