@@ -26,6 +26,7 @@ ember-gwr:
       importedData: Importierte Daten
       apply: Übernehmen
 
+  constructionProject:
     fields:
       EPROID: EPROID
       officialConstructionProjectFileNo: Amtliche Baudossiernummer

@@ -5,11 +5,11 @@
   ...attributes
 >
   <option value="">
-    {{t (concat "ember-gwr.projectForm.fields." @attr "Placeholder")}}
+    {{t (concat "ember-gwr.constructionProject.fields." @attr "Placeholder")}}
   </option>
   {{#each @options as |optionValue|}}
     <option selected={{eq optionValue @value}} value={{optionValue}}>
-      {{t (concat "ember-gwr.projectForm.fields." @attr "Options." optionValue)
+      {{t (concat "ember-gwr.constructionProject.fields." @attr "Options." optionValue)
       }}
     </option>
   {{/each}}
