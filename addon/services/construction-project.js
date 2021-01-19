@@ -1,5 +1,5 @@
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
-
+import SearchResult from "ember-ebau-gwr/models/search-result";
 import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
@@ -105,15 +105,10 @@ export default class BuildingProjectService extends XMLApiService {
         },
       }
     );
-    const parser = new DOMParser();
-    const searchDocument = parser.parseFromString(
+    return new SearchResult(
       await response.text(),
-      "application/xml"
+      ConstructionProject,
+      "constructionProjectsList"
     );
-
-    const projectList = searchDocument
-      .querySelectorAll("constructionProject")
-      .map((element) => new ConstructionProject(element));
-    return projectList;
   }
 }

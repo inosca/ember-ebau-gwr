@@ -17,24 +17,38 @@ export default class XMLModel {
     }
   }
 
+  castToType(element, type) {
+    // We dont want to instantiate the types Number or String with new.
+    // This would cause problems with comparison.
+    return element.children.length
+      ? new type(element)
+      : type(element.textContent);
+  }
+
   getFieldFromXML(path, type) {
-    const element = this.document.querySelector(path);
-    if (element) {
-      // We dont want to instantiate the types Number or String with new.
-      // This would cause problems with comparison.
-      return element.children.length
-        ? new type(element)
-        : type(element.textContent);
+    const elements = this.document.querySelectorAll(path);
+
+    if (elements.length) {
+      return Array.isArray(type)
+        ? Array.from(elements).map((element) =>
+            this.castToType(element, type[0])
+          )
+        : this.castToType(elements[0], type);
     }
+
     return null;
   }
 
   /*
    * Takes an object with a fields and a namespace property.
    *
-   * `fields`: { [String]: new (any[]) => T }
-   *  Define the fields that should be read from the xml on initialization
-   *  { YourFieldName:  YourTypeConstructor }
+   * `fields`: { [String]: Type | [Type] }
+   *  Define the fields that should be read from the xml on initialization.
+   *  If the type is an array, this means that there are multiple nodes in
+   *  the response with this key name (alas a list of values).
+   *  Examples
+   *  { name:  String }
+   *  { constructionProjectsList: [ConstructionProject] }
    *
    *  `namespace`: String
    *  A Namespace for looking up xml fields. Most of the time this is just
@@ -46,7 +60,9 @@ export default class XMLModel {
       const { fields, namespace } = xmlDefinition;
       Object.entries(fields).forEach(([key, type]) => {
         this[key] = this.getFieldFromXML(
-          [...(namespace ? [namespace] : []), key].join(" "),
+          // Testing if we even need the namespacing.
+          // [...(namespace ? [namespace] : []), key].join(" "),
+          key,
           type
         );
       });

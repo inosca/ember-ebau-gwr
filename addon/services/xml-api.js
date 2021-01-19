@@ -33,7 +33,10 @@ export default class XMLApiService extends Service {
     });
 
     Object.keys(Models).forEach((key) => {
-      this.hbs.registerPartial(key, compile(Models[key].template));
+      const Model = Models[key];
+      if (Model.template) {
+        this.hbs.registerPartial(key, compile(Model.template));
+      }
     });
 
     Object.keys(Helpers).forEach((key) => {
