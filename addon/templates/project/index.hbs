@@ -3,7 +3,7 @@
     {{#if this.model.isNew}}
       {{t "ember-gwr.landingPage.createNewProject"}}
     {{else}}
-      {{t "ember-gwr.projectForm.title" id=this.model.EPROID}}
+      {{t "ember-gwr.components.projectForm.title" id=this.model.EPROID}}
     {{/if}}
   </span>
   {{#if this.import}}
@@ -13,13 +13,13 @@
         type="button"
         {{on "click" this.importCalumaData}}
       >
-        {{t "ember-gwr.projectForm.applyAll"}}
+        {{t "ember-gwr.components.projectForm.applyAll"}}
       </button>
       <LinkTo
         @query={{hash import=false}}
         class={{configured-classes "button"}}
       >
-        {{t "ember-gwr.projectForm.cancelImport"}}
+        {{t "ember-gwr.components.projectForm.cancelImport"}}
       </LinkTo>
     </div>
   {{else if this.model.isNew}}
@@ -28,14 +28,14 @@
       type="button"
       {{on "click" this.importCalumaData}}
     >
-      {{t "ember-gwr.projectForm.importFromCaluma"}}
+      {{t "ember-gwr.components.projectForm.importFromCaluma"}}
     </button>
   {{else}}
     <LinkTo
       @query={{hash import=true}}
       class={{configured-classes "button" "button-primary"}}
     >
-      {{t "ember-gwr.projectForm.importFromCaluma"}}
+      {{t "ember-gwr.components.projectForm.importFromCaluma"}}
     </LinkTo>
   {{/if}}
 </h2>
@@ -106,7 +106,7 @@
   />
 
   <h3>
-    {{t "ember-gwr.projectForm.dates"}}
+    {{t "ember-gwr.components.projectForm.dates"}}
   </h3>
   <div
     class="uk-flex uk-flex-wrap {{
@@ -149,7 +149,7 @@
   </div>
 
   <h3>
-    {{t "ember-gwr.projectForm.realEstateHeading"}}
+    {{t "ember-gwr.components.projectForm.realEstateHeading"}}
   </h3>
   <Field
     type="number"
@@ -159,7 +159,7 @@
   <Field type="number" @attr="realestateIdentification.EGRID" />
 
   <h3>
-    {{t "ember-gwr.projectForm.clientHeading"}}
+    {{t "ember-gwr.components.projectForm.clientHeading"}}
   </h3>
 
   <Field

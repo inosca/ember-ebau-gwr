@@ -1,11 +1,5 @@
-<div>
-  <p>
-    <b>
-      Filters
-    </b>
-  </p>
-  {{yield (component "search/filters/field")}}
-  <button {{on "click" @search}}>
-    Search
-  </button>
-</div>
+<form ...attributes {{on "submit" this.submit}}>
+  <div>
+    {{yield (component "search/filters/field" update=this.updateField)}}
+  </div>
+</form>

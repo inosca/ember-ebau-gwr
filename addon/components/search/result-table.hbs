@@ -1,5 +1,8 @@
-<table class="uk-table uk-table-middle uk-table-divider uk-table-stripped" ...attributes>
+<table
+  class="uk-table uk-table-middle uk-table-divider uk-table-striped"
+  ...attributes
+>
   {{yield
-    (component "search/result-table/row" results=@results)
+    (component "search/result-table/row" results=@results loading=@loading)
   }}
 </table>

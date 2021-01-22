@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | search/result-table/header', function(hooks) {
+module('Integration | Component | search/result-table/head/header', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Search::ResultTable::Header />`);
+    await render(hbs`<Search::ResultTable::Head::Header />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      <Search::ResultTable::Header>
+      <Search::ResultTable::Head::Header>
         template block text
-      </Search::ResultTable::Header>
+      </Search::ResultTable::Head::Header>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

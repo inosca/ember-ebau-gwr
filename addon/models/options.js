@@ -110,10 +110,22 @@ export const kindOfWork = [
   6007, // Abbruch
 ];
 
+export const projectStatusOptions = [
+  6701,
+  6702,
+  6703,
+  6704,
+  6706,
+  6707,
+  6708,
+  6709,
+];
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
   typeOfConstructionProjectOptions,
   typeOfPermitOptions,
+  projectStatusOptions,
   kindOfWork,
 };

@@ -2,14 +2,14 @@
   <div class="uk-margin">
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
       <span class={{configured-classes "diff-meta-text"}}>
-        {{t "ember-gwr.projectForm.diff.existingData"}}
+        {{t "ember-gwr.components.projectForm.diff.existingData"}}
       </span>
       <button
         type="button"
         class={{configured-classes "button" "button-small"}}
         {{on "click" (fn @updateProjectField @current)}}
       >
-        {{t "ember-gwr.projectForm.diff.apply"}}
+        {{t "ember-gwr.components.projectForm.diff.apply"}}
       </button>
     </div>
     <input
@@ -22,14 +22,14 @@
   <div>
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
       <span class={{configured-classes "diff-meta-text"}}>
-        {{t "ember-gwr.projectForm.diff.importData"}}
+        {{t "ember-gwr.components.projectForm.diff.importData"}}
       </span>
       <button
         type="button"
         class={{configured-classes "button" "button-small"}}
         {{on "click" (fn @updateProjectField this.newValue)}}
       >
-        {{t "ember-gwr.projectForm.diff.apply"}}
+        {{t "ember-gwr.components.projectForm.diff.apply"}}
       </button>
     </div>
     <input

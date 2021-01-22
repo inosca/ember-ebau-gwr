@@ -1,4 +1,18 @@
-<p>
-  {{@attr}}
-</p>
-<input />
+<ProjectForm::Label
+  @base="ember-gwr.searchProject.search."
+  @attr={{@attr}}
+  @required={{@required}}
+  @noMargin={{@noMargin}}
+>
+  {{#let (component (concat "project-form/" (or @type "input"))) as |InputField|
+  }}
+    <InputField
+      @attr={{@attr}}
+      @required={{@required}}
+      @options={{@options}}
+      @update={{fn @update @attr}}
+      ...attributes
+      {{on "input" (fn @update @attr)}}
+    />
+  {{/let}}
+</ProjectForm::Label>

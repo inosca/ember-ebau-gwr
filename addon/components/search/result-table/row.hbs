@@ -1,7 +1,21 @@
 <tbody>
-  {{#each @results as |result|}}
-    <tr ...attributes>
-      {{yield (component "search/result-table/row/field" data=result)}}
+  {{#if @loading}}
+    <tr>
+      <td colspan="99" class="uk-text-center">
+        {{t "ember-gwr.components.search.loading"}}
+      </td>
     </tr>
-  {{/each}}
+  {{else}}
+    {{#each @results as |result|}}
+      <tr ...attributes>
+        {{yield (component "search/result-table/row/field" data=result)}}
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="99" class="uk-text-center">
+          {{t "ember-gwr.components.search.noResults"}}
+        </td>
+      </tr>
+    {{/each}}
+  {{/if}}
 </tbody>

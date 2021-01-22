@@ -4,11 +4,11 @@
   }}
 
   <button type="submit" class={{configured-classes "button" "button-primary"}}>
-    {{t "ember-gwr.projectForm.save"}}
+    {{t "ember-gwr.components.projectForm.save"}}
   </button>
   {{#if @importData}}
     <LinkTo @query={{hash import=false}} class={{configured-classes "button"}}>
-      {{t "ember-gwr.projectForm.cancelImport"}}
+      {{t "ember-gwr.components.projectForm.cancelImport"}}
     </LinkTo>
   {{/if}}
 </form>

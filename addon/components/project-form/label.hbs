@@ -1,8 +1,8 @@
 <div class={{unless @noMargin "uk-margin"}}>
   <label for={{@attr}} class={{if @required (configured-classes "text-bold")}}>
-    {{t (concat "ember-gwr.constructionProject.fields." @attr)}} {{if
+    {{t (concat (or @base "ember-gwr.constructionProject.fields.") @attr)}} {{if
       @required
-      (t "ember-gwr.projectForm.required")
+      (t "ember-gwr.components.projectForm.required")
     }}
   </label>
   {{yield}}

@@ -105,6 +105,12 @@ export default class BuildingProjectService extends XMLApiService {
         },
       }
     );
+
+    // The api returns a 404 if no results are found for the query
+    if (!response.ok && response.status === 404) {
+      return [];
+    }
+
     return new SearchResult(
       await response.text(),
       ConstructionProject,
