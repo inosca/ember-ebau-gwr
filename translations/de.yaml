@@ -11,6 +11,10 @@ ember-gwr:
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen
+    validation:
+      realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+      bothDatesSet: Es müssen beide Daten gesetzt sein.
+
     search:
       search: Projekte suchen
       extendedSearch:

@@ -31,6 +31,13 @@
         <h3>
           {{t "ember-gwr.searchProject.search.realestateIdentificationHeading"}}
         </h3>
+        {{#if this.validationErrors.realestateIdentification}}
+          <div class="uk-alert-danger" uk-alert>
+            <p>
+              {{this.validationErrors.realestateIdentification}}
+            </p>
+          </div>
+        {{/if}}
         <Field @attr="realestateIdentification.EGRID" type="number" />
         <Field @attr="realestateIdentification.numberSuffix" type="number" />
         <Field @attr="realestateIdentification.subDistrict" type="number" />
@@ -48,6 +55,13 @@
           <h3>
             {{t "ember-gwr.searchProject.search.createDateHeading"}}
           </h3>
+          {{#if this.validationErrors.createDate}}
+            <div class="uk-alert-danger" uk-alert>
+              <p>
+                {{this.validationErrors.createDate}}
+              </p>
+            </div>
+          {{/if}}
           <div class="uk-flex">
             <div class="uk-margin-small-right">
               <Field
@@ -64,6 +78,13 @@
           <h3>
             {{t "ember-gwr.searchProject.search.modifyDateHeading"}}
           </h3>
+          {{#if this.validationErrors.modifyDate}}
+            <div class="uk-alert-danger" uk-alert>
+              <p>
+                {{this.validationErrors.modifyDate}}
+              </p>
+            </div>
+          {{/if}}
           <div class="uk-flex">
             <div class="uk-margin-small-right">
               <Field
@@ -80,7 +101,7 @@
   {{/if}}
   <div class="uk-flex uk-flex-right">
     <button
-      type="submit"
+      type="button"
       class="uk-button uk-button-default"
       {{on "click" (fn (mut this.extendedSearch) (not this.extendedSearch))}}
     >
