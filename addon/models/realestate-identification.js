@@ -12,7 +12,6 @@ export default class RealestateIdentification extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "realestateIdentification",
       fields: {
         number: Number,
         EGRID: Number,

@@ -10,7 +10,6 @@ export default class ConstructionLocalisation extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "constructionLocalisation",
       fields: {
         municipalityId: Number,
         municipalityName: String,

@@ -9,7 +9,6 @@ export default class Identification extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "identification",
       fields: {
         personIdentification: PersonIdentification,
       },

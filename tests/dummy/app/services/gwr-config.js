@@ -4,6 +4,7 @@ export default class GwrConfigService extends Service {
   municipalityId = 1342; // Münchenbuchsee for testing
   municipalityName = "Galgenen";
   cantonAbbreviation = "SZ";
+  constructionSurveyDept = 134200;
 
   get cssClasses() {
     return {

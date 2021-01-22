@@ -8,6 +8,7 @@ import { tracked } from "@glimmer/tracking";
 export default class SearchProjectController extends Controller {
   @service constructionProject;
   @service intl;
+  @service config;
 
   @tracked extendedSearch = false;
   @tracked validationErrors = {};
@@ -61,7 +62,7 @@ export default class SearchProjectController extends Controller {
       return;
     }
 
-    query.constructionSurveyDept = 134200;
+    query.constructionSurveyDept = this.config.constructionSurveyDept;
     return yield this.constructionProject.search(query);
   }
 

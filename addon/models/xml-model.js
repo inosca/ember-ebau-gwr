@@ -40,7 +40,7 @@ export default class XMLModel {
   }
 
   /*
-   * Takes an object with a fields and a namespace property.
+   * Takes an object with a fields property.
    *
    * `fields`: { [String]: Type | [Type] }
    *  Define the fields that should be read from the xml on initialization.
@@ -49,22 +49,15 @@ export default class XMLModel {
    *  Examples
    *  { name:  String }
    *  { constructionProjectsList: [ConstructionProject] }
-   *
-   *  `namespace`: String
-   *  A Namespace for looking up xml fields. Most of the time this is just
-   *  the model name in camel case.
    */
   setFieldsFromXML(xmlDefinition) {
     // We do not execute this if the model is new since there exists no xml.
     if (!this.isNew) {
-      const { fields, namespace } = xmlDefinition;
+      const { fields } = xmlDefinition;
       Object.entries(fields).forEach(([key, type]) => {
-        this[key] = this.getFieldFromXML(
-          // Testing if we even need the namespacing.
-          // [...(namespace ? [namespace] : []), key].join(" "),
-          key,
-          type
-        );
+        // Do not reassign if the result is null || undefined.
+        // We then want to keep the default structure.
+        this[key] = this.getFieldFromXML(key, type) ?? this[key];
       });
     }
   }

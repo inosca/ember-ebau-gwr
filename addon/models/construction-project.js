@@ -42,7 +42,6 @@ export default class ConstructionProject extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "constructionProject",
       fields: {
         EPROID: Number,
         typeOfClient: Number,
