@@ -11,50 +11,50 @@ ember-gwr:
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen
+
     validation:
       realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
       bothDatesSet: Es müssen beide Daten gesetzt sein.
 
-    search:
-      search: Projekte suchen
-      extendedSearch:
-        extend: Erweiterte Filter einblenden
-        collapse: Erweiterte Filter ausblenden
+    search: Projekte suchen
+    extendedSearch:
+      extend: Erweiterte Filter einblenden
+      collapse: Erweiterte Filter ausblenden
 
-      projectStatus: Projektstatus
-      projectStatusPlaceholder: Alle
-      projectStatusOptions:
-        6701: Baugesuch eingereicht
-        6702: Baubewilligung erteilt (rechtswirksam)
-        6703: Baubegonnen
-        6704: Abgeschlossen
-        6706: Projekt sistiert
-        6707: Baugesuch abgelehnt (rechtswirksam)
-        6708: Nicht realisiert
-        6709: Zurückgezogen
+    projectStatus: Projektstatus
+    projectStatusPlaceholder: Alle
+    projectStatusOptions:
+      6701: Baugesuch eingereicht
+      6702: Baubewilligung erteilt (rechtswirksam)
+      6703: Baubegonnen
+      6704: Abgeschlossen
+      6706: Projekt sistiert
+      6707: Baugesuch abgelehnt (rechtswirksam)
+      6708: Nicht realisiert
+      6709: Zurückgezogen
 
-      hasError: Fehlerstatus
-      hasErrorPlaceholder: Alle
-      hasErrorOptions:
-        true: Nur mit Fehler
-        false: Nur ohne Fehler
+    hasError: Fehlerstatus
+    hasErrorPlaceholder: Alle
+    hasErrorOptions:
+      true: Nur mit Fehler
+      false: Nur ohne Fehler
 
-      realestateIdentificationHeading: Grundstücksidentifikation
-      realestateIdentification:
-        EGRID: EGRID
-        number: Grundstücksnummer
-        numberSuffix: Suffix der Grundstücksnummer
-        subDistrict: Grundbuchkreisnummer
-        lot: Los
+    realestateIdentificationHeading: Grundstücksidentifikation
+    realestateIdentification:
+      EGRID: EGRID
+      number: Grundstücksnummer
+      numberSuffix: Suffix der Grundstücksnummer
+      subDistrict: Grundbuchkreisnummer
+      lot: Los
 
-      createDateHeading: Erstellungszeitraum
-      createDate:
-        dateFrom: "Von"
-        dateTo: "Bis"
-      modifyDateHeading: Bearbeitungszeitraum
-      modifyDate:
-        dateFrom: "Von"
-        dateTo: "Bis"
+    createDateHeading: Erstellungszeitraum
+    createDate:
+      dateFrom: "Von"
+      dateTo: "Bis"
+    modifyDateHeading: Bearbeitungszeitraum
+    modifyDate:
+      dateFrom: "Von"
+      dateTo: "Bis"
 
   components:
     search:

@@ -44,6 +44,7 @@
   @project={{this.model}}
   @importData={{if this.import this.importData}}
   @onSubmit={{this.saveProject}}
+  @translationBase="ember-gwr.constructionProject.fields"
   {{did-insert (perform this.fetchCalumaData)}} as |Field|
 >
   {{#unless this.model.isNew}}

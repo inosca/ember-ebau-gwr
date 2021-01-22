@@ -2,6 +2,7 @@
   @attr={{@attr}}
   @required={{@required}}
   @noMargin={{@noMargin}}
+  @translationBase={{@translationBase}}
 >
   {{#if this.showDiff}}
     <ProjectForm::Diff
@@ -16,7 +17,8 @@
         @required={{@required}}
         @value={{get @project @attr}}
         @options={{@options}}
-        @update={{fn this.updateProjectField @attr}}
+        @update={{fn (or @update this.updateProjectField) @attr}}
+        @translationBase={{@translationBase}}
         disabled={{this.disableInput}}
         readonly={{this.disableInput}}
         ...attributes

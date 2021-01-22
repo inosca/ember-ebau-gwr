@@ -1,6 +1,11 @@
 <form ...attributes {{on "submit" this.submit}}>
   {{yield
-    (component "project-form/field" project=@project importData=@importData)
+    (component
+      "project-form/field"
+      project=@project
+      importData=@importData
+      translationBase=@translationBase
+    )
   }}
 
   <button type="submit" class={{configured-classes "button" "button-primary"}}>

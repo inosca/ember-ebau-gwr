@@ -2,20 +2,27 @@
   {{t "ember-gwr.searchProject.heading"}}
 </h1>
 
-<Search::Filters @search={{fn (perform this.search)}} as |Field|>
+<Search::Filters
+  @search={{fn (perform this.search)}}
+  @translationBase={{"ember-gwr.searchProject"}} as |Field|
+>
   <div class="uk-flex uk-flex-wrap uk-flex-between">
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
           @attr="projectStatus"
-          @type="select"
+          @inputType="select"
           @options={{this.projectStatusOptions}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field @attr="hasError" @type="select" @options={{array true false}} />
+        <Field
+          @attr="hasError"
+          @inputType="select"
+          @options={{array true false}}
+        />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
@@ -29,7 +36,7 @@
     <div class="uk-flex uk-flex-between uk-margin-small-bottom">
       <div class="uk-width-1-2">
         <h3>
-          {{t "ember-gwr.searchProject.search.realestateIdentificationHeading"}}
+          {{t "ember-gwr.searchProject.realestateIdentificationHeading"}}
         </h3>
         {{#if this.validationErrors.realestateIdentification}}
           <div class="uk-alert-danger" uk-alert>
@@ -53,7 +60,7 @@
       <div class="uk-width-1-2">
         <div class="uk-margin">
           <h3>
-            {{t "ember-gwr.searchProject.search.createDateHeading"}}
+            {{t "ember-gwr.searchProject.createDateHeading"}}
           </h3>
           {{#if this.validationErrors.createDate}}
             <div class="uk-alert-danger" uk-alert>
@@ -67,16 +74,20 @@
               <Field
                 @attr="createDate.dateFrom"
                 @noMargin={{true}}
-                @type="date"
+                @inputType="date"
               />
             </div>
-            <Field @attr="createDate.dateTo" @noMargin={{true}} @type="date" />
+            <Field
+              @attr="createDate.dateTo"
+              @noMargin={{true}}
+              @inputType="date"
+            />
           </div>
         </div>
 
         <div class="uk-margin">
           <h3>
-            {{t "ember-gwr.searchProject.search.modifyDateHeading"}}
+            {{t "ember-gwr.searchProject.modifyDateHeading"}}
           </h3>
           {{#if this.validationErrors.modifyDate}}
             <div class="uk-alert-danger" uk-alert>
@@ -90,10 +101,14 @@
               <Field
                 @attr="modifyDate.dateFrom"
                 @noMargin={{true}}
-                @type="date"
+                @inputType="date"
               />
             </div>
-            <Field @attr="modifyDate.dateTo" @noMargin={{true}} @type="date" />
+            <Field
+              @attr="modifyDate.dateTo"
+              @noMargin={{true}}
+              @inputType="date"
+            />
           </div>
         </div>
       </div>
@@ -107,7 +122,7 @@
     >
       {{t
         (concat
-          "ember-gwr.searchProject.search.extendedSearch."
+          "ember-gwr.searchProject.extendedSearch."
           (if this.extendedSearch "collapse" "extend")
         )
       }}
@@ -116,7 +131,7 @@
       type="submit"
       class="uk-button uk-button-primary uk-margin-small-left"
     >
-      {{t "ember-gwr.searchProject.search.search"}}
+      {{t "ember-gwr.searchProject.search"}}
     </button>
   </div>
 </Search::Filters>
@@ -138,7 +153,7 @@
           "ember-gwr.constructionProject.fields.constructionProjectDescription"
         }}
       />
-      <Header @label={{t "ember-gwr.searchProject.search.projectStatus"}} />
+      <Header @label={{t "ember-gwr.searchProject.projectStatus"}} />
     </Search::ResultTable::Head>
     <Row as |Field|>
       <Field @attr="EPROID" as |value|>
@@ -152,9 +167,7 @@
       </Field>
       <Field @attr="constructionProjectDescription" />
       <Field @attr="projectStatus" as |value|>
-        {{t
-          (concat "ember-gwr.searchProject.search.projectStatusOptions." value)
-        }}
+        {{t (concat "ember-gwr.searchProject.projectStatusOptions." value)}}
       </Field>
     </Row>
   </Search::ResultTable>
