@@ -1,18 +1,18 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { render } from "@ember/test-helpers";
+import { hbs } from "ember-cli-htmlbars";
+import { setupRenderingTest } from "ember-qunit";
+import { module, test } from "qunit";
 
-module('Integration | Component | search/result-table', function(hooks) {
+module("Integration | Component | search/result-table", function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test("it renders", async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
     await render(hbs`<Search::ResultTable />`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), "");
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | search/result-table', function(hooks) {
       </Search::ResultTable>
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), "template block text");
   });
 });

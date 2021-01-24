@@ -1,5 +1,6 @@
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import SearchResult from "ember-ebau-gwr/models/search-result";
+
 import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {

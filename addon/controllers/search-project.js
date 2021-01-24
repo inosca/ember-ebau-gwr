@@ -1,9 +1,9 @@
 import Controller from "@ember/controller";
-import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
 import { action } from "@ember/object";
-import { projectStatusOptions } from "ember-ebau-gwr/models/options";
+import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { task, lastValue } from "ember-concurrency-decorators";
+import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchProjectController extends Controller {
   @service constructionProject;
