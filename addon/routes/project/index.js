@@ -1,19 +1,17 @@
 import Route from "@ember/routing/route";
-import {
-  Project,
-  Client,
-  RealestateIdentification,
-} from "ember-ebau-gwr/models";
+import { inject as service } from "@ember/service";
+import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 
 export default class ProjectIndexRoute extends Route {
-  async model() {
-    const project = this.modelFor("project");
+  @service config;
 
-    if (!project) {
-      return new Project({
-        realestateIdentification: new RealestateIdentification(),
-        client: new Client(),
-      });
+  async model() {
+    const project = this.modelFor("project") ?? new ConstructionProject();
+
+    if (project.isNew) {
+      project.constructionLocalisation.municipalityId = this.config.municipalityId;
+      project.constructionLocalisation.municipalityName = this.config.municipalityName;
+      project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
     }
 
     return project;

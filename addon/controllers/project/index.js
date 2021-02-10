@@ -1,79 +1,73 @@
 import Controller from "@ember/controller";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
-import EmberObject, { action } from "@ember/object";
-import {
-  Project,
-  Client,
-  Address,
-  Identification,
-  PersonIdetification,
-} from "ember-ebau-gwr/models";
+import Options from "ember-ebau-gwr/models/options";
 
 export default class ProjectIndexController extends Controller {
   queryParams = ["import"];
 
+  @service constructionProject;
+
   @tracked import = false;
 
-  get isNewProject() {
-    return !Boolean(this.model.eprodid);
-  }
+  choiceOptions = Options;
 
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
-    const importData = new Project({
+    const importData = yield {
       constructionProjectDescription:
         "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
       typeOfConstruction: "Elektrizitätswerke",
       totalCostsOfProject: 10000,
       typeOfPermit: "Bewilligungsgrund 2",
       projectAnnouncementDate: "11.12.2019",
-      typeOfClient: this.typeOfClient,
-      client: new Client({
-        address: new Address({ street: "Gässli", houseNumber: 5 }),
-        identification: new Identification({
-          personIdentification: new PersonIdetification({
+      client: {
+        address: { street: "Gässli", houseNumber: 5 },
+        identification: {
+          personIdentification: {
             officialName: "Müller",
-          }),
-        }),
-      }),
-    });
+          },
+        },
+      },
+    };
 
     return importData;
   }
 
-  @task
-  *importCalumaData() {
+  @action
+  importCalumaData() {
+    this.model.typeOfConstructionProject = 6010;
     this.model.constructionProjectDescription =
       "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.";
-    this.model.typeOfConstruction = "Elektrizitätswerke";
+    this.model.typeOfPermit = 5002;
     this.model.totalCostsOfProject = 10000;
-    this.model.typeOfPermit = "Bewilligungsgrund 2";
+    this.model.constructionSurveyDept = 134200;
+    this.model.typeOfConstruction = 6223;
     this.model.projectAnnouncementDate = "11.12.2019";
-    this.model.typeOfClient = this.typeOfClient;
-    this.model.client = new Client({
-      address: new Address({ street: "Gässli", houseNumber: 5 }),
-      identification: new Identification({
-        personIdentification: new PersonIdetification({
-          officialName: "Müller",
-        }),
-      }),
-    });
+    this.model.realestateIdentification.number = 83289;
+    this.model.realestateIdentification.EGRID = 832891;
+    this.model.typeOfClient = 6121;
+    this.model.client.address.street = "Gässli";
+    this.model.client.address.houseNumber = 5;
+    this.model.client.identification.personIdentification.officialName =
+      "Müller";
+    this.model.client.identification.personIdentification.firstName = "Hans";
   }
 
   @action
-  cancelMerge(attr, value) {
+  cancelMerge() {
     this.import = false;
     this.fetchProject.perform();
   }
 
   @action
-  saveProject(event) {
-    this.model.eprodid = 12;
-    this.model.officialConstructionProjectFileNo = 202001;
-    this.model.extensionOfOfficialConstructionProjectFileNo = 1;
-    localStorage.setItem("project", this.model.serialize());
-    this.transitionToRoute("project", { queryParams: { import: false } });
+  async saveProject() {
+    this.model = await (this.model.isNew
+      ? this.constructionProject.create(this.model)
+      : this.constructionProject.update(this.model));
+    this.import = false;
   }
 }

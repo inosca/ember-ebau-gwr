@@ -4,11 +4,13 @@ import { module, test } from "qunit";
 
 const modulePrefix = "ember-ebau-gwr";
 const resolver = engineResolverFor(modulePrefix);
-module("Unit | Route | project", function (hooks) {
+
+module("Unit | Service | xml-api", function (hooks) {
   setupTest(hooks, { resolver, integration: true });
 
+  // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
-    const route = this.owner.lookup("route:project");
-    assert.ok(route);
+    const service = this.owner.lookup("service:xml-api");
+    assert.ok(service);
   });
 });
