@@ -25,8 +25,10 @@ export default class XMLModel {
       : type(element.textContent);
   }
 
-  getFieldFromXML(path, type) {
-    const elements = this.document.querySelectorAll(path);
+  getFieldFromXML(path, type, root) {
+    const elements = this.document.querySelectorAll(
+      root ? `${root} > ${path}` : path
+    );
 
     if (elements.length) {
       return Array.isArray(type)
@@ -53,11 +55,11 @@ export default class XMLModel {
   setFieldsFromXML(xmlDefinition) {
     // We do not execute this if the model is new since there exists no xml.
     if (!this.isNew) {
-      const { fields } = xmlDefinition;
+      const { fields, root = null } = xmlDefinition;
       Object.entries(fields).forEach(([key, type]) => {
         // Do not reassign if the result is null || undefined.
         // We then want to keep the default structure.
-        this[key] = this.getFieldFromXML(key, type) ?? this[key];
+        this[key] = this.getFieldFromXML(key, type, root) ?? this[key];
       });
     }
   }

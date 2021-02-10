@@ -112,10 +112,6 @@ export default class BuildingProjectService extends XMLApiService {
       return [];
     }
 
-    return new SearchResult(
-      await response.text(),
-      ConstructionProject,
-      "constructionProjectsList"
-    );
+    return new SearchResult(await response.text()).constructionProjectsList;
   }
 }
