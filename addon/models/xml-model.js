@@ -17,38 +17,47 @@ export default class XMLModel {
     }
   }
 
+  castToType(element, type) {
+    // We dont want to instantiate the types Number or String with new.
+    // This would cause problems with comparison.
+    return element.children.length
+      ? new type(element)
+      : type(element.textContent);
+  }
+
   getFieldFromXML(path, type) {
-    const element = this.document.querySelector(path);
-    if (element) {
-      // We dont want to instantiate the types Number or String with new.
-      // This would cause problems with comparison.
-      return element.children.length
-        ? new type(element)
-        : type(element.textContent);
+    const elements = this.document.querySelectorAll(path);
+
+    if (elements.length) {
+      return Array.isArray(type)
+        ? Array.from(elements).map((element) =>
+            this.castToType(element, type[0])
+          )
+        : this.castToType(elements[0], type);
     }
+
     return null;
   }
 
   /*
-   * Takes an object with a fields and a namespace property.
+   * Takes an object with a fields property.
    *
-   * `fields`: { [String]: new (any[]) => T }
-   *  Define the fields that should be read from the xml on initialization
-   *  { YourFieldName:  YourTypeConstructor }
-   *
-   *  `namespace`: String
-   *  A Namespace for looking up xml fields. Most of the time this is just
-   *  the model name in camel case.
+   * `fields`: { [String]: Type | [Type] }
+   *  Define the fields that should be read from the xml on initialization.
+   *  If the type is an array, this means that there are multiple nodes in
+   *  the response with this key name (alas a list of values).
+   *  Examples
+   *  { name:  String }
+   *  { constructionProjectsList: [ConstructionProject] }
    */
   setFieldsFromXML(xmlDefinition) {
     // We do not execute this if the model is new since there exists no xml.
     if (!this.isNew) {
-      const { fields, namespace } = xmlDefinition;
+      const { fields } = xmlDefinition;
       Object.entries(fields).forEach(([key, type]) => {
-        this[key] = this.getFieldFromXML(
-          [...(namespace ? [namespace] : []), key].join(" "),
-          type
-        );
+        // Do not reassign if the result is null || undefined.
+        // We then want to keep the default structure.
+        this[key] = this.getFieldFromXML(key, type) ?? this[key];
       });
     }
   }

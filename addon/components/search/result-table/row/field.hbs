@@ -1,0 +1,7 @@
+<td ...attributes>
+  {{#if hasBlock}}
+    {{yield (get @data @attr) @data}}
+  {{else}}
+    {{get @data @attr}}
+  {{/if}}
+</td>

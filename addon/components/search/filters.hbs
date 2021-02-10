@@ -1,0 +1,5 @@
+<form ...attributes {{on "submit" this.submit}}>
+  <div>
+    {{yield (component "project-form/field" update=this.updateField translationBase=@translationBase)}}
+  </div>
+</form>

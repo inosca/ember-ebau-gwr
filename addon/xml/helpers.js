@@ -5,3 +5,9 @@ import dayjs from "dayjs";
 export function echDate(date) {
   return dayjs(date).format("YYYY-MM-DD");
 }
+
+export function or(...args) {
+  // The last element in args is the helper definition past by handlebars
+  // So we dont want to compare this.
+  return args.length === 2 ? args[0] : args[0] || or(...args.slice(1));
+}

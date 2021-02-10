@@ -4,11 +4,11 @@ import { module, test } from "qunit";
 
 const modulePrefix = "ember-ebau-gwr";
 const resolver = engineResolverFor(modulePrefix);
-
-module("Unit | Route | project/link-existing", function (hooks) {
+module("Unit | Route | search-project", function (hooks) {
   setupTest(hooks, { resolver, integration: true });
+
   test("it exists", function (assert) {
-    const route = this.owner.lookup("route:project/link-existing");
+    const route = this.owner.lookup("route:search-project");
     assert.ok(route);
   });
 });

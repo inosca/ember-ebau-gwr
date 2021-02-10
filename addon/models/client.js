@@ -11,7 +11,6 @@ export default class Client extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "client",
       fields: {
         identification: Identification,
         address: Address,

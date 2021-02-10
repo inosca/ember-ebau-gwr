@@ -5,6 +5,7 @@ import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import Identification from "ember-ebau-gwr/models/identification";
 import PersonIdentification from "ember-ebau-gwr/models/person-identification";
 import RealestateIdentification from "ember-ebau-gwr/models/realestate-identification";
+import SearchResult from "ember-ebau-gwr/models/search-result";
 
 export default {
   ConstructionProject,
@@ -14,4 +15,5 @@ export default {
   ConstructionLocalisation,
   Identification,
   PersonIdentification,
+  SearchResult,
 };

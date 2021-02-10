@@ -9,23 +9,76 @@ ember-gwr:
     projectDetails: Projektdetails
     linkedBuildings: Verlinkte Gebäude
 
-  projectForm:
-    save: Speichern
-    cancelImport: Import abbrechen
-    applyAll: Alles übernehmen
-    importFromCaluma: Daten vom Ebau übernehmen
-    required: (Erforderlich)
-    dates: Daten
-    datePlaceholder: Wählen Sie ein Datum...
-    title: Bauprojekt {id}
-    realEstateHeading: Grundstücksidentifikation
-    clientHeading: Auftraggeber
+  searchProject:
+    heading: Existierendes Bauprojekt verknüpfen
 
-    diff:
-      existingData: Existierende Daten im GWR
-      importedData: Importierte Daten
-      apply: Übernehmen
+    validation:
+      realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+      bothDatesSet: Es müssen beide Daten gesetzt sein.
 
+    search: Projekte suchen
+    extendedSearch:
+      extend: Erweiterte Filter einblenden
+      collapse: Erweiterte Filter ausblenden
+
+    projectStatus: Projektstatus
+    projectStatusPlaceholder: Alle
+    projectStatusOptions:
+      6701: Baugesuch eingereicht
+      6702: Baubewilligung erteilt (rechtswirksam)
+      6703: Baubegonnen
+      6704: Abgeschlossen
+      6706: Projekt sistiert
+      6707: Baugesuch abgelehnt (rechtswirksam)
+      6708: Nicht realisiert
+      6709: Zurückgezogen
+
+    hasError: Fehlerstatus
+    hasErrorPlaceholder: Alle
+    hasErrorOptions:
+      true: Nur mit Fehler
+      false: Nur ohne Fehler
+
+    realestateIdentificationHeading: Grundstücksidentifikation
+    realestateIdentification:
+      EGRID: EGRID
+      number: Grundstücksnummer
+      numberSuffix: Suffix der Grundstücksnummer
+      subDistrict: Grundbuchkreisnummer
+      lot: Los
+
+    createDateHeading: Erstellungszeitraum
+    createDate:
+      dateFrom: "Von"
+      dateTo: "Bis"
+    modifyDateHeading: Bearbeitungszeitraum
+    modifyDate:
+      dateFrom: "Von"
+      dateTo: "Bis"
+
+  components:
+    search:
+      loading: Laden...
+      noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
+
+    projectForm:
+      save: Speichern
+      cancelImport: Import abbrechen
+      applyAll: Alles übernehmen
+      importFromCaluma: Daten vom Ebau übernehmen
+      required: (Erforderlich)
+      dates: Daten
+      datePlaceholder: Wählen Sie ein Datum...
+      title: Bauprojekt {id}
+      realEstateHeading: Grundstücksidentifikation
+      clientHeading: Auftraggeber
+
+      diff:
+        existingData: Existierende Daten im GWR
+        importedData: Importierte Daten
+        apply: Übernehmen
+
+  constructionProject:
     fields:
       EPROID: EPROID
       officialConstructionProjectFileNo: Amtliche Baudossiernummer
@@ -176,3 +229,4 @@ ember-gwr:
         6152: Kapitalgesellschaften (Aktiengesellschaft, Genossenschaft, Kommandit AG, GmbH) ohne Immobilienbranche
         6162: Andere private Auftraggeber (Kirche inkl. Landeskirche; Stiftung, die keine Pensionskasse ist; Verein, etc.)
         6163: Internationale Organisationen, Botschaften
+

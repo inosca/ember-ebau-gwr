@@ -26,10 +26,15 @@ export default class ProjectFormFieldComponent extends Component {
   updateProjectField(attr, eventOrValue) {
     const value = eventOrValue?.target?.value ?? eventOrValue;
 
-    set(this.args.project, attr, value);
+    // If we supply a custom update method use this
+    if (this.args.update) {
+      this.args.update(attr, value);
+    } else {
+      set(this.args.project, attr, value);
 
-    if (this.args.importData) {
-      this.diffResolved = true;
+      if (this.args.importData) {
+        this.diffResolved = true;
+      }
     }
   }
 }

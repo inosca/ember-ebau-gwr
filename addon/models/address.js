@@ -12,7 +12,6 @@ export default class Address extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      namespace: "address",
       fields: {
         street: String,
         houseNumber: Number,
