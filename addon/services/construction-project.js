@@ -1,4 +1,5 @@
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
+import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
 import XMLApiService from "./xml-api";
@@ -93,11 +94,33 @@ export default class BuildingProjectService extends XMLApiService {
   }
 
   async search(query = {}) {
+    // if EPROID is set, ignore other search filters
+    let response;
+    if (query.EPROID) {
+      response = await fetch(
+        `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/${query.EPROID}`,
+        {
+          headers: {
+            token: await this.getToken(),
+          },
+        }
+      );
+      // The api returns a 404 if no results are found for the query
+      if (!response.ok && response.status === 404) {
+        return [];
+      }
+      return [
+        new ConstructionProjectsList(
+          await response.text(),
+          "constructionProject"
+        ),
+      ];
+    }
     const queryXML = this.buildXMLRequest(
       "getConstructionProject",
       query
     ).replace(/\r?\n|\r/g, "");
-    const response = await fetch(
+    response = await fetch(
       `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
       {
         headers: {
@@ -106,7 +129,6 @@ export default class BuildingProjectService extends XMLApiService {
         },
       }
     );
-
     // The api returns a 404 if no results are found for the query
     if (!response.ok && response.status === 404) {
       return [];

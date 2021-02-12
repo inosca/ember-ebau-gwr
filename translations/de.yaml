@@ -21,6 +21,7 @@ ember-gwr:
       extend: Erweiterte Filter einblenden
       collapse: Erweiterte Filter ausblenden
 
+    EPROID: EPROID
     projectStatus: Projektstatus
     projectStatusPlaceholder: Alle
     projectStatusOptions:
