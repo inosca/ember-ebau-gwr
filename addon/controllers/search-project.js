@@ -9,6 +9,7 @@ export default class SearchProjectController extends Controller {
   @service constructionProject;
   @service intl;
   @service config;
+  @service store;
 
   @tracked extendedSearch = false;
   @tracked validationErrors = {};
@@ -67,8 +68,12 @@ export default class SearchProjectController extends Controller {
   }
 
   @action
-  linkProject(EPROID) {
-    localStorage.setItem("EPROID", EPROID);
+  linkProject(eproid) {
+    const link = this.store.createRecord("gwr-link", {
+      eproid,
+      localId: this.model.id,
+    });
+    link.save();
     this.transitionToRoute("project.index");
   }
 }

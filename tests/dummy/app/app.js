@@ -14,7 +14,13 @@ export default class App extends Application {
     this.engines = {
       emberEbauGwr: {
         dependencies: {
-          services: [{ config: "gwr-config" }, "intl", "notification", "fetch"],
+          services: [
+            { config: "gwr-config" },
+            "intl",
+            "notification",
+            "fetch",
+            "store",
+          ],
         },
       },
     };

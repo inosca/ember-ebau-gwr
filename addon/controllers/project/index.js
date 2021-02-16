@@ -24,7 +24,9 @@ export default class ProjectIndexController extends Controller {
       "importApi needs to be configured in gwr config service!",
       this.config.importApi
     );
-    const response = yield this.fetch.fetch(`${this.config.importApi}`);
+    const response = yield this.fetch.fetch(
+      this.config.importApi.replace("{instanceId}", this.applicationModel.id)
+    );
     return (yield response.json()).data;
   }
 
