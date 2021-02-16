@@ -5,6 +5,7 @@ export default class GwrConfigService extends Service {
   municipalityName = "Galgenen";
   cantonAbbreviation = "SZ";
   constructionSurveyDept = 134200;
+  importApi = "http://example.com/api";
 
   get cssClasses() {
     return {

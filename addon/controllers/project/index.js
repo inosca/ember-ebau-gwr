@@ -1,4 +1,5 @@
 import Controller from "@ember/controller";
+import { assert } from "@ember/debug";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
@@ -9,6 +10,8 @@ export default class ProjectIndexController extends Controller {
   queryParams = ["import"];
 
   @service constructionProject;
+  @service config;
+  @service fetch;
 
   @tracked import = false;
 
@@ -17,24 +20,12 @@ export default class ProjectIndexController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
-    const importData = yield {
-      constructionProjectDescription:
-        "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
-      typeOfConstruction: "Elektrizitätswerke",
-      totalCostsOfProject: 10000,
-      typeOfPermit: "Bewilligungsgrund 2",
-      projectAnnouncementDate: "11.12.2019",
-      client: {
-        address: { street: "Gässli", houseNumber: 5 },
-        identification: {
-          personIdentification: {
-            officialName: "Müller",
-          },
-        },
-      },
-    };
-
-    return importData;
+    assert(
+      "importApi needs to be configured in gwr config service!",
+      this.config.importApi
+    );
+    const response = yield this.fetch.fetch(`${this.config.importApi}`);
+    return (yield response.json()).data;
   }
 
   @action

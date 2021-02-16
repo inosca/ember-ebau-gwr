@@ -10,7 +10,7 @@ export default class EmberGWREngine extends Engine {
   Resolver = Resolver;
 
   dependencies = {
-    services: ["config", "intl", "notification"],
+    services: ["config", "intl", "notification", "fetch"],
   };
 }
 
