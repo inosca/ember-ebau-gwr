@@ -1,3 +1,4 @@
+import FetchServiceStub from "dummy/tests/helpers/fetch-service-stub";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupTest } from "ember-qunit";
 import { module, test } from "qunit";
@@ -9,6 +10,8 @@ module("Unit | Controller | project/index", function (hooks) {
 
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
+    this.owner.register("service:fetch", FetchServiceStub);
+
     const controller = this.owner.lookup("controller:project/index");
     assert.ok(controller);
   });

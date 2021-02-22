@@ -1,7 +1,15 @@
 ember-ebau-gwr
 ==============================================================================
 
-[Short description of the addon.]
+Development
+------------------------------------------------------------------------------
+
+```
+# start a local CORS proxy
+yarn proxy
+# start dev server
+yarn start
+```
 
 
 Compatibility

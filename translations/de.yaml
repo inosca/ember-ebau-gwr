@@ -21,6 +21,7 @@ ember-gwr:
       extend: Erweiterte Filter einblenden
       collapse: Erweiterte Filter ausblenden
 
+    EPROID: EPROID
     projectStatus: Projektstatus
     projectStatusPlaceholder: Alle
     projectStatusOptions:
@@ -65,7 +66,7 @@ ember-gwr:
       save: Speichern
       cancelImport: Import abbrechen
       applyAll: Alles übernehmen
-      importFromCaluma: Daten vom Ebau übernehmen
+      importFromCaluma: Baugesuchsdaten importieren
       required: (Erforderlich)
       dates: Daten
       datePlaceholder: Wählen Sie ein Datum...
@@ -75,7 +76,7 @@ ember-gwr:
 
       diff:
         existingData: Existierende Daten im GWR
-        importedData: Importierte Daten
+        importData: Importierte Daten
         apply: Übernehmen
 
   constructionProject:

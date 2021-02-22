@@ -18,7 +18,6 @@ export default class ConstructionProject extends XMLModel {
   @tracked constructionProjectDescription;
   @tracked projectFreeText1;
   @tracked projectFreeText2;
-  @tracked constructionProjectDescription;
   @tracked totalCostsOfProject;
   @tracked constructionSurveyDept;
 
@@ -42,6 +41,7 @@ export default class ConstructionProject extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
+      root: "constructionProject",
       fields: {
         EPROID: Number,
         typeOfClient: Number,

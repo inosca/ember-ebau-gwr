@@ -16,4 +16,9 @@ export default class ProjectIndexRoute extends Route {
 
     return project;
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.set("applicationModel", this.modelFor("application"));
+  }
 }
