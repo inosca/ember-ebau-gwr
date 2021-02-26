@@ -1,0 +1,47 @@
+<table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+  <thead>
+    <tr>
+      <th colspan="2">
+        Verknüpfte Projekte
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @projects as |project|}}
+      <tr>
+        <td class="uk-table-shrink">
+          {{#if (eq @activeProject project.EPROID)}}
+            <span
+              class="linked-project-list-checked-icon"
+              uk-icon="check"
+            ></span>
+          {{/if}}
+        </td>
+        <td>
+          <LinkTo @route="project.form" @model={{project.EPROID}}>
+            {{project.EPROID}} - {{project.constructionProjectDescription}}
+          </LinkTo>
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="2">
+          Es sind noch keine Projekte verknüpft
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2" class="uk-text-center">
+        <LinkTo @route="search-project">
+          Projekt verknüpfen
+        </LinkTo>
+        oder
+        <LinkTo @route="project.new">
+          Neues Projekt erfassen
+        </LinkTo>
+      </td>
+    </tr>
+  </tfoot>
+</table>

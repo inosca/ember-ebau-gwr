@@ -20,6 +20,7 @@ export default class App extends Application {
             "notification",
             "fetch",
             "store",
+            "router",
           ],
         },
       },

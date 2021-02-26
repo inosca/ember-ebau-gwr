@@ -1,8 +1,9 @@
-@import "ember-uikit/variables";
-@import "ember-uikit/components/flex";
-@import "ember-uikit/components/height";
-@import "ember-uikit/components/width";
-@import "ember-uikit/components/margin";
-@import "ember-uikit/components/padding";
-@import "ember-uikit/components/text";
-@import "ember-uikit/components/container";
+@import "ember-uikit";
+
+.linked-project-list-checked-icon {
+  width: $icon-image-size;
+  height: $icon-image-size;
+
+  border: solid 1px $form-icon-color;
+  border-radius: 4px;
+}

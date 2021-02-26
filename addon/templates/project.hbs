@@ -1,1 +1,17 @@
-{{outlet}}
+<div {{did-insert (perform this.fetchProjects)}}>
+  {{#if this.fetchProjects.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio="3" />
+    </div>
+  {{else}}
+    {{#if this.displayLandingPage}}
+      <LandingPage />
+    {{else}}
+      <LinkedProjectsTable
+        @projects={{this.projects}}
+        @activeProject={{this.activeProject}}
+      />
+      {{outlet}}
+    {{/if}}
+  {{/if}}
+</div>

@@ -1,5 +1,6 @@
 export default function () {
-  this.get("/gwr-links", (schema, request) => {
+  this.namespace = "/api/v1";
+  this.get("/linker/gwr-links", (schema, request) => {
     if (request.queryParams.local_id) {
       return schema.gwrLinks
         .all()
@@ -7,7 +8,8 @@ export default function () {
     }
     return schema.gwrLinks.all();
   });
-  this.post("/gwr-links");
+  this.post("/linker/gwr-links");
+  this.get("/linker/gwr-links");
 
   this.passthrough("http://localhost:8010/**");
 }
