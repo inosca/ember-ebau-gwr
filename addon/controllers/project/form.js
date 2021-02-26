@@ -21,7 +21,9 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
-    return yield this.constructionProject.get(this.model.projectId);
+    return yield this.constructionProject.getFromCacheOrApi(
+      this.model.projectId
+    );
   }
 
   @lastValue("fetchCalumaData") importData;

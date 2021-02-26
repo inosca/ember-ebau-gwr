@@ -34,7 +34,9 @@ export default class ProjectController extends Controller {
     // should be okay. Would be a future pain point if this requirement
     // would change.
     const projects = yield Promise.all(
-      links.map(({ eproid }) => this.constructionProject.get(eproid))
+      links.map(({ eproid }) =>
+        this.constructionProject.getFromCacheOrApi(eproid)
+      )
     );
 
     // Load the first project in the list if none is selected so we always display a project.
