@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th colspan="2">
-        Verknüpfte Projekte
+        {{t "ember-gwr.components.linkedProjectsTable.linkedProjects"}}
       </th>
     </tr>
   </thead>
@@ -18,7 +18,11 @@
           {{/if}}
         </td>
         <td>
-          <LinkTo @route="project.form" @model={{project.EPROID}}>
+          <LinkTo
+            @route="project.form"
+            @model={{project.EPROID}}
+            class="uk-link-muted"
+          >
             {{project.EPROID}} - {{project.constructionProjectDescription}}
           </LinkTo>
         </td>
@@ -26,7 +30,7 @@
     {{else}}
       <tr>
         <td colspan="2">
-          Es sind noch keine Projekte verknüpft
+          {{t "ember-gwr.components.linkedProjectsTable.noLinkedProjects"}}
         </td>
       </tr>
     {{/each}}
@@ -35,11 +39,11 @@
     <tr>
       <td colspan="2" class="uk-text-center">
         <LinkTo @route="search-project">
-          Projekt verknüpfen
+          {{t "ember-gwr.components.linkedProjectsTable.linkProject"}}
         </LinkTo>
-        oder
+        {{t "ember-gwr.components.linkedProjectsTable.or"}}
         <LinkTo @route="project.new">
-          Neues Projekt erfassen
+          {{t "ember-gwr.components.linkedProjectsTable.createProject"}}
         </LinkTo>
       </td>
     </tr>
