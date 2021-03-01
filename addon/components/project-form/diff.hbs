@@ -1,19 +1,19 @@
-<div class={{configured-classes "diff-highlight"}}>
+<div class="uk-box-shadow-small uk-padding-small">
   <div class="uk-margin">
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
-      <span class={{configured-classes "diff-meta-text"}}>
+      <span>
         {{t "ember-gwr.components.projectForm.diff.existingData"}}
       </span>
       <button
         type="button"
-        class={{configured-classes "button" "button-small"}}
+        class="uk-button uk-button-default uk-button-small"
         {{on "click" (fn @updateProjectField @current)}}
       >
         {{t "ember-gwr.components.projectForm.diff.apply"}}
       </button>
     </div>
     <input
-      class="uk-width-1 {{configured-classes "input"}}"
+      class="uk-width-1 uk-input"
       disabled
       readonly
       value={{@current}}
@@ -21,19 +21,19 @@
   </div>
   <div>
     <div class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom">
-      <span class={{configured-classes "diff-meta-text"}}>
+      <span>
         {{t "ember-gwr.components.projectForm.diff.importData"}}
       </span>
       <button
         type="button"
-        class={{configured-classes "button" "button-small"}}
+        class="uk-button uk-button-default uk-button-small"
         {{on "click" (fn @updateProjectField this.newValue)}}
       >
         {{t "ember-gwr.components.projectForm.diff.apply"}}
       </button>
     </div>
     <input
-      class="uk-width-1 {{configured-classes "input"}}"
+      class="uk-width-1 uk-input"
       value={{this.newValue}}
       {{on "input" this.updateNewValue}}
     />
