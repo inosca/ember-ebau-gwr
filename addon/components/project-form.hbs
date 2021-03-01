@@ -8,11 +8,11 @@
     )
   }}
 
-  <button type="submit" class={{configured-classes "button" "button-primary"}}>
+  <button type="submit" class="uk-button uk-button-primary">
     {{t "ember-gwr.components.projectForm.save"}}
   </button>
   {{#if @importData}}
-    <LinkTo @query={{hash import=false}} class={{configured-classes "button"}}>
+    <LinkTo @query={{hash import=false}} class="uk-button uk-button-default">
       {{t "ember-gwr.components.projectForm.cancelImport"}}
     </LinkTo>
   {{/if}}

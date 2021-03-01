@@ -18,7 +18,7 @@
       {{#if this.import}}
         <div>
           <button
-            class={{configured-classes "button"}}
+            class="uk-button uk-button-default"
             type="button"
             {{on "click" this.importCalumaData}}
           >
@@ -27,14 +27,14 @@
           <LinkTo
             @route={{this.currentRoute}}
             @query={{hash import=false}}
-            class={{configured-classes "button"}}
+            class="uk-button uk-button-default"
           >
             {{t "ember-gwr.components.projectForm.cancelImport"}}
           </LinkTo>
         </div>
       {{else if this.project.isNew}}
         <button
-          class={{configured-classes "button" "button-primary"}}
+          class="uk-button uk-button-primary"
           type="button"
           {{on "click" this.importCalumaData}}
         >
@@ -44,7 +44,7 @@
         <LinkTo
           @route={{this.currentRoute}}
           @query={{hash import=true}}
-          class={{configured-classes "button" "button-primary"}}
+          class="uk-button uk-button-primary"
         >
           {{t "ember-gwr.components.projectForm.importFromCaluma"}}
         </LinkTo>
