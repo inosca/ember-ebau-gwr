@@ -121,6 +121,8 @@ export const projectStatusOptions = [
   6709,
 ];
 
+export const countryOptions = ["ch"];
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
@@ -128,4 +130,5 @@ export default {
   typeOfPermitOptions,
   projectStatusOptions,
   kindOfWork,
+  countryOptions,
 };

@@ -121,6 +121,9 @@ ember-gwr:
           swissZipCode: PLZ
           town: Stadt
           country: Land
+          countryPlaceholder: Wählen Sie ein Land...
+          countryOptions:
+            ch: Schweiz
 
       typeOfConstructionProject: Bauprojekttyp
       typeOfConstructionProjectPlaceholder: Wählen Sie einen Bauprojekttyp...

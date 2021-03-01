@@ -228,7 +228,11 @@
           <Field @attr="client.address.town" @noMargin={{true}} />
         </div>
       </div>
-      <Field @attr="client.address.country" />
+      <Field
+        @inputType="select"
+        @attr="client.address.country"
+        @options={{this.choiceOptions.countryOptions}}
+      />
     </ProjectForm>
   {{/if}}
 </div>
