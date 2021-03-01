@@ -13,17 +13,22 @@ export default class ProjectFormController extends Controller {
   @service config;
   @service fetch;
   @service store;
+  @service router;
 
   @tracked import = false;
 
   choiceOptions = Options;
 
+  get currentRoute() {
+    return this.router.currentRoute.name;
+  }
+
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
-    return yield this.constructionProject.getFromCacheOrApi(
-      this.model.projectId
-    );
+    return this.model.project?.isNew
+      ? this.model.project
+      : yield this.constructionProject.getFromCacheOrApi(this.model.projectId);
   }
 
   @lastValue("fetchCalumaData") importData;
@@ -74,7 +79,7 @@ export default class ProjectFormController extends Controller {
         localid: this.model.instanceId,
       });
       await link.save();
-      this.transitionToRoute("project.index");
+      this.transitionToRoute("project.form", project.EPROID);
     } else {
       await this.constructionProject.update(this.project);
     }

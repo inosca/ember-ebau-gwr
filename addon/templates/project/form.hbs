@@ -25,6 +25,7 @@
             {{t "ember-gwr.components.projectForm.applyAll"}}
           </button>
           <LinkTo
+            @route={{this.currentRoute}}
             @query={{hash import=false}}
             class={{configured-classes "button"}}
           >
@@ -41,6 +42,7 @@
         </button>
       {{else}}
         <LinkTo
+          @route={{this.currentRoute}}
           @query={{hash import=true}}
           class={{configured-classes "button" "button-primary"}}
         >
