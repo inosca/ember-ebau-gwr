@@ -70,39 +70,18 @@ export default class ConstructionProject extends XMLModel {
       },
     });
   }
-  //TODO merge these two templates but for now keep them seperate for easier testing and figuring out how the api works.
   // The order of the fields seems to be important. Sometimes fields in wrong orders throw errors.
+  // TODO <work> is until now a fixed value. We need to implement a select for it and display it.
   static template = `
-  {{#if model.isNew}}
   <ns2:constructionProject>
     <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
     <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
     {{> ConstructionLocalisation model=model.constructionLocalisation}}
-    {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
     {{> RealestateIdentification model=model.realestateIdentification}}
     <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
     <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
-    <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
-    <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
-    <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
-
-
-    {{!--
-    These fields return errors which i have not figured out yet.
+    {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
     {{> Client model=model.client}}
-    --}}
-
-    <ns2:buildingProjectLink>
-      <ns2:kindOfWork>6002</ns2:kindOfWork>
-    </ns2:buildingProjectLink>
-
-  </ns2:constructionProject>
-  {{else}}
-  <ns2:constructionProject>
-    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
-    <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
-    <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
-    <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
     <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
     <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
     <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
@@ -127,18 +106,16 @@ export default class ConstructionProject extends XMLModel {
     {{#if model.withdrawalDate}}
       <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
     {{/if}}
-
-    {{!--
-    These fields cause errors as of this comment:
-
+    {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
     {{#if model.nonRealisationDate}}
       <ns2:nonRealisationDate>{{echDate model.nonRealisationDate}}</ns2:nonRealisationDate>
     {{/if}}
-    {{> Client model=model.client}}
-    {{> ConstructionLocalisation model=model.constructionLocalisation}}
-    {{> RealestateIdentification model=model.realestateIdentification}}
-    --}}
+
+    {{#if model.isNew}}
+      <ns2:work>
+        <ns2:kindOfWork>6002</ns2:kindOfWork>
+      </ns2:work>
+    {{/if}}
   </ns2:constructionProject>
-  {{/if}}
   `;
 }
