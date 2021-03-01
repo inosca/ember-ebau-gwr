@@ -10,12 +10,12 @@
 
     <div class="uk-flex uk-flex-between">
       <div class="uk-margin-large-right">
-        <LinkTo @route="project.index" class={{configured-classes "button"}}>
+        <LinkTo @route="project.new" class="uk-button uk-button-primary">
           {{t "ember-gwr.landingPage.createNewProject"}}
         </LinkTo>
       </div>
       <div>
-        <LinkTo @route="search-project" class={{configured-classes "button"}}>
+        <LinkTo @route="search-project" class="uk-button uk-button-primary">
           {{t "ember-gwr.landingPage.linkExistingProject"}}
         </LinkTo>
       </div>

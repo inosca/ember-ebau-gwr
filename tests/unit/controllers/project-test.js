@@ -4,11 +4,12 @@ import { module, test } from "qunit";
 
 const modulePrefix = "ember-ebau-gwr";
 const resolver = engineResolverFor(modulePrefix);
-module("Unit | Route | landing-page", function (hooks) {
+module("Unit | Controller | project", function (hooks) {
   setupTest(hooks, { resolver, integration: true });
 
+  // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
-    const route = this.owner.lookup("route:landing-page");
-    assert.ok(route);
+    const controller = this.owner.lookup("controller:project");
+    assert.ok(controller);
   });
 });

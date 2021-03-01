@@ -79,6 +79,13 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
 
+    linkedProjectsTable:
+      linkedProjects: Verknüpfte Projekte
+      noLinkedProjects: Es sind noch keine Projekte verknüpft
+      linkProject: Projekt verknüpfen
+      createProject: Neues Projekt erfassen
+      or: oder
+
   constructionProject:
     fields:
       EPROID: EPROID

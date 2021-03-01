@@ -5,14 +5,13 @@ import { module, test } from "qunit";
 
 const modulePrefix = "ember-ebau-gwr";
 const resolver = engineResolverFor(modulePrefix);
-module("Unit | Controller | project/index", function (hooks) {
+module("Unit | Controller | project/form", function (hooks) {
   setupTest(hooks, { resolver, integration: true });
 
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
     this.owner.register("service:fetch", FetchServiceStub);
-
-    const controller = this.owner.lookup("controller:project/index");
+    const controller = this.owner.lookup("controller:project/form");
     assert.ok(controller);
   });
 });

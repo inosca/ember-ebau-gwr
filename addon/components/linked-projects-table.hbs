@@ -1,0 +1,51 @@
+<table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+  <thead>
+    <tr>
+      <th colspan="2">
+        {{t "ember-gwr.components.linkedProjectsTable.linkedProjects"}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @projects as |project|}}
+      <tr>
+        <td class="uk-table-shrink">
+          {{#if (eq @activeProject project.EPROID)}}
+            <span
+              class="linked-project-list-checked-icon"
+              uk-icon="check"
+            ></span>
+          {{/if}}
+        </td>
+        <td>
+          <LinkTo
+            @route="project.form"
+            @model={{project.EPROID}}
+            class="uk-link-muted"
+          >
+            {{project.EPROID}} - {{project.constructionProjectDescription}}
+          </LinkTo>
+        </td>
+      </tr>
+    {{else}}
+      <tr>
+        <td colspan="2">
+          {{t "ember-gwr.components.linkedProjectsTable.noLinkedProjects"}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2" class="uk-text-center">
+        <LinkTo @route="search-project">
+          {{t "ember-gwr.components.linkedProjectsTable.linkProject"}}
+        </LinkTo>
+        {{t "ember-gwr.components.linkedProjectsTable.or"}}
+        <LinkTo @route="project.new">
+          {{t "ember-gwr.components.linkedProjectsTable.createProject"}}
+        </LinkTo>
+      </td>
+    </tr>
+  </tfoot>
+</table>

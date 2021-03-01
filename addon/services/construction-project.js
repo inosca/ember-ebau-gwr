@@ -5,6 +5,14 @@ import SearchResult from "ember-ebau-gwr/models/search-result";
 import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
+  cache = {};
+
+  createAndCacheProject(xml) {
+    const project = new ConstructionProject(xml);
+    this.cache[project.EPROID] = project;
+    return project;
+  }
+
   async getToken() {
     // TODO Workaround for nonexistent login for now
     const username = localStorage.getItem("username"),
@@ -55,7 +63,15 @@ export default class BuildingProjectService extends XMLApiService {
       }
     );
     const xml = await response.text();
-    return new ConstructionProject(xml);
+    return this.createAndCacheProject(xml);
+  }
+
+  getFromCache(EPROID) {
+    return this.cache[EPROID];
+  }
+
+  async getFromCacheOrApi(EPROID) {
+    return this.getFromCache(EPROID) || (await this.get(EPROID));
   }
 
   async update(project) {
@@ -72,7 +88,7 @@ export default class BuildingProjectService extends XMLApiService {
     );
     if (response.ok) {
       const xml = await response.text();
-      return new ConstructionProject(xml);
+      return this.createAndCacheProject(xml);
     }
     return project;
   }
@@ -90,7 +106,7 @@ export default class BuildingProjectService extends XMLApiService {
       }
     );
     const xml = await response.text();
-    return new ConstructionProject(xml);
+    return this.createAndCacheProject(xml);
   }
 
   async search(query = {}) {
