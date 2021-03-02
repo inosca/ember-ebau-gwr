@@ -71,7 +71,7 @@ export default class SearchProjectController extends Controller {
   linkProject(eproid) {
     const link = this.store.createRecord("gwr-link", {
       eproid,
-      localid: this.model.id,
+      localId: this.model.id,
     });
     link.save();
     this.transitionToRoute("project.index");
