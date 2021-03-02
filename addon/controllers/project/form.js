@@ -11,7 +11,7 @@ export default class ProjectFormController extends Controller {
 
   @service constructionProject;
   @service config;
-  @service fetch;
+  @service dataImport;
   @service store;
   @service router;
 
@@ -38,7 +38,7 @@ export default class ProjectFormController extends Controller {
       "importApi needs to be configured in gwr config service!",
       this.config.importApi
     );
-    const response = yield this.fetch.fetch(
+    const response = yield this.dataImport.fetchProject(
       this.config.importApi.replace("{instanceId}", this.model.instanceId)
     );
     return (yield response.json()).data;
@@ -46,22 +46,16 @@ export default class ProjectFormController extends Controller {
 
   @action
   importCalumaData() {
-    this.project.typeOfConstructionProject = 6010;
-    this.project.constructionProjectDescription =
-      "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.";
-    this.project.typeOfPermit = 5002;
-    this.project.totalCostsOfProject = 10000;
-    this.project.constructionSurveyDept = 134200;
-    this.project.typeOfConstruction = 6223;
-    this.project.projectAnnouncementDate = "11.12.2019";
-    this.project.realestateIdentification.number = 83289;
-    this.project.realestateIdentification.EGRID = 832891;
-    this.project.typeOfClient = 6121;
-    this.project.client.address.street = "Gässli";
-    this.project.client.address.houseNumber = 5;
-    this.project.client.identification.personIdentification.officialName =
-      "Müller";
-    this.project.client.identification.personIdentification.firstName = "Hans";
+    // We cannot just `Object.assign` here since the child object like `identification` would
+    // not be classes with tracked fields etc. anymore but just pojos. We need to preserve the classes.
+    const deepMerge = (original, objectToApply) => {
+      Object.entries(objectToApply).forEach(([key, value]) => {
+        typeof value === "object"
+          ? deepMerge(original[key], objectToApply[key])
+          : (original[key] = value);
+      });
+    };
+    deepMerge(this.project, this.importData);
   }
 
   @action
