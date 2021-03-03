@@ -20,7 +20,7 @@ export default class ProjectFormController extends Controller {
   choiceOptions = Options;
 
   get currentRoute() {
-    return this.router.currentRoute.name;
+    return this.router.currentRouteName;
   }
 
   @lastValue("fetchProject") project;
