@@ -76,7 +76,7 @@ export default class ProjectFormController extends Controller {
       const project = await this.constructionProject.create(this.project);
       const link = this.store.createRecord("gwr-link", {
         eproid: project.EPROID,
-        localid: this.model.instanceId,
+        localId: this.model.instanceId,
       });
       await link.save();
       this.transitionToRoute("project.form", project.EPROID);
