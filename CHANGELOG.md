@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.1.0...v1.1.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* **form:** fix data import since we already recieve a json object and not a response ([ab7705a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ab7705a3115f05aab02bf8e446b7df9afffdf35f))
+
 # [1.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.0.0...v1.1.0) (2021-03-04)
 
 
