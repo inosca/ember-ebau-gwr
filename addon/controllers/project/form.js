@@ -1,5 +1,4 @@
 import Controller from "@ember/controller";
-import { assert } from "@ember/debug";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
@@ -34,13 +33,7 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
-    assert(
-      "importApi needs to be configured in gwr config service!",
-      this.config.importApi
-    );
-    const response = yield this.dataImport.fetchProject(
-      this.config.importApi.replace("{instanceId}", this.model.instanceId)
-    );
+    const response = yield this.dataImport.fetchProject(this.model.instanceId);
     return (yield response.json()).data;
   }
 
