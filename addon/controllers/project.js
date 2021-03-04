@@ -1,13 +1,8 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
-import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
 
 export default class ProjectController extends Controller {
-  queryParams = ["project"];
-
-  @tracked project;
-
   @service router;
   @service store;
   @service constructionProject;
