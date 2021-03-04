@@ -1,3 +1,4 @@
+import { inject as service } from "@ember/service";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
@@ -5,6 +6,7 @@ import SearchResult from "ember-ebau-gwr/models/search-result";
 import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
+  @service config;
   cache = {};
 
   createAndCacheProject(xml) {
@@ -32,20 +34,17 @@ export default class BuildingProjectService extends XMLApiService {
       localStorage.setItem("wsk_id", prompt("wsk_id:"));
     }
 
-    const { token } = await fetch(
-      "http://localhost:8010/proxy/regbl/api/ech0216/2/tokenWS",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          wsk_id: Number(wsk_id),
-        }),
-      }
-    ).then((response) => response.json());
+    const { token } = await fetch(`${this.config.gwrAPI}/tokenWS`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        wsk_id: Number(wsk_id),
+      }),
+    }).then((response) => response.json());
 
     return token;
   }
@@ -55,7 +54,7 @@ export default class BuildingProjectService extends XMLApiService {
       return null;
     }
     const response = await fetch(
-      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/${EPROID}`,
+      `${this.config.gwrAPI}/constructionprojects/${EPROID}`,
       {
         headers: {
           token: await this.getToken(),
@@ -77,7 +76,7 @@ export default class BuildingProjectService extends XMLApiService {
   async update(project) {
     const body = this.buildXMLRequest("modifyConstructionProject", project);
     const response = await fetch(
-      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/${project.EPROID}`,
+      `${this.config.gwrAPI}/constructionprojects/${project.EPROID}`,
       {
         method: "put",
         headers: {
@@ -96,7 +95,7 @@ export default class BuildingProjectService extends XMLApiService {
   async create(project) {
     const body = this.buildXMLRequest("addConstructionProject", project);
     const response = await fetch(
-      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
+      `${this.config.gwrAPI}/constructionprojects/`,
       {
         method: "post",
         headers: {
@@ -114,7 +113,7 @@ export default class BuildingProjectService extends XMLApiService {
     let response;
     if (query.EPROID) {
       response = await fetch(
-        `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/${query.EPROID}`,
+        `${this.config.gwrAPI}/constructionprojects/${query.EPROID}`,
         {
           headers: {
             token: await this.getToken(),
@@ -136,15 +135,12 @@ export default class BuildingProjectService extends XMLApiService {
       "getConstructionProject",
       query
     ).replace(/\r?\n|\r/g, "");
-    response = await fetch(
-      `http://localhost:8010/proxy/regbl/api/ech0216/2/constructionprojects/`,
-      {
-        headers: {
-          token: await this.getToken(),
-          query: queryXML,
-        },
-      }
-    );
+    response = await fetch(`${this.config.gwrAPI}2/constructionprojects/`, {
+      headers: {
+        token: await this.getToken(),
+        query: queryXML,
+      },
+    });
     // The api returns a 404 if no results are found for the query
     if (!response.ok && response.status === 404) {
       return [];
