@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.0.0...v1.1.0) (2021-03-04)
+
+
+### Features
+
+* **gwr-config:** remove the need for the api config since we now outsource the fetching to the host app ([938a313](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/938a3135a5c2175db6c394667180e647f276485b))
+
 # 1.0.0 (2021-03-04)
 
 
