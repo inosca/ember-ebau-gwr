@@ -33,8 +33,7 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData() {
-    const response = yield this.dataImport.fetchProject(this.model.instanceId);
-    return (yield response.json()).data;
+    return yield this.dataImport.fetchProject(this.model.instanceId);
   }
 
   @action
