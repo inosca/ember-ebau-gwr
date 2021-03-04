@@ -1,4 +1,4 @@
-import FetchServiceStub from "dummy/tests/helpers/fetch-service-stub";
+import DataImportStub from "dummy/tests/helpers/data-import-stub";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupTest } from "ember-qunit";
 import { module, test } from "qunit";
@@ -10,7 +10,7 @@ module("Unit | Controller | project/form", function (hooks) {
 
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
-    this.owner.register("service:fetch", FetchServiceStub);
+    this.owner.register("service:dataImport", DataImportStub);
     const controller = this.owner.lookup("controller:project/form");
     assert.ok(controller);
   });

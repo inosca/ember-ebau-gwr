@@ -1,7 +1,7 @@
 import Service from "@ember/service";
 
-export default class FetchService extends Service {
-  async fetch() {
+export default class DataImport extends Service {
+  async fetchProject() {
     return {
       json() {
         return {

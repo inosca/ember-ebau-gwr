@@ -18,7 +18,7 @@ export default class App extends Application {
             { config: "gwr-config" },
             "intl",
             "notification",
-            "fetch",
+            "dataImport",
             "store",
             "router",
           ],
