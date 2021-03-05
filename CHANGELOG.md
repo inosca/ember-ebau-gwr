@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.2.0...v1.2.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* **service/construction-project:** fix url for project search ([2f1f459](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2f1f459e545a0ae8136b74d4cc00a183e0e6530b))
+
 # [1.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.1.1...v1.2.0) (2021-03-05)
 
 
