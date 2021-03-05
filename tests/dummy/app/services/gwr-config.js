@@ -5,4 +5,5 @@ export default class GwrConfigService extends Service {
   municipalityName = "Galgenen";
   cantonAbbreviation = "SZ";
   constructionSurveyDept = 134200;
+  gwrAPI = "http://localhost:8010/proxy/regbl/api/ech0216/2";
 }
