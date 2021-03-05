@@ -135,7 +135,7 @@ export default class BuildingProjectService extends XMLApiService {
       "getConstructionProject",
       query
     ).replace(/\r?\n|\r/g, "");
-    response = await fetch(`${this.config.gwrAPI}2/constructionprojects/`, {
+    response = await fetch(`${this.config.gwrAPI}/constructionprojects/`, {
       headers: {
         token: await this.getToken(),
         query: queryXML,
