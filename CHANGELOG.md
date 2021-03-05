@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.1.1...v1.2.0) (2021-03-05)
+
+
+### Features
+
+* **gwr-api:** make gwr endpoint configureable ([861bce9](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/861bce9365c29983eb51909b07a56b6c1fd3a0a2))
+
 ## [1.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.1.0...v1.1.1) (2021-03-04)
 
 
