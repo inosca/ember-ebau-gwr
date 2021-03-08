@@ -18,7 +18,7 @@ export default class GwrConfigService extends Service {
 
   get password() {
     //eslint-disable-next-line no-alert
-    const password = localStorage.getItem("password") || prompt("Username:");
+    const password = localStorage.getItem("password") || prompt("Password:");
     if (password) {
       localStorage.setItem("password", password);
     }
@@ -27,7 +27,7 @@ export default class GwrConfigService extends Service {
 
   get wsk_id() {
     //eslint-disable-next-line no-alert
-    const wsk_id = localStorage.getItem("wsk_id") || prompt("Username:");
+    const wsk_id = localStorage.getItem("wsk_id") || prompt("wsk_id:");
     if (wsk_id) {
       localStorage.setItem("wsk_id", wsk_id);
     }
