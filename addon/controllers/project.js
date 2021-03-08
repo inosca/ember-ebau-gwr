@@ -1,4 +1,5 @@
 import Controller from "@ember/controller";
+import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 
@@ -36,12 +37,21 @@ export default class ProjectController extends Controller {
 
     // Load the first project in the list if none is selected so we always display a project.
     if (
-      ["form", "new"].includes(this.router.currentRoute.localName) &&
+      !["form", "new"].includes(this.router.currentRoute.localName) &&
       projects.length
     ) {
       this.transitionToRoute("project.form", projects[0].EPROID);
     }
 
     return projects;
+  }
+
+  @action
+  async removeProjectLink() {
+    const link = this.store
+      .peekAll("gwr-link")
+      .find(({ eproid }) => eproid === this.activeProject);
+    await link.destroyRecord();
+    await this.fetchProjects.perform();
   }
 }

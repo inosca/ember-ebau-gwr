@@ -85,6 +85,7 @@ ember-gwr:
       linkProject: Projekt verknüpfen
       createProject: Neues Projekt erfassen
       or: oder
+      removeProjectLink: "Verknüpfung aufheben"
 
   constructionProject:
     fields:
