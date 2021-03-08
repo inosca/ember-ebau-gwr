@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.2.1...v1.3.0) (2021-03-08)
+
+
+### Features
+
+* **login:** make login credentials configurable ([684c07d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/684c07d66215dcb55e287d8854e1eab433c74164))
+
 ## [1.2.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.2.0...v1.2.1) (2021-03-05)
 
 
