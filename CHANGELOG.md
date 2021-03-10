@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.4.0...v1.4.1) (2021-03-10)
+
+
+### Bug Fixes
+
+* **project/new:** return instance id from model hook and not an object ([5fb64ca](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5fb64ca3869950268e6d27ab651bab08fbb219cd))
+
 # [1.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.3.0...v1.4.0) (2021-03-10)
 
 
