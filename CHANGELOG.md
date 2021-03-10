@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.3.0...v1.4.0) (2021-03-10)
+
+
+### Features
+
+* **form:** add remove link button ([427fde4](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/427fde4913bc3a4dc70549a839c7a02f9afb2fae))
+
 # [1.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.2.1...v1.3.0) (2021-03-08)
 
 
