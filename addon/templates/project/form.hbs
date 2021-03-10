@@ -86,6 +86,7 @@
         disabled
         readonly
       />
+      <Field type="number" @attr="constructionSurveyDept" disabled readonly />
 
       <Field
         @inputType="select"
@@ -116,8 +117,6 @@
         @required={{true}}
         @attr="totalCostsOfProject"
       />
-
-      <Field type="number" @required={{true}} @attr="constructionSurveyDept" />
 
       <Field
         @inputType="select"
