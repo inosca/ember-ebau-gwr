@@ -13,6 +13,6 @@ export default class ProjectNewRoute extends Route {
     project.constructionLocalisation.municipalityId = this.config.municipalityId;
     project.constructionLocalisation.municipalityName = this.config.municipalityName;
     project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
-    return { project, instanceId: this.modelFor("application") };
+    return { project, instanceId: this.modelFor("application").id };
   }
 }
