@@ -3,12 +3,14 @@ export default function () {
     if (request.queryParams.local_id) {
       return schema.gwrLinks
         .all()
-        .filter((link) => link.attrs.id === request.queryParams.local_id);
+        .filter(
+          (link) => link.attrs.localId === Number(request.queryParams.local_id)
+        );
     }
     return schema.gwrLinks.all();
   });
   this.post("/gwr-links");
-  this.get("/gwr-links");
+  this.delete("/gwr-links/:id");
 
   this.passthrough("http://localhost:8010/**");
 }

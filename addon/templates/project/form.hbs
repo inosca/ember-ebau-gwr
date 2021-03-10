@@ -15,8 +15,8 @@
           {{t "ember-gwr.components.projectForm.title" id=@model.projectId}}
         {{/if}}
       </span>
-      {{#if this.import}}
-        <div>
+      <div>
+        {{#if this.import}}
           <button
             class="uk-button uk-button-default"
             type="button"
@@ -31,24 +31,24 @@
           >
             {{t "ember-gwr.components.projectForm.cancelImport"}}
           </LinkTo>
-        </div>
-      {{else if this.project.isNew}}
-        <button
-          class="uk-button uk-button-primary"
-          type="button"
-          {{on "click" this.importCalumaData}}
-        >
-          {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-        </button>
-      {{else}}
-        <LinkTo
-          @route={{this.currentRoute}}
-          @query={{hash import=true}}
-          class="uk-button uk-button-primary"
-        >
-          {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-        </LinkTo>
-      {{/if}}
+        {{else if this.project.isNew}}
+          <button
+            class="uk-button uk-button-primary"
+            type="button"
+            {{on "click" this.importCalumaData}}
+          >
+            {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+          </button>
+        {{else}}
+          <LinkTo
+            @route={{this.currentRoute}}
+            @query={{hash import=true}}
+            class="uk-button uk-button-primary"
+          >
+            {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+          </LinkTo>
+        {{/if}}
+      </div>
     </h2>
 
     <ProjectForm
