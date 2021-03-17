@@ -2,6 +2,6 @@ import Route from "@ember/routing/route";
 
 export default class ProjectRoute extends Route {
   async model() {
-    return this.modelFor("application");
+    return this.modelFor("application").id;
   }
 }

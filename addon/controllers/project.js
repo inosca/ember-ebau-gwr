@@ -1,7 +1,6 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
 
 export default class ProjectController extends Controller {
   @service router;
@@ -18,22 +17,15 @@ export default class ProjectController extends Controller {
     return Number(this.router.currentRoute.params.project_id);
   }
 
-  @lastValue("fetchProjects") projects = [];
+  get projects() {
+    return this.constructionProject.projects;
+  }
 
-  @task
-  *fetchProjects() {
-    const links = yield this.store.query("gwr-link", {
-      local_id: this.model.id,
-    });
-    // We make a request for each project here but the probability
-    // that there are a lot of linked projects is rather small so this
-    // should be okay. Would be a future pain point if this requirement
-    // would change.
-    const projects = yield Promise.all(
-      links.map(({ eproid }) =>
-        this.constructionProject.getFromCacheOrApi(eproid)
-      )
-    );
+  @action
+  async onLoad() {
+    // We then use `constructionProject.projects` in the template to reference this.
+    // This is so we can update the table if we add a new project in the subroute /new
+    const projects = await this.constructionProject.all.perform(this.model);
 
     // Load the first project in the list if none is selected so we always display a project.
     if (
@@ -42,8 +34,6 @@ export default class ProjectController extends Controller {
     ) {
       this.transitionToRoute("project.form", projects[0].EPROID);
     }
-
-    return projects;
   }
 
   @action

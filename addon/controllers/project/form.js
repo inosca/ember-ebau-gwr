@@ -65,6 +65,8 @@ export default class ProjectFormController extends Controller {
         localId: this.model.instanceId,
       });
       await link.save();
+      // Reload the overview table to display the new project
+      await this.constructionProject.all.perform(this.model.instanceId);
       this.transitionToRoute("project.form", project.EPROID);
     } else {
       await this.constructionProject.update(this.project);

@@ -4,7 +4,8 @@ export default function () {
       return schema.gwrLinks
         .all()
         .filter(
-          (link) => link.attrs.localId === Number(request.queryParams.local_id)
+          (link) =>
+            Number(link.attrs.localId) === Number(request.queryParams.local_id)
         );
     }
     return schema.gwrLinks.all();

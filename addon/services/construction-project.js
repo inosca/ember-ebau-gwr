@@ -1,4 +1,5 @@
 import { inject as service } from "@ember/service";
+import { task, lastValue } from "ember-concurrency-decorators";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
@@ -7,6 +8,8 @@ import XMLApiService from "./xml-api";
 
 export default class BuildingProjectService extends XMLApiService {
   @service config;
+  @service store;
+
   cache = {};
 
   createAndCacheProject(xml) {
@@ -129,5 +132,21 @@ export default class BuildingProjectService extends XMLApiService {
     }
 
     return new SearchResult(await response.text()).constructionProjectsList;
+  }
+
+  @lastValue("all") projects = [];
+  @task
+  *all(localId) {
+    const links = yield this.store.query("gwr-link", {
+      local_id: localId,
+    });
+    // We make a request for each project here but the probability
+    // that there are a lot of linked projects is rather small so this
+    // should be okay. Would be a future pain point if this requirement
+    // would change.
+    const projects = yield Promise.all(
+      links.map(({ eproid }) => this.getFromCacheOrApi(eproid))
+    );
+    return projects;
   }
 }
