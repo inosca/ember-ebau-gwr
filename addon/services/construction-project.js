@@ -2,6 +2,7 @@ import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
+import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
 import XMLApiService from "./xml-api";
@@ -173,5 +174,19 @@ export default class ConstructionProjectService extends XMLApiService {
       links.map(({ eproid }) => this.getFromCacheOrApi(eproid))
     );
     return projects;
+  }
+
+  async unbindBuildingFromConstructionProject(EPROID, EGID) {
+    await fetch(
+      `${this.config.gwrAPI}/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
+      {
+        method: "put",
+        headers: {
+          token: await this.getToken(),
+        },
+      }
+    );
+    // Refresh cache after removing the building
+    await this.get(EPROID);
   }
 }

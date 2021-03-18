@@ -3,6 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import Client from "./client";
 import ConstructionLocalisation from "./construction-localisation";
 import RealestateIdentification from "./realestate-identification";
+import BuildingList from "./building-list";
 import XMLModel from "./xml-model";
 
 export default class ConstructionProject extends XMLModel {
@@ -37,6 +38,7 @@ export default class ConstructionProject extends XMLModel {
   @tracked realestateIdentification = new RealestateIdentification();
   @tracked client = new Client();
   @tracked constructionLocalisation = new ConstructionLocalisation();
+  @tracked work = [];
 
   constructor(...args) {
     super(...args);
@@ -67,6 +69,7 @@ export default class ConstructionProject extends XMLModel {
         realestateIdentification: RealestateIdentification,
         client: Client,
         constructionLocalisation: ConstructionLocalisation,
+        work: [BuildingList],
       },
     });
   }

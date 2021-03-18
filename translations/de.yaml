@@ -98,6 +98,13 @@ ember-gwr:
       or: oder
       removeLink: Verknüpfung aufheben
 
+  building:
+    fields:
+      kindOfWorkOptions:
+        6001: Neubau
+        6002: Umbau
+        6007: Abbruch
+
   constructionProject:
     fields:
       EPROID: EPROID
