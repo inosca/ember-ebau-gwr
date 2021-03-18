@@ -1,4 +1,9 @@
 ember-gwr:
+
+  models:
+    building: Gebäude
+    project: Projekt
+
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
@@ -9,17 +14,13 @@ ember-gwr:
     projectDetails: Projektdetails
     linkedBuildings: Verlinkte Gebäude
 
+  searchBuilding:
+    heading: Existierendes Gebäude verknüpfen
+    search: Gebäude suchen
+
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen
-
-    validation:
-      realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
-      bothDatesSet: Es müssen beide Daten gesetzt sein.
-
     search: Projekte suchen
-    extendedSearch:
-      extend: Erweiterte Filter einblenden
-      collapse: Erweiterte Filter ausblenden
 
     EPROID: EPROID
     projectStatus: Projektstatus
@@ -40,27 +41,37 @@ ember-gwr:
       true: Nur mit Fehler
       false: Nur ohne Fehler
 
-    realestateIdentificationHeading: Grundstücksidentifikation
     realestateIdentification:
-      EGRID: EGRID
-      number: Grundstücksnummer
-      numberSuffix: Suffix der Grundstücksnummer
-      subDistrict: Grundbuchkreisnummer
-      lot: Los
-
-    createDateHeading: Erstellungszeitraum
-    createDate:
-      dateFrom: "Von"
-      dateTo: "Bis"
-    modifyDateHeading: Bearbeitungszeitraum
-    modifyDate:
-      dateFrom: "Von"
-      dateTo: "Bis"
+        number: Grundstücksnummer
 
   components:
     search:
       loading: Laden...
       noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
+      validation:
+        realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+        bothDatesSet: Es müssen beide Daten gesetzt sein.
+
+      realestateIdentificationHeading: Grundstücksidentifikation
+      realestateIdentification:
+        EGRID: EGRID
+        numberSuffix: Suffix der Grundstücksnummer
+        subDistrict: Grundbuchkreisnummer
+        lot: Los
+
+      createDateHeading: Erstellungszeitraum
+      createDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      modifyDateHeading: Bearbeitungszeitraum
+      modifyDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      extendedSearch:
+        extend: Erweiterte Filter einblenden
+        collapse: Erweiterte Filter ausblenden
 
     projectForm:
       save: Speichern
@@ -79,13 +90,13 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
 
-    linkedProjectsTable:
-      linkedProjects: Verknüpfte Projekte
-      noLinkedProjects: Es sind noch keine Projekte verknüpft
-      linkProject: Projekt verknüpfen
-      createProject: Neues Projekt erfassen
+    linkedModels:
+      linkedEntries: Verknüpfte {modelName}
+      noLinkedEntries: Es sind noch keine {modelName} verknüpft
+      linkEntry: "{modelName} verknüpfen"
+      createEntry: "{modelName} erfassen"
       or: oder
-      removeProjectLink: "Verknüpfung aufheben"
+      removeLink: Verknüpfung aufheben
 
   constructionProject:
     fields:

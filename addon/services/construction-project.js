@@ -6,7 +6,7 @@ import SearchResult from "ember-ebau-gwr/models/search-result";
 
 import XMLApiService from "./xml-api";
 
-export default class BuildingProjectService extends XMLApiService {
+export default class ConstructionProjectService extends XMLApiService {
   @service config;
   @service store;
 
@@ -93,34 +93,57 @@ export default class BuildingProjectService extends XMLApiService {
     return this.createAndCacheProject(xml);
   }
 
-  async search(query = {}) {
-    // if EPROID is set, ignore other search filters
+  searchProject(query) {
+    return this.search(
+      query,
+      query.EPROID,
+      "getConstructionProject",
+      "constructionprojects",
+      ConstructionProjectsList,
+      "constructionProject",
+      "constructionProjectsList"
+    );
+  }
+
+  searchBuilding(query) {
+    return this.search(
+      query,
+      query.EGID,
+      "getBuilding",
+      "buildings",
+      BuildingsList,
+      "building",
+      "buildingsList"
+    );
+  }
+
+  async search(
+    query = {},
+    id,
+    xmlMethod,
+    urlPath,
+    listModel,
+    listKey,
+    searchKey
+  ) {
     let response;
-    if (query.EPROID) {
-      response = await fetch(
-        `${this.config.gwrAPI}/constructionprojects/${query.EPROID}`,
-        {
-          headers: {
-            token: await this.getToken(),
-          },
-        }
-      );
+    if (id) {
+      response = await fetch(`${this.config.gwrAPI}/${urlPath}/${id}`, {
+        headers: {
+          token: await this.getToken(),
+        },
+      });
       // The api returns a 404 if no results are found for the query
       if (!response.ok && response.status === 404) {
         return [];
       }
-      return [
-        new ConstructionProjectsList(
-          await response.text(),
-          "constructionProject"
-        ),
-      ];
+      return [new listModel(await response.text(), listKey)];
     }
-    const queryXML = this.buildXMLRequest(
-      "getConstructionProject",
-      query
-    ).replace(/\r?\n|\r/g, "");
-    response = await fetch(`${this.config.gwrAPI}/constructionprojects/`, {
+    const queryXML = this.buildXMLRequest(xmlMethod, query).replace(
+      /\r?\n|\r/g,
+      ""
+    );
+    response = await fetch(`${this.config.gwrAPI}/${urlPath}/`, {
       headers: {
         token: await this.getToken(),
         query: queryXML,
@@ -131,7 +154,9 @@ export default class BuildingProjectService extends XMLApiService {
       return [];
     }
 
-    return new SearchResult(await response.text()).constructionProjectsList;
+    return new SearchResult(await response.text(), searchKey, listModel)[
+      searchKey
+    ];
   }
 
   @lastValue("all") projects = [];
