@@ -123,6 +123,24 @@ export const projectStatusOptions = [
 
 export const countryOptions = ["ch"];
 
+export const languageOptions = { de: 9901, fr: 9903, it: 9904 };
+
+export const periodOfConstruction = [
+  8011,
+  8012,
+  8013,
+  8014,
+  8015,
+  8016,
+  8017,
+  8018,
+  8019,
+  8020,
+  8021,
+  8022,
+  8023,
+];
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
@@ -131,4 +149,6 @@ export default {
   projectStatusOptions,
   kindOfWork,
   countryOptions,
+  languageOptions,
+  periodOfConstruction,
 };

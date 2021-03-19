@@ -10,8 +10,8 @@ export default class ConstructionProjectsList extends XMLModel {
 
   @tracked constructionProjectDescription;
   @tracked constructionSurveyDept;
-  @tracked realestateIdentification = new RealestateIdentification();
   @tracked projectStatus;
+  @tracked realestateIdentification = new RealestateIdentification();
 
   constructor(xmlOrObject, root = "constructionProjectsList") {
     super(xmlOrObject);

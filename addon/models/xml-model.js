@@ -1,3 +1,5 @@
+import { camelize } from "@ember/string";
+
 export default class XMLModel {
   document;
   isNew = false;
@@ -55,7 +57,8 @@ export default class XMLModel {
   setFieldsFromXML(xmlDefinition) {
     // We do not execute this if the model is new since there exists no xml.
     if (!this.isNew) {
-      const { fields, root = null } = xmlDefinition;
+      // Automatically set the class name in camelCase as default.
+      const { fields, root = camelize(this.constructor.name) } = xmlDefinition;
       Object.entries(fields).forEach(([key, type]) => {
         // Do not reassign if the result is null || undefined.
         // We then want to keep the default structure.

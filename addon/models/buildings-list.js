@@ -1,40 +1,33 @@
 import { tracked } from "@glimmer/tracking";
 
-import Building from "./building";
+import BuildingEntrance from "./building-entrance";
+import DateOfConstruction from "./date-of-construction";
 import XMLModel from "./xml-model";
 
-export default class BuildingList extends XMLModel {
-  @tracked kindOfWork;
-  @tracked ARBID;
-  @tracked energeticRestauration;
-  @tracked renovationHeatingsystem;
-  @tracked innerConversionRenovation;
-  @tracked conversion;
-  @tracked extensionHeighteningHeated;
-  @tracked extensionHeighteningNotHeated;
-  @tracked thermicSolarFacility;
-  @tracked photovoltaicSolarFacility;
-  @tracked otherWorks;
-  @tracked building = new Building();
+export default class BuildingsList extends XMLModel {
+  @tracked EGID;
+  @tracked buildingEntrance = [];
+  @tracked dateOfConstruction = new DateOfConstruction();
 
-  constructor(xmlOrObject, root = "work") {
+  constructor(xmlOrObject) {
     super(xmlOrObject);
     this.setFieldsFromXML({
-      root,
       fields: {
-        kindOfWork: Number,
-        ARBID: Number,
-        energeticRestauration: Boolean,
-        renovationHeatingsystem: Boolean,
-        innerConversionRenovation: Boolean,
-        conversion: Boolean,
-        extensionHeighteningHeated: Boolean,
-        extensionHeighteningNotHeated: Boolean,
-        thermicSolarFacility: Boolean,
-        photovoltaicSolarFacility: Boolean,
-        otherWorks: Boolean,
-        building: Building,
+        EGID: Number,
+        buildingEntrance: [BuildingEntrance],
+        dateOfConstruction: DateOfConstruction,
       },
     });
+  }
+
+  get fullAddressTexts() {
+    return this.buildingEntrance.map(
+      (buildingEntrance) =>
+        `${buildingEntrance.street.description.descriptionLong ?? ""} ${
+          buildingEntrance.buildingEntranceNo ?? ""
+        }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
+          buildingEntrance.locality.name.nameLong ?? ""
+        }`
+    );
   }
 }

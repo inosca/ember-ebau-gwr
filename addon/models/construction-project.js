@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import Client from "./client";
 import ConstructionLocalisation from "./construction-localisation";
 import RealestateIdentification from "./realestate-identification";
-import BuildingList from "./building-list";
+import BuildingWork from "./building-work";
 import XMLModel from "./xml-model";
 
 export default class ConstructionProject extends XMLModel {
@@ -31,10 +31,6 @@ export default class ConstructionProject extends XMLModel {
   @tracked buildingPermitIssueDate;
   @tracked projectAnnouncementDate;
 
-  // If instantiated from a search, there is a projectStatus field.
-  // This field is not available with a normal get request.
-  @tracked projectStatus;
-
   @tracked realestateIdentification = new RealestateIdentification();
   @tracked client = new Client();
   @tracked constructionLocalisation = new ConstructionLocalisation();
@@ -43,7 +39,6 @@ export default class ConstructionProject extends XMLModel {
   constructor(...args) {
     super(...args);
     this.setFieldsFromXML({
-      root: "constructionProject",
       fields: {
         EPROID: Number,
         typeOfClient: Number,
@@ -69,7 +64,7 @@ export default class ConstructionProject extends XMLModel {
         realestateIdentification: RealestateIdentification,
         client: Client,
         constructionLocalisation: ConstructionLocalisation,
-        work: [BuildingList],
+        work: [BuildingWork],
       },
     });
   }
