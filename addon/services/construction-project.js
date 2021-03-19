@@ -1,8 +1,8 @@
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
+import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
-import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
 import XMLApiService from "./xml-api";
@@ -154,7 +154,6 @@ export default class ConstructionProjectService extends XMLApiService {
     if (!response.ok && response.status === 404) {
       return [];
     }
-
     return new SearchResult(await response.text(), searchKey, listModel)[
       searchKey
     ];

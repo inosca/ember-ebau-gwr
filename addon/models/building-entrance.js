@@ -1,7 +1,7 @@
 import { tracked } from "@glimmer/tracking";
 
-import Street from "./street";
 import Locality from "./locality";
+import Street from "./street";
 import XMLModel from "./xml-model";
 
 export default class BuildingEntrance extends XMLModel {
