@@ -189,17 +189,25 @@ export default class ConstructionProjectService extends XMLApiService {
     await this.get(EPROID);
   }
 
-  async bindBuildingToConstructionProject(EPROID, EGID) {
-    await fetch(
-      `${this.config.gwrAPI}/buildings/${EGID}/bindToConstructionProject/${EPROID}`,
+  async bindBuildingToConstructionProject(EPROID, EGID, buildingWork) {
+    const body = this.buildXMLRequest("bindBuildingToConstructionProject", {
+      EPROID,
+      EGID,
+      ...buildingWork,
+    });
+    const response = await fetch(
+      `${this.config.gwrAPI}/buildings/${EGID}/bindToConstructionProject`,
       {
         method: "put",
         headers: {
           token: await this.getToken(),
         },
+        body,
       }
     );
-    // Refresh cache after removing the building
-    await this.get(EPROID);
+    if (response.ok) {
+      // Update cache
+      this.get(EPROID);
+    }
   }
 }

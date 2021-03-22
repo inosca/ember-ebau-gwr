@@ -1,3 +1,27 @@
+const header = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`;
+
+// prettier-ignore
+const delivery =
+`<ns2:delivery
+  xmlns="http://www.ech.ch/xmlns/eCH-0129/5"
+  xmlns:ns2="http://www.ech.ch/xmlns/eCH-0216/1"
+  xmlns:ns3="http://www.ech.ch/xmlns/eCH-0097/2"
+  xmlns:ns4="http://www.ech.ch/xmlns/eCH-0044/4"
+  xmlns:ns5="http://www.ech.ch/xmlns/eCH-0010/6"
+  xmlns:ns6="http://www.ech.ch/xmlns/eCH-0007/6"
+  xmlns:ns7="http://www.ech.ch/xmlns/eCH-0008/3"
+  xmlns:ns8="http://www.ech.ch/xmlns/eCH-0058/5"
+>
+  {{> @partial-block}}
+</ns2:delivery>`;
+
+// prettier-ignore
+const base =
+`{{> header}}
+{{#>delivery}}
+  {{> @partial-block}}
+{{/delivery}}`;
+
 // prettier-ignore
 const modifyConstructionProject =
 `{{#>base}}
@@ -144,34 +168,29 @@ const getBuilding =
   </ns2:getBuilding>
 {{/base}}`;
 
-const header = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`;
-
 // prettier-ignore
-const delivery =
-`<ns2:delivery
-  xmlns="http://www.ech.ch/xmlns/eCH-0129/5"
-  xmlns:ns2="http://www.ech.ch/xmlns/eCH-0216/1"
-  xmlns:ns3="http://www.ech.ch/xmlns/eCH-0097/2"
-  xmlns:ns4="http://www.ech.ch/xmlns/eCH-0044/4"
-  xmlns:ns5="http://www.ech.ch/xmlns/eCH-0010/6"
-  xmlns:ns6="http://www.ech.ch/xmlns/eCH-0007/6"
-  xmlns:ns7="http://www.ech.ch/xmlns/eCH-0008/3"
-  xmlns:ns8="http://www.ech.ch/xmlns/eCH-0058/5"
->
-  {{> @partial-block}}
-</ns2:delivery>`;
-
-// prettier-ignore
-const base =
-`{{> header}}
-{{#>delivery}}
-  {{> @partial-block}}
-{{/delivery}}`;
+const bindBuildingToConstructionProject =
+`{{#>base}}
+  <ns2:bindBuildingToConstructionProject>
+    <ns2:EPROID>{{model.EPROID}}</ns2:EPROID>
+    <ns2:constructionWorkDone>{{model.constructionWorkDone}}</ns2:constructionWorkDone>
+    <ns2:energeticRestauration>{{model.energeticRestauration}}</ns2:energeticRestauration>
+    <ns2:renovationHeatingsystem>{{model.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
+    <ns2:innerConversionRenovation>{{model.innerConversionRenovation}}</ns2:innerConversionRenovation>
+    <ns2:conversion>{{model.conversion}}</ns2:conversion>
+    <ns2:extensionHeighteningHeated>{{model.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
+    <ns2:extensionHeighteningNotHeated>{{model.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
+    <ns2:thermicSolarFacility>{{model.thermicSolarFacility}}</ns2:thermicSolarFacility>
+    <ns2:photovoltaicSolarFacility>{{model.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
+    <ns2:otherWorks>{{model.otherWorks}}</ns2:otherWorks>
+  </ns2:bindBuildingToConstructionProject>
+{{/base}}`
 
 export const Templates = {
   modifyConstructionProject,
   addConstructionProject,
   getConstructionProject,
   getBuilding,
+  bindBuildingToConstructionProject,
 };
 export const Partials = { header, delivery, base };
