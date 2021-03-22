@@ -56,7 +56,10 @@
     <tfoot>
       <tr>
         <td colspan="99" class="uk-text-center">
-          <LinkTo @route={{or @searchProject (concat "search-" @modelName)}}>
+          <LinkTo
+            @route={{or @searchRoute (concat "search-" @modelName)}}
+            @models={{or @searchModels (array)}}
+          >
             {{t
               "ember-gwr.components.linkedModels.linkEntry"
               modelName=modelName

@@ -188,4 +188,18 @@ export default class ConstructionProjectService extends XMLApiService {
     // Refresh cache after removing the building
     await this.get(EPROID);
   }
+
+  async bindBuildingToConstructionProject(EPROID, EGID) {
+    await fetch(
+      `${this.config.gwrAPI}/buildings/${EGID}/bindToConstructionProject/${EPROID}`,
+      {
+        method: "put",
+        headers: {
+          token: await this.getToken(),
+        },
+      }
+    );
+    // Refresh cache after removing the building
+    await this.get(EPROID);
+  }
 }

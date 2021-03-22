@@ -12,7 +12,7 @@ ember-gwr:
 
   nav:
     projectDetails: Projektdetails
-    linkedBuildings: Verlinkte Gebäude
+    linkedBuildings: Verknüpfte Gebäude
 
   searchBuilding:
     heading: Existierendes Gebäude verknüpfen
@@ -104,13 +104,37 @@ ember-gwr:
       or: oder
       removeLink: Verknüpfung aufheben
 
+    linkBuildingModal:
+      linkBuilding: Gebäude verknüpfen
+      cancel: Abbrechen
+
+  buildingWork:
+    kindOfWork: Art der Arbeiten
+    kindOfWorkPlaceholder: Wählen Sie eine Art der Arbeit aus...
+    kindOfWorkOptions:
+      6001: Neubau
+      6002: Umbau
+      6007: Abbruch
+    constructionWorkDone: Art der Arbeiten
+    constructionWorkDonePlaceholder: Wählen Sie eine Art der Arbeit aus...
+    constructionWorkDoneOptions:
+      6001: Neubau
+      6002: Umbau
+      6007: Abbruch
+
+    energeticRestauration: Energetische Sanierung
+    renovationHeatingsystem: Sanierung des Heizsystems
+    innerConversionRenovation: Umbauten / Renovationen im Innenbereich
+    conversion: Umnutzung
+    extensionHeighteningHeated: Beheizte Erweiterung
+    extensionHeighteningNotHeated: Nicht beheizte Erweiterung
+    thermicSolarFacility: Installation thermische Solaranlage
+    photovoltaicSolarFacility: Installation Photovoltaikanlage
+    otherWorks: Andere Arbeiten
+
   building:
     fields:
       EGID: EGID
-      kindOfWorkOptions:
-        6001: Neubau
-        6002: Umbau
-        6007: Abbruch
       dateOfConstruction:
         periodOfConstruction: Bauperiode
         periodOfConstructionPlaceholder: Alle Bauperioden

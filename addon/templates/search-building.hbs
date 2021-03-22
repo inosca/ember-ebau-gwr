@@ -89,7 +89,7 @@
         <button
           class="uk-button uk-button-link"
           type="button"
-          {{on "click" (fn this.linkBuilding value)}}
+          {{on "click" (fn this.setActiveBuilding value)}}
         >
           {{value}}
         </button>
@@ -119,4 +119,10 @@
       </Field>
     </Row>
   </Search::ResultTable>
+
+  <LinkBuildingModal
+    @visible={{this.activeBuilding}}
+    @close={{fn this.setActiveBuilding null}}
+    @linkAction={{fn this.linkBuilding this.activeBuilding}}
+  />
 {{/if}}

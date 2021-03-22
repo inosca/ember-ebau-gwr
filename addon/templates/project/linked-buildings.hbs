@@ -11,6 +11,7 @@
       @models={{this.fetchBuildings.lastSuccessful.value}}
       @modelName="building"
       @removeLink={{this.removeBuildingLink}}
+      @searchModels={{array @model}}
       @newModels={{array @model}} as |model|
     >
       <td class="uk-table-shrink">
@@ -28,7 +29,7 @@
       <td>
         {{t
           (concat
-            "ember-gwr.building.fields.kindOfWorkOptions." model.kindOfWork
+            "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork
           )
         }}
       </td>

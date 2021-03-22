@@ -1,0 +1,43 @@
+<UkModal @visible={{@visible}} @on-hide={{@close}} as |Modal|>
+  <Modal.header>
+    <h2 class="uk-modal-title">
+      {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
+    </h2>
+  </Modal.header>
+  <Modal.body>
+    {{#let
+      (component
+        "project-form/field"
+        project=this.buildingWork
+        translationBase="ember-gwr.buildingWork"
+      ) as |Field|
+    }}
+      <Field
+        @attr="constructionWorkDone"
+        @inputType="select"
+        @noPlaceholder={{true}}
+        @options={{this.kindOfWorkOptions}}
+      />
+      <Field @attr="energeticRestauration" @inputType="checkbox" />
+      <Field @attr="renovationHeatingsystem" @inputType="checkbox" />
+      <Field @attr="innerConversionRenovation" @inputType="checkbox" />
+      <Field @attr="conversion" @inputType="checkbox" />
+      <Field @attr="extensionHeighteningHeated" @inputType="checkbox" />
+      <Field @attr="extensionHeighteningNotHeated" @inputType="checkbox" />
+      <Field @attr="thermicSolarFacility" @inputType="checkbox" />
+      <Field @attr="photovoltaicSolarFacility" @inputType="checkbox" />
+      <Field @attr="otherWorks" @inputType="checkbox" />
+    {{/let}}
+  </Modal.body>
+  <Modal.footer class="uk-flex uk-flex-between">
+    <button class="uk-button uk-button-default" {{on "click" @close}}>
+      {{t "ember-gwr.components.linkBuildingModal.cancel"}}
+    </button>
+    <button
+      class="uk-button uk-button-primary"
+      {{on "click" (fn @linkAction this.buildingWork)}}
+    >
+      {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
+    </button>
+  </Modal.footer>
+</UkModal>

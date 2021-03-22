@@ -2,7 +2,6 @@ import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
-import { tracked } from "@glimmer/tracking";
 import {
   languageOptions,
   periodOfConstructionOptions,
@@ -12,8 +11,6 @@ export default class SearchBuildingController extends Controller {
   @service constructionProject;
   @service config;
   @service intl;
-
-  @tracked activeBuilding;
 
   periodOfConstruction = periodOfConstructionOptions;
 
@@ -25,18 +22,7 @@ export default class SearchBuildingController extends Controller {
   }
 
   @action
-  async linkBuilding(EGID, buildingWork) {
-    this.activeBuilding = null;
-    await this.constructionProject.bindBuildingToConstructionProject(
-      this.model,
-      EGID,
-      buildingWork
-    );
-    this.transitionToRoute("project.linked-buildings", this.model);
-  }
-
-  @action
-  setActiveBuilding(EGID) {
-    this.activeBuilding = EGID;
+  linkBuilding(building) {
+    console.log("link", building);
   }
 }
