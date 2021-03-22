@@ -1,4 +1,9 @@
 ember-gwr:
+
+  models:
+    building: Gebäude
+    project: Projekt
+
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
@@ -7,19 +12,29 @@ ember-gwr:
 
   nav:
     projectDetails: Projektdetails
-    linkedBuildings: Verlinkte Gebäude
+    linkedBuildings: Verknüpfte Gebäude
+
+  linkedBuildings:
+    error: Beim Laden der Projektdaten ist ein Fehler aufgetretten.
+    removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
+
+  searchBuilding:
+    heading: Existierendes Gebäude verknüpfen
+    search: Gebäude suchen
+    hasError: Fehlerstatus
+    hasErrorPlaceholder: Alle
+    hasErrorOptions:
+      true: Nur mit Fehler
+      false: Nur ohne Fehler
+    entrances: Gebäudeeingänge
+
+    linkSuccess: Gebäude wurde erfolgreich verknüpft.
+    linkError: Bei der Verknüpfung des Gebäudes ist ein Fehler aufgetretten.
+    searchError: Bei der Suche ist ein Fehler aufgetretten.
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen
-
-    validation:
-      realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
-      bothDatesSet: Es müssen beide Daten gesetzt sein.
-
     search: Projekte suchen
-    extendedSearch:
-      extend: Erweiterte Filter einblenden
-      collapse: Erweiterte Filter ausblenden
 
     EPROID: EPROID
     projectStatus: Projektstatus
@@ -40,27 +55,37 @@ ember-gwr:
       true: Nur mit Fehler
       false: Nur ohne Fehler
 
-    realestateIdentificationHeading: Grundstücksidentifikation
     realestateIdentification:
-      EGRID: EGRID
-      number: Grundstücksnummer
-      numberSuffix: Suffix der Grundstücksnummer
-      subDistrict: Grundbuchkreisnummer
-      lot: Los
-
-    createDateHeading: Erstellungszeitraum
-    createDate:
-      dateFrom: "Von"
-      dateTo: "Bis"
-    modifyDateHeading: Bearbeitungszeitraum
-    modifyDate:
-      dateFrom: "Von"
-      dateTo: "Bis"
+        number: Grundstücksnummer
 
   components:
     search:
       loading: Laden...
       noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
+      validation:
+        realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+        bothDatesSet: Es müssen beide Daten gesetzt sein.
+
+      realestateIdentificationHeading: Grundstücksidentifikation
+      realestateIdentification:
+        EGRID: EGRID
+        numberSuffix: Suffix der Grundstücksnummer
+        subDistrict: Grundbuchkreisnummer
+        lot: Los
+
+      createDateHeading: Erstellungszeitraum
+      createDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      modifyDateHeading: Bearbeitungszeitraum
+      modifyDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      extendedSearch:
+        extend: Erweiterte Filter einblenden
+        collapse: Erweiterte Filter ausblenden
 
     projectForm:
       save: Speichern
@@ -79,13 +104,70 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
 
-    linkedProjectsTable:
-      linkedProjects: Verknüpfte Projekte
-      noLinkedProjects: Es sind noch keine Projekte verknüpft
-      linkProject: Projekt verknüpfen
-      createProject: Neues Projekt erfassen
+    linkedModels:
+      linkedEntries: Verknüpfte {modelName}
+      noLinkedEntries: Es sind noch keine {modelName} verknüpft
+      linkEntry: "{modelName} verknüpfen"
+      createEntry: "{modelName} erfassen"
       or: oder
-      removeProjectLink: "Verknüpfung aufheben"
+      removeLink: Verknüpfung aufheben
+
+    linkBuildingModal:
+      linkBuilding: Gebäude verknüpfen
+      cancel: Abbrechen
+
+  buildingWork:
+    kindOfWork: Art der Arbeiten
+    kindOfWorkPlaceholder: Wählen Sie eine Art der Arbeit aus...
+    kindOfWorkOptions:
+      6001: Neubau
+      6002: Umbau
+      6007: Abbruch
+    constructionWorkDone: Art der Arbeiten
+    constructionWorkDonePlaceholder: Wählen Sie eine Art der Arbeit aus...
+    constructionWorkDoneOptions:
+      6001: Neubau
+      6002: Umbau
+      6007: Abbruch
+
+    energeticRestauration: Energetische Sanierung
+    renovationHeatingsystem: Sanierung des Heizsystems
+    innerConversionRenovation: Umbauten / Renovationen im Innenbereich
+    conversion: Umnutzung
+    extensionHeighteningHeated: Beheizte Erweiterung
+    extensionHeighteningNotHeated: Nicht beheizte Erweiterung
+    thermicSolarFacility: Installation thermische Solaranlage
+    photovoltaicSolarFacility: Installation Photovoltaikanlage
+    otherWorks: Andere Arbeiten
+
+  building:
+    fields:
+      EGID: EGID
+      dateOfConstruction:
+        periodOfConstruction: Bauperiode
+        periodOfConstructionPlaceholder: Alle Bauperioden
+        periodOfConstructionOptions:
+          8011: Periode vor 1919
+          8012: Periode von 1919 bis 1945
+          8013: Periode von 1946 bis 1960
+          8014: Periode von 1961 bis 1970
+          8015: Periode von 1971 bis 1980
+          8016: Periode von 1981 bis 1985
+          8017: Periode von 1986 bis 1990
+          8018: Periode von 1991 bis 1995
+          8019: Periode von 1996 bis 2000
+          8020: Periode von 2001 bis 2005
+          8021: Periode von 2006 bis 2010
+          8022: Periode von 2011 bis 2015
+          8023: Periode ab 2016
+      street:
+        description:
+          descriptionLong: Strassenname
+      buildingEntranceNo: Gebäudeeingang Nummer
+      locality:
+        swissZipCode: PLZ
+        name:
+          nameLong: Ortsname
 
   constructionProject:
     fields:

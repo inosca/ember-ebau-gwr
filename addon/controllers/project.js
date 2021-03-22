@@ -29,7 +29,9 @@ export default class ProjectController extends Controller {
 
     // Load the first project in the list if none is selected so we always display a project.
     if (
-      !["form", "new"].includes(this.router.currentRoute.localName) &&
+      !["form", "new", "linked-buildings"].includes(
+        this.router.currentRoute.localName
+      ) &&
       projects.length
     ) {
       this.transitionToRoute("project.form", projects[0].EPROID);

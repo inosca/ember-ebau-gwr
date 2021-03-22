@@ -104,7 +104,7 @@ export const typeOfPermitOptions = [
   5071,
 ];
 
-export const kindOfWork = [
+export const kindOfWorkOptions = [
   6001, // Neubau
   6002, // Umbau
   6007, // Abbruch
@@ -123,12 +123,32 @@ export const projectStatusOptions = [
 
 export const countryOptions = ["ch"];
 
+export const languageOptions = { de: 9901, fr: 9903, it: 9904 };
+
+export const periodOfConstructionOptions = [
+  8011,
+  8012,
+  8013,
+  8014,
+  8015,
+  8016,
+  8017,
+  8018,
+  8019,
+  8020,
+  8021,
+  8022,
+  8023,
+];
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
   typeOfConstructionProjectOptions,
   typeOfPermitOptions,
   projectStatusOptions,
-  kindOfWork,
+  kindOfWorkOptions,
   countryOptions,
+  languageOptions,
+  periodOfConstructionOptions,
 };

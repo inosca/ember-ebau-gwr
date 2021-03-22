@@ -1,0 +1,129 @@
+<h1>
+  {{t "ember-gwr.searchBuilding.heading"}}
+</h1>
+
+<Search::Filters
+  @search={{fn (perform this.search)}}
+  @searchLabel={{t "ember-gwr.searchBuilding.search"}}
+  @translationBase={{"ember-gwr.searchBuilding"}} as |Field|
+>
+  <div class="uk-flex uk-flex-wrap uk-flex-between">
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="EGID"
+          type="number"
+          @translationBase="ember-gwr.building.fields"
+        />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="periodOfConstruction"
+          @inputType="select"
+          @options={{this.periodOfConstruction}}
+          @translationBase="ember-gwr.building.fields.dateOfConstruction"
+        />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="hasError"
+          @inputType="select"
+          @options={{array true false}}
+        />
+      </div>
+    </div>
+
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="descriptionLong"
+          @translationBase="ember-gwr.building.fields.street.description"
+        />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="buildingEntranceNo"
+          @translationBase="ember-gwr.building.fields"
+        />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="nameLong"
+          @translationBase="ember-gwr.building.fields.locality.name"
+        />
+      </div>
+    </div>
+  </div>
+</Search::Filters>
+
+{{#if this.search.last}}
+  <Search::ResultTable
+    @results={{this.searchResults}}
+    @loading={{this.search.isRunning}} as |Row|
+  >
+    <Search::ResultTable::Head as |Header|>
+      <Header
+        class="uk-table-shrink"
+        @label={{t "ember-gwr.building.fields.EGID"}}
+      />
+      <Header
+        @label={{t "ember-gwr.searchBuilding.entrances"}}
+        class="uk-table-expand"
+      />
+      <Header
+        @label={{
+          t "ember-gwr.building.fields.dateOfConstruction.periodOfConstruction"
+        }}
+      />
+    </Search::ResultTable::Head>
+    <Row as |Field|>
+      <Field @attr="EGID" as |value|>
+        <button
+          class="uk-button uk-button-link"
+          type="button"
+          {{on "click" (fn this.setActiveBuilding value)}}
+        >
+          {{value}}
+        </button>
+      </Field>
+      <Field @attr="fullAddressTexts" as |value|>
+        <ul class="uk-list">
+          {{#each value as |entrance|}}
+            <li>
+              {{entrance}}
+            </li>
+          {{/each}}
+        </ul>
+      </Field>
+      <Field @attr="dateOfConstruction" as |value|>
+        {{#if value.periodOfConstruction}}
+          {{t
+            (concat
+              "ember-gwr.building.fields.dateOfConstruction.periodOfConstructionOptions."
+              value.periodOfConstruction
+            )
+          }}
+        {{else if value.year}}
+          {{value.year}}
+        {{else}}
+          -
+        {{/if}}
+      </Field>
+    </Row>
+  </Search::ResultTable>
+
+  <LinkBuildingModal
+    @visible={{this.activeBuilding}}
+    @close={{fn this.setActiveBuilding null}}
+    @linkAction={{perform this.linkBuilding this.activeBuilding}}
+    @isLoading={{this.linkBuilding.isRunning}}
+  />
+{{/if}}

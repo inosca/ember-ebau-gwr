@@ -1,0 +1,38 @@
+<div
+  {{did-insert (perform this.fetchBuildings)}}
+  {{did-update (perform this.fetchBuildings) @model}}
+>
+  {{#if this.fetchBuildings.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio="3" />
+    </div>
+  {{else}}
+    <LinkedModels
+      @models={{this.fetchBuildings.lastSuccessful.value}}
+      @modelName="building"
+      @removeLink={{this.removeBuildingLink}}
+      @searchModels={{array @model}}
+      @newModels={{array @model}} as |model|
+    >
+      <td class="uk-table-shrink">
+        <LinkTo
+          @route={{"building.form"}}
+          @models={{array @model model.EGID}}
+          class="uk-link"
+        >
+          {{model.building.EGID}}
+        </LinkTo>
+      </td>
+      <td>
+        {{model.building.nameOfBuilding}}
+      </td>
+      <td>
+        {{t
+          (concat
+            "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork
+          )
+        }}
+      </td>
+    </LinkedModels>
+  {{/if}}
+</div>

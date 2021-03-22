@@ -7,11 +7,26 @@
     {{#if this.displayLandingPage}}
       <LandingPage />
     {{else}}
-      <LinkedProjectsTable
+      <LinkedProjects
         @projects={{this.projects}}
         @activeProject={{this.activeProject}}
         @removeProject={{this.removeProjectLink}}
       />
+      <ul uk-tab>
+        <li>
+          <LinkTo @route="project.form" @model={{this.activeProject}}>
+            {{t "ember-gwr.models.project"}}
+          </LinkTo>
+        </li>
+        <li>
+          <LinkTo
+            @route="project.linked-buildings"
+            @model={{this.activeProject}}
+          >
+            {{t "ember-gwr.models.building"}}
+          </LinkTo>
+        </li>
+      </ul>
       {{outlet}}
     {{/if}}
   {{/if}}

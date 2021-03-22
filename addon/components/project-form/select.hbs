@@ -4,9 +4,11 @@
   required={{@required}}
   ...attributes
 >
-  <option value="">
-    {{t (concat @translationBase "." @attr "Placeholder")}}
-  </option>
+  {{#unless @noPlaceholder}}
+    <option value="">
+      {{t (concat @translationBase "." @attr "Placeholder")}}
+    </option>
+  {{/unless}}
   {{#each @options as |optionValue|}}
     <option selected={{eq optionValue @value}} value={{optionValue}}>
       {{t (concat @translationBase "." @attr "Options." optionValue)}}

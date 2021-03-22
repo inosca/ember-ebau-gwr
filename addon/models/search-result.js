@@ -1,17 +1,13 @@
-import { tracked } from "@glimmer/tracking";
-import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
-
 import XMLModel from "./xml-model";
 
 export default class SearchResult extends XMLModel {
-  @tracked constructionProjectsList;
-
-  constructor(...args) {
-    super(...args);
+  constructor(xml, fields = {}, root = "") {
+    super(xml);
     this.setFieldsFromXML({
-      fields: {
-        constructionProjectsList: [ConstructionProjectsList],
-      },
+      // We set the root to empty since the search results have no real root
+      // and XMLModel takes the model name with camelcase as default.
+      root,
+      fields,
     });
   }
 }

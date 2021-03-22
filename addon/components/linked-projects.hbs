@@ -1,0 +1,33 @@
+<LinkedModels
+  @models={{@projects}}
+  @modelName="project"
+  @removeLink={{@removeProject}}
+  @noDeleteButton={{true}} as |project|
+>
+  <td
+    class={{
+      concat
+      "uk-table-shrink "
+      (if (eq @activeProject project.EPROID) "uk-text-bold")
+    }}
+  >
+    <LinkTo @route="project.form" @model={{project.EPROID}} class="uk-link">
+      {{project.EPROID}}
+    </LinkTo>
+  </td>
+  <td class={{if (eq @activeProject project.EPROID) "uk-text-bold"}}>
+    {{project.constructionProjectDescription}}
+  </td>
+  <td class="uk-table-shrink">
+    {{#if (eq @activeProject project.EPROID)}}
+      <button
+        type="button"
+        class="uk-icon-button"
+        uk-icon="trash"
+        uk-tooltip={{t "ember-gwr.components.linkedModels.removeLink"}}
+        {{on "click" @removeProject}}
+      >
+      </button>
+    {{/if}}
+  </td>
+</LinkedModels>

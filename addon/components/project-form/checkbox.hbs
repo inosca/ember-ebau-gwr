@@ -1,0 +1,11 @@
+<div class="uk-width-1">
+  <input
+    type="checkbox"
+    class="uk-checkbox"
+    name={{@attr}}
+    required={{@required}}
+    checked={{@value}}
+    ...attributes
+    {{on "input" this.update}}
+  />
+</div>
