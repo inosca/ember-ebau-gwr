@@ -15,7 +15,7 @@
       <ul uk-tab>
         <li>
           <LinkTo @route="project.form" @model={{this.activeProject}}>
-            Projekt
+            {{t "ember-gwr.models.project"}}
           </LinkTo>
         </li>
         <li>
@@ -23,7 +23,7 @@
             @route="project.linked-buildings"
             @model={{this.activeProject}}
           >
-            Gebäude
+            {{t "ember-gwr.models.building"}}
           </LinkTo>
         </li>
       </ul>
