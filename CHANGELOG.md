@@ -1,3 +1,22 @@
+# [1.5.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.4.1...v1.5.0) (2021-03-22)
+
+
+### Bug Fixes
+
+* **checkbox:** set checkvalue according to passed data ([faa91b0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/faa91b0ffffca6176c8a9d2fc7fa4013aefb31c8))
+* **form:** set constructionSurveyDept from config and make field readonly ([303ebbb](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/303ebbb138e27861ab0ca617484403b72ce0e826))
+* **linked-buildings:** dont transition to form if current route is linked-buildings ([5bdf9a7](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5bdf9a7812372017d072f0d35f61af4848089232))
+* **linked-table:** reload table if new project is added ([96ac1ff](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/96ac1ff187587580b8a1392ea0942fce4e8b6bcf))
+
+
+### Features
+
+* **building-search:** implement building search mask ([b52aab6](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b52aab67a385dfcdc3956f71a728d558d32272db))
+* **buildings:** display linked buildings with ability to remove them ([5125df8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5125df8db941ff1d63fa9caae51574af218d52f0))
+* **link-building:** add error handling ([1babd88](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1babd884d3f8a06e9f8f13ed58948262ab319d17))
+* **link-building:** add form modal for kindOfWork ([80cb62a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/80cb62a7fa79ddfb3ea786820e9b3234eec6b9e6))
+* **link-building:** add update call to bind buildings ([aca5b21](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/aca5b214452734906fc16b0d6ed76c7d56859359))
+
 ## [1.4.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.4.0...v1.4.1) (2021-03-10)
 
 
