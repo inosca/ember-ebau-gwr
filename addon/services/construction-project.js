@@ -205,9 +205,10 @@ export default class ConstructionProjectService extends XMLApiService {
         body,
       }
     );
-    if (response.ok) {
-      // Update cache
-      this.get(EPROID);
+    if (!response.ok) {
+      throw new Error("GWR API: bindBuildingToConstructionProject failed");
     }
+    // Update cache
+    this.get(EPROID);
   }
 }

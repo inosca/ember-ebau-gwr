@@ -12,6 +12,7 @@ export default class SearchBuildingController extends Controller {
   @service constructionProject;
   @service config;
   @service intl;
+  @service notification;
 
   @tracked activeBuilding;
 
@@ -19,20 +20,34 @@ export default class SearchBuildingController extends Controller {
 
   @lastValue("search") searchResults;
   @task *search(query) {
-    query.streetLang = languageOptions[this.intl.primaryLocale];
-    query.municipality = this.config.municipalityId;
-    return yield this.constructionProject.searchBuilding(query);
+    try {
+      query.streetLang = languageOptions[this.intl.primaryLocale];
+      query.municipality = this.config.municipalityId;
+      return yield this.constructionProject.searchBuilding(query);
+    } catch (error) {
+      console.error(error);
+      this.notification.danger("ember-gwr.searchBuilding.searchError");
+    }
   }
 
-  @action
-  async linkBuilding(EGID, buildingWork) {
-    this.activeBuilding = null;
-    await this.constructionProject.bindBuildingToConstructionProject(
-      this.model,
-      EGID,
-      buildingWork
-    );
-    this.transitionToRoute("project.linked-buildings", this.model);
+  @task *linkBuilding(EGID, buildingWork) {
+    try {
+      yield this.constructionProject.bindBuildingToConstructionProject(
+        this.model,
+        EGID,
+        buildingWork
+      );
+      this.activeBuilding = null;
+      this.transitionToRoute("project.linked-buildings", this.model);
+      this.notification.success(
+        this.intl.t("ember-gwr.searchBuilding.linkSuccess")
+      );
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.searchBuilding.linkError")
+      );
+    }
   }
 
   @action

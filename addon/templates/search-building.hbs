@@ -123,6 +123,7 @@
   <LinkBuildingModal
     @visible={{this.activeBuilding}}
     @close={{fn this.setActiveBuilding null}}
-    @linkAction={{fn this.linkBuilding this.activeBuilding}}
+    @linkAction={{perform this.linkBuilding this.activeBuilding}}
+    @isLoading={{this.linkBuilding.isRunning}}
   />
 {{/if}}

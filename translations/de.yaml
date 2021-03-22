@@ -14,6 +14,10 @@ ember-gwr:
     projectDetails: Projektdetails
     linkedBuildings: Verknüpfte Gebäude
 
+  linkedBuildings:
+    error: Beim Laden der Projektdaten ist ein Fehler aufgetretten.
+    removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
+
   searchBuilding:
     heading: Existierendes Gebäude verknüpfen
     search: Gebäude suchen
@@ -23,6 +27,10 @@ ember-gwr:
       true: Nur mit Fehler
       false: Nur ohne Fehler
     entrances: Gebäudeeingänge
+
+    linkSuccess: Gebäude wurde erfolgreich verknüpft.
+    linkError: Bei der Verknüpfung des Gebäudes ist ein Fehler aufgetretten.
+    searchError: Bei der Suche ist ein Fehler aufgetretten.
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen

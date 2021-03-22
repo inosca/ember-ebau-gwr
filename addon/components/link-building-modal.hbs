@@ -30,14 +30,15 @@
     {{/let}}
   </Modal.body>
   <Modal.footer class="uk-flex uk-flex-between">
-    <button class="uk-button uk-button-default" {{on "click" @close}}>
+    <UkButton {{on "click" @close}}>
       {{t "ember-gwr.components.linkBuildingModal.cancel"}}
-    </button>
-    <button
-      class="uk-button uk-button-primary"
+    </UkButton>
+    <UkButton
+      @color="primary"
+      @loading={{@isLoading}}
       {{on "click" (fn @linkAction this.buildingWork)}}
     >
       {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
-    </button>
+    </UkButton>
   </Modal.footer>
 </UkModal>
