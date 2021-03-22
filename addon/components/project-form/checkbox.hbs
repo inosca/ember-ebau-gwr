@@ -4,7 +4,8 @@
     class="uk-checkbox"
     name={{@attr}}
     required={{@required}}
+    checked={{@value}}
     ...attributes
-    {{on "input" this.update }}
+    {{on "input" this.update}}
   />
 </div>
