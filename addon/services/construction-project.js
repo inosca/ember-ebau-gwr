@@ -95,37 +95,29 @@ export default class ConstructionProjectService extends XMLApiService {
   }
 
   searchProject(query) {
-    return this.search(
-      query,
-      query.EPROID,
-      "getConstructionProject",
-      "constructionprojects",
-      ConstructionProjectsList,
-      "constructionProject",
-      "constructionProjectsList"
-    );
+    return this.search(query, query.EPROID, {
+      xmlMethod: "getConstructionProject",
+      urlPath: "constructionprojects",
+      listModel: ConstructionProjectsList,
+      listKey: "constructionProject",
+      searchKey: "constructionProjectsList",
+    });
   }
 
   searchBuilding(query) {
-    return this.search(
-      query,
-      query.EGID,
-      "getBuilding",
-      "buildings",
-      BuildingsList,
-      "building",
-      "buildingsList"
-    );
+    return this.search(query, query.EGID, {
+      xmlMethod: "getBuilding",
+      urlPath: "buildings",
+      listModel: BuildingsList,
+      listKey: "building",
+      searchKey: "buildingsList",
+    });
   }
 
   async search(
     query = {},
     id,
-    xmlMethod,
-    urlPath,
-    listModel,
-    listKey,
-    searchKey
+    { xmlMethod, urlPath, listModel, listKey, searchKey }
   ) {
     let response;
     if (id) {
@@ -140,6 +132,8 @@ export default class ConstructionProjectService extends XMLApiService {
       }
       return [new listModel(await response.text(), listKey)];
     }
+    // We replace the newlines since they would be encoded in the query param
+    // and this would break the xml.
     const queryXML = this.buildXMLRequest(xmlMethod, query).replace(
       /\r?\n|\r/g,
       ""
@@ -154,9 +148,9 @@ export default class ConstructionProjectService extends XMLApiService {
     if (!response.ok && response.status === 404) {
       return [];
     }
-    return new SearchResult(await response.text(), searchKey, listModel)[
-      searchKey
-    ];
+    return new SearchResult(await response.text(), {
+      [searchKey]: [listModel],
+    })[searchKey];
   }
 
   @lastValue("all") projects = [];

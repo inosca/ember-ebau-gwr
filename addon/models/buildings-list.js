@@ -9,9 +9,10 @@ export default class BuildingsList extends XMLModel {
   @tracked buildingEntrance = [];
   @tracked dateOfConstruction = new DateOfConstruction();
 
-  constructor(xmlOrObject) {
+  constructor(xmlOrObject, root) {
     super(xmlOrObject);
     this.setFieldsFromXML({
+      root,
       fields: {
         EGID: Number,
         buildingEntrance: [BuildingEntrance],
