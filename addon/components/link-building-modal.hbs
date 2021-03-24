@@ -1,4 +1,8 @@
-<UkModal @visible={{@visible}} @on-hide={{@close}} as |Modal|>
+<UkModal
+  @visible={{@visible}}
+  @on-hide={{@close}}
+  @container="#ember-ebau-gwr-modal-container" as |Modal|
+>
   <Modal.header>
     <h2 class="uk-modal-title">
       {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
