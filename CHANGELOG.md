@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.0...v1.5.1) (2021-03-24)
+
+
+### Bug Fixes
+
+* **modal:** set the container of the modal so its still in a uikit context ([e2f32e0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e2f32e03c68ed156ca75d78c9c9f9981f660e4b5))
+
 # [1.5.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.4.1...v1.5.0) (2021-03-22)
 
 
