@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.1...v1.5.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* **select:** convert the values to number for selects since otherwise the active option is broken ([0ce3ca4](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0ce3ca4a7981dabc87a1eb6a6294e1f83ee2f0ad))
+
 ## [1.5.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.0...v1.5.1) (2021-03-24)
 
 
