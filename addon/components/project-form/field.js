@@ -2,6 +2,12 @@ import { get, set, action } from "@ember/object";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 
+export const converstionTypeMapping = {
+  number: Number,
+  string: String,
+  boolean: Boolean,
+};
+
 export default class ProjectFormFieldComponent extends Component {
   @tracked diffResolved = false;
 
@@ -24,7 +30,12 @@ export default class ProjectFormFieldComponent extends Component {
 
   @action
   updateProjectField(attr, eventOrValue) {
-    const value = eventOrValue?.target?.value ?? eventOrValue;
+    let value = eventOrValue?.target?.value ?? eventOrValue;
+
+    if (this.args.convertValueTo) {
+      value =
+        converstionTypeMapping[this.args.convertValueTo]?.(value) ?? value;
+    }
 
     // If we supply a custom update method use this
     if (this.args.update) {
