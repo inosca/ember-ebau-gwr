@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.2...v1.5.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **models:** dont take class name as querySelector root for xml ([2ba8400](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2ba840073b37f4c929d9df1b084fd35bc02d09c5))
+
 ## [1.5.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.1...v1.5.2) (2021-03-26)
 
 
