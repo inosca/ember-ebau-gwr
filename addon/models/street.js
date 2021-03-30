@@ -7,10 +7,10 @@ export class StreetDescription extends XMLModel {
   @tracked descriptionLong;
   @tracked descriptionShort;
 
-  constructor(xmlOrObject) {
+  constructor(xmlOrObject, root = "description") {
     super(xmlOrObject);
     this.setFieldsFromXML({
-      root: "description",
+      root,
       fields: {
         language: Number,
         descriptionLong: String,
@@ -27,9 +27,10 @@ export default class Street extends XMLModel {
   @tracked streetKind;
   @tracked streetStatus;
   @tracked description;
-  constructor(xmlOrObject) {
+  constructor(xmlOrObject, root = "street") {
     super(xmlOrObject);
     this.setFieldsFromXML({
+      root,
       fields: {
         ESID: Number,
         isOfficialStreetNumber: Number,
