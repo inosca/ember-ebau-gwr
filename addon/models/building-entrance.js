@@ -12,9 +12,10 @@ export default class BuildingEntrance extends XMLModel {
   @tracked street = new Street();
   @tracked locality = new Locality();
 
-  constructor(xmlOrObject) {
+  constructor(xmlOrObject, root = "buildingEntrance") {
     super(xmlOrObject);
     this.setFieldsFromXML({
+      root,
       fields: {
         EGID: Number,
         EGAID: Number,

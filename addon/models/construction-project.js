@@ -36,9 +36,10 @@ export default class ConstructionProject extends XMLModel {
   @tracked constructionLocalisation = new ConstructionLocalisation();
   @tracked work = [];
 
-  constructor(...args) {
-    super(...args);
+  constructor(xmlOrObject, root = "constructionProject") {
+    super(xmlOrObject);
     this.setFieldsFromXML({
+      root,
       fields: {
         EPROID: Number,
         typeOfClient: Number,

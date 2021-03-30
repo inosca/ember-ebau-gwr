@@ -8,9 +8,10 @@ export default class DateOfConstruction extends XMLModel {
   @tracked year;
   @tracked periodOfConstruction;
 
-  constructor(xmlOrObject) {
+  constructor(xmlOrObject, root = "dateOfConstruction") {
     super(xmlOrObject);
     this.setFieldsFromXML({
+      root,
       fields: {
         yearMonthDay: String,
         yearMonth: String,
