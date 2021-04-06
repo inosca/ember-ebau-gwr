@@ -16,11 +16,11 @@ export default class GwrService extends Service {
   @service store;
   @service authFetch;
 
-  cache = {};
+  _cache = {};
 
   createAndCacheProject(xml) {
     const project = new ConstructionProject(xml);
-    this.cache[project.EPROID] = project;
+    this._cache[project.EPROID] = project;
     return project;
   }
 
@@ -36,7 +36,7 @@ export default class GwrService extends Service {
   }
 
   getFromCache(EPROID) {
-    return this.cache[EPROID];
+    return this._cache[EPROID];
   }
 
   async getFromCacheOrApi(EPROID) {
@@ -44,7 +44,7 @@ export default class GwrService extends Service {
   }
 
   async update(project) {
-    const body = this.buildXMLRequest("modifyConstructionProject", project);
+    const body = this._buildXMLRequest("modifyConstructionProject", project);
     const response = await this.authFetch.fetch(
       `${this.config.gwrAPI}/constructionprojects/${project.EPROID}`,
       {
@@ -61,7 +61,7 @@ export default class GwrService extends Service {
   }
 
   async create(project) {
-    const body = this.buildXMLRequest("addConstructionProject", project);
+    const body = this._buildXMLRequest("addConstructionProject", project);
     const response = await this.authFetch.fetch(
       `${this.config.gwrAPI}/constructionprojects/`,
       {
@@ -110,7 +110,7 @@ export default class GwrService extends Service {
     }
     // We replace the newlines since they would be encoded in the query param
     // and this would break the xml.
-    const queryXML = this.buildXMLRequest(xmlMethod, query).replace(
+    const queryXML = this._buildXMLRequest(xmlMethod, query).replace(
       /\r?\n|\r/g,
       ""
     );
@@ -156,7 +156,7 @@ export default class GwrService extends Service {
   }
 
   async bindBuildingToConstructionProject(EPROID, EGID, buildingWork) {
-    const body = this.buildXMLRequest("bindBuildingToConstructionProject", {
+    const body = this._buildXMLRequest("bindBuildingToConstructionProject", {
       EPROID,
       EGID,
       ...buildingWork,
@@ -178,41 +178,41 @@ export default class GwrService extends Service {
   // XML Handling
 
   // This is required since HBS acts on a global Handlebars object
-  hbs = Handlebars;
-  compiledTemplates = {};
+  _hbs = Handlebars;
+  _compiledTemplates = {};
 
   init(...args) {
     super.init(...args);
-    this.setupHandlebarsPartials();
+    this._setupHandlebarsPartials();
   }
 
-  buildXMLRequest(type, model, reason = "Modification enregistrement") {
+  _buildXMLRequest(type, model, reason = "Modification enregistrement") {
     // Compile the needed templates on the fly so only
     // the ones used are compiled to remove a bit of over head.
-    if (!this.compiledTemplates[type]) {
-      this.compiledTemplates[type] = compile(Templates[type]);
+    if (!this._compiledTemplates[type]) {
+      this._compiledTemplates[type] = compile(Templates[type]);
     }
 
-    return this.compiledTemplates[type](
+    return this._compiledTemplates[type](
       { model, reason },
       { allowProtoPropertiesByDefault: true }
     );
   }
 
-  setupHandlebarsPartials() {
+  _setupHandlebarsPartials() {
     Object.keys(Partials).forEach((key) => {
-      this.hbs.registerPartial(key, compile(Partials[key]));
+      this._hbs.registerPartial(key, compile(Partials[key]));
     });
 
     Object.keys(Models).forEach((key) => {
       const Model = Models[key];
       if (Model.template) {
-        this.hbs.registerPartial(key, compile(Model.template));
+        this._hbs.registerPartial(key, compile(Model.template));
       }
     });
 
     Object.keys(Helpers).forEach((key) => {
-      this.hbs.registerHelper(key, Helpers[key]);
+      this._hbs.registerHelper(key, Helpers[key]);
     });
   }
 }
