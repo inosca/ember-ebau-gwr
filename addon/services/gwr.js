@@ -1,3 +1,8 @@
+import Service from "@ember/service";
+import Models from "ember-ebau-gwr/models";
+import * as Helpers from "ember-ebau-gwr/xml/helpers";
+import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
+import Handlebars, { compile } from "handlebars";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
@@ -5,12 +10,11 @@ import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
-import XMLApiService from "./xml-api";
-
 /* eslint-disable ember/classic-decorator-no-classic-methods */
-export default class ConstructionProjectService extends XMLApiService {
+export default class GwrService extends Service {
   @service config;
   @service store;
+  @service authFetch;
 
   cache = {};
 
@@ -20,33 +24,12 @@ export default class ConstructionProjectService extends XMLApiService {
     return project;
   }
 
-  async getToken() {
-    const { token } = await fetch(`${this.config.gwrAPI}/tokenWS`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        username: this.config.username,
-        password: this.config.password,
-        wsk_id: Number(this.config.wsk_id),
-      }),
-    }).then((response) => response.json());
-
-    return token;
-  }
-
   async get(EPROID) {
     if (!EPROID) {
       return null;
     }
-    const response = await fetch(
-      `${this.config.gwrAPI}/constructionprojects/${EPROID}`,
-      {
-        headers: {
-          token: await this.getToken(),
-        },
-      }
+    const response = await this.authFetch.fetch(
+      `${this.config.gwrAPI}/constructionprojects/${EPROID}`
     );
     const xml = await response.text();
     return this.createAndCacheProject(xml);
@@ -62,13 +45,11 @@ export default class ConstructionProjectService extends XMLApiService {
 
   async update(project) {
     const body = this.buildXMLRequest("modifyConstructionProject", project);
-    const response = await fetch(
+    const response = await this.authFetch.fetch(
       `${this.config.gwrAPI}/constructionprojects/${project.EPROID}`,
       {
         method: "put",
-        headers: {
-          token: await this.getToken(),
-        },
+
         body,
       }
     );
@@ -81,13 +62,11 @@ export default class ConstructionProjectService extends XMLApiService {
 
   async create(project) {
     const body = this.buildXMLRequest("addConstructionProject", project);
-    const response = await fetch(
+    const response = await this.authFetch.fetch(
       `${this.config.gwrAPI}/constructionprojects/`,
       {
         method: "post",
-        headers: {
-          token: await this.getToken(),
-        },
+
         body,
       }
     );
@@ -122,11 +101,7 @@ export default class ConstructionProjectService extends XMLApiService {
   ) {
     let response;
     if (id) {
-      response = await fetch(`${this.config.gwrAPI}/${urlPath}/${id}`, {
-        headers: {
-          token: await this.getToken(),
-        },
-      });
+      response = await this.authFetch.fetch(`/${urlPath}/${id}`);
       // The api returns a 404 if no results are found for the query
       if (!response.ok && response.status === 404) {
         return [];
@@ -139,9 +114,8 @@ export default class ConstructionProjectService extends XMLApiService {
       /\r?\n|\r/g,
       ""
     );
-    response = await fetch(`${this.config.gwrAPI}/${urlPath}/`, {
+    response = await this.authFetch.fetch(`/${urlPath}/`, {
       headers: {
-        token: await this.getToken(),
         query: queryXML,
       },
     });
@@ -158,7 +132,7 @@ export default class ConstructionProjectService extends XMLApiService {
   @task
   *all(localId) {
     const links = yield this.store.query("gwr-link", {
-      local_id: localId,
+      // local_id: localId,
     });
     // We make a request for each project here but the probability
     // that there are a lot of linked projects is rather small so this
@@ -171,13 +145,10 @@ export default class ConstructionProjectService extends XMLApiService {
   }
 
   async unbindBuildingFromConstructionProject(EPROID, EGID) {
-    await fetch(
+    await this.authFetch.fetch(
       `${this.config.gwrAPI}/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
       {
         method: "put",
-        headers: {
-          token: await this.getToken(),
-        },
       }
     );
     // Refresh cache after removing the building
@@ -190,13 +161,10 @@ export default class ConstructionProjectService extends XMLApiService {
       EGID,
       ...buildingWork,
     });
-    const response = await fetch(
+    const response = await this.authFetch.fetch(
       `${this.config.gwrAPI}/buildings/${EGID}/bindToConstructionProject`,
       {
         method: "put",
-        headers: {
-          token: await this.getToken(),
-        },
         body,
       }
     );
@@ -205,5 +173,46 @@ export default class ConstructionProjectService extends XMLApiService {
     }
     // Update cache
     this.get(EPROID);
+  }
+
+  // XML Handling
+
+  // This is required since HBS acts on a global Handlebars object
+  hbs = Handlebars;
+  compiledTemplates = {};
+
+  init(...args) {
+    super.init(...args);
+    this.setupHandlebarsPartials();
+  }
+
+  buildXMLRequest(type, model, reason = "Modification enregistrement") {
+    // Compile the needed templates on the fly so only
+    // the ones used are compiled to remove a bit of over head.
+    if (!this.compiledTemplates[type]) {
+      this.compiledTemplates[type] = compile(Templates[type]);
+    }
+
+    return this.compiledTemplates[type](
+      { model, reason },
+      { allowProtoPropertiesByDefault: true }
+    );
+  }
+
+  setupHandlebarsPartials() {
+    Object.keys(Partials).forEach((key) => {
+      this.hbs.registerPartial(key, compile(Partials[key]));
+    });
+
+    Object.keys(Models).forEach((key) => {
+      const Model = Models[key];
+      if (Model.template) {
+        this.hbs.registerPartial(key, compile(Model.template));
+      }
+    });
+
+    Object.keys(Helpers).forEach((key) => {
+      this.hbs.registerHelper(key, Helpers[key]);
+    });
   }
 }

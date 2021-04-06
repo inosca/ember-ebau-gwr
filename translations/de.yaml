@@ -4,6 +4,9 @@ ember-gwr:
     building: Gebäude
     project: Projekt
 
+  authentication:
+    loginError: Bei der Anmeldung an der Housing-Stat Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
+
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
@@ -86,6 +89,12 @@ ember-gwr:
       extendedSearch:
         extend: Erweiterte Filter einblenden
         collapse: Erweiterte Filter ausblenden
+
+    loginModal:
+      header: Bei Housing-Stat anmelden
+      login: Anmelden
+      password: Passwort...
+      username: Benutzername...
 
     projectForm:
       save: Speichern

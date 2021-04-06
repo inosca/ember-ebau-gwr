@@ -1,4 +1,5 @@
 export default function () {
+  this.namespace = "api/v1/linker";
   this.get("/gwr-links", (schema, request) => {
     if (request.queryParams.local_id) {
       return schema.gwrLinks

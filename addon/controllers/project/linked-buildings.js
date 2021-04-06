@@ -4,12 +4,12 @@ import { inject as service } from "@ember/service";
 import { task } from "ember-concurrency-decorators";
 
 export default class ProjectLinkedBuildingsController extends Controller {
-  @service constructionProject;
+  @service gwr;
 
   @task
   *fetchBuildings() {
     try {
-      const project = yield this.constructionProject.getFromCacheOrApi(
+      const project = yield this.gwr.getFromCacheOrApi(
         this.model
       );
       return project.work;
@@ -22,7 +22,7 @@ export default class ProjectLinkedBuildingsController extends Controller {
   @action
   async removeBuildingLink({ building: { EGID } }) {
     try {
-      await this.constructionProject.unbindBuildingFromConstructionProject(
+      await this.gwr.unbindBuildingFromConstructionProject(
         this.model,
         EGID
       );
