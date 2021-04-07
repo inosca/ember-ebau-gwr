@@ -175,7 +175,7 @@ ember-gwr:
       officialConstructionProjectFileNo: Amtliche Baudossiernummer
       extensionOfOfficialConstructionProjectFileNo: Amtliche Baudossiernr. Zusatz
       constructionProjectDescription: Umschreibung Bauprojekts
-      constructionSurveyDept: Erhebungsstellennummer
+      constructionSurveyDeptNumber: Erhebungsstellennummer
       totalCostsOfProject: Projektkosten total
       projectAnnouncementDate: Datum Baueingabe
       buildingPermitIssueDate: Datum Baubewilligung

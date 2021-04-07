@@ -20,7 +20,7 @@ export default class ConstructionProject extends XMLModel {
   @tracked projectFreeText1;
   @tracked projectFreeText2;
   @tracked totalCostsOfProject;
-  @tracked constructionSurveyDept;
+  @tracked constructionSurveyDeptNumber;
 
   @tracked withdrawalDate;
   @tracked projectStartDate;
@@ -50,7 +50,7 @@ export default class ConstructionProject extends XMLModel {
         officialConstructionProjectFileNo: String,
         extensionOfOfficialConstructionProjectFileNo: String,
         constructionProjectDescription: String,
-        constructionSurveyDept: String,
+        constructionSurveyDeptNumber: String,
         withdrawalDate: String,
         projectStartDate: String,
         constructionAuthorisationDeniedDate: String,
@@ -73,7 +73,7 @@ export default class ConstructionProject extends XMLModel {
   // TODO <work> is until now a fixed value. We need to implement a select for it and display it.
   static template = `
   <ns2:constructionProject>
-    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    <ns2:constructionSurveyDeptNumber>{{model.constructionSurveyDeptNumber}}</ns2:constructionSurveyDeptNumber>
     <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
     {{> ConstructionLocalisation model=model.constructionLocalisation}}
     {{> RealestateIdentification model=model.realestateIdentification}}

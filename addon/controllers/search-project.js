@@ -19,7 +19,7 @@ export default class SearchProjectController extends Controller {
   @lastValue("search") searchResults;
   @task
   *search(query = {}) {
-    query.constructionSurveyDept = this.config.constructionSurveyDept;
+    query.constructionSurveyDeptNumber = this.config.constructionSurveyDeptNumber;
     return yield this.constructionProject.searchProject(query);
   }
 

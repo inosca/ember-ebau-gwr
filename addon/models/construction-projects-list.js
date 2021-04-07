@@ -9,7 +9,7 @@ export default class ConstructionProjectsList extends XMLModel {
   @tracked extensionOfOfficialConstructionProjectFileNo;
 
   @tracked constructionProjectDescription;
-  @tracked constructionSurveyDept;
+  @tracked constructionSurveyDeptNumber;
   @tracked projectStatus;
   @tracked realestateIdentification = new RealestateIdentification();
 
@@ -22,7 +22,7 @@ export default class ConstructionProjectsList extends XMLModel {
         officialConstructionProjectFileNo: String,
         extensionOfOfficialConstructionProjectFileNo: String,
         constructionProjectDescription: String,
-        constructionSurveyDept: String,
+        constructionSurveyDeptNumber: String,
         projectStatus: Number,
         realestateIdentification: RealestateIdentification,
       },
