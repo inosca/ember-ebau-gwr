@@ -4,7 +4,7 @@ const header = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`;
 const delivery =
 `<ns2:delivery
   xmlns="http://www.ech.ch/xmlns/eCH-0129/5"
-  xmlns:ns2="http://www.ech.ch/xmlns/eCH-0216/1"
+  xmlns:ns2="http://www.ech.ch/xmlns/eCH-0216/2"
   xmlns:ns3="http://www.ech.ch/xmlns/eCH-0097/2"
   xmlns:ns4="http://www.ech.ch/xmlns/eCH-0044/4"
   xmlns:ns5="http://www.ech.ch/xmlns/eCH-0010/6"
@@ -45,7 +45,7 @@ const addConstructionProject =
 const getConstructionProject =
 `{{#>base}}
   <ns2:getConstructionProject>
-    <ns2:constructionSurveyDept>{{model.constructionSurveyDept}}</ns2:constructionSurveyDept>
+    <ns2:constructionSurveyDeptNumber>{{model.constructionSurveyDeptNumber}}</ns2:constructionSurveyDeptNumber>
     {{#if model.realestateIdentification.number}}
       <ns2:realestateIdentification>
         <number>{{model.realestateIdentification.number}}</number>
