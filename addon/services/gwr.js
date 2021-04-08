@@ -128,7 +128,7 @@ export default class GwrService extends Service {
   @task
   *all(localId) {
     const links = yield this.store.query("gwr-link", {
-      // local_id: localId,
+      local_id: localId,
     });
     // We make a request for each project here but the probability
     // that there are a lot of linked projects is rather small so this

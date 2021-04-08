@@ -21,8 +21,6 @@ export default class AuthFetchService extends Service {
       method: "post",
       headers: {
         "content-type": "application/json",
-        // TODO Remove this is only for dev
-        authorization: "Bearer jkdslfjlsd",
       },
       ...(username && password
         ? {
@@ -52,11 +50,11 @@ export default class AuthFetchService extends Service {
     return json.token;
   }
 
-  async fetch(url, { method = "get", headers = {}, body } = {}) {
+  async fetch(url, { method = "get", headers = {}, body } = {}, retry = false) {
     if (this.housingStatToken.isRunning) {
       await this.housingStatToken.lastRunning;
     }
-    return await fetch(`${this.config.gwrAPI}${url}`, {
+    let response = await fetch(`${this.config.gwrAPI}${url}`, {
       method,
       headers: {
         token: this.token,
@@ -64,5 +62,12 @@ export default class AuthFetchService extends Service {
       },
       body,
     });
+    if (!response.ok && response.status === 401 && !this.showAuthModal) {
+      if (!retry) {
+        await this.housingStatToken.perform();
+        response = await this.fetch(url, { method, headers, body }, false);
+      }
+    }
+    return response;
   }
 }
