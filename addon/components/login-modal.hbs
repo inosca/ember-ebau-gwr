@@ -44,3 +44,7 @@
     </UkButton>
   </Modal.footer>
 </UkModal>
+
+{{#unless this.authFetch.showAuthModal}}
+  {{yield}}
+{{/unless}}

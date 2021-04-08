@@ -29,7 +29,7 @@ export default class GwrService extends Service {
       return null;
     }
     const response = await this.authFetch.fetch(
-      `${this.config.gwrAPI}/constructionprojects/${EPROID}`
+      `/constructionprojects/${EPROID}`
     );
     const xml = await response.text();
     return this.createAndCacheProject(xml);
@@ -46,7 +46,7 @@ export default class GwrService extends Service {
   async update(project) {
     const body = this._buildXMLRequest("modifyConstructionProject", project);
     const response = await this.authFetch.fetch(
-      `${this.config.gwrAPI}/constructionprojects/${project.EPROID}`,
+      `/constructionprojects/${project.EPROID}`,
       {
         method: "put",
 
@@ -62,14 +62,11 @@ export default class GwrService extends Service {
 
   async create(project) {
     const body = this._buildXMLRequest("addConstructionProject", project);
-    const response = await this.authFetch.fetch(
-      `${this.config.gwrAPI}/constructionprojects/`,
-      {
-        method: "post",
+    const response = await this.authFetch.fetch("/constructionprojects/", {
+      method: "post",
 
-        body,
-      }
-    );
+      body,
+    });
     const xml = await response.text();
     return this.createAndCacheProject(xml);
   }
@@ -146,7 +143,7 @@ export default class GwrService extends Service {
 
   async unbindBuildingFromConstructionProject(EPROID, EGID) {
     await this.authFetch.fetch(
-      `${this.config.gwrAPI}/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
+      `/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
       {
         method: "put",
       }
@@ -162,7 +159,7 @@ export default class GwrService extends Service {
       ...buildingWork,
     });
     const response = await this.authFetch.fetch(
-      `${this.config.gwrAPI}/buildings/${EGID}/bindToConstructionProject`,
+      `/buildings/${EGID}/bindToConstructionProject`,
       {
         method: "put",
         body,

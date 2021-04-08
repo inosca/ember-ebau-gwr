@@ -52,7 +52,7 @@ export default class AuthFetchService extends Service {
     return json.token;
   }
 
-  async fetch(url, { method = "get", headers = {}, body }) {
+  async fetch(url, { method = "get", headers = {}, body } = {}) {
     if (this.housingStatToken.isRunning) {
       await this.housingStatToken.lastRunning;
     }
