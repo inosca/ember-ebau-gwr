@@ -1,14 +1,13 @@
-import Service from "@ember/service";
-import Models from "ember-ebau-gwr/models";
-import * as Helpers from "ember-ebau-gwr/xml/helpers";
-import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
-import Handlebars, { compile } from "handlebars";
-import { inject as service } from "@ember/service";
+import Service, { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
+import Models from "ember-ebau-gwr/models";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import SearchResult from "ember-ebau-gwr/models/search-result";
+import * as Helpers from "ember-ebau-gwr/xml/helpers";
+import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
+import Handlebars, { compile } from "handlebars";
 
 /* eslint-disable ember/classic-decorator-no-classic-methods */
 export default class GwrService extends Service {

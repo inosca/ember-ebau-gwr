@@ -1,6 +1,6 @@
 import Service, { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
 import { tracked } from "@glimmer/tracking";
+import { task, lastValue } from "ember-concurrency-decorators";
 
 export default class AuthFetchService extends Service {
   @service config;

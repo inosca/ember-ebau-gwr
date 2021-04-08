@@ -9,9 +9,7 @@ export default class ProjectLinkedBuildingsController extends Controller {
   @task
   *fetchBuildings() {
     try {
-      const project = yield this.gwr.getFromCacheOrApi(
-        this.model
-      );
+      const project = yield this.gwr.getFromCacheOrApi(this.model);
       return project.work;
     } catch (error) {
       console.error(error);
@@ -22,10 +20,7 @@ export default class ProjectLinkedBuildingsController extends Controller {
   @action
   async removeBuildingLink({ building: { EGID } }) {
     try {
-      await this.gwr.unbindBuildingFromConstructionProject(
-        this.model,
-        EGID
-      );
+      await this.gwr.unbindBuildingFromConstructionProject(this.model, EGID);
       await this.fetchBuildings.perform();
     } catch (error) {
       console.error(error);
