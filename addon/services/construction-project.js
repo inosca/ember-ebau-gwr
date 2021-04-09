@@ -7,6 +7,7 @@ import SearchResult from "ember-ebau-gwr/models/search-result";
 
 import XMLApiService from "./xml-api";
 
+/* eslint-disable ember/classic-decorator-no-classic-methods */
 export default class ConstructionProjectService extends XMLApiService {
   @service config;
   @service store;
