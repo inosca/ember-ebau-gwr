@@ -9,8 +9,8 @@ export default class XMLApiService extends Service {
   hbs = Handlebars;
   compiledTemplates = {};
 
-  init(...args) {
-    super.init(...args);
+  constructor(...args) {
+    super(...args);
     this.setupHandlebarsPartials();
   }
 
