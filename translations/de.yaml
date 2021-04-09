@@ -5,7 +5,7 @@ ember-gwr:
     project: Projekt
 
   authentication:
-    loginError: Bei der Anmeldung an der Housing-Stat Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
+    loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
 
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
@@ -91,7 +91,7 @@ ember-gwr:
         collapse: Erweiterte Filter ausblenden
 
     loginModal:
-      header: Bei Housing-Stat anmelden
+      header: Im GWR anmelden
       login: Anmelden
       password: Passwort...
       username: Benutzername...
@@ -332,4 +332,3 @@ ember-gwr:
         6152: Kapitalgesellschaften (Aktiengesellschaft, Genossenschaft, Kommandit AG, GmbH) ohne Immobilienbranche
         6162: Andere private Auftraggeber (Kirche inkl. Landeskirche; Stiftung, die keine Pensionskasse ist; Verein, etc.)
         6163: Internationale Organisationen, Botschaften
-
