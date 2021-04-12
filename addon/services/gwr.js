@@ -17,6 +17,11 @@ export default class GwrService extends Service {
 
   _cache = {};
 
+  constructor(...args) {
+    super(...args);
+    this._setupHandlebarsPartials();
+  }
+
   createAndCacheProject(xml) {
     const project = new ConstructionProject(xml);
     this._cache[project.EPROID] = project;
@@ -176,11 +181,6 @@ export default class GwrService extends Service {
   // This is required since HBS acts on a global Handlebars object
   _hbs = Handlebars;
   _compiledTemplates = {};
-
-  init(...args) {
-    super.init(...args);
-    this._setupHandlebarsPartials();
-  }
 
   _buildXMLRequest(type, model, reason = "Modification enregistrement") {
     // Compile the needed templates on the fly so only
