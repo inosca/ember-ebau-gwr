@@ -1,5 +1,6 @@
 import { tracked } from "@glimmer/tracking";
 
+import BuildingEntrance from "./building-entrance";
 import XMLModel from "./xml-model";
 
 export default class Building extends XMLModel {
@@ -13,7 +14,19 @@ export default class Building extends XMLModel {
       fields: {
         EGID: Number,
         nameOfBuilding: String,
+        buildingEntrance: [BuildingEntrance],
       },
     });
+  }
+
+  get fullAddressTexts() {
+    return this.buildingEntrance.map(
+      (buildingEntrance) =>
+        `${buildingEntrance.street.description.descriptionLong ?? ""} ${
+          buildingEntrance.buildingEntranceNo ?? ""
+        }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
+          buildingEntrance.locality.name.nameLong ?? ""
+        }`
+    );
   }
 }
