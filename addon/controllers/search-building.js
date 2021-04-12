@@ -9,7 +9,7 @@ import {
 } from "ember-ebau-gwr/models/options";
 
 export default class SearchBuildingController extends Controller {
-  @service constructionProject;
+  @service gwr;
   @service config;
   @service intl;
   @service notification;
@@ -23,7 +23,7 @@ export default class SearchBuildingController extends Controller {
     try {
       query.streetLang = languageOptions[this.intl.primaryLocale];
       query.municipality = this.config.municipalityId;
-      return yield this.constructionProject.searchBuilding(query);
+      return yield this.gwr.searchBuilding(query);
     } catch (error) {
       console.error(error);
       this.notification.danger("ember-gwr.searchBuilding.searchError");
@@ -32,7 +32,7 @@ export default class SearchBuildingController extends Controller {
 
   @task *linkBuilding(EGID, buildingWork) {
     try {
-      yield this.constructionProject.bindBuildingToConstructionProject(
+      yield this.gwr.bindBuildingToConstructionProject(
         this.model,
         EGID,
         buildingWork

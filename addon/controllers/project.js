@@ -5,7 +5,7 @@ import { inject as service } from "@ember/service";
 export default class ProjectController extends Controller {
   @service router;
   @service store;
-  @service constructionProject;
+  @service gwr;
 
   get displayLandingPage() {
     return (
@@ -18,14 +18,14 @@ export default class ProjectController extends Controller {
   }
 
   get projects() {
-    return this.constructionProject.projects;
+    return this.gwr.projects;
   }
 
   @action
   async onLoad() {
-    // We then use `constructionProject.projects` in the template to reference this.
+    // We then use `gwr.projects` in the template to reference this.
     // This is so we can update the table if we add a new project in the subroute /new
-    const projects = await this.constructionProject.all.perform(this.model);
+    const projects = await this.gwr.all.perform(this.model);
 
     // Load the first project in the list if none is selected so we always display a project.
     if (

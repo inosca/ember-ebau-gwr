@@ -4,12 +4,12 @@ import { module, test } from "qunit";
 
 const modulePrefix = "ember-ebau-gwr";
 const resolver = engineResolverFor(modulePrefix);
-module("Unit | Service | constructionProject", function (hooks) {
+module("Unit | Service | auth-fetch", function (hooks) {
   setupTest(hooks, { resolver, integration: true });
 
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:construction-project");
+    const service = this.owner.lookup("service:auth-fetch");
     assert.ok(service);
   });
 });

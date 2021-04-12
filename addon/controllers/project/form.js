@@ -8,7 +8,7 @@ import Options from "ember-ebau-gwr/models/options";
 export default class ProjectFormController extends Controller {
   queryParams = ["import"];
 
-  @service constructionProject;
+  @service gwr;
   @service config;
   @service dataImport;
   @service store;
@@ -27,7 +27,7 @@ export default class ProjectFormController extends Controller {
   *fetchProject() {
     return this.model.project?.isNew
       ? this.model.project
-      : yield this.constructionProject.getFromCacheOrApi(this.model.projectId);
+      : yield this.gwr.getFromCacheOrApi(this.model.projectId);
   }
 
   @lastValue("fetchCalumaData") importData;
@@ -59,17 +59,17 @@ export default class ProjectFormController extends Controller {
   @action
   async saveProject() {
     if (this.project.isNew) {
-      const project = await this.constructionProject.create(this.project);
+      const project = await this.gwr.create(this.project);
       const link = this.store.createRecord("gwr-link", {
         eproid: project.EPROID,
         localId: this.model.instanceId,
       });
       await link.save();
       // Reload the overview table to display the new project
-      await this.constructionProject.all.perform(this.model.instanceId);
+      await this.gwr.all.perform(this.model.instanceId);
       this.transitionToRoute("project.form", project.EPROID);
     } else {
-      await this.constructionProject.update(this.project);
+      await this.gwr.update(this.project);
     }
     this.import = false;
   }

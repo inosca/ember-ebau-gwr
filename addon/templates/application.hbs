@@ -1,5 +1,8 @@
-<section class="uk-flex uk-flex-column uk-height-1 uk-container uk-padding">
-  {{outlet}}
-</section>
 <div id="ember-ebau-gwr-modal-container">
 </div>
+
+<section class="uk-flex uk-flex-column uk-height-1 uk-container uk-padding">
+  <LoginModal @model={{@model}}>
+    {{outlet}}
+  </LoginModal>
+</section>

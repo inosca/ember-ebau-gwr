@@ -1,0 +1,50 @@
+<UkModal
+  @visible={{this.authFetch.showAuthModal}}
+  @btnClose={{false}}
+  @escClose={{false}}
+  @bgClose={{false}}
+  @container="#ember-ebau-gwr-modal-container" as |Modal|
+>
+  <Modal.header>
+    <h2 class="uk-modal-title">
+      {{t "ember-gwr.components.loginModal.header"}}
+    </h2>
+  </Modal.header>
+  <Modal.body>
+    <div class="uk-grid-small" uk-grid>
+      <div class="uk-width-1-2">
+        <input
+          name="username"
+          class="uk-input"
+          placeholder={{t "ember-gwr.components.loginModal.username"}}
+          value={{this.username}}
+          {{on "input" this.updateValue}}
+        />
+      </div>
+      <div class="uk-width-1-2">
+        <input
+          name="password"
+          type="password"
+          class="uk-input"
+          placeholder={{t "ember-gwr.components.loginModal.password"}}
+          value={{this.password}}
+          {{on "input" this.updateValue}}
+        />
+      </div>
+    </div>
+  </Modal.body>
+  <Modal.footer @class="uk-text-right">
+    <UkButton
+      @color="primary"
+      @disabled={{not (and this.username this.password)}}
+      @loading={{this.authFetch.housingStatToken.isRunning}}
+      {{on "click" this.login}}
+    >
+      {{t "ember-gwr.components.loginModal.login"}}
+    </UkButton>
+  </Modal.footer>
+</UkModal>
+
+{{#unless this.authFetch.showAuthModal}}
+  {{yield}}
+{{/unless}}
