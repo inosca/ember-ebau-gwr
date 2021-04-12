@@ -1,3 +1,19 @@
+# [1.6.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.3...v1.6.0) (2021-04-12)
+
+
+### Bug Fixes
+
+* **form navigation:** update to ember 2.24 to fix `<LinkTo>` issues in engines ([d592c14](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d592c14346969d7c8e4617cace3e1200f7230d7b))
+* **login-modal:** handle application state after login ([9156b87](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/9156b87601f2c569017fe3eedbf7bf9df10d59b8))
+* **project:** rename service constructionProject->gwr ([8391324](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8391324755fc5da1889fdb0087f2c51ca1154fdc))
+* **select:** fix typeofwork select in link projects screen ([8221112](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/822111239fa2d443b469ba5e796cb1d607e1a7d5))
+* **xml:** update namespace and rename field constructionSurveyDep ([0f4401d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0f4401d448da51c0db391acce6ee41bf173d691f))
+
+
+### Features
+
+* **authentication:** implement a login modal for the gwr api ([d2c1264](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d2c1264db90b10297c0e68e26d30c01ec5951d0e))
+
 ## [1.5.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.2...v1.5.3) (2021-03-30)
 
 

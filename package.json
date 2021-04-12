@@ -1,6 +1,6 @@
 {
   "name": "ember-ebau-gwr",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "Ember engine to integrate ebau-gwr into an ember app.",
   "keywords": [
     "ember-addon",
