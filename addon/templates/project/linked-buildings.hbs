@@ -24,13 +24,20 @@
         </LinkTo>
       </td>
       <td>
+        <ul class="uk-list">
+          {{#each model.building.fullAddressTexts as |entrance|}}
+            <li>
+              {{entrance}}
+            </li>
+          {{/each}}
+        </ul>
+      </td>
+      <td>
         {{model.building.nameOfBuilding}}
       </td>
       <td>
         {{t
-          (concat
-            "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork
-          )
+          (concat "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork)
         }}
       </td>
     </LinkedModels>

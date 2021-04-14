@@ -1,10 +1,10 @@
 import { tracked } from "@glimmer/tracking";
 
+import Building from "./building";
 import BuildingEntrance from "./building-entrance";
 import DateOfConstruction from "./date-of-construction";
-import XMLModel from "./xml-model";
 
-export default class BuildingsList extends XMLModel {
+export default class BuildingsList extends Building {
   @tracked EGID;
   @tracked buildingEntrance = [];
   @tracked dateOfConstruction = new DateOfConstruction();
