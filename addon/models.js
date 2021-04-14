@@ -10,6 +10,9 @@ import ConstructionProjectsList from "ember-ebau-gwr/models/construction-project
 import DateOfConstruction from "ember-ebau-gwr/models/date-of-construction";
 import Identification from "ember-ebau-gwr/models/identification";
 import Locality from "ember-ebau-gwr/models/locality";
+import OrganisationIdentification, {
+  LocalOrganisationId,
+} from "ember-ebau-gwr/models/organisation-identification";
 import PersonIdentification from "ember-ebau-gwr/models/person-identification";
 import RealestateIdentification from "ember-ebau-gwr/models/realestate-identification";
 import SearchResult from "ember-ebau-gwr/models/search-result";
@@ -26,6 +29,8 @@ export default {
   ConstructionLocalisation,
   Identification,
   PersonIdentification,
+  OrganisationIdentification,
+  LocalOrganisationId,
   SearchResult,
   BuildingEntrance,
   BuildingWork,

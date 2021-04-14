@@ -1,5 +1,15 @@
-<div class={{unless @noMargin "uk-margin"}}>
-  <label for={{@attr}} class={{if @required "uk-text-bold"}}>
+<div
+  class={{concat (unless @noMargin "uk-margin") " " (if @horizontal "uk-flex")}}
+>
+  <label
+    for={{@attr}}
+    class={{
+      concat
+      (if @required "uk-text-bold")
+      " "
+      (if @horizontal "uk-margin-left uk-flex-last")
+    }}
+  >
     {{t (concat @translationBase "." @attr)}} {{if
       @required
       (t "ember-gwr.components.projectForm.required")

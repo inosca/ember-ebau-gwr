@@ -84,7 +84,12 @@
         disabled
         readonly
       />
-      <Field type="number" @attr="constructionSurveyDeptNumber" disabled readonly />
+      <Field
+        type="number"
+        @attr="constructionSurveyDeptNumber"
+        disabled
+        readonly
+      />
 
       <Field
         @inputType="select"
@@ -189,20 +194,67 @@
         @options={{this.choiceOptions.typeOfClientOptions}}
       />
 
-      <div class="uk-flex uk-margin">
-        <div class="uk-width-1-2 uk-margin-small-right">
-          <Field
-            @attr="client.identification.personIdentification.officialName"
-            @noMargin={{true}}
-          />
+      <Field
+        @inputType="checkbox"
+        @attr="client.identification.isOrganisation"
+      />
+
+      {{#if
+        (or
+          this.project.client.identification.isOrganisation
+          (and
+            this.import
+            this.importData.client.identification.organisationIdentification.organisationName
+          )
+        )
+      }}
+        <div class="uk-flex uk-margin">
+          <div class="uk-width-1-2 uk-margin-small-right">
+            <Field
+              @attr="client.identification.organisationIdentification.organisationName"
+              @noMargin={{true}}
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <Field
+              @attr="client.identification.organisationIdentification.organisationAdditionalName"
+              @noMargin={{true}}
+            />
+          </div>
         </div>
-        <div class="uk-width-1-2">
-          <Field
-            @attr="client.identification.personIdentification.firstName"
-            @noMargin={{true}}
-          />
+        <div class="uk-flex uk-margin">
+          <div class="uk-width-1-2">
+            <Field
+              @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
+              @noMargin={{true}}
+              maxlength="36"
+              minlength="1"
+            />
+          </div>
+          <div class="uk-width-1-2 uk-margin-small-left">
+            <Field
+              @attr="client.identification.organisationIdentification.localOrganisationId.organisationIdCategory"
+              @noMargin={{true}}
+              maxlength="20"
+            />
+          </div>
         </div>
-      </div>
+      {{else}}
+        <div class="uk-flex uk-margin">
+          <div class="uk-width-1-2 uk-margin-small-right">
+            <Field
+              @attr="client.identification.personIdentification.officialName"
+              @noMargin={{true}}
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <Field
+              @attr="client.identification.personIdentification.firstName"
+              @noMargin={{true}}
+            />
+          </div>
+        </div>
+      {{/if}}
 
       <div class="{{unless this.import "uk-flex"}} uk-margin">
         <div class={{if this.import "uk-margin" "uk-width-5-6"}}>
