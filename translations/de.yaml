@@ -212,8 +212,8 @@ ember-gwr:
             organisationName: Name des Unternehmens
             organisationAdditionalName: Name des Unternehmens Zusatz
             localOrganisationId:
-              organisationId: Organisations Identifikator
-              organisationIdCategory: Kategorie des Identifikator
+              organisationId: Unternehmens-Identifikationsnummer
+              organisationIdCategory: Kategorie
         address:
           street: Strasse
           houseNumber: Nummer

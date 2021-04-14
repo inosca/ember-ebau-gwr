@@ -222,20 +222,22 @@
             />
           </div>
         </div>
+
         <div class="uk-flex uk-margin">
-          <div class="uk-width-1-2">
-            <Field
-              @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
-              @noMargin={{true}}
-              maxlength="36"
-              minlength="1"
-            />
-          </div>
-          <div class="uk-width-1-2 uk-margin-small-left">
+          <div class="uk-width-1-6">
             <Field
               @attr="client.identification.organisationIdentification.localOrganisationId.organisationIdCategory"
               @noMargin={{true}}
               maxlength="20"
+            />
+          </div>
+          <div class="uk-width-5-6 uk-margin-small-left">
+            <Field
+              @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
+              @noMargin={{true}}
+              placeholder="100.200.300"
+              maxlength="36"
+              minlength="1"
             />
           </div>
         </div>
