@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import XMLModel from "./xml-model";
 
 export class LocalOrganisationId extends XMLModel {
-  @tracked organisationIdCategory;
+  @tracked organisationIdCategory = "CHE";
   @tracked organisationId;
 
   constructor(...args) {
@@ -16,8 +16,6 @@ export class LocalOrganisationId extends XMLModel {
     });
   }
 
-  // <ns3:organisationIdCategory>CH.ESTVID</ns3:organisationIdCategory>
-  // <ns3:organisationId>012.3456.7890</ns3:organisationId>
   static template = `
   <ns3:localOrganisationId>
     <ns3:organisationIdCategory>{{model.organisationIdCategory}}</ns3:organisationIdCategory>
