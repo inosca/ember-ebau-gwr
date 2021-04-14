@@ -12,8 +12,13 @@ export default class DataImport extends Service {
       client: {
         address: { street: "Gässli", houseNumber: 5 },
         identification: {
-          personIdentification: {
-            officialName: "Müller",
+          organisationIdentification: {
+            organisationName: "Adfinis AG",
+            organisationAdditionalName: "Dev",
+            localOrganisationId: {
+              organisationId: "012.3456.7890",
+              organisationIdCategory: "CH.ESTVID",
+            },
           },
         },
       },

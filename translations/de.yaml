@@ -114,8 +114,8 @@ ember-gwr:
         apply: Übernehmen
 
     linkedModels:
-      linkedEntries: Verknüpfte {modelName}
-      noLinkedEntries: Es sind noch keine {modelName} verknüpft
+      linkedEntries: Verknüpfte {modelName}e
+      noLinkedEntries: Es sind noch keine {modelName}e verknüpft
       linkEntry: "{modelName} verknüpfen"
       createEntry: "{modelName} erfassen"
       or: oder
@@ -204,9 +204,16 @@ ember-gwr:
 
       client:
         identification:
+          isOrganisation: Organisation
           personIdentification:
             officialName: Name
             firstName: Vorname
+          organisationIdentification:
+            organisationName: Name des Unternehmens
+            organisationAdditionalName: Name des Unternehmens Zusatz
+            localOrganisationId:
+              organisationId: Organisations Identifikator
+              organisationIdCategory: Kategorie des Identifikator
         address:
           street: Strasse
           houseNumber: Nummer

@@ -19,12 +19,9 @@ export default class Client extends XMLModel {
   }
 
   static template = `
-  {{! this is a hacky workaround since both are required but the form has no requirement}}
-  {{#if model.identification.personIdentification.officialName}}
-    <ns2:client>
-     {{> Identification model=model.identification}}
-     {{> Address model=model.address}}
-    </ns2:client>
-  {{/if}}
+  <ns2:client>
+   {{> Identification model=model.identification}}
+   {{> Address model=model.address}}
+  </ns2:client>
   `;
 }
