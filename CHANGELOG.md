@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.6.0...v1.7.0) (2021-04-14)
+
+
+### Bug Fixes
+
+* **auth:** reenable configuration for user and password in the config service ([b97289c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b97289c5d5730bc3b5bc5003cb39a085769288f2))
+
+
+### Features
+
+* **linked-buildings:** add entries to table for identification ([c541e7f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c541e7fe456fa23017ddd530d3abaee64e44a79f))
+
 # [1.6.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.5.3...v1.6.0) (2021-04-12)
 
 
