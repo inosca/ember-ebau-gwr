@@ -58,6 +58,7 @@ dependencies = {
     "dataImport",
     "store",
     "router",
+    session
   ],
 };
 ```
@@ -80,6 +81,11 @@ All values should follow the officially used format.
 In the `dataImport` service the consuming application fetches and formats the data into the expected format. The format is the same data structure as the model properties which can be found in `/addon/models`.
 
 The service should define a `fetchProject: async () -> Promise<Object>` function.
+
+#### `session`
+
+We expect a `ember-simple-auth` session service which has the
+`data.authenticated.access_token` set.
 
 
 Contributing
