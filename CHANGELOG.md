@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.7.0...v1.8.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **auth-fetch:** set `retry` to true after one failed attempt in `fetch` ([0a3d65a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0a3d65a6c284d251b7b720566f751c75d78e8f3a))
+
+
+### Features
+
+* **client:** implement organisation form ([61bec87](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/61bec8785d5e0734aec20d30592b40404acc7869))
+* **organisation form:** add explanation to the UID field ([864c436](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/864c436b2f30488fe0365a2b97653e2917bdbd26))
+
 # [1.7.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.6.0...v1.7.0) (2021-04-14)
 
 
