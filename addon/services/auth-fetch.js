@@ -69,7 +69,7 @@ export default class AuthFetchService extends Service {
     if (!response.ok && response.status === 401 && !this.showAuthModal) {
       if (!retry) {
         await this.housingStatToken.perform();
-        response = await this.fetch(url, { method, headers, body }, false);
+        response = await this.fetch(url, { method, headers, body }, true);
       }
     }
     return response;
