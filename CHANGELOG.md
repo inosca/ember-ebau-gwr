@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.8.0...v1.9.0) (2021-04-16)
+
+
+### Bug Fixes
+
+* **dependencies:** add session as service dependency ([68ca843](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/68ca8432bbf1e1e4ee3936d625a9a3012dcbf774))
+
+
+### Features
+
+* **organisation form:** add explanation to the UID field ([0ed51d5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0ed51d53e7758040050bb4a3244fdac4e4d86bd3))
+
 # [1.8.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.7.0...v1.8.0) (2021-04-16)
 
 
