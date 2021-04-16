@@ -6,6 +6,7 @@ export default class AuthFetchService extends Service {
   @service config;
   @service intl;
   @service notification;
+  @service session;
 
   @tracked showAuthModal = false;
 
@@ -25,6 +26,7 @@ export default class AuthFetchService extends Service {
       method: "post",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${this.session.data.authenticated.access_token}`,
       },
       ...(username && password
         ? {
