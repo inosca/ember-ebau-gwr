@@ -17,7 +17,6 @@ export default class EmberGWREngine extends Engine {
       "dataImport",
       "store",
       "router",
-      "session",
     ],
   };
 }
