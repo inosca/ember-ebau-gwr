@@ -21,7 +21,6 @@ export default class App extends Application {
             "dataImport",
             "store",
             "router",
-            "session",
           ],
         },
       },
