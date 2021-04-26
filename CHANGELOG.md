@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.0...v1.10.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **client:** only submit client form if organisation name or offical name is present ([baa01f3](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/baa01f39b9a0ec64a2fe3c2a9324464b2b0bcd84))
+
 # [1.10.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.9.0...v1.10.0) (2021-04-26)
 
 
