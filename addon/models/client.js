@@ -19,9 +19,16 @@ export default class Client extends XMLModel {
   }
 
   static template = `
-  <ns2:client>
-   {{> Identification model=model.identification}}
-   {{> Address model=model.address}}
-  </ns2:client>
+  {{#if
+    (or
+      model.identification.personIdentification.officialName
+      model.identification.organisationIdentification.organisationName
+    )
+  }}
+    <ns2:client>
+     {{> Identification model=model.identification}}
+     {{> Address model=model.address}}
+    </ns2:client>
+  {{/if}}
   `;
 }

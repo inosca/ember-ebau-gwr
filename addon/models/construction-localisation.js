@@ -4,7 +4,7 @@ import XMLModel from "./xml-model";
 
 export default class ConstructionLocalisation extends XMLModel {
   @tracked municipalityId;
-  @tracked municipalityName;
+  @tracked municipalityName = "";
   @tracked cantonAbbreviation;
 
   constructor(...args) {
