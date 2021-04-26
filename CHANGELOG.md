@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.9.0...v1.10.0) (2021-04-26)
+
+
+### Features
+
+* **BREAKING CHANGE:** move auth token and camac group to gwr config service ([8142c72](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8142c72622d8087ecfb49c6ec623349260d6c01d))
+
 # [1.9.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.8.0...v1.9.0) (2021-04-16)
 
 
