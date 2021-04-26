@@ -77,13 +77,14 @@
             />
           </div>
         </div>
+
+        <Field
+          @attr="constructionLocalisation.municipalityName"
+          disabled
+          readonly
+        />
       {{/unless}}
 
-      <Field
-        @attr="constructionLocalisation.municipalityName"
-        disabled
-        readonly
-      />
       <Field
         type="number"
         @attr="constructionSurveyDeptNumber"

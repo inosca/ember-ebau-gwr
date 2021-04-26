@@ -11,7 +11,6 @@ export default class ProjectNewRoute extends Route {
   model() {
     const project = new ConstructionProject();
     project.constructionLocalisation.municipalityId = this.config.municipalityId;
-    project.constructionLocalisation.municipalityName = this.config.municipalityName;
     project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
     project.constructionSurveyDeptNumber = this.config.constructionSurveyDeptNumber;
     return { project, instanceId: this.modelFor("application").id };
