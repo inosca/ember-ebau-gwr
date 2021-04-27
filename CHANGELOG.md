@@ -1,3 +1,11 @@
+## [1.10.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.1...v1.10.2) (2021-04-27)
+
+
+### Bug Fixes
+
+* **buildingWork:** Dont show a work entry which has no building ([0f38b38](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0f38b389dabd09bbff57d4a295e1a69e84b02db0))
+* **delete project:** fetch projects after delete ([8c98894](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8c98894445100506233560071000478980aea6ba))
+
 ## [1.10.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.0...v1.10.1) (2021-04-26)
 
 
