@@ -20,13 +20,15 @@ export default class Building extends XMLModel {
   }
 
   get fullAddressTexts() {
-    return this.buildingEntrance.map(
-      (buildingEntrance) =>
-        `${buildingEntrance.street.description.descriptionLong ?? ""} ${
-          buildingEntrance.buildingEntranceNo ?? ""
-        }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
-          buildingEntrance.locality.name.nameLong ?? ""
-        }`
+    return (
+      this.buildingEntrance?.map(
+        (buildingEntrance) =>
+          `${buildingEntrance.street.description.descriptionLong ?? ""} ${
+            buildingEntrance.buildingEntranceNo ?? ""
+          }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
+            buildingEntrance.locality.name.nameLong ?? ""
+          }`
+      ) ?? ""
     );
   }
 }
