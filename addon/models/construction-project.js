@@ -68,6 +68,11 @@ export default class ConstructionProject extends XMLModel {
         work: [BuildingWork],
       },
     });
+
+    // Do not show buildingWork which have no building attached
+    this.work = this.work.filter(
+      (buildingWork) => !buildingWork.building.isNew
+    );
   }
   // The order of the fields seems to be important. Sometimes fields in wrong orders throw errors.
   // TODO <work> is until now a fixed value. We need to implement a select for it and display it.
