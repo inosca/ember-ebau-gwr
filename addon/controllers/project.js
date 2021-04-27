@@ -42,7 +42,7 @@ export default class ProjectController extends Controller {
   async removeProjectLink() {
     const link = this.store
       .peekAll("gwr-link")
-      .find(({ eproid }) => eproid === this.activeProject);
+      .find(({ eproid }) => Number(eproid) === this.activeProject);
     await link.destroyRecord();
     await this.gwr.all.perform();
   }
