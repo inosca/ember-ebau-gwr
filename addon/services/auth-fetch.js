@@ -1,6 +1,6 @@
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task } from "ember-concurrency-decorators";
 
 export default class AuthFetchService extends Service {
   @service config;
@@ -14,13 +14,23 @@ export default class AuthFetchService extends Service {
     this.housingStatToken.perform();
   }
 
-  @lastValue("housingStatToken") token;
-  @task
-  *housingStatToken(username, password) {
-    if (this.config.username && this.config.password) {
-      ({ username, password } = this.config);
-    }
+  get token() {
+    return this.housingStatToken.lastSuccessful.value.token;
+  }
 
+  get municipality() {
+    return this.housingStatToken.lastSuccessful.value.municipality;
+  }
+
+  @task
+  *housingStatToken(username, password, municipality) {
+    if (
+      this.config.username &&
+      this.config.password &&
+      this.config.municipality
+    ) {
+      ({ username, password, municipality } = this.config);
+    }
     const response = yield fetch(`/api/v1/housing-stat-token`, {
       method: "post",
       headers: {
@@ -33,6 +43,7 @@ export default class AuthFetchService extends Service {
             body: JSON.stringify({
               username,
               password,
+              municipality,
             }),
           }
         : {}),
@@ -53,7 +64,7 @@ export default class AuthFetchService extends Service {
       }
     }
 
-    return json.token;
+    return json;
   }
 
   async fetch(url, { method = "get", headers = {}, body } = {}, retry = false) {

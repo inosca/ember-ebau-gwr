@@ -1,5 +1,5 @@
-import JSONAPIAdapter from "@ember-data/adapter/json-api";
+import AppllicationAdapter from "./appllication";
 
-export default class GwrLinkAdapter extends JSONAPIAdapter {
+export default class GwrLinkAdapter extends AppllicationAdapter {
   namespace = "api/v1/linker";
 }

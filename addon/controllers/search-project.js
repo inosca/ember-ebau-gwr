@@ -8,7 +8,6 @@ import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 export default class SearchProjectController extends Controller {
   @service gwr;
   @service intl;
-  @service config;
   @service store;
 
   @tracked extendedSearch = false;
@@ -19,7 +18,7 @@ export default class SearchProjectController extends Controller {
   @lastValue("search") searchResults;
   @task
   *search(query = {}) {
-    query.constructionSurveyDeptNumber = this.config.constructionSurveyDeptNumber;
+    query.constructionSurveyDeptNumber = this.gwr.constructionSurveyDeptNumber;
     return yield this.gwr.searchProject(query);
   }
 

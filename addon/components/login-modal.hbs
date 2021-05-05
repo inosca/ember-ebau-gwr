@@ -31,12 +31,29 @@
           {{on "input" this.updateValue}}
         />
       </div>
+      <div class="uk-width-1">
+        <select
+          name="municipality"
+          class="uk-select"
+          value={{this.municipality}}
+          {{on "input" this.updateValue}}
+        >
+          <option value="">
+            {{t "ember-gwr.components.loginModal.municipality"}}
+          </option>
+          {{#each this.municipalities as |municipality|}}
+            <option value={{municipality.id}}>
+              {{municipality.name}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
     </div>
   </Modal.body>
   <Modal.footer @class="uk-text-right">
     <UkButton
       @color="primary"
-      @disabled={{not (and this.username this.password)}}
+      @disabled={{not (and this.username this.password this.municipality)}}
       @loading={{this.authFetch.housingStatToken.isRunning}}
       {{on "click" this.login}}
     >
