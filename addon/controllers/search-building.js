@@ -10,7 +10,6 @@ import {
 
 export default class SearchBuildingController extends Controller {
   @service gwr;
-  @service config;
   @service intl;
   @service notification;
 
@@ -22,7 +21,7 @@ export default class SearchBuildingController extends Controller {
   @task *search(query) {
     try {
       query.streetLang = languageOptions[this.intl.primaryLocale];
-      query.municipality = this.config.municipalityId;
+      query.municipality = this.gwr.municipality;
       return yield this.gwr.searchBuilding(query);
     } catch (error) {
       console.error(error);

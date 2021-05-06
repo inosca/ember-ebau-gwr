@@ -12,6 +12,7 @@ import Handlebars, { compile } from "handlebars";
 /* eslint-disable ember/classic-decorator-no-classic-methods */
 export default class GwrService extends Service {
   @service config;
+  @service authFetch;
   @service store;
   @service authFetch;
 
@@ -20,6 +21,14 @@ export default class GwrService extends Service {
   constructor(...args) {
     super(...args);
     this._setupHandlebarsPartials();
+  }
+
+  get municipality() {
+    return this.authFetch.municipality;
+  }
+
+  get constructionSurveyDeptNumber() {
+    return `${this.municipality}00`;
   }
 
   createAndCacheProject(xml) {

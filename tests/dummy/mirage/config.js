@@ -27,7 +27,9 @@ export default function () {
       return new Response(400, {}, { [400]: { source: "internal" } });
     }
 
-    const { username, password } = JSON.parse(request.requestBody);
+    const { username, password, municipality } = JSON.parse(
+      request.requestBody
+    );
     //eslint-disable-next-line no-alert
     const wsk_id = localStorage.getItem("wsk_id") || prompt("wsk_id:");
     if (wsk_id) {
@@ -51,7 +53,7 @@ export default function () {
 
     gwrToken = token;
 
-    return JSON.stringify({ token: gwrToken });
+    return JSON.stringify({ token: gwrToken, municipality });
   });
 
   this.passthrough("http://localhost:8010/**");
