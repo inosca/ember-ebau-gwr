@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.2...v2.0.0) (2021-05-06)
+
+
+### Bug Fixes
+
+* **project-table:** cast eproid from data model to number for comparison ([6a15404](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6a154043c39507533035cb5b20fe4543444029e0))
+
+
+### Features
+
+* **login:** add municipality select to login ([226a9b6](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/226a9b6e86c3d8fee98ba61be279f09a9eb7264c))
+
+
+### BREAKING CHANGES
+
+* **login:** rename `municipalityId` to `municipality` in config
+
 ## [1.10.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.1...v1.10.2) (2021-04-27)
 
 
