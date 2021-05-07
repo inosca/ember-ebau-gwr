@@ -2,7 +2,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import env from "ember-ebau-gwr/config/environment";
+import municipalities from "ember-ebau-gwr/models/municipalities";
 
 export default class LoginModalComponent extends Component {
   @service authFetch;
@@ -13,7 +13,7 @@ export default class LoginModalComponent extends Component {
   @tracked municipality;
 
   get municipalities() {
-    return env.municipalities[this.config.cantonAbbreviation];
+    return municipalities[this.config.cantonAbbreviation];
   }
 
   @action
