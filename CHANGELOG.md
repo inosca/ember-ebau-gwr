@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.0.0...v2.0.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* **municipalities:** move municipalities out of env since this is not read and move into a model file ([480691e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/480691ef59ac3556dea9542f43a5901c10c736ca))
+
 # [2.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v1.10.2...v2.0.0) (2021-05-06)
 
 
