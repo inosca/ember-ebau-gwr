@@ -26,7 +26,8 @@ export default class Street extends XMLModel {
   @tracked officialStreetNumber;
   @tracked streetKind;
   @tracked streetStatus;
-  @tracked description;
+  @tracked description = new StreetDescription();
+
   constructor(xmlOrObject, root = "street") {
     super(xmlOrObject);
     this.setFieldsFromXML({

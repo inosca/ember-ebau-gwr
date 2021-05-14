@@ -6,16 +6,16 @@
   {{else}}
     <h2 class="uk-flex uk-flex-between">
       <span>
-        {{#if this.building.isNew}}
+        {{#if this.buildingWork.building.isNew}}
           {{t "ember-gwr.building.createNewBuilding"}}
         {{else}}
           {{t
             "ember-gwr.building.title"
-            id=this.building.EGID
+            id=this.buildingWork.building.EGID
             status=(t
               (concat
                 "ember-gwr.building.fields.buildingStatusOptions."
-                this.building.buildingStatus
+                this.buildingWork.building.buildingStatus
               )
             )
           }}
@@ -24,16 +24,75 @@
     </h2>
 
     <ProjectForm
-      @project={{this.building}}
+      @project={{this.buildingWork.building}}
       @onSubmit={{this.saveBuilding}}
       @translationBase="ember-gwr.building.fields" as |Field|
     >
+      <h3>
+        {{t
+          "ember-gwr.building.sections.kindOfWorkForProject"
+          projectId=@model.projectId
+        }}
+      </h3>
+      {{#let
+        (component
+          Field
+          project=this.buildingWork
+          translationBase="ember-gwr.buildingWork.fields"
+        ) as |BuildingWorkField|
+      }}
+        <BuildingWorkField
+          @attr="kindOfWork"
+          @inputType="select"
+          @convertValueTo="number"
+          @noPlaceholder={{true}}
+          @options={{this.Models.BuildingWork.kindOfWorkOptions}}
+          @required={{true}}
+        />
+        <div class="uk-flex">
+          <div class="uk-width-1-2">
+            <BuildingWorkField
+              @attr="energeticRestauration"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField
+              @attr="renovationHeatingsystem"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField
+              @attr="innerConversionRenovation"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField @attr="conversion" @inputType="checkbox" />
+            <BuildingWorkField
+              @attr="extensionHeighteningHeated"
+              @inputType="checkbox"
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <BuildingWorkField
+              @attr="extensionHeighteningNotHeated"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField
+              @attr="thermicSolarFacility"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField
+              @attr="photovoltaicSolarFacility"
+              @inputType="checkbox"
+            />
+            <BuildingWorkField @attr="otherWorks" @inputType="checkbox" />
+          </div>
+        </div>
+      {{/let}}
+      <hr />
 
       <h3>
         {{t "ember-gwr.building.sections.building"}}
       </h3>
 
-      {{#unless this.building.isNew}}
+      {{#unless this.buildingWork.building.isNew}}
         <Field @attr="EGID" type="number" readonly disabled />
       {{/unless}}
 
@@ -44,7 +103,7 @@
         @inputType="select"
         @convertValueTo="number"
         @options={{this.Models.Building.buildingCategoryOptions}}
-        required
+        @required={{true}}
       />
       <Field
         @attr="buildingClass"
@@ -57,25 +116,46 @@
         {{t "ember-gwr.building.sections.locality"}}
       </h3>
 
-      <Field @attr="coordinates.north" type="number" step="0.01" required />
-      <Field @attr="coordinates.east" type="number" step="0.01" required />
+      <Field
+        @attr="coordinates.north"
+        type="number"
+        step="0.001"
+        @required={{true}}
+        min="1070000.0"
+        max="1300000.999"
+      />
+      <Field
+        @attr="coordinates.east"
+        type="number"
+        step="0.001"
+        min="2480000.0"
+        max="2840000.999"
+        @required={{true}}
+      />
       <Field
         @attr="coordinates.originOfCoordinates"
         @inputType="select"
         @convertValueTo="number"
         @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
-        required
+        @required={{true}}
       />
       <Field @attr="neighbourhood" type="number" min="1000" />
 
-      <h4>
-        {{t "ember-gwr.building.sections.localCodes"}}
-      </h4>
-
-      <Field @attr="localCode1" />
-      <Field @attr="localCode2" />
-      <Field @attr="localCode3" />
-      <Field @attr="localCode4" />
+      <ul uk-accordion>
+        <li>
+          <a class="uk-accordion-title" href="#">
+            <h4>
+              {{t "ember-gwr.building.sections.localCodes"}}
+            </h4>
+          </a>
+          <div class="uk-accordion-content">
+            <Field @attr="localCode1" />
+            <Field @attr="localCode2" />
+            <Field @attr="localCode3" />
+            <Field @attr="localCode4" />
+          </div>
+        </li>
+      </ul>
 
       <h3>
         {{t "ember-gwr.building.sections.statusAndData"}}
@@ -85,20 +165,20 @@
         @attr="buildingStatus"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Building.buildingStatusOptions}}
-        required
+        @options={{this.buildingStatusOptions}}
+        @required={{true}}
       />
 
       <Field @attr="nameOfBuilding" />
 
       <Field @attr="dateOfConstruction.yearMonthDay" @inputType="date" />
-      {{#if this.building.dateOfConstruction.year}}
+      {{#if this.buildingWork.building.dateOfConstruction.year}}
         <Field @attr="dateOfConstruction.year" readonly disabled />
       {{/if}}
-      {{#if this.building.dateOfConstruction.yearMonth}}
+      {{#if this.buildingWork.building.dateOfConstruction.yearMonth}}
         <Field @attr="dateOfConstruction.yearMonth" readonly disabled />
       {{/if}}
-      {{#if this.building.dateOfConstruction.periodOfConstruction}}
+      {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
         <Field
           @attr="dateOfConstruction.periodOfConstruction"
           @inputType="select"
@@ -122,13 +202,13 @@
         {{t "ember-gwr.building.sections.dimensions"}}
       </h3>
       <Field @attr="surfaceAreaOfBuilding" type="number" />
-      <Field @attr="volume.volume" type="number" required />
+      <Field @attr="volume.volume" type="number" @required={{true}} />
       <Field
         @attr="volume.norm"
         @inputType="select"
         @convertValueTo="number"
         @options={{this.Models.Volume.normOptions}}
-        required
+        @required={{true}}
       />
       <Field
         @attr="volume.informationSource"

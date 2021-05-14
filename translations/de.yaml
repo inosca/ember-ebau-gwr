@@ -127,28 +127,23 @@ ember-gwr:
       cancel: Abbrechen
 
   buildingWork:
-    kindOfWork: Art der Arbeiten
-    kindOfWorkPlaceholder: Wählen Sie eine Art der Arbeit aus...
-    kindOfWorkOptions:
-      6001: Neubau
-      6002: Umbau
-      6007: Abbruch
-    constructionWorkDone: Art der Arbeiten
-    constructionWorkDonePlaceholder: Wählen Sie eine Art der Arbeit aus...
-    constructionWorkDoneOptions:
-      6001: Neubau
-      6002: Umbau
-      6007: Abbruch
+    fields:
+      kindOfWork: Art der Arbeiten
+      kindOfWorkPlaceholder: Wählen Sie eine Art der Arbeit aus...
+      kindOfWorkOptions:
+        6001: Neubau
+        6002: Umbau
+        6007: Abbruch
 
-    energeticRestauration: Energetische Sanierung
-    renovationHeatingsystem: Sanierung des Heizsystems
-    innerConversionRenovation: Umbauten / Renovationen im Innenbereich
-    conversion: Umnutzung
-    extensionHeighteningHeated: Beheizte Erweiterung
-    extensionHeighteningNotHeated: Nicht beheizte Erweiterung
-    thermicSolarFacility: Installation thermische Solaranlage
-    photovoltaicSolarFacility: Installation Photovoltaikanlage
-    otherWorks: Andere Arbeiten
+      energeticRestauration: Energetische Sanierung
+      renovationHeatingsystem: Sanierung des Heizsystems
+      innerConversionRenovation: Umbauten / Renovationen im Innenbereich
+      conversion: Umnutzung
+      extensionHeighteningHeated: Beheizte Erweiterung
+      extensionHeighteningNotHeated: Nicht beheizte Erweiterung
+      thermicSolarFacility: Installation thermische Solaranlage
+      photovoltaicSolarFacility: Installation Photovoltaikanlage
+      otherWorks: Andere Arbeiten
 
   building:
     title: Gebäude {id} - {status}
@@ -160,6 +155,7 @@ ember-gwr:
     saveSuccess: Gebäude erfolgreich gespeichert.
 
     sections:
+      kindOfWorkForProject: Art der Arbeiten für Bauprojekt {projectId}
       building: Gebäude
       locality: Ortschaft
       localCodes: Lokalcodes

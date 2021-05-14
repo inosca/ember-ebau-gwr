@@ -34,17 +34,6 @@ const modifyConstructionProject =
 {{/base}}`;
 
 // prettier-ignore
-const modifyBuilding =
-`{{#>base}}
-  <ns2:modifyBuilding>
-    {{> Building}}
-    <ns2:reason>
-      {{reason}}
-    </ns2:reason>
-  </ns2:modifyBuilding>
-{{/base}}`;
-
-// prettier-ignore
 const addConstructionProject =
 `{{#>base}}
   <ns2:addConstructionProject>
@@ -184,18 +173,40 @@ const bindBuildingToConstructionProject =
 `{{#>base}}
   <ns2:bindBuildingToConstructionProject>
     <ns2:EPROID>{{model.EPROID}}</ns2:EPROID>
-    <ns2:constructionWorkDone>{{model.constructionWorkDone}}</ns2:constructionWorkDone>
-    <ns2:energeticRestauration>{{model.energeticRestauration}}</ns2:energeticRestauration>
-    <ns2:renovationHeatingsystem>{{model.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
-    <ns2:innerConversionRenovation>{{model.innerConversionRenovation}}</ns2:innerConversionRenovation>
-    <ns2:conversion>{{model.conversion}}</ns2:conversion>
-    <ns2:extensionHeighteningHeated>{{model.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
-    <ns2:extensionHeighteningNotHeated>{{model.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
-    <ns2:thermicSolarFacility>{{model.thermicSolarFacility}}</ns2:thermicSolarFacility>
-    <ns2:photovoltaicSolarFacility>{{model.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
-    <ns2:otherWorks>{{model.otherWorks}}</ns2:otherWorks>
+    <ns2:constructionWorkDone>{{model.buildingWork.kindOfWork}}</ns2:constructionWorkDone>
+    <ns2:energeticRestauration>{{model.buildingWork.energeticRestauration}}</ns2:energeticRestauration>
+    <ns2:renovationHeatingsystem>{{model.buildingWork.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
+    <ns2:innerConversionRenovation>{{model.buildingWork.innerConversionRenovation}}</ns2:innerConversionRenovation>
+    <ns2:conversion>{{model.buildingWork.conversion}}</ns2:conversion>
+    <ns2:extensionHeighteningHeated>{{model.buildingWork.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
+    <ns2:extensionHeighteningNotHeated>{{model.buildingWork.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
+    <ns2:thermicSolarFacility>{{model.buildingWork.thermicSolarFacility}}</ns2:thermicSolarFacility>
+    <ns2:photovoltaicSolarFacility>{{model.buildingWork.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
+    <ns2:otherWorks>{{model.buildingWork.otherWorks}}</ns2:otherWorks>
   </ns2:bindBuildingToConstructionProject>
 {{/base}}`
+
+// prettier-ignore
+const modifyBuilding =
+`{{#>base}}
+  <ns2:modifyBuilding>
+    {{> Building}}
+    <ns2:reason>
+      {{reason}}
+    </ns2:reason>
+  </ns2:modifyBuilding>
+{{/base}}`;
+
+// prettier-ignore
+const addBuilding =
+`{{#>base}}
+  <ns2:addBuilding>
+    {{> Building}}
+    <ns2:reason>
+      {{reason}}
+    </ns2:reason>
+  </ns2:addBuilding>
+{{/base}}`;
 
 export const Templates = {
   modifyConstructionProject,
@@ -204,5 +215,6 @@ export const Templates = {
   getBuilding,
   bindBuildingToConstructionProject,
   modifyBuilding,
+  addBuilding,
 };
 export const Partials = { header, delivery, base };

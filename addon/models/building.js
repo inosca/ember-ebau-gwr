@@ -137,7 +137,6 @@ export default class Building extends XMLModel {
 
   static template = `
   <ns2:building>
-    <ns2:EGID>{{model.EGID}}</ns2:EGID>
     <ns2:municipality>{{model.municipality}}</ns2:municipality>
     {{#if model.officialBuildingNo}}
       <ns2:officialBuildingNo>{{model.officialBuildingNo}}</ns2:officialBuildingNo>
@@ -163,7 +162,9 @@ export default class Building extends XMLModel {
     {{/if}}
     <ns2:buildingStatus>{{model.buildingStatus}}</ns2:buildingStatus>
     <ns2:buildingCategory>{{model.buildingCategory}}</ns2:buildingCategory>
-    <ns2:buildingClass>{{model.buildingClass}}</ns2:buildingClass>
+    {{#if model.buildingClass}}
+      <ns2:buildingClass>{{model.buildingClass}}</ns2:buildingClass>
+    {{/if}}
     {{> DateOfConstruction model=model.dateOfConstruction}}
     {{! Returns no error but not saved by api}}
     {{#if model.yearOfDemolition}}
@@ -189,6 +190,17 @@ export default class Building extends XMLModel {
     {{/if}}
     {{#if model.buildingFreeText2}}
       <ns2:buildingFreeText2>{{model.buildingFreeText2}}</ns2:buildingFreeText2>
+    {{/if}}
+
+    {{#if model.isNew}}
+      <ns2:buildingEntrance>
+        <ns2:buildingEntranceNo>4</ns2:buildingEntranceNo>
+        <ns2:locality>
+          <ns2:name>
+            <ns2:nameLong>Galgenen</ns2:nameLong>
+          </ns2:name>
+        </ns2:locality>
+      </ns2:buildingEntrance>
     {{/if}}
   </ns2:building>
 `;

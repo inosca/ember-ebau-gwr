@@ -15,7 +15,6 @@ export default class GwrService extends Service {
   @service config;
   @service authFetch;
   @service store;
-  @service authFetch;
 
   _cache = {};
 
@@ -80,9 +79,13 @@ export default class GwrService extends Service {
     const body = this._buildXMLRequest("addConstructionProject", project);
     const response = await this.authFetch.fetch("/constructionprojects/", {
       method: "post",
-
       body,
     });
+
+    if (!response.ok) {
+      throw new Error("GWR API: addConstructionProject failed");
+    }
+
     const xml = await response.text();
     return this.createAndCacheProject(xml);
   }
@@ -158,12 +161,15 @@ export default class GwrService extends Service {
   }
 
   async unbindBuildingFromConstructionProject(EPROID, EGID) {
-    await this.authFetch.fetch(
+    const response = await this.authFetch.fetch(
       `/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
       {
         method: "put",
       }
     );
+    if (!response.ok) {
+      throw new Error("GWR API: unbindBuildingFromConstructionProject failed");
+    }
     // Refresh cache after removing the building
     await this.get(EPROID);
   }
@@ -172,7 +178,7 @@ export default class GwrService extends Service {
     const body = this._buildXMLRequest("bindBuildingToConstructionProject", {
       EPROID,
       EGID,
-      ...buildingWork,
+      buildingWork,
     });
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/bindToConstructionProject`,
@@ -198,6 +204,21 @@ export default class GwrService extends Service {
 
     if (!response.ok) {
       throw new Error("GWR API: modifyBuilding failed");
+    }
+
+    const xml = await response.text();
+    return new Building(xml);
+  }
+
+  async addBuilding(building) {
+    const body = this._buildXMLRequest("addBuilding", building);
+    const response = await this.authFetch.fetch("/buildings/", {
+      method: "post",
+      body,
+    });
+
+    if (!response.ok) {
+      throw new Error("GWR API: addBuilding failed");
     }
 
     const xml = await response.text();

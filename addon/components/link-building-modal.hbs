@@ -13,11 +13,11 @@
       (component
         "project-form/field"
         project=this.buildingWork
-        translationBase="ember-gwr.buildingWork"
+        translationBase="ember-gwr.buildingWork.fields"
       ) as |Field|
     }}
       <Field
-        @attr="constructionWorkDone"
+        @attr="kindOfWork"
         @inputType="select"
         @convertValueTo="number"
         @noPlaceholder={{true}}
