@@ -34,6 +34,17 @@ const modifyConstructionProject =
 {{/base}}`;
 
 // prettier-ignore
+const modifyBuilding =
+`{{#>base}}
+  <ns2:modifyBuilding>
+    {{> Building}}
+    <ns2:reason>
+      {{reason}}
+    </ns2:reason>
+  </ns2:modifyBuilding>
+{{/base}}`;
+
+// prettier-ignore
 const addConstructionProject =
 `{{#>base}}
   <ns2:addConstructionProject>
@@ -192,5 +203,6 @@ export const Templates = {
   getConstructionProject,
   getBuilding,
   bindBuildingToConstructionProject,
+  modifyBuilding,
 };
 export const Partials = { header, delivery, base };

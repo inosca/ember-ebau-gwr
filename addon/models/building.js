@@ -3,7 +3,6 @@ import { tracked } from "@glimmer/tracking";
 import BuildingEntrance from "./building-entrance";
 import Coordinates from "./coordinates";
 import DateOfConstruction from "./date-of-construction";
-import DateOfDemolition from "./date-of-demolition";
 import LocalId from "./local-id";
 import RealestateIdentification from "./realestate-identification";
 import ThermotechnicalDeviceForHeating from "./thermotechnical-device-for-heating";
@@ -26,7 +25,18 @@ export class Volume extends XMLModel {
       },
     });
   }
-  static informationSource = [
+
+  static template = `
+  <ns2:volume>
+    <volume>{{model.volume}}</volume>
+    {{#if model.informationSource}}
+      <informationSource>{{model.informationSource}}</informationSource>
+    {{/if}}
+    <norm>{{model.norm}}</norm>
+  </ns2:volume>
+  `;
+
+  static informationSourceOptions = [
     869, // Gemäss Baubewilligung
     858, // Gemäss Gebäudeenergieausweis der Kantone (GEAK)
     853, // Gemäss Gebäudeversicherung
@@ -38,7 +48,7 @@ export class Volume extends XMLModel {
     859, // Andere
   ];
 
-  static norm = [
+  static normOptions = [
     961, // Gemäss SIA-Norm 116
     962, // Gemäss SIA-Norm 416
     969, // unbekannt
@@ -61,12 +71,12 @@ export default class Building extends XMLModel {
   @tracked buildingCategory;
   @tracked buildingClass;
   @tracked dateOfConstruction = new DateOfConstruction();
-  @tracked dateOfDemolition = new DateOfDemolition();
+  @tracked yearOfDemolition;
   @tracked surfaceAreaOfBuilding;
   @tracked volume = new Volume();
   @tracked numberOfFloors;
   @tracked numberOfSeparateHabitableRooms;
-  @tracked civilDefenseShelter;
+  @tracked civilDefenseShelter = false;
   @tracked energyRelevantSurface;
   @tracked thermotechnicalDeviceForHeating = [];
   @tracked thermotechnicalDeviceForWarmWater = [];
@@ -95,7 +105,7 @@ export default class Building extends XMLModel {
         buildingCategory: Number,
         buildingClass: Number,
         dateOfConstruction: DateOfConstruction,
-        dateOfDemolition: DateOfDemolition,
+        yearOfDemolition: Number,
         surfaceAreaOfBuilding: Number,
         volume: Volume,
         numberOfFloors: Number,
@@ -125,7 +135,65 @@ export default class Building extends XMLModel {
     );
   }
 
-  static buildingStatus = [
+  static template = `
+  <ns2:building>
+    <ns2:EGID>{{model.EGID}}</ns2:EGID>
+    <ns2:municipality>{{model.municipality}}</ns2:municipality>
+    {{#if model.officialBuildingNo}}
+      <ns2:officialBuildingNo>{{model.officialBuildingNo}}</ns2:officialBuildingNo>
+    {{/if}}
+    {{#if model.nameOfBuilding}}
+      <ns2:nameOfBuilding>{{model.nameOfBuilding}}</ns2:nameOfBuilding>
+    {{/if}}
+    {{> Coordinates model=model.coordinates}}
+    {{#if model.localCode1}}
+      <ns2:localCode1>{{model.localCode1}}</ns2:localCode1>
+    {{/if}}
+    {{#if model.localCode2}}
+      <ns2:localCode2>{{model.localCode2}}</ns2:localCode2>
+    {{/if}}
+    {{#if model.localCode3}}
+      <ns2:localCode3>{{model.localCode3}}</ns2:localCode3>
+    {{/if}}
+    {{#if model.localCode4}}
+      <ns2:localCode4>{{model.localCode4}}</ns2:localCode4>
+    {{/if}}
+    {{#if model.neighbourhood}}
+      <ns2:neighbourhood>{{model.neighbourhood}}</ns2:neighbourhood>
+    {{/if}}
+    <ns2:buildingStatus>{{model.buildingStatus}}</ns2:buildingStatus>
+    <ns2:buildingCategory>{{model.buildingCategory}}</ns2:buildingCategory>
+    <ns2:buildingClass>{{model.buildingClass}}</ns2:buildingClass>
+    {{> DateOfConstruction model=model.dateOfConstruction}}
+    {{! Returns no error but not saved by api}}
+    {{#if model.yearOfDemolition}}
+      <ns2:yearOfDemolition>{{model.yearOfDemolition}}</ns2:yearOfDemolition>
+    {{/if}}
+    {{#if model.surfaceAreaOfBuilding}}
+      <ns2:surfaceAreaOfBuilding>{{model.surfaceAreaOfBuilding}}</ns2:surfaceAreaOfBuilding>
+    {{/if}}
+    {{> Volume model=model.volume}}
+    {{#if model.numberOfFloors}}
+      <ns2:numberOfFloors>{{model.numberOfFloors}}</ns2:numberOfFloors>
+    {{/if}}
+    {{#if model.numberOfSeparateHabitableRooms}}
+      <ns2:numberOfSeparateHabitableRooms>{{model.numberOfSeparateHabitableRooms}}</ns2:numberOfSeparateHabitableRooms>
+    {{/if}}
+    {{! Returns no error but not saved by api}}
+    <ns2:civilDefenseShelter>{{model.civilDefenseShelter}}</ns2:civilDefenseShelter>
+    {{#if model.energyRelevantSurface}}
+      <ns2:energyRelevantSurface>{{model.energyRelevantSurface}}</ns2:energyRelevantSurface>
+    {{/if}}
+    {{#if model.buildingFreeText1}}
+      <ns2:buildingFreeText1>{{model.buildingFreeText1}}</ns2:buildingFreeText1>
+    {{/if}}
+    {{#if model.buildingFreeText2}}
+      <ns2:buildingFreeText2>{{model.buildingFreeText2}}</ns2:buildingFreeText2>
+    {{/if}}
+  </ns2:building>
+`;
+
+  static buildingStatusOptions = [
     1001, // Projektiert
     1002, // Bewilligt
     1003, // Im Bau
@@ -135,7 +203,7 @@ export default class Building extends XMLModel {
     1008, // Nicht realisiert
   ];
 
-  static buildingCategory = [
+  static buildingCategoryOptions = [
     1010, // Provisorische Unterkunft
     1020, // Reine Wohngebäude (Wohnnutzung ausschliesslich)
     1030, // Wohngebäude mit Nebennutzung
@@ -144,7 +212,7 @@ export default class Building extends XMLModel {
     1080, // Sonderbau
   ];
 
-  static buildingClass = [
+  static buildingClassOptions = [
     1231, //  Restaurants und Bars in Gebäude ohne Wohnnutzung
     1275, //  Andere Gebäude für kollektive Beherbergung
     1276, // Gebäude für Tierhaltung;

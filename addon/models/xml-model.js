@@ -22,6 +22,8 @@ export default class XMLModel {
     // This would cause problems with comparison.
     return element.children.length
       ? new type(element)
+      : type === Boolean
+      ? element.textContent === "true"
       : type(element.textContent);
   }
 

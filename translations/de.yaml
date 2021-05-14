@@ -151,11 +151,86 @@ ember-gwr:
     otherWorks: Andere Arbeiten
 
   building:
+    title: Gebäude {id} - {status}
+    createNewBuilding: Neues Gebäude erfassen
+
+    backToProject: Zurück zum Bauprojekt
+
+    saveError: Beim Speichern des Gebäudes ist ein Fehler aufgetretten.
+    saveSuccess: Gebäude erfolgreich gespeichert.
+
+    sections:
+      building: Gebäude
+      locality: Ortschaft
+      localCodes: Lokalcodes
+      statusAndData: Status und Daten
+      structure: Struktur
+      dimensions: Dimensionen
+      energy: Energie
+      freeTextFields: Freitext Felder
+
     fields:
       EGID: EGID
+      officialBuildingNo: Amtliche Gebäudenummer
+      nameOfBuilding: Name des Gebäudes
+
+      coordinates:
+        east: E-Gebäudekoordinate
+        north: N-Gebäudekoordinate
+        originOfCoordinates: Koordinatenherkunft
+        originOfCoordinatesPlaceholder: Wählen Sie die  Koordinatenherkunft aus...
+        originOfCoordinatesOptions:
+          901: Amtliche Vermessung, DM.01
+          902: Aus amtlicher Vermessung hergeleitet
+          903: Angabe Nachführungsgeometer
+          904: Angabe Baugesuch
+          905: Bundesamt für Statistik (BFS)
+          906: Datensatz GeoPost
+          909: Andere Datenquelle
+      localCode1: Lokalcode 1
+      localCode2: Lokalcode 2
+      localCode3: Lokalcode 3
+      localCode4: Lokalcode 4
+
+      neighbourhood: Quartier
+
+      buildingStatus: Gebäudestatus
+      buildingStatusPlaceholder: Wählen Sie einen Gebäudestatus aus...
+      buildingStatusOptions:
+        1001: Projektiert
+        1002: Bewilligt
+        1003: Im Bau
+        1004: Bestehend
+        1005: Nicht nutzbar
+        1007: Abgebrochen
+        1008: Nicht realisiert
+
+      buildingCategory: Gebäudekategorie
+      buildingCategoryPlaceholder: Wählen Sie eine Gebäudekategorie aus...
+      buildingCategoryOptions:
+        1010: Provisorische Unerkunft
+        1020: Reine Wohngebäude (Wohnnutzung ausschliesslich)
+        1030: Wohngebäude mit Nebennutzung
+        1040: Gebäude mit teilweiser Wohnnutzung
+        1060: Gebäude ohne Wohnnutzung
+        1080: Sonderbau
+
+
+      buildingClass: Gebäudeklasse
+      buildingClassPlaceholder: Wählen Sie eine Gebäudeklasse aus...
+      buildingClassOptions:
+        1231: Restaurants und Bars in Gebäude ohne Wohnnutzung
+        1275: Andere Gebäude für kollektive Beherbergung
+        1276: Gebäude für Tierhaltung;
+        1277: Gebäude für den Pflanzenbau;
+        1278: Andere landwirtschaftliche Gebäude.
+
       dateOfConstruction:
+        year: Baujahr des Gebäudes
+        yearMonth: Baumonat des Gebäudes
+        yearMonthDay: Baudatum des Gebäudes
         periodOfConstruction: Bauperiode
-        periodOfConstructionPlaceholder: Alle Bauperioden
+        periodOfConstructionPlaceholder: Wählen Sie eine Bauperiode...
         periodOfConstructionOptions:
           8011: Periode vor 1919
           8012: Periode von 1919 bis 1945
@@ -170,6 +245,39 @@ ember-gwr:
           8021: Periode von 2006 bis 2010
           8022: Periode von 2011 bis 2015
           8023: Periode ab 2016
+      yearOfDemolition: Abbruchjahr des Gebäudes
+
+      surfaceAreaOfBuilding: Gebäudefläche (m2)
+      volume:
+        volume: Gebäudevolumen
+        norm: Norm
+        normPlaceholder: Wählen Sie eine Norm aus...
+        normOptions:
+          961: Gemäss SIA-Norm 116
+          962: Gemäss SIA-Norm 416
+          969: Unbekannt
+        informationSource: Informationsquelle zum Gebäudevolumen
+        informationSourcePlaceholder: Wählen Sie eine Informationsquelle aus...
+        informationSourceOptions:
+          869: Gemäss Baubewilligung
+          858: Gemäss Gebäudeenergieausweis der Kantone (GEAK)
+          853: Gemäss Gebäudeversicherung
+          852: Gemäss amtlicher Schätzung
+          857: Gemäss Eigentümer / Immobilienverwaltung
+          851: Gemäss amtlicher Vermessung
+          870: Gemäss topografisches Landschaft Modell (TLM)
+          878: Nicht bestimmbares Volumen (Gebäude nicht geschlossen)
+          859: Andere
+
+      numberOfFloors: Anzahl Geschosse
+      numberOfSeparateHabitableRooms: Anzahl separate Wohnräume
+      civilDefenseShelter: Zivilschutzraum
+      energyRelevantSurface: Energiebezugsfläche
+
+      buildingFreeText1: Freitext Gebäude 1
+      buildingFreeText2: Freitext Gebäude 2
+
+
       street:
         description:
           descriptionLong: Strassenname
@@ -180,6 +288,9 @@ ember-gwr:
           nameLong: Ortsname
 
   constructionProject:
+    saveError: Beim Speichern des Bauprojektes ist ein Fehler aufgetretten.
+    saveSuccess: Bauprojekt erfolgreich gespeichert.
+
     fields:
       EPROID: EPROID
       officialConstructionProjectFileNo: Amtliche Baudossiernummer

@@ -5,6 +5,8 @@ import { task } from "ember-concurrency-decorators";
 
 export default class ProjectLinkedBuildingsController extends Controller {
   @service gwr;
+  @service intl;
+  @service notification;
 
   @task
   *fetchBuildings() {
@@ -13,7 +15,7 @@ export default class ProjectLinkedBuildingsController extends Controller {
       return project.work;
     } catch (error) {
       console.error(error);
-      this.notification.danger("ember-gwr.linkedBuildings.error");
+      this.notification.danger(this.intl.t("ember-gwr.linkedBuildings.error"));
     }
   }
 
@@ -24,7 +26,9 @@ export default class ProjectLinkedBuildingsController extends Controller {
       await this.fetchBuildings.perform();
     } catch (error) {
       console.error(error);
-      this.notification.danger("ember-gwr.linkedBuildings.removeLinkError");
+      this.notification.danger(
+        this.intl.t("ember-gwr.linkedBuildings.removeLinkError")
+      );
     }
   }
 }

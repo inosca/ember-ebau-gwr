@@ -2,12 +2,12 @@ import { tracked } from "@glimmer/tracking";
 
 import XMLModel from "./xml-model";
 
-export class LV95 extends XMLModel {
+export default class Coordinates extends XMLModel {
   @tracked east;
   @tracked north;
   @tracked originOfCoordinates;
 
-  constructor(xmlOrObject, root = "building") {
+  constructor(xmlOrObject, root = "coordinates") {
     super(xmlOrObject);
     this.setFieldsFromXML({
       root,
@@ -18,22 +18,16 @@ export class LV95 extends XMLModel {
       },
     });
   }
-}
 
-export default class Coordinates extends XMLModel {
-  LV95 = new LV95();
+  static template = `
+  <ns2:coordinates>
+    <ns2:east>{{model.east}}</ns2:east>
+    <ns2:north>{{model.north}}</ns2:north>
+    <ns2:originOfCoordinates>{{model.originOfCoordinates}}</ns2:originOfCoordinates>
+  </ns2:coordinates>
+  `;
 
-  constructor(xmlOrObject, root = "coordinates") {
-    super(xmlOrObject);
-    this.setFieldsFromXML({
-      root,
-      fields: {
-        LV95,
-      },
-    });
-  }
-
-  static originOfCoordinates = [
+  static originOfCoordinatesOptions = [
     901, //  Amtliche Vermessung, DM.01
     902, //  Aus amtlicher Vermessung hergeleitet
     903, //  Angabe Nachführungsgeometer

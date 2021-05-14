@@ -1,6 +1,7 @@
 import Service, { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
@@ -66,11 +67,13 @@ export default class GwrService extends Service {
         body,
       }
     );
-    if (response.ok) {
-      const xml = await response.text();
-      return this.createAndCacheProject(xml);
+
+    if (!response.ok) {
+      throw new Error("GWR API: modifyConstructionProject failed");
     }
-    return project;
+
+    const xml = await response.text();
+    return this.createAndCacheProject(xml);
   }
 
   async create(project) {
@@ -183,6 +186,30 @@ export default class GwrService extends Service {
     }
     // Update cache
     this.get(EPROID);
+  }
+
+  async updateBuilding(building) {
+    const body = this._buildXMLRequest("modifyBuilding", building);
+    const response = await this.authFetch.fetch(`/buildings/${building.EGID}`, {
+      method: "put",
+
+      body,
+    });
+
+    if (!response.ok) {
+      throw new Error("GWR API: modifyBuilding failed");
+    }
+
+    const xml = await response.text();
+    return new Building(xml);
+  }
+
+  clearCache(EPROID) {
+    if (EPROID) {
+      delete this._cache[EPROID];
+    } else {
+      this._cache = {};
+    }
   }
 
   // XML Handling
