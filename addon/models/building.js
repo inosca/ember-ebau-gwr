@@ -55,6 +55,27 @@ export class Volume extends XMLModel {
   ];
 }
 
+class ThermotechnicalDeviceForHeating1 extends ThermotechnicalDeviceForHeating {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating1") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForHeating2 extends ThermotechnicalDeviceForHeating {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating2") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForWarmWater1 extends ThermotechnicalDeviceForWarmWater {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater1") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForWarmWater2 extends ThermotechnicalDeviceForWarmWater {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater2") {
+    super(xmlOrObject, root);
+  }
+}
+
 export default class Building extends XMLModel {
   @tracked EGID;
   @tracked municipality;
@@ -78,8 +99,14 @@ export default class Building extends XMLModel {
   @tracked numberOfSeparateHabitableRooms;
   @tracked civilDefenseShelter = false;
   @tracked energyRelevantSurface;
-  @tracked thermotechnicalDeviceForHeating = [];
-  @tracked thermotechnicalDeviceForWarmWater = [];
+  @tracked
+  thermotechnicalDeviceForHeating1 = new ThermotechnicalDeviceForHeating1();
+  @tracked
+  thermotechnicalDeviceForHeating2 = new ThermotechnicalDeviceForHeating2();
+  @tracked
+  thermotechnicalDeviceForWarmWater1 = new ThermotechnicalDeviceForWarmWater1();
+  @tracked
+  thermotechnicalDeviceForWarmWater2 = new ThermotechnicalDeviceForWarmWater2();
   @tracked buildingFreeText1;
   @tracked buildingFreeText2;
   @tracked localId = [];
@@ -112,8 +139,10 @@ export default class Building extends XMLModel {
         numberOfSeparateHabitableRooms: Number,
         civilDefenseShelter: Boolean,
         energyRelevantSurface: Number,
-        thermotechnicalDeviceForHeating: [ThermotechnicalDeviceForHeating],
-        thermotechnicalDeviceForWarmWater: [ThermotechnicalDeviceForWarmWater],
+        thermotechnicalDeviceForHeating1: ThermotechnicalDeviceForHeating1,
+        thermotechnicalDeviceForHeating2: ThermotechnicalDeviceForHeating2,
+        thermotechnicalDeviceForWarmWater1: ThermotechnicalDeviceForWarmWater1,
+        thermotechnicalDeviceForWarmWater2: ThermotechnicalDeviceForWarmWater2,
         buildingFreeText1: String,
         buildingFreeText2: String,
         localId: [LocalId],
@@ -173,7 +202,11 @@ export default class Building extends XMLModel {
     {{#if model.surfaceAreaOfBuilding}}
       <ns2:surfaceAreaOfBuilding>{{model.surfaceAreaOfBuilding}}</ns2:surfaceAreaOfBuilding>
     {{/if}}
-    {{> Volume model=model.volume}}
+
+    {{! TODO remove this once we have real validation}}
+    {{#if (and model.volume.volume model.volume.norm)}}
+      {{> Volume model=model.volume}}
+    {{/if}}
     {{#if model.numberOfFloors}}
       <ns2:numberOfFloors>{{model.numberOfFloors}}</ns2:numberOfFloors>
     {{/if}}
@@ -185,6 +218,12 @@ export default class Building extends XMLModel {
     {{#if model.energyRelevantSurface}}
       <ns2:energyRelevantSurface>{{model.energyRelevantSurface}}</ns2:energyRelevantSurface>
     {{/if}}
+
+    {{> ThermotechnicalDeviceForHeating model=model.thermotechnicalDeviceForHeating1 tagName="thermotechnicalDeviceForHeating1"}}
+    {{> ThermotechnicalDeviceForHeating model=model.thermotechnicalDeviceForHeating2 tagName="thermotechnicalDeviceForHeating2"}}
+    {{> ThermotechnicalDeviceForWarmWater model=model.thermotechnicalDeviceForWarmWater1 tagName="thermotechnicalDeviceForWarmWater1"}}
+    {{> ThermotechnicalDeviceForWarmWater model=model.thermotechnicalDeviceForWarmWater2 tagName="thermotechnicalDeviceForWarmWater2"}}
+
     {{#if model.buildingFreeText1}}
       <ns2:buildingFreeText1>{{model.buildingFreeText1}}</ns2:buildingFreeText1>
     {{/if}}

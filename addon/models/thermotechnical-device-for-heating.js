@@ -15,7 +15,24 @@ export default class ThermotechnicalDeviceForHeating extends Heating {
     });
   }
 
-  static heatGeneratorHeating = [
+  static template = `
+  {{#if model.heatGeneratorHeating}}
+    <ns2:{{or tagName "thermotechnicalDeviceForHeating"}}>
+      <heatGeneratorHeating>{{model.heatGeneratorHeating}}</heatGeneratorHeating>
+      {{#if model.energySourceHeating}}
+        <energySourceHeating>{{model.energySourceHeating}}</energySourceHeating>
+      {{/if}}
+      {{#if model.informationSourceHeating}}
+        <informationSourceHeating>{{model.informationSourceHeating}}</informationSourceHeating>
+      {{/if}}
+      {{#if model.revisionDate}}
+        <revisionDate>{{echDate model.revisionDate}}</revisionDate>
+      {{/if}}
+    </ns2:{{or tagName "thermotechnicalDeviceForHeating"}}>
+  {{/if}}
+  `;
+
+  static heatGeneratorHeatingOptions = [
     7400, // Kein Wärmeerzeuger
     7410, // Wärmepumpe für ein Gebäude
     7411, // Wärmepumpe für mehrere Gebäude

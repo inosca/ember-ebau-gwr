@@ -18,6 +18,8 @@ import PersonIdentification from "./models/person-identification";
 import RealestateIdentification from "./models/realestate-identification";
 import SearchResult from "./models/search-result";
 import Street from "./models/street";
+import ThermotechnicalDeviceForHeating from "./models/thermotechnical-device-for-heating";
+import ThermotechnicalDeviceForWarmWater from "./models/thermotechnical-device-for-warm-water";
 
 export default {
   Coordinates,
@@ -40,4 +42,6 @@ export default {
   DateOfConstruction,
   Locality,
   Street,
+  ThermotechnicalDeviceForHeating,
+  ThermotechnicalDeviceForWarmWater,
 };

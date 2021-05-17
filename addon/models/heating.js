@@ -19,7 +19,7 @@ export default class Heating extends XMLModel {
     });
   }
 
-  static energySourceHeating = [
+  static energySourceHeatingOptions = [
     7500, // Keine
     7501, // Luft
     7510, // Erdwärme (generisch)
@@ -42,7 +42,7 @@ export default class Heating extends XMLModel {
     7599, // Andere
   ];
 
-  static informationSourceHeating = [
+  static informationSourceHeatingOptions = [
     852, // Gemäss amtlicher Schätzung
     853, // Gemäss Gebäudeversicherung
     855, // Gemäss Feuerungskontrolle
