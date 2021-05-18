@@ -67,7 +67,7 @@ export default class AuthFetchService extends Service {
     return json;
   }
 
-  async fetch(url, { method = "get", headers = {}, body } = {}, retry = false) {
+  async fetch(url, { method = "get", headers = {}, body } = {}, retry = true) {
     if (this.housingStatToken.isRunning) {
       await this.housingStatToken.lastRunning;
     }
@@ -80,9 +80,9 @@ export default class AuthFetchService extends Service {
       body,
     });
     if (!response.ok && response.status === 401 && !this.showAuthModal) {
-      if (!retry) {
+      if (retry) {
         await this.housingStatToken.perform();
-        response = await this.fetch(url, { method, headers, body }, true);
+        response = await this.fetch(url, { method, headers, body }, false);
       }
     }
     return response;

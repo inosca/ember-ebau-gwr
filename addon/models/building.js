@@ -236,7 +236,7 @@ export default class Building extends XMLModel {
         <ns2:buildingEntranceNo>4</ns2:buildingEntranceNo>
         <ns2:locality>
           <ns2:name>
-            <ns2:nameLong>Galgenen</ns2:nameLong>
+            <ns2:nameLong>{{model.municipalityName}}</ns2:nameLong>
           </ns2:name>
         </ns2:locality>
       </ns2:buildingEntrance>
