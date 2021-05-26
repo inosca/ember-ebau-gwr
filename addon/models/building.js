@@ -155,7 +155,7 @@ export default class Building extends XMLModel {
     return (
       this.buildingEntrance?.map(
         (buildingEntrance) =>
-          `${buildingEntrance.street.description.descriptionLong ?? ""} ${
+          `${buildingEntrance.street?.description.descriptionLong ?? ""} ${
             buildingEntrance.buildingEntranceNo ?? ""
           }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
             buildingEntrance.locality.name.nameLong ?? ""
