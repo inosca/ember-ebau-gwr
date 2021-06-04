@@ -37,6 +37,12 @@ export default class GwrService extends Service {
     return project;
   }
 
+  createAndCacheBuilding(xml) {
+    const building = new Building(xml);
+    this._cache[building.EGID] = building;
+    return building;
+  }
+
   async get(EPROID) {
     if (!EPROID) {
       return null;
@@ -48,12 +54,16 @@ export default class GwrService extends Service {
     return this.createAndCacheProject(xml);
   }
 
-  getFromCache(EPROID) {
-    return this._cache[EPROID];
+  getFromCache(ID) {
+    return this._cache[ID];
   }
 
   async getFromCacheOrApi(EPROID) {
     return this.getFromCache(EPROID) || (await this.get(EPROID));
+  }
+
+  async getBuildingFromCacheOrApi(EGID) {
+    return this.getFromCache(EGID) || (await this.getBuilding(EGID));
   }
 
   async update(project) {
@@ -223,6 +233,15 @@ export default class GwrService extends Service {
 
     const xml = await response.text();
     return new Building(xml);
+  }
+
+  async getBuilding(EGID) {
+    if (!EGID) {
+      return null;
+    }
+    const response = await this.authFetch.fetch(`/buildings/${EGID}`);
+    const xml = await response.text();
+    return this.createAndCacheBuilding(xml);
   }
 
   clearCache(EPROID) {

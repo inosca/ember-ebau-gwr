@@ -12,7 +12,7 @@ export default class App extends Application {
     super(...args);
 
     this.engines = {
-      emberEbauGwr: {
+      "ember-ebau-gwr": {
         dependencies: {
           services: [
             { config: "gwr-config" },

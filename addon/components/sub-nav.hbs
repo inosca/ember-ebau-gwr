@@ -1,0 +1,19 @@
+{{#unless this.isHidden}}
+  {{#if @backRoute}}
+    <LinkTo
+      @route={{@backRoute}}
+      @models={{if @backModel (array @backModel) (array)}}
+      class="uk-link-muted uk-margin-small-bottom"
+    >
+      <span uk-icon="icon: arrow-left"></span>
+      {{@backText}}
+    </LinkTo>
+  {{/if}}
+  <UkTab ...attributes as |Tab|>
+    {{#each @links as |link|}}
+      <Tab.link-item @route={{link.route}} @models={{link.models}}>
+        {{link.text}}
+      </Tab.link-item>
+    {{/each}}
+  </UkTab>
+{{/unless}}

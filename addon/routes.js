@@ -9,7 +9,15 @@ export default buildRoutes(function () {
     this.route("linked-buildings", { path: "/:project_id/buildings" });
   });
   this.route("building", { path: "/:project_id/building/" }, function () {
-    this.route("form", { path: "/:building_id/form" });
     this.route("new");
+    this.route("edit", { path: "/:building_id" }, function () {
+      this.route("form");
+      this.route("entrances");
+
+      this.route("entrance", function () {
+        this.route("edit", { path: "/:entrace_id" });
+        this.route("new");
+      });
+    });
   });
 });

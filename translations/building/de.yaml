@@ -1,0 +1,243 @@
+ember-gwr:
+  buildingWork:
+    fields:
+      kindOfWork: Art der Arbeiten
+      kindOfWorkPlaceholder: Wählen Sie eine Art der Arbeit aus...
+      kindOfWorkOptions:
+        6001: Neubau
+        6002: Umbau
+        6007: Abbruch
+
+      energeticRestauration: Energetische Sanierung
+      renovationHeatingsystem: Sanierung des Heizsystems
+      innerConversionRenovation: Umbauten / Renovationen im Innenbereich
+      conversion: Umnutzung
+      extensionHeighteningHeated: Beheizte Erweiterung
+      extensionHeighteningNotHeated: Nicht beheizte Erweiterung
+      thermicSolarFacility: Installation thermische Solaranlage
+      photovoltaicSolarFacility: Installation Photovoltaikanlage
+      otherWorks: Andere Arbeiten
+
+  building:
+    title: Gebäude {id} - {status}
+    createNewBuilding: Neues Gebäude erfassen
+
+    backToProject: Zurück zum Bauprojekt
+
+    saveError: Beim Speichern des Gebäudes ist ein Fehler aufgetretten.
+    saveSuccess: Gebäude erfolgreich gespeichert.
+    entrances:
+    error: Beim Laden der Eingänge ist ein Fehler aufgetretten.
+    removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
+
+    sections:
+      kindOfWorkForProject: Art der Arbeiten für Bauprojekt {projectId}
+      building: Gebäude
+      locality: Ortschaft
+      localCodes: Lokalcodes
+      statusAndData: Status und Daten
+      structure: Struktur
+      dimensions: Dimensionen
+      energy: Energie
+      freeTextFields: Freitext Felder
+      heating: Heizung
+      additionalHeating: Zusätzliches Heizungsystem
+      warmWater: Warmwasser
+      additionalWarmWater: Zusätzliches Warmwassersystem
+
+    fields:
+      EGID: EGID
+      officialBuildingNo: Amtliche Gebäudenummer
+      nameOfBuilding: Name des Gebäudes
+
+      coordinates:
+        east: E-Gebäudekoordinate
+        north: N-Gebäudekoordinate
+        originOfCoordinates: Koordinatenherkunft
+        originOfCoordinatesPlaceholder: Wählen Sie die  Koordinatenherkunft aus...
+        originOfCoordinatesOptions:
+          901: Amtliche Vermessung, DM.01
+          902: Aus amtlicher Vermessung hergeleitet
+          903: Angabe Nachführungsgeometer
+          904: Angabe Baugesuch
+          905: Bundesamt für Statistik (BFS)
+          906: Datensatz GeoPost
+          909: Andere Datenquelle
+      localCode1: Lokalcode 1
+      localCode2: Lokalcode 2
+      localCode3: Lokalcode 3
+      localCode4: Lokalcode 4
+
+      neighbourhood: Quartier
+
+      buildingStatus: Gebäudestatus
+      buildingStatusPlaceholder: Wählen Sie einen Gebäudestatus aus...
+      buildingStatusOptions:
+        1001: Projektiert
+        1002: Bewilligt
+        1003: Im Bau
+        1004: Bestehend
+        1005: Nicht nutzbar
+        1007: Abgebrochen
+        1008: Nicht realisiert
+
+      buildingCategory: Gebäudekategorie
+      buildingCategoryPlaceholder: Wählen Sie eine Gebäudekategorie aus...
+      buildingCategoryOptions:
+        1010: Provisorische Unerkunft
+        1020: Reine Wohngebäude (Wohnnutzung ausschliesslich)
+        1030: Wohngebäude mit Nebennutzung
+        1040: Gebäude mit teilweiser Wohnnutzung
+        1060: Gebäude ohne Wohnnutzung
+        1080: Sonderbau
+
+
+      buildingClass: Gebäudeklasse
+      buildingClassPlaceholder: Wählen Sie eine Gebäudeklasse aus...
+      buildingClassOptions:
+        1231: Restaurants und Bars in Gebäude ohne Wohnnutzung
+        1275: Andere Gebäude für kollektive Beherbergung
+        1276: Gebäude für Tierhaltung;
+        1277: Gebäude für den Pflanzenbau;
+        1278: Andere landwirtschaftliche Gebäude.
+
+      dateOfConstruction:
+        year: Baujahr des Gebäudes
+        yearMonth: Baumonat des Gebäudes
+        yearMonthDay: Baudatum des Gebäudes
+        periodOfConstruction: Bauperiode
+        periodOfConstructionPlaceholder: Wählen Sie eine Bauperiode...
+        periodOfConstructionOptions:
+          8011: Periode vor 1919
+          8012: Periode von 1919 bis 1945
+          8013: Periode von 1946 bis 1960
+          8014: Periode von 1961 bis 1970
+          8015: Periode von 1971 bis 1980
+          8016: Periode von 1981 bis 1985
+          8017: Periode von 1986 bis 1990
+          8018: Periode von 1991 bis 1995
+          8019: Periode von 1996 bis 2000
+          8020: Periode von 2001 bis 2005
+          8021: Periode von 2006 bis 2010
+          8022: Periode von 2011 bis 2015
+          8023: Periode ab 2016
+      yearOfDemolition: Abbruchjahr des Gebäudes
+
+      surfaceAreaOfBuilding: Gebäudefläche (m2)
+      volume:
+        volume: Gebäudevolumen
+        norm: Norm
+        normPlaceholder: Wählen Sie eine Norm aus...
+        normOptions:
+          961: Gemäss SIA-Norm 116
+          962: Gemäss SIA-Norm 416
+          969: Unbekannt
+        informationSource: Informationsquelle zum Gebäudevolumen
+        informationSourcePlaceholder: Wählen Sie eine Informationsquelle aus...
+        informationSourceOptions:
+          869: Gemäss Baubewilligung
+          858: Gemäss Gebäudeenergieausweis der Kantone (GEAK)
+          853: Gemäss Gebäudeversicherung
+          852: Gemäss amtlicher Schätzung
+          857: Gemäss Eigentümer / Immobilienverwaltung
+          851: Gemäss amtlicher Vermessung
+          870: Gemäss topografisches Landschaft Modell (TLM)
+          878: Nicht bestimmbares Volumen (Gebäude nicht geschlossen)
+          859: Andere
+
+      numberOfFloors: Anzahl Geschosse
+      numberOfSeparateHabitableRooms: Anzahl separate Wohnräume
+      civilDefenseShelter: Zivilschutzraum
+      energyRelevantSurface: Energiebezugsfläche
+
+      heating:
+        heatGeneratorHotWater: Wärmeerzeuger
+        heatGeneratorHotWaterPlaceholder: Wählen Sie einen Wärmeerzeuger...
+        heatGeneratorHotWaterOptions:
+          7600: Kein Wärmeerzeuger
+          7610: Wärmepumpe
+          7620: Thermische Solaranlage
+          7630: Heizkessel (generisch)
+          7632: Heizkessel nicht kondensierend
+          7634: Heizkessel kondensierend
+          7640: Wärmekraftkopplungsanlage
+          7650: Zentraler Elektroboiler
+          7651: Kleinboiler
+          7660: Wärmetauscher (einschliesslich für Fernwärme)
+          7699: Andere
+        heatGeneratorHeating: Wärmeerzeuger
+        heatGeneratorHeatingPlaceholder: Wählen Sie einen Wärmeerzeuger...
+        heatGeneratorHeatingOptions:
+          7400: Kein Wärmeerzeuger
+          7410: Wärmepumpe für ein Gebäude
+          7411: Wärmepumpe für mehrere Gebäude
+          7420: Thermische Solaranlage für ein Gebäude
+          7421: Thermische Solaranlage für mehrere Gebäude
+          7430: Heizkessel (generisch) für ein Gebäude
+          7431: Heizkessel (generisch) für mehrere Gebäude
+          7432: Heizkessel nicht kondensierend für ein Gebäude
+          7433: Heizkessel nicht kondensierend für mehrere Gebäude
+          7434: Heizkessel kondensierend für ein Gebäude
+          7435: Heizkessel kondensierend für mehrere Gebäude
+          7436: Ofen
+          7440: Wärmekraftkopplungsanlage für ein Gebäude
+          7441: Wärmekraftkopplungsanlage für mehrere Gebäude
+          7450: Elektrospeicher-Zentralheizung für ein Gebäude
+          7451: Elektrospeicher-Zentralheizung für mehrere Gebäude
+          7452: Elektro direkt
+          7460: Wärmetauscher (einschliesslich für Fernwärme) für ein Gebäude
+          7461: Wärmetauscher (einschliesslich für Fernwärme) für mehrere Gebäude
+          7499: Andere
+        energySourceHeating: Energieträger
+        energySourceHeatingPlaceholder: Wählen Sie einen Energieträger...
+        energySourceHeatingOptions:
+          7500: Keine
+          7501: Luft
+          7510: Erdwärme (generisch)
+          7511: Erdwärmesonde
+          7512: Erdregister
+          7513: Wasser (Grundwasser, Oberflächenwasser, Abwasser)
+          7520: Gas
+          7530: Heizöl
+          7540: Holz (generisch)
+          7541: Holz (Stückholz)
+          7542: Holz (Pellets)
+          7543: Holz (Schnitzel)
+          7550: Abwärme (innerhalb des Gebäudes)
+          7560: Elektrizität
+          7570: Sonne (thermisch)
+          7580: Fernwärme (generisch)
+          7581: Fernwärme (Hochtemperatur)
+          7582: Fernwärme (Niedertemperatur)
+          7598: Unbestimmt
+          7599: Andere
+        informationSourceHeating: Informationsquelle
+        informationSourceHeatingPlaceholder: Wählen Sie eine Informationsquelle...
+        informationSourceHeatingOptions:
+          852: Gemäss amtlicher Schätzung
+          853: Gemäss Gebäudeversicherung
+          855: Gemäss Feuerungskontrolle
+          857: Gemäss Eigentümer/in oder Verwaltung
+          858: Gemäss Gebäudeenergieausweis der Kantone (GEAK)
+          859: Andere Datenquelle
+          860: Gemäss Volkszählung 2000
+          864: Gemäss Daten des Kantons
+          865: Gemäss Daten der Gemeinde
+          869: Gemäss Baubewilligung
+          870: Gemäss Versorgungswerk (Gas, Fernwärme)
+          871: Gemäss Minergie
+        revisionDate: Aktualisierungsdatum
+
+      buildingFreeText1: Freitext Gebäude 1
+      buildingFreeText2: Freitext Gebäude 2
+
+
+      street:
+        description:
+          descriptionLong: Strassenname
+      buildingEntranceNo: Gebäudeeingang Nummer
+      locality:
+        swissZipCode: PLZ
+        name:
+          nameLong: Ortsname
+
