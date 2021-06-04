@@ -7,4 +7,10 @@ export default class BuildingEditEntranceEditRoute extends Route {
       ...this.modelFor("building.edit"),
     };
   }
+
+  setupController(...args) {
+    super.setupController(...args);
+    const [controller] = args;
+    controller.fetchBuildingEntrance.perform();
+  }
 }
