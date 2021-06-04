@@ -3,6 +3,9 @@ import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 
+const EXISTING = 1004,
+  NOT_USABLE = 1005;
+
 export default class BuildingFormController extends Controller {
   Models = Models;
 
@@ -13,10 +16,7 @@ export default class BuildingFormController extends Controller {
   get buildingStatusOptions() {
     // TODO Every other status need the building to be saved when the project is created.
     return this.model.buildingWork?.isNew
-      ? [
-          1004, // Bestehend
-          1005, // Nicht nutzbar
-        ]
+      ? [EXISTING, NOT_USABLE]
       : Models.Building.buildingStatusOptions;
   }
 

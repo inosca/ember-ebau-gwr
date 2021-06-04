@@ -6,7 +6,6 @@ import Locality from "./locality";
 import Street from "./street";
 import XMLModel from "./xml-model";
 
-// TODO_BUILDING: figure out all of the correct types once api and ech website are up an d running again
 export default class BuildingEntrance extends XMLModel {
   @tracked EGID;
   @tracked EGAID;
