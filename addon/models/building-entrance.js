@@ -30,4 +30,11 @@ export default class BuildingEntrance extends XMLModel {
       },
     });
   }
+
+  get fullAddressText() {
+    const { street, buildingEntranceNo, locality } = this;
+    return `${street?.description.descriptionLong ?? ""} ${
+      buildingEntranceNo ?? ""
+    }, ${locality.swissZipCode ?? ""} ${locality.name.nameLong ?? ""}`;
+  }
 }
