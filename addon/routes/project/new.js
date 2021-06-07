@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 
 export default class ProjectNewRoute extends Route {
-  @service gwr;
+  @service constructionProject;
   @service config;
 
   templateName = "project.form";
@@ -11,10 +11,10 @@ export default class ProjectNewRoute extends Route {
 
   async model() {
     const project = new ConstructionProject();
-    await this.gwr.authFetch.housingStatToken.lastRunning;
-    project.constructionLocalisation.municipalityId = this.gwr.municipality;
+    await this.constructionProject.authFetch.housingStatToken.lastRunning;
+    project.constructionLocalisation.municipalityId = this.constructionProject.municipality;
     project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
-    project.constructionSurveyDeptNumber = this.gwr.constructionSurveyDeptNumber;
+    project.constructionSurveyDeptNumber = this.constructionProject.constructionSurveyDeptNumber;
     return { project, instanceId: this.modelFor("application").id };
   }
 }

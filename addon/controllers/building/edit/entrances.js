@@ -4,14 +4,14 @@ import { inject as service } from "@ember/service";
 import { task } from "ember-concurrency-decorators";
 
 export default class BuildingEntrancesIndexController extends Controller {
-  @service gwr;
+  @service building;
   @service intl;
   @service notification;
 
   @task
   *fetchEntrances() {
     try {
-      const building = yield this.gwr.getBuildingFromCacheOrApi(this.model);
+      const building = yield this.building.getFromCacheOrApi(this.model);
       return building.buildingEntrance;
     } catch (error) {
       console.error(error);
@@ -24,7 +24,10 @@ export default class BuildingEntrancesIndexController extends Controller {
   @action
   async removeEntranceLink({ building: { EGID } }) {
     try {
-      await this.gwr.unbindBuildingFromConstructionProject(this.model, EGID);
+      await this.building.unbindBuildingFromConstructionProject(
+        this.model,
+        EGID
+      );
       await this.fetchBuildings.perform();
     } catch (error) {
       console.error(error);
