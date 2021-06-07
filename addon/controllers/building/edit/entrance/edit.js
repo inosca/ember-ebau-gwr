@@ -6,7 +6,7 @@ import { task, lastValue } from "ember-concurrency-decorators";
 export default class BuildingEditEntranceEditController extends Controller {
   Models = Models;
 
-  @service gwr;
+  @service building;
   @service intl;
   @service notification;
 
@@ -18,7 +18,7 @@ export default class BuildingEditEntranceEditController extends Controller {
         return this.model.buildingEntrance;
       }
 
-      const building = yield this.gwr.getBuildingFromCacheOrApi(
+      const building = yield this.building.getFromCacheOrApi(
         this.model.buildingId
       );
       return building.buildingEntrance.find(
