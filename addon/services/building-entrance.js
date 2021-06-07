@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+=======
+>>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 
 import GwrService from "./gwr";
 
 export default class BuildingEntranceService extends GwrService {
+<<<<<<< HEAD
   @service building;
 
   @tracked newRecord;
@@ -99,6 +103,21 @@ export default class BuildingEntranceService extends GwrService {
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/${EDID}`,
+=======
+  createAndCache(xml) {
+    const buildingEntrance = new BuildingEntrance(xml);
+    this._cache[buildingEntrance.EGAID] = buildingEntrance;
+    return buildingEntrance;
+  }
+
+  async update(buildingEntrance) {
+    const body = this.xml.buildXMLRequest(
+      "modifyBuildingEntrance",
+      buildingEntrance
+    );
+    const response = await this.authFetch.fetch(
+      `/buildingentrances/${buildingEntrance.EGAID}`,
+>>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
       {
         method: "put",
         body,
@@ -106,7 +125,11 @@ export default class BuildingEntranceService extends GwrService {
     );
 
     if (!response.ok) {
+<<<<<<< HEAD
       throw new Error("GWR API: setStreet failed");
+=======
+      throw new Error("GWR API: modifyBuildingEntrance failed");
+>>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
     }
 
     const xml = await response.text();
