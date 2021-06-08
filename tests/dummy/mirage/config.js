@@ -23,13 +23,23 @@ export default function () {
       return gwrToken;
     }
 
+    let username, password, municipality;
+
     if (!request.requestBody) {
-      return new Response(400, {}, { [400]: { source: "internal" } });
+      username = localStorage.getItem("username");
+      password = localStorage.getItem("password");
+      municipality = localStorage.getItem("municipality");
+
+      if (!username && !password && !municipality) {
+        return new Response(400, {}, { [400]: { source: "internal" } });
+      }
+    } else {
+      ({ username, password, municipality } = JSON.parse(request.requestBody));
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      localStorage.setItem("municipality", municipality);
     }
 
-    const { username, password, municipality } = JSON.parse(
-      request.requestBody
-    );
     //eslint-disable-next-line no-alert
     const wsk_id = localStorage.getItem("wsk_id") || prompt("wsk_id:");
     if (wsk_id) {

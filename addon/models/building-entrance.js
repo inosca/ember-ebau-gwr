@@ -1,5 +1,7 @@
 import { tracked } from "@glimmer/tracking";
 
+import Coordinates from "./coordinates";
+import LocalId from "./local-id";
 import Locality from "./locality";
 import Street from "./street";
 import XMLModel from "./xml-model";
@@ -8,7 +10,9 @@ export default class BuildingEntrance extends XMLModel {
   @tracked EGID;
   @tracked EGAID;
   @tracked buildingEntranceNo;
+  @tracked coordinates = new Coordinates();
   @tracked isOfficialAddress;
+  @tracked localId = new LocalId();
   @tracked street = new Street();
   @tracked locality = new Locality();
 

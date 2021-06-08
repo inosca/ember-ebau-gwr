@@ -56,21 +56,31 @@ export default class ProjectFormController extends Controller {
     this.fetchProject.perform();
   }
 
-  @action
-  async saveProject() {
-    if (this.project.isNew) {
-      const project = await this.gwr.create(this.project);
-      const link = this.store.createRecord("gwr-link", {
-        eproid: project.EPROID,
-        localId: this.model.instanceId,
-      });
-      await link.save();
-      // Reload the overview table to display the new project
-      await this.gwr.all.perform(this.model.instanceId);
-      this.transitionToRoute("project.form", project.EPROID);
-    } else {
-      await this.gwr.update(this.project);
+  @task
+  *saveProject() {
+    try {
+      if (this.project.isNew) {
+        const project = yield this.gwr.create(this.project);
+        const link = this.store.createRecord("gwr-link", {
+          eproid: project.EPROID,
+          localId: this.model.instanceId,
+        });
+        yield link.save();
+        // Reload the overview table to display the new project
+        yield this.gwr.all.perform(this.model.instanceId);
+        this.transitionToRoute("project.form", project.EPROID);
+      } else {
+        yield this.gwr.update(this.project);
+      }
+      this.import = false;
+      this.notification.success(
+        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+      );
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.constructionProject.saveError")
+      );
     }
-    this.import = false;
   }
 }

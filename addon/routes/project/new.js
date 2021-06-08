@@ -9,8 +9,9 @@ export default class ProjectNewRoute extends Route {
   templateName = "project.form";
   controllerName = "project.form";
 
-  model() {
+  async model() {
     const project = new ConstructionProject();
+    await this.gwr.authFetch.housingStatToken.lastRunning;
     project.constructionLocalisation.municipalityId = this.gwr.municipality;
     project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
     project.constructionSurveyDeptNumber = this.gwr.constructionSurveyDeptNumber;
