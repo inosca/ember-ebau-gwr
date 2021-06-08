@@ -5,6 +5,7 @@ import { task } from "ember-concurrency-decorators";
 
 export default class BuildingEntrancesIndexController extends Controller {
   @service building;
+  @service buildingEntrance;
   @service intl;
   @service notification;
 
@@ -22,13 +23,10 @@ export default class BuildingEntrancesIndexController extends Controller {
   }
 
   @action
-  async removeEntranceLink({ building: { EGID } }) {
+  async removeEntranceLink({ EDID }) {
     try {
-      await this.building.unbindBuildingFromConstructionProject(
-        this.model,
-        EGID
-      );
-      await this.fetchBuildings.perform();
+      await this.buildingEntrance.deactivate(EDID, this.model);
+      await this.fetchEntrances.perform();
     } catch (error) {
       console.error(error);
       this.notification.danger(

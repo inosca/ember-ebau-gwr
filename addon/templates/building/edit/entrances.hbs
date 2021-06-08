@@ -10,9 +10,13 @@
     <LinkedModels
       @models={{this.fetchEntrances.lastSuccessful.value}}
       @modelName="entrance"
+      {{!--
+      TODO removing a entrance is not allowed if there is still a dwelling attached to it
+      We also cannot remove an entrance if there is only one.
       @removeLink={{this.removeEntranceLink}}
-      {{!--@newRoute="building.edit.entrance.new"
-      @newModels={{array @model}}--}} as |model|
+      @newRoute="building.edit.entrance.new"
+      @newModels={{array @model}}
+      --}} as |model|
     >
       <td class="uk-table-shrink">
         <LinkTo

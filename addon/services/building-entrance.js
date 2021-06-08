@@ -1,8 +1,11 @@
+import { inject as service } from "@ember/service";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 
 import GwrService from "./gwr";
 
 export default class BuildingEntranceService extends GwrService {
+  @service building;
+
   cacheKey(buildingEntrance) {
     return `${buildingEntrance.EGAID}-${buildingEntrance.EDID}`;
   }
@@ -40,5 +43,26 @@ export default class BuildingEntranceService extends GwrService {
 
     const xml = await response.text();
     return this.createAndCache(xml);
+  }
+
+  async deactivate(EDID, EGID) {
+    const body = this.xml.buildXMLRequest(
+      "deactivateBuildingEntrance",
+      { EDID, EGID },
+      "Deactivate building entrance"
+    );
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/entrance/${EDID}`,
+      {
+        method: "delete",
+        body,
+      }
+    );
+    if (!response.ok) {
+      throw new Error("GWR API: deactivateBuildingEntrance failed");
+    }
+    // Refresh cache after removing the building
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    await this.building.get(EGID);
   }
 }
