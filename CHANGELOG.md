@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.0.1...v2.1.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* **building:** new the API does not always deliver a street object for the entrance list ([b7d7770](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b7d77700c443be6ff7ba8dcd98b00db53c80eae9))
+* **building:** on creation, set a dummy entrance with the current municipality ([468a6a9](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/468a6a9dc2b2954b7e6b2e0c96a60da37766bdee))
+* **checkbox:** set value instead of checked on input ([559a9e8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/559a9e8402acb3dbdf15c5f3d5e8602c84040589))
+
+
+### Features
+
+* **building:** add heating forms ([7029054](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7029054e4f859124a470445949fb3dd5a34816bf))
+* **building:** add update form for buildings for simple fields ([f49c637](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f49c63788cf0881f606821be34f418113a2b3e72))
+* **building:** buildings can be created and kindOfWork can be updated ([1745f9b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1745f9b0157a622b8c86f72a32eeeb0dbd0d940b))
+* **models:** add building related models ([71befeb](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/71befeb03846ebbcc33638725c3f4b5c4edbc92c))
+
 ## [2.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.0.0...v2.0.1) (2021-05-10)
 
 
