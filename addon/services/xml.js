@@ -16,7 +16,7 @@ export default class XmlService extends Service {
   _hbs = Handlebars;
   _compiledTemplates = {};
 
-  buildXMLRequest(type, model, reason = "Modification enregistrement") {
+  buildXMLRequest(type, model, reason = "Update data") {
     // Compile the needed templates on the fly so only
     // the ones used are compiled to remove a bit of over head.
     if (!this._compiledTemplates[type]) {

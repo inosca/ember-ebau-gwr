@@ -3,19 +3,31 @@ import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import GwrService from "./gwr";
 
 export default class BuildingEntranceService extends GwrService {
-  createAndCache(xml) {
-    const buildingEntrance = new BuildingEntrance(xml);
-    this._cache[buildingEntrance.EGAID] = buildingEntrance;
-    return buildingEntrance;
+  cacheKey(buildingEntrance) {
+    return `${buildingEntrance.EGAID}-${buildingEntrance.EDID}`;
+  }
+  cacheClass = BuildingEntrance;
+
+  async get(EDID, EGID) {
+    if (!EDID) {
+      return null;
+    }
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/entrance/${EDID}`
+    );
+    const xml = await response.text();
+    return this.createAndCache(xml);
   }
 
-  async update(buildingEntrance) {
+  async update(buildingEntrance, EGID) {
+    buildingEntrance.EGID = EGID;
     const body = this.xml.buildXMLRequest(
       "modifyBuildingEntrance",
-      buildingEntrance
+      buildingEntrance,
+      "Update building entrance"
     );
     const response = await this.authFetch.fetch(
-      `/buildingentrances/${buildingEntrance.EGAID}`,
+      `/buildings/${EGID}/entrance/${buildingEntrance.EDID}`,
       {
         method: "put",
         body,

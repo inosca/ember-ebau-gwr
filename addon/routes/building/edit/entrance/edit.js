@@ -4,7 +4,7 @@ export default class BuildingEditEntranceEditRoute extends Route {
   model({ entrace_id: entranceId }) {
     return {
       entranceId,
-      buildingId: this.modelFor("building.edit").buildingId,
+      ...this.modelFor("building.edit"),
     };
   }
 

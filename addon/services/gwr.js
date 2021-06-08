@@ -19,20 +19,32 @@ export default class GwrService extends Service {
     return `${this.municipality}00`;
   }
 
-  getFromCache(ID) {
-    return this._cache[ID];
-  }
-
   createAndCache(xml) {
     assert("Must set `cacheKey`", typeof this.cacheKey !== "undefined");
     assert("Must set `cacheClass`", typeof this.cacheClass !== "undefined");
     const model = new this.cacheClass(xml);
-    this._cache[model[this.cacheKey]] = model;
+    this._cache[
+      typeof this.cacheKey === "function"
+        ? this.cacheKey(model)
+        : model[this.cacheKey]
+    ] = model;
     return model;
   }
 
-  async getFromCacheOrApi(ID) {
-    return this.getFromCache(ID) || (await this.get(ID));
+  getFromCache(ID) {
+    return this._cache[ID];
+  }
+
+  async getFromCacheOrApi(...args) {
+    return this.getFromCache(...args) || (await this.get(...args));
+  }
+
+  clearCache(ID) {
+    if (ID) {
+      delete this._cache[ID];
+    } else {
+      this._cache = {};
+    }
   }
 
   async search(
@@ -66,13 +78,5 @@ export default class GwrService extends Service {
     return new SearchResult(await response.text(), {
       [searchKey]: [listModel],
     })[searchKey];
-  }
-
-  clearCache(ID) {
-    if (ID) {
-      delete this._cache[ID];
-    } else {
-      this._cache = {};
-    }
   }
 }

@@ -4,7 +4,6 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    {{log this.buildingEntrance}}
     <h2 class="uk-flex uk-flex-between">
       <span>
         {{#if this.buildingEntrance.isNew}}
@@ -12,7 +11,6 @@
         {{else}}
           {{t
             "ember-gwr.buildingEntrance.title"
-            id=this.buildingEntrance.EGAID
             address=this.buildingEntrance.fullAddressText
           }}
         {{/if}}
@@ -27,11 +25,18 @@
     >
 
       {{#unless this.buildingWork.building.isNew}}
-        <Field @attr="EGAID" type="number" readonly disabled />
+        <Field @attr="EDID" type="number" readonly disabled />
+        <Field @attr="locality.name.nameLong" readonly disabled />
+        <Field @attr="locality.swissZipCode" type="number" readonly disabled />
       {{/unless}}
 
       <Field @attr="buildingEntranceNo" />
+      <Field @attr="isOfficialAddress" @inputType="checkbox" />
 
+      {{!--
+      This is not wokrking for some reason. Not sure if this is even needed on the entrance.
+
+      <h2>{{t "ember-gwr.buildingEntrance.coordinates"}}</h2>
       <Field
         @attr="coordinates.north"
         type="number"
@@ -55,8 +60,32 @@
         @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
         @required={{true}}
       />
+      --}}
 
-      <Field @attr="isOfficialAddress" @inputType="checkbox" />
+      <h2>{{t "ember-gwr.buildingEntrance.street"}}</h2>
+      <Field @attr="street.ESID" disabled readonly />
+      <Field @attr="street.description.descriptionLong" disabled readonly />
+      <Field
+        @attr="street.streetKind"
+        @inputType="select"
+        @options={{this.Models.Street.streetKindOptions}}
+        @convertValueTo="number"
+        disabled
+        readonly
+      />
+      <Field
+        @attr="street.officialStreetNumber"
+        type="number"
+        disabled
+        readonly
+      />
+      <Field
+        @attr="street.isOfficialDescription"
+        @inputType="checkbox"
+        disabled
+        readonly
+      />
+
     </ProjectForm>
   {{/if}}
 </div>

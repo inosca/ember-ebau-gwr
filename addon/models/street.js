@@ -18,14 +18,23 @@ export class StreetDescription extends XMLModel {
       },
     });
   }
+
+  static template = `
+  <ns2:description>
+    <ns2:language>{{model.language}}</ns2:language>
+    <ns2:descriptionLong>{{model.descriptionLong}}</ns2:descriptionLong>
+    <ns2:descriptionShort>{{model.descriptionShort}}</ns2:descriptionShort>
+  </ns2:description>
+  `;
 }
 
 export default class Street extends XMLModel {
   @tracked ESID;
-  @tracked isOfficialStreetNumber;
+  @tracked isOfficialDescription;
   @tracked officialStreetNumber;
   @tracked streetKind;
   @tracked streetStatus;
+  @tracked streetGeometry;
   @tracked description = new StreetDescription();
 
   constructor(xmlOrObject, root = "street") {
@@ -34,12 +43,34 @@ export default class Street extends XMLModel {
       root,
       fields: {
         ESID: Number,
-        isOfficialStreetNumber: Number,
+        isOfficialDescription: Boolean,
         officialStreetNumber: Number,
         streetKind: Number,
         streetStatus: Number,
+        streetGeometry: String,
         description: StreetDescription,
       },
     });
   }
+
+  static template = `
+    <ns2:street>
+      <ns2:ESID>{{model.ESID}}</ns2:ESID>
+      {{> StreetDescription model=model.description}}
+      <ns2:streetGeometry>{{model.streetGeometry}}</ns2:streetGeometry>
+      {{#if model.officialStreetNumber}}
+        <ns2:officialStreetNumber>{{model.officialStreetNumber}}</ns2:officialStreetNumber>
+        <ns2:isOfficialDescription>{{model.isOfficialDescription}}</ns2:isOfficialDescription>
+        <ns2:streetStatus>{{model.streetStatus}}</ns2:streetStatus>
+        <ns2:streetKind>{{model.streetKind}}</ns2:streetKind>
+      {{/if}}
+    </ns2:street>
+  `;
+
+  static streetKindOptions = [
+    9801, // Strasse (Linienobjekt)
+    9802, // Platz (Punktobjekt)
+    9803, // Benanntes Gebiet (Flächenobjekt)
+    9809, // Keine Angabe zur Geometrie
+  ];
 }

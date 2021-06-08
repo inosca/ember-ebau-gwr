@@ -6,5 +6,5 @@ export const modifyBuildingEntrance =
     <ns2:reason>
       {{reason}}
     </ns2:reason>
-  </ns2:modifyConstructionProject>
+  </ns2:modifyBuildingEntrance>
 {{/base}}`;
