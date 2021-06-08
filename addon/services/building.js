@@ -1,6 +1,7 @@
-import GwrService from "./gwr";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
+
+import GwrService from "./gwr";
 
 export default class BuildingService extends GwrService {
   cacheKey = "EGID";

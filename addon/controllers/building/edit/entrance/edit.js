@@ -1,7 +1,7 @@
 import Controller from "@ember/controller";
-import Models from "ember-ebau-gwr/models";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
+import Models from "ember-ebau-gwr/models";
 
 export default class BuildingEditEntranceEditController extends Controller {
   Models = Models;

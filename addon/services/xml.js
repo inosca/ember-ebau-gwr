@@ -1,8 +1,8 @@
 import Service from "@ember/service";
+import Models from "ember-ebau-gwr/models";
+import * as Helpers from "ember-ebau-gwr/xml/helpers";
 import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
 import Handlebars, { compile } from "handlebars";
-import * as Helpers from "ember-ebau-gwr/xml/helpers";
-import Models from "ember-ebau-gwr/models";
 
 export default class XmlService extends Service {
   // XML Handling

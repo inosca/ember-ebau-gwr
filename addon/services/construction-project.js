@@ -1,8 +1,8 @@
+import { task, lastValue } from "ember-concurrency-decorators";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 
 import GwrService from "./gwr";
-import { task, lastValue } from "ember-concurrency-decorators";
 
 export default class ConstructionProjectService extends GwrService {
   cacheKey = "EPROID";

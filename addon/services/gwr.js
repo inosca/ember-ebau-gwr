@@ -1,5 +1,5 @@
-import Service, { inject as service } from "@ember/service";
 import { assert } from "@ember/debug";
+import Service, { inject as service } from "@ember/service";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
 /* eslint-disable ember/classic-decorator-no-classic-methods */
