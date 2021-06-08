@@ -2,7 +2,7 @@ import { inject as service } from "@ember/service";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import municipalities from "ember-ebau-gwr/models/municipalities";
 
-import BuildingFormRoute from "./form";
+import BuildingFormRoute from "./edit/form";
 
 export default class BuildingNewRoute extends BuildingFormRoute {
   @service building;
