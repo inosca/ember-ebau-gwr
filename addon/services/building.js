@@ -1,9 +1,11 @@
+import { inject as service } from "@ember/service";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 
 import GwrService from "./gwr";
 
 export default class BuildingService extends GwrService {
+  @service constructionProject;
   cacheKey = "EGID";
   cacheClass = Building;
 
@@ -19,7 +21,7 @@ export default class BuildingService extends GwrService {
     }
     // Refresh cache after removing the building
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
-    await this.get(EPROID);
+    await this.constructionProject.get(EPROID);
   }
 
   async bindBuildingToConstructionProject(EPROID, EGID, buildingWork) {
@@ -40,7 +42,7 @@ export default class BuildingService extends GwrService {
     }
     // Update cache
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
-    this.get(EPROID);
+    this.constructionProject.get(EPROID);
   }
 
   async update(building) {

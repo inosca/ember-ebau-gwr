@@ -35,7 +35,7 @@ export default class ConstructionProjectService extends GwrService {
     }
 
     const xml = await response.text();
-    return this.createAndCacheProject(xml);
+    return this.createAndCache(xml);
   }
 
   async create(project) {
@@ -50,7 +50,7 @@ export default class ConstructionProjectService extends GwrService {
     }
 
     const xml = await response.text();
-    return this.createAndCacheProject(xml);
+    return this.createAndCache(xml);
   }
 
   @lastValue("all") projects = [];
@@ -70,7 +70,7 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   async search(query = {}) {
-    return this.search(query, query.EPROID, {
+    return super.search(query, query.EPROID, {
       xmlMethod: "getConstructionProject",
       urlPath: "constructionprojects",
       listModel: ConstructionProjectsList,

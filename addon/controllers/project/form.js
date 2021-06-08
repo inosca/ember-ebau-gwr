@@ -13,6 +13,8 @@ export default class ProjectFormController extends Controller {
   @service dataImport;
   @service store;
   @service router;
+  @service intl;
+  @service notification;
 
   @tracked import = false;
   @tracked isOrganisation;

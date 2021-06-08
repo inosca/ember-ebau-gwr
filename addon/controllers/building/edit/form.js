@@ -59,7 +59,7 @@ export default class BuildingFormController extends Controller {
       );
       // Clear cache so after transition we fetch the project form api
       this.constructionProject.clearCache(this.model.projectId);
-      this.transitionToRoute("building.form", EGID);
+      this.transitionToRoute("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       console.error(error);
