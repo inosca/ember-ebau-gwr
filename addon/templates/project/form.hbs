@@ -7,14 +7,14 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    <h2 class="uk-flex uk-flex-between">
-      <span>
+    <div class="uk-flex uk-flex-between">
+      <h2>
         {{#if this.project.isNew}}
           {{t "ember-gwr.landingPage.createNewProject"}}
         {{else}}
           {{t "ember-gwr.components.projectForm.title" id=@model.projectId}}
         {{/if}}
-      </span>
+      </h2>
       <div>
         {{#if this.import}}
           <button
@@ -47,7 +47,7 @@
           </LinkTo>
         {{/if}}
       </div>
-    </h2>
+    </div>
 
     <ProjectForm
       @project={{this.project}}

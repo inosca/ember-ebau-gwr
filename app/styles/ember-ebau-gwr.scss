@@ -1,1 +1,6 @@
 @import "ember-uikit";
+
+$ember-ebau-gwr-required-color: $alert-danger-color !default;
+.required-indicator {
+  color: $ember-ebau-gwr-required-color;
+}

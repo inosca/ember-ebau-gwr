@@ -3,17 +3,15 @@
 >
   <label
     for={{@attr}}
-    class={{
-      concat
-      (if @required "uk-text-bold")
-      " "
+    class={{concat
+      "uk-text-bold "
       (if @horizontal "uk-margin-left uk-flex-last")
     }}
   >
-    {{t (concat @translationBase "." @attr)}} {{if
-      @required
-      (t "ember-gwr.components.projectForm.required")
-    }}
+    {{t (concat @translationBase "." @attr)}}
+    {{#if @required}}
+      <span class="required-indicator">*</span>
+    {{/if}}
   </label>
   {{yield}}
 </div>
