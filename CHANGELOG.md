@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.0...v2.1.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* **styling:** small changes to fix integration styling issues ([eacf57b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/eacf57b36b78599bce473753c7393211405817f8))
+
 # [2.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.0.1...v2.1.0) (2021-06-08)
 
 
