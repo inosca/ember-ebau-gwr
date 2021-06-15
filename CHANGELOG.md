@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.1...v2.1.2) (2021-06-15)
+
+
+### Bug Fixes
+
+* **login:** scope modal to engine container ([0c83095](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0c8309530285b824b6a6fe25b4733e020632d501))
+
 ## [2.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.0...v2.1.1) (2021-06-14)
 
 
