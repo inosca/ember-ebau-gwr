@@ -1,5 +1,19 @@
 @import "ember-uikit";
 
+.ebau-gwr {
+  #ember-ebau-gwr-modal-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    div.uk-modal {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 $ember-ebau-gwr-required-color: $alert-danger-color !default;
 .required-indicator {
   color: $ember-ebau-gwr-required-color;
