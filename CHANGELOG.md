@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.2...v2.1.3) (2021-06-17)
+
+
+### Bug Fixes
+
+* **login:** hide login modal after authentication ([f47f1cd](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f47f1cd6cdb35593f789ea511b19c2727433f271))
+
 ## [2.1.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.1...v2.1.2) (2021-06-15)
 
 
