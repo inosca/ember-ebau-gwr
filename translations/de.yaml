@@ -1,8 +1,16 @@
 ember-gwr:
 
   models:
-    building: Gebäude
-    project: Projekt
+    building: |-
+      {count, plural,
+        one {Gebäude}
+        other {Gebäude}
+      }
+    project: |-
+      {count, plural,
+        one {Projekt}
+        other {Projekte}
+      }
 
   authentication:
     loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
@@ -114,8 +122,8 @@ ember-gwr:
         apply: Übernehmen
 
     linkedModels:
-      linkedEntries: Verknüpfte {modelName}e
-      noLinkedEntries: Es sind noch keine {modelName}e verknüpft
+      linkedEntries: Verknüpfte {modelName}
+      noLinkedEntries: Es sind noch keine {modelName} verknüpft
       linkEntry: "{modelName} verknüpfen"
       createEntry: "{modelName} erfassen"
       or: oder
