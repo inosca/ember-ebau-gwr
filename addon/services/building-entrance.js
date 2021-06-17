@@ -65,4 +65,26 @@ export default class BuildingEntranceService extends GwrService {
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
     await this.building.get(EGID);
   }
+
+  async setStreet(EDID, EGID, EGAID, street) {
+    const body = this.xml.buildXMLRequest(
+      "setStreet",
+      { EGAID, street },
+      "Set street"
+    );
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/entrance/${EDID}`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("GWR API: setStreet failed");
+    }
+
+    const xml = await response.text();
+    return this.createAndCache(xml);
+  }
 }

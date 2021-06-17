@@ -10,6 +10,13 @@ ember-gwr:
     street: Strasse
     coordinates: Koordinaten
 
+    linkStreet:
+      link: Strasse ändern
+      heading: Strasse verknüpfen
+      search: Strasse suchen
+      linkSuccess: Strasse erfoglreich verknüpfen.
+      linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetretten.
+
     fields:
       EDID: EDID
       isOfficialAddress: Offizielle Adresse

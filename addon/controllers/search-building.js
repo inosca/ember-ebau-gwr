@@ -25,7 +25,9 @@ export default class SearchBuildingController extends Controller {
       return yield this.building.search(query);
     } catch (error) {
       console.error(error);
-      this.notification.danger("ember-gwr.searchBuilding.searchError");
+      this.notification.danger(
+        this.intl.t("ember-gwr.generalErrors.searchError")
+      );
     }
   }
 

@@ -13,13 +13,15 @@
         "project-form/field"
         update=this.updateField
         translationBase="ember-gwr.components.search"
-      ) as |Field|
+      )
+      as |Field|
     }}
       {{#if this.extendedSearch}}
         <div class="uk-flex uk-flex-between uk-margin-small-bottom">
           <div class="uk-width-1-2">
             <h3>
-              {{t "ember-gwr.components.search.realestateIdentificationHeading"
+              {{t
+                "ember-gwr.components.search.realestateIdentificationHeading"
               }}
             </h3>
             {{#if this.validationErrors.realestateIdentification}}
@@ -103,24 +105,31 @@
       {{/if}}
     {{/let}}
     <div class="uk-flex uk-flex-right">
-      <button
-        type="button"
-        class="uk-button uk-button-default"
-        {{on "click" (fn (mut this.extendedSearch) (not this.extendedSearch))}}
-      >
-        {{t
-          (concat
-            "ember-gwr.components.search.extendedSearch."
-            (if this.extendedSearch "collapse" "extend")
-          )
-        }}
-      </button>
-      <button
-        type="submit"
-        class="uk-button uk-button-primary uk-margin-small-left"
+      {{#if @showExtendedSearch}}
+        <button
+          type="button"
+          class="uk-button uk-button-default"
+          {{on
+            "click"
+            (fn (mut this.extendedSearch) (not this.extendedSearch))
+          }}
+        >
+          {{t
+            (concat
+              "ember-gwr.components.search.extendedSearch."
+              (if this.extendedSearch "collapse" "extend")
+            )
+          }}
+        </button>
+      {{/if}}
+      <UkButton
+        @color="primary"
+        @type="submit"
+        @loading={{@search.isRunning}}
+        class="uk-margin-small-left"
       >
         {{@searchLabel}}
-      </button>
+      </UkButton>
     </div>
   </div>
 </form>

@@ -1,6 +1,7 @@
 import * as BuildingTemplates from "./templates/building";
 import * as BuildingEntranceTemplates from "./templates/building-entrance";
 import * as ConstructionProjectTemplates from "./templates/construction-project";
+import * as StreetTemplates from "./templates/street";
 
 const header = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>`;
 
@@ -30,5 +31,6 @@ export const Templates = {
   ...ConstructionProjectTemplates,
   ...BuildingTemplates,
   ...BuildingEntranceTemplates,
+  ...StreetTemplates,
 };
 export const Partials = { header, delivery, base };

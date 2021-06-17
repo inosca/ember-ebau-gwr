@@ -12,7 +12,8 @@ ember-gwr:
         other {Projekte}
       }
 
-  authentication:
+  generalErrors:
+    searchError: Bei der Suche ist ein Fehler aufgetretten.
     loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
 
   landingPage:
@@ -41,7 +42,6 @@ ember-gwr:
 
     linkSuccess: Gebäude wurde erfolgreich verknüpft.
     linkError: Bei der Verknüpfung des Gebäudes ist ein Fehler aufgetretten.
-    searchError: Bei der Suche ist ein Fehler aufgetretten.
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen

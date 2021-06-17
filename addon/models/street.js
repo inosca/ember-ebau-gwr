@@ -1,6 +1,7 @@
 import { tracked } from "@glimmer/tracking";
 
 import XMLModel from "./xml-model";
+import Locality from "./locality";
 
 export class StreetDescription extends XMLModel {
   @tracked language;
@@ -73,4 +74,28 @@ export default class Street extends XMLModel {
     9803, // Benanntes Gebiet (Flächenobjekt)
     9809, // Keine Angabe zur Geometrie
   ];
+}
+
+export class StreetList extends XMLModel {
+  @tracked ESID;
+  @tracked description = new StreetDescription();
+  @tracked isOfficialDescription;
+  @tracked streetStatus;
+  @tracked localisationKind;
+  @tracked locality = new Locality();
+
+  constructor(xmlOrObject, root = "streetWithoutStreetGeometryType") {
+    super(xmlOrObject);
+    this.setFieldsFromXML({
+      root,
+      fields: {
+        ESID: Number,
+        isOfficialDescription: Boolean,
+        streetStatus: Number,
+        localisationKind: Number,
+        locality: Locality,
+        description: StreetDescription,
+      },
+    });
+  }
 }

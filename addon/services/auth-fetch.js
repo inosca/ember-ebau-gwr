@@ -58,7 +58,7 @@ export default class AuthFetchService extends Service {
 
       if (json["401"]?.source === "external") {
         this.notification.danger(
-          this.intl.t("ember-gwr.authentication.loginError")
+          this.intl.t("ember-gwr.generalErrors.loginError")
         );
         this.showAuthModal = true;
       }

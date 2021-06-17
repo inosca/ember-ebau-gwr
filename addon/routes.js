@@ -15,7 +15,9 @@ export default buildRoutes(function () {
       this.route("entrances");
 
       this.route("entrance", function () {
-        this.route("edit", { path: "/:entrace_id" });
+        this.route("edit", { path: "/:entrace_id" }, function () {
+          this.route("link-street");
+        });
         this.route("new");
       });
     });

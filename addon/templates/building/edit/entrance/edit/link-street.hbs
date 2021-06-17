@@ -1,0 +1,52 @@
+<h1>
+  {{t "ember-gwr.buildingEntrance.linkStreet.heading"}}
+</h1>
+
+<Search::Filters
+  @search={{this.search}}
+  @searchLabel={{t "ember-gwr.buildingEntrance.linkStreet.search"}}
+  @baseQuery={{this.baseQuery}}
+  as |Field|
+>
+  <div class="uk-flex uk-flex-wrap uk-flex-between">
+    <div class="uk-width-1-2@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <Field
+          @attr="description.descriptionLong"
+          @translationBase="ember-gwr.street"
+        />
+      </div>
+    </div>
+    <div class="uk-width-1-2@m uk-width-1">
+      <Field @attr="locality.name.nameLong" @translationBase="ember-gwr" />
+    </div>
+  </div>
+
+</Search::Filters>
+
+{{#if this.search.last}}
+  <Search::ResultTable
+    @results={{this.searchResults}}
+    @loading={{this.search.isRunning}}
+    as |Row|
+  >
+    <Search::ResultTable::Head as |Header|>
+      <Header class="uk-table-shrink" @label={{t "ember-gwr.street.ESID"}} />
+      <Header @label={{t "ember-gwr.street.description.descriptionLong"}} />
+      <Header @label={{t "ember-gwr.locality.name.nameLong"}} />
+    </Search::ResultTable::Head>
+    <Row as |Field model|>
+      <Field @attr="ESID" as |value|>
+        <button
+          class="uk-button uk-button-link"
+          type="button"
+          {{on "click" (fn this.setStreet model)}}
+        >
+          {{value}}
+        </button>
+      </Field>
+      <Field @attr="description.descriptionLong" />
+      <Field @attr="locality.name.nameLong" />
+    </Row>
+  </Search::ResultTable>
+{{/if}}
