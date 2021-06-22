@@ -113,6 +113,22 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
 
+    modelForm:
+      save: Speichern
+      cancelImport: Import abbrechen
+      applyAll: Alles übernehmen
+      importFromCaluma: Baugesuchsdaten importieren
+      dates: Daten
+      datePlaceholder: Wählen Sie ein Datum...
+      title: Bauprojekt {id}
+      realEstateHeading: Grundstücksidentifikation
+      clientHeading: Auftraggeber
+
+      diff:
+        existingData: Existierende Daten im GWR
+        importData: Importierte Daten
+        apply: Übernehmen
+
     linkedModels:
       linkedEntries: Verknüpfte {modelName}e
       noLinkedEntries: Es sind noch keine {modelName}e verknüpft

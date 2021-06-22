@@ -77,6 +77,8 @@ class ThermotechnicalDeviceForWarmWater2 extends ThermotechnicalDeviceForWarmWat
 }
 
 export default class Building extends XMLModel {
+  modelName = "building";
+
   @tracked EGID;
   @tracked municipality;
   @tracked officialBuildingNo;

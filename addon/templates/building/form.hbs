@@ -23,8 +23,8 @@
       </span>
     </h2>
 
-    <ProjectForm
-      @project={{this.buildingWork.building}}
+    <ModelForm
+      @model={{this.buildingWork.building}}
       @onSubmit={{this.saveBuilding}}
       @translationBase="ember-gwr.building.fields" as |Field|
     >
@@ -93,10 +93,10 @@
       </h3>
 
       {{#unless this.buildingWork.building.isNew}}
-        <Field @attr="EGID" type="number" readonly disabled />
+        <Field @attr="EGID" @type="number" @disabled={{true}} />
       {{/unless}}
 
-      <Field @attr="officialBuildingNo" type="number" />
+      <Field @attr="officialBuildingNo" @type="number" />
 
       <Field
         @attr="buildingCategory"
@@ -118,19 +118,17 @@
 
       <Field
         @attr="coordinates.north"
-        type="number"
-        step="0.001"
-        @required={{true}}
-        min="1070000.0"
-        max="1300000.999"
+        @type="number"
+        @step="0.001"
+        @min="1070000.0"
+        @max="1300000.999"
       />
       <Field
         @attr="coordinates.east"
-        type="number"
-        step="0.001"
-        min="2480000.0"
-        max="2840000.999"
-        @required={{true}}
+        @type="number"
+        @step="0.001"
+        @min="2480000.0"
+        @max="2840000.999"
       />
       <Field
         @attr="coordinates.originOfCoordinates"
@@ -139,7 +137,7 @@
         @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
         @required={{true}}
       />
-      <Field @attr="neighbourhood" type="number" min="1000" />
+      <Field @attr="neighbourhood" @type="number" @min="1000" />
 
       <ul uk-accordion>
         <li>
@@ -173,10 +171,10 @@
 
       <Field @attr="dateOfConstruction.yearMonthDay" @inputType="date" />
       {{#if this.buildingWork.building.dateOfConstruction.year}}
-        <Field @attr="dateOfConstruction.year" readonly disabled />
+        <Field @attr="dateOfConstruction.year" @disabled={{true}} />
       {{/if}}
       {{#if this.buildingWork.building.dateOfConstruction.yearMonth}}
-        <Field @attr="dateOfConstruction.yearMonth" readonly disabled />
+        <Field @attr="dateOfConstruction.yearMonth" @disabled={{true}} />
       {{/if}}
       {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
         <Field
@@ -189,19 +187,19 @@
         />
       {{/if}}
 
-      <Field @attr="yearOfDemolition" type="number" pattern="[0-9]{4}" />
+      <Field @attr="yearOfDemolition" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.structure"}}
       </h3>
-      <Field @attr="numberOfFloors" type="number" />
-      <Field @attr="numberOfSeparateHabitableRooms" type="number" />
+      <Field @attr="numberOfFloors" @type="number" />
+      <Field @attr="numberOfSeparateHabitableRooms" @type="number" />
       <Field @attr="civilDefenseShelter" @inputType="checkbox" />
 
       <h3>
         {{t "ember-gwr.building.sections.dimensions"}}
       </h3>
-      <Field @attr="volume.volume" type="number" />
+      <Field @attr="volume.volume" @type="number" />
       <Field
         @attr="volume.norm"
         @inputType="select"
@@ -214,13 +212,13 @@
         @convertValueTo="number"
         @options={{this.Models.Volume.informationSourceOptions}}
       />
-      <Field @attr="surfaceAreaOfBuilding" type="number" />
+      <Field @attr="surfaceAreaOfBuilding" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.energy"}}
       </h3>
 
-      <Field @attr="energyRelevantSurface" type="number" />
+      <Field @attr="energyRelevantSurface" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.heating"}}
@@ -392,6 +390,6 @@
 
       <Field @attr="buildingFreeText1" />
       <Field @attr="buildingFreeText2" />
-    </ProjectForm>
+    </ModelForm>
   {{/if}}
 </div>

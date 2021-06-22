@@ -1,0 +1,51 @@
+<div class="{{if @horizontal "uk-flex"}}">
+  <div class="uk-text-bold {{if @horizontal "uk-margin-left uk-flex-last"}}">
+    {{component @labelComponent}}
+  </div>
+  <div
+    class="uk-box-shadow-small uk-padding-small
+      {{if @isInvalid "uk-form-danger"}}
+      {{if @isValid "uk-form-success"}}"
+  >
+    <div class="uk-margin">
+      <div
+        class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom"
+      >
+        <span>
+          {{t "ember-gwr.components.modelForm.diff.existingData"}}
+        </span>
+        <button
+          type="button"
+          class="uk-button uk-button-default uk-button-small"
+          {{on "click" (fn @updateModelField @current)}}
+        >
+          {{t "ember-gwr.components.modelForm.diff.apply"}}
+        </button>
+      </div>
+      <input class="uk-width-1 uk-input" disabled readonly value={{@current}} />
+    </div>
+    <div>
+      <div
+        class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom"
+      >
+        <span>
+          {{t "ember-gwr.components.modelForm.diff.importData"}}
+        </span>
+        <button
+          type="button"
+          class="uk-button uk-button-default uk-button-small"
+          {{on "click" (fn @updateModelField this.newValue)}}
+        >
+          {{t "ember-gwr.components.modelForm.diff.apply"}}
+        </button>
+      </div>
+      <input
+        class="uk-width-1 uk-input"
+        value={{this.newValue}}
+        {{on "input" this.updateNewValue}}
+      />
+    </div>
+  </div>
+</div>
+{{component @hintComponent}}
+{{component @errorComponent}}
