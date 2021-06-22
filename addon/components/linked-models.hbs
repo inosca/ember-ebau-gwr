@@ -1,11 +1,15 @@
-{{#let (t (concat "ember-gwr.models." @modelName)) as |modelName|}}
+{{#let
+  (t (concat "ember-gwr.models." @modelName) count=1)
+  (t (concat "ember-gwr.models." @modelName) count=2)
+  as |modelName modelNamePlural|
+}}
   <table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
     <thead>
       <tr>
         <th colspan="3">
           {{t
             "ember-gwr.components.linkedModels.linkedEntries"
-            modelName=modelName
+            modelName=modelNamePlural
           }}
         </th>
       </tr>
@@ -37,8 +41,7 @@
                 uk-icon="trash"
                 uk-tooltip={{t "ember-gwr.components.linkedModels.removeLink"}}
                 {{on "click" (fn @removeLink model)}}
-              >
-              </button>
+              ></button>
             </td>
           {{/unless}}
         </tr>
@@ -47,7 +50,7 @@
           <td colspan="3">
             {{t
               "ember-gwr.components.linkedModels.noLinkedEntries"
-              modelName=modelName
+              modelName=modelNamePlural
             }}
           </td>
         </tr>

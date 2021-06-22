@@ -14,13 +14,13 @@
       />
       <UkTab as |Tab|>
         <Tab.link-item @route="project.form" @model={{this.activeProject}}>
-          {{t "ember-gwr.models.project"}}
+          {{t "ember-gwr.models.project" count=1}}
         </Tab.link-item>
         <Tab.link-item
           @route="project.linked-buildings"
           @model={{this.activeProject}}
         >
-          {{t "ember-gwr.models.building"}}
+          {{t "ember-gwr.models.building" count=1}}
         </Tab.link-item>
       </UkTab>
       {{outlet}}
