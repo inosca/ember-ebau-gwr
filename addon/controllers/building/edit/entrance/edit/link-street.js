@@ -3,7 +3,6 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import { languageOptions } from "ember-ebau-gwr/models/options";
-import { getOwner } from "@ember/application";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
   @service street;

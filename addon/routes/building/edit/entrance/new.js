@@ -1,7 +1,8 @@
 import { inject as service } from "@ember/service";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
-import IndexRoute from "./edit/index";
 import { languageOptions } from "ember-ebau-gwr/models/options";
+
+import IndexRoute from "./edit/index";
 
 export default class BuildingEditEntranceNewRoute extends IndexRoute {
   @service buildingEntrance;

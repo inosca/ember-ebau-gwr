@@ -1,7 +1,7 @@
 import { tracked } from "@glimmer/tracking";
 
-import XMLModel from "./xml-model";
 import Locality from "./locality";
+import XMLModel from "./xml-model";
 
 export class StreetDescription extends XMLModel {
   @tracked language;
