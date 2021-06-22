@@ -55,17 +55,19 @@ export default class Street extends XMLModel {
   }
 
   static template = `
-    <ns2:street>
-      <ns2:ESID>{{model.ESID}}</ns2:ESID>
-      {{> StreetDescription model=model.description}}
-      <ns2:streetGeometry>{{model.streetGeometry}}</ns2:streetGeometry>
-      {{#if model.officialStreetNumber}}
-        <ns2:officialStreetNumber>{{model.officialStreetNumber}}</ns2:officialStreetNumber>
-        <ns2:isOfficialDescription>{{model.isOfficialDescription}}</ns2:isOfficialDescription>
-        <ns2:streetStatus>{{model.streetStatus}}</ns2:streetStatus>
-        <ns2:streetKind>{{model.streetKind}}</ns2:streetKind>
-      {{/if}}
-    </ns2:street>
+    {{#if model.ESID}}
+      <ns2:street>
+        <ns2:ESID>{{model.ESID}}</ns2:ESID>
+        {{> StreetDescription model=model.description}}
+        <ns2:streetGeometry>{{model.streetGeometry}}</ns2:streetGeometry>
+        {{#if model.officialStreetNumber}}
+          <ns2:officialStreetNumber>{{model.officialStreetNumber}}</ns2:officialStreetNumber>
+          <ns2:isOfficialDescription>{{model.isOfficialDescription}}</ns2:isOfficialDescription>
+          <ns2:streetStatus>{{model.streetStatus}}</ns2:streetStatus>
+          <ns2:streetKind>{{model.streetKind}}</ns2:streetKind>
+        {{/if}}
+      </ns2:street>
+    {{/if}}
   `;
 
   static streetKindOptions = [

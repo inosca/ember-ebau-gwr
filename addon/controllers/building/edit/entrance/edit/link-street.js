@@ -3,6 +3,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import { languageOptions } from "ember-ebau-gwr/models/options";
+import { getOwner } from "@ember/application";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
   @service street;
@@ -15,6 +16,12 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
       description: {},
       locality: { name: {} },
     };
+  }
+
+  get backRoute() {
+    return `building.edit.entrance.${
+      this.buildingEntrance.newRecord ? "new" : "edit.index"
+    }`;
   }
 
   @lastValue("search") searchResults;
@@ -34,20 +41,25 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @action
   async setStreet(street) {
     try {
-      const entrance = await this.buildingEntrance.getFromCacheOrApi(
-        this.model.entranceId,
-        this.model.buildingId
-      );
-      await this.buildingEntrance.setStreet(
-        this.model.entranceId,
-        this.model.buildingId,
-        entrance.EGAID,
-        street
-      );
+      if (this.buildingEntrance.newRecord) {
+        this.buildingEntrance.newRecord.street = street;
+        this.transitionToRoute("building.edit.entrance.new");
+      } else {
+        const entrance = await this.buildingEntrance.getFromCacheOrApi(
+          this.model.entranceId,
+          this.model.buildingId
+        );
+        await this.buildingEntrance.setStreet(
+          this.model.entranceId,
+          this.model.buildingId,
+          entrance.EGAID,
+          street
+        );
+        this.transitionToRoute("building.edit.entrance.edit.index");
+      }
       this.notification.success(
         this.intl.t("ember-gwr.buildingEntrance.linkStreet.linkSuccess")
       );
-      this.transitionToRoute("building.edit.entrance.edit.index");
     } catch (error) {
       console.error(error);
       this.notification.danger(

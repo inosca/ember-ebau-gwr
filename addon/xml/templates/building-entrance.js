@@ -1,4 +1,15 @@
 //prettier-ignore
+export const addBuildingEntrance =
+`{{#>base}}
+  <ns2:addBuildingEntrance>
+    {{> BuildingEntrance}}
+    <ns2:reason>
+      {{reason}}
+    </ns2:reason>
+  </ns2:addBuildingEntrance>
+{{/base}}`;
+
+//prettier-ignore
 export const modifyBuildingEntrance =
 `{{#>base}}
   <ns2:modifyBuildingEntrance>

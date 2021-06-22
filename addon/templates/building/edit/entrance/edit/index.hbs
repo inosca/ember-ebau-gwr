@@ -24,10 +24,22 @@
       as |Field|
     >
 
-      {{#unless this.buildingWork.building.isNew}}
+      {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" type="number" readonly disabled />
-        <Field @attr="locality.name.nameLong" readonly disabled />
-        <Field @attr="locality.swissZipCode" type="number" readonly disabled />
+      {{/unless}}
+      <Field
+        @attr="locality.name.nameLong"
+        required
+        readonly={{not this.buildingEntrance.isNew}}
+        disabled={{not this.buildingEntrance.isNew}}
+      />
+      {{#unless this.buildingEntrance.isNew}}
+        <Field
+          @attr="locality.swissZipCode"
+          type="number"
+          readonly={{not this.buildingEntrance.isNew}}
+          disabled={{not this.buildingEntrance.isNew}}
+        />
       {{/unless}}
 
       <Field @attr="buildingEntranceNo" />
@@ -64,32 +76,51 @@
 
       <div class="uk-flex uk-flex-between">
         <h2>{{t "ember-gwr.buildingEntrance.street"}}</h2>
-        <LinkTo @route="building.edit.entrance.edit.link-street">
-          {{t "ember-gwr.buildingEntrance.linkStreet.link"}}
-        </LinkTo>
+        <span>
+          <LinkTo
+            class="uk-button
+              {{if
+                this.buildingEntrance.isNew
+                "uk-button-primary"
+                "uk-button-default"
+              }}"
+            @route="building.edit.entrance.edit.link-street"
+            @models={{if this.buildingEntrance.isNew (array "new") (array)}}
+          >
+            {{t
+              (if
+                this.buildingEntrance.isNew
+                "ember-gwr.buildingEntrance.linkStreet.link"
+                "ember-gwr.buildingEntrance.linkStreet.change"
+              )
+            }}
+          </LinkTo>
+        </span>
       </div>
-      <Field @attr="street.ESID" disabled readonly />
-      <Field @attr="street.description.descriptionLong" disabled readonly />
-      <Field
-        @attr="street.streetKind"
-        @inputType="select"
-        @options={{this.Models.Street.streetKindOptions}}
-        @convertValueTo="number"
-        disabled
-        readonly
-      />
-      <Field
-        @attr="street.officialStreetNumber"
-        type="number"
-        disabled
-        readonly
-      />
-      <Field
-        @attr="street.isOfficialDescription"
-        @inputType="checkbox"
-        disabled
-        readonly
-      />
+      {{#unless this.buildingEntrance.street.isNew}}
+        <Field @attr="street.ESID" disabled readonly />
+        <Field @attr="street.description.descriptionLong" disabled readonly />
+        <Field
+          @attr="street.streetKind"
+          @inputType="select"
+          @options={{this.Models.Street.streetKindOptions}}
+          @convertValueTo="number"
+          disabled
+          readonly
+        />
+        <Field
+          @attr="street.officialStreetNumber"
+          type="number"
+          disabled
+          readonly
+        />
+        <Field
+          @attr="street.isOfficialDescription"
+          @inputType="checkbox"
+          disabled
+          readonly
+        />
+      {{/unless}}
 
     </ProjectForm>
   {{/if}}

@@ -15,8 +15,8 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
   @task
   *fetchBuildingEntrance() {
     try {
-      if (this.model.buildingEntrance?.isNew) {
-        return this.model.buildingEntrance;
+      if (this.buildingEntranceAPI.newRecord) {
+        return this.buildingEntranceAPI.newRecord;
       }
 
       return yield this.buildingEntranceAPI.getFromCacheOrApi(
@@ -36,7 +36,8 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
     try {
       if (this.buildingEntrance.isNew) {
         const buildingEntrance = yield this.buildingEntranceAPI.create(
-          this.buildingEntrance
+          this.buildingEntrance,
+          this.model.buildingId
         );
         this.transitionToRoute(
           "building.edit.entrance.edit",

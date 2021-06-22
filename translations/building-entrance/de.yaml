@@ -2,6 +2,7 @@ ember-gwr:
   buildingEntrance:
     title: Eingang {address}
     backToBuilding: Zurück zum Gebäude
+    backToEntrance: Zurück zum Eingang
     createNewEntrance: Neuen Eingang erfassen
 
     saveError: Beim Speichern des Eingangs ist ein Fehler aufgetretten.
@@ -11,7 +12,8 @@ ember-gwr:
     coordinates: Koordinaten
 
     linkStreet:
-      link: Strasse ändern
+      change: Strasse ändern
+      link: Strasse verlinken
       heading: Strasse verknüpfen
       search: Strasse suchen
       linkSuccess: Strasse erfoglreich verknüpfen.
