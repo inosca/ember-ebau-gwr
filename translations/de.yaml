@@ -11,6 +11,11 @@ ember-gwr:
         one {Projekt}
         other {Projekte}
       }
+    entrance: |-
+      {count, plural,
+        one {Eingang}
+        other {Eingänge}
+      }
 
   generalErrors:
     searchError: Bei der Suche ist ein Fehler aufgetretten.

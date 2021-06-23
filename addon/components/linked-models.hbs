@@ -51,7 +51,7 @@
             >
               {{t
                 "ember-gwr.components.linkedModels.linkEntry"
-                modelName=(t modelName)
+                modelName=modelName
               }}
             </LinkTo>
           {{/if}}
@@ -62,7 +62,7 @@
             <LinkTo @route={{@newRoute}} @models={{or @newModels (array)}}>
               {{t
                 "ember-gwr.components.linkedModels.createEntry"
-                modelName=(t modelName)
+                modelName=modelName
               }}
             </LinkTo>
           {{/if}}
