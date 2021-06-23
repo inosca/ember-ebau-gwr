@@ -1,20 +1,22 @@
 <UkModal
   @visible={{@visible}}
   @on-hide={{@close}}
-  @container="#ember-ebau-gwr-modal-container" as |Modal|
+  @container="#ember-ebau-gwr-modal-container"
+  as |Modal|
 >
   <Modal.header>
     <h2 class="uk-modal-title">
       {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
     </h2>
   </Modal.header>
-  <Modal.body>
+  <Modal.body {{uk-sticky}}>
     {{#let
       (component
         "project-form/field"
         project=this.buildingWork
         translationBase="ember-gwr.buildingWork.fields"
-      ) as |Field|
+      )
+      as |Field|
     }}
       <Field
         @attr="kindOfWork"

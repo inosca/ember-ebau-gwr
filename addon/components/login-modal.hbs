@@ -3,14 +3,15 @@
   @btnClose={{false}}
   @escClose={{false}}
   @bgClose={{false}}
-  @container="#ember-ebau-gwr-modal-container" as |Modal|
+  @container="#ember-ebau-gwr-modal-container"
+  as |Modal|
 >
   <Modal.header>
     <h2 class="uk-modal-title">
       {{t "ember-gwr.components.loginModal.header"}}
     </h2>
   </Modal.header>
-  <Modal.body>
+  <Modal.body {{uk-sticky}}>
     <div class="uk-grid-small" uk-grid>
       <div class="uk-width-1-2">
         <input
