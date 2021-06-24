@@ -22,7 +22,7 @@ export default class ModelFormComponent extends Component {
     yield changeset.validate();
     if (changeset.get("isValid")) {
       yield changeset.save();
-      yield this.args.onSubmit.perform();
+      this.args.onSubmit.perform();
     }
   }
 }

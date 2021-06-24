@@ -45,7 +45,6 @@
           @attr="kindOfWork"
           @inputType="select"
           @convertValueTo="number"
-          @noPlaceholder={{true}}
           @options={{this.Models.BuildingWork.kindOfWorkOptions}}
           @required={{true}}
         />
@@ -135,7 +134,6 @@
         @inputType="select"
         @convertValueTo="number"
         @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
-        @required={{true}}
       />
       <Field @attr="neighbourhood" @type="number" @min="1000" />
 

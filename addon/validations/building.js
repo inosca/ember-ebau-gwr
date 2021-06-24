@@ -3,7 +3,7 @@ import {
   validateNumber,
   validateFormat,
 } from "ember-changeset-validations/validators";
-import { validatePresenceNested } from "ember-ebau-gwr/validators";
+import { validatePresenceNested } from "ember-ebau-gwr/validators/presence-nested";
 
 export default {
   kindOfWork: [validatePresence(true)],
@@ -19,7 +19,12 @@ export default {
       validateNumber({ gte: 2480000.0, allowBlank: true }),
       validateNumber({ lte: 2840000.999, allowBlank: true }),
     ],
-    originOfCoordinates: [validatePresence(true)],
+    originOfCoordinates: [
+      validatePresenceNested({
+        presence: true,
+        on: ["coordinates.north", "coordinates.east"],
+      }),
+    ],
   },
   neighbourhood: [validateNumber({ gte: 1000, allowBlank: true })],
   buildingStatus: [validatePresence(true)],
