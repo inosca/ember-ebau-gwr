@@ -1,15 +1,8 @@
 import Service from "@ember/service";
-<<<<<<< HEAD
 import Models from "ember-ebau-gwr/models";
 import * as Helpers from "ember-ebau-gwr/xml/helpers";
 import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
 import Handlebars, { compile } from "handlebars";
-=======
-import { Partials, Templates } from "ember-ebau-gwr/xml/templates";
-import Handlebars, { compile } from "handlebars";
-import * as Helpers from "ember-ebau-gwr/xml/helpers";
-import Models from "ember-ebau-gwr/models";
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
 
 export default class XmlService extends Service {
   // XML Handling
@@ -23,11 +16,7 @@ export default class XmlService extends Service {
   _hbs = Handlebars;
   _compiledTemplates = {};
 
-<<<<<<< HEAD
   buildXMLRequest(type, model, reason = "Update data") {
-=======
-  buildXMLRequest(type, model, reason = "Modification enregistrement") {
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
     // Compile the needed templates on the fly so only
     // the ones used are compiled to remove a bit of over head.
     if (!this._compiledTemplates[type]) {

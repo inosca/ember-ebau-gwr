@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import { task, lastValue } from "ember-concurrency-decorators";
-=======
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 
 import GwrService from "./gwr";
-<<<<<<< HEAD
-=======
-import { task, lastValue } from "ember-concurrency-decorators";
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
 
 export default class ConstructionProjectService extends GwrService {
   cacheKey = "EPROID";
@@ -42,11 +35,7 @@ export default class ConstructionProjectService extends GwrService {
     }
 
     const xml = await response.text();
-<<<<<<< HEAD
     return this.createAndCache(xml);
-=======
-    return this.createAndCacheProject(xml);
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
   }
 
   async create(project) {
@@ -61,11 +50,7 @@ export default class ConstructionProjectService extends GwrService {
     }
 
     const xml = await response.text();
-<<<<<<< HEAD
     return this.createAndCache(xml);
-=======
-    return this.createAndCacheProject(xml);
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
   }
 
   @lastValue("all") projects = [];
@@ -85,11 +70,7 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   async search(query = {}) {
-<<<<<<< HEAD
     return super.search(query, query.EPROID, {
-=======
-    return this.search(query, query.EPROID, {
->>>>>>> 9a35c74 (refactor(gwr-service): refactor into multiple services for code quality)
       xmlMethod: "getConstructionProject",
       urlPath: "constructionprojects",
       listModel: ConstructionProjectsList,

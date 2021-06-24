@@ -7,4 +7,9 @@ export default class BuildingEditDwellingEditRoute extends Route {
       ...this.modelFor("building.edit"),
     };
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.fetchDwelling.perform();
+  }
 }

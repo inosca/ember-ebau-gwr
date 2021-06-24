@@ -1,5 +1,5 @@
-import Service, { inject as service } from "@ember/service";
 import { assert } from "@ember/debug";
+import Service, { inject as service } from "@ember/service";
 import SearchResult from "ember-ebau-gwr/models/search-result";
 
 /* eslint-disable ember/classic-decorator-no-classic-methods */
@@ -10,11 +10,6 @@ export default class GwrService extends Service {
   @service xml;
 
   _cache = {};
-
-  constructor(...args) {
-    super(...args);
-    this._setupHandlebarsPartials();
-  }
 
   get municipality() {
     return this.authFetch.municipality;
@@ -43,6 +38,13 @@ export default class GwrService extends Service {
   async getFromCacheOrApi(...args) {
     return this.getFromCache(...args) || (await this.get(...args));
   }
+
+  clearCache(ID) {
+    if (ID) {
+      delete this._cache[ID];
+    } else {
+      this._cache = {};
+    }
   }
 
   async search(
@@ -76,13 +78,5 @@ export default class GwrService extends Service {
     return new SearchResult(await response.text(), {
       [searchKey]: [listModel],
     })[searchKey];
-  }
-
-  clearCache(ID) {
-    if (ID) {
-      delete this._cache[ID];
-    } else {
-      this._cache = {};
-    }
   }
 }
