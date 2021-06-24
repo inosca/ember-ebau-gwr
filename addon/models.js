@@ -20,6 +20,7 @@ import SearchResult from "./models/search-result";
 import Street, { StreetDescription } from "./models/street";
 import ThermotechnicalDeviceForHeating from "./models/thermotechnical-device-for-heating";
 import ThermotechnicalDeviceForWarmWater from "./models/thermotechnical-device-for-warm-water";
+import Dwelling from "./models/dwelling";
 
 export default {
   Coordinates,
@@ -46,4 +47,5 @@ export default {
   StreetDescription,
   ThermotechnicalDeviceForHeating,
   ThermotechnicalDeviceForWarmWater,
+  Dwelling,
 };

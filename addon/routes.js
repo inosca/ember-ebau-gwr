@@ -13,12 +13,17 @@ export default buildRoutes(function () {
     this.route("edit", { path: "/:building_id" }, function () {
       this.route("form");
       this.route("entrances");
+      this.route("dwellings");
 
       this.route("entrance", function () {
         this.route("new");
-        this.route("edit", { path: "/:entrace_id" }, function () {
+        this.route("edit", { path: "/:entrance_id" }, function () {
           this.route("link-street");
         });
+      });
+      this.route("dwelling", function () {
+        this.route("new");
+        this.route("edit", { path: "/:dwelling_id" });
       });
     });
   });

@@ -4,6 +4,7 @@ import Coordinates from "./coordinates";
 import LocalId from "./local-id";
 import Locality from "./locality";
 import Street from "./street";
+import Dwelling from "./dwelling";
 import XMLModel from "./xml-model";
 
 export default class BuildingEntrance extends XMLModel {
@@ -16,6 +17,7 @@ export default class BuildingEntrance extends XMLModel {
   @tracked localId = new LocalId();
   @tracked street = new Street();
   @tracked locality = new Locality();
+  @tracked dwelling = new Dwelling();
 
   constructor(xmlOrObject, root = "buildingEntrance") {
     super(xmlOrObject);
@@ -30,6 +32,7 @@ export default class BuildingEntrance extends XMLModel {
         street: Street,
         locality: Locality,
         coordinates: Coordinates,
+        dwelling: Dwelling,
       },
     });
   }

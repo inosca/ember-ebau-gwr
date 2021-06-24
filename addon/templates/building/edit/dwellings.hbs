@@ -1,13 +1,13 @@
 <div>
-  {{#if this.fetchEntrances.isRunning}}
+  {{#if this.fetchDwellings.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
     <LinkedModels
-      @models={{this.fetchEntrances.lastSuccessful.value}}
-      @modelName="entrance"
-      @newRoute="building.edit.entrance.new"
+      @models={{this.fetchDwellings.lastSuccessful.value}}
+      @modelName="dwelling"
+      @newRoute="building.edit.dwelling.new"
       {{!--
       TODO removing a entrance is not allowed if there is still a dwelling attached to it
       We also cannot remove an entrance if there is only one.
@@ -15,17 +15,18 @@
       --}}
       as |model|
     >
+      {{log model.document.children}}
       <td class="uk-table-shrink">
         <LinkTo
-          @route={{"building.edit.entrance.edit"}}
-          @model={{model.EDID}}
+          @route={{"building.edit.dwelling.edit"}}
+          @model={{model.EWID}}
           class="uk-link"
         >
-          {{model.EDID}}
+          {{model.EWID}}
         </LinkTo>
       </td>
       <td>
-        {{model.fullAddressText}}
+        {{model.buildingEntranceNo}}
       </td>
     </LinkedModels>
   {{/if}}
