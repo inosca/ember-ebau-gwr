@@ -8,11 +8,11 @@ export default class BuildingNewRoute extends BuildingFormRoute {
   @service building;
   @service config;
 
-  templateName = "building.form";
-  controllerName = "building.form";
+  templateName = "building.edit.form";
+  controllerName = "building.edit.form";
 
   async model(...args) {
-    const model = super.model(...args);
+    const model = { projectId: super.model(...args) };
     const buildingWork = new BuildingWork();
     await this.building.authFetch.housingStatToken.lastRunning;
     buildingWork.building.municipality = this.building.municipality;

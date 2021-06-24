@@ -2,7 +2,7 @@ import Route from "@ember/routing/route";
 
 export default class BuildingFormRoute extends Route {
   model() {
-    return this.modelFor("building.edit");
+    return this.modelFor("building");
   }
 
   setupController(controller, model) {
