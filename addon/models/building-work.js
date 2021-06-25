@@ -4,7 +4,7 @@ import Building from "./building";
 import XMLModel from "./xml-model";
 
 export default class BuildingWork extends XMLModel {
-  @tracked kindOfWork = BuildingWork.kindOfWorkOptions[0];
+  @tracked kindOfWork;
   @tracked ARBID;
   @tracked energeticRestauration = false;
   @tracked renovationHeatingsystem = false;

@@ -1,0 +1,19 @@
+<div class="{{if @horizontal "uk-flex"}}">
+  <div class="{{if @horizontal "uk-margin-left uk-flex-last"}}">
+    {{component @labelComponent}}
+  </div>
+  <PikadayInput
+    @format="DD.MM.YYYY"
+    @placeholder={{t "ember-gwr.components.modelForm.datePlaceholder"}}
+    @onSelection={{@update}}
+    @value={{@value}}
+    class="uk-width-1 uk-input
+      {{if @isInvalid "uk-form-danger"}}
+      {{if @isValid "uk-form-success"}}"
+    name={{@name}}
+    required={{@required}}
+    ...attributes
+  />
+</div>
+{{component @hintComponent}}
+{{component @errorComponent}}

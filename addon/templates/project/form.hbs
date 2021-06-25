@@ -48,9 +48,8 @@
         {{/if}}
       </div>
     </div>
-
-    <ProjectForm
-      @project={{this.project}}
+    <ModelForm
+      @model={{this.project}}
       @importData={{if this.import this.importData}}
       @onSubmit={{this.saveProject}}
       @translationBase="ember-gwr.constructionProject.fields"
@@ -59,39 +58,32 @@
       {{#unless this.project.isNew}}
         <div class="uk-flex uk-flex-wrap uk-flex-between">
           <div class="uk-width-1-4@m uk-width-1">
-            <Field type="number" readonly @attr="EPROID" disabled />
+            <Field @type="number" @attr="EPROID" @disabled={{true}} />
           </div>
           <div class="uk-width-1-4@m uk-width-1">
             <Field
-              readonly
-              disabled
+              @disabled={{true}}
               @attr="officialConstructionProjectFileNo"
             />
           </div>
           <div class="uk-width-1-4@m uk-width-1">
             <Field
-              type="number"
-              readonly
-              disabled
+              @type="number"
+              @disabled={{true}}
               @attr="extensionOfOfficialConstructionProjectFileNo"
             />
           </div>
         </div>
-
         <Field
           @attr="constructionLocalisation.municipalityName"
-          disabled
-          readonly
+          @disabled={{true}}
         />
       {{/unless}}
-
       <Field
-        type="number"
+        @type="number"
         @attr="constructionSurveyDeptNumber"
-        disabled
-        readonly
+        @disabled={{true}}
       />
-
       <Field
         @inputType="select"
         @convertValueTo="number"
@@ -99,15 +91,11 @@
         @attr="typeOfConstructionProject"
         @options={{this.choiceOptions.typeOfConstructionProjectOptions}}
       />
-
       <Field
         @inputType="textarea"
         @required={{true}}
-        minlength="3"
-        maxlength="1000"
         @attr="constructionProjectDescription"
       />
-
       <Field
         @inputType="select"
         @convertValueTo="number"
@@ -115,32 +103,30 @@
         @attr="typeOfPermit"
         @options={{this.choiceOptions.typeOfPermitOptions}}
       />
-
       <Field
-        type="number"
-        min="1000"
-        max="99999999900"
-        @required={{true}}
+        @type="number"
+        @step="1000"
+        @min="1000"
+        @max="99999999900"
+        @required={{true}} 
         @attr="totalCostsOfProject"
       />
-
       <Field
         @inputType="select"
         @convertValueTo="number"
         @attr="typeOfConstruction"
         @options={{this.choiceOptions.typeOfConstructionOptions}}
       />
-
       <h3>
         {{t "ember-gwr.components.projectForm.dates"}}
       </h3>
       <div
-        class="uk-flex uk-flex-wrap {{
-          if
-          this.import
-          "uk-child-width-1-1"
-          "uk-child-width-1-4@l uk-child-width-1-3@m uk-child-width-1-2@s"
-        }}"
+        class="uk-flex uk-flex-wrap
+          {{if
+            this.import
+            "uk-child-width-1-1"
+            "uk-child-width-1-4@l uk-child-width-1-3@m uk-child-width-1-2@s"
+          }}"
       >
         {{#let (unless this.import "uk-padding-small") as |spacingClass|}}
           <div class={{spacingClass}}>
@@ -176,17 +162,14 @@
           </div>
         {{/let}}
       </div>
-
       <h3>
         {{t "ember-gwr.components.projectForm.realEstateHeading"}}
       </h3>
-      <Field type="number" @attr="realestateIdentification.number" />
-      <Field type="number" @attr="realestateIdentification.EGRID" />
-
+      <Field @type="number" @attr="realestateIdentification.number" />
+      <Field @type="number" @attr="realestateIdentification.EGRID" />
       <h3>
         {{t "ember-gwr.components.projectForm.clientHeading"}}
       </h3>
-
       <Field
         @inputType="select"
         @convertValueTo="number"
@@ -194,15 +177,14 @@
         @attr="typeOfClient"
         @options={{this.choiceOptions.typeOfClientOptions}}
       />
-
       <Field
         @inputType="checkbox"
         @attr="client.identification.isOrganisation"
+        @on-update={{fn (mut this.isOrganisation)}}
       />
-
       {{#if
         (or
-          this.project.client.identification.isOrganisation
+          this.isOrganisation
           (and
             this.import
             this.importData.client.identification.organisationIdentification.organisationName
@@ -223,22 +205,18 @@
             />
           </div>
         </div>
-
         <div class="uk-flex uk-margin">
           <div class="uk-width-1-6">
             <Field
               @attr="client.identification.organisationIdentification.localOrganisationId.organisationIdCategory"
               @noMargin={{true}}
-              maxlength="20"
             />
           </div>
           <div class="uk-width-5-6 uk-margin-small-left">
             <Field
               @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
               @noMargin={{true}}
-              placeholder="100.200.300"
-              maxlength="36"
-              minlength="1"
+              @placeholder={{"100.200.300"}}
             />
           </div>
         </div>
@@ -258,24 +236,22 @@
           </div>
         </div>
       {{/if}}
-
       <div class="{{unless this.import "uk-flex"}} uk-margin">
         <div class={{if this.import "uk-margin" "uk-width-5-6"}}>
           <Field @attr="client.address.street" @noMargin={{true}} />
         </div>
         <div class={{unless this.import "uk-width-1-6 uk-margin-small-left"}}>
           <Field
-            type="number"
+            @type="number"
             @attr="client.address.houseNumber"
             @noMargin={{true}}
           />
         </div>
       </div>
-
       <div class="{{unless this.import "uk-flex"}} uk-margin">
         <div class={{if this.import "uk-margin" "uk-width-1-6"}}>
           <Field
-            type="number"
+            @type="number"
             @attr="client.address.swissZipCode"
             @noMargin={{true}}
           />
@@ -289,6 +265,6 @@
         @attr="client.address.country"
         @options={{this.choiceOptions.countryOptions}}
       />
-    </ProjectForm>
+    </ModelForm>
   {{/if}}
 </div>

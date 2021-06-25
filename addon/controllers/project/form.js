@@ -15,6 +15,7 @@ export default class ProjectFormController extends Controller {
   @service router;
 
   @tracked import = false;
+  @tracked isOrganisation;
 
   choiceOptions = Options;
 
@@ -25,9 +26,11 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
-    return this.model.project?.isNew
+    const project = this.model.project?.isNew
       ? this.model.project
       : yield this.gwr.getFromCacheOrApi(this.model.projectId);
+    this.isOrganisation = project.client.identification.isOrganisation;
+    return project;
   }
 
   @lastValue("fetchCalumaData") importData;

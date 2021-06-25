@@ -1,0 +1,52 @@
+<div class="{{unless @noMargin "uk-margin"}}">
+  {{#let (component @input) as |InputComponent|}}
+    <InputComponent
+      @label={{t (concat @translationBase "." @attr)}}
+      @name={{@attr}}
+      @inputName={{@inputName}}
+      @hint={{@hint}}
+      @type={{or @type @inputType}}
+      @disabled={{or @disabled this.disableInput}}
+      @required={{@required}}
+      @value={{get @model @attr}}
+      @validateBeforeSubmit={{true}}
+      @auto-complete={{@auto-complete}}
+      @placeholder={{@placeholder}}
+      @autofocus={{@autofocus}}
+      @rows={{@rows}}
+      @cols={{@cols}}
+      @options={{this.options}}
+      @optionLabelPath="label"
+      @optionValuePath="value"
+      @optionTargetPath="value"
+      @includeBlank={{unless
+        @noPlaceholder
+        (t (concat @translationBase "." @attr "Placeholder"))
+      }}
+      @promptIsSelectable={{true}}
+      @on-update={{if
+        @on-update
+        (queue (fn (or @update this.updateModelField) @attr) @on-update)
+        (fn (or @update this.updateModelField) @attr)
+      }}
+      @renderComponent={{if
+        this.showDiff
+        (component
+          "model-form/diff"
+          current=(get @model @attr)
+          new=(get @importData @attr)
+          updateModelField=(fn this.updateModelField @attr)
+          horizontal=this.isHorizontal
+        )
+        (component
+          this.fieldComponent
+          horizontal=this.isHorizontal
+          step=@step
+          min=@min
+          max=@max
+        )
+      }}
+      ...attributes
+    />
+  {{/let}}
+</div>
