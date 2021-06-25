@@ -1,0 +1,5 @@
+ember-gwr:
+  locality:
+    # Model Fields
+    name:
+      nameLong: Ortsname

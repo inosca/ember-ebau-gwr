@@ -1,0 +1,35 @@
+<div
+  {{did-insert (perform this.fetchEntrances)}}
+  {{did-update (perform this.fetchEntrances) @model}}
+>
+  {{#if this.fetchEntrances.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio="3" />
+    </div>
+  {{else}}
+    <LinkedModels
+      @models={{this.fetchEntrances.lastSuccessful.value}}
+      @modelName="entrance"
+      @newRoute="building.edit.entrance.new"
+      {{!--
+      TODO removing a entrance is not allowed if there is still a dwelling attached to it
+      We also cannot remove an entrance if there is only one.
+      @removeLink={{this.removeEntranceLink}}
+      --}}
+      as |model|
+    >
+      <td class="uk-table-shrink">
+        <LinkTo
+          @route={{"building.edit.entrance.edit"}}
+          @model={{model.EDID}}
+          class="uk-link"
+        >
+          {{model.EDID}}
+        </LinkTo>
+      </td>
+      <td>
+        {{model.fullAddressText}}
+      </td>
+    </LinkedModels>
+  {{/if}}
+</div>

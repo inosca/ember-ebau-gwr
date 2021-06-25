@@ -28,7 +28,7 @@ export default class SearchFiltersComponent extends Component {
     event.preventDefault();
     // If the validation returns no error then we can emit the search event.
     if (!(this.extendedSearch && this.validateSearchQuery(this.query))) {
-      this.args.search(this.query);
+      this.args.search.perform(this.query);
     }
   }
 

@@ -10,14 +10,14 @@ import ConstructionProjectsList from "./models/construction-projects-list";
 import Coordinates from "./models/coordinates";
 import DateOfConstruction from "./models/date-of-construction";
 import Identification from "./models/identification";
-import Locality from "./models/locality";
+import Locality, { LocalityName } from "./models/locality";
 import OrganisationIdentification, {
   LocalOrganisationId,
 } from "./models/organisation-identification";
 import PersonIdentification from "./models/person-identification";
 import RealestateIdentification from "./models/realestate-identification";
 import SearchResult from "./models/search-result";
-import Street from "./models/street";
+import Street, { StreetDescription } from "./models/street";
 import ThermotechnicalDeviceForHeating from "./models/thermotechnical-device-for-heating";
 import ThermotechnicalDeviceForWarmWater from "./models/thermotechnical-device-for-warm-water";
 
@@ -41,7 +41,9 @@ export default {
   BuildingWork,
   DateOfConstruction,
   Locality,
+  LocalityName,
   Street,
+  StreetDescription,
   ThermotechnicalDeviceForHeating,
   ThermotechnicalDeviceForWarmWater,
 };

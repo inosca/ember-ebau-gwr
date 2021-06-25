@@ -11,12 +11,14 @@
       @models={{this.fetchBuildings.lastSuccessful.value}}
       @modelName="building"
       @removeLink={{this.removeBuildingLink}}
+      @searchRoute="search-building"
       @searchModels={{array @model}}
+      @newRoute="building.new"
       @newModels={{array @model}} as |model|
     >
       <td class="uk-table-shrink">
         <LinkTo
-          @route={{"building.form"}}
+          @route={{"building.edit.form"}}
           @models={{array @model model.building.EGID}}
           class="uk-link"
         >
@@ -37,7 +39,9 @@
       </td>
       <td>
         {{t
-          (concat "ember-gwr.buildingWork.fields.kindOfWorkOptions." model.kindOfWork)
+          (concat
+            "ember-gwr.buildingWork.fields.kindOfWorkOptions." model.kindOfWork
+          )
         }}
       </td>
     </LinkedModels>

@@ -1,12 +1,12 @@
 <LinkedModels
   @models={{@projects}}
   @modelName="project"
-  @removeLink={{@removeProject}}
-  @noDeleteButton={{true}} as |project|
+  @searchRoute="search-project"
+  @newRoute="project.new"
+  as |project|
 >
   <td
-    class={{
-      concat
+    class={{concat
       "uk-table-shrink "
       (if (eq @activeProject project.EPROID) "uk-text-bold")
     }}

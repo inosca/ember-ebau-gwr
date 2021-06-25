@@ -3,9 +3,11 @@
 </h1>
 
 <Search::Filters
-  @search={{fn (perform this.search)}}
+  @search={{this.search}}
   @translationBase="ember-gwr.searchProject"
-  @searchLabel={{t "ember-gwr.searchProject.search"}} as |Field|
+  @showExtendedSearch={{true}}
+  @searchLabel={{t "ember-gwr.searchProject.search"}}
+  as |Field|
 >
   <div class="uk-flex uk-flex-wrap uk-flex-between">
     <div class="uk-width-1-3@m uk-width-1">
@@ -42,7 +44,8 @@
 {{#if this.search.last}}
   <Search::ResultTable
     @results={{this.searchResults}}
-    @loading={{this.search.isRunning}} as |Row|
+    @loading={{this.search.isRunning}}
+    as |Row|
   >
     <Search::ResultTable::Head as |Header|>
       <Header
@@ -51,8 +54,7 @@
       />
       <Header
         class="uk-table-expand"
-        @label={{
-          t
+        @label={{t
           "ember-gwr.constructionProject.fields.constructionProjectDescription"
         }}
       />

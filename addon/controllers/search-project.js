@@ -6,7 +6,7 @@ import { task, lastValue } from "ember-concurrency-decorators";
 import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchProjectController extends Controller {
-  @service gwr;
+  @service constructionProject;
   @service intl;
   @service store;
 
@@ -18,8 +18,8 @@ export default class SearchProjectController extends Controller {
   @lastValue("search") searchResults;
   @task
   *search(query = {}) {
-    query.constructionSurveyDeptNumber = this.gwr.constructionSurveyDeptNumber;
-    return yield this.gwr.searchProject(query);
+    query.constructionSurveyDeptNumber = this.constructionProject.constructionSurveyDeptNumber;
+    return yield this.constructionProject.search(query);
   }
 
   @action

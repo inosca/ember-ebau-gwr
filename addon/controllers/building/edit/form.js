@@ -9,7 +9,8 @@ const EXISTING = 1004,
 export default class BuildingFormController extends Controller {
   Models = Models;
 
-  @service gwr;
+  @service constructionProject;
+  @service building;
   @service intl;
   @service notification;
 
@@ -28,7 +29,9 @@ export default class BuildingFormController extends Controller {
         return this.model.buildingWork;
       }
 
-      const project = yield this.gwr.getFromCacheOrApi(this.model.projectId);
+      const project = yield this.constructionProject.getFromCacheOrApi(
+        this.model.projectId
+      );
       return project.work?.find(
         (buildingWork) =>
           buildingWork.building.EGID === Number(this.model.buildingId)
@@ -44,19 +47,19 @@ export default class BuildingFormController extends Controller {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
-        const building = yield this.gwr.addBuilding(this.buildingWork.building);
+        const building = yield this.building.create(this.buildingWork.building);
         EGID = building.EGID;
       } else {
-        yield this.gwr.updateBuilding(this.buildingWork.building);
+        yield this.building.update(this.buildingWork.building);
       }
-      yield this.gwr.bindBuildingToConstructionProject(
+      yield this.building.bindBuildingToConstructionProject(
         this.model.projectId,
         EGID,
         this.buildingWork
       );
       // Clear cache so after transition we fetch the project form api
-      this.gwr.clearCache(this.model.projectId);
-      this.transitionToRoute("building.form", EGID);
+      this.constructionProject.clearCache(this.model.projectId);
+      this.transitionToRoute("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       console.error(error);
@@ -67,13 +70,13 @@ export default class BuildingFormController extends Controller {
   @task
   *linkBuilding() {
     try {
-      yield this.gwr.bindBuildingToConstructionProject(
+      yield this.building.bindBuildingToConstructionProject(
         this.model.projectId,
         this.buildingWork.building.EGID,
         this.buildingWork
       );
       // Invalidate project so the data is newly fetched with the updated building.
-      this.gwr.clearCache(this.model.projectId);
+      this.constructionProject.clearCache(this.model.projectId);
       this.notification.success(
         this.intl.t("ember-gwr.searchBuilding.linkSuccess")
       );

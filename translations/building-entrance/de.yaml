@@ -1,0 +1,58 @@
+ember-gwr:
+  buildingEntrance:
+    title: Eingang {address}
+    backToBuilding: Zurück zum Gebäude
+    backToEntrance: Zurück zum Eingang
+    createNewEntrance: Neuen Eingang erfassen
+
+    saveError: Beim Speichern des Eingangs ist ein Fehler aufgetretten.
+    saveSuccess: Eingang erfolgreich gespeichert.
+    loadingError: Beim Laden des Eingangs ist ein Fehler aufgetretten.
+    street: Strasse
+    coordinates: Koordinaten
+
+    linkStreet:
+      change: Strasse ändern
+      link: Strasse verlinken
+      heading: Strasse verknüpfen
+      search: Strasse suchen
+      linkSuccess: Strasse erfoglreich verknüpfen.
+      linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetretten.
+
+    fields:
+      EDID: EDID
+      isOfficialAddress: Offizielle Adresse
+      buildingEntranceNo: Gebäudeeingang Nummer
+      coordinates:
+        east: E-Gebäudekoordinate
+        north: N-Gebäudekoordinate
+        originOfCoordinates: Koordinatenherkunft
+        originOfCoordinatesPlaceholder: Wählen Sie die  Koordinatenherkunft aus...
+        originOfCoordinatesOptions:
+          901: Amtliche Vermessung, DM.01
+          902: Aus amtlicher Vermessung hergeleitet
+          903: Angabe Nachführungsgeometer
+          904: Angabe Baugesuch
+          905: Bundesamt für Statistik (BFS)
+          906: Datensatz GeoPost
+          909: Andere Datenquelle
+      street:
+        ESID: ESID
+        isOfficialDescription: Strassenbezeichnung offiziell
+        officialStreetNumber: Amtliche Strassennummer
+        streetKind: Art der Strasse
+        streetKindPlaceholder: Wählen Sie einen Status aus...
+        streetKindOptions:
+          9801: Strasse (Linienobjekt)
+          9802: Platz (Punktobjekt)
+          9803: Benanntes Gebiet (Flächenobjekt)
+          9809: Keine Angabe zur Geometrie
+        streetStatus: Realisierungsstand der Strasse
+        streetGeometry: Strassengeometrie
+        description:
+          descriptionLong: Strassenname
+      locality:
+        swissZipCode: PLZ
+        name:
+          nameLong: Ortsname
+

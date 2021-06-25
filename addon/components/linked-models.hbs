@@ -17,23 +17,8 @@
     <tbody>
       {{#each @models as |model|}}
         <tr>
-          {{#if hasBlock}}
-            {{yield model}}
-          {{else}}
-            <td class="uk-table-shrink">
-              <LinkTo
-                @route={{concat @modelName ".form"}}
-                @model={{get model @idAttr}}
-                class="uk-link"
-              >
-                {{get model @idAttr}}
-              </LinkTo>
-            </td>
-            <td>
-              {{get model @descriptionAttr}}
-            </td>
-          {{/if}}
-          {{#unless @noDeleteButton}}
+          {{yield model}}
+          {{#if @removeLink}}
             <td class="uk-table-shrink">
               <button
                 type="button"
@@ -43,7 +28,7 @@
                 {{on "click" (fn @removeLink model)}}
               ></button>
             </td>
-          {{/unless}}
+          {{/if}}
         </tr>
       {{else}}
         <tr>
@@ -59,25 +44,28 @@
     <tfoot>
       <tr>
         <td colspan="99" class="uk-text-center">
-          <LinkTo
-            @route={{or @searchRoute (concat "search-" @modelName)}}
-            @models={{or @searchModels (array)}}
-          >
-            {{t
-              "ember-gwr.components.linkedModels.linkEntry"
-              modelName=modelName
-            }}
-          </LinkTo>
-          {{t "ember-gwr.components.linkedModels.or"}}
-          <LinkTo
-            @route={{or @newRoute (concat @modelName ".new")}}
-            @models={{or @newModels (array)}}
-          >
-            {{t
-              "ember-gwr.components.linkedModels.createEntry"
-              modelName=modelName
-            }}
-          </LinkTo>
+          {{#if @searchRoute}}
+            <LinkTo
+              @route={{@searchRoute}}
+              @models={{or @searchModels (array)}}
+            >
+              {{t
+                "ember-gwr.components.linkedModels.linkEntry"
+                modelName=modelName
+              }}
+            </LinkTo>
+          {{/if}}
+          {{#if (and @searchRoute @newRoute)}}
+            {{t "ember-gwr.components.linkedModels.or"}}
+          {{/if}}
+          {{#if @newRoute}}
+            <LinkTo @route={{@newRoute}} @models={{or @newModels (array)}}>
+              {{t
+                "ember-gwr.components.linkedModels.createEntry"
+                modelName=modelName
+              }}
+            </LinkTo>
+          {{/if}}
         </td>
       </tr>
     </tfoot>
