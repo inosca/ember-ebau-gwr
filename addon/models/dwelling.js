@@ -98,6 +98,17 @@ export default class Dwelling extends XMLModel {
     3005, // Nicht nutzbar
     3007, // Aufgehoben
   ];
+
+  get floorLabel() {
+    const floor = Number(this.floor);
+    return floor === 3100
+      ? { label: "ember-gwr.building.dwellings.groundFloor" }
+      : floor > 3100 && floor < 3200
+      ? { label: "ember-gwr.building.dwellings.floor", number: floor - 3100 }
+      : floor > 3400 && floor < 3420
+      ? { label: "ember-gwr.building.dwellings.cellar", number: floor - 3400 }
+      : "";
+  }
 }
 
 export class DwellingUsage extends XMLModel {

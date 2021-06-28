@@ -9,7 +9,6 @@
       @modelName="dwelling"
       @newRoute="building.edit.dwelling.new"
       @removeLink={{this.removeDwelling}}
-      --}}
       as |model|
     >
       <td class="uk-table-shrink">
@@ -23,6 +22,25 @@
       </td>
       <td>
         {{model.buildingEntranceNo}}
+      </td>
+      <td>
+        {{if
+          model.noOfHabitableRooms
+          (t
+            "ember-gwr.building.dwellings.rooms" number=model.noOfHabitableRooms
+          )
+          "-"
+        }}
+      </td>
+      <td>
+        {{if
+          model.floor
+          (t model.floorLabel.label number=model.floorLabel.number)
+          "-"
+        }}
+      </td>
+      <td>
+        {{or model.locationOfDwellingOnFloor "-"}}
       </td>
     </LinkedModels>
   {{/if}}

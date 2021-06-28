@@ -29,6 +29,10 @@ ember-gwr:
       error: Beim Laden der Eingänge ist ein Fehler aufgetretten.
       removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
     dwellings:
+      rooms: "{number} Zimmer"
+      groundFloor: Parterre
+      cellar: "{number}. Untergeschoss"
+      floor: "{number}. Stock"
       error: Beim Laden der Wohnungen ist ein Fehler aufgetretten.
       removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
 
