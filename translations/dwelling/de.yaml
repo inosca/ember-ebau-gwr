@@ -1,10 +1,17 @@
 ember-gwr:
   dwelling:
     title: Wohnung {id}
+    createNewDwelling: Neue Wohnung erfassen
     usage:
       heading: Wohnungsnutzung
 
+
+    saveError: Beim Speichern der Wohnung ist ein Fehler aufgetretten.
+    saveSuccess: Wohnung erfolgreich gespeichert.
+    loadingError: Beim Laden der Wohnung ist ein Fehler aufgetretten.
+
     # Fields
+    EDID: Eingang
     EWID: EWID
     floor: Stockwerk
     multipleFloor: Mehrgeschossige Wohnung

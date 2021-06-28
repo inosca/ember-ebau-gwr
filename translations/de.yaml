@@ -16,6 +16,11 @@ ember-gwr:
         one {Eingang}
         other {Eingänge}
       }
+    dwelling: |-
+      {count, plural,
+        one {Wohnung}
+        other {Wohnungen}
+      }
 
   generalErrors:
     searchError: Bei der Suche ist ein Fehler aufgetretten.

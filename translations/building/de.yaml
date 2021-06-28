@@ -30,6 +30,7 @@ ember-gwr:
       removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
     dwellings:
       error: Beim Laden der Wohnungen ist ein Fehler aufgetretten.
+      removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
 
     sections:
       kindOfWorkForProject: Art der Arbeiten für Bauprojekt {projectId}
