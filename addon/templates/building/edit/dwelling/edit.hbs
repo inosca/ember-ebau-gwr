@@ -21,9 +21,18 @@
       as |Field|
     >
 
-      {{#unless this.dwelling.isNew}}
+      {{#if this.dwelling.isNew}}
+        <Field
+          @attr="entranceId"
+          @type="select"
+          @options={{this.entrances}}
+          @optionValuePath="EDID"
+          @optionLabelPath="buildingEntranceNo"
+          @noPlaceholder={{true}}
+        />
+      {{else}}
         <Field @attr="EWID" @type="number" @disabled={{true}} />
-      {{/unless}}
+      {{/if}}
       <Field @attr="floor" @type="number" @required={{true}} />
       <Field @attr="multipleFloor" @type="checkbox" />
       <Field

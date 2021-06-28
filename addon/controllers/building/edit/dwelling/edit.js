@@ -16,6 +16,7 @@ export default class BuildingEditDwellingEditController extends Controller {
   *fetchDwelling() {
     try {
       if (this.model.dwelling?.isNew) {
+        yield this.fetchEntrances.perform();
         return this.model.dwelling;
       }
 
@@ -26,6 +27,22 @@ export default class BuildingEditDwellingEditController extends Controller {
     } catch (error) {
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.dwelling.loadingError"));
+    }
+  }
+
+  @lastValue("fetchEntrances") entrances;
+  @task
+  *fetchEntrances() {
+    try {
+      const building = yield this.building.getFromCacheOrApi(
+        this.model.buildingId
+      );
+      return building.buildingEntrance;
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.building.entrances.error")
+      );
     }
   }
 

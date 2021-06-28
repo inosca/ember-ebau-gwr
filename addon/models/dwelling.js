@@ -3,9 +3,16 @@ import { tracked } from "@glimmer/tracking";
 import DateOfConstruction from "./date-of-construction";
 import DatePartiallyKnown from "./date-partially-known";
 import RealestateIdentification from "./realestate-identification";
-import { setRoot } from "./helpers";
+import { setRoot, setTemplate } from "./helpers";
 
-const DateOfDemolition = new setRoot(DatePartiallyKnown, "dateOfDemolition");
+export const DateOfDemolition = setTemplate(
+  setRoot(DatePartiallyKnown, "dateOfDemolition"),
+  `{{#if model.dateOfDemolition}}
+    <ns2:dateOfDemolition>
+      {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay)}}}
+    </ns2:dateOfDemolition>
+  {{/if}}`
+);
 
 export default class Dwelling extends XMLModel {
   @tracked EWID;
@@ -15,10 +22,10 @@ export default class Dwelling extends XMLModel {
   @tracked dateOfDemolition = new DateOfDemolition();
   @tracked noOfHabitableRooms;
   @tracked floor;
-  @tracked multipleFloor;
+  @tracked multipleFloor = false;
   @tracked locationOfDwellingOnFloor;
   @tracked usageLimitation;
-  @tracked kitchen;
+  @tracked kitchen = false;
   @tracked surfaceAreaOfDwelling;
   @tracked status;
   @tracked dwellingUsage = new DwellingUsage();
@@ -52,6 +59,27 @@ export default class Dwelling extends XMLModel {
     });
   }
 
+  static template = `
+    <ns2:dwelling>
+      {{{modelField model "administrativeDwellingNo"}}}
+      {{{modelField model "physicalDwellingNo"}}}
+      {{> DateOfConstruction model=model.dateOfConstruction}}
+      {{> DateOfDemolition model=model.dateOfDemolition}}
+      {{{modelField model "noOfHabitableRooms"}}}
+      {{{modelField model "floor"}}}
+      {{{modelField model "multipleFloor"}}}
+      {{{modelField model "locationOfDwellingOnFloor"}}}
+      {{{modelField model "usageLimitation"}}}
+      {{{modelField model "kitchen"}}}
+      {{{modelField model "surfaceAreaOfDwelling"}}}
+      {{{modelField model "status"}}}
+      {{{modelField model "dwellingFreeText1"}}}
+      {{{modelField model "dwellingFreeText2"}}}
+      {{> DwellingUsage model=model.dwellingUsage}}
+      {{> RealestateIdentification model=model.realestateIdentification}}
+    </ns2:dwelling>
+  `;
+
   static usageLimitationOptions = [
     3401, // Keine Beschränkung (Art. 8, 9 und 10 ZWG)
     3402, // Erstwohnung (Art. 7 Abs.1 Bst. a ZWG)
@@ -73,8 +101,8 @@ export class DwellingUsage extends XMLModel {
   @tracked informationSource;
   @tracked revisionDate;
   @tracked remark;
-  @tracked personWithMainResidence;
-  @tracked personWithSecondaryResidence;
+  @tracked personWithMainResidence = false;
+  @tracked personWithSecondaryResidence = false;
   @tracked dateFirstOccupancy;
   @tracked dateLastOccupancy;
 
@@ -94,6 +122,19 @@ export class DwellingUsage extends XMLModel {
       },
     });
   }
+
+  static template = `
+    <ns2:dwellingUsage>
+      {{{modelField model "usageCode" namespace=""}}}
+      {{{modelField model "informationSource" namespace=""}}}
+      {{{modelField model "revisionDate" value=(echDate model.revisionDate) namespace=""}}}
+      {{{modelField model "remark" namespace=""}}}
+      {{{modelField model "personWithMainResidence" namespace=""}}}
+      {{{modelField model "personWithSecondaryResidence" namespace=""}}}
+      {{{modelField model "dateFirstOccupancy" value=(echDate model.dateFirstOccupancy) namespace=""}}}
+      {{{modelField model "dateLastOccupancy" value=(echDate model.dateLastOccupancy) namespace=""}}}
+    </ns2:dwellingUsage>
+  `;
 
   static usageCodeOptions = [
     3010, // Bewohnt gemäss RHG Art. 3 Bst. b (Erstwohnung, Art. 2 Abs. 2 ZWG)
