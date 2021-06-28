@@ -8,7 +8,7 @@
       {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
     </h2>
   </Modal.header>
-  <Modal.body>
+  <Modal.body {{toggle-modal @visible}}>
     {{#let
       (component
         "project-form/field"
