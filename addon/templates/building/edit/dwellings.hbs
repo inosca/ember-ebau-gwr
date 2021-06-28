@@ -8,14 +8,10 @@
       @models={{this.fetchDwellings.lastSuccessful.value}}
       @modelName="dwelling"
       @newRoute="building.edit.dwelling.new"
-      {{!--
-      TODO removing a entrance is not allowed if there is still a dwelling attached to it
-      We also cannot remove an entrance if there is only one.
-      @removeLink={{this.removeEntranceLink}}
+      @removeLink={{this.removeDwelling}}
       --}}
       as |model|
     >
-      {{log model.document.children}}
       <td class="uk-table-shrink">
         <LinkTo
           @route={{"building.edit.dwelling.edit"}}

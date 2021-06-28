@@ -8,9 +8,9 @@ ember-gwr:
     EWID: EWID
     floor: Stockwerk
     multipleFloor: Mehrgeschossige Wohnung
-    status: Wohnungsstatus
-    statusPlaceholder: Wählen Sie einen Status aus...
-    statusOptions:
+    dwellingStatus: Wohnungsstatus
+    dwellingStatusPlaceholder: Wählen Sie einen Status aus...
+    dwellingStatusOptions:
       3001: Projektiert
       3002: Bewilligt
       3003: Im Bau

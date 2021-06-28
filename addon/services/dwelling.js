@@ -1,9 +1,11 @@
 import GwrService from "./gwr";
-import Dwelling from "ember-ebau-gwr/models/dwelling";
+import Dwelling, { DwellingComplete } from "ember-ebau-gwr/models/dwelling";
 import { inject as service } from "@ember/service";
 import { guidFor } from "@ember/object/internals";
 
 export default class DwellingService extends GwrService {
+  @service building;
+
   cacheKey(dwelling) {
     return `${guidFor(dwelling)}-${dwelling.EWID}`;
   }
@@ -17,12 +19,15 @@ export default class DwellingService extends GwrService {
       `/buildings/${EGID}/dwellings/${EWID}`
     );
     const xml = await response.text();
-    return this.createAndCache(xml);
+    const dwellingComplete = new DwellingComplete(xml);
+    this.cache(dwellingComplete.dwelling);
+
+    dwellingComplete.dwelling.EDID = dwellingComplete.EDID;
+
+    return dwellingComplete;
   }
 
   async update(dwelling, EGID) {
-    console.log(dwelling);
-    console.dir(dwelling);
     const body = this.xml.buildXMLRequest(
       "modifyDwelling",
       dwelling,
@@ -44,6 +49,25 @@ export default class DwellingService extends GwrService {
     return this.createAndCache(xml);
   }
 
+  async reallocate(EGID, dwelling) {
+    const body = this.xml.buildXMLRequest(
+      "reallocateDwelling",
+      { newEDID: dwelling.EDID, oldEDID: dwelling.oldEDID },
+      "Reallocate dwelling"
+    );
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/dwellings/${dwelling.EWID}/reallocate`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("GWR API: reallocateDwelling failed");
+    }
+  }
+
   async create(dwelling, EGID) {
     const body = this.xml.buildXMLRequest(
       "addDwelling",
@@ -51,7 +75,7 @@ export default class DwellingService extends GwrService {
       "Add dwelling"
     );
     const response = await this.authFetch.fetch(
-      `/buildings/${EGID}/entrance/${EDID}/dwellings/work`,
+      `/buildings/${EGID}/entrance/${dwelling.EDID}/dwellings/work`,
       {
         method: "post",
         body,
@@ -62,7 +86,32 @@ export default class DwellingService extends GwrService {
       throw new Error("GWR API: addDwelling failed");
     }
 
+    // Refresh building cache after adding a dwelling
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    await this.building.get(EGID);
+
     const xml = await response.text();
     return this.createAndCache(xml);
+  }
+
+  async deactivate(EGID, EWID) {
+    const body = this.xml.buildXMLRequest(
+      "deactivateDwelling",
+      null,
+      "Remove Dwelling"
+    );
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/dwellings/${EWID}`,
+      {
+        method: "delete",
+        body,
+      }
+    );
+    if (!response.ok) {
+      throw new Error("GWR API: deactivateDwelling failed");
+    }
+    // Refresh cache after removing the building
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    await this.building.get(EGID);
   }
 }

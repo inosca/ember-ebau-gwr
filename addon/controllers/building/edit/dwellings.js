@@ -13,10 +13,12 @@ export default class BuildingEditDwellingsController extends Controller {
   *fetchDwellings() {
     try {
       const building = yield this.building.getFromCacheOrApi(this.model);
-      return building.buildingEntrance.map((entrance) => {
-        entrance.dwelling.buildingEntranceNo = entrance.buildingEntranceNo;
-        return entrance.dwelling;
-      });
+      return building.buildingEntrance.flatMap((entrance) =>
+        entrance.dwelling.map((dwelling) => {
+          dwelling.buildingEntranceNo = entrance.buildingEntranceNo;
+          return dwelling;
+        })
+      );
     } catch (error) {
       console.error(error);
       this.notification.danger(
@@ -26,7 +28,15 @@ export default class BuildingEditDwellingsController extends Controller {
   }
 
   @action
-  async removeDwelling() {
-    //TODO
+  async removeDwelling(dwelling) {
+    try {
+      await this.dwelling.deactivate(this.model, dwelling.EWID);
+      await this.fetchDwellings.perform();
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.building.dwellings.removeLinkError")
+      );
+    }
   }
 }

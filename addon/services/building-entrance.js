@@ -65,6 +65,10 @@ export default class BuildingEntranceService extends GwrService {
       throw new Error("GWR API: addBuildingEntrance failed");
     }
 
+    // Refresh building cache after adding a entrance
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    await this.building.get(EGID);
+
     this.newRecord = null;
     const xml = await response.text();
     return this.createAndCache(xml);

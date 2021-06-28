@@ -16,37 +16,42 @@
 
     <ModelForm
       @model={{this.dwelling}}
+      @validations={{this.DwellingValidations}}
       @onSubmit={{this.saveDwelling}}
       @translationBase="ember-gwr.dwelling"
       as |Field|
     >
 
-      {{#if this.dwelling.isNew}}
-        <Field
-          @attr="entranceId"
-          @type="select"
-          @options={{this.entrances}}
-          @optionValuePath="EDID"
-          @optionLabelPath="buildingEntranceNo"
-          @noPlaceholder={{true}}
-        />
-      {{else}}
-        <Field @attr="EWID" @type="number" @disabled={{true}} />
-      {{/if}}
-      <Field @attr="floor" @type="number" @required={{true}} />
-      <Field @attr="multipleFloor" @type="checkbox" />
       <Field
-        @attr="status"
+        @attr="EDID"
         @type="select"
-        @options={{this.Models.Dwelling.statusOptions}}
+        @options={{this.entrances}}
+        @optionTargetPath="EDID"
+        @optionLabelPath="buildingEntranceNo"
+        @noPlaceholder={{true}}
+        @required={{true}}
+      />
+      {{#unless this.dwelling.isNew}}
+        <Field @attr="EWID" @type="number" @disabled={{true}} />
+      {{/unless}}
+      <Field @attr="floor" @type="number" @required={{true}} @min="3100" />
+      <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
+      <Field
+        @attr="dwellingStatus"
+        @type="select"
+        @options={{this.Models.Dwelling.dwellingStatusOptions}}
         @convertValueTo="number"
+        @required={{true}}
       />
       <Field @attr="administrativeDwellingNo" />
-      <Field @attr="dateOfConstruction" @type="date" />
-      <Field @attr="dateOfDemolition" @type="date" />
-      <Field @attr="noOfHabitableRooms" @type="number" />
-      <Field @attr="locationOfDwellingOnFloor" />
-      <Field @attr="usageLimitation" @type="number" />
+      <Field @attr="noOfHabitableRooms" @type="number" @min="1" />
+      <Field @attr="locationOfDwellingOnFloor" @min="3" />
+      <Field
+        @attr="usageLimitation"
+        @type="select"
+        @options={{this.Models.Dwelling.usageLimitationOptions}}
+        @convertValueTo="number"
+      />
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
 

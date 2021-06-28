@@ -7,7 +7,7 @@ import { setRoot, setTemplate } from "./helpers";
 
 export const DateOfDemolition = setTemplate(
   setRoot(DatePartiallyKnown, "dateOfDemolition"),
-  `{{#if model.dateOfDemolition}}
+  `{{#if model.yearMonthDay}}
     <ns2:dateOfDemolition>
       {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay)}}}
     </ns2:dateOfDemolition>
@@ -27,11 +27,14 @@ export default class Dwelling extends XMLModel {
   @tracked usageLimitation;
   @tracked kitchen = false;
   @tracked surfaceAreaOfDwelling;
-  @tracked status;
+  @tracked dwellingStatus;
   @tracked dwellingUsage = new DwellingUsage();
   @tracked realestateIdentification = new RealestateIdentification();
   @tracked dwellingFreeText1;
   @tracked dwellingFreeText2;
+
+  // This is a frontend only state tracking property while creating new records.
+  @tracked EDID;
 
   constructor(xmlOrObject, root = "dwelling") {
     super(xmlOrObject);
@@ -50,7 +53,7 @@ export default class Dwelling extends XMLModel {
         usageLimitation: Number,
         kitchen: Boolean,
         surfaceAreaOfDwelling: Number,
-        status: Number,
+        dwellingStatus: Number,
         dwellingUsage: DwellingUsage,
         realestateIdentification: RealestateIdentification,
         dwellingFreeText1: String,
@@ -63,6 +66,7 @@ export default class Dwelling extends XMLModel {
     <ns2:dwelling>
       {{{modelField model "administrativeDwellingNo"}}}
       {{{modelField model "physicalDwellingNo"}}}
+      {{! TODO Type of those two fields is completly different that what is documented. So a todo until doc is updated.}}
       {{> DateOfConstruction model=model.dateOfConstruction}}
       {{> DateOfDemolition model=model.dateOfDemolition}}
       {{{modelField model "noOfHabitableRooms"}}}
@@ -72,11 +76,11 @@ export default class Dwelling extends XMLModel {
       {{{modelField model "usageLimitation"}}}
       {{{modelField model "kitchen"}}}
       {{{modelField model "surfaceAreaOfDwelling"}}}
-      {{{modelField model "status"}}}
-      {{{modelField model "dwellingFreeText1"}}}
-      {{{modelField model "dwellingFreeText2"}}}
+      {{{modelField model "dwellingStatus"}}}
       {{> DwellingUsage model=model.dwellingUsage}}
       {{> RealestateIdentification model=model.realestateIdentification}}
+      {{{modelField model "dwellingFreeText1"}}}
+      {{{modelField model "dwellingFreeText2"}}}
     </ns2:dwelling>
   `;
 
@@ -86,7 +90,7 @@ export default class Dwelling extends XMLModel {
     3403, // Tour. bewirtschaftete Wohnung (Art. 7 Abs. 2 Bst. a ZWG)
     3404, // Tour. bewirtschaftete Wohnung (Art. 7 Abs. 2 Bst. b ZWG)
   ];
-  static statusOptions = [
+  static dwellingStatusOptions = [
     3001, // Projektiert
     3002, // Bewilligt
     3003, // Im Bau
@@ -156,4 +160,22 @@ export class DwellingUsage extends XMLModel {
     3092, // Eigentümer/in oder Verwaltung
     3093, // Andere Datenquelle
   ];
+}
+
+export class DwellingComplete extends XMLModel {
+  @tracked EGID;
+  @tracked EDID;
+  @tracked dwelling = new Dwelling();
+
+  constructor(xmlOrObject, root = "dwellingCompleteResponse") {
+    super(xmlOrObject);
+    this.setFieldsFromXML({
+      root,
+      fields: {
+        EGID: Number,
+        EDID: Number,
+        dwelling: Dwelling,
+      },
+    });
+  }
 }

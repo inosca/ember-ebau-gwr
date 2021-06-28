@@ -20,7 +20,9 @@ export default class XMLModel {
   castToType(element, type) {
     // We dont want to instantiate the types Number or String with new.
     // This would cause problems with comparison.
-    return element.children.length
+    return element.getAttribute("xsi:nil")
+      ? null
+      : element.children.length
       ? new type(element)
       : type === Boolean
       ? element.textContent === "true"
