@@ -63,7 +63,6 @@ export default class BuildingEditDwellingEditController extends Controller {
       } else {
         yield this.dwellingAPI.update(this.dwelling, this.model.buildingId);
         if (this.dwelling.oldEDID !== this.dwelling.EDID) {
-          console.log("reallocate");
           yield this.dwellingAPI.reallocate(
             this.model.buildingId,
             this.dwelling

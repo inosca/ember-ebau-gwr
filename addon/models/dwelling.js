@@ -1,9 +1,10 @@
-import XMLModel from "./xml-model";
 import { tracked } from "@glimmer/tracking";
+
 import DateOfConstruction from "./date-of-construction";
 import DatePartiallyKnown from "./date-partially-known";
-import RealestateIdentification from "./realestate-identification";
 import { setRoot, setTemplate } from "./helpers";
+import RealestateIdentification from "./realestate-identification";
+import XMLModel from "./xml-model";
 
 export const DateOfDemolition = setTemplate(
   setRoot(DatePartiallyKnown, "dateOfDemolition"),

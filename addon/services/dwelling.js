@@ -1,7 +1,8 @@
-import GwrService from "./gwr";
-import Dwelling, { DwellingComplete } from "ember-ebau-gwr/models/dwelling";
-import { inject as service } from "@ember/service";
 import { guidFor } from "@ember/object/internals";
+import { inject as service } from "@ember/service";
+import Dwelling, { DwellingComplete } from "ember-ebau-gwr/models/dwelling";
+
+import GwrService from "./gwr";
 
 export default class DwellingService extends GwrService {
   @service building;
