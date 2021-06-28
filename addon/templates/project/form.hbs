@@ -53,7 +53,8 @@
       @importData={{if this.import this.importData}}
       @onSubmit={{this.saveProject}}
       @translationBase="ember-gwr.constructionProject.fields"
-      {{did-insert (perform this.fetchCalumaData)}} as |Field|
+      {{did-insert (perform this.fetchCalumaData)}}
+      as |Field|
     >
       {{#unless this.project.isNew}}
         <div class="uk-flex uk-flex-wrap uk-flex-between">
@@ -89,7 +90,7 @@
         @convertValueTo="number"
         @required={{true}}
         @attr="typeOfConstructionProject"
-        @options={{this.choiceOptions.typeOfConstructionProjectOptions}}
+        @gwrEnumOptions={{this.choiceOptions.typeOfConstructionProjectOptions}}
       />
       <Field
         @inputType="textarea"
@@ -101,21 +102,21 @@
         @convertValueTo="number"
         @required={{true}}
         @attr="typeOfPermit"
-        @options={{this.choiceOptions.typeOfPermitOptions}}
+        @gwrEnumOptions={{this.choiceOptions.typeOfPermitOptions}}
       />
       <Field
         @type="number"
         @step="1000"
         @min="1000"
         @max="99999999900"
-        @required={{true}} 
+        @required={{true}}
         @attr="totalCostsOfProject"
       />
       <Field
         @inputType="select"
         @convertValueTo="number"
         @attr="typeOfConstruction"
-        @options={{this.choiceOptions.typeOfConstructionOptions}}
+        @gwrEnumOptions={{this.choiceOptions.typeOfConstructionOptions}}
       />
       <h3>
         {{t "ember-gwr.components.projectForm.dates"}}
@@ -175,7 +176,7 @@
         @convertValueTo="number"
         @required={{true}}
         @attr="typeOfClient"
-        @options={{this.choiceOptions.typeOfClientOptions}}
+        @gwrEnumOptions={{this.choiceOptions.typeOfClientOptions}}
       />
       <Field
         @inputType="checkbox"
@@ -263,7 +264,7 @@
       <Field
         @inputType="select"
         @attr="client.address.country"
-        @options={{this.choiceOptions.countryOptions}}
+        @gwrEnumOptions={{this.choiceOptions.countryOptions}}
       />
     </ModelForm>
   {{/if}}

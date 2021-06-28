@@ -16,9 +16,9 @@
       @rows={{@rows}}
       @cols={{@cols}}
       @options={{this.options}}
-      @optionLabelPath="label"
-      @optionValuePath="value"
-      @optionTargetPath="value"
+      @optionLabelPath={{if @gwrEnumOptions "label" @optionLabelPath}}
+      @optionTargetPath={{if @gwrEnumOptions "value" @optionTargetPath}}
+      @optionValuePath={{@optionValuePath}}
       @includeBlank={{unless
         @noPlaceholder
         (t (concat @translationBase "." @attr "Placeholder"))
