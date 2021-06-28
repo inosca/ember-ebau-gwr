@@ -26,7 +26,8 @@
     <ModelForm
       @model={{this.buildingWork.building}}
       @onSubmit={{this.saveBuilding}}
-      @translationBase="ember-gwr.building.fields" as |Field|
+      @translationBase="ember-gwr.building.fields"
+      as |Field|
     >
       <h3>
         {{t
@@ -39,13 +40,14 @@
           Field
           project=this.buildingWork
           translationBase="ember-gwr.buildingWork.fields"
-        ) as |BuildingWorkField|
+        )
+        as |BuildingWorkField|
       }}
         <BuildingWorkField
           @attr="kindOfWork"
           @inputType="select"
           @convertValueTo="number"
-          @options={{this.Models.BuildingWork.kindOfWorkOptions}}
+          @gwrEnumOptions={{this.Models.BuildingWork.kindOfWorkOptions}}
           @required={{true}}
         />
         <div class="uk-flex">
@@ -101,14 +103,14 @@
         @attr="buildingCategory"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Building.buildingCategoryOptions}}
+        @gwrEnumOptions={{this.Models.Building.buildingCategoryOptions}}
         @required={{true}}
       />
       <Field
         @attr="buildingClass"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Building.buildingClassOptions}}
+        @gwrEnumOptions={{this.Models.Building.buildingClassOptions}}
       />
 
       <h3>
@@ -133,7 +135,7 @@
         @attr="coordinates.originOfCoordinates"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
+        @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
       />
       <Field @attr="neighbourhood" @type="number" @min="1000" />
 
@@ -161,7 +163,7 @@
         @attr="buildingStatus"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.buildingStatusOptions}}
+        @gwrEnumOptions={{this.buildingStatusOptions}}
         @required={{true}}
       />
 
@@ -179,9 +181,7 @@
           @attr="dateOfConstruction.periodOfConstruction"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.DateOfConstruction.periodOfConstructionOptions
-          }}
+          @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
         />
       {{/if}}
 
@@ -202,13 +202,13 @@
         @attr="volume.norm"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Volume.normOptions}}
+        @gwrEnumOptions={{this.Models.Volume.normOptions}}
       />
       <Field
         @attr="volume.informationSource"
         @inputType="select"
         @convertValueTo="number"
-        @options={{this.Models.Volume.informationSourceOptions}}
+        @gwrEnumOptions={{this.Models.Volume.informationSourceOptions}}
       />
       <Field @attr="surfaceAreaOfBuilding" @type="number" />
 
@@ -226,31 +226,26 @@
           Field
           project=this.buildingWork.building.thermotechnicalDeviceForHeating1
           translationBase="ember-gwr.building.fields.heating"
-        ) as |HeatingField|
+        )
+        as |HeatingField|
       }}
         <HeatingField
           @attr="heatGeneratorHeating"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
         />
         <HeatingField
           @attr="energySourceHeating"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
         />
         <HeatingField
           @attr="informationSourceHeating"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
         />
         <HeatingField @attr="revisionDate" @inputType="date" />
       {{/let}}
@@ -268,31 +263,26 @@
                 Field
                 project=this.buildingWork.building.thermotechnicalDeviceForHeating2
                 translationBase="ember-gwr.building.fields.heating"
-              ) as |HeatingField|
+              )
+              as |HeatingField|
             }}
               <HeatingField
                 @attr="heatGeneratorHeating"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
               />
               <HeatingField
                 @attr="energySourceHeating"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
               />
               <HeatingField
                 @attr="informationSourceHeating"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
               />
               <HeatingField @attr="revisionDate" @inputType="date" />
             {{/let}}
@@ -308,31 +298,26 @@
           Field
           project=this.buildingWork.building.thermotechnicalDeviceForWarmWater1
           translationBase="ember-gwr.building.fields.heating"
-        ) as |WarmWaterField|
+        )
+        as |WarmWaterField|
       }}
         <WarmWaterField
           @attr="heatGeneratorHotWater"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
         />
         <WarmWaterField
           @attr="energySourceHeating"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
         />
         <WarmWaterField
           @attr="informationSourceHeating"
           @inputType="select"
           @convertValueTo="number"
-          @options={{
-            this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions
-          }}
+          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
         />
         <WarmWaterField @attr="revisionDate" @inputType="date" />
       {{/let}}
@@ -350,31 +335,26 @@
                 Field
                 project=this.buildingWork.building.thermotechnicalDeviceForWarmWater2
                 translationBase="ember-gwr.building.fields.heating"
-              ) as |HeatingField|
+              )
+              as |HeatingField|
             }}
               <HeatingField
                 @attr="heatGeneratorHotWater"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
               />
               <HeatingField
                 @attr="energySourceHeating"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
               />
               <HeatingField
                 @attr="informationSourceHeating"
                 @inputType="select"
                 @convertValueTo="number"
-                @options={{
-                  this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions
-                }}
+                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
               />
               <HeatingField @attr="revisionDate" @inputType="date" />
             {{/let}}
