@@ -17,33 +17,33 @@
       </span>
     </h2>
 
-    <ProjectForm
-      @project={{this.buildingEntrance}}
+    <ModelForm
+      @model={{this.buildingEntrance}}
+      @validations={{this.BuildingEntranceValidations}}
       @onSubmit={{this.saveBuildingEntrance}}
       @translationBase="ember-gwr.buildingEntrance.fields"
+      @disabled={{not this.buildingEntrance.street.ESID}}
       as |Field|
     >
 
       {{#unless this.buildingEntrance.isNew}}
-        <Field @attr="EDID" type="number" readonly disabled />
+        <Field @attr="EDID" @type="number" @disabled={{true}} />
       {{/unless}}
       <Field
         @attr="locality.name.nameLong"
-        required
-        readonly={{not this.buildingEntrance.isNew}}
-        disabled={{not this.buildingEntrance.isNew}}
+        @required={{true}}
+        @disabled={{not this.buildingEntrance.isNew}}
       />
       {{#unless this.buildingEntrance.isNew}}
         <Field
           @attr="locality.swissZipCode"
-          type="number"
-          readonly={{not this.buildingEntrance.isNew}}
-          disabled={{not this.buildingEntrance.isNew}}
+          @type="number"
+          @disabled={{not this.buildingEntrance.isNew}}
         />
       {{/unless}}
 
       <Field @attr="buildingEntranceNo" />
-      <Field @attr="isOfficialAddress" @inputType="checkbox" />
+      <Field @attr="isOfficialAddress" @type="checkbox" />
 
       {{!--
       This is not wokrking for some reason. Not sure if this is even needed on the entrance.
@@ -51,26 +51,23 @@
       <h2>{{t "ember-gwr.buildingEntrance.coordinates"}}</h2>
       <Field
         @attr="coordinates.north"
-        type="number"
-        step="0.001"
-        @required={{true}}
-        min="1070000.0"
-        max="1300000.999"
+        @type="number"
+        @step="0.001"
+        @min="1070000.0"
+        @max="1300000.999"
       />
       <Field
         @attr="coordinates.east"
-        type="number"
-        step="0.001"
-        min="2480000.0"
-        max="2840000.999"
-        @required={{true}}
+        @type="number"
+        @step="0.001"
+        @min="2480000.0"
+        @max="2840000.999"
       />
       <Field
         @attr="coordinates.originOfCoordinates"
-        @inputType="select"
+        @type="select"
         @convertValueTo="number"
-        @options={{this.Models.Coordinates.originOfCoordinatesOptions}}
-        @required={{true}}
+        @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
       />
       --}}
 
@@ -97,31 +94,39 @@
           </LinkTo>
         </span>
       </div>
-      {{#unless this.buildingEntrance.street.isNew}}
-        <Field @attr="street.ESID" disabled readonly />
-        <Field @attr="street.description.descriptionLong" disabled readonly />
+      {{#if this.buildingEntrance.street.isNew}}
+        <div uk-alert class="uk-alert-warning">{{t
+            "ember-gwr.buildingEntrance.streetHint"
+          }}</div>
+      {{else}}
+        <Field @attr="street.ESID" @disabled={{true}} readonly />
+        <Field
+          @attr="street.description.descriptionLong"
+          @disabled={{true}}
+          readonly
+        />
         <Field
           @attr="street.streetKind"
-          @inputType="select"
-          @options={{this.Models.Street.streetKindOptions}}
+          @type="select"
+          @gwrEnumOptions={{this.Models.Street.streetKindOptions}}
           @convertValueTo="number"
-          disabled
+          @disabled={{true}}
           readonly
         />
         <Field
           @attr="street.officialStreetNumber"
-          type="number"
-          disabled
+          @type="number"
+          @disabled={{true}}
           readonly
         />
         <Field
           @attr="street.isOfficialDescription"
-          @inputType="checkbox"
-          disabled
+          @type="checkbox"
+          @disabled={{true}}
           readonly
         />
-      {{/unless}}
+      {{/if}}
 
-    </ProjectForm>
+    </ModelForm>
   {{/if}}
 </div>

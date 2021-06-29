@@ -19,7 +19,7 @@
   <f.submit
     @type="submit"
     @label={{t "ember-gwr.components.modelForm.save"}}
-    @disabled={{this.isSaving}}
+    @disabled={{or this.isSaving @disabled}}
     @buttonComponent={{component
       "model-form/submit"
       loading=this.isSaving

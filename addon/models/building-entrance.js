@@ -60,7 +60,7 @@ export default class BuildingEntrance extends XMLModel {
       {{> Street model=model.street}}
       {{> Locality model=model.locality}}
       {{! This is not wokrking for some reason}}
-      {{!> Coordinates model=model.coordinates}}
+      {{> Coordinates model=model.coordinates}}
     </ns2:buildingEntrance>
   {{/if}}
   `;
