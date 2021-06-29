@@ -14,7 +14,7 @@
             id=this.buildingWork.building.EGID
             status=(t
               (concat
-                "ember-gwr.building.fields.buildingStatusOptions."
+                "ember-gwr.building.buildingStatusOptions."
                 this.buildingWork.building.buildingStatus
               )
             )
@@ -24,9 +24,10 @@
     </h2>
 
     <ModelForm
-      @model={{this.buildingWork.building}}
-      @onSubmit={{this.saveBuilding}}
-      @translationBase="ember-gwr.building.fields"
+      @model={{this.buildingWork}}
+      @validations={{this.BuildingWorkValidations}}
+      @onSubmit={{this.saveBuildingWork}}
+      @translationBase="ember-gwr"
       as |Field|
     >
       <h3>
@@ -35,58 +36,65 @@
           projectId=@model.projectId
         }}
       </h3>
-      {{#let
-        (component
-          Field
-          project=this.buildingWork
-          translationBase="ember-gwr.buildingWork.fields"
-        )
-        as |BuildingWorkField|
-      }}
-        <BuildingWorkField
-          @attr="kindOfWork"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.BuildingWork.kindOfWorkOptions}}
-          @required={{true}}
-        />
-        <div class="uk-flex">
-          <div class="uk-width-1-2">
-            <BuildingWorkField
-              @attr="energeticRestauration"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField
-              @attr="renovationHeatingsystem"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField
-              @attr="innerConversionRenovation"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField @attr="conversion" @inputType="checkbox" />
-            <BuildingWorkField
-              @attr="extensionHeighteningHeated"
-              @inputType="checkbox"
-            />
-          </div>
-          <div class="uk-width-1-2">
-            <BuildingWorkField
-              @attr="extensionHeighteningNotHeated"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField
-              @attr="thermicSolarFacility"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField
-              @attr="photovoltaicSolarFacility"
-              @inputType="checkbox"
-            />
-            <BuildingWorkField @attr="otherWorks" @inputType="checkbox" />
-          </div>
+      <Field
+        @attr="kindOfWork"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.BuildingWork.kindOfWorkOptions}}
+        @required={{true}}
+        @translationBase="ember-gwr.buildingWork"
+      />
+      <div class="uk-flex">
+        <div class="uk-width-1-2">
+          <Field
+            @attr="energeticRestauration"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="renovationHeatingsystem"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="innerConversionRenovation"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="conversion"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="extensionHeighteningHeated"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
         </div>
-      {{/let}}
+        <div class="uk-width-1-2">
+          <Field
+            @attr="extensionHeighteningNotHeated"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="thermicSolarFacility"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="photovoltaicSolarFacility"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+          <Field
+            @attr="otherWorks"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingWork"
+          />
+        </div>
+      </div>
       <hr />
 
       <h3>
@@ -94,21 +102,21 @@
       </h3>
 
       {{#unless this.buildingWork.building.isNew}}
-        <Field @attr="EGID" @type="number" @disabled={{true}} />
+        <Field @attr="building.EGID" @type="number" @disabled={{true}} />
       {{/unless}}
 
-      <Field @attr="officialBuildingNo" @type="number" />
+      <Field @attr="building.officialBuildingNo" @type="number" />
 
       <Field
-        @attr="buildingCategory"
-        @inputType="select"
+        @attr="building.buildingCategory"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Building.buildingCategoryOptions}}
         @required={{true}}
       />
       <Field
-        @attr="buildingClass"
-        @inputType="select"
+        @attr="building.buildingClass"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Building.buildingClassOptions}}
       />
@@ -118,26 +126,26 @@
       </h3>
 
       <Field
-        @attr="coordinates.north"
+        @attr="building.coordinates.north"
         @type="number"
         @step="0.001"
         @min="1070000.0"
         @max="1300000.999"
       />
       <Field
-        @attr="coordinates.east"
+        @attr="building.coordinates.east"
         @type="number"
         @step="0.001"
         @min="2480000.0"
         @max="2840000.999"
       />
       <Field
-        @attr="coordinates.originOfCoordinates"
-        @inputType="select"
+        @attr="building.coordinates.originOfCoordinates"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
       />
-      <Field @attr="neighbourhood" @type="number" @min="1000" />
+      <Field @attr="building.neighbourhood" @type="number" @min="1000" />
 
       <ul uk-accordion>
         <li>
@@ -147,10 +155,10 @@
             </h4>
           </a>
           <div class="uk-accordion-content">
-            <Field @attr="localCode1" />
-            <Field @attr="localCode2" />
-            <Field @attr="localCode3" />
-            <Field @attr="localCode4" />
+            <Field @attr="building.localCode1" />
+            <Field @attr="building.localCode2" />
+            <Field @attr="building.localCode3" />
+            <Field @attr="building.localCode4" />
           </div>
         </li>
       </ul>
@@ -160,95 +168,96 @@
       </h3>
 
       <Field
-        @attr="buildingStatus"
-        @inputType="select"
+        @attr="building.buildingStatus"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.buildingStatusOptions}}
         @required={{true}}
       />
 
-      <Field @attr="nameOfBuilding" />
+      <Field @attr="building.nameOfBuilding" />
 
-      <Field @attr="dateOfConstruction.yearMonthDay" @inputType="date" />
+      <Field @attr="building.dateOfConstruction.yearMonthDay" @type="date" />
       {{#if this.buildingWork.building.dateOfConstruction.year}}
-        <Field @attr="dateOfConstruction.year" @disabled={{true}} />
+        <Field @attr="building.dateOfConstruction.year" @disabled={{true}} />
       {{/if}}
       {{#if this.buildingWork.building.dateOfConstruction.yearMonth}}
-        <Field @attr="dateOfConstruction.yearMonth" @disabled={{true}} />
+        <Field
+          @attr="building.dateOfConstruction.yearMonth"
+          @disabled={{true}}
+        />
       {{/if}}
       {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
         <Field
-          @attr="dateOfConstruction.periodOfConstruction"
-          @inputType="select"
+          @attr="building.dateOfConstruction.periodOfConstruction"
+          @type="select"
           @convertValueTo="number"
           @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
         />
       {{/if}}
 
-      <Field @attr="yearOfDemolition" @type="number" />
+      <Field @attr="building.yearOfDemolition" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.structure"}}
       </h3>
-      <Field @attr="numberOfFloors" @type="number" />
-      <Field @attr="numberOfSeparateHabitableRooms" @type="number" />
-      <Field @attr="civilDefenseShelter" @inputType="checkbox" />
+      <Field @attr="building.numberOfFloors" @type="number" />
+      <Field @attr="building.numberOfSeparateHabitableRooms" @type="number" />
+      <Field @attr="building.civilDefenseShelter" @type="checkbox" />
 
       <h3>
         {{t "ember-gwr.building.sections.dimensions"}}
       </h3>
-      <Field @attr="volume.volume" @type="number" />
+      <Field @attr="building.volume.volume" @type="number" />
       <Field
-        @attr="volume.norm"
-        @inputType="select"
+        @attr="building.volume.norm"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Volume.normOptions}}
       />
       <Field
-        @attr="volume.informationSource"
-        @inputType="select"
+        @attr="building.volume.informationSource"
+        @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Volume.informationSourceOptions}}
       />
-      <Field @attr="surfaceAreaOfBuilding" @type="number" />
+      <Field @attr="building.surfaceAreaOfBuilding" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.energy"}}
       </h3>
 
-      <Field @attr="energyRelevantSurface" @type="number" />
+      <Field @attr="building.energyRelevantSurface" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.heating"}}
       </h3>
-      {{#let
-        (component
-          Field
-          project=this.buildingWork.building.thermotechnicalDeviceForHeating1
-          translationBase="ember-gwr.building.fields.heating"
-        )
-        as |HeatingField|
-      }}
-        <HeatingField
-          @attr="heatGeneratorHeating"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
-        />
-        <HeatingField
-          @attr="energySourceHeating"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
-        />
-        <HeatingField
-          @attr="informationSourceHeating"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
-        />
-        <HeatingField @attr="revisionDate" @inputType="date" />
-      {{/let}}
+      <Field
+        @attr="building.thermotechnicalDeviceForHeating1.heatGeneratorHeating"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
+        @label="ember-gwr.building.heating.heatGeneratorHeating"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForHeating1.energySourceHeating"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
+        @label="ember-gwr.building.heating.energySourceHeating"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForHeating1.informationSourceHeating"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
+        @label="ember-gwr.building.heating.informationSourceHeating"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForHeating1.revisionDate"
+        @type="date"
+        @label="ember-gwr.building.heating.revisionDate"
+      />
 
       <ul uk-accordion>
         <li>
@@ -258,34 +267,32 @@
             </h4>
           </a>
           <div class="uk-accordion-content">
-            {{#let
-              (component
-                Field
-                project=this.buildingWork.building.thermotechnicalDeviceForHeating2
-                translationBase="ember-gwr.building.fields.heating"
-              )
-              as |HeatingField|
-            }}
-              <HeatingField
-                @attr="heatGeneratorHeating"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
-              />
-              <HeatingField
-                @attr="energySourceHeating"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
-              />
-              <HeatingField
-                @attr="informationSourceHeating"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
-              />
-              <HeatingField @attr="revisionDate" @inputType="date" />
-            {{/let}}
+            <Field
+              @attr="building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
+              @label="ember-gwr.building.heating.heatGeneratorHeating"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForHeating2.energySourceHeating"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
+              @label="ember-gwr.building.heating.energySourceHeating"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForHeating2.informationSourceHeating"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
+              @label="ember-gwr.building.heating.informationSourceHeating"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForHeating2.revisionDate"
+              @type="date"
+              @label="ember-gwr.building.heating.revisionDate"
+            />
           </div>
         </li>
       </ul>
@@ -293,34 +300,32 @@
       <h3>
         {{t "ember-gwr.building.sections.warmWater"}}
       </h3>
-      {{#let
-        (component
-          Field
-          project=this.buildingWork.building.thermotechnicalDeviceForWarmWater1
-          translationBase="ember-gwr.building.fields.heating"
-        )
-        as |WarmWaterField|
-      }}
-        <WarmWaterField
-          @attr="heatGeneratorHotWater"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
-        />
-        <WarmWaterField
-          @attr="energySourceHeating"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
-        />
-        <WarmWaterField
-          @attr="informationSourceHeating"
-          @inputType="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
-        />
-        <WarmWaterField @attr="revisionDate" @inputType="date" />
-      {{/let}}
+      <Field
+        @attr="building.thermotechnicalDeviceForWarmWater1.heatGeneratorHotWater"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
+        @label="ember-gwr.building.heating.heatGeneratorHotWater"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForWarmWater1.energySourceHeating"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
+        @label="ember-gwr.building.heating.energySourceHeating"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForWarmWater1.informationSourceHeating"
+        @type="select"
+        @convertValueTo="number"
+        @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
+        @label="ember-gwr.building.heating.informationSourceHeating"
+      />
+      <Field
+        @attr="building.thermotechnicalDeviceForWarmWater1.revisionDate"
+        @type="date"
+        @label="ember-gwr.building.heating.revisionDate"
+      />
 
       <ul uk-accordion>
         <li>
@@ -330,34 +335,33 @@
             </h4>
           </a>
           <div class="uk-accordion-content">
-            {{#let
-              (component
-                Field
-                project=this.buildingWork.building.thermotechnicalDeviceForWarmWater2
-                translationBase="ember-gwr.building.fields.heating"
-              )
-              as |HeatingField|
-            }}
-              <HeatingField
-                @attr="heatGeneratorHotWater"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
-              />
-              <HeatingField
-                @attr="energySourceHeating"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
-              />
-              <HeatingField
-                @attr="informationSourceHeating"
-                @inputType="select"
-                @convertValueTo="number"
-                @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
-              />
-              <HeatingField @attr="revisionDate" @inputType="date" />
-            {{/let}}
+
+            <Field
+              @attr="building.thermotechnicalDeviceForWarmWater2.heatGeneratorHotWater"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
+              @label="ember-gwr.building.heating.heatGeneratorHotWater"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForWarmWater2.energySourceHeating"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
+              @label="ember-gwr.building.heating.energySourceHeating"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForWarmWater2.informationSourceHeating"
+              @type="select"
+              @convertValueTo="number"
+              @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
+              @label="ember-gwr.building.heating.informationSourceHeating"
+            />
+            <Field
+              @attr="building.thermotechnicalDeviceForWarmWater2.revisionDate"
+              @type="date"
+              @label="ember-gwr.building.heating.revisionDate"
+            />
           </div>
         </li>
       </ul>
@@ -366,8 +370,8 @@
         {{t "ember-gwr.building.sections.freeTextFields"}}
       </h3>
 
-      <Field @attr="buildingFreeText1" />
-      <Field @attr="buildingFreeText2" />
+      <Field @attr="building.buildingFreeText1" />
+      <Field @attr="building.buildingFreeText2" />
     </ModelForm>
   {{/if}}
 </div>

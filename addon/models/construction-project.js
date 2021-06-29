@@ -7,8 +7,6 @@ import RealestateIdentification from "./realestate-identification";
 import XMLModel from "./xml-model";
 
 export default class ConstructionProject extends XMLModel {
-  modelName = "project";
-
   @tracked EPROID;
   @tracked officialConstructionProjectFileNo;
   @tracked extensionOfOfficialConstructionProjectFileNo;

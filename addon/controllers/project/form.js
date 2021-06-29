@@ -4,9 +4,11 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
 import Options from "ember-ebau-gwr/models/options";
+import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
 
 export default class ProjectFormController extends Controller {
   queryParams = ["import"];
+  ConstructionProjectValidations = ConstructionProjectValidations;
 
   @service constructionProject;
   @service config;

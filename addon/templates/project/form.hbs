@@ -50,6 +50,7 @@
     </div>
     <ModelForm
       @model={{this.project}}
+      @validatons={{this.ConstructionProjectValidations}}
       @importData={{if this.import this.importData}}
       @onSubmit={{this.saveProject}}
       @translationBase="ember-gwr.constructionProject.fields"

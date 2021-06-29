@@ -2,12 +2,14 @@ import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
 
 const EXISTING = 1004,
   NOT_USABLE = 1005;
 
 export default class BuildingFormController extends Controller {
   Models = Models;
+  BuildingWorkValidations = BuildingWorkValidations;
 
   @service constructionProject;
   @service building;
@@ -43,7 +45,7 @@ export default class BuildingFormController extends Controller {
   }
 
   @task
-  *saveBuilding() {
+  *saveBuildingWork() {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
