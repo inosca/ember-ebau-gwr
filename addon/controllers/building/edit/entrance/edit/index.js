@@ -1,6 +1,6 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 
 export default class BuildingEditEntranceEditIndexController extends Controller {
@@ -31,7 +31,7 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
     }
   }
 
-  @task
+  @dropTask
   *saveBuildingEntrance() {
     try {
       if (this.buildingEntrance.isNew) {

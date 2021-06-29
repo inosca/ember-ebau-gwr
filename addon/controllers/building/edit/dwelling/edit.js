@@ -1,6 +1,6 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
 
@@ -51,7 +51,7 @@ export default class BuildingEditDwellingEditController extends Controller {
     }
   }
 
-  @task
+  @dropTask
   *saveDwelling() {
     try {
       if (this.dwelling.isNew) {
