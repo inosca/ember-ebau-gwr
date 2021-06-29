@@ -1,7 +1,7 @@
 <div class="{{unless @noMargin "uk-margin"}}">
   {{#let (component @input) as |InputComponent|}}
     <InputComponent
-      @label={{t (concat @translationBase "." @attr)}}
+      @label={{t (or @label (concat @translationBase "." @attr))}}
       @name={{@attr}}
       @inputName={{@inputName}}
       @hint={{@hint}}
@@ -21,7 +21,9 @@
       @optionValuePath={{@optionValuePath}}
       @includeBlank={{unless
         @noPlaceholder
-        (t (concat @translationBase "." @attr "Placeholder"))
+        (t
+          (concat (or @label (concat @translationBase "." @attr)) "Placeholder")
+        )
       }}
       @promptIsSelectable={{true}}
       @on-update={{if

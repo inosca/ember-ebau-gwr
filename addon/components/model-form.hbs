@@ -1,6 +1,6 @@
 {{#if @model}}
   <ValidatedForm
-    @model={{changeset @model this.validations}}
+    @model={{changeset @model @validations}}
     @on-submit={{perform this.submit}}
     @validateBeforeSubmit={{true}}
     class="validated-form"
@@ -15,6 +15,7 @@
         translationBase=@translationBase
         input=f.input
       )
+      f.model
     }}
 
     <f.submit
@@ -26,7 +27,7 @@
         color="primary"
       }}
     />
-          
+
     {{#if @importData}}
       <LinkTo @query={{hash import=false}} class="uk-button uk-button-default">
         {{t "ember-gwr.components.modelForm.cancelImport"}}

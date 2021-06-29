@@ -82,13 +82,13 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get options() {
+    const intlKey =
+      this.args.label ?? `${this.args.translationBase}.${this.args.attr}`;
     return (
       this.args.options ??
       this.args.gwrEnumOptions?.map((option) => ({
         value: option,
-        label: this.intl.t(
-          `${this.args.translationBase}.${this.args.attr}Options.${option}`
-        ),
+        label: this.intl.t(`${intlKey}Options.${option}`),
       }))
     );
   }

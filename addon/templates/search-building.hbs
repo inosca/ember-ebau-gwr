@@ -15,7 +15,7 @@
         <Field
           @attr="EGID"
           type="number"
-          @translationBase="ember-gwr.building.fields"
+          @translationBase="ember-gwr.building"
         />
       </div>
     </div>
@@ -25,7 +25,7 @@
           @attr="periodOfConstruction"
           @inputType="select"
           @options={{this.periodOfConstruction}}
-          @translationBase="ember-gwr.building.fields.dateOfConstruction"
+          @translationBase="ember-gwr.building.dateOfConstruction"
         />
       </div>
     </div>
@@ -43,7 +43,7 @@
       <div class="uk-margin-small-right">
         <Field
           @attr="descriptionLong"
-          @translationBase="ember-gwr.building.fields.street.description"
+          @translationBase="ember-gwr.building.street.description"
         />
       </div>
     </div>
@@ -51,7 +51,7 @@
       <div class="uk-margin-small-right">
         <Field
           @attr="buildingEntranceNo"
-          @translationBase="ember-gwr.building.fields"
+          @translationBase="ember-gwr.building"
         />
       </div>
     </div>
@@ -59,7 +59,7 @@
       <div class="uk-margin-small-right">
         <Field
           @attr="nameLong"
-          @translationBase="ember-gwr.building.fields.locality.name"
+          @translationBase="ember-gwr.building.locality.name"
         />
       </div>
     </div>
@@ -73,17 +73,14 @@
     as |Row|
   >
     <Search::ResultTable::Head as |Header|>
-      <Header
-        class="uk-table-shrink"
-        @label={{t "ember-gwr.building.fields.EGID"}}
-      />
+      <Header class="uk-table-shrink" @label={{t "ember-gwr.building.EGID"}} />
       <Header
         @label={{t "ember-gwr.searchBuilding.entrances"}}
         class="uk-table-expand"
       />
       <Header
         @label={{t
-          "ember-gwr.building.fields.dateOfConstruction.periodOfConstruction"
+          "ember-gwr.building.dateOfConstruction.periodOfConstruction"
         }}
       />
     </Search::ResultTable::Head>
@@ -110,7 +107,7 @@
         {{#if value.periodOfConstruction}}
           {{t
             (concat
-              "ember-gwr.building.fields.dateOfConstruction.periodOfConstructionOptions."
+              "ember-gwr.building.dateOfConstruction.periodOfConstructionOptions."
               value.periodOfConstruction
             )
           }}
