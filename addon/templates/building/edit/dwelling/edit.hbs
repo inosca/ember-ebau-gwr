@@ -39,7 +39,7 @@
       <Field
         @attr="dwellingStatus"
         @type="select"
-        @options={{this.Models.Dwelling.dwellingStatusOptions}}
+        @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
         @convertValueTo="number"
         @required={{true}}
       />
@@ -49,7 +49,7 @@
       <Field
         @attr="usageLimitation"
         @type="select"
-        @options={{this.Models.Dwelling.usageLimitationOptions}}
+        @gwrEnumOptions={{this.Models.Dwelling.usageLimitationOptions}}
         @convertValueTo="number"
       />
       <Field @attr="kitchen" @type="checkbox" />
@@ -59,13 +59,13 @@
       <Field
         @attr="dwellingUsage.usageCode"
         @type="select"
-        @options={{this.Models.DwellingUsage.usageCodeOptions}}
+        @gwrEnumOptions={{this.Models.DwellingUsage.usageCodeOptions}}
         @convertValueTo="number"
       />
       <Field
         @attr="dwellingUsage.informationSource"
         @type="select"
-        @options={{this.Models.DwellingUsage.informationSourceOptions}}
+        @gwrEnumOptions={{this.Models.DwellingUsage.informationSourceOptions}}
         @convertValueTo="number"
       />
       <Field @attr="dwellingUsage.revisionDate" @type="date" />
