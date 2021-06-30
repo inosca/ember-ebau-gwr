@@ -14,12 +14,36 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
+    {{#if this.buildingWork.building.isNew}}
+      <SubNav
+        @backRoute="project.linked-buildings"
+        @backModel={{@model.projectId}}
+        @backText={{t "ember-gwr.building.backToProject"}}
+      />
+      <h2 class="uk-flex uk-flex-between">
+        {{t "ember-gwr.building.createNewBuilding"}}
+      </h2>
+    {{else}}
+      <h2 class="uk-flex uk-flex-between">
+        {{t
+          "ember-gwr.building.title"
+          id=this.buildingWork.building.EGID
+          status=(t
+            (concat
+              "ember-gwr.building.buildingStatusOptions."
+              this.buildingWork.building.buildingStatus
+            )
+          )
+        }}
+      </h2>
+    {{/if}}
+
     <ModelForm
       @model={{this.buildingWork}}
       @validations={{this.BuildingWorkValidations}}
       @onSubmit={{this.saveBuildingWork}}
       @errors={{this.errors}}
-      @translationBase="ember-gwr" 
+      @translationBase="ember-gwr"
       @headerModel={{this.building}}
       @headerModelId={{this.building.EGID}}
       @projectId={{this.model.projectId}}
@@ -93,6 +117,11 @@
         </div>
       </div>
       <hr />
+
+      <h3>
+        {{t "ember-gwr.building.sections.entrance"}}
+      </h3>
+      <Field @attr="building.buildingEntrance.officialBuildingNo" @type="number" />
 
       <h3>
         {{t "ember-gwr.building.sections.building"}}
