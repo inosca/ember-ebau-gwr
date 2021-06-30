@@ -5,7 +5,7 @@ import {
 } from "ember-changeset-validations/validators";
 
 export default {
-  floor: validateNumber({ gte: 3100 }),
+  floor: [validatePresence(true), validateNumber({ gte: 3100 })],
   multipleFloor: validatePresence(true),
   dwellingStatus: validatePresence(true),
   noOfHabitableRooms: validateNumber({ gte: 1, allowBlank: true }),

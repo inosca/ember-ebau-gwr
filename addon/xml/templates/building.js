@@ -10,6 +10,7 @@ export const getBuilding =
             <ns2:language>{{model.streetLang}}</ns2:language>
             <ns2:descriptionLong>{{model.descriptionLong}}</ns2:descriptionLong>
           </ns2:description>
+          <ns2:streetGeometry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string" />
         </ns2:street>
       {{/if}}
       {{#if model.buildingEntranceNo}}

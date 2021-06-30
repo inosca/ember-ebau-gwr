@@ -87,6 +87,7 @@ export default class ConstructionProject extends XMLModel {
     {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
     {{> Client model=model.client}}
     <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
+    <ns2:typeOfConstruction>{{model.typeOfConstruction}}</ns2:typeOfConstruction>
     <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
     <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
 
