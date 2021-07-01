@@ -23,6 +23,11 @@ export default class GwrService extends Service {
     assert("Must set `cacheKey`", typeof this.cacheKey !== "undefined");
     assert("Must set `cacheClass`", typeof this.cacheClass !== "undefined");
     const model = new this.cacheClass(xml);
+    this.cache(model);
+    return model;
+  }
+
+  cache(model) {
     this._cache[
       typeof this.cacheKey === "function"
         ? this.cacheKey(model)

@@ -26,8 +26,16 @@ ember-gwr:
     saveError: Beim Speichern des Gebäudes ist ein Fehler aufgetretten.
     saveSuccess: Gebäude erfolgreich gespeichert.
     entrances:
-    error: Beim Laden der Eingänge ist ein Fehler aufgetretten.
-    removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
+      error: Beim Laden der Eingänge ist ein Fehler aufgetretten.
+      removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
+    dwellings:
+      entrance: Eingang {number}
+      rooms: "{number} Zimmer"
+      groundFloor: Parterre
+      cellar: "{number}. Untergeschoss"
+      floor: "{number}. Stock"
+      error: Beim Laden der Wohnungen ist ein Fehler aufgetretten.
+      removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetretten.
 
     sections:
       kindOfWorkForProject: Art der Arbeiten für Bauprojekt {projectId}

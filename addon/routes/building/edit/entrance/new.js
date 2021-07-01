@@ -13,13 +13,12 @@ export default class BuildingEditEntranceNewRoute extends IndexRoute {
 
   async model() {
     const model = this.modelFor("building.edit");
-    model.entranceId = "new";
     // Dont reset if there is already a new record
     if (!this.buildingEntrance.newRecord) {
       this.buildingEntrance.newRecord = new BuildingEntrance();
       this.buildingEntrance.newRecord.locality.name.language =
         languageOptions[this.intl.primaryLocale];
     }
-    return model;
+    return { ...model, entranceId: "new" };
   }
 }

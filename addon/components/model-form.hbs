@@ -1,38 +1,36 @@
-{{#if @model}}
-  <ValidatedForm
-    @model={{changeset @model @validations}}
-    @on-submit={{perform this.submit}}
-    @validateBeforeSubmit={{true}}
-    class="validated-form"
-    ...attributes
-    as |f|
-  >
-    {{yield
-      (component
-        "model-form/field"
-        model=f.model
-        importData=@importData
-        translationBase=@translationBase
-        input=f.input
-      )
-      f.model
+<ValidatedForm
+  @model={{changeset @model this.validations}}
+  @on-submit={{perform this.submit}}
+  @validateBeforeSubmit={{true}}
+  class="validated-form"
+  ...attributes
+  as |f|
+>
+  {{yield
+    (component
+      "model-form/field"
+      model=f.model
+      importData=@importData
+      translationBase=@translationBase
+      input=f.input
+    )
+  }}
+
+  <f.submit
+    @type="submit"
+    @label={{t "ember-gwr.components.modelForm.save"}}
+    @disabled={{this.isSaving}}
+    @buttonComponent={{component
+      "model-form/submit"
+      loading=this.isSaving
+      color="primary"
     }}
+  />
 
-    <f.submit
-      @type="submit"
-      @label={{t "ember-gwr.components.modelForm.save"}}
-      @buttonComponent={{component
-        "model-form/submit"
-        loading=this.isSaving
-        color="primary"
-      }}
-    />
+  {{#if @importData}}
+    <LinkTo @query={{hash import=false}} class="uk-button uk-button-default">
+      {{t "ember-gwr.components.modelForm.cancelImport"}}
+    </LinkTo>
+  {{/if}}
 
-    {{#if @importData}}
-      <LinkTo @query={{hash import=false}} class="uk-button uk-button-default">
-        {{t "ember-gwr.components.modelForm.cancelImport"}}
-      </LinkTo>
-    {{/if}}
-
-  </ValidatedForm>
-{{/if}}
+</ValidatedForm>

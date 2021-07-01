@@ -1,0 +1,50 @@
+<div>
+  {{#if this.fetchDwellings.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio="3" />
+    </div>
+  {{else}}
+    <LinkedModels
+      @models={{this.fetchDwellings.lastSuccessful.value}}
+      @modelName="dwelling"
+      @newRoute="building.edit.dwelling.new"
+      @removeLink={{this.removeDwelling}}
+      as |model|
+    >
+      <td class="uk-table-shrink">
+        <LinkTo
+          @route={{"building.edit.dwelling.edit"}}
+          @model={{model.EWID}}
+          class="uk-link"
+        >
+          {{model.EWID}}
+        </LinkTo>
+      </td>
+      <td>
+        {{t
+          "ember-gwr.building.dwellings.entrance"
+          number=model.buildingEntranceNo
+        }}
+      </td>
+      <td>
+        {{if
+          model.noOfHabitableRooms
+          (t
+            "ember-gwr.building.dwellings.rooms" number=model.noOfHabitableRooms
+          )
+          "-"
+        }}
+      </td>
+      <td>
+        {{if
+          model.floor
+          (t model.floorLabel.label number=model.floorLabel.number)
+          "-"
+        }}
+      </td>
+      <td>
+        {{or model.locationOfDwellingOnFloor "-"}}
+      </td>
+    </LinkedModels>
+  {{/if}}
+</div>

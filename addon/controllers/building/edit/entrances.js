@@ -17,7 +17,7 @@ export default class BuildingEntrancesIndexController extends Controller {
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.building.entraces.error")
+        this.intl.t("ember-gwr.building.entrances.error")
       );
     }
   }

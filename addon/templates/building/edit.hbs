@@ -2,7 +2,7 @@
   @backRoute="project.linked-buildings"
   @backModel={{@model.projectId}}
   @backText={{t "ember-gwr.building.backToProject"}}
-  @hiddenOnRoute="entrance"
+  @hiddenOnRoute={{array "entrance" "dwelling"}}
   @links={{array
     (hash
       route="building.edit.form"
@@ -13,6 +13,11 @@
       route="building.edit.entrances"
       models=(array @model.buildingId)
       text=(t "ember-gwr.models.entrance" count=2)
+    )
+    (hash
+      route="building.edit.dwellings"
+      models=(array @model.buildingId)
+      text=(t "ember-gwr.models.dwelling" count=2)
     )
   }}
 />

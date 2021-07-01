@@ -1,6 +1,6 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
 
@@ -44,7 +44,7 @@ export default class BuildingFormController extends Controller {
     }
   }
 
-  @task
+  @dropTask
   *saveBuildingWork() {
     try {
       let EGID = this.buildingWork.building.EGID;
@@ -69,7 +69,7 @@ export default class BuildingFormController extends Controller {
     }
   }
 
-  @task
+  @dropTask
   *linkBuilding() {
     try {
       yield this.building.bindBuildingToConstructionProject(

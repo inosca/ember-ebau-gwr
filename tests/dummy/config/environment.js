@@ -21,13 +21,6 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-
-    "ember-validated-form": {
-      theme: "uikit",
-      defaults: {
-        // default components
-      },
-    },
   };
 
   if (environment === "development") {

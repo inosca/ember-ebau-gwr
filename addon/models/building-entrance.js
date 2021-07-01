@@ -1,6 +1,7 @@
 import { tracked } from "@glimmer/tracking";
 
 import Coordinates from "./coordinates";
+import Dwelling from "./dwelling";
 import LocalId from "./local-id";
 import Locality from "./locality";
 import Street from "./street";
@@ -16,6 +17,7 @@ export default class BuildingEntrance extends XMLModel {
   @tracked localId = new LocalId();
   @tracked street = new Street();
   @tracked locality = new Locality();
+  @tracked dwelling = [];
 
   constructor(xmlOrObject, root = "buildingEntrance") {
     super(xmlOrObject);
@@ -30,6 +32,7 @@ export default class BuildingEntrance extends XMLModel {
         street: Street,
         locality: Locality,
         coordinates: Coordinates,
+        dwelling: [Dwelling],
       },
     });
   }

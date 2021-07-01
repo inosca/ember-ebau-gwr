@@ -1,0 +1,86 @@
+<div>
+  {{#if this.fetchDwelling.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio="3" />
+    </div>
+  {{else}}
+    <h2 class="uk-flex uk-flex-between">
+      <span>
+        {{#if this.dwelling.isNew}}
+          {{t "ember-gwr.dwelling.createNewDwelling"}}
+        {{else}}
+          {{t "ember-gwr.dwelling.title" id=this.dwelling.EWID}}
+        {{/if}}
+      </span>
+    </h2>
+
+    <ModelForm
+      @model={{this.dwelling}}
+      @validations={{this.DwellingValidations}}
+      @onSubmit={{this.saveDwelling}}
+      @translationBase="ember-gwr.dwelling"
+      as |Field|
+    >
+
+      <Field
+        @attr="EDID"
+        @type="select"
+        @options={{this.entrances}}
+        @optionTargetPath="EDID"
+        @optionLabelPath="buildingEntranceNo"
+        @noPlaceholder={{true}}
+        @required={{true}}
+      />
+      {{#unless this.dwelling.isNew}}
+        <Field @attr="EWID" @type="number" @disabled={{true}} />
+      {{/unless}}
+      <Field @attr="floor" @type="number" @required={{true}} @min="3100" />
+      <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
+      <Field
+        @attr="dwellingStatus"
+        @type="select"
+        @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
+        @convertValueTo="number"
+        @required={{true}}
+      />
+      <Field @attr="administrativeDwellingNo" />
+      <Field @attr="noOfHabitableRooms" @type="number" @min="1" />
+      <Field @attr="locationOfDwellingOnFloor" />
+      <Field
+        @attr="usageLimitation"
+        @type="select"
+        @gwrEnumOptions={{this.Models.Dwelling.usageLimitationOptions}}
+        @convertValueTo="number"
+      />
+      <Field @attr="kitchen" @type="checkbox" />
+      <Field @attr="surfaceAreaOfDwelling" @type="number" />
+
+      <h2>{{t "ember-gwr.dwelling.usage.heading"}}</h2>
+      <Field
+        @attr="dwellingUsage.usageCode"
+        @type="select"
+        @gwrEnumOptions={{this.Models.DwellingUsage.usageCodeOptions}}
+        @convertValueTo="number"
+      />
+      <Field
+        @attr="dwellingUsage.informationSource"
+        @type="select"
+        @gwrEnumOptions={{this.Models.DwellingUsage.informationSourceOptions}}
+        @convertValueTo="number"
+      />
+      <Field @attr="dwellingUsage.revisionDate" @type="date" />
+      <Field @attr="dwellingUsage.remark" />
+      <Field @attr="dwellingUsage.personWithMainResidence" @type="checkbox" />
+      <Field
+        @attr="dwellingUsage.personWithSecondaryResidence"
+        @type="checkbox"
+      />
+      <Field @attr="dwellingUsage.dateFirstOccupancy" @type="date" />
+      <Field @attr="dwellingUsage.dateLastOccupancy" @type="date" />
+
+      <Field @attr="dwellingFreeText1" />
+      <Field @attr="dwellingFreeText2" />
+
+    </ModelForm>
+  {{/if}}
+</div>

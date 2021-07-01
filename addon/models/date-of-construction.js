@@ -1,30 +1,26 @@
 import { tracked } from "@glimmer/tracking";
 
-import XMLModel from "./xml-model";
+import DatePartiallyKnown from "./date-partially-known";
 
-export default class DateOfConstruction extends XMLModel {
-  @tracked yearMonthDay;
-  @tracked yearMonth;
-  @tracked year;
+export default class DateOfConstruction extends DatePartiallyKnown {
   @tracked periodOfConstruction;
 
   constructor(xmlOrObject, root = "dateOfConstruction") {
-    super(xmlOrObject);
+    super(xmlOrObject, root);
     this.setFieldsFromXML({
       root,
       fields: {
-        yearMonthDay: String,
-        yearMonth: String,
-        year: String,
         periodOfConstruction: Number,
       },
     });
   }
 
   static template = `
-    <ns2:dateOfConstruction>
-      <yearMonthDay>{{echDate model.yearMonthDay}}</yearMonthDay>
-    </ns2:dateOfConstruction>
+    {{#if model.yearMonthDay}}
+      <ns2:dateOfConstruction>
+        {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay)}}}
+      </ns2:dateOfConstruction>
+    {{/if}}
   `;
 
   static periodOfConstructionOptions = [

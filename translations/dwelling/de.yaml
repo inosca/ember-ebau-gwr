@@ -1,0 +1,73 @@
+ember-gwr:
+  dwelling:
+    title: Wohnung {id}
+    createNewDwelling: Neue Wohnung erfassen
+    usage:
+      heading: Wohnungsnutzung
+
+
+    saveError: Beim Speichern der Wohnung ist ein Fehler aufgetretten.
+    saveSuccess: Wohnung erfolgreich gespeichert.
+    loadingError: Beim Laden der Wohnung ist ein Fehler aufgetretten.
+
+    # Fields
+    EDID: Eingang
+    EWID: EWID
+    floor: Stockwerk
+    multipleFloor: Mehrgeschossige Wohnung
+    dwellingStatus: Wohnungsstatus
+    dwellingStatusPlaceholder: Wählen Sie einen Status aus...
+    dwellingStatusOptions:
+      3001: Projektiert
+      3002: Bewilligt
+      3003: Im Bau
+      3004: Bestehend
+      3005: Nicht nutzbar
+      3007: Aufgehoben
+    administrativeDwellingNo: Administrative Wohnungsnummer
+    dateOfConstruction: Baujahr der Wohnung
+    dateOfDemolition: Abbruchjahr der Wohnung
+    noOfHabitableRooms: Anzahl Zimmer
+    locationOfDwellingOnFloor: Lage auf dem Stockwerk
+    usageLimitation: Nutzungsbeschränkung gemäss ZWG
+    usageLimitationPlaceholder: Wählen Sie eine Nutzungsbeschränkung aus...
+    usageLimitationOptions:
+      3401: Keine Beschränkung (Art. 8, 9 und 10 ZWG)
+      3402: Erstwohnung (Art. 7 Abs.1 Bst. a ZWG)
+      3403: Tour. bewirtschaftete Wohnung (Art. 7 Abs. 2 Bst. a ZWG)
+      3404: Tour. bewirtschaftete Wohnung (Art. 7 Abs. 2 Bst. b ZWG)
+    kitchen: Kocheinrichtung
+    surfaceAreaOfDwelling: Wohnungsfläche
+
+    dwellingUsage:
+      usageCode: Nutzungsart der Wohnung
+      usageCodePlaceholder: Wählen Sie eine Nutzungsart aus...
+      usageCodeOptions:
+        3010: Bewohnt gemäss RHG Art. 3 Bst. b (Erstwohnung, Art. 2 Abs. 2 ZWG)
+        3020: Zeitweise bewohnt (Zweitwohnung, Art. 2 Abs. 4 ZWG)
+        3030: Zweckentfremdet (anders als zum Wohnen genutzt gem. Art. 2 Abs. 3 Bst. h ZWG)
+        3031: Zu Erwerbs- oder Ausbildungszwecken bewohnt (Art. 2 Abs. 3 Bst. a ZWG)
+        3032: Von einem Privathaushalt mit Erstwohnung im gleichen Gebäude bewohnt (Art. 2 Abs. 3 Bst. b ZWG)
+        3033: Bewohnt von nicht meldepflichtigen Personen (Art. 2 Abs. 3 Bst. c ZWG)
+        3034: Leerstehend seit höchstens zwei Jahren (Art. 2 Abs. 3 Bst. d ZWG)
+        3035: Für alpwirtschaftliche Zwecke genutzt (Art. 2 Abs. 3 Bst. e ZWG)
+        3036: Zur Unterbringung von Personal genutzt (Art. 2 Abs. 3 Bst. f ZWG)
+        3037: Dienstwohnungen (Art. 2 Abs. 3 Bst. g ZWG)
+        3038: Von einem Kollektivhaushalt gemäss Art.2, Bst. abis der Registerharmonisierungsverordnung genutzt
+        3070: Wohnung unbewohnbar
+      informationSource: Informationsquelle zur Nutzungsart
+      informationSourcePlaceholder: Wählen Sie eine Informationsquelle aus...
+      informationSourceOptions:
+        3090: Automatische Aktualisierung (Art. 2 Abs. 1 Zweitwohnungsverordnung ZWV)
+        3091: Einwohnerkontrolle
+        3092: Eigentümer/in oder Verwaltung
+        3093: Andere Datenquelle
+      revisionDate: Aktualisierungsdatum der Nutzungsart
+      remark: Kommentar zur Nutzungsart der Wohnung
+      personWithMainResidence: Personen mit Hauptwohnsitz
+      personWithSecondaryResidence: Personen mit Nebenwohnsitz
+      dateFirstOccupancy: Datum der ersten Belegung
+      dateLastOccupancy: Datum der letzten Belegung
+
+    dwellingFreeText1: Freitextfeld Wohnung 1
+    dwellingFreeText2: Freitextfeld Wohnung 2

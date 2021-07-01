@@ -1,7 +1,4 @@
-<div
-  {{did-insert (perform this.fetchEntrances)}}
-  {{did-update (perform this.fetchEntrances) @model}}
->
+<div>
   {{#if this.fetchEntrances.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
       <UkSpinner @ratio="3" />
