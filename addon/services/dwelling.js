@@ -13,7 +13,7 @@ export default class DwellingService extends GwrService {
   cacheClass = Dwelling;
 
   async get(EWID, EGID) {
-    if (!EWID) {
+    if (!EWID || !EGID) {
       return null;
     }
     const response = await this.authFetch.fetch(
