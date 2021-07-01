@@ -1,3 +1,43 @@
+# [2.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.3...v2.2.0) (2021-07-01)
+
+
+### Bug Fixes
+
+* use drop tasks for mutating data on the gwr api ([62daa59](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/62daa59cbd41363adb090fe5d20438719cf41927))
+* **building:** fix creation of building ([6771645](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/67716456e8233553c7cdc58adbfa51d28fc2592a))
+* **building-work:** set default kind of work ([f5b9361](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f5b93612213bac0fd00bf89138d9b22b707fd039))
+* **building/kindOfWork:** since this is now a model-form we have to supply a changeset ([d60bc48](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d60bc484c705fd237a50032fb0aa969f0cc65f95))
+* **deactivate-building-entrance:** disable the remove button for now ([97bb8be](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/97bb8be3d7f5ee1362ea1650f0fa831795379c2e))
+* **dwelling:** adapt  model-form select options change in dwelling form ([b45d2bc](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b45d2bc0d5a39dca2f7c3e99bcfc8eae1b0853ea))
+* **dwellings:** pr comment fixes ([0a04cf6](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0a04cf60c6c4b0990b16468d60fc65d8b0c608ce))
+* **entrance:** remove rebase errors ([b723bd3](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b723bd30967a66c75bce50a4ef12fc6b4f4e0b60))
+* **entrance:** remove rebase errors ([019a3d2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/019a3d2d4fbd0d3bc98d02d23458aecb9f87973d))
+* **form:** disable submit button on loading ([1af567d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1af567db3ee8af9c483256b60a713ce338afc418))
+* **intl:** correct pluralization of model translations ([3658c5f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3658c5f5eea701230e2ea088f9d20c484d8a9c0e))
+* **modal:** show and contain gwr modal ([f18ed7b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f18ed7b69f79f3783649f2349ae867d244e5daf3))
+* **model-form:** fix errors on submit and minor template changes ([2a31911](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2a31911b07c89bd74f552d17a88e5ce28767f0f4))
+* **save:** fix issues after service refactor ([d226b7c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d226b7cd61e6fff959718fd860d0b7a65d545a12))
+* **style:** change location of validated-form style files ([3c37e9c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3c37e9cd07989a4427f52f2516176ac5d8be0d1d))
+* **translations:** call translations with correct count param ([7d7676d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7d7676ddb2990a2524c858fd2e679c14789396b8))
+* **validations:** add support for nested `on` validations ([bbf5d79](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bbf5d798dd84550601f50d3b4535c9e09ce7f43d))
+
+
+### Features
+
+* **building-entrance:** implement creation of building entrance ([b768093](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b76809337bfee1c4b2860949af810eaea18b324a))
+* **building-entrance:** update building entrance ([ca2f661](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ca2f6610320348d84d82640ff6ce85b02bee5ac0))
+* **dwelling:** add missing translations ([73d7813](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/73d78137dbd99f251b6e9aa60528f510d96e824f))
+* **dwelling:** edit form ([64e90d2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/64e90d280d096d2107ac17a23d08af55aee87462))
+* **dwelling:** new route and api work ([1983c08](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1983c08f4dbeaf7bbb1995bda177448e04bda07f))
+* **dwelling:** remove and reallocate ([954e20b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/954e20b721539518b37c064c748e29d88ae4bbf6))
+* **dwellings:** add more informations to the linked-models table ([dc89511](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/dc89511ec97e9daa8c8e07f39e31936c823fbd12))
+* **dwellings:** be verbose about what information we display ([1a68e19](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1a68e193db36a626f78330027a77ee8e505aefe9))
+* **dwellings:** initial route and setup ([1cdfaf5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1cdfaf5dce9f0c3f803f755e7157e4cfb37b2919))
+* **entrance:** add search view for street ([0c0601b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0c0601b52bf0518aadc632b112720e50aa44fd29))
+* **entrance:** routing and basic form ([37dadd2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/37dadd2b69f3d369fbcb638f1aae8d4f26e5fa9c))
+* **entrance:** routing and basic form ([c29a346](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c29a34680c6a80c300455f20c8529e15bf93cfaa))
+* **select:** allow custom value and label arguments ([06369e8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/06369e8ef953c2d61f5b4bcb6f722531025d3821))
+
 ## [2.1.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.2...v2.1.3) (2021-06-17)
 
 
