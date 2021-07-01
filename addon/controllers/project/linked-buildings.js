@@ -5,6 +5,7 @@ import { task } from "ember-concurrency-decorators";
 
 export default class ProjectLinkedBuildingsController extends Controller {
   @service constructionProject;
+  @service building;
   @service intl;
   @service notification;
 
@@ -24,7 +25,7 @@ export default class ProjectLinkedBuildingsController extends Controller {
   @action
   async removeBuildingLink({ building: { EGID } }) {
     try {
-      await this.constructionProject.unbindBuildingFromConstructionProject(
+      await this.building.unbindBuildingFromConstructionProject(
         this.model,
         EGID
       );

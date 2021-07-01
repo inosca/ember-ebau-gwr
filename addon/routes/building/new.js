@@ -11,8 +11,8 @@ export default class BuildingNewRoute extends BuildingFormRoute {
   templateName = "building.edit.form";
   controllerName = "building.edit.form";
 
-  async model(...args) {
-    const model = { projectId: super.model(...args) };
+  async model() {
+    const model = { projectId: this.modelFor("building") };
     const buildingWork = new BuildingWork();
     await this.building.authFetch.housingStatToken.lastRunning;
     buildingWork.building.municipality = this.building.municipality;

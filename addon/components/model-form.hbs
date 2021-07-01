@@ -1,5 +1,5 @@
 <ValidatedForm
-  @model={{changeset @model this.validations}}
+  @model={{changeset @model @validations}}
   @on-submit={{perform this.submit}}
   @validateBeforeSubmit={{true}}
   class="validated-form"

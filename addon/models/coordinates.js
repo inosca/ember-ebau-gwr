@@ -20,11 +20,13 @@ export default class Coordinates extends XMLModel {
   }
 
   static template = `
-  <ns2:coordinates>
-    <ns2:east>{{model.east}}</ns2:east>
-    <ns2:north>{{model.north}}</ns2:north>
-    <ns2:originOfCoordinates>{{model.originOfCoordinates}}</ns2:originOfCoordinates>
-  </ns2:coordinates>
+  {{#if model.east}}
+    <ns2:coordinates>
+      <ns2:east>{{model.east}}</ns2:east>
+      <ns2:north>{{model.north}}</ns2:north>
+      <ns2:originOfCoordinates>{{model.originOfCoordinates}}</ns2:originOfCoordinates>
+    </ns2:coordinates>
+  {{/if}}
   `;
 
   static originOfCoordinatesOptions = [
