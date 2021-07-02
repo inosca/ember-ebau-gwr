@@ -1,6 +1,6 @@
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task } from "ember-concurrency-decorators";
+import { task, dropTask } from "ember-concurrency-decorators";
 
 export default class AuthFetchService extends Service {
   @service config;
@@ -8,18 +8,12 @@ export default class AuthFetchService extends Service {
   @service notification;
 
   @tracked showAuthModal = false;
+  @tracked token;
+  @tracked municipality;
 
   constructor(...args) {
     super(...args);
     this.housingStatToken.perform();
-  }
-
-  get token() {
-    return this.housingStatToken.lastSuccessful.value.token;
-  }
-
-  get municipality() {
-    return this.housingStatToken.lastSuccessful.value.municipality;
   }
 
   @task
@@ -64,7 +58,31 @@ export default class AuthFetchService extends Service {
       }
     }
 
+    this.token = json.token;
+    this.municipality = json.municipality;
     return json;
+  }
+
+  @dropTask
+  *clearHousingStatCredentials() {
+    const response = yield fetch(`/api/v1/housing-stat-token/logout`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${this.config.authToken}`,
+        "x-camac-group": this.config.camacGroup,
+      },
+    });
+
+    if (response.ok) {
+      this.showAuthModal = true;
+      this.token = undefined;
+      this.municipality = undefined;
+    } else {
+      this.notification.danger(
+        this.intl.t("ember-gwr.generalErrors.logoutError")
+      );
+    }
   }
 
   async fetch(url, { method = "get", headers = {}, body } = {}, retry = true) {

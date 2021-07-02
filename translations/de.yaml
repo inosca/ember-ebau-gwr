@@ -19,7 +19,8 @@ ember-gwr:
 
   generalErrors:
     searchError: Bei der Suche ist ein Fehler aufgetretten.
-    loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetretten. Bitte versuchen Sie es nochmal.
+    loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmal.
+    logoutError: Bei der Abmeldung von der GWR-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmal.
 
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
@@ -109,6 +110,8 @@ ember-gwr:
       password: Passwort...
       username: Benutzername...
       municipality: Wählen Sie Ihre Gemeinde aus...
+
+    logout: Abmelden
 
     projectForm:
       save: Speichern
