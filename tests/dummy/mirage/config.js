@@ -66,5 +66,17 @@ export default function () {
     return JSON.stringify({ token: gwrToken, municipality });
   });
 
+  this.post(
+    "/housing-stat-token/logout",
+    () => {
+      localStorage.removeItem("username");
+      localStorage.removeItem("password");
+      localStorage.removeItem("municipality");
+      localStorage.removeItem("wsk_id");
+      gwrToken = undefined;
+    },
+    204
+  );
+
   this.passthrough("http://localhost:8010/**");
 }

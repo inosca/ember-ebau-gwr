@@ -1,0 +1,13 @@
+<div class="uk-flex uk-flex-right">
+  <UkButton
+    id="ember-ebau-gwr-logout"
+    class="uk-text-capitalize"
+    @color="link"
+    @title={{t "ember-gwr.components.logout"}}
+    @loading={{this.isLoading}}
+    {{on "click" (perform this.logout)}}
+  >
+    <span uk-icon="sign-out"></span>
+    {{t "ember-gwr.components.logout"}}
+  </UkButton>
+</div>

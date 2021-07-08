@@ -36,3 +36,8 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 .required-indicator {
   color: $ember-ebau-gwr-required-color;
 }
+
+#ember-ebau-gwr-logout {
+  text-decoration: none;
+  min-height: $spinner-size;
+}
