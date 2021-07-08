@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.2.0...v2.3.0) (2021-07-08)
+
+
+### Features
+
+* **logout:** enable logout functionality ([500ac4b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/500ac4baed008baa367e8b8c445b501d7a9b35fb))
+
 # [2.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.1.3...v2.2.0) (2021-07-01)
 
 
