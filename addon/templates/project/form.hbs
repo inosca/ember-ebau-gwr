@@ -7,56 +7,22 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    <div class="uk-flex uk-flex-between">
-      <h2>
-        {{#if this.project.isNew}}
-          {{t "ember-gwr.landingPage.createNewProject"}}
-        {{else}}
-          {{t "ember-gwr.components.projectForm.title" id=@model.projectId}}
-        {{/if}}
-      </h2>
-      <div>
-        {{#if this.import}}
-          <button
-            class="uk-button uk-button-default"
-            type="button"
-            {{on "click" this.importCalumaData}}
-          >
-            {{t "ember-gwr.components.projectForm.applyAll"}}
-          </button>
-          <LinkTo
-            @query={{hash import=false}}
-            class="uk-button uk-button-default"
-          >
-            {{t "ember-gwr.components.projectForm.cancelImport"}}
-          </LinkTo>
-        {{else if this.project.isNew}}
-          <button
-            class="uk-button uk-button-primary"
-            type="button"
-            {{on "click" this.importCalumaData}}
-          >
-            {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-          </button>
-        {{else}}
-          <LinkTo
-            @query={{hash import=true}}
-            class="uk-button uk-button-primary"
-          >
-            {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-          </LinkTo>
-        {{/if}}
-      </div>
-    </div>
-
     <ModelForm
       @model={{this.project}}
       @validations={{this.ConstructionProjectValidations}}
       @importData={{if this.import this.importData}}
       @onSubmit={{this.saveProject}}
+      @errors={{this.errors}}
       @translationBase="ember-gwr.constructionProject.fields"
-      {{did-insert (perform this.fetchCalumaData)}}
-      as |Field|
+      @hasImport={{true}}
+      @import={{this.import}}
+      @importCalumaData={{this.importCalumaData}}
+      @headerModel={{this.project}}
+      @headerModelId={{this.project.EPROID}}
+      @projectId={{this.project.EPROID}}
+      @headerModelName="project"
+      @hasStatus={{true}}
+      {{did-insert (perform this.fetchCalumaData)}} as |Field|
     >
       {{#unless this.project.isNew}}
         <div class="uk-flex uk-flex-wrap uk-flex-between">
@@ -219,7 +185,7 @@
             <Field
               @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
               @noMargin={{true}}
-              @placeholder={{"100.200.300"}}
+              @placeholder="100.200.300"
             />
           </div>
         </div>

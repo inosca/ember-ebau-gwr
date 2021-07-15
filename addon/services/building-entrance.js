@@ -15,7 +15,7 @@ export default class BuildingEntranceService extends GwrService {
   cacheClass = BuildingEntrance;
 
   async get(EDID, EGID) {
-    if (!EDID) {
+    if (!EDID && EDID !== 0) {
       return null;
     }
     const response = await this.authFetch.fetch(
@@ -41,7 +41,11 @@ export default class BuildingEntranceService extends GwrService {
     );
 
     if (!response.ok) {
-      throw new Error("GWR API: modifyBuildingEntrance failed");
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: modifyBuildingEntrance failed");
+      throw errors;
     }
 
     const xml = await response.text();
@@ -62,7 +66,11 @@ export default class BuildingEntranceService extends GwrService {
     );
 
     if (!response.ok) {
-      throw new Error("GWR API: addBuildingEntrance failed");
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: addBuildingEntrance failed");
+      throw errors;
     }
 
     // Refresh building cache after adding a entrance
@@ -88,7 +96,11 @@ export default class BuildingEntranceService extends GwrService {
       }
     );
     if (!response.ok) {
-      throw new Error("GWR API: deactivateBuildingEntrance failed");
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: deactivateBuildingEntrance failed");
+      throw errors;
     }
     // Refresh cache after removing the building
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
@@ -110,7 +122,11 @@ export default class BuildingEntranceService extends GwrService {
     );
 
     if (!response.ok) {
-      throw new Error("GWR API: setStreet failed");
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: setStreet failed");
+      throw errors;
     }
 
     const xml = await response.text();

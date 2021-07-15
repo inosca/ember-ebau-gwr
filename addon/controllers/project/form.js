@@ -20,6 +20,7 @@ export default class ProjectFormController extends Controller {
 
   @tracked import = false;
   @tracked isOrganisation;
+  @tracked errors;
 
   choiceOptions = Options;
 
@@ -84,7 +85,7 @@ export default class ProjectFormController extends Controller {
         this.intl.t("ember-gwr.constructionProject.saveSuccess")
       );
     } catch (error) {
-      console.error(error);
+      this.errors = error;
       this.notification.danger(
         this.intl.t("ember-gwr.constructionProject.saveError")
       );

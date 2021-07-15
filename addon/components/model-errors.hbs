@@ -1,0 +1,27 @@
+<ModelErrors::Header
+  @noHeader={{@noHeader}}
+  @model={{@model}}
+  @isRunning={{not @errorModel}}
+  @errors={{@errorModel.errorList}}
+  @modelId={{@modelId}}
+  @linkRoute={{@linkRoute}}
+  @linkModels={{@linkModels}}
+  @modelDescription={{@modelDescription}}
+>
+  {{#if (has-block)}}
+    {{yield
+      (component
+        "model-errors/list"
+        model=@model
+        errors=@errorModel.errorList
+        isRunning=(not @errorModel)
+      )
+    }}
+  {{else}}
+    <ModelErrors::List
+      @model={{@model}}
+      @errors={{@errorModel.errorList}}
+      @isRunning={{not @errorModel}}
+    />
+  {{/if}}
+</ModelErrors::Header>

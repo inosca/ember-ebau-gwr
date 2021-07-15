@@ -1,0 +1,36 @@
+<div class="uk-flex uk-flex-between uk-flex-top">
+  <ModelForm::Header::Title 
+    @model={{@model}}
+    @modelId={{@modelId}}
+    @modelName={{@modelName}}
+    @modelDescription={{@modelDescription}}
+  />
+  <ModelForm::Header::Actions 
+    @submit={{@submit}}
+    @submitErrors={{@submitErrors}}
+    @hasStatus={{@hasStatus}}
+    @hasImport={{@hasImport}}
+    @import={{@import}}
+    @importCalumaData={{@importCalumaData}}
+  />
+</div>
+
+<hr class="uk-margin-small-bottom" />
+{{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
+  <div
+    class="uk-flex
+      {{if @hasStatus "uk-flex-between" "uk-flex-right"}}
+       uk-flex-middle uk-flex-nowrap"
+  >
+    {{#if @hasStatus}}
+      <ModelForm::Header::Status />
+    {{/if}}
+    <ModelForm::Header::Errors
+      @model={{@model}}
+      @modelId={{@modelId}}
+      @projectId={{@projectId}}
+      @modelName={{modelName}}
+    />
+  </div>
+{{/let}}
+<hr class="uk-margin-small-top uk-margin-medium-bottom" />
