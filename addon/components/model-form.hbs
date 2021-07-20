@@ -5,8 +5,7 @@
   class="validated-form"
   ...attributes as |f|
 >
-
-  <ModelForm::Header 
+  <ModelForm::Header
     @model={{@headerModel}}
     @modelId={{@headerModelId}}
     @projectId={{@projectId}}
@@ -16,6 +15,14 @@
     @hasImport={{@hasImport}}
     @import={{@import}}
     @importCalumaData={{@importCalumaData}}
+    @modelStatusOptions={{@modelStatusOptions}}
+    @nextValidStates={{@nextValidStates}}
+    @onStatusChange={{@onStatusChange}}
+    @onStatusCorrection={{@onStatusCorrection}}
+    @getChangeParameters={{@getChangeParameters}}
+    @getCorrectionParameters={{@getCorrectionParameters}}
+    @modelStatusField={{@modelStatusField}}
+    @translationBase={{or @translationBaseHeader @translationBase}}
     @submit={{component
       f.submit
       type="submit"
@@ -28,13 +35,12 @@
     @submitErrors={{component
       "model-form/submit-errors"
       errors=(if
-        f.model.isInvalid
+        (and f.model.isInvalid f.model.isDirty)
         (array (t "ember-gwr.components.modelForm.validationError"))
         @errors
       )
     }}
   />
-
   {{yield
     (component
       "model-form/field"
@@ -44,7 +50,6 @@
       input=f.input
     )
   }}
-  
   <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
     <f.submit
       class="uk-flex-none"

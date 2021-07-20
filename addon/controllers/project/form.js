@@ -28,6 +28,13 @@ export default class ProjectFormController extends Controller {
     return this.router.currentRouteName;
   }
 
+  get nextValidStates() {
+    const states = this.constructionProject.nextValidStates(
+      this.project.projectStatus
+    );
+    return states;
+  }
+
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
@@ -35,6 +42,7 @@ export default class ProjectFormController extends Controller {
       ? this.model.project
       : yield this.constructionProject.getFromCacheOrApi(this.model.projectId);
     this.isOrganisation = project.client.identification.isOrganisation;
+    this.errors = [];
     return project;
   }
 
@@ -90,5 +98,58 @@ export default class ProjectFormController extends Controller {
         this.intl.t("ember-gwr.constructionProject.saveError")
       );
     }
+  }
+
+  @task
+  *transitionState(currentStatus, newStatus) {
+    try {
+      yield this.constructionProject.transitionState(
+        this.project,
+        currentStatus,
+        newStatus
+      );
+      yield this.constructionProject.clearCache(this.model.projectId);
+      this.fetchProject.perform(); // reload for errors;
+      this.notification.success(
+        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+      );
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.constructionProject.saveError")
+      );
+      throw error;
+    }
+  }
+
+  @action
+  getChangeParameters(currentStatus, newStatus) {
+    return this.constructionProject.getChangeParameters(
+      currentStatus,
+      newStatus
+    );
+  }
+
+  @task
+  *correctState(newStatus) {
+    try {
+      this.constructionProject.correctStatus(this.project, newStatus);
+      yield this.constructionProject.update(this.project);
+      yield this.constructionProject.clearCache(this.model.projectId);
+      this.fetchProject.perform(); // reload for errors;
+      this.notification.success(
+        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+      );
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(
+        this.intl.t("ember-gwr.constructionProject.saveError")
+      );
+      throw error;
+    }
+  }
+  @action
+  getCorrectionParameters(newStatus) {
+    return this.constructionProject.getCorrectionParameters(newStatus);
   }
 }

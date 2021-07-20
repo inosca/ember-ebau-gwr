@@ -272,4 +272,90 @@ export default class Building extends XMLModel {
     1277, // Gebäude für den Pflanzenbau;
     1278, // Andere landwirtschaftliche Gebäude.
   ];
+
+  // valid state transitions
+  static buildingStatesMapping = {
+    1001: [/*1002,*/ 1008], // Projektiert
+    1002: [1003, 1008], // Bewilligt
+    1003: [1004, 1005], // Im Bau
+    1004: [1007], // Bestehend
+    1005: [1004, 1007], // Nicht nutzbar
+    1007: [], // Abgebrochen
+    1008: [], // Nicht realisiert
+  };
+
+  // api requests for state transitions
+  static buildingTransitionMapping = {
+    1001: {
+      // TODO: buildings are approved through construction project approval
+      //1002: "setToApprovedConstructionProject", // TODO: maybe mark in construction project?
+      1008: "setToNotRealizedBuilding",
+    },
+    1002: {
+      1003: "setToBuildingConstructionStarted",
+      1008: "setToNotRealizedBuilding",
+    },
+    1003: {
+      1004: "setToCompletedBuilding",
+      1005: "setToUnusableBuilding",
+    },
+    1004: {
+      1007: "setToDemolishedBuilding",
+    },
+    1005: {
+      1004: "setToCompletedBuilding",
+      1007: "setToDemolishedBuilding",
+    },
+    1007: {},
+    1008: {},
+  };
+
+  // possible status parameters
+  static statusParameters = [
+    "dateOfConstruction.yearMonthDay",
+    "yearOfDemolition",
+  ];
+
+  // necessary parameters for status transitions in status changes
+  static buildingTransitionParameters = {
+    // TODO: buildings are approved through construction project approval
+    //setToApprovedConstructionProject: [],
+    setToCompletedBuilding: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: true,
+      },
+    ],
+    setToDemolishedBuilding: [
+      { field: "yearOfDemolition", type: "number", required: true },
+    ],
+    setToNotRealizedBuilding: [],
+    setToBuildingConstructionStarted: [],
+    setToUnusableBuilding: [],
+  };
+
+  // necessary fields for target state in status corrections
+  static buildingTransitionParametersMapping = {
+    1001: [],
+    1002: [],
+    1003: [],
+    1004: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: true,
+      },
+    ],
+    1005: [],
+    1007: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: false,
+      },
+      { field: "yearOfDemolition", type: "number", required: true },
+    ],
+    1008: [],
+  };
 }

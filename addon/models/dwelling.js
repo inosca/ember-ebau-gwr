@@ -64,12 +64,6 @@ export default class Dwelling extends XMLModel {
         dwellingFreeText2: String,
       },
     });
-
-    this.setFieldsFromXML({
-      fields: {
-        errorList: [ErrorList],
-      },
-    });
   }
 
   static template = `
@@ -77,7 +71,7 @@ export default class Dwelling extends XMLModel {
       {{{modelField model "administrativeDwellingNo"}}}
       {{{modelField model "physicalDwellingNo"}}}
       {{! TODO Type of those two fields is completly different that what is documented. So a todo until doc is updated.}}
-      {{> DateOfConstruction model=model.dateOfConstruction}}
+      {{!> DateOfConstruction model=model.dateOfConstruction}}
       {{> DateOfDemolition model=model.dateOfDemolition}}
       {{{modelField model "noOfHabitableRooms"}}}
       {{{modelField model "floor"}}}
@@ -86,7 +80,9 @@ export default class Dwelling extends XMLModel {
       {{{modelField model "usageLimitation"}}}
       {{{modelField model "kitchen"}}}
       {{{modelField model "surfaceAreaOfDwelling"}}}
-      {{{modelField model "dwellingStatus"}}}
+      {{#unless isComplete}}
+        {{{modelField model "dwellingStatus"}}}
+      {{/unless}}
       {{> DwellingUsage model=model.dwellingUsage}}
       {{> RealestateIdentification model=model.realestateIdentification}}
       {{{modelField model "dwellingFreeText1"}}}
@@ -107,6 +103,7 @@ export default class Dwelling extends XMLModel {
     3004, // Bestehend
     3005, // Nicht nutzbar
     3007, // Aufgehoben
+    3008, // Nicht realisiert
   ];
 
   get floorLabel() {
@@ -119,6 +116,93 @@ export default class Dwelling extends XMLModel {
       ? { label: "ember-gwr.building.dwellings.cellar", number: floor - 3400 }
       : "";
   }
+
+  // valid state transitions
+  static dwellingStatesMapping = {
+    3001: [/*3002,*/ 3008], // Projektiert
+    3002: [3003, 3008], // Bewilligt
+    3003: [3008, 3004, 3005], // Im Bau
+    3004: [3007], // Bestehend
+    3005: [3004, 3007], // Nicht nutzbar
+    3007: [], // Aufgehoben
+    3008: [], // Nicht realiziert
+  };
+
+  // api requests for state transitions
+  static dwellingTransitionMapping = {
+    3001: {
+      // TODO: dwellings are approved through construction project approval
+      //3002: "setToApprovedConstructionProject", // set dwellings to approve on construction project?
+      3008: "setToNotRealizedDwelling",
+    },
+    3002: {
+      3003: "setToDwellingConstructionStarted",
+      3008: "setToNotRealizedDwelling",
+    },
+    3003: {
+      3008: "setToNotRealizedDwelling",
+      3004: "setToCompletedDwelling",
+      3005: "setToUnusableDwelling",
+    },
+    3004: {
+      3007: "setToDemolishedDwelling",
+    },
+    3005: {
+      3004: "setToCompletedDwelling",
+      3007: "setToDemolishedDwelling",
+    },
+    3007: {},
+    3008: {},
+  };
+
+  // possible status parameters
+  static statusParameters = [
+    "dateOfConstruction.yearMonthDay",
+    "yearOfDemolition",
+  ];
+
+  // necessary parameters for status transitions in status changes
+  static dwellingTransitionParameters = {
+    // TODO: dwellings are approved through construction project approval
+    //setToApprovedConstructionProject: [],
+    setToCompletedDwelling: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: true,
+      },
+    ],
+    setToDemolishedDwelling: [
+      { field: "yearOfDemolition", type: "number", required: true },
+    ],
+    setToNotRealizedDwelling: [],
+    setToDwellingConstructionStarted: [],
+    setToUnusableDwelling: [],
+  };
+
+  // necessary fields for target state in status corrections
+  static dwellingTransitionParametersMapping = {
+    3001: [],
+    3002: [],
+    3003: [],
+    3004: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: true,
+      },
+    ],
+    3005: [],
+    3007: [
+      {
+        field: "dateOfConstruction.yearMonthDay",
+        type: "date",
+        required: false,
+      },
+      { field: "yearOfDemolition", type: "number", required: true },
+    ],
+    3008: [],
+  };
 }
 
 export class DwellingUsage extends XMLModel {
@@ -198,5 +282,13 @@ export class DwellingComplete extends XMLModel {
         dwelling: Dwelling,
       },
     });
+
+    const errorList =
+      this.getFieldFromXML(
+        "errorList",
+        [ErrorList],
+        "dwellingCompleteResponse"
+      ) ?? [];
+    this.dwelling.errorList = errorList;
   }
 }

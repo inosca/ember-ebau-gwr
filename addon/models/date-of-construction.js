@@ -18,7 +18,7 @@ export default class DateOfConstruction extends DatePartiallyKnown {
   static template = `
     {{#if model.yearMonthDay}}
       <ns2:dateOfConstruction>
-        {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay)}}}
+        {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay) namespace=""}}}
       </ns2:dateOfConstruction>
     {{/if}}
   `;

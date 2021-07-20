@@ -15,6 +15,13 @@
       @projectId={{this.router.currentRoute.attributes.projectId}}
       @headerModelName="dwelling"
       @hasStatus={{true}}
+      @modelStatusOptions={{this.dwellingStatusOptions}}
+      @nextValidStates={{this.nextValidStates}}
+      @onStatusChange={{this.transitionState}}
+      @onStatusCorrection={{this.correctState}}
+      @getChangeParameters={{this.getChangeParameters}}
+      @getCorrectionParameters={{this.getCorrectionParameters}}
+      @modelStatusField="dwellingStatus"
       as |Field|
     >
       <Field

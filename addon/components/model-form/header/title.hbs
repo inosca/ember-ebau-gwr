@@ -1,5 +1,5 @@
 <h2>
-  {{#if @model.isNew}}
+  {{#if (or @model.isNew (not @model))}}
     {{t (concat "ember-gwr.components.modelForm." @modelName ".titleNew")}}
   {{else}}
     {{t

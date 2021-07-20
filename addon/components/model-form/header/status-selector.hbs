@@ -1,0 +1,125 @@
+<div class="uk-card uk-card-default uk-margin uk-card-body">
+  <button
+    class="uk-position-top-right uk-margin-top uk-margin-right"
+    type="button"
+    uk-close
+    {{on "click" @closeStatus}}
+  ></button>
+  <div class="uk-flex uk-flex-between">
+    <div class="uk-flex-inline uk-flex-middle">
+      <div class="uk-margin-right uk-text-bold">
+        {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
+      </div>
+      <form>
+        <OneWaySelect
+          class="uk-select"
+          @value={{this.modelStatus}}
+          @options={{this.statusOptions}}
+          @optionTargetPath="status"
+          @optionLabelPath="label"
+          @update={{this.statusUpdate}}
+        />
+      </form>
+    </div>
+    <div class="uk-flex-inline uk-flex-middle">
+      <div class="uk-margin-small-right" uk-icon="icon: question"></div>
+      <div
+        class="uk-width-large"
+        uk-dropdown="mode: hover; pos: bottom-left; delay-show: 500; offset: 20"
+      >
+        {{t "ember-gwr.components.header.statusSelector.actionInfo"}}
+      </div>
+      <ModelForm::Header::StatusSelector::SubmitParameters
+        @submitLabel={{t
+          "ember-gwr.components.header.statusSelector.submitCorrectionLabel"
+        }}
+        @loading={{and this.submit.isRunning (not this.isChange)}}
+        @isPrimary={{false}}
+        @dropTitle={{t
+          "ember-gwr.components.header.statusSelector.correctionDropTitle"
+        }}
+        @confirmLabel={{t
+          "ember-gwr.components.header.statusSelector.confirmCorrection"
+        }}
+        @parameters={{this.correctionParameters}}
+        @onSubmit={{this.submit}}
+        @changeset={{this.changesetCorrection}}
+        @errors={{this.correctionErrors}}
+        @showDrop={{this.correctionParameters.length}}
+        @isChange={{false}}
+        @translationBase={{@translationBase}}
+      />
+      <ModelForm::Header::StatusSelector::SubmitParameters
+        @submitLabel={{t
+          "ember-gwr.components.header.statusSelector.submitChangeLabel"
+        }}
+        @loading={{and this.submit.isRunning this.isChange}}
+        @disabled={{not this.isValidStatusChange}}
+        @isPrimary={{true}}
+        @dropTitle={{t
+          "ember-gwr.components.header.statusSelector.changeDropTitle"
+        }}
+        @confirmLabel={{t
+          "ember-gwr.components.header.statusSelector.confirmChange"
+        }}
+        @parameters={{this.changeParameters}}
+        @onSubmit={{this.submit}}
+        @changeset={{this.changesetChange}}
+        @errors={{this.changeErrors}}
+        @showDrop={{and (not this.errors) this.changeParameters.length}}
+        @isChange={{true}}
+        @translationBase={{@translationBase}}
+      />
+    </div>
+  </div>
+  <div
+    class="uk-flex uk-flex-nowrap uk-flex-between uk-child-width-1-2 uk-flex-top uk-margin-remove-bottom uk-margin-top"
+  >
+    <div
+      class="uk-flex-inline uk-text-small uk-margin-remove-bottom uk-margin-large-right"
+      uk-alert
+    >
+      <div
+        class="uk-margin-small-right uk-flex-top uk-flex-none"
+        uk-icon="icon: info"
+      ></div>
+      <div class="uk-flex-inline uk-flex-column">
+        <div class="uk-flex-inline uk-flex-top">
+          <div class="uk-margin-right uk-flex-none">
+            {{t "ember-gwr.components.header.statusSelector.statusInfo"}}
+          </div>
+        </div>
+        <div
+          class="uk-flex-inline uk-flex-wrap uk-width-expand uk-margin-small-top"
+        >
+          {{#each @nextValidStates as |state index|}}
+            <div class="uk-flex-inline uk-flex-middle">
+              <div>
+                {{t
+                  (concat
+                    "ember-gwr.lifeCycles." @modelName ".statusOptions." state
+                  )
+                }}
+              </div>
+              {{#if (not (eq index (dec @nextValidStates.length)))}}
+                <div class="uk-margin-small-left uk-margin-small-right">
+                  |
+                </div>
+              {{/if}}
+            </div>
+          {{/each}}
+          {{#unless @nextValidStates.length}}
+            <div class="uk-flex-inline uk-flex-middle">
+              {{t "ember-gwr.components.header.statusSelector.noNextStates"}}
+            </div>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+    {{#if this.errors.length}}
+      <div class="uk-flex-inline">
+        <ModelForm::SubmitErrors @errors={{this.errors}} />
+      </div>
+    {{/if}}
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import Controller from "@ember/controller";
+import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
@@ -17,6 +18,15 @@ export default class BuildingEditDwellingEditController extends Controller {
 
   @tracked errors;
 
+  dwellingStatusOptions = Models.Dwelling.dwellingStatusOptions;
+
+  get nextValidStates() {
+    const states = this.dwellingAPI.nextValidStates(
+      this.dwelling.dwellingStatus
+    );
+    return states;
+  }
+
   @lastValue("fetchDwelling") dwelling;
   @task
   *fetchDwelling() {
@@ -32,6 +42,8 @@ export default class BuildingEditDwellingEditController extends Controller {
         this.model.buildingId
       );
       dwelling.oldEDID = EDID;
+
+      this.errors = [];
       return dwelling;
     } catch (error) {
       console.error(error);
@@ -78,5 +90,52 @@ export default class BuildingEditDwellingEditController extends Controller {
       this.errors = error;
       this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
     }
+  }
+
+  @task
+  *transitionState(currentStatus, newStatus) {
+    try {
+      yield this.dwellingAPI.transitionState(
+        this.dwelling,
+        currentStatus,
+        newStatus,
+        this.model.buildingId
+      );
+      yield this.dwellingAPI.clearCache(
+        this.dwellingAPI.cacheKey(this.dwelling)
+      );
+      this.fetchDwelling.perform(); // reload for errors;
+      this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
+      throw error;
+    }
+  }
+
+  @action
+  getChangeParameters(currentStatus, newStatus) {
+    return this.dwellingAPI.getChangeParameters(currentStatus, newStatus);
+  }
+
+  @task
+  *correctState() {
+    try {
+      yield this.dwellingAPI.update(this.dwelling, this.model.buildingId);
+      yield this.dwellingAPI.clearCache(
+        this.dwellingAPI.cacheKey(this.dwelling)
+      );
+      this.fetchDwelling.perform(); // reload for errors;
+
+      this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
+    } catch (error) {
+      console.error(error);
+      this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
+      throw error;
+    }
+  }
+  @action
+  getCorrectionParameters(newStatus) {
+    return this.dwellingAPI.getCorrectionParameters(newStatus);
   }
 }

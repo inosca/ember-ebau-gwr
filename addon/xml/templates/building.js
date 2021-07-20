@@ -114,3 +114,77 @@ export const addBuilding =
     </ns2:reason>
   </ns2:addBuilding>
 {{/base}}`;
+
+// prettier-ignore
+export const setToNotRealizedBuilding  =
+`{{#>base}}
+  <ns2:setToNotRealizedBuilding>
+  </ns2:setToNotRealizedBuilding>
+{{/base}}`;
+
+// prettier-ignore
+export const setToBuildingConstructionStarted  =
+`{{#>base}}
+  <ns2:setToBuildingConstructionStarted>
+  </ns2:setToBuildingConstructionStarted>
+{{/base}}`;
+
+// prettier-ignore
+export const setToUnusableBuilding  =
+`{{#>base}}
+  <ns2:setToUnusableBuilding>
+  </ns2:setToUnusableBuilding>
+{{/base}}`;
+
+// prettier-ignore
+export const setToCompletedBuilding =
+`{{#>base}}
+  <ns2:setToCompletedBuilding>
+    <ns2:building>
+      <ns2:municipality>{{model.municipality}}</ns2:municipality>
+      {{{modelField model "officialBuildingNo"}}}
+      {{{modelField model "nameOfBuilding"}}}
+      {{> Coordinates model=model.coordinates}}
+      {{{modelField model "localCode1"}}}
+      {{{modelField model "localCode2"}}}
+      {{{modelField model "localCode3"}}}
+      {{{modelField model "localCode4"}}}
+      {{{modelField model "neighbourhood"}}}
+      <ns2:buildingCategory>{{model.buildingCategory}}</ns2:buildingCategory>
+      {{{modelField model "buildingClass"}}}
+      {{> DateOfConstruction model=model.dateOfConstruction}}
+      {{! Returns no error but not saved by api}}
+      {{{modelField model "surfaceAreaOfBuilding"}}}
+
+      {{! TODO remove this once we have real validation}}
+      {{#if (and model.volume.volume model.volume.norm)}}
+        {{> Volume model=model.volume}}
+      {{/if}}
+
+      {{{modelField model "numberOfFloors"}}}
+      {{{modelField model "numberOfSeparateHabitableRooms"}}}
+
+      {{! Returns no error but not saved by api}}
+      <ns2:civilDefenseShelter>{{model.civilDefenseShelter}}</ns2:civilDefenseShelter>
+      {{{modelField model "energyRelevantSurface"}}}
+
+      {{> ThermotechnicalDeviceForHeating model=model.thermotechnicalDeviceForHeating1 tagName="thermotechnicalDeviceForHeating1"}}
+      {{> ThermotechnicalDeviceForHeating model=model.thermotechnicalDeviceForHeating2 tagName="thermotechnicalDeviceForHeating2"}}
+      {{> ThermotechnicalDeviceForWarmWater model=model.thermotechnicalDeviceForWarmWater1 tagName="thermotechnicalDeviceForWarmWater1"}}
+      {{> ThermotechnicalDeviceForWarmWater model=model.thermotechnicalDeviceForWarmWater2 tagName="thermotechnicalDeviceForWarmWater2"}}
+
+      {{{modelField model "buildingFreeText1"}}}
+      {{{modelField model "buildingFreeText2"}}}
+    </ns2:building>
+  </ns2:setToCompletedBuilding>
+{{/base}}`;
+
+// prettier-ignore
+export const setToDemolishedBuilding =
+`{{#>base}}
+  <ns2:setToDemolishedBuilding>
+    <ns2:dateOfDemolition>
+      <year>{{model.yearOfDemolition}}</year>
+    </ns2:dateOfDemolition>
+  </ns2:setToDemolishedBuilding>
+{{/base}}`;

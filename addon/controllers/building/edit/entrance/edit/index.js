@@ -25,6 +25,7 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
         return this.buildingEntranceAPI.newRecord;
       }
 
+      this.errors = [];
       return yield this.buildingEntranceAPI.getFromCacheOrApi(
         this.model.entranceId,
         this.model.buildingId

@@ -86,4 +86,57 @@ export default class ConstructionProjectService extends GwrService {
       searchKey: "constructionProjectsList",
     });
   }
+
+  nextValidStates(state) {
+    return ConstructionProject.projectStatesMapping[state];
+  }
+
+  async transitionState(project, currentStatus, newState) {
+    const transition =
+      ConstructionProject.projectTransitionMapping[currentStatus][newState];
+    const body = this.xml.buildXMLRequest(transition, project);
+
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${project.EPROID}/${transition}`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error(`GWR API: ${transition} failed`);
+      throw errors;
+    }
+
+    const xml = await response.text();
+    return this.createAndCache(xml);
+  }
+
+  getChangeParameters(currentStatus, newStatus) {
+    const transition =
+      ConstructionProject.projectTransitionMapping[currentStatus][newStatus];
+
+    const parameters =
+      ConstructionProject.projectTransitionParameters[transition];
+    return parameters;
+  }
+
+  getCorrectionParameters(newStatus) {
+    return ConstructionProject.projectTransitionParametersMapping[newStatus];
+  }
+
+  correctStatus(project, newStatus) {
+    const necessaryParameters = ConstructionProject.projectTransitionParametersMapping[
+      newStatus
+    ].map((param) => param.field);
+    ConstructionProject.statusParameters.forEach((parameter) => {
+      if (project[parameter] && !necessaryParameters.includes(parameter)) {
+        project[parameter] = "9999-01-01";
+      }
+    });
+  }
 }
