@@ -2,9 +2,11 @@ import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import BuildingEntranceValidations from "ember-ebau-gwr/validations/building-entrance";
 
 export default class BuildingEditEntranceEditIndexController extends Controller {
   Models = Models;
+  BuildingEntranceValidations = BuildingEntranceValidations;
 
   @service("building-entrance") buildingEntranceAPI;
   @service building;
