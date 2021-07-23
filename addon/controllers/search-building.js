@@ -14,6 +14,7 @@ export default class SearchBuildingController extends Controller {
   @service notification;
 
   @tracked activeBuilding;
+  @tracked errors;
 
   periodOfConstruction = periodOfConstructionOptions;
 
@@ -44,7 +45,7 @@ export default class SearchBuildingController extends Controller {
         this.intl.t("ember-gwr.searchBuilding.linkSuccess")
       );
     } catch (error) {
-      console.error(error);
+      this.errors = error;
       this.notification.danger(
         this.intl.t("ember-gwr.searchBuilding.linkError")
       );

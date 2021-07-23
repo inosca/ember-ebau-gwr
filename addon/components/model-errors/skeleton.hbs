@@ -1,0 +1,35 @@
+<UkSwitcher class="uk-margin-small-top uk-animation-fade" as |switcher|>
+  <switcher.nav @type="subnav" as |nav|>
+    <nav.component uk-switcher @divider={{true}} as |tab|>
+      {{#each (repeat 3)}}
+        <tab.item>
+          <div
+            class="ember-ebau-gwr-label-width ember-ebau-gwr-label-height uk-background-muted"
+          ></div>
+        </tab.item>
+      {{/each}}
+    </nav.component>
+  </switcher.nav>
+  <switcher.content as |content|>
+    {{#each (repeat 3)}}
+      <content.item>
+        <ul
+          class="uk-list uk-list-divider uk-margin-small-top"
+        >
+          {{#each (repeat 3)}}
+            <li>
+              <div class="uk-flex uk-flex-left uk-flex-top">
+                <div
+                  class="ember-ebau-gwr-label-width ember-ebau-gwr-label-height uk-background-muted"
+                ></div>
+                <div
+                  class="uk-margin-left uk-width-expand ember-ebau-gwr-label-height uk-background-muted"
+                ></div>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </content.item>
+    {{/each}}
+  </switcher.content>
+</UkSwitcher>

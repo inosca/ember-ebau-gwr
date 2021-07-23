@@ -1,0 +1,30 @@
+{{#unless @noHeader}}
+  <div class="uk-flex-inline uk-flex-top uk-width-expand">
+    <div class="uk-flex-none">
+      <LinkTo
+        class="uk-text-bold"
+        @route={{@linkRoute}}
+        @models={{@linkModels}}
+      >
+        {{@modelId}}
+      </LinkTo>
+    </div>
+    <div class="uk-margin-left uk-flex uk-width-expand uk-flex-column">
+      <div class="uk-flex-inline uk-flex-middle">
+        <div class="uk-text-bold">
+          {{@modelDescription}}
+        </div>
+        {{#if @isRunning}}
+          <div
+            class="uk-flex-inline uk-flex-center uk-flex-middle uk-margin-small-left uk-flex-none"
+          >
+            <UkSpinner @ratio="0.5" />
+          </div>
+        {{else}}
+          <ModelErrors::ErrorIndicator @errorCount={{@errors.length}} />
+        {{/if}}
+      </div>
+      {{yield}}
+    </div>
+  </div>
+{{/unless}}

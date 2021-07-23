@@ -1,0 +1,11 @@
+<h2>
+  {{#if @model.isNew}}
+    {{t (concat "ember-gwr.components.modelForm." @modelName ".titleNew")}}
+  {{else}}
+    {{t
+      (concat "ember-gwr.components.modelForm." @modelName ".title")
+      id=@modelId
+      modelDescription=@modelDescription
+    }}
+  {{/if}}
+</h2>

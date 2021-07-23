@@ -6,7 +6,7 @@
   @search={{this.search}}
   @searchLabel={{t "ember-gwr.searchBuilding.search"}}
   @showExtendedSearch={{true}}
-  @translationBase={{"ember-gwr.searchBuilding"}}
+  @translationBase="ember-gwr.searchBuilding"
   as |Field|
 >
   <div class="uk-flex uk-flex-wrap uk-flex-between">
@@ -124,6 +124,7 @@
     @visible={{this.activeBuilding}}
     @close={{fn this.setActiveBuilding null}}
     @linkAction={{perform this.linkBuilding this.activeBuilding}}
+    @errors={{this.errors}}
     @isLoading={{this.linkBuilding.isRunning}}
   />
 {{/if}}

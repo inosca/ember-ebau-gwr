@@ -4,24 +4,19 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    <h2 class="uk-flex uk-flex-between">
-      <span>
-        {{#if this.dwelling.isNew}}
-          {{t "ember-gwr.dwelling.createNewDwelling"}}
-        {{else}}
-          {{t "ember-gwr.dwelling.title" id=this.dwelling.EWID}}
-        {{/if}}
-      </span>
-    </h2>
-
     <ModelForm
       @model={{this.dwelling}}
       @validations={{this.DwellingValidations}}
       @onSubmit={{this.saveDwelling}}
+      @errors={{this.errors}}
       @translationBase="ember-gwr.dwelling"
+      @headerModel={{this.dwelling}}
+      @headerModelId={{this.dwelling.EWID}}
+      @projectId={{this.router.currentRoute.attributes.projectId}}
+      @headerModelName="dwelling"
+      @hasStatus={{true}}
       as |Field|
     >
-
       <Field
         @attr="EDID"
         @type="select"

@@ -135,6 +135,13 @@ export const periodOfConstructionOptions = [
   8023,
 ];
 
+export const errorActionOptions = {
+  refused: "Refused",
+  blocking: "Blocking",
+  listed: "Listed",
+  auto: "Auto",
+};
+
 export default {
   typeOfClientOptions,
   typeOfConstructionOptions,
@@ -144,4 +151,5 @@ export default {
   countryOptions,
   languageOptions,
   periodOfConstructionOptions,
+  errorActionOptions,
 };

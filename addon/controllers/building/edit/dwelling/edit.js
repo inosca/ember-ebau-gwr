@@ -1,5 +1,6 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
@@ -12,6 +13,9 @@ export default class BuildingEditDwellingEditController extends Controller {
   @service building;
   @service intl;
   @service notification;
+  @service router;
+
+  @tracked errors;
 
   @lastValue("fetchDwelling") dwelling;
   @task
@@ -71,7 +75,7 @@ export default class BuildingEditDwellingEditController extends Controller {
       }
       this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
     } catch (error) {
-      console.error(error);
+      this.errors = error;
       this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
     }
   }

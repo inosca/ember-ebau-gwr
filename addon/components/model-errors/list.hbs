@@ -1,0 +1,25 @@
+{{#if (and @errors.length (not @isRunning))}}
+  <ul class="uk-list uk-list-divider">
+    {{#each @errors as |error|}}
+      <li>
+        <div class="uk-flex uk-flex-left uk-flex-top">
+          <div class="uk-flex-none ember-ebau-gwr-label-width">
+            <div
+              class="uk-label uk-text-small uk-text-center
+                {{if
+                  (eq error.action this.options.errorActionOptions.refused)
+                  "ember-ebau-gwr-label-color-danger"
+                  "ember-ebau-gwr-label-color-warning"
+                }}"
+            >
+              {{error.action}}
+            </div>
+          </div>
+          <div class="uk-margin-left">
+            {{error.messageOfError}}
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

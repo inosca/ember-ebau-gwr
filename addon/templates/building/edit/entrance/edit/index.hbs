@@ -4,28 +4,21 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    <h2 class="uk-flex uk-flex-between">
-      <span>
-        {{#if this.buildingEntrance.isNew}}
-          {{t "ember-gwr.buildingEntrance.createNewEntrance"}}
-        {{else}}
-          {{t
-            "ember-gwr.buildingEntrance.title"
-            address=this.buildingEntrance.fullAddressText
-          }}
-        {{/if}}
-      </span>
-    </h2>
-
     <ModelForm
       @model={{this.buildingEntrance}}
       @validations={{this.BuildingEntranceValidations}}
       @onSubmit={{this.saveBuildingEntrance}}
       @translationBase="ember-gwr.buildingEntrance.fields"
       @disabled={{not this.buildingEntrance.street.ESID}}
+      @errors={{this.errors}} 
+      @headerModel={{this.buildingEntrance}}
+      @headerModelId={{this.buildingEntrance.EDID}}
+      @headerModelDescription={{this.buildingEntrance.fullAddressText}}
+      @projectId={{this.router.currentRoute.attributes.projectId}}
+      @headerModelName="entrance"
+      @hasStatus={{false}}
       as |Field|
     >
-
       {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" @type="number" @disabled={{true}} />
       {{/unless}}
