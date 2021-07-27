@@ -19,8 +19,16 @@
       <Submit />
     {{/let}}
     {{#if (or @hasImport @hasStatus)}}
-      <a href="" class="uk-icon-link" uk-icon="more-vertical"></a>
-      <div uk-dropdown="mode: click; pos: bottom-right; offset: 20" class="uk-padding-small">
+      <button
+        class="uk-button uk-button-default uk-padding-small uk-padding-remove-vertical"
+        type="button"
+      >
+        <span class="uk-icon" uk-icon="more-vertical"></span>
+      </button>
+      <div
+        uk-dropdown="mode: click; pos: bottom-right; offset: 20"
+        class="uk-padding-small"
+      >
         <ul
           class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
         >
@@ -41,7 +49,7 @@
                   @query={{hash import=true}}
                   class="uk-button uk-text-left uk-highlight-hover
                     {{if @import "uk-text-muted" "uk-text-secondary"}}
-                     uk-width-1-1 uk-background-default uk-padding-remove"
+                    uk-width-1-1 uk-background-default uk-padding-remove"
                 >
                   {{t "ember-gwr.components.projectForm.importFromCaluma"}}
                 </LinkTo>
