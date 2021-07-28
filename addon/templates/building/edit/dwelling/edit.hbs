@@ -42,7 +42,6 @@
         @attr="dwellingStatus"
         @type="select"
         @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
-        @convertValueTo="number"
         @required={{true}}
       />
       <Field @attr="administrativeDwellingNo" />
@@ -52,7 +51,6 @@
         @attr="usageLimitation"
         @type="select"
         @gwrEnumOptions={{this.Models.Dwelling.usageLimitationOptions}}
-        @convertValueTo="number"
       />
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
@@ -62,13 +60,11 @@
         @attr="dwellingUsage.usageCode"
         @type="select"
         @gwrEnumOptions={{this.Models.DwellingUsage.usageCodeOptions}}
-        @convertValueTo="number"
       />
       <Field
         @attr="dwellingUsage.informationSource"
         @type="select"
         @gwrEnumOptions={{this.Models.DwellingUsage.informationSourceOptions}}
-        @convertValueTo="number"
       />
       <Field @attr="dwellingUsage.revisionDate" @type="date" />
       <Field @attr="dwellingUsage.remark" />

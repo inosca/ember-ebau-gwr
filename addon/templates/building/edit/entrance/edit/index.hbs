@@ -59,7 +59,6 @@
       <Field
         @attr="coordinates.originOfCoordinates"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
       />
       --}}
@@ -102,7 +101,6 @@
           @attr="street.streetKind"
           @type="select"
           @gwrEnumOptions={{this.Models.Street.streetKindOptions}}
-          @convertValueTo="number"
           @disabled={{true}}
           readonly
         />

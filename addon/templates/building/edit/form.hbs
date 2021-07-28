@@ -44,7 +44,6 @@
       <Field
         @attr="kindOfWork"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.BuildingWork.kindOfWorkOptions}}
         @required={{true}}
         @translationBase="ember-gwr.buildingWork"
@@ -115,14 +114,12 @@
       <Field
         @attr="building.buildingCategory"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Building.buildingCategoryOptions}}
         @required={{true}}
       />
       <Field
         @attr="building.buildingClass"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Building.buildingClassOptions}}
       />
 
@@ -147,7 +144,6 @@
       <Field
         @attr="building.coordinates.originOfCoordinates"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
       />
       <Field @attr="building.neighbourhood" @type="number" @min="1000" />
@@ -175,7 +171,6 @@
       <Field
         @attr="building.buildingStatus"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.buildingStatusOptions}}
         @required={{true}}
       />
@@ -196,7 +191,6 @@
         <Field
           @attr="building.dateOfConstruction.periodOfConstruction"
           @type="select"
-          @convertValueTo="number"
           @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
         />
       {{/if}}
@@ -217,13 +211,11 @@
       <Field
         @attr="building.volume.norm"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Volume.normOptions}}
       />
       <Field
         @attr="building.volume.informationSource"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Volume.informationSourceOptions}}
       />
       <Field @attr="building.surfaceAreaOfBuilding" @type="number" />
@@ -240,21 +232,18 @@
       <Field
         @attr="building.thermotechnicalDeviceForHeating1.heatGeneratorHeating"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
         @label="ember-gwr.building.heating.heatGeneratorHeating"
       />
       <Field
         @attr="building.thermotechnicalDeviceForHeating1.energySourceHeating"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
         @label="ember-gwr.building.heating.energySourceHeating"
       />
       <Field
         @attr="building.thermotechnicalDeviceForHeating1.informationSourceHeating"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
         @label="ember-gwr.building.heating.informationSourceHeating"
       />
@@ -275,21 +264,18 @@
             <Field
               @attr="building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.heatGeneratorHeatingOptions}}
               @label="ember-gwr.building.heating.heatGeneratorHeating"
             />
             <Field
               @attr="building.thermotechnicalDeviceForHeating2.energySourceHeating"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.energySourceHeatingOptions}}
               @label="ember-gwr.building.heating.energySourceHeating"
             />
             <Field
               @attr="building.thermotechnicalDeviceForHeating2.informationSourceHeating"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForHeating.informationSourceHeatingOptions}}
               @label="ember-gwr.building.heating.informationSourceHeating"
             />
@@ -308,21 +294,18 @@
       <Field
         @attr="building.thermotechnicalDeviceForWarmWater1.heatGeneratorHotWater"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
         @label="ember-gwr.building.heating.heatGeneratorHotWater"
       />
       <Field
         @attr="building.thermotechnicalDeviceForWarmWater1.energySourceHeating"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
         @label="ember-gwr.building.heating.energySourceHeating"
       />
       <Field
         @attr="building.thermotechnicalDeviceForWarmWater1.informationSourceHeating"
         @type="select"
-        @convertValueTo="number"
         @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
         @label="ember-gwr.building.heating.informationSourceHeating"
       />
@@ -344,21 +327,18 @@
             <Field
               @attr="building.thermotechnicalDeviceForWarmWater2.heatGeneratorHotWater"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.heatGeneratorHotWaterOptions}}
               @label="ember-gwr.building.heating.heatGeneratorHotWater"
             />
             <Field
               @attr="building.thermotechnicalDeviceForWarmWater2.energySourceHeating"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.energySourceHeatingOptions}}
               @label="ember-gwr.building.heating.energySourceHeating"
             />
             <Field
               @attr="building.thermotechnicalDeviceForWarmWater2.informationSourceHeating"
               @type="select"
-              @convertValueTo="number"
               @gwrEnumOptions={{this.Models.ThermotechnicalDeviceForWarmWater.informationSourceHeatingOptions}}
               @label="ember-gwr.building.heating.informationSourceHeating"
             />

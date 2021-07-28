@@ -3,12 +3,6 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 
-export const converstionTypeMapping = {
-  number: Number,
-  string: String,
-  boolean: Boolean,
-};
-
 export default class ModelFormFieldComponent extends Component {
   @service intl;
   @tracked diffResolved = false;
