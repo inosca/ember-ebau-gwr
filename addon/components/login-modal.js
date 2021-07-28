@@ -13,7 +13,9 @@ export default class LoginModalComponent extends Component {
   @tracked municipality;
 
   get municipalities() {
-    return municipalities[this.config.cantonAbbreviation];
+    return municipalities[this.config.cantonAbbreviation].sort((a, b) =>
+      a.name > b.name ? 1 : -1
+    );
   }
 
   @action
