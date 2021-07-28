@@ -2,7 +2,7 @@
   <div>
     {{yield
       (component
-        "project-form/field"
+        "model-form/field"
         update=this.updateField
         translationBase=@translationBase
       )
@@ -10,7 +10,7 @@
 
     {{#let
       (component
-        "project-form/field"
+        "model-form/field"
         update=this.updateField
         translationBase="ember-gwr.components.search"
       )
@@ -31,13 +31,16 @@
                 </p>
               </div>
             {{/if}}
-            <Field @attr="realestateIdentification.EGRID" type="number" />
+            <Field @attr="realestateIdentification.EGRID" @type="number" />
             <Field
               @attr="realestateIdentification.numberSuffix"
-              type="number"
+              @type="number"
             />
-            <Field @attr="realestateIdentification.subDistrict" type="number" />
-            <Field @attr="realestateIdentification.lot" type="number" />
+            <Field
+              @attr="realestateIdentification.subDistrict"
+              @type="number"
+            />
+            <Field @attr="realestateIdentification.lot" @type="number" />
           </div>
 
           <div>
