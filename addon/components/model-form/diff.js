@@ -10,7 +10,8 @@ export default class ModelFormDiffComponent extends Component {
   }
 
   @action
-  updateNewValue({ target: { value } = {} } = {}) {
+  updateNewValue(eventOrValue) {
+    const value = eventOrValue?.target?.value ?? eventOrValue;
     if (value) {
       this.overridenValue = value;
     }

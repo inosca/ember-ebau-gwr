@@ -4,7 +4,7 @@
       <button
         class="uk-button uk-button-default uk-margin-small-right"
         type="button"
-        {{on "click" @importCalumaData}}
+        {{on "click" @importAllData}}
       >
         {{t "ember-gwr.components.projectForm.applyAll"}}
       </button>
@@ -39,7 +39,7 @@
                   disabled={{@import}}
                   class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
                   type="button"
-                  {{on "click" @importCalumaData}}
+                  {{on "click" @importAllData}}
                 >
                   {{t "ember-gwr.components.projectForm.importFromCaluma"}}
                 </button>

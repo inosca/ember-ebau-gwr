@@ -26,34 +26,6 @@ export default class ModelFormFieldComponent extends Component {
     return this.args.importData && !this.showDiff;
   }
 
-  @action
-  updateModelField(attr, eventOrValue) {
-    let value = eventOrValue?.target?.value ?? eventOrValue;
-
-    if (this.args.convertValueTo) {
-      const convertedValue =
-        converstionTypeMapping[this.args.convertValueTo]?.(value) ?? value;
-      value =
-        Number.isNaN(convertedValue) &&
-        (this.args.type === "select" || this.args.inputType === "select")
-          ? undefined
-          : this.args.convertValueTo === "number" && value === ""
-          ? undefined
-          : convertedValue;
-    }
-
-    // If we supply a custom update method use this
-    if (this.args.update) {
-      this.args.update(attr, value);
-    } else {
-      this.args.model.set(attr, value);
-
-      if (this.args.importData) {
-        this.diffResolved = true;
-      }
-    }
-  }
-
   get isStep() {
     return (
       (this.args.type === "number" || this.args.inputType === "number") &&
@@ -91,5 +63,29 @@ export default class ModelFormFieldComponent extends Component {
         label: this.intl.t(`${intlKey}Options.${option}`),
       }))
     );
+  }
+
+  constructor(...args) {
+    super(...args);
+    if (this.showDiff) {
+      this.args.registerDiff(this.args.attr);
+    }
+  }
+
+  @action
+  updateModelField(attr, eventOrValue) {
+    const value = eventOrValue?.target?.value ?? eventOrValue;
+
+    // If we supply a custom update method use this
+    if (this.args.update) {
+      this.args.update(attr, value);
+    } else {
+      this.args.model.set(attr, value);
+
+      if (this.args.importData) {
+        this.diffResolved = true;
+        this.args.resolveDiff(this.args.attr);
+      }
+    }
   }
 }

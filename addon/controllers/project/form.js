@@ -53,20 +53,6 @@ export default class ProjectFormController extends Controller {
   }
 
   @action
-  importCalumaData() {
-    // We cannot just `Object.assign` here since the child object like `identification` would
-    // not be classes with tracked fields etc. anymore but just pojos. We need to preserve the classes.
-    const deepMerge = (original, objectToApply) => {
-      Object.entries(objectToApply).forEach(([key, value]) => {
-        typeof value === "object"
-          ? deepMerge(original[key], objectToApply[key])
-          : (original[key] = value);
-      });
-    };
-    deepMerge(this.project, this.importData);
-  }
-
-  @action
   cancelMerge() {
     this.import = false;
     this.fetchProject.perform();
