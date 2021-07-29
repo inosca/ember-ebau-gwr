@@ -41,3 +41,42 @@ export const reallocateDwelling =
     </ns2:reason>
   </ns2:reallocateDwelling>
 {{/base}}`;
+
+//prettier-ignore
+export const setToDwellingConstructionStarted =
+`{{#>base}}
+  <ns2:setToDwellingConstructionStarted>
+  </ns2:setToDwellingConstructionStarted>
+{{/base}}`;
+
+//prettier-ignore
+export const setToCompletedDwelling =
+`{{#>base}}
+  <ns2:setToCompletedDwelling>
+    {{> Dwelling isComplete=true}}
+  </ns2:setToCompletedDwelling>
+{{/base}}`;
+
+//prettier-ignore
+export const setToNotRealizedDwelling =
+`{{#>base}}
+  <ns2:setToNotRealizedDwelling>
+  </ns2:setToNotRealizedDwelling>
+{{/base}}`;
+
+//prettier-ignore
+export const setToUnusableDwelling =
+`{{#>base}}
+  <ns2:setToUnusableDwelling>
+  </ns2:setToUnusableDwelling>
+{{/base}}`;
+
+//prettier-ignore
+export const setToDemolishedDwelling =
+`{{#>base}}
+  <ns2:setToDemolishedDwelling>
+    <ns2:dateOfDemolition>
+      <year>{{model.yearOfDemolition}}</year>
+    </ns2:dateOfDemolition>
+  </ns2:setToDemolishedDwelling>
+{{/base}}`;

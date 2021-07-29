@@ -1,0 +1,74 @@
+<UkButton
+  class={{unless @isPrimary "uk-margin-small-right"}}
+  @type="button"
+  @color={{if @isPrimary "primary" "default"}}
+  @loading={{and @loading (not @showDrop)}}
+  @disabled={{@disabled}}
+  {{on "click" (perform @onSubmit false @isChange)}}
+>
+  {{@submitLabel}}
+</UkButton>
+{{#if @showDrop}}
+  <div
+    class="uk-width-xlarge"
+    uk-dropdown="mode: click; pos: bottom-right"
+    id="ember-ebau-gwr-status-drop"
+  >
+    <a
+      class="uk-position-top-right uk-margin-right uk-margin-top"
+      href="#ember-ebau-gwr-status-drop"
+      uk-toggle
+      uk-close
+    ></a>
+    <ValidatedForm
+      class="validated-form"
+      @model={{@changeset}}
+      @validateBeforeSubmit={{true}}
+      ...attributes as |f|
+    >
+      <div>
+        <div class="uk-text-bold">
+          {{@dropTitle}}
+        </div>
+        {{#each @parameters as |parameter|}}
+          <div class="uk-margin-small-top">
+            <f.input
+              @label={{t (concat @translationBase "." parameter.field)}}
+              @type={{parameter.type}}
+              @name={{parameter.field}}
+              @required={{parameter.required}}
+              @renderComponent={{if
+                (eq parameter.type "date")
+                (component "model-form/date")
+                (component "validated-input/render")
+              }}
+            />
+          </div>
+        {{/each}}
+      </div>
+      <div class="uk-flex uk-flex-right uk-margin-medium-top">
+        <a
+          class="uk-button uk-button-default uk-flex-none uk-margin-small-right"
+          href="#ember-ebau-gwr-status-drop"
+          uk-toggle
+        >
+          {{t "ember-gwr.components.header.statusSelector.cancel"}}
+        </a>
+        <UkButton
+          class="uk-flex-none"
+          @type="button"
+          @color="primary"
+          @loading={{and @loading @showDrop}}
+          {{on "click" (perform @onSubmit true @isChange)}}
+        >
+          {{@confirmLabel}}
+        </UkButton>
+      </div>
+      {{#if @errors.length}}
+        <div class="uk-margin-small-top">
+          <ModelForm::SubmitErrors @errors={{@errors}} />
+        </div>
+      {{/if}}
+    </ValidatedForm>
+  </div>
+{{/if}}

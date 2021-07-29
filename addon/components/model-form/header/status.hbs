@@ -1,9 +1,23 @@
-<div class="uk-flex-expand" id="ember-ebau-gwr-status">
-  <span class="uk-text-bold uk-margin-small-right">
-    {{t "ember-gwr.components.header.status.label"}}
-    :
-  </span>
-  <span class="uk-label ember-ebau-gwr-label-color-default">
-    {{t "ember-gwr.components.header.status.placeholder"}}
-  </span>
-</div>
+{{#let
+  (t (concat "ember-gwr.models." @modelName) count=1)
+  (get @model (concat @modelName "Status")) as |modelName modelStatus|
+}}
+  <div
+    class="uk-flex-expand uk-flex-inline uk-flex-middle"
+    id="ember-ebau-gwr-status"
+  >
+    <span class="uk-text-bold uk-margin-small-right">
+      {{t "ember-gwr.components.header.status.label"}}
+    </span>
+    <input
+      class="uk-input uk-form-width-large"
+      type="text"
+      disabled
+      value={{t
+        (concat
+          "ember-gwr.lifeCycles." @modelName ".statusOptions." modelStatus
+        )
+      }}
+    />
+  </div>
+{{/let}}

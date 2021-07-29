@@ -26,7 +26,9 @@ ember-gwr:
       3007: Aufgehoben
     administrativeDwellingNo: Administrative Wohnungsnummer
     dateOfConstruction: Baujahr der Wohnung
+    "dateOfConstruction.yearMonthDay": Baudatum der Wohnung
     dateOfDemolition: Abbruchjahr der Wohnung
+    yearOfDemolition: Abbruchjahr der Wohnung
     noOfHabitableRooms: Anzahl Zimmer
     locationOfDwellingOnFloor: Lage auf dem Stockwerk
     usageLimitation: Nutzungsbeschränkung gemäss ZWG

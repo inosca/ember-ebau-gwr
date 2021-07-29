@@ -131,4 +131,45 @@ export default class DwellingService extends GwrService {
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
     await this.building.get(EGID);
   }
+
+  nextValidStates(state) {
+    return Dwelling.dwellingStatesMapping[state];
+  }
+
+  async transitionState(dwelling, currentStatus, newState, EGID) {
+    const transition =
+      Dwelling.dwellingTransitionMapping[currentStatus][newState];
+    const body = this.xml.buildXMLRequest(transition, dwelling);
+
+    const response = await this.authFetch.fetch(
+      `/buildings/${EGID}/dwellings/${dwelling.EWID}/${transition}`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error(`GWR API: ${transition} failed`);
+      throw errors;
+    }
+
+    const xml = await response.text();
+    return this.createAndCache(xml);
+  }
+
+  getChangeParameters(currentStatus, newStatus) {
+    const transition =
+      Dwelling.dwellingTransitionMapping[currentStatus][newStatus];
+
+    const parameters = Dwelling.dwellingTransitionParameters[transition];
+    return parameters;
+  }
+
+  getCorrectionParameters(newStatus) {
+    return Dwelling.dwellingTransitionParametersMapping[newStatus];
+  }
 }

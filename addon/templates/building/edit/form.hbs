@@ -20,11 +20,19 @@
       @onSubmit={{this.saveBuildingWork}}
       @errors={{this.errors}}
       @translationBase="ember-gwr" 
+      @translationBaseHeader="ember-gwr.building"
       @headerModel={{this.building}}
       @headerModelId={{this.building.EGID}}
       @projectId={{this.model.projectId}}
       @headerModelName="building"
       @hasStatus={{true}}
+      @modelStatusOptions={{this.buildingStatusOptions}}
+      @nextValidStates={{this.nextValidStates}}
+      @onStatusChange={{this.transitionState}}
+      @onStatusCorrection={{this.correctState}}
+      @getChangeParameters={{this.getChangeParameters}}
+      @getCorrectionParameters={{this.getCorrectionParameters}}
+      @modelStatusField="buildingStatus"
       as |Field|
     >
       <h3>

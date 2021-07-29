@@ -13,6 +13,7 @@ ember-gwr:
       projectAnnouncementDate: Datum Baueingabe
       buildingPermitIssueDate: Datum Baubewilligung
       projectStartDate: Datum Baubeginn
+      durationOfConstructionPhase: Baudauer
       projectCompletionDate: Datum Bauende
       projectSuspensionDate: Datum Sistierung
       constructionAuthorisationDeniedDate: Datum Ablehnung

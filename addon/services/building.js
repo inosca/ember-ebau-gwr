@@ -113,4 +113,45 @@ export default class BuildingService extends GwrService {
       searchKey: "buildingsList",
     });
   }
+
+  nextValidStates(state) {
+    return Building.buildingStatesMapping[state];
+  }
+
+  async transitionState(building, currentStatus, newState) {
+    const transition =
+      Building.buildingTransitionMapping[currentStatus][newState];
+    const body = this.xml.buildXMLRequest(transition, building);
+
+    const response = await this.authFetch.fetch(
+      `/buildings/${building.EGID}/${transition}`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error(`GWR API: ${transition} failed`);
+      throw errors;
+    }
+
+    const xml = await response.text();
+    return this.createAndCache(xml);
+  }
+
+  getChangeParameters(currentStatus, newStatus) {
+    const transition =
+      Building.buildingTransitionMapping[currentStatus][newStatus];
+
+    const parameters = Building.buildingTransitionParameters[transition];
+    return parameters;
+  }
+
+  getCorrectionParameters(newStatus) {
+    return Building.buildingTransitionParametersMapping[newStatus];
+  }
 }

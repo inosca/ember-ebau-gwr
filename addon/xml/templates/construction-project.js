@@ -18,6 +18,88 @@ export const addConstructionProject =
 {{/base}}`;
 
 // prettier-ignore
+export const setToApprovedConstructionProject =
+`{{#>base}}
+  <ns2:setToApprovedConstructionProject>
+    <ns2:buildingPermitIssueDate>{{echDate model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
+  </ns2:setToApprovedConstructionProject>
+
+  {{! TODO: send list of linked buildings and dwellings to be approved}}
+{{/base}}`;
+
+// prettier-ignore
+export const setToRefusedConstructionProject =
+`{{#>base}}
+  <ns2:setToRefusedConstruction>
+    <ns2:authorisationDeniedDate>{{echDate model.constructionAuthorisationDeniedDate}}</ns2:authorisationDeniedDate>
+  </ns2:setToRefusedConstruction>
+{{/base}}`;
+
+// prettier-ignore
+export const setToWithdrawnConstructionProject =
+`{{#>base}}
+  <ns2:setToWithdrawnConstruction>
+    {{! TODO check if should be withdrawal date}}
+    <ns2:withdrawalDate>{{echDate model.nonRealisationDate}}</ns2:withdrawalDate>
+  </ns2:setToWithdrawnConstruction>
+{{/base}}`;
+
+// prettier-ignore
+export const setToCancelledConstructionProject =
+`{{#>base}}
+  <ns2:setToCancelledConstruction>
+    {{! TODO check if should be nonRealisationDate and if state is accepted}}
+    <ns2:cancellationDate>{{echDate model.withdrawalDate}}</ns2:cancellationDate>
+  </ns2:setToCancelledConstruction>
+{{/base}}`;
+
+// prettier-ignore
+export const setToSuspendedConstructionProject =
+`{{#>base}}
+  <ns2:setToSuspendedConstruction>
+    <ns2:projectSuspensionDate>{{echDate model.projectSuspensionDate}}</ns2:projectSuspensionDate>
+  </ns2:setToSuspendedConstruction>
+{{/base}}`;
+
+// prettier-ignore
+export const setToStartConstructionProject =
+`{{#>base}}
+  <ns2:setToConstructionStarted>
+    <ns2:projectStartDate>{{echDate model.projectStartDate}}</ns2:projectStartDate>
+    <ns2:durationOfConstructionPhase>{{model.durationOfConstructionPhase}}</ns2:durationOfConstructionPhase>
+  </ns2:setToConstructionStarted>
+{{/base}}`;
+
+// prettier-ignore
+export const setToCompletedConstructionProject =
+`{{#>base}}
+  <ns2:setToCompletedConstructionProject>
+    <ns2:constructionProject>
+      <ns2:constructionSurveyDeptNumber>{{model.constructionSurveyDeptNumber}}</ns2:constructionSurveyDeptNumber>
+      <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
+      {{> ConstructionLocalisation model=model.constructionLocalisation}}
+      {{> RealestateIdentification model=model.realestateIdentification}}
+      <ns2:typeOfPermit>{{model.typeOfPermit}}</ns2:typeOfPermit>
+      <ns2:typeOfClient>{{model.typeOfClient}}</ns2:typeOfClient>
+      {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
+      {{> Client model=model.client}}
+      <ns2:typeOfConstructionProject>{{model.typeOfConstructionProject}}</ns2:typeOfConstructionProject>
+      <ns2:typeOfConstruction>{{model.typeOfConstruction}}</ns2:typeOfConstruction>
+      <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
+
+      <ns2:projectCompletionDate>{{echDate model.projectCompletionDate}}</ns2:projectCompletionDate>
+    </ns2:constructionProject>
+  </ns2:setToCompletedConstructionProject>
+{{/base}}`;
+
+// prettier-ignore
+export const setToCancelledSuspensionConstructionProject =
+`{{#>base}}
+  <ns2:setToCancelledSuspensionConstructionProject>
+  </ns2:setToCancelledSuspensionConstructionProject>
+{{/base}}`;
+
+// prettier-ignore
 export const getConstructionProject =
 `{{#>base}}
   <ns2:getConstructionProject>

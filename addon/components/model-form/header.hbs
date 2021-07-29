@@ -1,36 +1,53 @@
 <div class="uk-flex uk-flex-between uk-flex-top">
-  <ModelForm::Header::Title 
+  <ModelForm::Header::Title
     @model={{@model}}
     @modelId={{@modelId}}
     @modelName={{@modelName}}
     @modelDescription={{@modelDescription}}
   />
-  <ModelForm::Header::Actions 
+  <ModelForm::Header::Actions
     @submit={{@submit}}
     @submitErrors={{@submitErrors}}
-    @hasStatus={{@hasStatus}}
+    @hasStatus={{and @hasStatus @model (not @model.isNew)}}
     @hasImport={{@hasImport}}
     @import={{@import}}
     @importCalumaData={{@importCalumaData}}
+    @openStatus={{fn (mut this.changeStatus) true}}
   />
 </div>
-
-<hr class="uk-margin-small-bottom" />
-{{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
-  <div
-    class="uk-flex
-      {{if @hasStatus "uk-flex-between" "uk-flex-right"}}
-       uk-flex-middle uk-flex-nowrap"
-  >
-    {{#if @hasStatus}}
-      <ModelForm::Header::Status />
+{{#if (and @model (not @model.isNew))}}
+  <hr class="uk-margin-small-bottom" />
+  {{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
+    <div
+      class="uk-flex
+        {{if @hasStatus "uk-flex-between" "uk-flex-right"}}
+        uk-flex-middle uk-flex-nowrap"
+    >
+      {{#if @hasStatus}}
+        <ModelForm::Header::Status @model={{@model}} @modelName={{@modelName}} />
+      {{/if}}
+      <ModelForm::Header::Errors
+        @model={{@model}}
+        @modelId={{@modelId}}
+        @projectId={{@projectId}}
+        @modelName={{modelName}}
+      />
+    </div>
+    {{#if (and this.changeStatus (not @hasNoStatus))}}
+      <ModelForm::Header::StatusSelector
+        @model={{@model}}
+        @modelName={{@modelName}}
+        @modelStatusOptions={{@modelStatusOptions}}
+        @closeStatus={{fn (mut this.changeStatus) false}}
+        @nextValidStates={{@nextValidStates}}
+        @onStatusChange={{@onStatusChange}}
+        @onStatusCorrection={{@onStatusCorrection}}
+        @getChangeParameters={{@getChangeParameters}}
+        @getCorrectionParameters={{@getCorrectionParameters}}
+        @modelStatusField={{@modelStatusField}}
+        @translationBase={{@translationBase}}
+      />
     {{/if}}
-    <ModelForm::Header::Errors
-      @model={{@model}}
-      @modelId={{@modelId}}
-      @projectId={{@projectId}}
-      @modelName={{modelName}}
-    />
-  </div>
-{{/let}}
-<hr class="uk-margin-small-top uk-margin-medium-bottom" />
+  {{/let}}
+  <hr class="uk-margin-small-top uk-margin-medium-bottom" />
+{{/if}}
