@@ -1,3 +1,16 @@
+# [2.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.3.0...v2.4.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **model-form/header:** improve ui of context menu button ([9859101](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/985910118feb283b35514971a70538f61428a811))
+
+
+### Features
+
+* **errors:** form error handling & general issue overview ([2775e6a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2775e6acdab169193b1842c84b02ce1c4e45c211))
+* project, building & dwelling life cycle handling ([2deea9d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2deea9da94770e3ed23cd9f7647f9f64a2e726a5))
+
 # [2.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.2.0...v2.3.0) (2021-07-08)
 
 
