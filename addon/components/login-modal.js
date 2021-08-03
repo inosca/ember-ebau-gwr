@@ -32,4 +32,17 @@ export default class LoginModalComponent extends Component {
   updateValue({ target: { name, value } = {} }) {
     this[name] = value;
   }
+
+  @action
+  updateMunicipality(municipality) {
+    this.municipality = municipality.id;
+  }
+
+  get sortedMunicipalities() {
+    const municipalities = this.municipalities;
+    municipalities.sort((a, b) =>
+      a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+    );
+    return municipalities;
+  }
 }
