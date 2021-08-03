@@ -46,6 +46,15 @@ will then be used to filter the `gwr-links` by their attribute `local_id`.
 this.mount("ember-ebau-gwr", { as: "gwr", path: "gwr/:id" });
 ```
 
+### Styling
+
+The engine uses the UI framework "UIkit" through [ember-uikit](https://github.com/adfinis-sygroup/ember-uikit). To enable the styling, add the following import to `app/styles/app.scss`:
+
+```scss
+@import "ember-uikit";
+@import "ember-ebau-gwr";
+```
+
 ### Services
 
 The engine takes following services as argument:
