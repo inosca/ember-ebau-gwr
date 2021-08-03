@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.4.0...v2.4.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* don't import full uikit ([f8be161](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f8be16110f4790fb668faf47843af4887691a353))
+
 # [2.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.3.0...v2.4.0) (2021-08-02)
 
 
