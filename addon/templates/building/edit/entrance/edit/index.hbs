@@ -17,6 +17,10 @@
       @projectId={{this.router.currentRoute.attributes.projectId}}
       @headerModelName="entrance"
       @hasStatus={{false}}
+      @hasImport={{this.importData.length}}
+      @importData={{if this.import this.importData}}
+      @import={{this.import}}
+      @importIndex={{this.index}}
       as |Field|
     >
       {{#unless this.buildingEntrance.isNew}}

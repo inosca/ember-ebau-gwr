@@ -21,7 +21,7 @@ export default class ModelFormFieldComponent extends Component {
       if (showDiff) {
         this.args.registerDiff(this.args.attr);
       }
-      return showDiff;
+      return !this.diffResolved && newData && newData !== currentData;
     }
     return false;
   }

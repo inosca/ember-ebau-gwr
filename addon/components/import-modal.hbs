@@ -1,0 +1,126 @@
+<UkModal
+  @visible={{@visible}}
+  @btnClose={{false}}
+  @escClose={{false}}
+  @bgClose={{false}}
+  @on-hide={{@close}}
+  @on-show={{fn (mut this.importIndex) 0}}
+  @container={{this.config.modalContainer}}
+  as |Modal|
+>
+  <Modal.header>
+    <h2 class="uk-modal-title">
+      {{t "ember-gwr.components.importModal.selectImportData"}}
+    </h2>
+  </Modal.header>
+  <Modal.body class="uk-overflow-auto">
+    <ul
+      uk-accordion="collapsible: false;multiple: false;"
+      class="ember-ebau-gwr-import-building-list"
+    >
+      {{#each @importData as |model index|}}
+        <li class={{if (eq index 0) "uk-open"}}>
+          <a class="uk-accordion-title" href="#">{{t
+              "ember-gwr.models.building"
+              count=1
+            }}
+            {{inc index}}</a>
+          <div class="uk-accordion-content">
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.buildingWork.kindOfWork"}}</span>
+              <span class="uk-text-muted">{{if
+                  model.kindOfWork
+                  (t
+                    (concat
+                      "ember-gwr.buildingWork.kindOfWorkOptions."
+                      model.kindOfWork
+                    )
+                  )
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}</span>
+            </span>
+            <hr />
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.building.buildingStatus"}}</span>
+              <span class="uk-text-muted">{{if
+                  model.building.buildingStatus
+                  (t
+                    (concat
+                      "ember-gwr.building.buildingStatusOptions."
+                      model.building.buildingStatus
+                    )
+                  )
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}</span>
+            </span>
+            <hr />
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.building.nameOfBuilding"}}</span>
+              <span class="uk-text-muted">{{or
+                  model.building.nameOfBuilding
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}</span>
+            </span>
+            <hr />
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.building.buildingCategory"}}</span>
+              <span class="uk-text-muted">
+                {{if
+                  model.building.buildingCategory
+                  (t
+                    (concat
+                      "ember-gwr.building.buildingCategoryOptions."
+                      model.building.buildingCategory
+                    )
+                  )
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}
+              </span>
+            </span>
+            <hr />
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.building.buildingClass"}}</span>
+              <span class="uk-text-muted">
+                {{if
+                  model.building.buildingClass
+                  (t
+                    (concat
+                      "ember-gwr.building.buildingClassOptions."
+                      model.building.buildingClass
+                    )
+                  )
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}
+              </span>
+            </span>
+            <hr />
+            <span class="uk-flex uk-child-width-1-2">
+              <span>{{t "ember-gwr.building.numberOfFloors"}}</span>
+              <span class="uk-text-muted">{{or
+                  model.building.numberOfFloors
+                  (t "ember-gwr.components.importModal.notRecorded")
+                }}</span>
+            </span>
+
+            <LinkTo
+              @query={{hash import=true index=this.importIndex}}
+              class="uk-button uk-button-primary uk-margin-medium-top uk-width-1"
+              {{on "click" @close}}
+            >
+              {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+            </LinkTo>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </Modal.body>
+  <Modal.footer>
+    <LinkTo
+      @query={{hash import=false index=undefined}}
+      class="uk-button uk-button-default uk-width-1"
+      {{on "click" @close}}
+    >
+      {{t "ember-gwr.components.projectForm.cancelImport"}}
+    </LinkTo>
+  </Modal.footer>
+</UkModal>

@@ -15,6 +15,10 @@
       @projectId={{this.router.currentRoute.attributes.projectId}}
       @headerModelName="dwelling"
       @hasStatus={{true}}
+      @hasImport={{this.importData.length}}
+      @importData={{if this.import this.importData}}
+      @import={{this.import}}
+      @importIndex={{this.index}}
       @modelStatusOptions={{this.dwellingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}

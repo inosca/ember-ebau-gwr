@@ -8,6 +8,7 @@ import Dwelling from "ember-ebau-gwr/models/dwelling";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
 
 export default class BuildingEditDwellingEditController extends Controller {
+  queryParams = ["import", "index"];
   Models = Models;
   DwellingValidations = DwellingValidations;
 
@@ -16,7 +17,10 @@ export default class BuildingEditDwellingEditController extends Controller {
   @service intl;
   @service notification;
   @service router;
+  @service dataImport;
 
+  @tracked import = false;
+  @tracked index = undefined;
   @tracked errors;
 
   dwellingStatusOptions = Models.Dwelling.dwellingStatusOptions;
@@ -46,6 +50,9 @@ export default class BuildingEditDwellingEditController extends Controller {
       );
       dwelling.oldEDID = EDID;
 
+      this.fetchCalumaData.perform();
+
+      this.errors = [];
       return dwelling;
     } catch (error) {
       console.error(error);
@@ -67,6 +74,22 @@ export default class BuildingEditDwellingEditController extends Controller {
         this.intl.t("ember-gwr.building.entrances.error")
       );
     }
+  }
+
+  @lastValue("fetchCalumaData") importData;
+  @task
+  *fetchCalumaData() {
+    const data = yield this.dataImport.fetchDwellingsFromBuilding(
+      this.model.buildingId
+    );
+    return data;
+  }
+
+  @action
+  cancelMerge() {
+    this.import = false;
+    this.index = undefined;
+    this.fetchDwelling.perform();
   }
 
   @dropTask

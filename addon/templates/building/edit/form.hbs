@@ -28,6 +28,10 @@
       @projectId={{this.model.projectId}}
       @headerModelName="building"
       @hasStatus={{true}}
+      @hasImport={{this.importData.length}}
+      @importData={{if this.import this.importData}}
+      @import={{this.import}}
+      @importIndex={{this.index}}
       @modelStatusOptions={{this.buildingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}

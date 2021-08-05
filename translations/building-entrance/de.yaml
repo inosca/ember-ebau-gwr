@@ -46,6 +46,7 @@ ember-gwr:
         description:
           descriptionLong: Strassenname
       locality:
+        locality: Ortschaft
         swissZipCode: PLZ
         swissZipCodeAddOn: Postleitzahl-Zusatzziffer
         name:

@@ -19,6 +19,7 @@ ember-gwr:
     otherWorks: Andere Arbeiten
 
   building:
+    building: Gebäude
     title: Gebäude {id} - {status}
     createNewBuilding: Neues Gebäude erfassen
 

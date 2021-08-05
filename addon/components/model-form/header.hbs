@@ -11,8 +11,12 @@
     @hasStatus={{and @hasStatus @model (not @model.isNew)}}
     @hasImport={{@hasImport}}
     @import={{@import}}
+    @importIndex={{@importIndex}}
+    @importData={{@importData}}
     @importAllData={{@importAllData}}
     @openStatus={{fn (mut this.changeStatus) true}}
+    @modelName={{@modelName}}
+    @translationBase={{@translationBase}}
   />
 </div>
 {{#if (and @model (not @model.isNew))}}
@@ -49,7 +53,7 @@
         @getCorrectionParameters={{@getCorrectionParameters}}
         @getChangeHint={{@getChangeHint}}
         @modelStatusField={{@modelStatusField}}
-        @translationBase={{@translationBase}}
+        @translationBase={{or @translationBaseHeader @translationBase}}
       />
     {{/if}}
   {{/let}}

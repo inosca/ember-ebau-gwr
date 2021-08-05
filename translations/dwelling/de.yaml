@@ -1,5 +1,6 @@
 ember-gwr:
   dwelling:
+    dwelling: Wohnung
     title: Wohnung {id}
     createNewDwelling: Neue Wohnung erfassen
     usage:
@@ -26,6 +27,7 @@ ember-gwr:
       3004: Bestehend
       3005: Nicht nutzbar
       3007: Aufgehoben
+      3008: Nicht realisiert
     administrativeDwellingNo: Administrative Wohnungsnummer
     yearOfConstruction: Baujahr der Wohnung
     yearOfDemolition: Abbruchjahr der Wohnung
@@ -42,6 +44,7 @@ ember-gwr:
     surfaceAreaOfDwelling: Wohnungsfläche
 
     dwellingUsage:
+      dwellingUsage: Wohnungsnutzung
       usageCode: Nutzungsart der Wohnung
       usageCodePlaceholder: Wählen Sie eine Nutzungsart aus...
       usageCodeOptions:

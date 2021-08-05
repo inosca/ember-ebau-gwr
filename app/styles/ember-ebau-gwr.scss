@@ -18,10 +18,6 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   min-height: $spinner-size;
 }
 
-.uk-highlight-hover:hover {
-  @extend .uk-text-muted;
-}
-
 .ember-ebau-gwr-label-width {
   width: 120px;
 
@@ -82,7 +78,7 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   }
 }
 
-.projects-header {
+.ember-ebau-gwr-projects-header {
   @extend .uk-box-shadow-small, .uk-margin-large, .uk-background-muted;
   border: 1px solid #e5e5e5;
 
@@ -91,10 +87,29 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   }
 }
 
+.ember-ebau-gwr-import-building-list {
+  li:not(.uk-open) {
+    @extend .uk-padding-small, .uk-padding-remove-vertical;
+  }
+
+  li.uk-open {
+    @extend .uk-box-shadow-small, .uk-padding-small;
+
+    hr {
+      margin: 10px 0;
+    }
+  }
+}
+
+// UIkit adjustments
 .uk-button-link {
   text-transform: unset;
 }
 
 .uk-button.disabled {
   @extend .uk-button-default;
+}
+
+.uk-highlight-hover:hover {
+  @extend .uk-text-muted;
 }
