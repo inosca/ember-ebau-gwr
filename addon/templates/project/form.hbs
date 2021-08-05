@@ -16,7 +16,6 @@
       @translationBase="ember-gwr.constructionProject.fields"
       @hasImport={{true}}
       @import={{this.import}}
-      @importAllData={{this.importAllData}}
       @headerModel={{this.project}}
       @headerModelId={{this.project.EPROID}}
       @projectId={{this.project.EPROID}}
@@ -30,7 +29,6 @@
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @getChangeHint={{this.getChangeHint}}
       @modelStatusField="projectStatus"
-      {{did-insert (perform this.fetchCalumaData)}}
       as |Field changeset|
     >
       {{#unless this.project.isNew}}

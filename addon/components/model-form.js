@@ -8,6 +8,7 @@ export default class ModelFormComponent extends Component {
   @service router;
   @service notification;
   @service intl;
+  @service config;
 
   // This array is only used for tracking the still open diffs
   // so we can transition out of the import once the array is empty.
@@ -22,7 +23,9 @@ export default class ModelFormComponent extends Component {
     this.notification.success(
       this.intl.t("ember-gwr.components.modelForm.diff.resolved")
     );
-    this.router.transitionTo({ queryParams: { import: false } });
+    this.router.transitionTo({
+      queryParams: { import: false, index: undefined },
+    });
   }
 
   @dropTask
@@ -64,5 +67,12 @@ export default class ModelFormComponent extends Component {
     };
     deepMerge(this.args.model, this.args.importData);
     this.finishImport();
+  }
+
+  get showImport() {
+    return (
+      this.args.hasImport &&
+      this.config.importModels.includes(this.args.headerModelName)
+    );
   }
 }

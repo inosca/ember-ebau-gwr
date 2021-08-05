@@ -8,6 +8,7 @@ import Building from "ember-ebau-gwr/models/building";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends Controller {
+  queryParams = ["import", "index"];
   Models = Models;
   BuildingWorkValidations = buildingWorkValidation(false);
 
@@ -16,7 +17,10 @@ export default class BuildingFormController extends Controller {
   @service dwelling;
   @service intl;
   @service notification;
+  @service dataImport;
 
+  @tracked import = false;
+  @tracked index = undefined;
   @tracked errors;
 
   get buildingStatusOptions() {
@@ -45,6 +49,9 @@ export default class BuildingFormController extends Controller {
         this.model.projectId
       );
 
+      yield this.fetchBuilding.perform();
+      this.fetchCalumaData.perform();
+
       return project.work?.find(
         (buildingWork) =>
           buildingWork.building.EGID === Number(this.model.buildingId)
@@ -67,6 +74,22 @@ export default class BuildingFormController extends Controller {
       this.model.buildingId
     );
     return building;
+  }
+
+  @lastValue("fetchCalumaData") importData;
+  @task
+  *fetchCalumaData() {
+    const data = yield this.dataImport.fetchBuildingsFromProject(
+      this.model.projectId
+    );
+    return data;
+  }
+
+  @action
+  cancelMerge() {
+    this.import = false;
+    this.index = undefined;
+    this.fetchBuildingWork.perform();
   }
 
   @dropTask

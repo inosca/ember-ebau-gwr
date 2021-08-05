@@ -33,8 +33,10 @@
       @modelName={{@headerModelName}}
       @modelDescription={{@headerModelDescription}}
       @hasStatus={{@hasStatus}}
-      @hasImport={{@hasImport}}
+      @hasImport={{this.showImport}}
       @import={{@import}}
+      @importIndex={{@importIndex}}
+      @importData={{@importData}}
       @importAllData={{this.importAllData}}
       @modelStatusOptions={{@modelStatusOptions}}
       @nextValidStates={{@nextValidStates}}
@@ -44,7 +46,8 @@
       @getCorrectionParameters={{@getCorrectionParameters}}
       @getChangeHint={{@getChangeHint}}
       @modelStatusField={{@modelStatusField}}
-      @translationBase={{or @translationBaseHeader @translationBase}}
+      @translationBaseHeader={{@translationBaseHeader}}
+      @translationBase={{@translationBase}}
       @submit={{Submit}}
       @submitErrors={{SubmitErrors}}
     />
@@ -52,7 +55,7 @@
       (component
         "model-form/field"
         model=f.model
-        importData=@importData
+        importData=(or (get @importData @importIndex) @importData)
         translationBase=@translationBase
         input=f.input
         registerDiff=this.registerDiff
