@@ -212,7 +212,7 @@ ember-gwr:
 
       dwelling:
         title: Wohnung {id}
-        createNewDwelling: Neue Wohnung erfassen
+        titleNew: Neue Wohnung erfassen
 
     linkedModels:
       linkedEntries: Verknüpfte {modelName}
