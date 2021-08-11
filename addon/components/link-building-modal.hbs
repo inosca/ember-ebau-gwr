@@ -1,14 +1,15 @@
 <UkModal
   @visible={{@visible}}
   @on-hide={{@close}}
-  @container="#ember-ebau-gwr-modal-container" as |Modal|
+  @container="#ember-camac-ng"
+  as |Modal|
 >
   <Modal.header>
     <h2 class="uk-modal-title">
       {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
     </h2>
   </Modal.header>
-  <Modal.body {{toggle-modal @visible}}>
+  <Modal.body>
     {{#let
       (component
         "project-form/field"

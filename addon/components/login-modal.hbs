@@ -1,70 +1,68 @@
-<UkModal
-  @modalClass="ember-ebau-gwr-modal-login"
-  @visible={{this.authFetch.showAuthModal}}
-  @btnClose={{false}}
-  @escClose={{false}}
-  @bgClose={{false}}
-  @container="#ember-ebau-gwr-modal-container" as |Modal|
->
-  <Modal.header>
-    <h2 class="uk-modal-title">
-      {{t "ember-gwr.components.loginModal.header"}}
-    </h2>
-  </Modal.header>
-  <Modal.body {{toggle-modal this.authFetch.showAuthModal}}>
-    <div class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-2">
-        <input
-          name="username"
-          class="uk-input"
-          placeholder={{t "ember-gwr.components.loginModal.username"}}
-          value={{this.username}}
-          {{on "input" this.updateValue}}
-        />
+{{#if this.authFetch.showAuthModal}}
+  <UkCard
+    @color="default"
+    class="ember-ebau-gwr-login uk-width-2xlarge uk-margin-auto" as |card|
+  >
+    <card.header>
+      <h2 class="uk-modal-title">
+        {{t "ember-gwr.components.loginModal.header"}}
+      </h2>
+    </card.header>
+    <card.body>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-1-2">
+          <input
+            name="username"
+            class="uk-input"
+            placeholder={{t "ember-gwr.components.loginModal.username"}}
+            value={{this.username}}
+            {{on "input" this.updateValue}}
+          />
+        </div>
+        <div class="uk-width-1-2">
+          <input
+            name="password"
+            type="password"
+            class="uk-input"
+            placeholder={{t "ember-gwr.components.loginModal.password"}}
+            value={{this.password}}
+            {{on "input" this.updateValue}}
+          />
+        </div>
+        <div class="uk-width-1">
+          <PowerSelect
+            @renderInPlace={{true}}
+            @triggerClass="uk-select"
+            @options={{this.sortedMunicipalities}}
+            @selected={{find-by "id" this.municipality this.municipalities}}
+            @placeholder={{t "ember-gwr.components.loginModal.municipality"}}
+            @searchEnabled={{true}}
+            @searchField="name"
+            @searchPlaceholder={{t
+              "ember-gwr.components.loginModal.municipalitySearch"
+            }}
+            @noMatchesMessage={{t
+              "ember-gwr.components.loginModal.municipalityNoneFound"
+            }}
+            @onChange={{this.updateMunicipality}} as |municipality|
+          >
+            {{municipality.name}}
+          </PowerSelect>
+        </div>
       </div>
-      <div class="uk-width-1-2">
-        <input
-          name="password"
-          type="password"
-          class="uk-input"
-          placeholder={{t "ember-gwr.components.loginModal.password"}}
-          value={{this.password}}
-          {{on "input" this.updateValue}}
-        />
-      </div>
-      <div class="uk-width-1">
-        <PowerSelect
-          @renderInPlace={{true}}
-          @triggerClass="uk-select"
-          @options={{this.sortedMunicipalities}}
-          @selected={{find-by "id" this.municipality this.municipalities}}
-          @placeholder={{t "ember-gwr.components.loginModal.municipality"}}
-          @searchEnabled={{true}}
-          @searchField="name"
-          @searchPlaceholder={{t
-            "ember-gwr.components.loginModal.municipalitySearch"
-          }}
-          @noMatchesMessage={{t
-            "ember-gwr.components.loginModal.municipalityNoneFound"
-          }}
-          @onChange={{this.updateMunicipality}} as |municipality|
-        >
-          {{municipality.name}}
-        </PowerSelect>
-      </div>
-    </div>
-  </Modal.body>
-  <Modal.footer @class="uk-text-right">
-    <UkButton
-      @color="primary"
-      @disabled={{not (and this.username this.password this.municipality)}}
-      @loading={{this.authFetch.housingStatToken.isRunning}}
-      {{on "click" this.login}}
-    >
-      {{t "ember-gwr.components.loginModal.login"}}
-    </UkButton>
-  </Modal.footer>
-</UkModal>
-{{#unless this.authFetch.showAuthModal}}
-  <Logout />{{yield}}
-{{/unless}}
+    </card.body>
+    <card.footer class="uk-text-right">
+      <UkButton
+        @color="primary"
+        @disabled={{not (and this.username this.password this.municipality)}}
+        @loading={{this.authFetch.housingStatToken.isRunning}}
+        {{on "click" this.login}}
+      >
+        {{t "ember-gwr.components.loginModal.login"}}
+      </UkButton>
+    </card.footer>
+  </UkCard>
+{{else}}
+  <Logout />
+  {{yield}}
+{{/if}}

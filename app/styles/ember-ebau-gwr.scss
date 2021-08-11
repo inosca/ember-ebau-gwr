@@ -3,41 +3,9 @@
 @import "ember-power-select";
 
 .ebau-gwr {
-  position: relative;
 
-  #ember-ebau-gwr-modal-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    div.uk-modal {
-      position: relative;
-      min-height: calc(100% - 2 * #{$modal-padding-vertical});
-      min-width: calc(100% - 2 * #{$modal-padding-horizontal});
-    }
-
-    @media (min-width: $breakpoint-small) {
-      div.uk-modal {
-        min-height: calc(100% - 2 * #{$modal-padding-vertical-s});
-        min-width: calc(100% - 2 * #{$modal-padding-horizontal-s});
-      }
-    }
-
-    @media (min-width: $breakpoint-medium) {
-      div.uk-modal {
-        min-width: calc(100% - 2 * #{$modal-padding-horizontal-m});
-      }
-    }
-
-    div.uk-modal .uk-modal-body .ember-power-select-status-icon {
-      @extend .uk-invisible;
-    }
-
-    .ember-ebau-gwr-modal-login {
-      height: 400px;
-    }
+  .ember-ebau-gwr-login .ember-power-select-status-icon {
+    @extend .uk-invisible;
   }
 }
 
