@@ -1,4 +1,4 @@
-<div class="uk-flex uk-flex-between uk-flex-top">
+<div class="uk-flex uk-flex-between uk-flex-top uk-margin-top">
   <ModelForm::Header::Title
     @model={{@model}}
     @modelId={{@modelId}}
@@ -19,9 +19,9 @@
   <hr class="uk-margin-small-bottom" />
   {{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
     <div
-      class="uk-flex
+      class="uk-flex uk-margin-top
         {{if @hasStatus "uk-flex-between" "uk-flex-right"}}
-        uk-flex-middle uk-flex-nowrap"
+        uk-flex-bottom uk-flex-wrap uk-flex-wrap-around"
     >
       {{#if @hasStatus}}
         <ModelForm::Header::Status @model={{@model}} @modelName={{@modelName}} />

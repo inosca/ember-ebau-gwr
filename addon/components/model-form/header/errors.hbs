@@ -2,21 +2,21 @@
   <div
     uk-alert
     class="{{if this.errorCount "uk-alert-danger" "uk-alert-success"}}
-       uk-flex-none uk-margin-remove uk-padding-small"
+      uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle"
   >
-    <span
+    <div
       class="uk-label
         {{if this.errorCount "uk-label-danger" "uk-label-success"}}"
     >
       {{this.errorCount}}
-    </span>
-    <span class="uk-margin-small-left">
+    </div>
+    <div class="uk-margin-small-left">
       {{t
         "ember-gwr.components.header.issues"
         modelName=@modelName
         modelId=@modelId
       }}
-    </span>
+    </div>
   </div>
   <div
     uk-dropdown="pos: bottom-right; delay-show: 500"

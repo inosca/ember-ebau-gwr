@@ -3,14 +3,19 @@
   (get @model (concat @modelName "Status")) as |modelName modelStatus|
 }}
   <div
-    class="uk-flex-expand uk-flex-inline uk-flex-middle"
+    class="uk-margin-right uk-margin-small-bottom uk-width-medium uk-width-1-2@m"
     id="ember-ebau-gwr-status"
   >
-    <span class="uk-text-bold uk-margin-small-right">
+    <div class="uk-text-bold">
       {{t "ember-gwr.components.header.status.label"}}
-    </span>
+    </div>
     <input
-      class="uk-input uk-form-width-large"
+      class="uk-input uk-text-truncate"
+      title={{t
+        (concat
+          "ember-gwr.lifeCycles." @modelName ".statusOptions." modelStatus
+        )
+      }}
       type="text"
       disabled
       value={{t
