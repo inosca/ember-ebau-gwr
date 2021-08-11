@@ -6,6 +6,7 @@ export default class AuthFetchService extends Service {
   @service config;
   @service intl;
   @service notification;
+  @service session;
 
   @tracked showAuthModal = false;
   @tracked token;
@@ -29,7 +30,7 @@ export default class AuthFetchService extends Service {
       method: "post",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${this.config.authToken}`,
+        authorization: yield this.session.getAuthorizationHeader(),
         "x-camac-group": this.config.camacGroup,
       },
       ...(username && password
@@ -69,12 +70,12 @@ export default class AuthFetchService extends Service {
       method: "post",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${this.config.authToken}`,
+        authorization: yield this.session.getAuthorizationHeader(),
         "x-camac-group": this.config.camacGroup,
       },
     });
 
-    if (response.ok) {
+    if (response.ok || (!response.ok && response.status === 401)) {
       this.showAuthModal = true;
       this.token = undefined;
       this.municipality = undefined;
