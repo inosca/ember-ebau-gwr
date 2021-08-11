@@ -6,33 +6,35 @@
   @search={{this.search}}
   @searchLabel={{t "ember-gwr.searchBuilding.search"}}
   @showExtendedSearch={{true}}
-  @translationBase="ember-gwr.searchBuilding"
   as |Field|
 >
   <div class="uk-flex uk-flex-wrap uk-flex-between">
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="EGID"
+          @name="EGID"
           type="number"
-          @translationBase="ember-gwr.building"
+          @label={{t "ember-gwr.building.EGID"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="periodOfConstruction"
+          @name="periodOfConstruction"
           @inputType="select"
           @options={{this.periodOfConstruction}}
-          @translationBase="ember-gwr.building.dateOfConstruction"
+          @label={{t
+            "ember-gwr.building.dateOfConstruction.periodOfConstruction"
+          }}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="hasError"
+          @name="hasError"
+          @label={{t "ember-gwr.searchBuilding.hasError"}}
           @inputType="select"
           @options={{array true false}}
         />
@@ -42,24 +44,24 @@
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="descriptionLong"
-          @translationBase="ember-gwr.building.street.description"
+          @name="descriptionLong"
+          @label={{t "ember-gwr.building.street.description.descriptionLong"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="buildingEntranceNo"
-          @translationBase="ember-gwr.building"
+          @name="buildingEntranceNo"
+          @label={{t "ember-gwr.building.buildingEntranceNo"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
         <Field
-          @attr="nameLong"
-          @translationBase="ember-gwr.building.locality.name"
+          @name="nameLong"
+          @label={{t "ember-gwr.building.locality.name.nameLong"}}
         />
       </div>
     </div>
@@ -85,7 +87,7 @@
       />
     </Search::ResultTable::Head>
     <Row as |Field|>
-      <Field @attr="EGID" as |value|>
+      <Field @name="EGID" as |value|>
         <button
           class="uk-button uk-button-link"
           type="button"
@@ -94,7 +96,7 @@
           {{value}}
         </button>
       </Field>
-      <Field @attr="fullAddressTexts" as |value|>
+      <Field @name="fullAddressTexts" as |value|>
         <ul class="uk-list">
           {{#each value as |entrance|}}
             <li>
@@ -103,7 +105,7 @@
           {{/each}}
         </ul>
       </Field>
-      <Field @attr="dateOfConstruction" as |value|>
+      <Field @name="dateOfConstruction" as |value|>
         {{#if value.periodOfConstruction}}
           {{t
             (concat

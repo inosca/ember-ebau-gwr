@@ -2,6 +2,9 @@ import { action, set } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import lookupValidator from "ember-changeset-validations";
+import Changeset from "ember-changeset";
+import SearchValidations from "ember-ebau-gwr/validations/search";
 
 export default class SearchFiltersComponent extends Component {
   @service intl;
@@ -11,11 +14,15 @@ export default class SearchFiltersComponent extends Component {
 
   constructor(owner, args) {
     super(owner, args);
-    this.query = args.baseQuery ?? {
-      realestateIdentification: {},
-      createDate: {},
-      modifyDate: {},
-    };
+    this.query = new Changeset(
+      args.baseQuery ?? {
+        realestateIdentification: {},
+        createDate: {},
+        modifyDate: {},
+      },
+      lookupValidator(SearchValidations),
+      SearchValidations
+    );
   }
 
   @action

@@ -1,21 +1,13 @@
-<form ...attributes {{on "submit" this.submit}}>
+<ValidatedForm
+  @model={{this.query}}
+  @on-submit={{this.submit}}
+  ...attributes
+  as |Form|
+>
   <div>
-    {{yield
-      (component
-        "model-form/field"
-        update=this.updateField
-        translationBase=@translationBase
-      )
-    }}
+    {{yield Form.input}}
 
-    {{#let
-      (component
-        "model-form/field"
-        update=this.updateField
-        translationBase="ember-gwr.components.search"
-      )
-      as |Field|
-    }}
+    {{#let Form.input as |Field|}}
       {{#if this.extendedSearch}}
         <div class="uk-flex uk-flex-between uk-margin-small-bottom">
           <div class="uk-width-1-2">
@@ -31,16 +23,34 @@
                 </p>
               </div>
             {{/if}}
-            <Field @attr="realestateIdentification.EGRID" @type="number" />
             <Field
-              @attr="realestateIdentification.numberSuffix"
+              @label={{t
+                "ember-gwr.components.search.realestateIdentification.EGRID"
+              }}
+              @name="realestateIdentification.EGRID"
               @type="number"
             />
             <Field
-              @attr="realestateIdentification.subDistrict"
+              @label={{t
+                "ember-gwr.components.search.realestateIdentification.numberSuffix"
+              }}
+              @name="realestateIdentification.numberSuffix"
               @type="number"
             />
-            <Field @attr="realestateIdentification.lot" @type="number" />
+            <Field
+              @label={{t
+                "ember-gwr.components.search.realestateIdentification.subDistrict"
+              }}
+              @name="realestateIdentification.subDistrict"
+              @type="number"
+            />
+            <Field
+              @label={{t
+                "ember-gwr.components.search.realestateIdentification.lot"
+              }}
+              @name="realestateIdentification.lot"
+              @type="number"
+            />
           </div>
 
           <div>
@@ -64,15 +74,19 @@
               <div class="uk-flex">
                 <div class="uk-margin-small-right">
                   <Field
-                    @attr="createDate.dateFrom"
+                    @label={{t
+                      "ember-gwr.components.search.createDate.dateFrom"
+                    }}
+                    @name="createDate.dateFrom"
                     @noMargin={{true}}
-                    @inputType="date"
+                    @type="date"
                   />
                 </div>
                 <Field
-                  @attr="createDate.dateTo"
+                  @label={{t "ember-gwr.components.search.createDate.dateTo"}}
+                  @name="createDate.dateTo"
                   @noMargin={{true}}
-                  @inputType="date"
+                  @type="date"
                 />
               </div>
             </div>
@@ -91,15 +105,19 @@
               <div class="uk-flex">
                 <div class="uk-margin-small-right">
                   <Field
-                    @attr="modifyDate.dateFrom"
+                    @label={{t
+                      "ember-gwr.components.search.modifyDate.dateFrom"
+                    }}
+                    @name="modifyDate.dateFrom"
                     @noMargin={{true}}
-                    @inputType="date"
+                    @type="date"
                   />
                 </div>
                 <Field
-                  @attr="modifyDate.dateTo"
+                  @label={{t "ember-gwr.components.search.modifyDate.dateTo"}}
+                  @name="modifyDate.dateTo"
                   @noMargin={{true}}
-                  @inputType="date"
+                  @type="date"
                 />
               </div>
             </div>
@@ -109,9 +127,8 @@
     {{/let}}
     <div class="uk-flex uk-flex-right">
       {{#if @showExtendedSearch}}
-        <button
-          type="button"
-          class="uk-button uk-button-default"
+        <UkButton
+          class="uk-margin-small-right"
           {{on
             "click"
             (fn (mut this.extendedSearch) (not this.extendedSearch))
@@ -123,16 +140,9 @@
               (if this.extendedSearch "collapse" "extend")
             )
           }}
-        </button>
+        </UkButton>
       {{/if}}
-      <UkButton
-        @color="primary"
-        @type="submit"
-        @loading={{@search.isRunning}}
-        class="uk-margin-small-left"
-      >
-        {{@searchLabel}}
-      </UkButton>
+      <Form.submit @loading={{@search.isRunning}} @label={{@searchLabel}} />
     </div>
   </div>
-</form>
+</ValidatedForm>
