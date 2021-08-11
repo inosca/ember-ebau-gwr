@@ -30,14 +30,10 @@
         min-width: calc(100% - 2 * #{$modal-padding-horizontal-m});
       }
     }
+  }
 
-    div.uk-modal .uk-modal-body .ember-power-select-status-icon {
-      @extend .uk-invisible;
-    }
-
-    .ember-ebau-gwr-modal-login {
-      height: 400px;
-    }
+  .ember-ebau-gwr-login .ember-power-select-status-icon {
+    @extend .uk-invisible;
   }
 }
 
