@@ -92,6 +92,8 @@ ember-gwr:
       dwellings: Verknüpfte Wohnungen
 
   lifeCycles:
+    noStatus: Keine Statusangabe
+
     project:
       statusOptions:
         6701: Baugesuch eingereicht

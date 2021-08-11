@@ -21,11 +21,12 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
   @task
   *fetchBuildingEntrance() {
     try {
+      this.errors = [];
+
       if (this.buildingEntranceAPI.newRecord) {
         return this.buildingEntranceAPI.newRecord;
       }
 
-      this.errors = [];
       return yield this.buildingEntranceAPI.getFromCacheOrApi(
         this.model.entranceId,
         this.model.buildingId

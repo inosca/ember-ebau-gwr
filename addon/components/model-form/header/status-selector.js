@@ -37,7 +37,7 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     );
 
     this.modelStatus = this.args.model[this.args.modelStatusField];
-    this.newStatus = this.modelStatus;
+    this.newStatus = this.modelStatus ?? this.statusOptions[0];
   }
 
   @action
@@ -56,7 +56,9 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   }
 
   get isValidStatusChange() {
-    return this.args.nextValidStates.includes(this.newStatus);
+    return (
+      this.modelStatus && this.args.nextValidStates.includes(this.newStatus)
+    );
   }
 
   @action
@@ -123,7 +125,9 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   }
 
   get changeParameters() {
-    return this.args.getChangeParameters(this.modelStatus, this.newStatus);
+    return this.modelStatus && this.newStatus
+      ? this.args.getChangeParameters(this.modelStatus, this.newStatus)
+      : [];
   }
 
   get correctionParameters() {
