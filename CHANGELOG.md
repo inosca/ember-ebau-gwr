@@ -1,3 +1,20 @@
+# [2.5.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.4.1...v2.5.0) (2021-08-11)
+
+
+### Bug Fixes
+
+* **auth:** ensure authentication token is refreshed ([b47c2d0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b47c2d015bba039902df3f70cfe95d2a4b7fb118))
+* **import:** fix project import and add better user flow and validation support ([d5e00fe](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d5e00fe0f546aed3c32c4afe8abbd1cdbe26abff))
+* **intl:** correct translation path for new dwelling form title ([b65c003](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b65c00334e60cbd46af919e29a1098ecedc68b2d))
+* **login:** improve login screen ([3aff280](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3aff2807e6b69cd6230018dd9685e23a06ebcd5b))
+* **modal:** fix modal container ([af06db0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/af06db0a774391f326de94fee57e79492fe5dc3f))
+* **status:** add fallback for missing model status ([c414334](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c41433417a44530b107a09ee24841eb4ef56bdf9))
+
+
+### Features
+
+* **login:** sorted and searchable municipalities ([754604f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/754604f129435b8123df807f1765cc5384b82200))
+
 ## [2.4.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.4.0...v2.4.1) (2021-08-03)
 
 
