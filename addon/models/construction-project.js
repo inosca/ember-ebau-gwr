@@ -85,6 +85,27 @@ export default class ConstructionProject extends XMLModel {
     this.work = this.work.filter(
       (buildingWork) => !buildingWork.building.isNew
     );
+
+    // Project status not returned by every API response
+    if (!this.projectStatus) {
+      this.projectStatus = this.projectSuspensionDate
+        ? 6706
+        : this.projectCompletionDate
+        ? 6704
+        : this.withdrawalDate
+        ? 6709
+        : this.nonRealisationDate
+        ? 6708
+        : this.constructionAuthorisationDeniedDate
+        ? 6707
+        : this.projectStartDate
+        ? 6703
+        : this.buildingPermitIssueDate
+        ? 6702
+        : this.projectAnnouncementDate
+        ? 6701
+        : undefined;
+    }
   }
   // The order of the fields seems to be important. Sometimes fields in wrong orders throw errors.
   // TODO <work> is until now a fixed value. We need to implement a select for it and display it.

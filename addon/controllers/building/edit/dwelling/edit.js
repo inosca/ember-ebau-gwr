@@ -31,6 +31,8 @@ export default class BuildingEditDwellingEditController extends Controller {
   @task
   *fetchDwelling() {
     try {
+      this.errors = [];
+
       yield this.fetchEntrances.perform();
       if (this.model.dwelling?.isNew) {
         this.model.dwelling.EDID = this.entrances[0].EDID;
@@ -43,7 +45,6 @@ export default class BuildingEditDwellingEditController extends Controller {
       );
       dwelling.oldEDID = EDID;
 
-      this.errors = [];
       return dwelling;
     } catch (error) {
       console.error(error);

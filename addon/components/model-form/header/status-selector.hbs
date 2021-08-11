@@ -5,15 +5,15 @@
     uk-close
     {{on "click" @closeStatus}}
   ></button>
-  <div class="uk-flex uk-flex-between">
-    <div class="uk-flex-inline uk-flex-middle">
-      <div class="uk-margin-right uk-text-bold">
+  <div class="uk-flex uk-flex-between uk-flex-bottom">
+    <div>
+      <div class="uk-text-bold">
         {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
       </div>
       <form>
         <OneWaySelect
           class="uk-select"
-          @value={{this.modelStatus}}
+          @value={{this.newStatus}}
           @options={{this.statusOptions}}
           @optionTargetPath="status"
           @optionLabelPath="label"
@@ -75,47 +75,49 @@
   <div
     class="uk-flex uk-flex-nowrap uk-flex-between uk-child-width-1-2 uk-flex-top uk-margin-remove-bottom uk-margin-top"
   >
-    <div
-      class="uk-flex-inline uk-text-small uk-margin-remove-bottom uk-margin-large-right"
-      uk-alert
-    >
+    {{#if this.modelStatus}}
       <div
-        class="uk-margin-small-right uk-flex-top uk-flex-none"
-        uk-icon="icon: info"
-      ></div>
-      <div class="uk-flex-inline uk-flex-column">
-        <div class="uk-flex-inline uk-flex-top">
-          <div class="uk-margin-right uk-flex-none">
-            {{t "ember-gwr.components.header.statusSelector.statusInfo"}}
+        class="uk-flex-inline uk-text-small uk-margin-remove-bottom uk-margin-large-right"
+        uk-alert
+      >
+        <div
+          class="uk-margin-right uk-flex-none"
+          uk-icon="icon: info"
+        ></div>
+        <div class="uk-flex-inline uk-flex-column">
+          <div class="uk-flex-inline uk-flex-top">
+            <div class="uk-margin-right uk-flex-none">
+              {{t "ember-gwr.components.header.statusSelector.statusInfo"}}
+            </div>
+          </div>
+          <div
+            class="uk-flex-inline uk-flex-wrap uk-width-expand uk-margin-small-top"
+          >
+            {{#each @nextValidStates as |state index|}}
+              <div class="uk-flex-inline uk-flex-middle">
+                <div>
+                  {{t
+                    (concat
+                      "ember-gwr.lifeCycles." @modelName ".statusOptions." state
+                    )
+                  }}
+                </div>
+                {{#if (not (eq index (dec @nextValidStates.length)))}}
+                  <div class="uk-margin-small-left uk-margin-small-right">
+                    |
+                  </div>
+                {{/if}}
+              </div>
+            {{/each}}
+            {{#unless @nextValidStates.length}}
+              <div class="uk-flex-inline uk-flex-middle">
+                {{t "ember-gwr.components.header.statusSelector.noNextStates"}}
+              </div>
+            {{/unless}}
           </div>
         </div>
-        <div
-          class="uk-flex-inline uk-flex-wrap uk-width-expand uk-margin-small-top"
-        >
-          {{#each @nextValidStates as |state index|}}
-            <div class="uk-flex-inline uk-flex-middle">
-              <div>
-                {{t
-                  (concat
-                    "ember-gwr.lifeCycles." @modelName ".statusOptions." state
-                  )
-                }}
-              </div>
-              {{#if (not (eq index (dec @nextValidStates.length)))}}
-                <div class="uk-margin-small-left uk-margin-small-right">
-                  |
-                </div>
-              {{/if}}
-            </div>
-          {{/each}}
-          {{#unless @nextValidStates.length}}
-            <div class="uk-flex-inline uk-flex-middle">
-              {{t "ember-gwr.components.header.statusSelector.noNextStates"}}
-            </div>
-          {{/unless}}
-        </div>
       </div>
-    </div>
+    {{/if}}
     {{#if this.errors.length}}
       <div class="uk-flex-inline">
         <ModelForm::SubmitErrors @errors={{this.errors}} />
