@@ -194,6 +194,7 @@ ember-gwr:
         existingData: Existierende Daten im GWR
         importData: Importierte Daten
         apply: Übernehmen
+        resolved: Alle Konflikte sind gelöst. Klicken Sie Speichern um die Änderungen zu übernehmen!
 
       project:
         title: Bauprojekt {id}

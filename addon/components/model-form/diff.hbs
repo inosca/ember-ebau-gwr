@@ -3,7 +3,7 @@
     {{component @labelComponent}}
   </div>
   <div
-    class="uk-box-shadow-small uk-padding-small
+    class="uk-box-shadow-small uk-padding-small uk-width-1-1
       {{if @isInvalid "uk-form-danger"}}
       {{if @isValid "uk-form-success"}}"
   >
@@ -22,7 +22,12 @@
           {{t "ember-gwr.components.modelForm.diff.apply"}}
         </button>
       </div>
-      <input class="uk-width-1 uk-input" disabled readonly value={{@current}} />
+      {{#let
+        (component @inputComponent disabled=true value=@current)
+        as |InputComponent|
+      }}
+        <InputComponent disabled />
+      {{/let}}
     </div>
     <div>
       <div
@@ -39,11 +44,12 @@
           {{t "ember-gwr.components.modelForm.diff.apply"}}
         </button>
       </div>
-      <input
-        class="uk-width-1 uk-input"
-        value={{this.newValue}}
-        {{on "input" this.updateNewValue}}
-      />
+      {{component
+        @inputComponent
+        value=this.newValue
+        includeBlank=false
+        on-update=(fn this.updateNewValue)
+      }}
     </div>
   </div>
 </div>
