@@ -1,3 +1,14 @@
+## [2.5.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.5.0...v2.5.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* **building:** allow all states to be set for new buildings ([77a5417](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/77a54171789d218ea5cbde0c0d7ac68afea4a9da))
+* **model-form:** fix resetting date input after manual entry ([4eb5206](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4eb520664337d90195472c843edb7f911839dde3))
+* **project:** allow unrounded values for totalCostsOfProject field ([0a13803](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0a138033b18ff4b984b1d80ade3ccc1f401eee64))
+* **project:** fix date fields in project form ([9bf6e47](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/9bf6e4783dea6aff86ab9cea71af4c50aa801971))
+* **project:** make typeOfConstruction field of project required ([10a06a4](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/10a06a46c28b951b5c019ba8ef5b3fa8cc8d3794))
+
 # [2.5.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.4.1...v2.5.0) (2021-08-11)
 
 
