@@ -124,40 +124,20 @@ export default class ConstructionProject extends XMLModel {
     <ns2:totalCostsOfProject>{{model.totalCostsOfProject}}</ns2:totalCostsOfProject>
     <ns2:projectAnnouncementDate>{{echDate model.projectAnnouncementDate}}</ns2:projectAnnouncementDate>
 
-    {{#if model.buildingPermitIssueDate}}
-      <ns2:buildingPermitIssueDate>{{echDate model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
-    {{/if}}
+    {{{modelField model "buildingPermitIssueDate" value=(echDate model.buildingPermitIssueDate)}}}
 
     {{#unless model.isNew}}
-      {{#if model.projectStartDate}}
-        <ns2:projectStartDate>{{echDate model.projectStartDate}}</ns2:projectStartDate>
-      {{/if}}
+      {{{modelField model "projectStartDate" value=(echDate model.projectStartDate)}}}
+      {{{modelField model "projectCompletionDate" value=(echDate model.projectCompletionDate)}}}
 
-      {{#if model.projectCompletionDate}}
-        <ns2:projectCompletionDate>{{echDate model.projectCompletionDate}}</ns2:projectCompletionDate>
-      {{/if}}
-      
       {{! These fields are accepted by the api but it seems like theire not actually written.}}
-      {{#if model.projectSuspensionDate}}
-        <ns2:projectSuspensionDate>{{echDate model.projectSuspensionDate}}</ns2:projectSuspensionDate>
-      {{/if}}
+      {{{modelField model "projectSuspensionDate" value=(echDate model.projectSuspensionDate)}}}
+      {{{modelField model "constructionAuthorisationDeniedDate" value=(echDate model.constructionAuthorisationDeniedDate)}}}
       
-      {{#if model.constructionAuthorisationDeniedDate}}
-        <ns2:constructionAuthorisationDeniedDate>{{echDate model.constructionAuthorisationDeniedDate}}</ns2:constructionAuthorisationDeniedDate>
-      {{/if}}
-    
       {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
-      {{#if model.nonRealisationDate}}
-        <ns2:cancellationDate>{{echDate model.nonRealisationDate}}</ns2:cancellationDate>
-      {{/if}}
-
-      {{#if model.withdrawalDate}}
-        <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
-      {{/if}}
-
-      {{#if model.durationOfConstructionPhase}}
-        <ns2:durationOfConstructionPhase>{{model.durationOfConstructionPhase}}</ns2:durationOfConstructionPhase>
-      {{/if}}
+      {{{modelField model "withdrawalDate" value=(echDate model.withdrawalDate)}}}
+      {{{modelField model "cancellationDate" value=(echDate model.nonRealisationDate)}}}
+      {{{modelField model "durationOfConstructionPhase"}}}
     {{/unless}}
 
     {{#if model.isNew}}
