@@ -20,6 +20,7 @@ export default {
     validateNumber({ lte: 99999999900 }),
     validateNumber({ integer: true }),
   ],
+  typeOfConstruction: [validatePresence(true)],
   projectAnnouncementDate: [validatePresence(true)],
   typeOfClient: [validatePresence(true)],
   client: {
