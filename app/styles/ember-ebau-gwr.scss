@@ -3,7 +3,6 @@
 @import "ember-power-select";
 
 .ebau-gwr {
-
   .ember-ebau-gwr-login .ember-power-select-status-icon {
     @extend .uk-invisible;
   }
@@ -18,7 +17,6 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   text-decoration: none;
   min-height: $spinner-size;
 }
-
 
 .uk-highlight-hover:hover {
   @extend .uk-text-muted;
@@ -81,5 +79,25 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 
   path {
     stroke-width: 2;
+  }
+}
+
+.linked-projects {
+  @extend .uk-box-shadow-small, .uk-margin-large, .uk-padding-small, .uk-background-muted;
+  border: 1px solid #e5e5e5;
+
+  table {
+    @extend .uk-margin-remove-bottom;
+
+    tr {
+      td:first-child,
+      th:first-child {
+        padding-left: 50px;
+      }
+
+      td:last-child {
+        padding-right: 50px;
+      }
+    }
   }
 }

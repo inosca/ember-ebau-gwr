@@ -3,7 +3,10 @@
   (t (concat "ember-gwr.models." @modelName) count=2)
   as |modelName modelNamePlural|
 }}
-  <table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+  <table
+    class="uk-table uk-table-divider uk-table-hover uk-table-middle"
+    ...attributes
+  >
     <thead>
       <tr>
         <th colspan="3">

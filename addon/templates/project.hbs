@@ -7,11 +7,13 @@
     {{#if this.displayLandingPage}}
       <LandingPage />
     {{else}}
-      <LinkedProjects
-        @projects={{this.projects}}
-        @activeProject={{this.activeProject}}
-        @removeProject={{this.removeProjectLink}}
-      />
+      <div class="linked-projects">
+        <LinkedProjects
+          @projects={{this.projects}}
+          @activeProject={{this.activeProject}}
+          @removeProject={{this.removeProjectLink}}
+        />
+      </div>
       <UkTab as |Tab|>
         <Tab.link-item @route="project.form" @model={{this.activeProject}}>
           {{t "ember-gwr.models.project" count=1}}
