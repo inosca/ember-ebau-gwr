@@ -80,4 +80,13 @@ export default {
       model: "project",
     }),
   ],
+  projectCompletionDate: [
+    validatePresenceTransition({
+      presence: true,
+      on: "projectStatus",
+      transitions: ["setToCompletedConstructionProject"],
+      data: ConstructionProject,
+      model: "project",
+    }),
+  ],
 };

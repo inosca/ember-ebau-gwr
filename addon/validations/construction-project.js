@@ -22,6 +22,15 @@ export default {
   ],
   typeOfConstruction: [validatePresence(true)],
   projectAnnouncementDate: [validatePresence(true)],
+  durationOfConstructionPhase: [
+    validateNumber({
+      gte: 1,
+      lte: 999,
+      integer: true,
+      positive: true,
+      allowBlank: true,
+    }),
+  ],
   typeOfClient: [validatePresence(true)],
   client: {
     identification: {
