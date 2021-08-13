@@ -127,32 +127,38 @@ export default class ConstructionProject extends XMLModel {
     {{#if model.buildingPermitIssueDate}}
       <ns2:buildingPermitIssueDate>{{echDate model.buildingPermitIssueDate}}</ns2:buildingPermitIssueDate>
     {{/if}}
-    {{#if model.projectStartDate}}
-      <ns2:projectStartDate>{{echDate model.projectStartDate}}</ns2:projectStartDate>
-    {{/if}}
 
-    {{#if model.projectCompletionDate}}
-      <ns2:projectCompletionDate>{{echDate model.projectCompletionDate}}</ns2:projectCompletionDate>
-    {{/if}}
+    {{#unless model.isNew}}
+      {{#if model.projectStartDate}}
+        <ns2:projectStartDate>{{echDate model.projectStartDate}}</ns2:projectStartDate>
+      {{/if}}
 
-    {{#if model.durationOfConstructionPhase}}
-      <ns2:durationOfConstructionPhase>{{model.durationOfConstructionPhase}}</ns2:durationOfConstructionPhase>
-    {{/if}}
+      {{#if model.projectCompletionDate}}
+        <ns2:projectCompletionDate>{{echDate model.projectCompletionDate}}</ns2:projectCompletionDate>
+      {{/if}}
+      
+      {{! These fields are accepted by the api but it seems like theire not actually written.}}
+      {{#if model.projectSuspensionDate}}
+        <ns2:projectSuspensionDate>{{echDate model.projectSuspensionDate}}</ns2:projectSuspensionDate>
+      {{/if}}
+      
+      {{#if model.constructionAuthorisationDeniedDate}}
+        <ns2:constructionAuthorisationDeniedDate>{{echDate model.constructionAuthorisationDeniedDate}}</ns2:constructionAuthorisationDeniedDate>
+      {{/if}}
+    
+      {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
+      {{#if model.nonRealisationDate}}
+        <ns2:cancellationDate>{{echDate model.nonRealisationDate}}</ns2:cancellationDate>
+      {{/if}}
 
-    {{! These fields are accepted by the api but it seems like theire not actually written.}}
-    {{#if model.projectSuspensionDate}}
-      <ns2:projectSuspensionDate>{{echDate model.projectSuspensionDate}}</ns2:projectSuspensionDate>
-    {{/if}}
-    {{#if model.constructionAuthorisationDeniedDate}}
-      <ns2:constructionAuthorisationDeniedDate>{{echDate model.constructionAuthorisationDeniedDate}}</ns2:constructionAuthorisationDeniedDate>
-    {{/if}}
-    {{#if model.withdrawalDate}}
-      <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
-    {{/if}}
-    {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
-    {{#if model.nonRealisationDate}}
-    <ns2:cancellationDate>{{echDate model.nonRealisationDate}}</ns2:cancellationDate>
-    {{/if}}
+      {{#if model.withdrawalDate}}
+        <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
+      {{/if}}
+
+      {{#if model.durationOfConstructionPhase}}
+        <ns2:durationOfConstructionPhase>{{model.durationOfConstructionPhase}}</ns2:durationOfConstructionPhase>
+      {{/if}}
+    {{/unless}}
 
     {{#if model.isNew}}
       {{! TODO}}
@@ -231,9 +237,17 @@ export default class ConstructionProject extends XMLModel {
     ],
     setToStartConstructionProject: [
       { field: "projectStartDate", type: "date", required: true },
-      { field: "durationOfConstructionPhase", type: "number", required: true },
+      {
+        field: "durationOfConstructionPhase",
+        type: "number",
+        required: true,
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+      },
     ],
-    setToCompletedConstructionProject: [],
+    setToCompletedConstructionProject: [
+      { field: "projectCompletionDate", type: "date", required: true },
+    ],
     setToCancelledSuspensionConstructionProject: [],
   };
 
@@ -260,13 +274,25 @@ export default class ConstructionProject extends XMLModel {
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: true },
       { field: "projectStartDate", type: "date", required: true },
-      { field: "durationOfConstructionPhase", type: "number", required: true },
+      {
+        field: "durationOfConstructionPhase",
+        type: "number",
+        required: true,
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+      },
     ],
     6704: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: true },
       { field: "projectStartDate", type: "date", required: true },
-      { field: "durationOfConstructionPhase", type: "number", required: true },
+      {
+        field: "durationOfConstructionPhase",
+        type: "number",
+        required: true,
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+      },
       { field: "projectCompletionDate", type: "date", required: true },
     ],
     6706: [
@@ -282,12 +308,16 @@ export default class ConstructionProject extends XMLModel {
         type: "date",
         required: false,
         on: "durationOfConstructionPhase",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
       {
         field: "durationOfConstructionPhase",
         type: "number",
         required: false,
         on: "projectStartDate",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
       { field: "projectSuspensionDate", type: "date", required: true },
     ],

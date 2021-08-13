@@ -37,6 +37,7 @@
               @type={{parameter.type}}
               @name={{parameter.field}}
               @required={{parameter.required}}
+              @hint={{if parameter.hint (t parameter.hint)}}
               @renderComponent={{if
                 (eq parameter.type "date")
                 (component "model-form/date")

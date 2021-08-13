@@ -57,6 +57,7 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
           this.model.buildingId
         );
       }
+      this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.buildingEntrance.saveSuccess")
       );

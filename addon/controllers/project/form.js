@@ -75,6 +75,7 @@ export default class ProjectFormController extends Controller {
         yield this.constructionProject.update(this.project);
       }
       this.import = false;
+      this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.constructionProject.saveSuccess")
       );

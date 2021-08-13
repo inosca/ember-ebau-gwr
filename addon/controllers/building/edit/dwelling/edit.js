@@ -86,6 +86,7 @@ export default class BuildingEditDwellingEditController extends Controller {
           );
         }
       }
+      this.errors = [];
       this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
     } catch (error) {
       this.errors = error;
