@@ -1,6 +1,7 @@
 import { inject as service } from "@ember/service";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
+import XMLModel from "ember-ebau-gwr/models/xml-model";
 
 import GwrService from "./gwr";
 
@@ -92,6 +93,56 @@ export default class BuildingService extends GwrService {
     }
 
     const xml = await response.text();
+    return this.createAndCache(xml);
+  }
+
+  async createAndAddToConstructionProject(EPROID, buildingWork) {
+    let body = this.xml.buildXMLRequest("addWorkToProject", buildingWork);
+    let response = await this.authFetch.fetch(
+      `/constructionprojects/${EPROID}/work`,
+      {
+        method: "post",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: addWorkToProject failed");
+      throw errors;
+    }
+
+    let xml = await response.text();
+    const model = new XMLModel(xml);
+    const ARBID = model.getFieldFromXML(
+      "ARBID",
+      Number,
+      "addWorkToProjectResponse"
+    );
+
+    body = this.xml.buildXMLRequest(
+      "addBuildingToConstructionProject",
+      buildingWork.building
+    );
+    response = await this.authFetch.fetch(
+      `/constructionprojects/${EPROID}/work/${ARBID}`,
+      {
+        method: "post",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: addBuildingToConstructionProject failed");
+      throw errors;
+    }
+
+    xml = await response.text();
     return this.createAndCache(xml);
   }
 
