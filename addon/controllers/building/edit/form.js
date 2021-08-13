@@ -76,18 +76,16 @@ export default class BuildingFormController extends Controller {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
         const buildingStatus = this.buildingWork.building.buildingStatus;
+        let building;
         if (buildingStatus !== EXISTING && buildingStatus !== NOT_USABLE) {
-          const building = yield this.buildingAPI.createAndAddToConstructionProject(
+          building = yield this.buildingAPI.createAndAddToConstructionProject(
             this.model.projectId,
             this.buildingWork
           );
-          EGID = building.EGID;
         } else {
-          const building = yield this.buildingAPI.create(
-            this.buildingWork.building
-          );
-          EGID = building.EGID;
+          building = yield this.buildingAPI.create(this.buildingWork.building);
         }
+        EGID = building.EGID;
       } else {
         yield this.buildingAPI.update(this.buildingWork.building);
       }
