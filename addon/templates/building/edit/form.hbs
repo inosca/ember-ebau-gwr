@@ -1,4 +1,4 @@
-{{#if this.buildingWork.building.isNew}}
+{{#if (and this.buildingWork.building.isNew (not this.fetchBuildingWork.isRunning))}}
   <LinkTo
     @route="project.linked-buildings"
     @model={{this.model.projectId}}

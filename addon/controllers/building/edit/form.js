@@ -21,10 +21,7 @@ export default class BuildingFormController extends Controller {
   @tracked errors;
 
   get buildingStatusOptions() {
-    // TODO Every other status need the building to be saved when the project is created.
-    return this.model.buildingWork?.isNew
-      ? [EXISTING, NOT_USABLE]
-      : Models.Building.buildingStatusOptions;
+    return Models.Building.buildingStatusOptions;
   }
 
   get nextValidStates() {
@@ -38,16 +35,16 @@ export default class BuildingFormController extends Controller {
   @task
   *fetchBuildingWork() {
     try {
+      this.errors = [];
+      yield this.fetchBuilding.perform();
+
       if (this.model.buildingWork?.isNew) {
-        this.errors = [];
         return this.model.buildingWork;
       }
 
       const project = yield this.constructionProject.getFromCacheOrApi(
         this.model.projectId
       );
-
-      yield this.fetchBuilding.perform();
 
       return project.work?.find(
         (buildingWork) =>
@@ -62,15 +59,14 @@ export default class BuildingFormController extends Controller {
   @lastValue("fetchBuilding") building;
   @task
   *fetchBuilding() {
+    this.errors = [];
     if (this.model.buildingWork?.isNew) {
-      this.errors = [];
-      return this.model.buildingWork;
+      return this.model.buildingWork.building;
     }
 
     const building = yield this.buildingAPI.getFromCacheOrApi(
       this.model.buildingId
     );
-    this.errors = [];
     return building;
   }
 
@@ -79,10 +75,19 @@ export default class BuildingFormController extends Controller {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
-        const building = yield this.buildingAPI.create(
-          this.buildingWork.building
-        );
-        EGID = building.EGID;
+        const buildingStatus = this.buildingWork.building.buildingStatus;
+        if (buildingStatus !== EXISTING && buildingStatus !== NOT_USABLE) {
+          const building = yield this.buildingAPI.createAndAddToConstructionProject(
+            this.model.projectId,
+            this.buildingWork
+          );
+          EGID = building.EGID;
+        } else {
+          const building = yield this.buildingAPI.create(
+            this.buildingWork.building
+          );
+          EGID = building.EGID;
+        }
       } else {
         yield this.buildingAPI.update(this.buildingWork.building);
       }
@@ -93,6 +98,7 @@ export default class BuildingFormController extends Controller {
       );
       // Clear cache so after transition we fetch the project form api
       this.constructionProject.clearCache(this.model.projectId);
+      this.buildingAPI.clearCache(this.model.buildingId);
       this.transitionToRoute("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {

@@ -116,6 +116,22 @@ export const addBuilding =
 {{/base}}`;
 
 // prettier-ignore
+export const addWorkToProject =
+`{{#>base}}
+  <ns2:addWorkToProject>
+    <ns2:kindOfWork>{{model.kindOfWork}}</ns2:kindOfWork>
+  </ns2:addWorkToProject>
+{{/base}}`
+
+// prettier-ignore
+export const addBuildingToConstructionProject =
+`{{#>base}}
+  <ns2:addBuildingToConstructionProject>
+    {{> Building model=model}}
+  </ns2:addBuildingToConstructionProject>
+{{/base}}`
+
+// prettier-ignore
 export const setToNotRealizedBuilding  =
 `{{#>base}}
   <ns2:setToNotRealizedBuilding>
