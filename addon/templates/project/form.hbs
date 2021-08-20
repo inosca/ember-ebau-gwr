@@ -33,21 +33,31 @@
       as |Field|
     >
       {{#unless this.project.isNew}}
-        <Field @type="number" @attr="EPROID" @disabled={{true}} />
-        <Field
-          @attr="constructionLocalisation.municipalityName"
-          @disabled={{true}}
-        />
-        <Field
-          @type="number"
-          @attr="constructionSurveyDeptNumber"
-          @disabled={{true}}
-        />
+        <div class="uk-flex">
+          <div class="uk-width-1-3 uk-paddin-small">
+            <span class="uk-text-bold">{{t
+                "ember-gwr.constructionProject.fields.EPROID"
+              }}:</span>
+            <span>{{this.project.EPROID}}</span>
+          </div>
+          <div class="uk-width-1-3 uk-paddin-small">
+            <span class="uk-text-bold">{{t
+                "ember-gwr.constructionProject.fields.constructionLocalisation.municipalityName"
+              }}:</span>
+            <span
+            >{{this.project.constructionLocalisation.municipalityName}}</span>
+          </div>
+          <div class="uk-width-1-3 uk-paddin-small">
+            <span class="uk-text-bold">{{t
+                "ember-gwr.constructionProject.fields.constructionSurveyDeptNumber"
+              }}:</span>
+            <span>{{this.project.constructionSurveyDeptNumber}}</span>
+          </div>
+        </div>
+        <hr />
       {{/unless}}
       <Field @attr="officialConstructionProjectFileNo" />
-      <Field
-        @attr="extensionOfOfficialConstructionProjectFileNo"
-      />
+      <Field @attr="extensionOfOfficialConstructionProjectFileNo" />
       <Field
         @inputType="select"
         @convertValueTo="number"
