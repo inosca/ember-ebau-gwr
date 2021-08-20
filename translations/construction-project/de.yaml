@@ -5,8 +5,8 @@ ember-gwr:
 
     fields:
       EPROID: EPROID
-      officialConstructionProjectFileNo: Amtliche Baudossiernummer
-      extensionOfOfficialConstructionProjectFileNo: Amtliche Baudossiernr. Zusatz
+      officialConstructionProjectFileNo: Baudossiernummer
+      extensionOfOfficialConstructionProjectFileNo: Baudossiernr. Zusatz
       constructionProjectDescription: Umschreibung Bauprojekts
       constructionSurveyDeptNumber: Erhebungsstellennummer
       totalCostsOfProject: Projektkosten total
