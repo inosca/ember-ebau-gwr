@@ -111,6 +111,8 @@ export default class ConstructionProject extends XMLModel {
   // TODO <work> is until now a fixed value. We need to implement a select for it and display it.
   static template = `
   <ns2:constructionProject>
+    {{{modelField model "officialConstructionProjectFileNo"}}}
+    {{{modelField model "extensionOfOfficialConstructionProjectFileNo"}}}
     <ns2:constructionSurveyDeptNumber>{{model.constructionSurveyDeptNumber}}</ns2:constructionSurveyDeptNumber>
     <ns2:constructionProjectDescription>{{model.constructionProjectDescription}}</ns2:constructionProjectDescription>
     {{> ConstructionLocalisation model=model.constructionLocalisation}}
@@ -133,7 +135,7 @@ export default class ConstructionProject extends XMLModel {
       {{! These fields are accepted by the api but it seems like theire not actually written.}}
       {{{modelField model "projectSuspensionDate" value=(echDate model.projectSuspensionDate)}}}
       {{{modelField model "constructionAuthorisationDeniedDate" value=(echDate model.constructionAuthorisationDeniedDate)}}}
-      
+
       {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
       {{{modelField model "withdrawalDate" value=(echDate model.withdrawalDate)}}}
       {{{modelField model "cancellationDate" value=(echDate model.nonRealisationDate)}}}

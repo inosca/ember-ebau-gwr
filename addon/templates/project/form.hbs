@@ -29,36 +29,24 @@
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="projectStatus"
-      {{did-insert (perform this.fetchCalumaData)}} as |Field|
+      {{did-insert (perform this.fetchCalumaData)}}
+      as |Field|
     >
       {{#unless this.project.isNew}}
-        <div class="uk-flex uk-flex-wrap uk-flex-between">
-          <div class="uk-width-1-4@m uk-width-1">
-            <Field @type="number" @attr="EPROID" @disabled={{true}} />
-          </div>
-          <div class="uk-width-1-4@m uk-width-1">
-            <Field
-              @disabled={{true}}
-              @attr="officialConstructionProjectFileNo"
-            />
-          </div>
-          <div class="uk-width-1-4@m uk-width-1">
-            <Field
-              @type="number"
-              @disabled={{true}}
-              @attr="extensionOfOfficialConstructionProjectFileNo"
-            />
-          </div>
-        </div>
+        <Field @type="number" @attr="EPROID" @disabled={{true}} />
         <Field
           @attr="constructionLocalisation.municipalityName"
           @disabled={{true}}
         />
+        <Field
+          @type="number"
+          @attr="constructionSurveyDeptNumber"
+          @disabled={{true}}
+        />
       {{/unless}}
+      <Field @attr="officialConstructionProjectFileNo" />
       <Field
-        @type="number"
-        @attr="constructionSurveyDeptNumber"
-        @disabled={{true}}
+        @attr="extensionOfOfficialConstructionProjectFileNo"
       />
       <Field
         @inputType="select"
@@ -79,11 +67,7 @@
         @attr="typeOfPermit"
         @gwrEnumOptions={{this.choiceOptions.typeOfPermitOptions}}
       />
-      <Field
-        @type="number"
-        @required={{true}}
-        @attr="totalCostsOfProject"
-      />
+      <Field @type="number" @required={{true}} @attr="totalCostsOfProject" />
       <Field
         @inputType="select"
         @convertValueTo="number"
@@ -106,7 +90,8 @@
           (unless
             this.import
             "uk-padding uk-padding-remove-vertical uk-padding-remove-left"
-          ) as |spacingClass|
+          )
+          as |spacingClass|
         }}
           <div class={{spacingClass}}>
             <Field
@@ -147,7 +132,9 @@
         <Field
           @type="number"
           @attr="durationOfConstructionPhase"
-          @hint={{t "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint"}}
+          @hint={{t
+            "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint"
+          }}
         />
       {{/unless}}
       <h3>
