@@ -143,11 +143,10 @@ export default class ConstructionProject extends XMLModel {
     {{/unless}}
 
     {{#if model.isNew}}
-      {{! TODO}}
       <ns2:work>
         <ns2:kindOfWork>6002</ns2:kindOfWork>
+        <ns2:ARBID>1</ns2:ARBID>
       </ns2:work>
-
     {{/if}}
   </ns2:constructionProject>
   `;
