@@ -1,3 +1,17 @@
+# [2.6.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.5.1...v2.6.0) (2021-08-24)
+
+
+### Bug Fixes
+
+* **construction-project:** set ARBID to 1 so there are no errors for the empty linked work ([780fa4d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/780fa4d27b24678a48c04dfec1342c6acbdb4fae))
+
+
+### Features
+
+* **construction-project:** display fixed values as plain text instead of input ([3486f62](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3486f6247dace461d9c490bf779652cfecab1b0c))
+* **project-number:** make officialConstructionProjectFileNo writable ([f6eb978](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f6eb978ff185ba2ce03a5a23d60b1937810c155a))
+* **project-search:** display official number in results ([cca3966](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/cca3966125172bb202915e44d45369544236c320))
+
 ## [2.5.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.5.0...v2.5.1) (2021-08-13)
 
 
