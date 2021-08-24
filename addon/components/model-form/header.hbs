@@ -24,7 +24,10 @@
         uk-flex-bottom uk-flex-wrap uk-flex-wrap-around"
     >
       {{#if @hasStatus}}
-        <ModelForm::Header::Status @model={{@model}} @modelName={{@modelName}} />
+        <ModelForm::Header::Status
+          @model={{@model}}
+          @modelName={{@modelName}}
+        />
       {{/if}}
       <ModelForm::Header::Errors
         @model={{@model}}
@@ -49,5 +52,5 @@
       />
     {{/if}}
   {{/let}}
-  <hr class="uk-margin-small-top uk-margin-medium-bottom" />
+  <hr class="uk-margin-small-top" />
 {{/if}}

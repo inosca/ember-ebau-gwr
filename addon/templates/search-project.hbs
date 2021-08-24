@@ -53,6 +53,9 @@
         @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
       />
       <Header
+        @label={{t "ember-gwr.constructionProject.fields.officialConstructionProjectFileNo"}}
+      />
+      <Header
         class="uk-table-expand"
         @label={{t
           "ember-gwr.constructionProject.fields.constructionProjectDescription"
@@ -70,6 +73,7 @@
           {{value}}
         </button>
       </Field>
+      <Field @attr="officialConstructionProjectFileNo" />
       <Field @attr="constructionProjectDescription" />
       <Field @attr="projectStatus" as |value|>
         {{#if value}}
