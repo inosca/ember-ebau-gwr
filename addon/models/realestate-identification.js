@@ -14,7 +14,7 @@ export default class RealestateIdentification extends XMLModel {
     this.setFieldsFromXML({
       fields: {
         number: Number,
-        EGRID: Number,
+        EGRID: String,
         numberSuffix: Number,
         subDistrict: Number,
         lot: Number,

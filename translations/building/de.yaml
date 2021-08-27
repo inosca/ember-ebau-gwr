@@ -36,7 +36,7 @@ ember-gwr:
       floor: "{number}. Stock"
       error: Beim Laden der Wohnungen ist ein Fehler aufgetreten.
       removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
-
+      removeLinkSuccess: "Ihre Anfrage wurde vom BfS erfasst. Das Support-Team wird Ihre Anfrage bearbeiten und Sie, falls nötig kontaktieren. Telefon: 0800 866 600 E-mail: housing-stat@bfs.admin.ch"
     sections:
       kindOfWorkForProject: Art der Arbeiten für Bauprojekt {projectId}
       building: Gebäude

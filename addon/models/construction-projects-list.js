@@ -20,7 +20,7 @@ export default class ConstructionProjectsList extends XMLModel {
       fields: {
         EPROID: Number,
         officialConstructionProjectFileNo: String,
-        extensionOfOfficialConstructionProjectFileNo: String,
+        extensionOfOfficialConstructionProjectFileNo: Number,
         constructionProjectDescription: String,
         constructionSurveyDeptNumber: String,
         projectStatus: Number,

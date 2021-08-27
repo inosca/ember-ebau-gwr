@@ -53,7 +53,7 @@ export default class ConstructionProject extends XMLModel {
         typeOfPermit: Number,
         totalCostsOfProject: Number,
         officialConstructionProjectFileNo: String,
-        extensionOfOfficialConstructionProjectFileNo: String,
+        extensionOfOfficialConstructionProjectFileNo: Number,
         constructionProjectDescription: String,
         constructionSurveyDeptNumber: String,
         withdrawalDate: String,

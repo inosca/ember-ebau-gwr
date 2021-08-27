@@ -32,6 +32,9 @@ export default class BuildingEditDwellingsController extends Controller {
     try {
       await this.dwelling.deactivate(this.model, dwelling.EWID);
       await this.fetchDwellings.perform();
+      this.notification.success(
+        this.intl.t("ember-gwr.building.dwellings.removeLinkSuccess")
+      );
     } catch (error) {
       console.error(error);
       this.notification.danger(

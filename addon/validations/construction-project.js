@@ -5,6 +5,15 @@ import {
 } from "ember-changeset-validations/validators";
 
 export default {
+  officialConstructionProjectFileNo: validateLength({
+    min: 1,
+    max: 15,
+    allowBlank: true,
+  }),
+  extensionOfOfficialConstructionProjectFileNo: validateNumber({
+    integer: true,
+    allowBlank: true,
+  }),
   typeOfConstructionProject: [
     validatePresence(true),
     validateNumber({ integer: true }),

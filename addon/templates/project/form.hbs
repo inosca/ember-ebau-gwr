@@ -57,7 +57,10 @@
         <hr />
       {{/unless}}
       <Field @attr="officialConstructionProjectFileNo" />
-      <Field @attr="extensionOfOfficialConstructionProjectFileNo" />
+      <Field
+        @attr="extensionOfOfficialConstructionProjectFileNo"
+        @type="number"
+      />
       <Field
         @inputType="select"
         @convertValueTo="number"
@@ -151,7 +154,7 @@
         {{t "ember-gwr.components.projectForm.realEstateHeading"}}
       </h3>
       <Field @type="number" @attr="realestateIdentification.number" />
-      <Field @type="number" @attr="realestateIdentification.EGRID" />
+      <Field @attr="realestateIdentification.EGRID" />
       <h3>
         {{t "ember-gwr.components.projectForm.clientHeading"}}
       </h3>
