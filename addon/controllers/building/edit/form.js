@@ -111,23 +111,50 @@ export default class BuildingFormController extends Controller {
     }
   }
 
+  // TODO: reduce code duplication and somehow combine check and cascade
   async check(currentStatus, newStatus) {
-    // in new buildings dwellings and buildings should be
-    // completed before the project
     if (newStatus === 1007 && this.buildingWork.kindOfWork === 6007) {
-      const dwellings = await Promise.all(this.building.buildingEntrance
-        .map((entrance) => entrance.dwelling)
-        .flat()
-        .map(async (dwelling) => {
-          return await this.dwelling.getFromCacheOrApi(
-            dwelling.EWID,
-            this.model.buildingId
-          );
-        }));
-      
-      if (dwellings.some((dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3007)) {
+      const dwellings = await Promise.all(
+        this.building.buildingEntrance
+          .map((entrance) => entrance.dwelling)
+          .flat()
+          .map(async (dwelling) => {
+            return await this.dwelling.getFromCacheOrApi(
+              dwelling.EWID,
+              this.model.buildingId
+            );
+          })
+      );
+
+      if (
+        dwellings.some(
+          (dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3007
+        )
+      ) {
         return [
           "Verknüpfte Wohnungen müssen abgebrochen werden bevor das Gebäude abgebrochen werden kann.",
+        ];
+      }
+    } else if (newStatus === 1008) {
+      const dwellings = await Promise.all(
+        this.building.buildingEntrance
+          .map((entrance) => entrance.dwelling)
+          .flat()
+          .map(async (dwelling) => {
+            return await this.dwelling.getFromCacheOrApi(
+              dwelling.EWID,
+              this.model.buildingId
+            );
+          })
+      );
+
+      if (
+        dwellings.some(
+          (dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3008
+        )
+      ) {
+        return [
+          "Verknüpfte Wohnungen müssen auf nicht realisiert gesetzt werden bevor das Gebäude nicht realisiert werden kann.",
         ];
       }
     }
@@ -136,15 +163,22 @@ export default class BuildingFormController extends Controller {
   }
 
   cascadeStates(currentStatus, newStatus) {
-    return (newStatus === 1007 && this.buildingWork.kindOfWork === 6007)
-      ? {
-          dwelling: {
-            currentStatus: [3004, 3005],
-            newStatus: 3007,
-          },
-        }
-      : undefined;
-      
+    if (newStatus === 1007 && this.buildingWork.kindOfWork === 6007) {
+      return {
+        dwelling: {
+          currentStatus: [3004, 3005],
+          newStatus: 3007,
+        },
+      };
+    } else if (newStatus === 1008) {
+      return {
+        dwelling: {
+          currentStatus: [3001, 3002, 3003],
+          newStatus: 3008,
+        },
+      };
+    }
+    return undefined;
   }
 
   @task
@@ -233,10 +267,8 @@ export default class BuildingFormController extends Controller {
     return this.buildingAPI.getCorrectionParameters(newStatus);
   }
 
-
   @action
   getChangeHint(currentStatus, newStatus) {
     return this.buildingAPI.getChangeHint(currentStatus, newStatus);
   }
-
 }
