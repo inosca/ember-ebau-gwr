@@ -12,6 +12,7 @@ export default class BuildingFormController extends Controller {
 
   @service constructionProject;
   @service("building") buildingAPI;
+  @service dwelling;
   @service intl;
   @service notification;
 
@@ -86,6 +87,18 @@ export default class BuildingFormController extends Controller {
         EGID,
         this.buildingWork
       );
+
+      const project = yield this.constructionProject.getFromCacheOrApi(
+        this.model.projectId
+      );
+
+      console.log("project.work", project.work);
+      if (project.work.find((work) => work.ARBID === 1)) {
+        yield this.constructionProject.deactivateDefaultWork(
+          this.model.projectId
+        );
+      }
+
       // Clear cache so after transition we fetch the project form api
       this.constructionProject.clearCache(this.model.projectId);
       this.buildingAPI.clearCache(this.model.buildingId);
@@ -98,9 +111,89 @@ export default class BuildingFormController extends Controller {
     }
   }
 
+  async check(currentStatus, newStatus) {
+    // in new buildings dwellings and buildings should be
+    // completed before the project
+    if (newStatus === 1007 && this.buildingWork.kindOfWork === 6007) {
+      const dwellings = await Promise.all(this.building.buildingEntrance
+        .map((entrance) => entrance.dwelling)
+        .flat()
+        .map(async (dwelling) => {
+          return await this.dwelling.getFromCacheOrApi(
+            dwelling.EWID,
+            this.model.buildingId
+          );
+        }));
+      
+      if (dwellings.some((dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3007)) {
+        return [
+          "Verknüpfte Wohnungen müssen abgebrochen werden bevor das Gebäude abgebrochen werden kann.",
+        ];
+      }
+    }
+
+    return [];
+  }
+
+  cascadeStates(currentStatus, newStatus) {
+    return (newStatus === 1007 && this.buildingWork.kindOfWork === 6007)
+      ? {
+          dwelling: {
+            currentStatus: [3004, 3005],
+            newStatus: 3007,
+          },
+        }
+      : undefined;
+      
+  }
+
+  @task
+  *cascadeTransition(cascadeStates) {
+    yield Promise.all(
+      this.buildingWork.building.buildingEntrance.map(async (entrance) => {
+        await Promise.all(
+          entrance.dwelling.map(async (dwelling) => {
+            if (
+              dwelling.dwellingStatus !== cascadeStates.dwelling.newStatus &&
+              cascadeStates.dwelling.currentStatus.includes(
+                dwelling.dwellingStatus
+              )
+            ) {
+              console.log("settings dwelling:", dwelling);
+
+              if (cascadeStates.dwelling.newStatus === 3007) {
+                console.log("this.buidling:", this.building.yearOfDemolition);
+                dwelling.dateOfDemolition.year = this.building.yearOfDemolition;
+              }
+              await this.dwelling.transitionState(
+                dwelling,
+                dwelling.dwellingStatus,
+                cascadeStates.dwelling.newStatus,
+                this.buildingWork.building.EGID
+              );
+            }
+          })
+        );
+      })
+    );
+    //yield this.buildingAPI.clearCache(this.model.buildingId);
+    //yield this.fetchBuilding.perform();
+    //console.log("buildingWork new:", this.buildingWork);
+  }
+
   @task
   *transitionState(currentStatus, newStatus) {
     try {
+      const cascadeStates = this.cascadeStates(currentStatus, newStatus);
+      if (cascadeStates) {
+        yield this.cascadeTransition.perform(cascadeStates);
+      }
+
+      const errors = yield this.check(currentStatus, newStatus);
+      if (errors.length) {
+        throw errors;
+      }
+      console.log("setting project");
       yield this.buildingAPI.transitionState(
         this.building,
         currentStatus,
@@ -139,4 +232,11 @@ export default class BuildingFormController extends Controller {
   getCorrectionParameters(newStatus) {
     return this.buildingAPI.getCorrectionParameters(newStatus);
   }
+
+
+  @action
+  getChangeHint(currentStatus, newStatus) {
+    return this.buildingAPI.getChangeHint(currentStatus, newStatus);
+  }
+
 }

@@ -12,6 +12,7 @@
         @activeProject={{this.activeProject}}
         @removeProject={{this.removeProjectLink}}
       />
+      {{log "activeProject:" this.activeProject}}
       <UkTab as |Tab|>
         <Tab.link-item @route="project.form" @model={{this.activeProject}}>
           {{t "ember-gwr.models.project" count=1}}
@@ -19,6 +20,7 @@
         <Tab.link-item
           @route="project.linked-buildings"
           @model={{this.activeProject}}
+          @disabled={{not this.activeProject}}
         >
           {{t "ember-gwr.models.building" count=1}}
         </Tab.link-item>

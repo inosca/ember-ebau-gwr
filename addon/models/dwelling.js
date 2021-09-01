@@ -107,7 +107,7 @@ export default class Dwelling extends XMLModel {
 
   // valid state transitions
   static dwellingStatesMapping = {
-    3001: [/*3002,*/ 3008], // Projektiert
+    3001: [3002, 3008], // Projektiert
     3002: [3003, 3008], // Bewilligt
     3003: [3008, 3004, 3005], // Im Bau
     3004: [3007], // Bestehend
@@ -121,6 +121,7 @@ export default class Dwelling extends XMLModel {
     3001: {
       // TODO: dwellings are approved through construction project approval
       //3002: "setToApprovedConstructionProject", // set dwellings to approve on construction project?
+      3002: "setToApprovedDwelling",
       3008: "setToNotRealizedDwelling",
     },
     3002: {
@@ -153,6 +154,7 @@ export default class Dwelling extends XMLModel {
   static dwellingTransitionParameters = {
     // TODO: dwellings are approved through construction project approval
     //setToApprovedConstructionProject: [],
+    setToApprovedDwelling: [],
     setToCompletedDwelling: [
       {
         field: "dateOfConstruction.yearMonthDay",

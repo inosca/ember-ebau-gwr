@@ -78,37 +78,13 @@ export default class BuildingService extends GwrService {
   }
 
   async create(EPROID, buildingWork) {
-    let body = this.xml.buildXMLRequest("addWorkToProject", buildingWork);
-    let response = await this.authFetch.fetch(
-      `/constructionprojects/${EPROID}/work`,
-      {
-        method: "post",
-        body,
-      }
-    );
-
-    if (!response.ok) {
-      const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
-
-      console.error("GWR API: addWorkToProject failed");
-      throw errors;
-    }
-
-    let xml = await response.text();
-    const model = new XMLModel(xml);
-    const ARBID = model.getFieldFromXML(
-      "ARBID",
-      Number,
-      "addWorkToProjectResponse"
-    );
-
-    body = this.xml.buildXMLRequest(
+    const work = await this.constructionProject.addWorkToProject(EPROID, buildingWork);
+    const body = this.xml.buildXMLRequest(
       "addBuildingToConstructionProject",
-      buildingWork.building
+      work.building
     );
-    response = await this.authFetch.fetch(
-      `/constructionprojects/${EPROID}/work/${ARBID}`,
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${EPROID}/work/${work.ARBID}`,
       {
         method: "post",
         body,
@@ -119,11 +95,12 @@ export default class BuildingService extends GwrService {
       const xmlErrors = await response.text();
       const errors = this.extractErrorsFromXML(xmlErrors);
 
+      await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
       console.error("GWR API: addBuildingToConstructionProject failed");
       throw errors;
     }
 
-    xml = await response.text();
+    const xml = await response.text();
     return this.createAndCache(xml);
   }
 
@@ -185,5 +162,9 @@ export default class BuildingService extends GwrService {
 
   getCorrectionParameters(newStatus) {
     return Building.buildingTransitionParametersMapping[newStatus];
+  }
+
+  getChangeHint(currentStatus, newStatus) {
+    return Building.buildingTransitionHint[currentStatus][newStatus];
   }
 }

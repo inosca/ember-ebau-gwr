@@ -7,14 +7,31 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
+    {{log "type:" this.project.typeOfConstructionProject}}
     <LinkedModels
       @models={{this.fetchBuildings.lastSuccessful.value}}
       @modelName="building"
       @removeLink={{this.removeBuildingLink}}
-      @searchRoute="search-building"
-      @searchModels={{array @model}}
-      @newRoute="building.new"
-      @newModels={{array @model}} as |model|
+      @searchRoute={{if
+        (eq this.project.typeOfConstructionProject 6011)
+        "search-building"
+        undefined
+      }}
+      @searchModels={{if
+        (eq this.project.typeOfConstructionProject 6011)
+        (array @model)
+        undefined
+      }}
+      @newRoute={{if
+        (eq this.project.typeOfConstructionProject 6011)
+        "building.new"
+        undefined
+      }}
+      @newModels={{if
+        (eq this.project.typeOfConstructionProject 6011)
+        (array @model)
+        undefined
+      }} as |model|
     >
       <td class="uk-table-shrink">
         <LinkTo

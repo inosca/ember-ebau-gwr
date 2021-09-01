@@ -28,6 +28,7 @@
       @onStatusCorrection={{this.correctState}}
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
+      @getChangeHint={{this.getChangeHint}}
       @modelStatusField="projectStatus"
       {{did-insert (perform this.fetchCalumaData)}}
       as |Field|
@@ -67,6 +68,8 @@
         @required={{true}}
         @attr="typeOfConstructionProject"
         @gwrEnumOptions={{this.choiceOptions.typeOfConstructionProjectOptions}}
+        @on-update={{fn (mut this.typeOfConstructionProject)}}
+        @hint={{"Für Tiefbauprojekte sind keine Gebäude zugelassen."}}
       />
       <Field
         @inputType="textarea"

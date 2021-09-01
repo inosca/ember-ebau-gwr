@@ -42,6 +42,13 @@ export const reallocateDwelling =
   </ns2:reallocateDwelling>
 {{/base}}`;
 
+// prettier-ignore
+export const setToApprovedDwelling  =
+`{{#>base}}
+  <ns2:setToApprovedDwelling>
+  </ns2:setToApprovedDwelling>
+{{/base}}`;
+
 //prettier-ignore
 export const setToDwellingConstructionStarted =
 `{{#>base}}
@@ -76,7 +83,7 @@ export const setToDemolishedDwelling =
 `{{#>base}}
   <ns2:setToDemolishedDwelling>
     <ns2:dateOfDemolition>
-      <year>{{model.yearOfDemolition}}</year>
+      <year>{{model.dateOfDemolition.year}}</year>
     </ns2:dateOfDemolition>
   </ns2:setToDemolishedDwelling>
 {{/base}}`;

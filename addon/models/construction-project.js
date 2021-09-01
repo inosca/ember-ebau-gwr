@@ -82,9 +82,9 @@ export default class ConstructionProject extends XMLModel {
     });
 
     // Do not show buildingWork which have no building attached
-    this.work = this.work.filter(
+    /*this.work = this.work.filter(
       (buildingWork) => !buildingWork.building.isNew
-    );
+    );*/
 
     // Project status not returned by every API response
     if (!this.projectStatus) {
@@ -324,5 +324,36 @@ export default class ConstructionProject extends XMLModel {
       { field: "buildingPermitIssueDate", type: "date", required: false },
       { field: "withdrawalDate", type: "date", required: true },
     ],
+  };
+
+  static projectTransitionHint = {
+    6701: {
+      6702: "Die verknüpften Gebäude und Wohnungen werden mitbewilligt.",
+      6707: "setToRefusedConstructionProject",
+      6709: "setToCancelledConstructionProject",
+      6708: "setToWithdrawnConstructionProject",
+      6706: "setToSuspendedConstructionProject",
+    },
+    6702: {
+      6703: "setToStartConstructionProject",
+      6709: "setToCancelledConstructionProject",
+      6708: "setToWithdrawnConstructionProject",
+      6706: "setToSuspendedConstructionProject",
+    },
+    6703: {
+      6704: "Wohnungen und Gebäude in Neubauprojekten müssen auf bestehend gesetzt werden bevor das Bauprojekt abgeschlossen werden kann.",
+      6708: "setToWithdrawnConstructionProject",
+      6706: "setToSuspendedConstructionProject",
+    },
+    6704: {},
+    6706: {
+      6701: "setToCancelledSuspensionConstructionProject",
+      6702: "setToCancelledSuspensionConstructionProject",
+      6708: "setToWithdrawnConstructionProject",
+      6703: "setToCancelledSuspensionConstructionProject",
+    },
+    6707: {},
+    6708: {},
+    6709: {},
   };
 }

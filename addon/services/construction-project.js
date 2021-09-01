@@ -1,5 +1,7 @@
 import { task, lastValue } from "ember-concurrency-decorators";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
+import BuildingWork from "ember-ebau-gwr/models/building-work";
+import XMLModel from "ember-ebau-gwr/models/xml-model";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 
 import GwrService from "./gwr";
@@ -43,7 +45,9 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   async create(project) {
+    console.log("create");
     const body = this.xml.buildXMLRequest("addConstructionProject", project);
+    console.log("body:", body);
     const response = await this.authFetch.fetch("/constructionprojects/", {
       method: "post",
       body,
@@ -54,6 +58,99 @@ export default class ConstructionProjectService extends GwrService {
       const errors = this.extractErrorsFromXML(xmlErrors);
 
       console.error("GWR API: addConstructionProject failed");
+      throw errors;
+    }
+
+    const xml = await response.text();
+    return this.createAndCache(xml);
+  }
+
+  async deactivateDefaultWork(projectId) {
+    return await this.removeWorkFromProject(projectId, 1);
+  }
+
+  async addDefaultWork(projectId) {
+    const buildingWork = new BuildingWork();
+    buildingWork.kindOfWork = 6002;
+    buildingWork.ARBID = 1;
+    console.log("buildingWork:", buildingWork);
+    return await this.addWorkToProject(projectId, buildingWork);
+  }
+
+  async addWorkToProject(projectId, buildingWork) {
+    const body = this.xml.buildXMLRequest("addWorkToProject", buildingWork);
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${projectId}/work`,
+      {
+        method: "post",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: addWorkToProject failed");
+      throw errors;
+    }
+
+    const xml = await response.text();
+    const model = new XMLModel(xml);
+    const ARBID = model.getFieldFromXML(
+      "ARBID",
+      Number,
+      "addWorkToProjectResponse"
+    );
+
+    console.log("ARBID:", ARBID);
+    buildingWork.ARBID = ARBID;
+
+    console.log("buildingWork:", buildingWork);
+    // TODO: apply for type umbau with modifyWork, don't execute bindBuildingToConstructionProject
+    return buildingWork;
+    /*return buildingWork.kindOfWork === 6002
+      ? await this.modifyWork(projectId, buildingWork)
+      : buildingWork;*/
+  }
+
+  async modifyWork(projectId, buildingWork) {
+    const body = this.xml.buildXMLRequest("modifyWork", buildingWork);
+    console.log("body:", body);
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${projectId}/work/${buildingWork.ARBID}`,
+      {
+        method: "put",
+        body,
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: modifyWork failed");
+      throw errors;
+    }
+
+    const xml = await response.text();
+    console.log("xml modifyWork:", xml);
+    return buildingWork;
+  }
+
+  async removeWorkFromProject(projectId, workId) {
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${projectId}/work/${workId}`,
+      {
+        method: "delete",
+      }
+    );
+
+    if (!response.ok) {
+      const xmlErrors = await response.text();
+      const errors = this.extractErrorsFromXML(xmlErrors);
+
+      console.error("GWR API: deactivateWork failed");
       throw errors;
     }
 
@@ -138,5 +235,9 @@ export default class ConstructionProjectService extends GwrService {
         project[parameter] = "9999-01-01";
       }
     });
+  }
+
+  getChangeHint(currentStatus, newStatus) {
+    return ConstructionProject.projectTransitionHint[currentStatus][newStatus];
   }
 }

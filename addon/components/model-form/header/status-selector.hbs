@@ -5,7 +5,7 @@
     uk-close
     {{on "click" @closeStatus}}
   ></button>
-  <div class="uk-flex uk-flex-between uk-flex-bottom">
+  <div class="uk-flex uk-flex-between uk-flex-middle">
     <div>
       <div class="uk-text-bold">
         {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
@@ -20,6 +20,11 @@
           @update={{this.statusUpdate}}
         />
       </form>
+      <small class="uk-text-muted uk-flex-inline uk-width-large">
+        {{#if this.changeHint}}
+          {{this.changeHint}}
+        {{/if}}
+      </small>
     </div>
     <div class="uk-flex-inline uk-flex-middle">
       <div class="uk-margin-small-right" uk-icon="icon: question"></div>

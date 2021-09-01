@@ -133,4 +133,10 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   get correctionParameters() {
     return this.args.getCorrectionParameters(this.newStatus);
   }
+
+  get changeHint() {
+    return this.args.getChangeHint && this.modelStatus && this.newStatus
+      ? this.args.getChangeHint(this.modelStatus, this.newStatus)
+      : undefined;
+  }
 }

@@ -10,6 +10,7 @@ import {
 
 export default class SearchBuildingController extends Controller {
   @service building;
+  @service constructionProject;
   @service intl;
   @service notification;
 
@@ -39,6 +40,15 @@ export default class SearchBuildingController extends Controller {
         EGID,
         buildingWork
       );
+
+      const project = yield this.constructionProject.getFromCacheOrApi(
+        this.model
+      );
+
+      if (project.work.find((work) => work.ARBID === 1)) {
+        yield this.constructionProject.deactivateDefaultWork(this.model);
+      }
+
       this.activeBuilding = null;
       this.transitionToRoute("project.linked-buildings", this.model);
       this.notification.success(

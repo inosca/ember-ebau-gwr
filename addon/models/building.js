@@ -275,7 +275,7 @@ export default class Building extends XMLModel {
 
   // valid state transitions
   static buildingStatesMapping = {
-    1001: [/*1002,*/ 1008], // Projektiert
+    1001: [1002, 1008], // Projektiert
     1002: [1003, 1008], // Bewilligt
     1003: [1004, 1005], // Im Bau
     1004: [1007], // Bestehend
@@ -289,6 +289,7 @@ export default class Building extends XMLModel {
     1001: {
       // TODO: buildings are approved through construction project approval
       //1002: "setToApprovedConstructionProject", // TODO: maybe mark in construction project?
+      1002: "setToApprovedBuilding",
       1008: "setToNotRealizedBuilding",
     },
     1002: {
@@ -320,6 +321,7 @@ export default class Building extends XMLModel {
   static buildingTransitionParameters = {
     // TODO: buildings are approved through construction project approval
     //setToApprovedConstructionProject: [],
+    setToApprovedBuilding: [],
     setToCompletedBuilding: [
       {
         field: "dateOfConstruction.yearMonthDay",
@@ -357,5 +359,29 @@ export default class Building extends XMLModel {
       { field: "yearOfDemolition", type: "number", required: true },
     ],
     1008: [],
+  };
+
+  static buildingTransitionHint = {
+    1001: {
+      1002: "setToApprovedBuilding",
+      1008: "setToNotRealizedBuilding",
+    },
+    1002: {
+      1003: "setToBuildingConstructionStarted",
+      1008: "setToNotRealizedBuilding",
+    },
+    1003: {
+      1004: "setToCompletedBuilding",
+      1005: "setToUnusableBuilding",
+    },
+    1004: {
+      1007: "Die verknüpften Wohnungen werden auch abgebrochen.",
+    },
+    1005: {
+      1004: "setToCompletedBuilding",
+      1007: "Die verknüpften Wohnungen werden auch abgebrochen.",
+    },
+    1007: {},
+    1008: {},
   };
 }
