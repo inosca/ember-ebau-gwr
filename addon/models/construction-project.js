@@ -159,7 +159,7 @@ export default class ConstructionProject extends XMLModel {
   static projectStatesMapping = {
     6701: [6702, 6707, 6709, 6708, 6706], // Baugesuch eingereicht
     6702: [6703, 6709, 6708, 6706], // Baubewilligung erteilt (rechtswirksam)
-    6703: [6704, 6708, 6706], // Baubegonnen
+    6703: [6704, /*6708,*/ 6706], // Baubegonnen
     6704: [], // Abgeschlossen
     6706: [6701, 6702, 6708, 6703], // Projekt sistiert
     6707: [], // Baugesuch abgelehnt (rechtswirksam)
@@ -172,26 +172,32 @@ export default class ConstructionProject extends XMLModel {
     6701: {
       6702: "setToApprovedConstructionProject",
       6707: "setToRefusedConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
+      //6709: "setToCancelledConstructionProject",
+      //6708: "setToWithdrawnConstructionProject",
+      6709: "setToWithdrawnConstructionProject",
+      6708: "setToCancelledConstructionProject",
       6706: "setToSuspendedConstructionProject",
     },
     6702: {
       6703: "setToStartConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
+      //6709: "setToCancelledConstructionProject",
+      //6708: "setToWithdrawnConstructionProject",
+      6709: "setToWithdrawnConstructionProject",
+      6708: "setToCancelledConstructionProject",
       6706: "setToSuspendedConstructionProject",
     },
     6703: {
       6704: "setToCompletedConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
+      //6708: "setToWithdrawnConstructionProject",
+      //6708: "setToCancelledConstructionProject",
       6706: "setToSuspendedConstructionProject",
     },
     6704: {},
     6706: {
       6701: "setToCancelledSuspensionConstructionProject",
       6702: "setToCancelledSuspensionConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
+      //6708: "setToWithdrawnConstructionProject",
+      6708: "setToCancelledConstructionProject",
       6703: "setToCancelledSuspensionConstructionProject",
     },
     6707: {},
@@ -212,10 +218,10 @@ export default class ConstructionProject extends XMLModel {
       },
     ],
     setToWithdrawnConstructionProject: [
-      { field: "nonRealisationDate", type: "date", required: true },
+      { field: "withdrawalDate", type: "date", required: true },
     ],
     setToCancelledConstructionProject: [
-      { field: "withdrawalDate", type: "date", required: true },
+      { field: "nonRealisationDate", type: "date", required: true },
     ],
     setToSuspendedConstructionProject: [
       { field: "projectSuspensionDate", type: "date", required: true },

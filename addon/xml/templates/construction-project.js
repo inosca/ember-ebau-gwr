@@ -40,7 +40,7 @@ export const setToWithdrawnConstructionProject =
 `{{#>base}}
   <ns2:setToWithdrawnConstruction>
     {{! TODO check if should be withdrawal date}}
-    <ns2:withdrawalDate>{{echDate model.nonRealisationDate}}</ns2:withdrawalDate>
+    <ns2:withdrawalDate>{{echDate model.withdrawalDate}}</ns2:withdrawalDate>
   </ns2:setToWithdrawnConstruction>
 {{/base}}`;
 
@@ -49,7 +49,7 @@ export const setToCancelledConstructionProject =
 `{{#>base}}
   <ns2:setToCancelledConstruction>
     {{! TODO check if should be nonRealisationDate and if state is accepted}}
-    <ns2:cancellationDate>{{echDate model.withdrawalDate}}</ns2:cancellationDate>
+    <ns2:cancellationDate>{{echDate model.nonRealisationDate}}</ns2:cancellationDate>
   </ns2:setToCancelledConstruction>
 {{/base}}`;
 

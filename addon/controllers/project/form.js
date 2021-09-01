@@ -96,100 +96,211 @@ export default class ProjectFormController extends Controller {
     }
   }
 
-  check(currentStatus, newStatus) {
-    // in new buildings dwellings and buildings should be
-    // completed before the project
-    return newStatus === 6704
-      ? this.buildingWork.map((buildingWork) => {
-          if (buildingWork.kindOfWork === 6001) {
-            const building = buildingWork.building;
-            if (
-              building.buildingStatus !== 1004 ||
+  // TODO: reduce code duplication, maybe combine with cascade
+  async check(currentStatus, newStatus) {
+    if (newStatus === 6704) {
+      if ((await Promise.all(this.buildingWork.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          const building = await this.building.get(buildingWork.building.EGID);
+          return (building.buildingStatus !== 1004 ||
+            building.buildingEntrance
+              .map((entrance) => entrance.dwelling)
+              .flat()
+              .some((dwelling) => dwelling.dwellingStatus !== 3004)
+          )
+        } 
+        return false;
+      }))).some(Boolean)) {
+          return "Wohnungen und Gebäude in Neubauprojekten müssen auf " +
+                  "bestehend gesetzt werden bevor das Bauprojekt abgeschlossen werden kann.";
+      }
+    } else if (newStatus === 6708) {
+      if ((await Promise.all(this.buildingWork.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          const building = await this.building.get(buildingWork.building.EGID);
+          if (this.project.projectStatus === 6703) {
+            return (building.buildingStatus !== 1005 ||
               building.buildingEntrance
                 .map((entrance) => entrance.dwelling)
                 .flat()
-                .some((dwelling) => dwelling.dwellingStatus !== 3004)
-            ) {
-              return [
-                "Wohnungen und Gebäude in Neubauprojekten müssen auf " +
-                  "bestehend gesetzt werden bevor das Bauprojekt abgeschlossen werden kann.",
-              ];
-            }
+                .some((dwelling) => dwelling.dwellingStatus !== 3005)
+            )
+          } else {
+            return (building.buildingStatus !== 1008 ||
+              building.buildingEntrance
+                .map((entrance) => entrance.dwelling)
+                .flat()
+                .some((dwelling) => dwelling.dwellingStatus !== 3008)
+            )
           }
-        })
-      : [];
+        } else if (buildingWork.kindOfWork === 6002) {
+          return building.buildingEntrance
+            .map((entrance) => entrance.dwelling)
+            .flat()
+            .some((dwelling) => dwelling.dwellingStatus !== 3008)
+        }
+        return false;
+      }))).some(Boolean)) {
+          return "Wohnungen und Gebäude müssen auf nicht realisiert bzw. nicht " + 
+            "nutzbar gesetzt werden bevor das Bauprojekt auf nicht realisiert gesetzt werden kann.";
+      }
+    } else if (newStatus === 6707 || newStatus === 6709) {
+      if ((await Promise.all(this.buildingWork.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          const building = await this.building.get(buildingWork.building.EGID);
+          return (building.buildingStatus !== 1008 ||
+            building.buildingEntrance
+              .map((entrance) => entrance.dwelling)
+              .flat()
+              .some((dwelling) => dwelling.dwellingStatus !== 3008)
+          )
+        } else if (buildingWork.kindOfWork === 6002) {
+          return building.buildingEntrance
+            .map((entrance) => entrance.dwelling)
+            .flat()
+            .some((dwelling) => dwelling.dwellingStatus !== 3008)
+        }
+        return false;
+      }))).some(Boolean)) {
+        return "Wohnungen und Gebäude müssen auf nicht realisiert " + 
+          "gesetzt werden bevor das Bauprojekt auf nicht realisiert oder abgelehnt gesetzt werden kann.";
+      }
+    }
+    
+    return [];
   }
 
-  cascadeStates(currentStatus, newStatus) {
-    return currentStatus === PROJECTED && newStatus === APPROVED
-      ? {
+  cascadeStates(buildingWork, currentStatus, newStatus) {
+    if (currentStatus === PROJECTED && newStatus === APPROVED) {
+      return {
+        building: {
+          currentStatus: [1001],
+          newStatus: 1002,
+        },
+        dwelling: {
+          currentStatus: [3001],
+          newStatus: 3002,
+        },
+      };
+    } else if (newStatus === 6708) {
+      if (buildingWork.kindOfWork === 6001) {
+        return this.project.projectStatus === 6703
+          ? {
+              building: {
+                currentStatus: [1003],
+                newStatus: 1005,
+              },
+              dwelling: {
+                currentStatus: [3001],
+                newStatus: 3005,
+              },
+            }
+          : {
+              building: {
+                currentStatus: [1001, 1002],
+                newStatus: 1008,
+              },
+              dwelling: {
+                currentStatus: [3001, 3002, 3003],
+                newStatus: 3008,
+              },
+            };
+      }
+
+      if (buildingWork.kindOfWork === 6002) {
+        return {
+          dwelling: {
+            currentStatus: [3001, 3002],
+            newStatus: 3008,
+          },
+        };
+      }
+    } else if (newStatus === 6707 || newStatus === 6709) {
+      if (buildingWork.kindOfWork === 6001) {
+        return {
           building: {
-            currentStatus: [1001],
-            newStatus: 1002,
+            currentStatus: [1001, 1002],
+            newStatus: 1008,
           },
           dwelling: {
-            currentStatus: [3001],
-            newStatus: 3002,
+            currentStatus: [3001, 3002, 3003],
+            newStatus: 3008,
           },
-        }
-      : undefined;
+        };
+      }
+
+      if (buildingWork.kindOfWork === 6002) {
+        return {
+          dwelling: {
+            currentStatus: [3001, 3002],
+            newStatus: 3008,
+          },
+        };
+      }
+    }
+
+    return undefined;
   }
 
   @task
-  *cascadeTransition(cascadeStates) {
+  *cascadeTransition(currentStatus, newStatus) {
     yield Promise.all(
       this.buildingWork.map(async (buildingWork) => {
-        await Promise.all(
-          buildingWork.building.buildingEntrance.map(async (entrance) => {
-            await Promise.all(
-              entrance.dwelling.map(async (dwelling) => {
-                if (
-                  dwelling.dwellingStatus !==
-                    cascadeStates.dwelling.newStatus &&
-                  cascadeStates.dwelling.currentStatus.includes(
-                    dwelling.dwellingStatus
-                  )
-                ) {
-                  console.log("settings dwelling:", dwelling);
-                  await this.dwelling.transitionState(
-                    dwelling,
-                    dwelling.dwellingStatus,
-                    cascadeStates.dwelling.newStatus,
-                    buildingWork.building.EGID
-                  );
-                }
-              })
-            );
-          })
+        const cascadeStates = this.cascadeStates(
+          buildingWork,
+          currentStatus,
+          newStatus
         );
-        if (
-          buildingWork.building.buildingStatus !==
-            cascadeStates.building.newStatus &&
-          cascadeStates.building.currentStatus.includes(
-            buildingWork.building.buildingStatus
-          )
-        ) {
-          console.log("setting building:", buildingWork.building);
-          await this.building.transitionState(
-            buildingWork.building,
-            buildingWork.building.buildingStatus,
-            cascadeStates.building.newStatus
+        if (cascadeStates?.dwelling) {
+          console.log("cascading dwellings");
+          await Promise.all(
+            buildingWork.building.buildingEntrance.map(async (entrance) => {
+              await Promise.all(
+                entrance.dwelling.map(async (dwelling) => {
+                  if (
+                    dwelling.dwellingStatus !==
+                      cascadeStates.dwelling.newStatus &&
+                    cascadeStates.dwelling.currentStatus.includes(
+                      dwelling.dwellingStatus
+                    )
+                  ) {
+                    console.log("settings dwelling:", dwelling);
+                    await this.dwelling.transitionState(
+                      dwelling,
+                      dwelling.dwellingStatus,
+                      cascadeStates.dwelling.newStatus,
+                      buildingWork.building.EGID
+                    );
+                  }
+                })
+              );
+            })
           );
+        }
+        if (cascadeStates?.building) {
+          if (
+            buildingWork.building.buildingStatus !==
+              cascadeStates.building.newStatus &&
+            cascadeStates.building.currentStatus.includes(
+              buildingWork.building.buildingStatus
+            )
+          ) {
+            console.log("setting building:", buildingWork.building);
+            await this.building.transitionState(
+              buildingWork.building,
+              buildingWork.building.buildingStatus,
+              cascadeStates.building.newStatus
+            );
+          }
         }
       })
     );
-    //yield this.fetchProject.perform();
   }
 
   @task
   *transitionState(currentStatus, newStatus) {
     try {
-      
-      const cascadeStates = this.cascadeStates(currentStatus, newStatus);
-      if (cascadeStates) {
-        yield this.cascadeTransition.perform(cascadeStates);
-      }
-      
+      yield this.cascadeTransition.perform(currentStatus, newStatus);
       const errors = this.check(currentStatus, newStatus);
       if (errors.length) {
         throw errors;

@@ -39,7 +39,7 @@ export default {
     validatePresenceTransition({
       presence: true,
       on: "projectStatus",
-      transitions: ["setToWithdrawnConstructionProject"],
+      transitions: ["setToCancelledConstructionProject"],
       data: ConstructionProject,
       model: "project",
     }),
@@ -48,7 +48,7 @@ export default {
     validatePresenceTransition({
       presence: true,
       on: "projectStatus",
-      transitions: ["setToCancelledConstructionProject"],
+      transitions: ["setToWithdrawnConstructionProject"],
       data: ConstructionProject,
       model: "project",
     }),
