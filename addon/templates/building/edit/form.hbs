@@ -1,4 +1,6 @@
-{{#if (and this.buildingWork.building.isNew (not this.fetchBuildingWork.isRunning))}}
+{{#if
+  (and this.buildingWork.building.isNew (not this.fetchBuildingWork.isRunning))
+}}
   <LinkTo
     @route="project.linked-buildings"
     @model={{this.model.projectId}}
@@ -33,12 +35,13 @@
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="buildingStatus"
-      as |Field|
+      as |Field changeset|
     >
       <h3>
         {{t
           "ember-gwr.building.sections.kindOfWorkForProject"
           projectId=@model.projectId
+          ARBID=this.buildingWork.ARBID
         }}
       </h3>
       <Field
@@ -49,57 +52,59 @@
         @required={{true}}
         @translationBase="ember-gwr.buildingWork"
       />
-      <div class="uk-flex">
-        <div class="uk-width-1-2">
-          <Field
-            @attr="energeticRestauration"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="renovationHeatingsystem"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="innerConversionRenovation"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="conversion"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="extensionHeighteningHeated"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
+      {{#if (eq changeset.kindOfWork 6002)}}
+        <div class="uk-flex">
+          <div class="uk-width-1-2">
+            <Field
+              @attr="energeticRestauration"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="renovationHeatingsystem"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="innerConversionRenovation"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="conversion"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="extensionHeighteningHeated"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <Field
+              @attr="extensionHeighteningNotHeated"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="thermicSolarFacility"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="photovoltaicSolarFacility"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+            <Field
+              @attr="otherWorks"
+              @type="checkbox"
+              @translationBase="ember-gwr.buildingWork"
+            />
+          </div>
         </div>
-        <div class="uk-width-1-2">
-          <Field
-            @attr="extensionHeighteningNotHeated"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="thermicSolarFacility"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="photovoltaicSolarFacility"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-          <Field
-            @attr="otherWorks"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingWork"
-          />
-        </div>
-      </div>
+      {{/if}}
       <hr />
 
       <h3>

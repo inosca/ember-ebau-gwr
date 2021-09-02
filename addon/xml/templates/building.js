@@ -81,15 +81,17 @@ export const bindBuildingToConstructionProject =
   <ns2:bindBuildingToConstructionProject>
     <ns2:EPROID>{{model.EPROID}}</ns2:EPROID>
     <ns2:constructionWorkDone>{{model.buildingWork.kindOfWork}}</ns2:constructionWorkDone>
-    <ns2:energeticRestauration>{{model.buildingWork.energeticRestauration}}</ns2:energeticRestauration>
-    <ns2:renovationHeatingsystem>{{model.buildingWork.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
-    <ns2:innerConversionRenovation>{{model.buildingWork.innerConversionRenovation}}</ns2:innerConversionRenovation>
-    <ns2:conversion>{{model.buildingWork.conversion}}</ns2:conversion>
-    <ns2:extensionHeighteningHeated>{{model.buildingWork.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
-    <ns2:extensionHeighteningNotHeated>{{model.buildingWork.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
-    <ns2:thermicSolarFacility>{{model.buildingWork.thermicSolarFacility}}</ns2:thermicSolarFacility>
-    <ns2:photovoltaicSolarFacility>{{model.buildingWork.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
-    <ns2:otherWorks>{{model.buildingWork.otherWorks}}</ns2:otherWorks>
+    {{#if (eq model.buildingWork.kindOfWork 6002)}}
+      <ns2:energeticRestauration>{{model.buildingWork.energeticRestauration}}</ns2:energeticRestauration>
+      <ns2:renovationHeatingsystem>{{model.buildingWork.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
+      <ns2:innerConversionRenovation>{{model.buildingWork.innerConversionRenovation}}</ns2:innerConversionRenovation>
+      <ns2:conversion>{{model.buildingWork.conversion}}</ns2:conversion>
+      <ns2:extensionHeighteningHeated>{{model.buildingWork.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
+      <ns2:extensionHeighteningNotHeated>{{model.buildingWork.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
+      <ns2:thermicSolarFacility>{{model.buildingWork.thermicSolarFacility}}</ns2:thermicSolarFacility>
+      <ns2:photovoltaicSolarFacility>{{model.buildingWork.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
+      <ns2:otherWorks>{{model.buildingWork.otherWorks}}</ns2:otherWorks>
+    {{/if}}
   </ns2:bindBuildingToConstructionProject>
 {{/base}}`
 
