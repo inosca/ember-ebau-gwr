@@ -24,13 +24,9 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
       this.errors = [];
       let buildingEntrance;
 
-      if (
-        this.buildingEntranceAPI.newRecord &&
-        this.router.currentRoute.localName === "new"
-      ) {
+      if (this.buildingEntranceAPI.newRecord) {
         buildingEntrance = this.buildingEntranceAPI.newRecord;
       } else {
-        this.buildingEntranceAPI.newRecord = null;
         buildingEntrance = yield this.buildingEntranceAPI.getFromCacheOrApi(
           this.model.entranceId,
           this.model.buildingId
