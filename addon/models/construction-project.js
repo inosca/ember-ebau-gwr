@@ -226,7 +226,8 @@ export default class ConstructionProject extends XMLModel {
         field: "durationOfConstructionPhase",
         type: "number",
         required: true,
-        hint: "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
     ],
     setToCompletedConstructionProject: [
@@ -262,7 +263,8 @@ export default class ConstructionProject extends XMLModel {
         field: "durationOfConstructionPhase",
         type: "number",
         required: true,
-        hint: "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
     ],
     6704: [
@@ -273,7 +275,8 @@ export default class ConstructionProject extends XMLModel {
         field: "durationOfConstructionPhase",
         type: "number",
         required: true,
-        hint: "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
       { field: "projectCompletionDate", type: "date", required: true },
     ],
@@ -290,14 +293,16 @@ export default class ConstructionProject extends XMLModel {
         type: "date",
         required: false,
         on: "durationOfConstructionPhase",
-        hint: "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
       {
         field: "durationOfConstructionPhase",
         type: "number",
         required: false,
         on: "projectStartDate",
-        hint: "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
+        hint:
+          "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
       { field: "projectSuspensionDate", type: "date", required: true },
     ],
