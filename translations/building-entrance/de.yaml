@@ -22,13 +22,15 @@ ember-gwr:
 
     fields:
       EDID: EDID
+      EGAID: EGAID
+      EGID: EGID
       isOfficialAddress: Offizielle Adresse
       buildingEntranceNo: Gebäudeeingang Nummer
       coordinates:
         east: E-Gebäudekoordinate
         north: N-Gebäudekoordinate
         originOfCoordinates: Koordinatenherkunft
-        originOfCoordinatesPlaceholder: Wählen Sie die  Koordinatenherkunft aus...
+        originOfCoordinatesPlaceholder: Wählen Sie die Koordinatenherkunft aus...
         originOfCoordinatesOptions:
           901: Amtliche Vermessung, DM.01
           902: Aus amtlicher Vermessung hergeleitet

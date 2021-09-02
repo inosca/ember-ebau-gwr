@@ -24,6 +24,16 @@
       @modelStatusField="dwellingStatus"
       as |Field|
     >
+      {{#if this.dwelling.isNew}}
+        <Field
+          @attr="dwellingStatus"
+          @type="select"
+          @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
+          @convertValueTo="number"
+          @required={{true}}
+        />
+      {{/if}}
+
       <Field
         @attr="EDID"
         @type="select"
@@ -33,18 +43,9 @@
         @noPlaceholder={{true}}
         @required={{true}}
       />
-      {{#unless this.dwelling.isNew}}
-        <Field @attr="EWID" @type="number" @disabled={{true}} />
-      {{/unless}}
       <Field @attr="floor" @type="number" @required={{true}} @min="3100" />
       <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
-      <Field
-        @attr="dwellingStatus"
-        @type="select"
-        @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
-        @convertValueTo="number"
-        @required={{true}}
-      />
+      <Field @attr="physicalDwellingNo" />
       <Field @attr="administrativeDwellingNo" />
       <Field @attr="noOfHabitableRooms" @type="number" @min="1" />
       <Field @attr="locationOfDwellingOnFloor" />
@@ -56,6 +57,8 @@
       />
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
+      <Field @attr="yearOfConstruction" @type="number" />
+      <Field @attr="yearOfDemolition" @type="number" />
 
       <h2>{{t "ember-gwr.dwelling.usage.heading"}}</h2>
       <Field

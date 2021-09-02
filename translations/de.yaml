@@ -187,6 +187,7 @@ ember-gwr:
       cancelImport: Import abbrechen
       applyAll: Alles übernehmen
       importFromCaluma: Baugesuchsdaten importieren
+      changeStatus: Status ändern
       dates: Daten
       datePlaceholder: Wählen Sie ein Datum...
       title: Bauprojekt {id}
@@ -229,7 +230,7 @@ ember-gwr:
       cancel: Abbrechen
 
     header:
-      status: 
+      status:
         label: Status
         placeholder: TODO
       statusSelector:
