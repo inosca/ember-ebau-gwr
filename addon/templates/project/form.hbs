@@ -253,6 +253,13 @@
         @attr="client.address.country"
         @gwrEnumOptions={{this.choiceOptions.countryOptions}}
       />
+
+      <h3>
+        {{t "ember-gwr.constructionProject.sections.freeTextFields"}}
+      </h3>
+
+      <Field @attr="projectFreeText1" />
+      <Field @attr="projectFreeText2" />
     </ModelForm>
   {{/if}}
 </div>

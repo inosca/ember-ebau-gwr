@@ -3,6 +3,9 @@ ember-gwr:
     saveError: Beim Speichern des Bauprojektes ist ein Fehler aufgetreten.
     saveSuccess: Bauprojekt erfolgreich gespeichert.
 
+    sections:
+      freeTextFields: Freitext Felder
+
     fields:
       EPROID: EPROID
       officialConstructionProjectFileNo: Baudossiernummer
@@ -20,6 +23,8 @@ ember-gwr:
       constructionAuthorisationDeniedDate: Datum Ablehnung
       nonRealisationDate: Datum Nichtrealisierung
       withdrawalDate: Datum Rückzung des Baugesuchs
+      projectFreeText1: Freitext Project 1
+      projectFreeText2: Freitext Project 2
 
       constructionLocalisation:
         municipalityName: Gemeinde
