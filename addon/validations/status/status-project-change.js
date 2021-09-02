@@ -9,7 +9,16 @@ export default {
   projectStatus: [
     validatePresence({ presence: true }),
     validateInclusion({
-      list: [6701, 6702, 6703, 6704, 6706, 6707, 6708, 6709],
+      list: [
+        ConstructionProject.STATUS_PROJECTED,
+        ConstructionProject.STATUS_APPROVED,
+        ConstructionProject.STATUS_CONSTRUCTION_STARTED,
+        ConstructionProject.STATUS_COMPLETED,
+        ConstructionProject.STATUS_SUSPENDED,
+        ConstructionProject.STATUS_REFUSED,
+        ConstructionProject.STATUS_NOT_REALIZED,
+        ConstructionProject.STATUS_WITHDRAWN,
+      ],
     }),
   ],
   projectAnnouncementDate: [

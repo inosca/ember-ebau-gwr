@@ -273,13 +273,21 @@ export default class Building extends XMLModel {
     1278, // Andere landwirtschaftliche Gebäude.
   ];
 
+  static STATUS_PROJECTED = 1001;
+  static STATUS_APPROVED = 1002;
+  static STATUS_CONSTRUCTION_STARTED = 1003;
+  static STATUS_COMPLETED = 1004;
+  static STATUS_UNUSABLE = 1005;
+  static STATUS_DEMOLISHED = 1007;
+  static STATUS_NOT_REALIZED = 1008;
+
   // valid state transitions
   static buildingStatesMapping = {
-    1001: [1002, 1008], // Projektiert
-    1002: [1003, 1008], // Bewilligt
-    1003: [1004, 1005], // Im Bau
-    1004: [1007], // Bestehend
-    1005: [1004, 1007], // Nicht nutzbar
+    1001: [this.STATUS_APPROVED, this.STATUS_NOT_REALIZED], // Projektiert
+    1002: [this.STATUS_CONSTRUCTION_STARTED, this.STATUS_NOT_REALIZED], // Bewilligt
+    1003: [this.STATUS_COMPLETED, this.STATUS_UNUSABLE], // Im Bau
+    1004: [this.STATUS_DEMOLISHED], // Bestehend
+    1005: [this.STATUS_COMPLETED, this.STATUS_DEMOLISHED], // Nicht nutzbar
     1007: [], // Abgebrochen
     1008: [], // Nicht realisiert
   };

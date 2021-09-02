@@ -17,6 +17,7 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   @tracked isChange;
   @tracked modelStatus;
   @tracked newStatus;
+  @tracked isCascading = false;
 
   constructor(...args) {
     super(...args);
@@ -44,6 +45,7 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   statusUpdate(value) {
     this.resetErrors();
     this.newStatus = value;
+    this.isCascading = false;
   }
 
   get statusOptions() {
@@ -109,13 +111,18 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     if (isChange) {
       // changeset.save does not seem to apply the changes
       // of the status field to the model
-      this.args.model[this.args.modelStatusField] = this.newStatus;
+      //this.args.model[this.args.modelStatusField] = this.newStatus;
+      changeset.rollbackProperty(this.args.modelStatusField);
     }
     yield changeset.save();
 
     try {
       yield isChange
-        ? this.args.onStatusChange.perform(this.modelStatus, this.newStatus)
+        ? this.args.onStatusChange.perform(
+            this.modelStatus,
+            this.newStatus,
+            this.isCascading
+          )
         : this.args.onStatusCorrection.perform(this.newStatus);
 
       this.modelStatus = this.newStatus;
@@ -138,5 +145,10 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     return this.args.getChangeHint && this.modelStatus && this.newStatus
       ? this.args.getChangeHint(this.modelStatus, this.newStatus)
       : undefined;
+  }
+
+  @action
+  toggleCascading() {
+    this.isCascading = !this.isCascading;
   }
 }

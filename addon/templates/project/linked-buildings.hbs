@@ -7,7 +7,6 @@
       <UkSpinner @ratio="3" />
     </div>
   {{else}}
-    {{log "type:" this.project.typeOfConstructionProject}}
     <LinkedModels
       @models={{this.fetchBuildings.lastSuccessful.value}}
       @modelName="building"

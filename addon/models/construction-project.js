@@ -89,21 +89,21 @@ export default class ConstructionProject extends XMLModel {
     // Project status not returned by every API response
     if (!this.projectStatus) {
       this.projectStatus = this.projectSuspensionDate
-        ? 6706
+        ? this.STATUS_SUSPENDED
         : this.projectCompletionDate
-        ? 6704
+        ? this.STATUS_COMPLETED
         : this.withdrawalDate
-        ? 6709
+        ? this.STATUS_WITHDRAWN
         : this.nonRealisationDate
-        ? 6708
+        ? this.STATUS_NOT_REALIZED
         : this.constructionAuthorisationDeniedDate
-        ? 6707
+        ? this.STATUS_REFUSED
         : this.projectStartDate
-        ? 6703
+        ? this.STATUS_CONSTRUCTION_STARTED
         : this.buildingPermitIssueDate
-        ? 6702
+        ? this.STATUS_APPROVED
         : this.projectAnnouncementDate
-        ? 6701
+        ? this.STATUS_PROJECTED
         : undefined;
     }
   }
@@ -155,13 +155,41 @@ export default class ConstructionProject extends XMLModel {
   </ns2:constructionProject>
   `;
 
+  static STATUS_PROJECTED = 6701;
+  static STATUS_APPROVED = 6702;
+  static STATUS_CONSTRUCTION_STARTED = 6703;
+  static STATUS_COMPLETED = 6704;
+  static STATUS_SUSPENDED = 6706;
+  static STATUS_REFUSED = 6707;
+  static STATUS_NOT_REALIZED = 6708;
+  static STATUS_WITHDRAWN = 6709;
+
   // valid state transitions
   static projectStatesMapping = {
-    6701: [6702, 6707, 6709, 6708, 6706], // Baugesuch eingereicht
-    6702: [6703, 6709, 6708, 6706], // Baubewilligung erteilt (rechtswirksam)
-    6703: [6704, /*6708,*/ 6706], // Baubegonnen
+    6701: [
+      this.STATUS_APPROVED,
+      this.STATUS_REFUSED,
+      this.STATUS_WITHDRAWN,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_SUSPENDED,
+    ], // Baugesuch eingereicht
+    6702: [
+      this.STATUS_CONSTRUCTION_STARTED,
+      this.STATUS_WITHDRAWN,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_SUSPENDED,
+    ], // Baubewilligung erteilt (rechtswirksam)
+    6703: [
+      this.STATUS_COMPLETED,
+      /*this.STATUS_NOT_REALIZED,*/ this.STATUS_SUSPENDED,
+    ], // Baubegonnen
     6704: [], // Abgeschlossen
-    6706: [6701, 6702, 6708, 6703], // Projekt sistiert
+    6706: [
+      this.STATUS_PROJECTED,
+      this.STATUS_APPROVED,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_CONSTRUCTION_STARTED,
+    ], // Projekt sistiert
     6707: [], // Baugesuch abgelehnt (rechtswirksam)
     6708: [], // Nicht realisiert
     6709: [], // Zurückgezogen
@@ -334,29 +362,29 @@ export default class ConstructionProject extends XMLModel {
 
   static projectTransitionHint = {
     6701: {
-      6702: "Die verknüpften Gebäude und Wohnungen werden mitbewilligt.",
-      6707: "setToRefusedConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+      6702: true,
+      6707: true,
+      6709: true,
+      6708: true,
+      6706: false,
     },
     6702: {
-      6703: "setToStartConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+      6703: false,
+      6709: true,
+      6708: true,
+      6706: false,
     },
     6703: {
-      6704: "Wohnungen und Gebäude in Neubauprojekten müssen auf bestehend gesetzt werden bevor das Bauprojekt abgeschlossen werden kann.",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+      6704: false,
+      //6708: "setToWithdrawnConstructionProject",
+      6706: false,
     },
     6704: {},
     6706: {
-      6701: "setToCancelledSuspensionConstructionProject",
-      6702: "setToCancelledSuspensionConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6703: "setToCancelledSuspensionConstructionProject",
+      6701: false,
+      6702: false,
+      6708: true,
+      6703: false,
     },
     6707: {},
     6708: {},

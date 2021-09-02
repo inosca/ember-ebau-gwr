@@ -1,14 +1,20 @@
+import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency-decorators";
-import ConstructionProject from "ember-ebau-gwr/models/construction-project";
+import Building from "ember-ebau-gwr/models/building";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
-import XMLModel from "ember-ebau-gwr/models/xml-model";
+import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
+import Dwelling from "ember-ebau-gwr/models/dwelling";
+import XMLModel from "ember-ebau-gwr/models/xml-model";
 
 import GwrService from "./gwr";
 
 export default class ConstructionProjectService extends GwrService {
   cacheKey = "EPROID";
   cacheClass = ConstructionProject;
+
+  @service building;
+  @service dwelling;
 
   async get(EPROID) {
     if (!EPROID) {
@@ -45,9 +51,7 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   async create(project) {
-    console.log("create");
     const body = this.xml.buildXMLRequest("addConstructionProject", project);
-    console.log("body:", body);
     const response = await this.authFetch.fetch("/constructionprojects/", {
       method: "post",
       body,
@@ -73,7 +77,6 @@ export default class ConstructionProjectService extends GwrService {
     const buildingWork = new BuildingWork();
     buildingWork.kindOfWork = 6002;
     buildingWork.ARBID = 1;
-    console.log("buildingWork:", buildingWork);
     return await this.addWorkToProject(projectId, buildingWork);
   }
 
@@ -103,10 +106,8 @@ export default class ConstructionProjectService extends GwrService {
       "addWorkToProjectResponse"
     );
 
-    console.log("ARBID:", ARBID);
     buildingWork.ARBID = ARBID;
 
-    console.log("buildingWork:", buildingWork);
     // TODO: apply for type umbau with modifyWork, don't execute bindBuildingToConstructionProject
     return buildingWork;
     /*return buildingWork.kindOfWork === 6002
@@ -116,7 +117,6 @@ export default class ConstructionProjectService extends GwrService {
 
   async modifyWork(projectId, buildingWork) {
     const body = this.xml.buildXMLRequest("modifyWork", buildingWork);
-    console.log("body:", body);
     const response = await this.authFetch.fetch(
       `/constructionprojects/${projectId}/work/${buildingWork.ARBID}`,
       {
@@ -133,8 +133,7 @@ export default class ConstructionProjectService extends GwrService {
       throw errors;
     }
 
-    const xml = await response.text();
-    console.log("xml modifyWork:", xml);
+    //const xml = await response.text();
     return buildingWork;
   }
 
@@ -186,11 +185,352 @@ export default class ConstructionProjectService extends GwrService {
 
   nextValidStates(state) {
     return ConstructionProject.projectStatesMapping[state];
+    //TODO: return [...ConstructionProject.projectStatesMapping[state], state];
   }
 
-  async transitionState(project, currentStatus, newState) {
-    const transition =
-      ConstructionProject.projectTransitionMapping[currentStatus][newState];
+  async setToApprovedConstructionProject(transition, cascadeLevel, project) {
+    await Promise.all(
+      project.work.map(async (buildingWork) => {
+        if (
+          [Building.STATUS_PROJECTED, Building.STATUS_APPROVED].includes(
+            buildingWork.building.buildingStatus
+          )
+        ) {
+          await this.building.setToApprovedBuilding(
+            "setToApprovedBuilding",
+            cascadeLevel - 1,
+            buildingWork
+          );
+        } else {
+          // Display message with link to dwelling with issue
+          const states =
+            cascadeLevel > 1
+              ? [Building.STATUS_PROJECTED, Building.STATUS_APPROVED]
+              : [Building.STATUS_APPROVED];
+
+          throw {
+            isLifeCycleError: true,
+            buildingId: buildingWork.building.EGID,
+            states,
+          };
+        }
+      })
+    );
+
+    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_APPROVED) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToRefusedConstructionProject(transition, cascadeLevel, project) {
+    await Promise.all(
+      project.work.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          if (
+            [
+              Building.STATUS_PROJECTED,
+              Building.STATUS_APPROVED,
+              Building.STATUS_NOT_REALIZED,
+            ].includes(buildingWork.building.buildingStatus)
+          ) {
+            await this.building.setToNotRealizedBuilding(
+              "setToNotRealizedBuilding",
+              cascadeLevel - 1,
+              buildingWork
+            );
+          } else {
+            // Display message with link to dwelling with issue
+            const states =
+              cascadeLevel > 1
+                ? [
+                    Building.STATUS_PROJECTED,
+                    Building.STATUS_APPROVED,
+                    Building.STATUS_NOT_REALIZED,
+                  ]
+                : [Building.STATUS_NOT_REALIZED];
+            throw {
+              isLifeCycleError: true,
+              buildingId: buildingWork.building.EGID,
+              states,
+            };
+          }
+        } else if (buildingWork.kindOfWork === 6002) {
+          await Promise.all(
+            buildingWork.building.buildingEntrance.map(
+              async (buildingEntrance) =>
+                await Promise.all(
+                  buildingEntrance.dwelling.map(async (dwelling) => {
+                    if (
+                      [
+                        Dwelling.STATUS_PROJECTED,
+                        Dwelling.STATUS_APPROVED,
+                        Dwelling.STATUS_NOT_REALIZED,
+                      ].includes(dwelling.dwellingStatus)
+                    ) {
+                      await this.dwelling.setToNotRealizedDwelling(
+                        "setToNotRealizedDwelling",
+                        cascadeLevel - 1,
+                        dwelling,
+                        buildingWork.building.EGID
+                      );
+                    } else {
+                      // Display message with link to dwelling with issue
+                      const states =
+                        cascadeLevel > 1
+                          ? [
+                              Dwelling.STATUS_PROJECTED,
+                              Dwelling.STATUS_APPROVED,
+                              Dwelling.STATUS_NOT_REALIZED,
+                            ]
+                          : [Dwelling.STATUS_NOT_REALIZED];
+                      throw {
+                        isLifeCycleError: true,
+                        dwellingId: dwelling.EWID,
+                        buildingId: buildingWork.building.EGID,
+                        states,
+                      };
+                    }
+                  })
+                )
+            )
+          );
+        }
+      })
+    );
+
+    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_REFUSED) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToStartConstructionProject(transition, cascadeLevel, project) {
+    if (
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_CONSTRUCTION_STARTED
+    ) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToCompletedConstructionProject(transition, cascadeLevel, project) {
+    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_COMPLETED) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToWithdrawnConstructionProject(transition, cascadeLevel, project) {
+    await Promise.all(
+      project.work.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          if (
+            [
+              Building.STATUS_PROJECTED,
+              Building.STATUS_APPROVED,
+              Building.STATUS_NOT_REALIZED,
+            ].includes(buildingWork.building.buildingStatus)
+          ) {
+            await this.building.setToNotRealizedBuilding(
+              "setToNotRealizedBuilding",
+              cascadeLevel - 1,
+              buildingWork
+            );
+          } else {
+            // Display message with link to dwelling with issue
+            const states =
+              cascadeLevel > 1
+                ? [
+                    Building.STATUS_PROJECTED,
+                    Building.STATUS_APPROVED,
+                    Building.STATUS_NOT_REALIZED,
+                  ]
+                : [Building.STATUS_NOT_REALIZED];
+            throw {
+              isLifeCycleError: true,
+              buildingId: buildingWork.building.EGID,
+              states,
+            };
+          }
+        } else if (buildingWork.kindOfWork === 6002) {
+          await Promise.all(
+            buildingWork.building.buildingEntrance.map(
+              async (buildingEntrance) =>
+                await Promise.all(
+                  buildingEntrance.dwelling.map(async (dwelling) => {
+                    if (
+                      [
+                        Dwelling.STATUS_PROJECTED,
+                        Dwelling.STATUS_APPROVED,
+                        Dwelling.STATUS_NOT_REALIZED,
+                      ].includes(dwelling.dwellingStatus)
+                    ) {
+                      await this.dwelling.setToNotRealizedDwelling(
+                        "setToNotRealizedDwelling",
+                        cascadeLevel - 1,
+                        dwelling,
+                        buildingWork.building.EGID
+                      );
+                    } else {
+                      // Display message with link to dwelling with issue
+                      const states =
+                        cascadeLevel > 1
+                          ? [
+                              Dwelling.STATUS_PROJECTED,
+                              Dwelling.STATUS_APPROVED,
+                              Dwelling.STATUS_NOT_REALIZED,
+                            ]
+                          : [Dwelling.STATUS_NOT_REALIZED];
+                      throw {
+                        isLifeCycleError: true,
+                        dwellingId: dwelling.EWID,
+                        buildingId: buildingWork.building.EGID,
+                        states,
+                      };
+                    }
+                  })
+                )
+            )
+          );
+        }
+      })
+    );
+
+    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_WITHDRAWN) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToCancelledConstructionProject(transition, cascadeLevel, project) {
+    await Promise.all(
+      project.work.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          if (
+            project.projectStatus ===
+            ConstructionProject.STATUS_CONSTRUCTION_STARTED
+          ) {
+            // state is refused by api
+            if (
+              [
+                Building.STATUS_CONSTRUCTION_STARTED,
+                Building.STATUS_UNUSABLE,
+              ].includes(buildingWork.building.buildingStatus)
+            ) {
+              await this.building.setToNotUsableBuilding(
+                "setToNotUsableBuilding",
+                cascadeLevel - 1,
+                buildingWork
+              );
+            } else {
+              // Display message with link to building with issue
+              const states =
+                cascadeLevel > 1
+                  ? [
+                      Building.STATUS_CONSTRUCTION_STARTED,
+                      Building.STATUS_UNUSABLE,
+                    ]
+                  : [Building.STATUS_UNUSABLE];
+              throw {
+                isLifeCycleError: true,
+                buildingId: buildingWork.building.EGID,
+                states,
+              };
+            }
+          } else {
+            if (
+              [
+                Building.STATUS_PROJECTED,
+                Building.STATUS_APPROVED,
+                Building.STATUS_NOT_REALIZED,
+              ].includes(buildingWork.building.buildingStatus)
+            ) {
+              await this.building.setToNotRealizedBuilding(
+                "setToNotRealizedBuilding",
+                cascadeLevel - 1,
+                buildingWork
+              );
+            } else {
+              // Display message with link to dwelling with issue
+              const states =
+                cascadeLevel > 1
+                  ? [
+                      Building.STATUS_PROJECTED,
+                      Building.STATUS_APPROVED,
+                      Building.STATUS_NOT_REALIZED,
+                    ]
+                  : [Building.STATUS_NOT_REALIZED];
+              throw {
+                isLifeCycleError: true,
+                buildingId: buildingWork.building.EGID,
+                states,
+              };
+            }
+          }
+        } else if (buildingWork.kindOfWork === 6002) {
+          await Promise.all(
+            buildingWork.building.buildingEntrance.map(
+              async (buildingEntrance) =>
+                await Promise.all(
+                  buildingEntrance.dwelling.map(async (dwelling) => {
+                    if (
+                      [
+                        Dwelling.STATUS_PROJECTED,
+                        Dwelling.STATUS_APPROVED,
+                        Dwelling.STATUS_NOT_REALIZED,
+                      ].includes(dwelling.dwellingStatus)
+                    ) {
+                      await this.dwelling.setToNotRealizedDwelling(
+                        "setToNotRealizedDwelling",
+                        cascadeLevel - 1,
+                        dwelling,
+                        buildingWork.building.EGID
+                      );
+                    } else {
+                      // Display message with link to dwelling with issue
+                      const states =
+                        cascadeLevel > 1
+                          ? [
+                              Dwelling.STATUS_PROJECTED,
+                              Dwelling.STATUS_APPROVED,
+                              Dwelling.STATUS_NOT_REALIZED,
+                            ]
+                          : [Dwelling.STATUS_NOT_REALIZED];
+                      throw {
+                        isLifeCycleError: true,
+                        dwellingId: dwelling.EWID,
+                        buildingId: buildingWork.building.EGID,
+                        states,
+                      };
+                    }
+                  })
+                )
+            )
+          );
+        }
+      })
+    );
+
+    if (
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_NOT_REALIZED
+    ) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToSuspendedConstructionProject(transition, cascadeLevel, project) {
+    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_SUSPENDED) {
+      await this.transitionState(transition, project);
+    }
+  }
+
+  async setToCancelledSuspensionConstructionProject(
+    transition,
+    cascadeLevel,
+    project
+  ) {
+    await this.transitionState(transition, project);
+  }
+
+  async transitionState(transition, project) {
     const body = this.xml.buildXMLRequest(transition, project);
 
     const response = await this.authFetch.fetch(

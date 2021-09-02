@@ -4,6 +4,7 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import Building from "ember-ebau-gwr/models/building";
 import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends Controller {
@@ -92,7 +93,6 @@ export default class BuildingFormController extends Controller {
         this.model.projectId
       );
 
-      console.log("project.work", project.work);
       if (project.work.find((work) => work.ARBID === 1)) {
         yield this.constructionProject.deactivateDefaultWork(
           this.model.projectId
@@ -111,134 +111,54 @@ export default class BuildingFormController extends Controller {
     }
   }
 
-  // TODO: reduce code duplication and somehow combine check and cascade
-  async check(currentStatus, newStatus) {
-    if (newStatus === 1007 && this.buildingWork.kindOfWork === 6007) {
-      const dwellings = await Promise.all(
-        this.building.buildingEntrance
-          .map((entrance) => entrance.dwelling)
-          .flat()
-          .map(async (dwelling) => {
-            return await this.dwelling.getFromCacheOrApi(
-              dwelling.EWID,
-              this.model.buildingId
-            );
-          })
-      );
-
-      if (
-        dwellings.some(
-          (dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3007
-        )
-      ) {
-        return [
-          "Verknüpfte Wohnungen müssen abgebrochen werden bevor das Gebäude abgebrochen werden kann.",
-        ];
-      }
-    } else if (newStatus === 1008) {
-      const dwellings = await Promise.all(
-        this.building.buildingEntrance
-          .map((entrance) => entrance.dwelling)
-          .flat()
-          .map(async (dwelling) => {
-            return await this.dwelling.getFromCacheOrApi(
-              dwelling.EWID,
-              this.model.buildingId
-            );
-          })
-      );
-
-      if (
-        dwellings.some(
-          (dwellingUsage) => dwellingUsage.dwelling.dwellingStatus !== 3008
-        )
-      ) {
-        return [
-          "Verknüpfte Wohnungen müssen auf nicht realisiert gesetzt werden bevor das Gebäude nicht realisiert werden kann.",
-        ];
-      }
+  concatStates(states) {
+    if (states.length === 1) {
+      return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
     }
-
-    return [];
-  }
-
-  cascadeStates(currentStatus, newStatus) {
-    if (newStatus === 1007 && this.buildingWork.kindOfWork === 6007) {
-      return {
-        dwelling: {
-          currentStatus: [3004, 3005],
-          newStatus: 3007,
-        },
-      };
-    } else if (newStatus === 1008) {
-      return {
-        dwelling: {
-          currentStatus: [3001, 3002, 3003],
-          newStatus: 3008,
-        },
-      };
-    }
-    return undefined;
+    const tail = states.pop();
+    return `${states
+      .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
+      .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
+      `ember-gwr.lifeCycles.states.${tail}`
+    )}`;
   }
 
   @task
-  *cascadeTransition(cascadeStates) {
-    yield Promise.all(
-      this.buildingWork.building.buildingEntrance.map(async (entrance) => {
-        await Promise.all(
-          entrance.dwelling.map(async (dwelling) => {
-            if (
-              dwelling.dwellingStatus !== cascadeStates.dwelling.newStatus &&
-              cascadeStates.dwelling.currentStatus.includes(
-                dwelling.dwellingStatus
-              )
-            ) {
-              console.log("settings dwelling:", dwelling);
-
-              if (cascadeStates.dwelling.newStatus === 3007) {
-                console.log("this.buidling:", this.building.yearOfDemolition);
-                dwelling.dateOfDemolition.year = this.building.yearOfDemolition;
-              }
-              await this.dwelling.transitionState(
-                dwelling,
-                dwelling.dwellingStatus,
-                cascadeStates.dwelling.newStatus,
-                this.buildingWork.building.EGID
-              );
-            }
-          })
-        );
-      })
-    );
-    //yield this.buildingAPI.clearCache(this.model.buildingId);
-    //yield this.fetchBuilding.perform();
-    //console.log("buildingWork new:", this.buildingWork);
-  }
-
-  @task
-  *transitionState(currentStatus, newStatus) {
+  *transitionState(currentStatus, newStatus, isCascading) {
     try {
-      const cascadeStates = this.cascadeStates(currentStatus, newStatus);
-      if (cascadeStates) {
-        yield this.cascadeTransition.perform(cascadeStates);
-      }
+      const transition =
+        Building.buildingTransitionMapping[currentStatus][newStatus];
 
-      const errors = yield this.check(currentStatus, newStatus);
-      if (errors.length) {
-        throw errors;
-      }
-      console.log("setting project");
-      yield this.buildingAPI.transitionState(
-        this.building,
-        currentStatus,
-        newStatus
+      yield this.buildingAPI[transition](
+        transition,
+        isCascading ? 2 : 1,
+        this.buildingWork
       );
+
       yield this.buildingAPI.clearCache(this.model.buildingId);
       this.fetchBuilding.perform(); // reload for errors;
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
+
+      if (error.isLifeCycleError) {
+        const errorType = error.dwellingId
+          ? "statusErrorDwelling"
+          : "statusErrorBuilding";
+        throw [
+          this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
+            dwellingId: error.dwellingId,
+            buildingId: error.buildingId,
+            states: this.concatStates(error.states),
+            href: error.dwellingId
+              ? `/1/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/1/${this.model.projectId}/building/${error.buildingId}/form`,
+            htmlSafe: true,
+          }),
+        ];
+      }
+
       throw error;
     }
   }

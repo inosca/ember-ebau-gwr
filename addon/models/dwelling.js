@@ -105,13 +105,25 @@ export default class Dwelling extends XMLModel {
       : "";
   }
 
+  static STATUS_PROJECTED = 3001;
+  static STATUS_APPROVED = 3002;
+  static STATUS_CONSTRUCTION_STARTED = 3003;
+  static STATUS_COMPLETED = 3004;
+  static STATUS_UNUSABLE = 3005;
+  static STATUS_DEMOLISHED = 3007;
+  static STATUS_NOT_REALIZED = 3008;
+
   // valid state transitions
   static dwellingStatesMapping = {
-    3001: [3002, 3008], // Projektiert
-    3002: [3003, 3008], // Bewilligt
-    3003: [3008, 3004, 3005], // Im Bau
-    3004: [3007], // Bestehend
-    3005: [3004, 3007], // Nicht nutzbar
+    3001: [this.STATUS_APPROVED, this.STATUS_NOT_REALIZED], // Projektiert
+    3002: [this.STATUS_CONSTRUCTION_STARTED, this.STATUS_NOT_REALIZED], // Bewilligt
+    3003: [
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_COMPLETED,
+      this.STATUS_UNUSABLE,
+    ], // Im Bau
+    3004: [this.STATUS_DEMOLISHED], // Bestehend
+    3005: [this.STATUS_COMPLETED, this.STATUS_DEMOLISHED], // Nicht nutzbar
     3007: [], // Aufgehoben
     3008: [], // Nicht realiziert
   };

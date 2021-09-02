@@ -1,8 +1,8 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
-import { task } from "ember-concurrency-decorators";
 import { tracked } from "@glimmer/tracking";
+import { task } from "ember-concurrency-decorators";
 
 export default class ProjectLinkedBuildingsController extends Controller {
   @service constructionProject;
@@ -21,9 +21,12 @@ export default class ProjectLinkedBuildingsController extends Controller {
         this.model
       );
       this.project = project;
-      this.workWithoutBuildings = project.work.filter((work) => work.building.isNew);
-      this.workWithBuildings = project.work.filter((work) => !work.building.isNew);
-      console.log("project:", project);
+      this.workWithoutBuildings = project.work.filter(
+        (work) => work.building.isNew
+      );
+      this.workWithBuildings = project.work.filter(
+        (work) => !work.building.isNew
+      );
       return this.workWithBuildings;
     } catch (error) {
       console.error(error);
@@ -39,8 +42,10 @@ export default class ProjectLinkedBuildingsController extends Controller {
         EGID
       );
 
-      if (!this.workWithoutBuildings.length &&
-            this.workWithBuildings.length === 1) {
+      if (
+        !this.workWithoutBuildings.length &&
+        this.workWithBuildings.length === 1
+      ) {
         await this.constructionProject.addDefaultWork(this.model);
       }
       await this.fetchBuildings.perform();
