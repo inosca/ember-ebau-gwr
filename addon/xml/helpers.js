@@ -15,6 +15,10 @@ export function or(...args) {
   return args.length === 2 ? args[0] : args[0] || or(...args.slice(1));
 }
 
+export function eq(a, b) {
+  return a === b;
+}
+
 export function and(...args) {
   // The last element in args is the helper definition passed by handlebars
   // So we dont want to compare this.

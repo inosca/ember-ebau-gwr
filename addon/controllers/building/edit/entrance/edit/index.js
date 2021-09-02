@@ -22,15 +22,23 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
   *fetchBuildingEntrance() {
     try {
       this.errors = [];
+      let buildingEntrance;
 
-      if (this.buildingEntranceAPI.newRecord) {
-        return this.buildingEntranceAPI.newRecord;
+      if (
+        this.buildingEntranceAPI.newRecord &&
+        this.router.currentRoute.localName === "new"
+      ) {
+        buildingEntrance = this.buildingEntranceAPI.newRecord;
+      } else {
+        this.buildingEntranceAPI.newRecord = null;
+        buildingEntrance = yield this.buildingEntranceAPI.getFromCacheOrApi(
+          this.model.entranceId,
+          this.model.buildingId
+        );
+
+        buildingEntrance.EGID = this.model.buildingId;
       }
-
-      return yield this.buildingEntranceAPI.getFromCacheOrApi(
-        this.model.entranceId,
-        this.model.buildingId
-      );
+      return buildingEntrance;
     } catch (error) {
       console.error(error);
       this.notification.danger(

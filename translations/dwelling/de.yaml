@@ -12,9 +12,11 @@ ember-gwr:
 
     # Fields
     EDID: Eingang
-    EWID: EWID
+    EGID: Gebäude
+    EWID: Wohnung
     floor: Stockwerk
     multipleFloor: Mehrgeschossige Wohnung
+    physicalDwellingNo: Physische Wohnungsnummer
     dwellingStatus: Wohnungsstatus
     dwellingStatusPlaceholder: Wählen Sie einen Status aus...
     dwellingStatusOptions:
@@ -25,9 +27,7 @@ ember-gwr:
       3005: Nicht nutzbar
       3007: Aufgehoben
     administrativeDwellingNo: Administrative Wohnungsnummer
-    dateOfConstruction: Baujahr der Wohnung
-    "dateOfConstruction.yearMonthDay": Baudatum der Wohnung
-    dateOfDemolition: Abbruchjahr der Wohnung
+    yearOfConstruction: Baujahr der Wohnung
     yearOfDemolition: Abbruchjahr der Wohnung
     noOfHabitableRooms: Anzahl Zimmer
     locationOfDwellingOnFloor: Lage auf dem Stockwerk

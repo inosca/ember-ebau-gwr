@@ -15,7 +15,8 @@
         "project-form/field"
         project=this.buildingWork
         translationBase="ember-gwr.buildingWork"
-      ) as |Field|
+      )
+      as |Field|
     }}
       <Field
         @attr="kindOfWork"
@@ -24,15 +25,17 @@
         @noPlaceholder={{true}}
         @options={{this.kindOfWorkOptions}}
       />
-      <Field @attr="energeticRestauration" @inputType="checkbox" />
-      <Field @attr="renovationHeatingsystem" @inputType="checkbox" />
-      <Field @attr="innerConversionRenovation" @inputType="checkbox" />
-      <Field @attr="conversion" @inputType="checkbox" />
-      <Field @attr="extensionHeighteningHeated" @inputType="checkbox" />
-      <Field @attr="extensionHeighteningNotHeated" @inputType="checkbox" />
-      <Field @attr="thermicSolarFacility" @inputType="checkbox" />
-      <Field @attr="photovoltaicSolarFacility" @inputType="checkbox" />
-      <Field @attr="otherWorks" @inputType="checkbox" />
+      {{#if (eq this.buildingWork.kindOfWork 6002)}}
+        <Field @attr="energeticRestauration" @inputType="checkbox" />
+        <Field @attr="renovationHeatingsystem" @inputType="checkbox" />
+        <Field @attr="innerConversionRenovation" @inputType="checkbox" />
+        <Field @attr="conversion" @inputType="checkbox" />
+        <Field @attr="extensionHeighteningHeated" @inputType="checkbox" />
+        <Field @attr="extensionHeighteningNotHeated" @inputType="checkbox" />
+        <Field @attr="thermicSolarFacility" @inputType="checkbox" />
+        <Field @attr="photovoltaicSolarFacility" @inputType="checkbox" />
+        <Field @attr="otherWorks" @inputType="checkbox" />
+      {{/if}}
     {{/let}}
   </Modal.body>
   <Modal.footer class="uk-flex uk-flex-column">
@@ -49,9 +52,9 @@
       </UkButton>
     </div>
     {{#if @errors}}
-    <div class="uk-flex uk-margin">
-      <ModelForm::SubmitErrors @errors={{@errors}} @expand={{true}} />
-    </div>
+      <div class="uk-flex uk-margin">
+        <ModelForm::SubmitErrors @errors={{@errors}} @expand={{true}} />
+      </div>
     {{/if}}
   </Modal.footer>
 </UkModal>

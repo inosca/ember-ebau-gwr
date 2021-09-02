@@ -1,27 +1,15 @@
 import { tracked } from "@glimmer/tracking";
 
-import DateOfConstruction from "./date-of-construction";
-import DatePartiallyKnown from "./date-partially-known";
 import ErrorList from "./error-list";
-import { setRoot, setTemplate } from "./helpers";
 import RealestateIdentification from "./realestate-identification";
 import XMLModel from "./xml-model";
-
-export const DateOfDemolition = setTemplate(
-  setRoot(DatePartiallyKnown, "dateOfDemolition"),
-  `{{#if model.yearMonthDay}}
-    <ns2:dateOfDemolition>
-      {{{modelField model "yearMonthDay" value=(echDate model.yearMonthDay)}}}
-    </ns2:dateOfDemolition>
-  {{/if}}`
-);
 
 export default class Dwelling extends XMLModel {
   @tracked EWID;
   @tracked administrativeDwellingNo;
   @tracked physicalDwellingNo;
-  @tracked dateOfConstruction = new DateOfConstruction();
-  @tracked dateOfDemolition = new DateOfDemolition();
+  @tracked yearOfConstruction;
+  @tracked yearOfDemolition;
   @tracked noOfHabitableRooms;
   @tracked floor;
   @tracked multipleFloor = false;
@@ -48,8 +36,8 @@ export default class Dwelling extends XMLModel {
         EWID: Number,
         administrativeDwellingNo: String,
         physicalDwellingNo: String,
-        dateOfConstruction: DateOfConstruction,
-        dateOfDemolition: DateOfDemolition,
+        yearOfConstruction: Number,
+        yearOfDemolition: Number,
         noOfHabitableRooms: Number,
         floor: Number,
         multipleFloor: Boolean,
@@ -70,9 +58,9 @@ export default class Dwelling extends XMLModel {
     <ns2:dwelling>
       {{{modelField model "administrativeDwellingNo"}}}
       {{{modelField model "physicalDwellingNo"}}}
+      {{{modelField model "yearOfConstruction"}}}
+      {{{modelField model "yearOfDemolition"}}}
       {{! TODO Type of those two fields is completly different that what is documented. So a todo until doc is updated.}}
-      {{!> DateOfConstruction model=model.dateOfConstruction}}
-      {{> DateOfDemolition model=model.dateOfDemolition}}
       {{{modelField model "noOfHabitableRooms"}}}
       {{{modelField model "floor"}}}
       {{{modelField model "multipleFloor"}}}

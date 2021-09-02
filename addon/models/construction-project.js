@@ -53,7 +53,7 @@ export default class ConstructionProject extends XMLModel {
         typeOfPermit: Number,
         totalCostsOfProject: Number,
         officialConstructionProjectFileNo: String,
-        extensionOfOfficialConstructionProjectFileNo: String,
+        extensionOfOfficialConstructionProjectFileNo: Number,
         constructionProjectDescription: String,
         constructionSurveyDeptNumber: String,
         withdrawalDate: String,
@@ -128,6 +128,7 @@ export default class ConstructionProject extends XMLModel {
 
     {{{modelField model "buildingPermitIssueDate" value=(echDate model.buildingPermitIssueDate)}}}
 
+    {{! Two seperate if / unless since the order of fields matters and projectFreeText1 and projectFreeText2 are in the middle.}}
     {{#unless model.isNew}}
       {{{modelField model "projectStartDate" value=(echDate model.projectStartDate)}}}
       {{{modelField model "projectCompletionDate" value=(echDate model.projectCompletionDate)}}}
@@ -141,6 +142,9 @@ export default class ConstructionProject extends XMLModel {
       {{{modelField model "cancellationDate" value=(echDate model.nonRealisationDate)}}}
       {{{modelField model "durationOfConstructionPhase"}}}
     {{/unless}}
+
+    {{{modelField model "projectFreeText1"}}}
+    {{{modelField model "projectFreeText2"}}}
 
     {{#if model.isNew}}
       <ns2:work>

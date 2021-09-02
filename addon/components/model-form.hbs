@@ -1,9 +1,10 @@
 <ValidatedForm
-  @model={{changeset @model @validations}}
+  @model={{if @validations (changeset @model @validations) @model}}
   @on-submit={{perform this.submit}}
   @validateBeforeSubmit={{true}}
   class="validated-form"
-  ...attributes as |f|
+  ...attributes
+  as |f|
 >
   {{#let
     (component
@@ -22,7 +23,8 @@
         (array (t "ember-gwr.components.modelForm.validationError"))
         @errors
       )
-    ) as |Submit SubmitErrors|
+    )
+    as |Submit SubmitErrors|
   }}
     <ModelForm::Header
       @model={{@headerModel}}
@@ -55,6 +57,7 @@
         registerDiff=this.registerDiff
         resolveDiff=this.resolveDiff
       )
+      f.model
     }}
     <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
       <Submit class="uk-flex-none" />

@@ -6,13 +6,13 @@
         type="button"
         {{on "click" @importAllData}}
       >
-        {{t "ember-gwr.components.projectForm.applyAll"}}
+        {{t "ember-gwr.components.modelForm.applyAll"}}
       </button>
       <LinkTo
         @query={{hash import=false}}
         class="uk-button uk-button-default uk-margin-small-right"
       >
-        {{t "ember-gwr.components.projectForm.cancelImport"}}
+        {{t "ember-gwr.components.modelForm.cancelImport"}}
       </LinkTo>
     {{/if}}
     {{#let @submit as |Submit|}}
@@ -41,7 +41,7 @@
                   type="button"
                   {{on "click" @importAllData}}
                 >
-                  {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+                  {{t "ember-gwr.components.modelForm.importFromCaluma"}}
                 </button>
               {{else}}
                 <LinkTo
@@ -51,7 +51,7 @@
                     {{if @import "uk-text-muted" "uk-text-secondary"}}
                     uk-width-1-1 uk-background-default uk-padding-remove"
                 >
-                  {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+                  {{t "ember-gwr.components.modelForm.importFromCaluma"}}
                 </LinkTo>
               {{/if}}
             </li>
@@ -63,7 +63,7 @@
                 type="button"
                 {{on "click" @openStatus}}
               >
-                {{t "ember-gwr.components.projectForm.changeStatus"}}
+                {{t "ember-gwr.components.modelForm.changeStatus"}}
               </button>
             </li>
           {{/if}}
