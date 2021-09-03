@@ -65,10 +65,15 @@
       />
       <Field @attr="dwellingUsage.revisionDate" @type="date" />
       <Field @attr="dwellingUsage.remark" />
-      <Field @attr="dwellingUsage.personWithMainResidence" @type="checkbox" />
+      <Field
+        @attr="dwellingUsage.personWithMainResidence"
+        @type="checkbox"
+        @disabled={{true}}
+      />
       <Field
         @attr="dwellingUsage.personWithSecondaryResidence"
         @type="checkbox"
+        @disabled={{true}}
       />
       <Field @attr="dwellingUsage.dateFirstOccupancy" @type="date" />
       <Field @attr="dwellingUsage.dateLastOccupancy" @type="date" />

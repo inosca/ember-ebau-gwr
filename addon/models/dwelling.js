@@ -226,8 +226,6 @@ export class DwellingUsage extends XMLModel {
       {{{modelField model "informationSource" namespace=""}}}
       {{{modelField model "revisionDate" value=(echDate model.revisionDate) namespace=""}}}
       {{{modelField model "remark" namespace=""}}}
-      {{{modelField model "personWithMainResidence" namespace=""}}}
-      {{{modelField model "personWithSecondaryResidence" namespace=""}}}
       {{{modelField model "dateFirstOccupancy" value=(echDate model.dateFirstOccupancy) namespace=""}}}
       {{{modelField model "dateLastOccupancy" value=(echDate model.dateLastOccupancy) namespace=""}}}
     </ns2:dwellingUsage>
