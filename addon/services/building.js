@@ -77,26 +77,7 @@ export default class BuildingService extends GwrService {
     return this.createAndCache(xml);
   }
 
-  async create(building) {
-    const body = this.xml.buildXMLRequest("addBuilding", building);
-    const response = await this.authFetch.fetch("/buildings/", {
-      method: "post",
-      body,
-    });
-
-    if (!response.ok) {
-      const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
-
-      console.error("GWR API: addBuilding failed");
-      throw errors;
-    }
-
-    const xml = await response.text();
-    return this.createAndCache(xml);
-  }
-
-  async createAndAddToConstructionProject(EPROID, buildingWork) {
+  async create(EPROID, buildingWork) {
     let body = this.xml.buildXMLRequest("addWorkToProject", buildingWork);
     let response = await this.authFetch.fetch(
       `/constructionprojects/${EPROID}/work`,

@@ -107,17 +107,6 @@ export const modifyBuilding =
 {{/base}}`;
 
 // prettier-ignore
-export const addBuilding =
-`{{#>base}}
-  <ns2:addBuilding>
-    {{> Building}}
-    <ns2:reason>
-      {{reason}}
-    </ns2:reason>
-  </ns2:addBuilding>
-{{/base}}`;
-
-// prettier-ignore
 export const addWorkToProject =
 `{{#>base}}
   <ns2:addWorkToProject>
