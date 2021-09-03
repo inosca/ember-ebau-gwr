@@ -191,28 +191,54 @@ export default class ConstructionProjectService extends GwrService {
   async setToApprovedConstructionProject(transition, cascadeLevel, project) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
-        if (
-          [Building.STATUS_PROJECTED, Building.STATUS_APPROVED].includes(
-            buildingWork.building.buildingStatus
-          )
-        ) {
-          await this.building.setToApprovedBuilding(
-            "setToApprovedBuilding",
-            cascadeLevel - 1,
-            buildingWork
-          );
-        } else {
-          // Display message with link to dwelling with issue
-          const states =
-            cascadeLevel > 1
-              ? [Building.STATUS_PROJECTED, Building.STATUS_APPROVED]
-              : [Building.STATUS_APPROVED];
+        if (buildingWork.kindOfWork === 6001) {
+          if (
+            [Building.STATUS_PROJECTED, Building.STATUS_APPROVED].includes(
+              buildingWork.building.buildingStatus
+            )
+          ) {
+            await this.building.setToApprovedBuilding(
+              "setToApprovedBuilding",
+              cascadeLevel - 1,
+              buildingWork
+            );
+          } else {
+            // Display message with link to dwelling with issue
+            const states =
+              cascadeLevel > 1
+                ? [Building.STATUS_PROJECTED, Building.STATUS_APPROVED]
+                : [Building.STATUS_APPROVED];
 
-          throw {
-            isLifeCycleError: true,
-            buildingId: buildingWork.building.EGID,
-            states,
-          };
+            throw {
+              isLifeCycleError: true,
+              buildingId: buildingWork.building.EGID,
+              states,
+            };
+          }
+        } else if (buildingWork.kindOfWork === 6002) {
+          console.log("setting dwellings of work:", buildingWork);
+          await Promise.all(
+            buildingWork.building.buildingEntrance.map(
+              async (buildingEntrance) =>
+                await Promise.all(
+                  buildingEntrance.dwelling.map(async (dwelling) => {
+                    if (
+                      [
+                        Dwelling.STATUS_PROJECTED,
+                        Dwelling.STATUS_APPROVED,
+                      ].includes(dwelling.dwellingStatus)
+                    ) {
+                      await this.dwelling.setToApprovedDwelling(
+                        "setToApprovedDwelling",
+                        cascadeLevel - 1,
+                        dwelling,
+                        buildingWork.building.EGID
+                      );
+                    }
+                  })
+                )
+            )
+          );
         }
       })
     );
@@ -313,6 +339,7 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   async setToCompletedConstructionProject(transition, cascadeLevel, project) {
+    // TODO: check if all building and dwellings are in correct state?
     if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_COMPLETED) {
       await this.transitionState(transition, project);
     }

@@ -371,23 +371,23 @@ export default class Building extends XMLModel {
 
   static buildingTransitionHint = {
     1001: {
-      1002: "setToApprovedBuilding",
-      1008: "setToNotRealizedBuilding",
+      1002: false,
+      1008: false,
     },
     1002: {
-      1003: "setToBuildingConstructionStarted",
-      1008: "setToNotRealizedBuilding",
+      1003: false,
+      1008: false,
     },
     1003: {
-      1004: "setToCompletedBuilding",
-      1005: "setToUnusableBuilding",
+      1004: false,
+      1005: false,
     },
     1004: {
-      1007: "Die verknüpften Wohnungen werden auch abgebrochen.",
+      1007: false,
     },
     1005: {
-      1004: "setToCompletedBuilding",
-      1007: "Die verknüpften Wohnungen werden auch abgebrochen.",
+      1004: false,
+      1007: false,
     },
     1007: {},
     1008: {},

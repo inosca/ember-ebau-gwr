@@ -177,10 +177,10 @@ export default class DwellingService extends GwrService {
 
     if (
       cascadeLevel > 0 &&
-      dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED
+      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
     ) {
       await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED) {
+    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED) {
       throw {
         isLifeCycleError: true,
         dwellingId: dwelling.EWID,
