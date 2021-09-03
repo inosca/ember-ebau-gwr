@@ -21,6 +21,7 @@
     >
       {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" @type="number" @disabled={{true}} />
+        <Field @attr="EGAID" @type="number" @disabled={{true}} />
       {{/unless}}
       <Field
         @attr="locality.name.nameLong"
@@ -38,9 +39,6 @@
       <Field @attr="buildingEntranceNo" />
       <Field @attr="isOfficialAddress" @type="checkbox" />
 
-      {{!--
-      This is not wokrking for some reason. Not sure if this is even needed on the entrance.
-
       <h2>{{t "ember-gwr.buildingEntrance.coordinates"}}</h2>
       <Field
         @attr="coordinates.north"
@@ -48,6 +46,7 @@
         @step="0.001"
         @min="1070000.0"
         @max="1300000.999"
+        @disabled={{true}}
       />
       <Field
         @attr="coordinates.east"
@@ -55,17 +54,22 @@
         @step="0.001"
         @min="2480000.0"
         @max="2840000.999"
+        @disabled={{true}}
       />
       <Field
         @attr="coordinates.originOfCoordinates"
         @type="select"
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
+        @disabled={{true}}
       />
-      --}}
 
       <div class="uk-flex uk-flex-between">
-        <h2>{{t "ember-gwr.buildingEntrance.street"}}</h2>
+        <span>
+          {{! this is needed since the h2 selector is * + h2}}
+          <span></span>
+          <h2>{{t "ember-gwr.buildingEntrance.street"}}</h2>
+        </span>
         <span>
           <LinkTo
             class="uk-button
