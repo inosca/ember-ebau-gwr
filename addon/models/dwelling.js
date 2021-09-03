@@ -158,7 +158,7 @@ export default class Dwelling extends XMLModel {
 
   // possible status parameters
   static statusParameters = [
-    "dateOfConstruction.yearMonthDay",
+    "yearOfConstruction",
     "yearOfDemolition",
   ];
 
@@ -169,8 +169,8 @@ export default class Dwelling extends XMLModel {
     setToApprovedDwelling: [],
     setToCompletedDwelling: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: true,
       },
     ],
@@ -189,16 +189,16 @@ export default class Dwelling extends XMLModel {
     3003: [],
     3004: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: true,
       },
     ],
     3005: [],
     3007: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: false,
       },
       { field: "yearOfDemolition", type: "number", required: true },

@@ -21,15 +21,13 @@ export default {
       ],
     }),
   ],
-  dateOfConstruction: {
-    yearMonthDay: [
-      validatePresenceState({
-        presence: true,
-        on: "dwellingStatus",
-        states: [Dwelling.STATUS_COMPLETED],
-      }),
-    ],
-  },
+  yearOfConstruction: [
+    validatePresenceState({
+      presence: true,
+      on: "dwellingStatus",
+      states: [Dwelling.STATUS_COMPLETED],
+    }),
+  ],
   yearOfDemolition: [
     validatePresenceState({
       presence: true,

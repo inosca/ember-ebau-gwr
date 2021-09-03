@@ -21,17 +21,16 @@ export default {
       ],
     }),
   ],
-  dateOfConstruction: {
-    yearMonthDay: [
-      validatePresenceTransition({
-        presence: true,
-        on: "dwellingStatus",
-        transitions: ["setToCompletedDwelling"],
-        data: Dwelling,
-        model: "dwelling",
-      }),
-    ],
-  },
+  yearOfConstruction: [
+    validatePresenceTransition({
+      presence: true,
+      on: "dwellingStatus",
+      transitions: ["setToCompletedDwelling"],
+      data: Dwelling,
+      model: "dwelling",
+    }),
+  ],
+
   yearOfDemolition: [
     validatePresenceTransition({
       presence: true,
