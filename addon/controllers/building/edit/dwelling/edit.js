@@ -113,9 +113,18 @@ export default class BuildingEditDwellingEditController extends Controller {
       const transition =
         Dwelling.dwellingTransitionMapping[currentStatus][newStatus];
 
+      // execute dry-run, throws error if requirements don't hold
       yield this.dwellingAPI[transition](
         transition,
         1,
+        true,
+        this.dwelling,
+        this.model.buildingId
+      );
+      yield this.dwellingAPI[transition](
+        transition,
+        1,
+        false,
         this.dwelling,
         this.model.buildingId
       );
@@ -138,8 +147,8 @@ export default class BuildingEditDwellingEditController extends Controller {
             buildingId: error.buildingId,
             states: this.concatStates(error.states),
             href: error.dwellingId
-              ? `/1/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
-              : `/1/${this.model.projectId}/building/${error.buildingId}/form`,
+              ? `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/form`,
             htmlSafe: true,
           }),
         ];

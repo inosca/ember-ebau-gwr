@@ -111,12 +111,18 @@ export default class ProjectFormController extends Controller {
       const transition =
         ConstructionProject.projectTransitionMapping[currentStatus][newStatus];
 
+      // execute dry-run, throws error if requirements don't hold
+      yield this.constructionProject[transition](
+        transition,
+        3,
+        true,
+        this.project
+      );
       yield this.constructionProject[transition](
         transition,
         isCascading ? 3 : 1,
-        this.project,
-        currentStatus,
-        newStatus
+        false,
+        this.project
       );
       yield this.constructionProject.clearCache(this.model.projectId);
       this.fetchProject.perform(); // reload for errors;
@@ -139,8 +145,8 @@ export default class ProjectFormController extends Controller {
             buildingId: error.buildingId,
             states: this.concatStates(error.states),
             href: error.dwellingId
-              ? `/1/${this.project.EPROID}/building/${error.buildingId}/dwelling/${error.dwellingId}`
-              : `/1/${this.project.EPROID}/building/${error.buildingId}/form`,
+              ? `/${this.model.instanceId}/${this.project.EPROID}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/${this.model.instanceId}/${this.project.EPROID}/building/${error.buildingId}/form`,
             htmlSafe: true,
           }),
         ];

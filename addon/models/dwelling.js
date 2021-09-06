@@ -157,10 +157,7 @@ export default class Dwelling extends XMLModel {
   };
 
   // possible status parameters
-  static statusParameters = [
-    "yearOfConstruction",
-    "yearOfDemolition",
-  ];
+  static statusParameters = ["yearOfConstruction", "yearOfDemolition"];
 
   // necessary parameters for status transitions in status changes
   static dwellingTransitionParameters = {

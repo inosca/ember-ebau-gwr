@@ -185,10 +185,16 @@ export default class ConstructionProjectService extends GwrService {
 
   nextValidStates(state) {
     return ConstructionProject.projectStatesMapping[state];
-    //TODO: return [...ConstructionProject.projectStatesMapping[state], state];
   }
 
-  async setToApprovedConstructionProject(transition, cascadeLevel, project) {
+  async setToApprovedConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
+    // console.log("setToApprovedConstructionProject, checked");
+
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -200,6 +206,7 @@ export default class ConstructionProjectService extends GwrService {
             await this.building.setToApprovedBuilding(
               "setToApprovedBuilding",
               cascadeLevel - 1,
+              isDryRun,
               buildingWork
             );
           } else {
@@ -216,7 +223,7 @@ export default class ConstructionProjectService extends GwrService {
             };
           }
         } else if (buildingWork.kindOfWork === 6002) {
-          console.log("setting dwellings of work:", buildingWork);
+          // console.log("setting dwellings of work:", buildingWork);
           await Promise.all(
             buildingWork.building.buildingEntrance.map(
               async (buildingEntrance) =>
@@ -231,6 +238,7 @@ export default class ConstructionProjectService extends GwrService {
                       await this.dwelling.setToApprovedDwelling(
                         "setToApprovedDwelling",
                         cascadeLevel - 1,
+                        isDryRun,
                         dwelling,
                         buildingWork.building.EGID
                       );
@@ -243,12 +251,23 @@ export default class ConstructionProjectService extends GwrService {
       })
     );
 
-    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_APPROVED) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_APPROVED
+    ) {
+      // console.log("transition setToApprovedConstructionProject");
       await this.transitionState(transition, project);
     }
   }
 
-  async setToRefusedConstructionProject(transition, cascadeLevel, project) {
+  async setToRefusedConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
+    // console.log("setToRefusedConstructionProject, checked");
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -262,6 +281,7 @@ export default class ConstructionProjectService extends GwrService {
             await this.building.setToNotRealizedBuilding(
               "setToNotRealizedBuilding",
               cascadeLevel - 1,
+              isDryRun,
               buildingWork
             );
           } else {
@@ -296,25 +316,10 @@ export default class ConstructionProjectService extends GwrService {
                       await this.dwelling.setToNotRealizedDwelling(
                         "setToNotRealizedDwelling",
                         cascadeLevel - 1,
+                        isDryRun,
                         dwelling,
                         buildingWork.building.EGID
                       );
-                    } else {
-                      // Display message with link to dwelling with issue
-                      const states =
-                        cascadeLevel > 1
-                          ? [
-                              Dwelling.STATUS_PROJECTED,
-                              Dwelling.STATUS_APPROVED,
-                              Dwelling.STATUS_NOT_REALIZED,
-                            ]
-                          : [Dwelling.STATUS_NOT_REALIZED];
-                      throw {
-                        isLifeCycleError: true,
-                        dwellingId: dwelling.EWID,
-                        buildingId: buildingWork.building.EGID,
-                        states,
-                      };
                     }
                   })
                 )
@@ -324,13 +329,24 @@ export default class ConstructionProjectService extends GwrService {
       })
     );
 
-    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_REFUSED) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_REFUSED
+    ) {
       await this.transitionState(transition, project);
     }
   }
 
-  async setToStartConstructionProject(transition, cascadeLevel, project) {
+  async setToStartConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
+    // console.log("setToStartConstructionProject, checked");
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       project !== ConstructionProject.STATUS_CONSTRUCTION_STARTED
     ) {
@@ -338,14 +354,84 @@ export default class ConstructionProjectService extends GwrService {
     }
   }
 
-  async setToCompletedConstructionProject(transition, cascadeLevel, project) {
-    // TODO: check if all building and dwellings are in correct state?
-    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_COMPLETED) {
+  async setToCompletedConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
+    await Promise.all(
+      project.work.map(async (buildingWork) => {
+        if (buildingWork.kindOfWork === 6001) {
+          if (
+            buildingWork.building.buildingStatus !== Building.STATUS_COMPLETED
+          ) {
+            throw {
+              isLifeCycleError: true,
+              buildingId: buildingWork.building.EGID,
+              states: [Building.STATUS_COMPLETED],
+            };
+          }
+        } else if (buildingWork.kindOfWork === 6007) {
+          if (
+            buildingWork.building.buildingStatus !== Building.STATUS_DEMOLISHED
+          ) {
+            throw {
+              isLifeCycleError: true,
+              buildingId: buildingWork.building.EGID,
+              states: [Building.STATUS_DEMOLISHED],
+            };
+          }
+        }
+
+        await Promise.all(
+          buildingWork.building.buildingEntrance.map(
+            async (buildingEntrance) =>
+              await Promise.all(
+                buildingEntrance.dwelling.map(async (dwelling) => {
+                  if (buildingWork.kindOfWork === 6001) {
+                    if (dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED) {
+                      throw {
+                        isLifeCycleError: true,
+                        dwellingId: dwelling.EWID,
+                        buildingId: buildingWork.building.EGID,
+                        states: [Dwelling.STATUS_COMPLETED],
+                      };
+                    }
+                  } else if (buildingWork.kindOfWork === 6007) {
+                    if (
+                      dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
+                    ) {
+                      throw {
+                        isLifeCycleError: true,
+                        dwellingId: dwelling.EWID,
+                        buildingId: buildingWork.building.EGID,
+                        states: [Dwelling.STATUS_DEMOLISHED],
+                      };
+                    }
+                  }
+                })
+              )
+          )
+        );
+      })
+    );
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_COMPLETED
+    ) {
       await this.transitionState(transition, project);
     }
   }
 
-  async setToWithdrawnConstructionProject(transition, cascadeLevel, project) {
+  async setToWithdrawnConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -359,6 +445,7 @@ export default class ConstructionProjectService extends GwrService {
             await this.building.setToNotRealizedBuilding(
               "setToNotRealizedBuilding",
               cascadeLevel - 1,
+              isDryRun,
               buildingWork
             );
           } else {
@@ -393,6 +480,7 @@ export default class ConstructionProjectService extends GwrService {
                       await this.dwelling.setToNotRealizedDwelling(
                         "setToNotRealizedDwelling",
                         cascadeLevel - 1,
+                        isDryRun,
                         dwelling,
                         buildingWork.building.EGID
                       );
@@ -421,12 +509,21 @@ export default class ConstructionProjectService extends GwrService {
       })
     );
 
-    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_WITHDRAWN) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_WITHDRAWN
+    ) {
       await this.transitionState(transition, project);
     }
   }
 
-  async setToCancelledConstructionProject(transition, cascadeLevel, project) {
+  async setToCancelledConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -444,6 +541,7 @@ export default class ConstructionProjectService extends GwrService {
               await this.building.setToNotUsableBuilding(
                 "setToNotUsableBuilding",
                 cascadeLevel - 1,
+                isDryRun,
                 buildingWork
               );
             } else {
@@ -472,6 +570,7 @@ export default class ConstructionProjectService extends GwrService {
               await this.building.setToNotRealizedBuilding(
                 "setToNotRealizedBuilding",
                 cascadeLevel - 1,
+                isDryRun,
                 buildingWork
               );
             } else {
@@ -507,6 +606,7 @@ export default class ConstructionProjectService extends GwrService {
                       await this.dwelling.setToNotRealizedDwelling(
                         "setToNotRealizedDwelling",
                         cascadeLevel - 1,
+                        isDryRun,
                         dwelling,
                         buildingWork.building.EGID
                       );
@@ -536,6 +636,7 @@ export default class ConstructionProjectService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       project !== ConstructionProject.STATUS_NOT_REALIZED
     ) {
@@ -543,8 +644,17 @@ export default class ConstructionProjectService extends GwrService {
     }
   }
 
-  async setToSuspendedConstructionProject(transition, cascadeLevel, project) {
-    if (cascadeLevel > 0 && project !== ConstructionProject.STATUS_SUSPENDED) {
+  async setToSuspendedConstructionProject(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    project
+  ) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project !== ConstructionProject.STATUS_SUSPENDED
+    ) {
       await this.transitionState(transition, project);
     }
   }
@@ -552,9 +662,16 @@ export default class ConstructionProjectService extends GwrService {
   async setToCancelledSuspensionConstructionProject(
     transition,
     cascadeLevel,
+    isDryRun,
     project
   ) {
-    await this.transitionState(transition, project);
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      project === ConstructionProject.STATUS_SUSPENDED
+    ) {
+      await this.transitionState(transition, project);
+    }
   }
 
   async transitionState(transition, project) {

@@ -130,10 +130,16 @@ export default class BuildingService extends GwrService {
 
   nextValidStates(state) {
     return Building.buildingStatesMapping[state];
-    //TODO: return [...Building.buildingStatesMapping[state], state];
   }
 
-  async setToApprovedBuilding(transition, cascadeLevel, buildingWork) {
+  async setToApprovedBuilding(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    buildingWork
+  ) {
+    // console.log("setToApprovedBuilding, checked");
+
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -147,6 +153,7 @@ export default class BuildingService extends GwrService {
                 await this.dwelling.setToApprovedDwelling(
                   "setToApprovedDwelling",
                   cascadeLevel - 1,
+                  isDryRun,
                   dwelling,
                   buildingWork.building.EGID
                 );
@@ -169,11 +176,13 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_APPROVED
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !== Building.STATUS_APPROVED
     ) {
       throw {
@@ -187,8 +196,11 @@ export default class BuildingService extends GwrService {
   async setToBuildingConstructionStarted(
     transition,
     cascadeLevel,
+    isDryRun,
     buildingWork
   ) {
+    // console.log("setToBuildingConstructionStarted, checked");
+
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -217,14 +229,16 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !==
         Building.STATUS_CONSTRUCTION_STARTED
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !==
-      Building.STATUS_CONSTRUCTION_STARTED
+        Building.STATUS_CONSTRUCTION_STARTED
     ) {
       throw {
         isLifeCycleError: true,
@@ -234,7 +248,12 @@ export default class BuildingService extends GwrService {
     }
   }
 
-  async setToCompletedBuilding(transition, cascadeLevel, buildingWork) {
+  async setToCompletedBuilding(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    buildingWork
+  ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -265,11 +284,13 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_COMPLETED
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !== Building.STATUS_COMPLETED
     ) {
       throw {
@@ -280,7 +301,12 @@ export default class BuildingService extends GwrService {
     }
   }
 
-  async setToDemolishedBuilding(transition, cascadeLevel, buildingWork) {
+  async setToDemolishedBuilding(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    buildingWork
+  ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -294,12 +320,13 @@ export default class BuildingService extends GwrService {
                 ].includes(dwelling.dwellingStatus)
               ) {
                 if (dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED) {
-                  dwelling.dateOfDemolition.year =
+                  dwelling.yearOfDemolition =
                     buildingWork.building.yearOfDemolition;
                 }
                 await this.dwelling.setToDemolishedDwelling(
                   "setToDemolishedDwelling",
                   cascadeLevel - 1,
+                  isDryRun,
                   dwelling,
                   buildingWork.building.EGID
                 );
@@ -326,11 +353,13 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_DEMOLISHED
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !== Building.STATUS_DEMOLISHED
     ) {
       throw {
@@ -341,7 +370,13 @@ export default class BuildingService extends GwrService {
     }
   }
 
-  async setToNotRealizedBuilding(transition, cascadeLevel, buildingWork) {
+  async setToNotRealizedBuilding(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    buildingWork
+  ) {
+    // console.log("setToNotRealizedBuilding, checked");
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -358,6 +393,7 @@ export default class BuildingService extends GwrService {
                 await this.dwelling.setToNotRealizedDwelling(
                   "setToNotRealizedDwelling",
                   cascadeLevel - 1,
+                  isDryRun,
                   dwelling,
                   buildingWork.building.EGID
                 );
@@ -385,11 +421,13 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_NOT_REALIZED
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !== Building.STATUS_NOT_REALIZED
     ) {
       throw {
@@ -400,7 +438,12 @@ export default class BuildingService extends GwrService {
     }
   }
 
-  async setToUnusableBuilding(transition, cascadeLevel, buildingWork) {
+  async setToUnusableBuilding(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    buildingWork
+  ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -415,6 +458,7 @@ export default class BuildingService extends GwrService {
                 await this.dwelling.setToUnusableDwelling(
                   "setToUnusableDwelling",
                   cascadeLevel - 1,
+                  isDryRun,
                   dwelling,
                   buildingWork.building.EGID
                 );
@@ -440,11 +484,13 @@ export default class BuildingService extends GwrService {
     );
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_UNUSABLE
     ) {
       await this.transitionState(transition, buildingWork.building);
     } else if (
+      !isDryRun &&
       buildingWork.building.buildingStatus !== Building.STATUS_UNUSABLE
     ) {
       throw {

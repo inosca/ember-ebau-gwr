@@ -138,13 +138,24 @@ export default class DwellingService extends GwrService {
     //TODO: return [...Dwelling.dwellingStatesMapping[state], state];
   }
 
-  async setToApprovedDwelling(transition, cascadeLevel, dwelling, EGID) {
+  async setToApprovedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    // console.log("setToApprovedDwelling, checked");
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED
     ) {
       await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED) {
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED
+    ) {
       const building = await this.building.getFromCacheOrApi(EGID);
       throw {
         isLifeCycleError: true,
@@ -158,6 +169,78 @@ export default class DwellingService extends GwrService {
   async setToDwellingConstructionStarted(
     transition,
     cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    // console.log("setToDwellingConstructionStarted, checked");
+    const building = await this.building.getFromCacheOrApi(EGID);
+    if (
+      ![
+        Building.STATUS_CONSTRUCTION_STARTED,
+        Building.STATUS_COMPLETED,
+      ].includes(building.buildingStatus)
+    ) {
+      throw {
+        isLifeCycleError: true,
+        buildingId: building.EGID,
+        states: [
+          Building.STATUS_CONSTRUCTION_STARTED,
+          Building.STATUS_COMPLETED,
+        ],
+      };
+    }
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
+    ) {
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_APPROVED],
+      };
+    }
+  }
+
+  async setToCompletedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED
+    ) {
+      const building = await this.building.getFromCacheOrApi(EGID);
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_COMPLETED],
+      };
+    }
+  }
+
+  async setToDemolishedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
     dwelling,
     EGID
   ) {
@@ -171,53 +254,6 @@ export default class DwellingService extends GwrService {
       throw {
         isLifeCycleError: true,
         buildingId: building.EGID,
-        states: [Building.STATUS_COMPLETED],
-      };
-    }
-
-    if (
-      cascadeLevel > 0 &&
-      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
-    ) {
-      await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED) {
-      throw {
-        isLifeCycleError: true,
-        dwellingId: dwelling.EWID,
-        buildingId: building.EGID,
-        states: [Dwelling.STATUS_APPROVED],
-      };
-    }
-  }
-
-  async setToCompletedDwelling(transition, cascadeLevel, dwelling, EGID) {
-    if (
-      cascadeLevel > 0 &&
-      dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED
-    ) {
-      await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED) {
-      const building = await this.building.getFromCacheOrApi(EGID);
-      throw {
-        isLifeCycleError: true,
-        dwellingId: dwelling.EWID,
-        buildingId: building.EGID,
-        states: [Dwelling.STATUS_COMPLETED],
-      };
-    }
-  }
-
-  async setToDemolishedDwelling(transition, cascadeLevel, dwelling, EGID) {
-    const building = await this.building.getFromCacheOrApi(EGID);
-    if (
-      ![
-        Building.STATUS_CONSTRUCTION_STARTED,
-        Building.STATUS_COMPLETED,
-      ].includes(building.buildingStatus)
-    ) {
-      throw {
-        isLifeCycleError: true,
-        buildingId: building.EGID,
         states: [
           Building.STATUS_CONSTRUCTION_STARTED,
           Building.STATUS_COMPLETED,
@@ -226,11 +262,15 @@ export default class DwellingService extends GwrService {
     }
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
     ) {
       await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED) {
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
+    ) {
       throw {
         isLifeCycleError: true,
         dwellingId: dwelling.EWID,
@@ -240,13 +280,21 @@ export default class DwellingService extends GwrService {
     }
   }
 
-  async setToNotRealizedDwelling(transition, cascadeLevel, dwelling, EGID) {
+  async setToNotRealizedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    // console.log("setToNotRealizedDwelling, checked");
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
       ![
         Building.STATUS_PROJECTED,
         Building.STATUS_APPROVED,
         Building.STATUS_COMPLETED,
+        Building.STATUS_NOT_REALIZED,
       ].includes(building.buildingStatus)
     ) {
       throw {
@@ -256,16 +304,21 @@ export default class DwellingService extends GwrService {
           Building.STATUS_PROJECTED,
           Building.STATUS_APPROVED,
           Building.STATUS_COMPLETED,
+          Building.STATUS_NOT_REALIZED,
         ],
       };
     }
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       dwelling.dwellingStatus !== Dwelling.STATUS_NOT_REALIZED
     ) {
       await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_NOT_REALIZED) {
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_NOT_REALIZED
+    ) {
       throw {
         isLifeCycleError: true,
         dwellingId: dwelling.EWID,
@@ -275,7 +328,13 @@ export default class DwellingService extends GwrService {
     }
   }
 
-  async setToUnusableDwelling(transition, cascadeLevel, dwelling, EGID) {
+  async setToUnusableDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
       ![
@@ -294,11 +353,15 @@ export default class DwellingService extends GwrService {
     }
 
     if (
+      !isDryRun &&
       cascadeLevel > 0 &&
       dwelling.dwellingStatus !== Dwelling.STATUS_UNUSABLE
     ) {
       await this.transitionState(transition, dwelling, EGID);
-    } else if (dwelling.dwellingStatus !== Dwelling.STATUS_UNUSABLE) {
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_UNUSABLE
+    ) {
       throw {
         isLifeCycleError: true,
         dwellingId: dwelling.EWID,

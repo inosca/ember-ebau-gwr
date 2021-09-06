@@ -129,9 +129,18 @@ export default class BuildingFormController extends Controller {
       const transition =
         Building.buildingTransitionMapping[currentStatus][newStatus];
 
+      this.buildingWork.building = this.building;
+      // execute dry-run, throws error if requirements don't hold
+      yield this.buildingAPI[transition](
+        transition,
+        2,
+        true,
+        this.buildingWork
+      );
       yield this.buildingAPI[transition](
         transition,
         isCascading ? 2 : 1,
+        false,
         this.buildingWork
       );
 
@@ -152,8 +161,8 @@ export default class BuildingFormController extends Controller {
             buildingId: error.buildingId,
             states: this.concatStates(error.states),
             href: error.dwellingId
-              ? `/1/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
-              : `/1/${this.model.projectId}/building/${error.buildingId}/form`,
+              ? `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/form`,
             htmlSafe: true,
           }),
         ];
