@@ -266,6 +266,11 @@ export default class ConstructionProject extends XMLModel {
     ],
     setToCompletedConstructionProject: [
       { field: "projectCompletionDate", type: "date", required: true },
+      {
+        field: "realestateIdentification.number",
+        type: "String",
+        required: true,
+      },
     ],
     setToCancelledSuspensionConstructionProject: [],
   };

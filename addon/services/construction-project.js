@@ -363,10 +363,14 @@ export default class ConstructionProjectService extends GwrService {
     isDryRun,
     project
   ) {
-    // TODO
-    // <?xml version="1.0" encoding="UTF-8"?><errors><error>Invalid request</error><error>
-    // cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns2:typeOfPermit'.
-    // One of '{"http://www.ech.ch/xmlns/eCH-0216/2":realestateIdentification}' is expected.</error></errors>
+    /** TODO: throws error for any kind of project (Tiefbau / Hochbau)
+     *<ns2:errorList>
+     *  <ns2:ruleID>CQ4782</ns2:ruleID>
+     *  <ns2:ruleCategory>BAU</ns2:ruleCategory>
+     *  <ns2:action>Refused</ns2:action>
+     *  <ns2:messageOfError>Für Tiefbauprojekte sind keine Gebäude und Wohnungen zugelassen. Bitte korrigieren.</ns2:messageOfError>
+     *</ns2:errorList>
+     **/
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {

@@ -98,4 +98,15 @@ export default {
       model: "project",
     }),
   ],
+  realestateIdentification: {
+    number: [
+      validatePresenceTransition({
+        presence: true,
+        on: "projectStatus",
+        transitions: ["setToCompletedConstructionProject"],
+        data: ConstructionProject,
+        model: "project",
+      }),
+    ],
+  },
 };
