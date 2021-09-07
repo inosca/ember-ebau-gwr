@@ -74,8 +74,7 @@ export default class BuildingFormController extends Controller {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
-        let building;
-        building = yield this.buildingAPI.create(
+        const building = yield this.buildingAPI.create(
           this.model.projectId,
           this.buildingWork
         );

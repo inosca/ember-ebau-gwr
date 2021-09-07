@@ -47,6 +47,7 @@ export default class ConstructionProjectService extends GwrService {
     }
 
     const xml = await response.text();
+    // TODO: does modifyConstructionProjectResponse return all information?
     return this.createAndCache(xml);
   }
 
@@ -108,7 +109,8 @@ export default class ConstructionProjectService extends GwrService {
 
     buildingWork.ARBID = ARBID;
 
-    // TODO: apply for type umbau with modifyWork, don't execute bindBuildingToConstructionProject
+    // TODO: apply for type "Umbau" with modifyWork
+    // don't execute bindBuildingToConstructionProject
     return buildingWork;
     /*return buildingWork.kindOfWork === 6002
       ? await this.modifyWork(projectId, buildingWork)
@@ -185,6 +187,8 @@ export default class ConstructionProjectService extends GwrService {
 
   nextValidStates(state) {
     return ConstructionProject.projectStatesMapping[state];
+    // TODO allow same state repeated transitions:
+    // return [...ConstructionProject.projectStatesMapping[state], state];
   }
 
   async setToApprovedConstructionProject(

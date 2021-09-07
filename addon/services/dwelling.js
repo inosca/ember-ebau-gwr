@@ -135,7 +135,8 @@ export default class DwellingService extends GwrService {
 
   nextValidStates(state) {
     return Dwelling.dwellingStatesMapping[state];
-    //TODO: return [...Dwelling.dwellingStatesMapping[state], state];
+    // TODO allow same state repeated transitions:
+    // return [...Dwelling.dwellingStatesMapping[state], state];
   }
 
   async setToApprovedDwelling(

@@ -130,6 +130,8 @@ export default class BuildingService extends GwrService {
 
   nextValidStates(state) {
     return Building.buildingStatesMapping[state];
+    // TODO: allow same state repeated transitions:
+    // return [...Building.buildingStatesMapping[state], state];
   }
 
   async setToApprovedBuilding(

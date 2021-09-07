@@ -283,40 +283,44 @@ export default class Building extends XMLModel {
 
   // valid state transitions
   static buildingStatesMapping = {
-    1001: [this.STATUS_APPROVED, this.STATUS_NOT_REALIZED], // Projektiert
-    1002: [this.STATUS_CONSTRUCTION_STARTED, this.STATUS_NOT_REALIZED], // Bewilligt
-    1003: [this.STATUS_COMPLETED, this.STATUS_UNUSABLE], // Im Bau
-    1004: [this.STATUS_DEMOLISHED], // Bestehend
-    1005: [this.STATUS_COMPLETED, this.STATUS_DEMOLISHED], // Nicht nutzbar
-    1007: [], // Abgebrochen
-    1008: [], // Nicht realisiert
+    [this.STATUS_PROJECTED]: [this.STATUS_APPROVED, this.STATUS_NOT_REALIZED], // Projektiert
+    [this.STATUS_APPROVED]: [
+      this.STATUS_CONSTRUCTION_STARTED,
+      this.STATUS_NOT_REALIZED,
+    ], // Bewilligt
+    [this.STATUS_CONSTRUCTION_STARTED]: [
+      this.STATUS_COMPLETED,
+      this.STATUS_UNUSABLE,
+    ], // Im Bau
+    [this.STATUS_COMPLETED]: [this.STATUS_DEMOLISHED], // Bestehend
+    [this.STATUS_UNUSABLE]: [this.STATUS_COMPLETED, this.STATUS_DEMOLISHED], // Nicht nutzbar
+    [this.STATUS_DEMOLISHED]: [], // Abgebrochen
+    [this.STATUS_NOT_REALIZED]: [], // Nicht realisiert
   };
 
   // api requests for state transitions
   static buildingTransitionMapping = {
-    1001: {
-      // TODO: buildings are approved through construction project approval
-      //1002: "setToApprovedConstructionProject", // TODO: maybe mark in construction project?
-      1002: "setToApprovedBuilding",
-      1008: "setToNotRealizedBuilding",
+    [this.STATUS_PROJECTED]: {
+      [this.STATUS_APPROVED]: "setToApprovedBuilding",
+      [this.STATUS_NOT_REALIZED]: "setToNotRealizedBuilding",
     },
-    1002: {
-      1003: "setToBuildingConstructionStarted",
-      1008: "setToNotRealizedBuilding",
+    [this.STATUS_APPROVED]: {
+      [this.STATUS_CONSTRUCTION_STARTED]: "setToBuildingConstructionStarted",
+      [this.STATUS_NOT_REALIZED]: "setToNotRealizedBuilding",
     },
-    1003: {
-      1004: "setToCompletedBuilding",
-      1005: "setToUnusableBuilding",
+    [this.STATUS_CONSTRUCTION_STARTED]: {
+      [this.STATUS_COMPLETED]: "setToCompletedBuilding",
+      [this.STATUS_UNUSABLE]: "setToUnusableBuilding",
     },
-    1004: {
-      1007: "setToDemolishedBuilding",
+    [this.STATUS_COMPLETED]: {
+      [this.STATUS_DEMOLISHED]: "setToDemolishedBuilding",
     },
-    1005: {
-      1004: "setToCompletedBuilding",
-      1007: "setToDemolishedBuilding",
+    [this.STATUS_UNUSABLE]: {
+      [this.STATUS_COMPLETED]: "setToCompletedBuilding",
+      [this.STATUS_DEMOLISHED]: "setToDemolishedBuilding",
     },
-    1007: {},
-    1008: {},
+    [this.STATUS_DEMOLISHED]: {},
+    [this.STATUS_NOT_REALIZED]: {},
   };
 
   // possible status parameters
@@ -327,8 +331,6 @@ export default class Building extends XMLModel {
 
   // necessary parameters for status transitions in status changes
   static buildingTransitionParameters = {
-    // TODO: buildings are approved through construction project approval
-    //setToApprovedConstructionProject: [],
     setToApprovedBuilding: [],
     setToCompletedBuilding: [
       {
@@ -347,18 +349,18 @@ export default class Building extends XMLModel {
 
   // necessary fields for target state in status corrections
   static buildingTransitionParametersMapping = {
-    1001: [],
-    1002: [],
-    1003: [],
-    1004: [
+    [this.STATUS_PROJECTED]: [],
+    [this.STATUS_APPROVED]: [],
+    [this.STATUS_CONSTRUCTION_STARTED]: [],
+    [this.STATUS_COMPLETED]: [
       {
         field: "dateOfConstruction.yearMonthDay",
         type: "date",
         required: true,
       },
     ],
-    1005: [],
-    1007: [
+    [this.STATUS_UNUSABLE]: [],
+    [this.STATUS_DEMOLISHED]: [
       {
         field: "dateOfConstruction.yearMonthDay",
         type: "date",
@@ -366,30 +368,30 @@ export default class Building extends XMLModel {
       },
       { field: "yearOfDemolition", type: "number", required: true },
     ],
-    1008: [],
+    [this.STATUS_NOT_REALIZED]: [],
   };
 
   static buildingTransitionHint = {
-    1001: {
-      1002: true,
-      1008: true,
+    [this.STATUS_PROJECTED]: {
+      [this.STATUS_APPROVED]: true,
+      [this.STATUS_NOT_REALIZED]: true,
     },
-    1002: {
-      1003: false,
-      1008: true,
+    [this.STATUS_APPROVED]: {
+      [this.STATUS_CONSTRUCTION_STARTED]: false,
+      [this.STATUS_NOT_REALIZED]: true,
     },
-    1003: {
-      1004: false,
-      1005: true,
+    [this.STATUS_CONSTRUCTION_STARTED]: {
+      [this.STATUS_COMPLETED]: false,
+      [this.STATUS_UNUSABLE]: true,
     },
-    1004: {
-      1007: true,
+    [this.STATUS_COMPLETED]: {
+      [this.STATUS_DEMOLISHED]: true,
     },
-    1005: {
-      1004: false,
-      1007: true,
+    [this.STATUS_UNUSABLE]: {
+      [this.STATUS_COMPLETED]: false,
+      [this.STATUS_DEMOLISHED]: true,
     },
-    1007: {},
-    1008: {},
+    [this.STATUS_DEMOLISHED]: {},
+    [this.STATUS_NOT_REALIZED]: {},
   };
 }

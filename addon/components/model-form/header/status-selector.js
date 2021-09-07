@@ -109,9 +109,6 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     }
 
     if (isChange) {
-      // changeset.save does not seem to apply the changes
-      // of the status field to the model
-      //this.args.model[this.args.modelStatusField] = this.newStatus;
       changeset.rollbackProperty(this.args.modelStatusField);
     }
     yield changeset.save();

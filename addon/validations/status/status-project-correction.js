@@ -10,7 +10,7 @@ export default {
     validatePresence({ presence: true }),
     validateInclusion({
       list: [
-        6701,
+        ConstructionProject.STATUS_PROJECTED,
         ConstructionProject.STATUS_APPROVED,
         ConstructionProject.STATUS_CONSTRUCTION_STARTED,
         ConstructionProject.STATUS_COMPLETED,
