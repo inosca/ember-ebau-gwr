@@ -83,7 +83,7 @@ export const setToDemolishedDwelling =
 `{{#>base}}
   <ns2:setToDemolishedDwelling>
     <ns2:dateOfDemolition>
-      <year>{{model.yearOfDemolition}}</year>
+      <year>{{model.dateOfDemolition.year}}</year>
     </ns2:dateOfDemolition>
   </ns2:setToDemolishedDwelling>
 {{/base}}`;

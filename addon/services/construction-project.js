@@ -3,6 +3,8 @@ import { task, lastValue } from "ember-concurrency-decorators";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
+import BuildingWork from "ember-ebau-gwr/models/building-work";
+import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
 import XMLModel from "ember-ebau-gwr/models/xml-model";

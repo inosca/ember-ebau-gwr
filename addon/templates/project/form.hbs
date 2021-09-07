@@ -35,20 +35,20 @@
     >
       {{#unless this.project.isNew}}
         <div class="uk-flex">
-          <div class="uk-width-1-3 ">
+          <div class="uk-width-1-3">
             <span class="uk-form-label">{{t
                 "ember-gwr.constructionProject.fields.EPROID"
               }}:</span>
             <span>{{this.project.EPROID}}</span>
           </div>
-          <div class="uk-width-1-3 ">
+          <div class="uk-width-1-3">
             <span class="uk-form-label">{{t
                 "ember-gwr.constructionProject.fields.constructionLocalisation.municipalityName"
               }}:</span>
             <span
             >{{this.project.constructionLocalisation.municipalityName}}</span>
           </div>
-          <div class="uk-width-1-3 ">
+          <div class="uk-width-1-3">
             <span class="uk-form-label">{{t
                 "ember-gwr.constructionProject.fields.constructionSurveyDeptNumber"
               }}:</span>
@@ -170,8 +170,11 @@
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
       </h3>
-      <Field @type="number" @attr="realestateIdentification.number" />
+      <Field @attr="realestateIdentification.number" />
+      <Field @attr="realestateIdentification.numberSuffix" />
       <Field @attr="realestateIdentification.EGRID" />
+      <Field @type="nubmer" @attr="realestateIdentification.subDistrict" />
+      <Field @attr="realestateIdentification.lot" />
       <h3>
         {{t "ember-gwr.components.modelForm.clientHeading"}}
       </h3>

@@ -4,6 +4,8 @@ import {
   validateNumber,
 } from "ember-changeset-validations/validators";
 
+import realestateIdentification from "./realestate-identification";
+
 export default {
   officialConstructionProjectFileNo: validateLength({
     min: 1,
@@ -51,4 +53,5 @@ export default {
       },
     },
   },
+  ...realestateIdentification,
 };
