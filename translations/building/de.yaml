@@ -130,6 +130,13 @@ ember-gwr:
         8023: Periode ab 2016
     yearOfDemolition: Abbruchjahr des Gebäudes
 
+    realestateIdentification:
+        EGRID: EGRID
+        number: Grundstücksnummer
+        numberSuffix: Suffix der Grundstücksnummer
+        subDistrict: Grundbuchkreisnummer
+        lot: Parzellennummber
+        
     surfaceAreaOfBuilding: Gebäudefläche (m2)
     volume:
       volume: Gebäudevolumen

@@ -176,6 +176,7 @@ export default class Building extends XMLModel {
       <ns2:nameOfBuilding>{{model.nameOfBuilding}}</ns2:nameOfBuilding>
     {{/if}}
     {{> Coordinates model=model.coordinates}}
+    {{> RealestateIdentification model=model.realestateIdentification}}
     {{#if model.localCode1}}
       <ns2:localCode1>{{model.localCode1}}</ns2:localCode1>
     {{/if}}
