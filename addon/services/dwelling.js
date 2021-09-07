@@ -145,7 +145,6 @@ export default class DwellingService extends GwrService {
     dwelling,
     EGID
   ) {
-    // console.log("setToApprovedDwelling, checked");
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
@@ -173,7 +172,6 @@ export default class DwellingService extends GwrService {
     dwelling,
     EGID
   ) {
-    // console.log("setToDwellingConstructionStarted, checked");
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
       ![
@@ -287,7 +285,6 @@ export default class DwellingService extends GwrService {
     dwelling,
     EGID
   ) {
-    // console.log("setToNotRealizedDwelling, checked");
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
       ![
@@ -390,8 +387,10 @@ export default class DwellingService extends GwrService {
       throw errors;
     }
 
-    const xml = await response.text();
-    return this.createAndCache(xml);
+    // update cached dwelling
+    // xml response from transition only contains partial information
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    return this.get(dwelling.EWID, EGID);
   }
 
   getChangeParameters(currentStatus, newStatus) {

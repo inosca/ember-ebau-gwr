@@ -116,31 +116,45 @@
               @required={{true}}
             />
           </div>
-          <div class={{spacingClass}}>
-            <Field @inputType="date" @attr="buildingPermitIssueDate" />
-          </div>
+          {{#if this.project.buildingPermitIssueDate}}
+            <div class={{spacingClass}}>
+              <Field @inputType="date" @attr="buildingPermitIssueDate" />
+            </div>
+          {{/if}}
           {{#unless this.project.isNew}}
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="projectStartDate" />
-            </div>
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="projectCompletionDate" />
-            </div>
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="projectSuspensionDate" />
-            </div>
-            <div class={{spacingClass}}>
-              <Field
-                @inputType="date"
-                @attr="constructionAuthorisationDeniedDate"
-              />
-            </div>
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="nonRealisationDate" />
-            </div>
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="withdrawalDate" />
-            </div>
+            {{#if this.project.projectStartDate}}
+              <div class={{spacingClass}}>
+                <Field @inputType="date" @attr="projectStartDate" />
+              </div>
+            {{/if}}
+            {{#if this.project.projectCompletionDate}}
+              <div class={{spacingClass}}>
+                <Field @inputType="date" @attr="projectCompletionDate" />
+              </div>
+            {{/if}}
+            {{#if this.project.projectSuspensionDate}}
+              <div class={{spacingClass}}>
+                <Field @inputType="date" @attr="projectSuspensionDate" />
+              </div>
+            {{/if}}
+            {{#if this.project.constructionAuthorisationDeniedDate}}
+              <div class={{spacingClass}}>
+                <Field
+                  @inputType="date"
+                  @attr="constructionAuthorisationDeniedDate"
+                />
+              </div>
+            {{/if}}
+            {{#if this.project.nonRealisationDate}}
+              <div class={{spacingClass}}>
+                <Field @inputType="date" @attr="nonRealisationDate" />
+              </div>
+            {{/if}}
+            {{#if this.project.withdrawalDate}}
+              <div class={{spacingClass}}>
+                <Field @inputType="date" @attr="withdrawalDate" />
+              </div>
+            {{/if}}
           {{/unless}}
         {{/let}}
       </div>

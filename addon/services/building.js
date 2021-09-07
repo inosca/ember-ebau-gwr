@@ -138,8 +138,6 @@ export default class BuildingService extends GwrService {
     isDryRun,
     buildingWork
   ) {
-    // console.log("setToApprovedBuilding, checked");
-
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -180,6 +178,9 @@ export default class BuildingService extends GwrService {
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_APPROVED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -199,8 +200,6 @@ export default class BuildingService extends GwrService {
     isDryRun,
     buildingWork
   ) {
-    // console.log("setToBuildingConstructionStarted, checked");
-
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -234,6 +233,9 @@ export default class BuildingService extends GwrService {
       buildingWork.building.buildingStatus !==
         Building.STATUS_CONSTRUCTION_STARTED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -288,6 +290,9 @@ export default class BuildingService extends GwrService {
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_COMPLETED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -357,6 +362,9 @@ export default class BuildingService extends GwrService {
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_DEMOLISHED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -376,7 +384,6 @@ export default class BuildingService extends GwrService {
     isDryRun,
     buildingWork
   ) {
-    // console.log("setToNotRealizedBuilding, checked");
     await Promise.all(
       buildingWork.building.buildingEntrance.map(
         async (buildingEntrance) =>
@@ -425,6 +432,9 @@ export default class BuildingService extends GwrService {
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_NOT_REALIZED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -488,6 +498,9 @@ export default class BuildingService extends GwrService {
       cascadeLevel > 0 &&
       buildingWork.building.buildingStatus !== Building.STATUS_UNUSABLE
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(buildingWork.building.EGID);
       await this.transitionState(transition, buildingWork.building);
     } else if (
       !isDryRun &&
@@ -520,8 +533,10 @@ export default class BuildingService extends GwrService {
       throw errors;
     }
 
-    const xml = await response.text();
-    return this.createAndCache(xml);
+    // update cached building
+    // xml response from transition only contains partial information
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    return this.get(building.EGID);
   }
 
   getChangeParameters(currentStatus, newStatus) {

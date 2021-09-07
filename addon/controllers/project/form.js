@@ -111,6 +111,10 @@ export default class ProjectFormController extends Controller {
       const transition =
         ConstructionProject.projectTransitionMapping[currentStatus][newStatus];
 
+      // reload in case linked objects have been updated
+      const project = yield this.constructionProject.get(this.model.projectId);
+      this.project.work = project.work;
+
       // execute dry-run, throws error if requirements don't hold
       yield this.constructionProject[transition](
         transition,
@@ -118,6 +122,11 @@ export default class ProjectFormController extends Controller {
         true,
         this.project
       );
+
+      // execute transition(s)
+      // cascade level:
+      // 3: execute transition on linked buildings and dwellings
+      // 1: only perform transition on project
       yield this.constructionProject[transition](
         transition,
         isCascading ? 3 : 1,

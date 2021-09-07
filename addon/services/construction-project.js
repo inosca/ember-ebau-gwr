@@ -193,8 +193,6 @@ export default class ConstructionProjectService extends GwrService {
     isDryRun,
     project
   ) {
-    // console.log("setToApprovedConstructionProject, checked");
-
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -210,7 +208,7 @@ export default class ConstructionProjectService extends GwrService {
               buildingWork
             );
           } else {
-            // Display message with link to dwelling with issue
+            // Display message with link to building with issue
             const states =
               cascadeLevel > 1
                 ? [Building.STATUS_PROJECTED, Building.STATUS_APPROVED]
@@ -223,7 +221,6 @@ export default class ConstructionProjectService extends GwrService {
             };
           }
         } else if (buildingWork.kindOfWork === 6002) {
-          // console.log("setting dwellings of work:", buildingWork);
           await Promise.all(
             buildingWork.building.buildingEntrance.map(
               async (buildingEntrance) =>
@@ -254,9 +251,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_APPROVED
+      project.projectStatus !== ConstructionProject.STATUS_APPROVED
     ) {
-      // console.log("transition setToApprovedConstructionProject");
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -267,7 +266,6 @@ export default class ConstructionProjectService extends GwrService {
     isDryRun,
     project
   ) {
-    // console.log("setToRefusedConstructionProject, checked");
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -285,7 +283,7 @@ export default class ConstructionProjectService extends GwrService {
               buildingWork
             );
           } else {
-            // Display message with link to dwelling with issue
+            // Display message with link to building with issue
             const states =
               cascadeLevel > 1
                 ? [
@@ -332,8 +330,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_REFUSED
+      project.projectStatus !== ConstructionProject.STATUS_REFUSED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -344,12 +345,14 @@ export default class ConstructionProjectService extends GwrService {
     isDryRun,
     project
   ) {
-    // console.log("setToStartConstructionProject, checked");
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_CONSTRUCTION_STARTED
+      project.projectStatus !== ConstructionProject.STATUS_CONSTRUCTION_STARTED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -360,6 +363,10 @@ export default class ConstructionProjectService extends GwrService {
     isDryRun,
     project
   ) {
+    // TODO
+    // <?xml version="1.0" encoding="UTF-8"?><errors><error>Invalid request</error><error>
+    // cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns2:typeOfPermit'.
+    // One of '{"http://www.ech.ch/xmlns/eCH-0216/2":realestateIdentification}' is expected.</error></errors>
     await Promise.all(
       project.work.map(async (buildingWork) => {
         if (buildingWork.kindOfWork === 6001) {
@@ -420,8 +427,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_COMPLETED
+      project.projectStatus !== ConstructionProject.STATUS_COMPLETED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -449,7 +459,7 @@ export default class ConstructionProjectService extends GwrService {
               buildingWork
             );
           } else {
-            // Display message with link to dwelling with issue
+            // Display message with link to building with issue
             const states =
               cascadeLevel > 1
                 ? [
@@ -512,8 +522,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_WITHDRAWN
+      project.projectStatus !== ConstructionProject.STATUS_WITHDRAWN
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -574,7 +587,7 @@ export default class ConstructionProjectService extends GwrService {
                 buildingWork
               );
             } else {
-              // Display message with link to dwelling with issue
+              // Display message with link to building with issue
               const states =
                 cascadeLevel > 1
                   ? [
@@ -638,8 +651,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_NOT_REALIZED
+      project.projectStatus !== ConstructionProject.STATUS_NOT_REALIZED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -653,8 +669,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project !== ConstructionProject.STATUS_SUSPENDED
+      project.projectStatus !== ConstructionProject.STATUS_SUSPENDED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -668,8 +687,11 @@ export default class ConstructionProjectService extends GwrService {
     if (
       !isDryRun &&
       cascadeLevel > 0 &&
-      project === ConstructionProject.STATUS_SUSPENDED
+      project.projectStatus === ConstructionProject.STATUS_SUSPENDED
     ) {
+      // ensure state transitions have been performed by api
+      /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+      await this.get(project.EPROID);
       await this.transitionState(transition, project);
     }
   }
@@ -693,8 +715,10 @@ export default class ConstructionProjectService extends GwrService {
       throw errors;
     }
 
-    const xml = await response.text();
-    return this.createAndCache(xml);
+    // update cached project
+    // xml response from transition only contains partial information
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    return this.get(project.EPROID);
   }
 
   getChangeParameters(currentStatus, newStatus) {

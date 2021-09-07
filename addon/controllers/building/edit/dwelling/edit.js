@@ -121,6 +121,10 @@ export default class BuildingEditDwellingEditController extends Controller {
         this.dwelling,
         this.model.buildingId
       );
+
+      // execute transition(s)
+      // cascade level:
+      // 1: only perform transition on dwelling
       yield this.dwellingAPI[transition](
         transition,
         1,

@@ -129,7 +129,13 @@ export default class BuildingFormController extends Controller {
       const transition =
         Building.buildingTransitionMapping[currentStatus][newStatus];
 
+      // reload in case linked objects have been updated
+      const building = yield this.buildingAPI.get(this.model.buildingId);
+      this.building.buildingEntrance = building.buildingEntrance;
+
+      // update buildingWork with building modified by changeset
       this.buildingWork.building = this.building;
+
       // execute dry-run, throws error if requirements don't hold
       yield this.buildingAPI[transition](
         transition,
@@ -137,6 +143,11 @@ export default class BuildingFormController extends Controller {
         true,
         this.buildingWork
       );
+
+      // execute transition(s)
+      // cascade level:
+      // 2: execute transition on linked dwellings
+      // 1: only perform transition on building
       yield this.buildingAPI[transition](
         transition,
         isCascading ? 2 : 1,
