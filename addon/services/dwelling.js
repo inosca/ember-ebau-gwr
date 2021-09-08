@@ -1,5 +1,6 @@
 import { guidFor } from "@ember/object/internals";
 import { inject as service } from "@ember/service";
+import Building from "ember-ebau-gwr/models/building";
 import Dwelling, { DwellingComplete } from "ember-ebau-gwr/models/dwelling";
 
 import GwrService from "./gwr";
@@ -134,11 +135,241 @@ export default class DwellingService extends GwrService {
 
   nextValidStates(state) {
     return Dwelling.dwellingStatesMapping[state];
+    // TODO allow same state repeated transitions:
+    // return [...Dwelling.dwellingStatesMapping[state], state];
   }
 
-  async transitionState(dwelling, currentStatus, newState, EGID) {
-    const transition =
-      Dwelling.dwellingTransitionMapping[currentStatus][newState];
+  async setToApprovedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_APPROVED
+    ) {
+      const building = await this.building.getFromCacheOrApi(EGID);
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_APPROVED],
+      };
+    }
+  }
+
+  async setToDwellingConstructionStarted(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    const building = await this.building.getFromCacheOrApi(EGID);
+    if (
+      ![
+        Building.STATUS_CONSTRUCTION_STARTED,
+        Building.STATUS_COMPLETED,
+      ].includes(building.buildingStatus)
+    ) {
+      throw {
+        isLifeCycleError: true,
+        buildingId: building.EGID,
+        states: [
+          Building.STATUS_CONSTRUCTION_STARTED,
+          Building.STATUS_COMPLETED,
+        ],
+      };
+    }
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_CONSTRUCTION_STARTED
+    ) {
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_APPROVED],
+      };
+    }
+  }
+
+  async setToCompletedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED
+    ) {
+      const building = await this.building.getFromCacheOrApi(EGID);
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_COMPLETED],
+      };
+    }
+  }
+
+  async setToDemolishedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    const building = await this.building.getFromCacheOrApi(EGID);
+    if (
+      ![
+        Building.STATUS_CONSTRUCTION_STARTED,
+        Building.STATUS_COMPLETED,
+      ].includes(building.buildingStatus)
+    ) {
+      throw {
+        isLifeCycleError: true,
+        buildingId: building.EGID,
+        states: [
+          Building.STATUS_CONSTRUCTION_STARTED,
+          Building.STATUS_COMPLETED,
+        ],
+      };
+    }
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
+    ) {
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_DEMOLISHED],
+      };
+    }
+  }
+
+  async setToNotRealizedDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    const building = await this.building.getFromCacheOrApi(EGID);
+    if (
+      ![
+        Building.STATUS_PROJECTED,
+        Building.STATUS_APPROVED,
+        Building.STATUS_COMPLETED,
+        Building.STATUS_NOT_REALIZED,
+      ].includes(building.buildingStatus)
+    ) {
+      throw {
+        isLifeCycleError: true,
+        buildingId: building.EGID,
+        states: [
+          Building.STATUS_PROJECTED,
+          Building.STATUS_APPROVED,
+          Building.STATUS_COMPLETED,
+          Building.STATUS_NOT_REALIZED,
+        ],
+      };
+    }
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_NOT_REALIZED
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_NOT_REALIZED
+    ) {
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_NOT_REALIZED],
+      };
+    }
+  }
+
+  async setToUnusableDwelling(
+    transition,
+    cascadeLevel,
+    isDryRun,
+    dwelling,
+    EGID
+  ) {
+    const building = await this.building.getFromCacheOrApi(EGID);
+    if (
+      ![
+        Building.STATUS_CONSTRUCTION_STARTED,
+        Building.STATUS_COMPLETED,
+      ].includes(building.buildingStatus)
+    ) {
+      throw {
+        isLifeCycleError: true,
+        buildingId: building.EGID,
+        states: [
+          Building.STATUS_CONSTRUCTION_STARTED,
+          Building.STATUS_COMPLETED,
+        ],
+      };
+    }
+
+    if (
+      !isDryRun &&
+      cascadeLevel > 0 &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_UNUSABLE
+    ) {
+      await this.transitionState(transition, dwelling, EGID);
+    } else if (
+      !isDryRun &&
+      dwelling.dwellingStatus !== Dwelling.STATUS_UNUSABLE
+    ) {
+      throw {
+        isLifeCycleError: true,
+        dwellingId: dwelling.EWID,
+        buildingId: building.EGID,
+        states: [Dwelling.STATUS_UNUSABLE],
+      };
+    }
+  }
+
+  async transitionState(transition, dwelling, EGID) {
     const body = this.xml.buildXMLRequest(transition, dwelling);
 
     const response = await this.authFetch.fetch(
@@ -157,8 +388,10 @@ export default class DwellingService extends GwrService {
       throw errors;
     }
 
-    const xml = await response.text();
-    return this.createAndCache(xml);
+    // update cached dwelling
+    // xml response from transition only contains partial information
+    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+    return this.get(dwelling.EWID, EGID);
   }
 
   getChangeParameters(currentStatus, newStatus) {

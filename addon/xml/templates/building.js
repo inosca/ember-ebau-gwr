@@ -115,12 +115,35 @@ export const addWorkToProject =
 {{/base}}`
 
 // prettier-ignore
+export const modifyWork =
+`{{#>base}}
+  <ns2:modifyWork>
+    <ns2:energeticRestauration>{{model.energeticRestauration}}</ns2:energeticRestauration>
+    <ns2:renovationHeatingsystem>{{model.renovationHeatingsystem}}</ns2:renovationHeatingsystem>
+    <ns2:innerConversionRenovation>{{model.innerConversionRenovation}}</ns2:innerConversionRenovation>
+    <ns2:conversion>{{model.conversion}}</ns2:conversion>
+    <ns2:extensionHeighteningHeated>{{model.extensionHeighteningHeated}}</ns2:extensionHeighteningHeated>
+    <ns2:extensionHeighteningNotHeated>{{model.extensionHeighteningNotHeated}}</ns2:extensionHeighteningNotHeated>
+    <ns2:thermicSolarFacility>{{model.thermicSolarFacility}}</ns2:thermicSolarFacility>
+    <ns2:photovoltaicSolarFacility>{{model.photovoltaicSolarFacility}}</ns2:photovoltaicSolarFacility>
+    <ns2:otherWorks>{{model.otherWorks}}</ns2:otherWorks>
+  </ns2:modifyWork>
+{{/base}}`
+
+// prettier-ignore
 export const addBuildingToConstructionProject =
 `{{#>base}}
   <ns2:addBuildingToConstructionProject>
     {{> Building model=model}}
   </ns2:addBuildingToConstructionProject>
 {{/base}}`
+
+// prettier-ignore
+export const setToApprovedBuilding  =
+`{{#>base}}
+  <ns2:setToApprovedBuilding>
+  </ns2:setToApprovedBuilding>
+{{/base}}`;
 
 // prettier-ignore
 export const setToNotRealizedBuilding  =

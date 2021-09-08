@@ -9,20 +9,28 @@ export default {
   dwellingStatus: [
     validatePresence({ presence: true }),
     validateInclusion({
-      list: [3001, 3002, 3003, 3004, 3005, 3007, 3008, 3009],
+      list: [
+        Dwelling.STATUS_PROJECTED,
+        Dwelling.STATUS_APPROVED,
+        Dwelling.STATUS_CONSTRUCTION_STARTED,
+        Dwelling.STATUS_COMPLETED,
+        Dwelling.STATUS_UNUSABLE,
+        Dwelling.STATUS_DEMOLISHED,
+        Dwelling.STATUS_NOT_REALIZED,
+        3009,
+      ],
     }),
   ],
-  dateOfConstruction: {
-    yearMonthDay: [
-      validatePresenceTransition({
-        presence: true,
-        on: "dwellingStatus",
-        transitions: ["setToCompletedDwelling"],
-        data: Dwelling,
-        model: "dwelling",
-      }),
-    ],
-  },
+  yearOfConstruction: [
+    validatePresenceTransition({
+      presence: true,
+      on: "dwellingStatus",
+      transitions: ["setToCompletedDwelling"],
+      data: Dwelling,
+      model: "dwelling",
+    }),
+  ],
+
   yearOfDemolition: [
     validatePresenceTransition({
       presence: true,

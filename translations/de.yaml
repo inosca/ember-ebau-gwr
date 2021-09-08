@@ -28,6 +28,9 @@ ember-gwr:
     logoutError: Bei der Abmeldung von der GWR-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmal.
     genericFormError: Es ist ein Fehler bei der Bearbeitung ihrer Anfrage aufgetreten. Bitte überprüfen Sie die Angaben.
 
+  general:
+    or: oder
+  
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
@@ -93,6 +96,7 @@ ember-gwr:
 
   lifeCycles:
     noStatus: Keine Statusangabe
+    cascadeOption: Verknüpfte Gebäude und/oder Wohnungen automatisch setzen?
 
     project:
       statusOptions:
@@ -124,6 +128,35 @@ ember-gwr:
         3005: Nicht nutzbar
         3007: Aufgehoben
         3008: Nicht realisiert
+    
+    statusErrorBuilding: <a href="{href}">Gebäude {buildingId}</a> muss im Status {states} sein.
+    statusErrorDwelling: <a href="{href}">Wohnung {dwellingId}</a> im Gebäude {buildingId} muss im Status {states} sein.
+
+    states:
+      6701: projektiert
+      6702: bewilligt
+      6703: im Bau
+      6704: abgeschlossen
+      6706: sistiert
+      6707: abgelehnt
+      6708: nicht realisiert
+      6709: zurückgezogen
+
+      1001: projektiert
+      1002: bewilligt
+      1003: im Bau
+      1004: bestehend
+      1005: nicht nutzbar
+      1007: abgebrochen
+      1008: nicht realisiert
+
+      3001: projektiert
+      3002: bewilligt
+      3003: im Bau
+      3004: bestehend
+      3005: nicht nutzbar
+      3007: aufgehoben
+      3008: nicht realisiert
 
   components:
     search:

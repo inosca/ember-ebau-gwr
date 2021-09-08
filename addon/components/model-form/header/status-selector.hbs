@@ -5,7 +5,7 @@
     uk-close
     {{on "click" @closeStatus}}
   ></button>
-  <div class="uk-flex uk-flex-between uk-flex-bottom">
+  <div class="uk-flex uk-flex-between uk-flex-middle">
     <div>
       <div class="uk-text-bold">
         {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
@@ -20,6 +20,26 @@
           @update={{this.statusUpdate}}
         />
       </form>
+      <small class="uk-text-muted uk-flex-inline uk-flex-column uk-width-large">
+        {{#if this.changeHint}}
+          {{!-- TODO: add change hint
+          <div>
+            {{this.changeHint}}
+          </div>
+          --}}
+          <div class="uk-margin-small-top">
+            <label>
+              <input
+                class="uk-checkbox uk-margin-small-right"
+                type="checkbox"
+                checked={{if this.isCascading true undefined}}
+                {{on "input" this.toggleCascading}}
+              />
+              {{t "ember-gwr.lifeCycles.cascadeOption"}}
+            </label>
+          </div>
+        {{/if}}
+      </small>
     </div>
     <div class="uk-flex-inline uk-flex-middle">
       <div class="uk-margin-small-right" uk-icon="icon: question"></div>
@@ -80,10 +100,7 @@
         class="uk-flex-inline uk-text-small uk-margin-remove-bottom uk-margin-large-right"
         uk-alert
       >
-        <div
-          class="uk-margin-right uk-flex-none"
-          uk-icon="icon: info"
-        ></div>
+        <div class="uk-margin-right uk-flex-none" uk-icon="icon: info"></div>
         <div class="uk-flex-inline uk-flex-column">
           <div class="uk-flex-inline uk-flex-top">
             <div class="uk-margin-right uk-flex-none">

@@ -4,6 +4,7 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import Dwelling from "ember-ebau-gwr/models/dwelling";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
 
 export default class BuildingEditDwellingEditController extends Controller {
@@ -94,13 +95,41 @@ export default class BuildingEditDwellingEditController extends Controller {
     }
   }
 
+  concatStates(states) {
+    if (states.length === 1) {
+      return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
+    }
+    const tail = states.pop();
+    return `${states
+      .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
+      .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
+      `ember-gwr.lifeCycles.states.${tail}`
+    )}`;
+  }
+
   @task
   *transitionState(currentStatus, newStatus) {
     try {
-      yield this.dwellingAPI.transitionState(
+      const transition =
+        Dwelling.dwellingTransitionMapping[currentStatus][newStatus];
+
+      // execute dry-run, throws error if requirements don't hold
+      yield this.dwellingAPI[transition](
+        transition,
+        1,
+        true,
         this.dwelling,
-        currentStatus,
-        newStatus,
+        this.model.buildingId
+      );
+
+      // execute transition(s)
+      // cascade level:
+      // 1: only perform transition on dwelling
+      yield this.dwellingAPI[transition](
+        transition,
+        1,
+        false,
+        this.dwelling,
         this.model.buildingId
       );
       yield this.dwellingAPI.clearCache(
@@ -111,6 +140,24 @@ export default class BuildingEditDwellingEditController extends Controller {
     } catch (error) {
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
+
+      if (error.isLifeCycleError) {
+        const errorType = error.dwellingId
+          ? "statusErrorDwelling"
+          : "statusErrorBuilding";
+        throw [
+          this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
+            dwellingId: error.dwellingId,
+            buildingId: error.buildingId,
+            states: this.concatStates(error.states),
+            href: error.dwellingId
+              ? `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/form`,
+            htmlSafe: true,
+          }),
+        ];
+      }
+
       throw error;
     }
   }

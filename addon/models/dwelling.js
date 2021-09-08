@@ -105,58 +105,68 @@ export default class Dwelling extends XMLModel {
       : "";
   }
 
+  static STATUS_PROJECTED = 3001;
+  static STATUS_APPROVED = 3002;
+  static STATUS_CONSTRUCTION_STARTED = 3003;
+  static STATUS_COMPLETED = 3004;
+  static STATUS_UNUSABLE = 3005;
+  static STATUS_DEMOLISHED = 3007;
+  static STATUS_NOT_REALIZED = 3008;
+
   // valid state transitions
   static dwellingStatesMapping = {
-    3001: [/*3002,*/ 3008], // Projektiert
-    3002: [3003, 3008], // Bewilligt
-    3003: [3008, 3004, 3005], // Im Bau
-    3004: [3007], // Bestehend
-    3005: [3004, 3007], // Nicht nutzbar
-    3007: [], // Aufgehoben
-    3008: [], // Nicht realiziert
+    [this.STATUS_PROJECTED]: [this.STATUS_APPROVED, this.STATUS_NOT_REALIZED], // Projektiert
+    [this.STATUS_APPROVED]: [
+      this.STATUS_CONSTRUCTION_STARTED,
+      this.STATUS_NOT_REALIZED,
+    ], // Bewilligt
+    [this.STATUS_CONSTRUCTION_STARTED]: [
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_COMPLETED,
+      this.STATUS_UNUSABLE,
+    ], // Im Bau
+    [this.STATUS_COMPLETED]: [this.STATUS_DEMOLISHED], // Bestehend
+    [this.STATUS_UNUSABLE]: [this.STATUS_COMPLETED, this.STATUS_DEMOLISHED], // Nicht nutzbar
+    [this.STATUS_DEMOLISHED]: [], // Aufgehoben
+    [this.STATUS_NOT_REALIZED]: [], // Nicht realiziert
   };
 
   // api requests for state transitions
   static dwellingTransitionMapping = {
-    3001: {
-      // TODO: dwellings are approved through construction project approval
-      //3002: "setToApprovedConstructionProject", // set dwellings to approve on construction project?
-      3008: "setToNotRealizedDwelling",
+    [this.STATUS_PROJECTED]: {
+      [this.STATUS_APPROVED]: "setToApprovedDwelling",
+      [this.STATUS_NOT_REALIZED]: "setToNotRealizedDwelling",
     },
-    3002: {
-      3003: "setToDwellingConstructionStarted",
-      3008: "setToNotRealizedDwelling",
+    [this.STATUS_APPROVED]: {
+      [this.STATUS_CONSTRUCTION_STARTED]: "setToDwellingConstructionStarted",
+      [this.STATUS_NOT_REALIZED]: "setToNotRealizedDwelling",
     },
-    3003: {
-      3008: "setToNotRealizedDwelling",
-      3004: "setToCompletedDwelling",
-      3005: "setToUnusableDwelling",
+    [this.STATUS_CONSTRUCTION_STARTED]: {
+      [this.STATUS_NOT_REALIZED]: "setToNotRealizedDwelling",
+      [this.STATUS_COMPLETED]: "setToCompletedDwelling",
+      [this.STATUS_UNUSABLE]: "setToUnusableDwelling",
     },
-    3004: {
-      3007: "setToDemolishedDwelling",
+    [this.STATUS_COMPLETED]: {
+      [this.STATUS_DEMOLISHED]: "setToDemolishedDwelling",
     },
-    3005: {
-      3004: "setToCompletedDwelling",
-      3007: "setToDemolishedDwelling",
+    [this.STATUS_UNUSABLE]: {
+      [this.STATUS_COMPLETED]: "setToCompletedDwelling",
+      [this.STATUS_DEMOLISHED]: "setToDemolishedDwelling",
     },
-    3007: {},
-    3008: {},
+    [this.STATUS_DEMOLISHED]: {},
+    [this.STATUS_NOT_REALIZED]: {},
   };
 
   // possible status parameters
-  static statusParameters = [
-    "dateOfConstruction.yearMonthDay",
-    "yearOfDemolition",
-  ];
+  static statusParameters = ["yearOfConstruction", "yearOfDemolition"];
 
   // necessary parameters for status transitions in status changes
   static dwellingTransitionParameters = {
-    // TODO: dwellings are approved through construction project approval
-    //setToApprovedConstructionProject: [],
+    setToApprovedDwelling: [],
     setToCompletedDwelling: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: true,
       },
     ],
@@ -170,26 +180,26 @@ export default class Dwelling extends XMLModel {
 
   // necessary fields for target state in status corrections
   static dwellingTransitionParametersMapping = {
-    3001: [],
-    3002: [],
-    3003: [],
-    3004: [
+    [this.STATUS_PROJECTED]: [],
+    [this.STATUS_APPROVED]: [],
+    [this.STATUS_CONSTRUCTION_STARTED]: [],
+    [this.STATUS_COMPLETED]: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: true,
       },
     ],
-    3005: [],
-    3007: [
+    [this.STATUS_UNUSABLE]: [],
+    [this.STATUS_DEMOLISHED]: [
       {
-        field: "dateOfConstruction.yearMonthDay",
-        type: "date",
+        field: "yearOfConstruction",
+        type: "number",
         required: false,
       },
       { field: "yearOfDemolition", type: "number", required: true },
     ],
-    3008: [],
+    [this.STATUS_NOT_REALIZED]: [],
   };
 }
 

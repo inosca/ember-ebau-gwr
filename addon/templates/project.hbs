@@ -19,6 +19,7 @@
         <Tab.link-item
           @route="project.linked-buildings"
           @model={{this.activeProject}}
+          @disabled={{not this.activeProject}}
         >
           {{t "ember-gwr.models.building" count=1}}
         </Tab.link-item>

@@ -9,7 +9,16 @@ export default {
   buildingStatus: [
     validatePresence({ presence: true }),
     validateInclusion({
-      list: [1001, 1002, 1003, 1004, 1005, 1007, 1008, 1009],
+      list: [
+        Building.STATUS_PROJECTED,
+        Building.STATUS_APPROVED,
+        Building.STATUS_CONSTRUCTION_STARTED,
+        Building.STATUS_COMPLETED,
+        Building.STATUS_UNUSABLE,
+        Building.STATUS_DEMOLISHED,
+        Building.STATUS_NOT_REALIZED,
+        1009,
+      ],
     }),
   ],
   dateOfConstruction: {

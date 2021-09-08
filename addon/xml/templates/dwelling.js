@@ -42,6 +42,13 @@ export const reallocateDwelling =
   </ns2:reallocateDwelling>
 {{/base}}`;
 
+// prettier-ignore
+export const setToApprovedDwelling  =
+`{{#>base}}
+  <ns2:setToApprovedDwelling>
+  </ns2:setToApprovedDwelling>
+{{/base}}`;
+
 //prettier-ignore
 export const setToDwellingConstructionStarted =
 `{{#>base}}

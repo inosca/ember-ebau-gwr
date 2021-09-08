@@ -4,6 +4,7 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
+import Building from "ember-ebau-gwr/models/building";
 import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends Controller {
@@ -12,6 +13,7 @@ export default class BuildingFormController extends Controller {
 
   @service constructionProject;
   @service("building") buildingAPI;
+  @service dwelling;
   @service intl;
   @service notification;
 
@@ -72,8 +74,7 @@ export default class BuildingFormController extends Controller {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
-        let building;
-        building = yield this.buildingAPI.create(
+        const building = yield this.buildingAPI.create(
           this.model.projectId,
           this.buildingWork
         );
@@ -86,6 +87,17 @@ export default class BuildingFormController extends Controller {
         EGID,
         this.buildingWork
       );
+
+      const project = yield this.constructionProject.getFromCacheOrApi(
+        this.model.projectId
+      );
+
+      if (project.work.find((work) => work.ARBID === 1)) {
+        yield this.constructionProject.deactivateDefaultWork(
+          this.model.projectId
+        );
+      }
+
       // Clear cache so after transition we fetch the project form api
       this.constructionProject.clearCache(this.model.projectId);
       this.buildingAPI.clearCache(this.model.buildingId);
@@ -98,20 +110,74 @@ export default class BuildingFormController extends Controller {
     }
   }
 
+  concatStates(states) {
+    if (states.length === 1) {
+      return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
+    }
+    const tail = states.pop();
+    return `${states
+      .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
+      .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
+      `ember-gwr.lifeCycles.states.${tail}`
+    )}`;
+  }
+
   @task
-  *transitionState(currentStatus, newStatus) {
+  *transitionState(currentStatus, newStatus, isCascading) {
     try {
-      yield this.buildingAPI.transitionState(
-        this.building,
-        currentStatus,
-        newStatus
+      const transition =
+        Building.buildingTransitionMapping[currentStatus][newStatus];
+
+      // reload in case linked objects have been updated
+      const building = yield this.buildingAPI.get(this.model.buildingId);
+      this.building.buildingEntrance = building.buildingEntrance;
+
+      // update buildingWork with building modified by changeset
+      this.buildingWork.building = this.building;
+
+      // execute dry-run, throws error if requirements don't hold
+      yield this.buildingAPI[transition](
+        transition,
+        2,
+        true,
+        this.buildingWork
       );
+
+      // execute transition(s)
+      // cascade level:
+      // 2: execute transition on linked dwellings
+      // 1: only perform transition on building
+      yield this.buildingAPI[transition](
+        transition,
+        isCascading ? 2 : 1,
+        false,
+        this.buildingWork
+      );
+
       yield this.buildingAPI.clearCache(this.model.buildingId);
       this.fetchBuilding.perform(); // reload for errors;
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
+
+      if (error.isLifeCycleError) {
+        const errorType = error.dwellingId
+          ? "statusErrorDwelling"
+          : "statusErrorBuilding";
+        throw [
+          this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
+            dwellingId: error.dwellingId,
+            buildingId: error.buildingId,
+            states: this.concatStates(error.states),
+            href: error.dwellingId
+              ? `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
+              : `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/form`,
+            htmlSafe: true,
+          }),
+        ];
+      }
+
       throw error;
     }
   }
@@ -138,5 +204,10 @@ export default class BuildingFormController extends Controller {
   @action
   getCorrectionParameters(newStatus) {
     return this.buildingAPI.getCorrectionParameters(newStatus);
+  }
+
+  @action
+  getChangeHint(currentStatus, newStatus) {
+    return this.buildingAPI.getChangeHint(currentStatus, newStatus);
   }
 }

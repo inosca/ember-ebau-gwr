@@ -81,29 +81,31 @@ export default class ConstructionProject extends XMLModel {
       },
     });
 
+    // TODO: ensure that saving all work (including those
+    // with no building attached) incurs no issues
     // Do not show buildingWork which have no building attached
-    this.work = this.work.filter(
+    /*this.work = this.work.filter(
       (buildingWork) => !buildingWork.building.isNew
-    );
+    );*/
 
     // Project status not returned by every API response
     if (!this.projectStatus) {
       this.projectStatus = this.projectSuspensionDate
-        ? 6706
+        ? this.STATUS_SUSPENDED
         : this.projectCompletionDate
-        ? 6704
+        ? this.STATUS_COMPLETED
         : this.withdrawalDate
-        ? 6709
+        ? this.STATUS_WITHDRAWN
         : this.nonRealisationDate
-        ? 6708
+        ? this.STATUS_NOT_REALIZED
         : this.constructionAuthorisationDeniedDate
-        ? 6707
+        ? this.STATUS_REFUSED
         : this.projectStartDate
-        ? 6703
+        ? this.STATUS_CONSTRUCTION_STARTED
         : this.buildingPermitIssueDate
-        ? 6702
+        ? this.STATUS_APPROVED
         : this.projectAnnouncementDate
-        ? 6701
+        ? this.STATUS_PROJECTED
         : undefined;
     }
   }
@@ -155,48 +157,79 @@ export default class ConstructionProject extends XMLModel {
   </ns2:constructionProject>
   `;
 
+  static STATUS_PROJECTED = 6701;
+  static STATUS_APPROVED = 6702;
+  static STATUS_CONSTRUCTION_STARTED = 6703;
+  static STATUS_COMPLETED = 6704;
+  static STATUS_SUSPENDED = 6706;
+  static STATUS_REFUSED = 6707;
+  static STATUS_NOT_REALIZED = 6708;
+  static STATUS_WITHDRAWN = 6709;
+
   // valid state transitions
   static projectStatesMapping = {
-    6701: [6702, 6707, 6709, 6708, 6706], // Baugesuch eingereicht
-    6702: [6703, 6709, 6708, 6706], // Baubewilligung erteilt (rechtswirksam)
-    6703: [6704, 6708, 6706], // Baubegonnen
-    6704: [], // Abgeschlossen
-    6706: [6701, 6702, 6708, 6703], // Projekt sistiert
-    6707: [], // Baugesuch abgelehnt (rechtswirksam)
-    6708: [], // Nicht realisiert
-    6709: [], // Zurückgezogen
+    [this.STATUS_PROJECTED]: [
+      this.STATUS_APPROVED,
+      this.STATUS_REFUSED,
+      this.STATUS_WITHDRAWN,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_SUSPENDED,
+    ], // Baugesuch eingereicht
+    [this.STATUS_APPROVED]: [
+      this.STATUS_CONSTRUCTION_STARTED,
+      this.STATUS_WITHDRAWN,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_SUSPENDED,
+    ], // Baubewilligung erteilt (rechtswirksam)
+    [this.STATUS_CONSTRUCTION_STARTED]: [
+      this.STATUS_COMPLETED,
+      /*this.STATUS_NOT_REALIZED,*/ this.STATUS_SUSPENDED,
+      // TODO: transition to status not realized throws error even though it
+      // should be possible according to documentation
+    ], // Baubegonnen
+    [this.STATUS_COMPLETED]: [], // Abgeschlossen
+    [this.STATUS_SUSPENDED]: [
+      this.STATUS_PROJECTED,
+      this.STATUS_APPROVED,
+      this.STATUS_NOT_REALIZED,
+      this.STATUS_CONSTRUCTION_STARTED,
+    ], // Projekt sistiert
+    [this.STATUS_REFUSED]: [], // Baugesuch abgelehnt (rechtswirksam)
+    [this.STATUS_NOT_REALIZED]: [], // Nicht realisiert
+    [this.STATUS_WITHDRAWN]: [], // Zurückgezogen
   };
 
   // api requests for state transitions
   static projectTransitionMapping = {
-    6701: {
-      6702: "setToApprovedConstructionProject",
-      6707: "setToRefusedConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+    [this.STATUS_PROJECTED]: {
+      [this.STATUS_APPROVED]: "setToApprovedConstructionProject",
+      [this.STATUS_REFUSED]: "setToRefusedConstructionProject",
+      [this.STATUS_WITHDRAWN]: "setToWithdrawnConstructionProject",
+      [this.STATUS_NOT_REALIZED]: "setToCancelledConstructionProject",
+      [this.STATUS_SUSPENDED]: "setToSuspendedConstructionProject",
     },
-    6702: {
-      6703: "setToStartConstructionProject",
-      6709: "setToCancelledConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+    [this.STATUS_APPROVED]: {
+      [this.STATUS_CONSTRUCTION_STARTED]: "setToStartConstructionProject",
+      [this.STATUS_WITHDRAWN]: "setToWithdrawnConstructionProject",
+      [this.STATUS_NOT_REALIZED]: "setToCancelledConstructionProject",
+      [this.STATUS_SUSPENDED]: "setToSuspendedConstructionProject",
     },
-    6703: {
-      6704: "setToCompletedConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6706: "setToSuspendedConstructionProject",
+    [this.STATUS_CONSTRUCTION_STARTED]: {
+      [this.STATUS_COMPLETED]: "setToCompletedConstructionProject",
+      //[this.STATUS_NOT_REALIZED]: "setToCancelledConstructionProject",
+      [this.STATUS_SUSPENDED]: "setToSuspendedConstructionProject",
     },
-    6704: {},
-    6706: {
-      6701: "setToCancelledSuspensionConstructionProject",
-      6702: "setToCancelledSuspensionConstructionProject",
-      6708: "setToWithdrawnConstructionProject",
-      6703: "setToCancelledSuspensionConstructionProject",
+    [this.STATUS_COMPLETED]: {},
+    [this.STATUS_SUSPENDED]: {
+      [this.STATUS_PROJECTED]: "setToCancelledSuspensionConstructionProject",
+      [this.STATUS_APPROVED]: "setToCancelledSuspensionConstructionProject",
+      [this.STATUS_NOT_REALIZED]: "setToCancelledConstructionProject",
+      [this.STATUS_CONSTRUCTION_STARTED]:
+        "setToCancelledSuspensionConstructionProject",
     },
-    6707: {},
-    6708: {},
-    6709: {},
+    [this.STATUS_REFUSED]: {},
+    [this.STATUS_NOT_REALIZED]: {},
+    [this.STATUS_WITHDRAWN]: {},
   };
 
   // necessary parameters for status transitions in status changes
@@ -212,10 +245,10 @@ export default class ConstructionProject extends XMLModel {
       },
     ],
     setToWithdrawnConstructionProject: [
-      { field: "nonRealisationDate", type: "date", required: true },
+      { field: "withdrawalDate", type: "date", required: true },
     ],
     setToCancelledConstructionProject: [
-      { field: "withdrawalDate", type: "date", required: true },
+      { field: "nonRealisationDate", type: "date", required: true },
     ],
     setToSuspendedConstructionProject: [
       { field: "projectSuspensionDate", type: "date", required: true },
@@ -232,6 +265,11 @@ export default class ConstructionProject extends XMLModel {
     ],
     setToCompletedConstructionProject: [
       { field: "projectCompletionDate", type: "date", required: true },
+      {
+        field: "realestateIdentification.number",
+        type: "String",
+        required: true,
+      },
     ],
     setToCancelledSuspensionConstructionProject: [],
   };
@@ -250,12 +288,14 @@ export default class ConstructionProject extends XMLModel {
 
   // necessary fields for target state in status corrections
   static projectTransitionParametersMapping = {
-    6701: [{ field: "projectAnnouncementDate", type: "date", required: true }],
-    6702: [
+    [this.STATUS_PROJECTED]: [
+      { field: "projectAnnouncementDate", type: "date", required: true },
+    ],
+    [this.STATUS_APPROVED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: true },
     ],
-    6703: [
+    [this.STATUS_CONSTRUCTION_STARTED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: true },
       { field: "projectStartDate", type: "date", required: true },
@@ -267,7 +307,7 @@ export default class ConstructionProject extends XMLModel {
           "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint",
       },
     ],
-    6704: [
+    [this.STATUS_COMPLETED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: true },
       { field: "projectStartDate", type: "date", required: true },
@@ -280,7 +320,7 @@ export default class ConstructionProject extends XMLModel {
       },
       { field: "projectCompletionDate", type: "date", required: true },
     ],
-    6706: [
+    [this.STATUS_SUSPENDED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       {
         field: "buildingPermitIssueDate",
@@ -306,7 +346,7 @@ export default class ConstructionProject extends XMLModel {
       },
       { field: "projectSuspensionDate", type: "date", required: true },
     ],
-    6707: [
+    [this.STATUS_REFUSED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       {
         field: "constructionAuthorisationDeniedDate",
@@ -314,15 +354,46 @@ export default class ConstructionProject extends XMLModel {
         required: true,
       },
     ],
-    6708: [
+    [this.STATUS_NOT_REALIZED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: false },
       { field: "nonRealisationDate", type: "date", required: true },
     ],
-    6709: [
+    [this.STATUS_WITHDRAWN]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: false },
       { field: "withdrawalDate", type: "date", required: true },
     ],
+  };
+
+  static projectTransitionHint = {
+    [this.STATUS_PROJECTED]: {
+      [this.STATUS_APPROVED]: true,
+      [this.STATUS_REFUSED]: true,
+      [this.STATUS_WITHDRAWN]: true,
+      [this.STATUS_NOT_REALIZED]: true,
+      [this.STATUS_SUSPENDED]: false,
+    },
+    [this.STATUS_APPROVED]: {
+      [this.STATUS_CONSTRUCTION_STARTED]: false,
+      [this.STATUS_WITHDRAWN]: true,
+      [this.STATUS_NOT_REALIZED]: true,
+      [this.STATUS_SUSPENDED]: false,
+    },
+    [this.STATUS_CONSTRUCTION_STARTED]: {
+      [this.STATUS_COMPLETED]: false,
+      //[this.STATUS_NOT_REALIZED]: "setToCancelledConstructionProject",
+      [this.STATUS_SUSPENDED]: false,
+    },
+    [this.STATUS_COMPLETED]: {},
+    [this.STATUS_SUSPENDED]: {
+      [this.STATUS_PROJECTED]: false,
+      [this.STATUS_APPROVED]: false,
+      [this.STATUS_NOT_REALIZED]: true,
+      [this.STATUS_CONSTRUCTION_STARTED]: false,
+    },
+    [this.STATUS_REFUSED]: {},
+    [this.STATUS_NOT_REALIZED]: {},
+    [this.STATUS_WITHDRAWN]: {},
   };
 }
