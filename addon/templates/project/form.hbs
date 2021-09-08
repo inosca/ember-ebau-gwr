@@ -74,7 +74,7 @@
 
       {{#if (eq this.typeOfConstructionProject 6010)}}
         <LinkedModels
-          @models={{this.project.work}}
+          @models={{this.workWithoutBuildings}}
           @modelName="building-work"
           @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
           @addLink={{this.addWorkLink}}
@@ -339,3 +339,37 @@
     </ModelForm>
   {{/if}}
 </div>
+
+<UkModal 
+  @visible={{this.showConfirmationDialog}}
+  @btnClose={{false}}
+  @bgClose={{false}}
+  @escClose={{false}}
+  as |modal|
+>
+  <modal.header>
+    <h2 class="uk-modal-title">
+      {{t "ember-gwr.components.modelForm.project.confirmationTitle"}}
+    </h2>
+  </modal.header>
+  <modal.body>
+    {{#if (eq this.typeOfConstructionProject 6011)}}
+      {{t "ember-gwr.components.modelForm.project.confirmationSuperstructure"}}
+    {{else if (eq this.typeOfConstructionProject 6010)}}
+      {{t "ember-gwr.components.modelForm.project.confirmationInfrastructure"}}
+    {{/if}}
+  </modal.body>
+  <modal.footer @class="uk-text-right">
+    <UkButton 
+      @color="default" 
+      @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}} 
+      {{on "click" (perform this.processTypeOfConstructionProjectChange)}}
+    />
+    <UkButton 
+      @color="primary" 
+      @label={{t "ember-gwr.components.modelForm.project.confirmationCancel"}}
+      {{on "click" this.cancelTypeOfConstructionProjectChange}}
+    />
+  </modal.footer>
+</UkModal>
+

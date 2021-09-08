@@ -3,10 +3,10 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import Options from "ember-ebau-gwr/models/options";
 import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
-import BuildingWork from "ember-ebau-gwr/models/building-work";
 
 export default class ProjectFormController extends Controller {
   queryParams = ["import"];
@@ -29,6 +29,7 @@ export default class ProjectFormController extends Controller {
   @tracked typeOfConstructionProject;
   @tracked removedWork = [];
   @tracked errors;
+  @tracked showConfirmationDialog = false;
 
   choiceOptions = Options;
 
@@ -85,32 +86,48 @@ export default class ProjectFormController extends Controller {
         yield this.constructionProject.all.perform(this.model.instanceId);
         this.transitionToRoute("project.form", project.EPROID);
       } else {
+        if (
+          (this.typeOfConstructionProject === 6010 &&
+            this.workWithBuildings.length) ||
+          (this.typeOfConstructionProject === 6011 &&
+            this.workWithoutBuildings.length > 1)
+        ) {
+          this.showConfirmationDialog = true;
+          return;
+        }
+
         if (this.typeOfConstructionProject === 6010) {
           const added = this.project.work.filter((work) => work.isNew);
           yield Promise.all(
-            added.map(async (work) => {
-              return await this.constructionProject.addWorkToProject(
+            added.map((work) =>
+              this.constructionProject.addWorkToProject(
                 this.model.projectId,
                 work
-              );
-            })
+              )
+            )
           );
+
           yield Promise.all(
-            this.removedWork.map(async (work) => {
-              return await this.constructionProject.removeWorkFromProject(
+            this.removedWork.map((work) =>
+              this.constructionProject.removeWorkFromProject(
                 this.model.projectId,
                 work.ARBID
-              );
-            })
+              )
+            )
           );
+          this.removedWork = [];
         }
         yield this.constructionProject.update(this.project);
       }
+
       this.import = false;
       this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.constructionProject.saveSuccess")
       );
+      // refresh work list
+      yield this.constructionProject.clearCache(this.model.projectId);
+      this.fetchProject.perform();
     } catch (error) {
       this.errors = error;
       this.notification.danger(
@@ -248,14 +265,84 @@ export default class ProjectFormController extends Controller {
     this.project.work = [...this.project.work, new BuildingWork()];
   }
 
-    console.log("after removal project:", this.project);
+  @task
+  *addDefaultWork() {
+    const buildingWork = yield this.constructionProject.addDefaultWork(
+      this.project.EPROID
+    );
+    this.project.work = [...this.project.work, buildingWork];
+    return buildingWork;
+  }
+
+  @task
+  *removeBuildings() {
+    return yield Promise.all(
+      this.workWithBuildings.map(async (work) => {
+        await this.building.unbindBuildingFromConstructionProject(
+          this.project.EPROID,
+          work.building.EGID
+        );
+        // locally remove building from work list
+        // so that it runs through second save check
+        this.project.work = this.project.work.filter((w) => w !== work);
+      })
+    );
+  }
+
+  @task
+  *removeWork() {
+    // always create default work of type "Neubau" to
+    // prevent errors from API, remove all others
+    const defaultWork = yield this.addDefaultWork.perform();
+    return yield Promise.all(
+      this.workWithoutBuildings.map(async (work) => {
+        if (work.ARBID !== defaultWork.ARBID) {
+          if (work.ARBID) {
+            await this.constructionProject.removeWorkFromProject(
+              this.project.EPROID,
+              work.ARBID
+            );
+          }
+          // locally remove work from work list
+          // so that it runs through second save check
+          this.project.work = this.project.work.filter((w) => w !== work);
+        }
+      })
+    );
+  }
+
+  @task
+  *processTypeOfConstructionProjectChange() {
+    this.showConfirmationDialog = false;
+
+    if (
+      this.typeOfConstructionProject === 6010 &&
+      this.workWithBuildings.length
+    ) {
+      if (!this.workWithoutBuildings.length) {
+        yield this.addDefaultWork.perform();
+      }
+      yield this.removeBuildings.perform();
+    } else if (
+      this.typeOfConstructionProject === 6011 &&
+      this.workWithoutBuildings.length
+    ) {
+      yield this.removeWork.perform();
+    }
+
+    this.saveProject.perform();
   }
 
   @action
-  addWorkLink(buildingWork) {
-    console.log("addWorkLink:", buildingWork, this.project);
+  cancelTypeOfConstructionProjectChange() {
+    this.showConfirmationDialog = false;
+  }
 
-    this.project.work = [...this.project.work, new BuildingWork()];
-    console.log("after add project:", this.project);
+  get workWithoutBuildings() {
+    return this.project.work.filter((work) => work.building.isNew);
+  }
+
+  get workWithBuildings() {
+    return this.project.work.filter((work) => !work.building.isNew);
   }
 }

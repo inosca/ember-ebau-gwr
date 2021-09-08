@@ -1,5 +1,7 @@
-import { validateLength } from "ember-changeset-validations/validators";
-import { validatePresenceNested } from "ember-ebau-gwr/validators/presence-nested";
+import {
+  validateLength,
+  validatePresence,
+} from "ember-changeset-validations/validators";
 
 export function realestateIdentificationValidation(path = "") {
   /*eslint-disable prefer-template*/
@@ -21,7 +23,7 @@ export function realestateIdentificationValidation(path = "") {
         allowBlank: true,
       }),
       number: [
-        validatePresenceNested({
+        validatePresence({
           presence: true,
           on: [EGRIDPath, numberSuffixPath, subDistrictPath, lotPath],
         }),

@@ -3,8 +3,6 @@ import { task, lastValue } from "ember-concurrency-decorators";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
-import BuildingWork from "ember-ebau-gwr/models/building-work";
-import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
 import XMLModel from "ember-ebau-gwr/models/xml-model";
@@ -72,14 +70,9 @@ export default class ConstructionProjectService extends GwrService {
     return this.createAndCache(xml);
   }
 
-  async deactivateDefaultWork(projectId) {
-    return await this.removeWorkFromProject(projectId, 1);
-  }
-
   async addDefaultWork(projectId) {
     const buildingWork = new BuildingWork();
-    buildingWork.kindOfWork = 6002;
-    buildingWork.ARBID = 1;
+    buildingWork.kindOfWork = 6001;
     return await this.addWorkToProject(projectId, buildingWork);
   }
 
@@ -110,6 +103,7 @@ export default class ConstructionProjectService extends GwrService {
     );
 
     buildingWork.ARBID = ARBID;
+    buildingWork.isNew = false;
 
     // TODO: apply for type "Umbau" with modifyWork
     // don't execute bindBuildingToConstructionProject

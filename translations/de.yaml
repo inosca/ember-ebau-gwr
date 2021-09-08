@@ -242,6 +242,15 @@ ember-gwr:
       project:
         title: Bauprojekt {id}
         titleNew: Neues Projekt erfassen
+        confirmationTitle: Achtung
+        confirmationContinue: Fortfahren
+        confirmationCancel: Abbrechen
+        confirmationSuperstructure: |- 
+          Wenn Sie von einem Tiefbauprojekt in ein Hochbauprojekt wechseln, 
+          werden alle verknüpfte Arbeiten gelöscht. Wollen Sie fortfahren?
+        confirmationInfrastructure: |-
+          Wenn Sie von einem Hochbauprojekt in ein Tiefbauprojekt wechseln, 
+          werden alle verknüpften Gebäude gelöscht. Wollen Sie fortfahren?
 
       building:
         title: Gebäude {id}
