@@ -24,16 +24,6 @@
       @modelStatusField="dwellingStatus"
       as |Field|
     >
-      {{#if this.dwelling.isNew}}
-        <Field
-          @attr="dwellingStatus"
-          @type="select"
-          @gwrEnumOptions={{this.Models.Dwelling.dwellingStatusOptions}}
-          @convertValueTo="number"
-          @required={{true}}
-        />
-      {{/if}}
-
       <Field
         @attr="EDID"
         @type="select"
@@ -75,10 +65,15 @@
       />
       <Field @attr="dwellingUsage.revisionDate" @type="date" />
       <Field @attr="dwellingUsage.remark" />
-      <Field @attr="dwellingUsage.personWithMainResidence" @type="checkbox" />
+      <Field
+        @attr="dwellingUsage.personWithMainResidence"
+        @type="checkbox"
+        @disabled={{true}}
+      />
       <Field
         @attr="dwellingUsage.personWithSecondaryResidence"
         @type="checkbox"
+        @disabled={{true}}
       />
       <Field @attr="dwellingUsage.dateFirstOccupancy" @type="date" />
       <Field @attr="dwellingUsage.dateLastOccupancy" @type="date" />

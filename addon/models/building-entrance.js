@@ -68,8 +68,6 @@ export default class BuildingEntrance extends XMLModel {
       <ns2:isOfficialAddress>{{model.isOfficialAddress}}</ns2:isOfficialAddress>
       {{> Street model=model.street}}
       {{> Locality model=model.locality}}
-      {{! This is not wokrking for some reason}}
-      {{> Coordinates model=model.coordinates}}
     </ns2:buildingEntrance>
   {{/if}}
   `;

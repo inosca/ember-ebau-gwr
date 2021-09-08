@@ -6,9 +6,6 @@ import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
 
-const EXISTING = 1004,
-  NOT_USABLE = 1005;
-
 export default class BuildingFormController extends Controller {
   Models = Models;
   BuildingWorkValidations = BuildingWorkValidations;
@@ -75,16 +72,11 @@ export default class BuildingFormController extends Controller {
     try {
       let EGID = this.buildingWork.building.EGID;
       if (this.buildingWork.isNew) {
-        const buildingStatus = this.buildingWork.building.buildingStatus;
         let building;
-        if (buildingStatus !== EXISTING && buildingStatus !== NOT_USABLE) {
-          building = yield this.buildingAPI.createAndAddToConstructionProject(
-            this.model.projectId,
-            this.buildingWork
-          );
-        } else {
-          building = yield this.buildingAPI.create(this.buildingWork.building);
-        }
+        building = yield this.buildingAPI.create(
+          this.model.projectId,
+          this.buildingWork
+        );
         EGID = building.EGID;
       } else {
         yield this.buildingAPI.update(this.buildingWork.building);

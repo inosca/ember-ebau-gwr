@@ -4,6 +4,9 @@ import municipalities from "ember-ebau-gwr/models/municipalities";
 
 import BuildingFormRoute from "./edit/form";
 
+const STATUS_PROJECTED = 1001;
+const WORK_NEW = 6001;
+
 export default class BuildingNewRoute extends BuildingFormRoute {
   @service building;
   @service config;
@@ -19,6 +22,9 @@ export default class BuildingNewRoute extends BuildingFormRoute {
     buildingWork.building.municipalityName = municipalities[
       this.config.cantonAbbreviation
     ].find((m) => m.id === Number(this.building.municipality))?.name;
+    buildingWork.building.buildingStatus = STATUS_PROJECTED;
+    buildingWork.kindOfWork = WORK_NEW;
+
     model.buildingWork = buildingWork;
     return model;
   }

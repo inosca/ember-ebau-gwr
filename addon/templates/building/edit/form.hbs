@@ -37,21 +37,34 @@
       @modelStatusField="buildingStatus"
       as |Field changeset|
     >
-      <h3>
-        {{t
-          "ember-gwr.building.sections.kindOfWorkForProject"
-          projectId=@model.projectId
-          ARBID=this.buildingWork.ARBID
-        }}
-      </h3>
-      <Field
-        @attr="kindOfWork"
-        @type="select"
-        @convertValueTo="number"
-        @gwrEnumOptions={{this.Models.BuildingWork.kindOfWorkOptions}}
-        @required={{true}}
-        @translationBase="ember-gwr.buildingWork"
-      />
+      {{#unless this.buildingWork.isNew}}
+        <h3>
+          {{t
+            "ember-gwr.building.sections.kindOfWorkForProject"
+            projectId=@model.projectId
+          }}
+        </h3>
+        <div class="uk-flex uk-margin">
+          <div class="uk-width-1-2 ">
+            <span class="uk-form-label">{{t
+                "ember-gwr.buildingWork.kindOfWork"
+              }}:</span>
+            <span>{{t
+                (concat
+                  "ember-gwr.buildingWork.kindOfWorkOptions."
+                  this.buildingWork.kindOfWork
+                )
+              }}</span>
+          </div>
+          <div class="uk-width-1-2 ">
+            <span class="uk-form-label">{{t
+                "ember-gwr.buildingWork.ARBID"
+              }}:</span>
+            <span>{{this.buildingWork.ARBID}}</span>
+          </div>
+        </div>
+      {{/unless}}
+
       {{#if (eq changeset.kindOfWork 6002)}}
         <div class="uk-flex">
           <div class="uk-width-1-2">
@@ -110,10 +123,6 @@
       <h3>
         {{t "ember-gwr.building.sections.building"}}
       </h3>
-
-      {{#unless this.buildingWork.building.isNew}}
-        <Field @attr="building.EGID" @type="number" @disabled={{true}} />
-      {{/unless}}
 
       <Field @attr="building.officialBuildingNo" @type="number" />
 
@@ -176,14 +185,6 @@
       <h3>
         {{t "ember-gwr.building.sections.statusAndData"}}
       </h3>
-
-      <Field
-        @attr="building.buildingStatus"
-        @type="select"
-        @convertValueTo="number"
-        @gwrEnumOptions={{this.buildingStatusOptions}}
-        @required={{true}}
-      />
 
       <Field @attr="building.nameOfBuilding" />
 
