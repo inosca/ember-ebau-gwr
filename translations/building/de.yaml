@@ -135,7 +135,7 @@ ember-gwr:
         number: Grundstücksnummer
         numberSuffix: Suffix der Grundstücksnummer
         subDistrict: Grundbuchkreisnummer
-        lot: Parzellennummber
+        lot: Parzellennummer
         
     surfaceAreaOfBuilding: Gebäudefläche (m2)
     volume:

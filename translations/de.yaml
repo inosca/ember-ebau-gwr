@@ -6,6 +6,11 @@ ember-gwr:
         one {Gebäude}
         other {Gebäude}
       }
+    building-work: |-
+      {count, plural,
+        one {Arbeit}
+        other {Arbeiten}
+      }
     project: |-
       {count, plural,
         one {Projekt}

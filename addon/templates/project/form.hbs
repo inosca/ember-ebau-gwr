@@ -71,6 +71,62 @@
         @on-update={{fn (mut this.typeOfConstructionProject)}}
         @hint={{"Für Tiefbauprojekte sind keine Gebäude zugelassen."}}
       />
+
+      {{#if (eq this.typeOfConstructionProject 6010)}}
+        <LinkedModels
+          @models={{this.project.work}}
+          @modelName="building-work"
+          @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
+          @addLink={{this.addWorkLink}}
+          as |model|
+        >
+          {{#if model.isNew}}
+            <td class="uk-table-expand">
+              <div class="uk-flex-inline uk-flex-middle">
+                <div class="uk-form-label uk-margin-small-right">
+                  {{t "ember-gwr.buildingWork.kindOfWork"}}:
+                </div>
+
+                <div class="uk-width-small">
+                  <Field
+                    @attr="kindOfWork"
+                    @inputType="select"
+                    @convertValueTo="number"
+                    @noPlaceholder={{true}}
+                    @gwrEnumOptions={{this.kindOfWorkOptions}}
+                    @update={{fn this.updateWork model}}
+                    @translationBase="ember-gwr.buildingWork"
+                    @noMargin={{true}}
+                    @noLabel={{true}}
+                  />
+                </div>
+              </div>
+            </td>
+          {{else}}
+            <td class="uk-table-expand">
+              <div class="uk-flex-inline">
+                <div class="uk-width-medium uk-margin-large-right uk-flex-inline uk-flex-middle">
+                  <div class="uk-form-label uk-margin-small-right">
+                    {{t "ember-gwr.buildingWork.kindOfWork"}}:
+                  </div>
+                  <div>
+                    {{t (concat "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork)}}
+                  </div>
+                </div>
+                <div class="uk-flex-inline uk-flex-middle">
+                  <div class="uk-form-label uk-margin-small-right">
+                    {{t "ember-gwr.buildingWork.ARBID"}}:
+                  </div>
+                  <div>
+                    {{model.ARBID}}
+                  </div>
+                </div>
+              </div>
+            </td>
+          {{/if}}
+        </LinkedModels>
+      {{/if}}
+
       <Field
         @inputType="textarea"
         @required={{true}}

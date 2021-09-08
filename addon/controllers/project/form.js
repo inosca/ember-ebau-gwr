@@ -6,10 +6,12 @@ import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import Options from "ember-ebau-gwr/models/options";
 import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
+import BuildingWork from "ember-ebau-gwr/models/building-work";
 
 export default class ProjectFormController extends Controller {
   queryParams = ["import"];
   ConstructionProjectValidations = ConstructionProjectValidations;
+  kindOfWorkOptions = BuildingWork.kindOfWorkOptions;
 
   @service constructionProject;
   @service building;
@@ -24,6 +26,8 @@ export default class ProjectFormController extends Controller {
   @tracked import = false;
   @tracked isOrganisation;
   @tracked buildingWork;
+  @tracked typeOfConstructionProject;
+  @tracked removedWork = [];
   @tracked errors;
 
   choiceOptions = Options;
@@ -42,12 +46,15 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
+    if (this.model.project?.isNew && !this.model.project?.work.length) {
+      this.model.project.work = [new BuildingWork()];
+    }
     const project = this.model.project?.isNew
       ? this.model.project
       : yield this.constructionProject.getFromCacheOrApi(this.model.projectId);
     this.isOrganisation = project.client.identification.isOrganisation;
     this.buildingWork = project.work.filter((work) => !work.building.isNew);
-
+    this.typeOfConstructionProject = project.typeOfConstructionProject;
     this.errors = [];
     return project;
   }
@@ -78,6 +85,25 @@ export default class ProjectFormController extends Controller {
         yield this.constructionProject.all.perform(this.model.instanceId);
         this.transitionToRoute("project.form", project.EPROID);
       } else {
+        if (this.typeOfConstructionProject === 6010) {
+          const added = this.project.work.filter((work) => work.isNew);
+          yield Promise.all(
+            added.map(async (work) => {
+              return await this.constructionProject.addWorkToProject(
+                this.model.projectId,
+                work
+              );
+            })
+          );
+          yield Promise.all(
+            this.removedWork.map(async (work) => {
+              return await this.constructionProject.removeWorkFromProject(
+                this.model.projectId,
+                work.ARBID
+              );
+            })
+          );
+        }
         yield this.constructionProject.update(this.project);
       }
       this.import = false;
@@ -199,5 +225,37 @@ export default class ProjectFormController extends Controller {
   @action
   getChangeHint(currentStatus, newStatus) {
     return this.constructionProject.getChangeHint(currentStatus, newStatus);
+  }
+
+  @action
+  updateWork(work, attr, value) {
+    work[attr] = value;
+  }
+
+  @action
+  removeWorkLink(buildingWork) {
+    if (!buildingWork.isNew) {
+      this.removedWork = [...this.removedWork, buildingWork];
+    }
+
+    this.project.work = this.project.work.filter(
+      (work) => work !== buildingWork
+    );
+  }
+
+  @action
+  addWorkLink() {
+    this.project.work = [...this.project.work, new BuildingWork()];
+  }
+
+    console.log("after removal project:", this.project);
+  }
+
+  @action
+  addWorkLink(buildingWork) {
+    console.log("addWorkLink:", buildingWork, this.project);
+
+    this.project.work = [...this.project.work, new BuildingWork()];
+    console.log("after add project:", this.project);
   }
 }
