@@ -2,6 +2,7 @@ export const typeOfClientOptions = [
   6101,
   6103,
   6104,
+  6105,
   6107,
   6108,
   6110,
