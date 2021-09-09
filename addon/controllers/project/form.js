@@ -22,7 +22,6 @@ export default class ProjectFormController extends Controller {
   @service notification;
 
   @tracked import = false;
-  @tracked isOrganisation;
   @tracked buildingWork;
   @tracked errors;
 
@@ -45,7 +44,6 @@ export default class ProjectFormController extends Controller {
     const project = this.model.project?.isNew
       ? this.model.project
       : yield this.constructionProject.getFromCacheOrApi(this.model.projectId);
-    this.isOrganisation = project.client.identification.isOrganisation;
     this.buildingWork = project.work.filter((work) => !work.building.isNew);
 
     this.errors = [];

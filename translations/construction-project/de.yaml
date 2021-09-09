@@ -35,7 +35,6 @@ ember-gwr:
 
       client:
         identification:
-          isOrganisation: Organisation
           personIdentification:
             officialName: Name
             firstName: Vorname
