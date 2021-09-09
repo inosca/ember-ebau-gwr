@@ -31,11 +31,10 @@ ember-gwr:
 
       realestateIdentification:
         EGRID: EGRID
-        number: Grundstücksnummer
+        number: Parzellennummer
 
       client:
         identification:
-          isOrganisation: Organisation
           personIdentification:
             officialName: Name
             firstName: Vorname
