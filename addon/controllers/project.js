@@ -6,6 +6,7 @@ export default class ProjectController extends Controller {
   @service router;
   @service store;
   @service constructionProject;
+  @service intl;
 
   get displayLandingPage() {
     return (
@@ -13,6 +14,23 @@ export default class ProjectController extends Controller {
       this.router.currentRoute.localName !== "new" &&
       this.router.currentRoute.localName !== "errors"
     );
+  }
+
+  get buildingTabInfoText() {
+    if (!this.activeProject) {
+      return this.intl.t(
+        "ember-gwr.linkedBuildings.buildingDisabledForNewProject"
+      );
+    } else if (
+      this.projects.find((project) => project.EPROID === this.activeProject)
+        ?.typeOfConstructionProject !== 6010
+    ) {
+      return this.intl.t(
+        "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
+      );
+    }
+
+    return null;
   }
 
   get activeProject() {
