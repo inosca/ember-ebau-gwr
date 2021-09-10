@@ -46,6 +46,8 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
+    // Add a new default work for new projects so we don't have to
+    // validate if the user has attached a work or not.
     if (this.model.project?.isNew && !this.model.project?.work.length) {
       this.model.project.work = [new BuildingWork()];
     }
@@ -87,6 +89,8 @@ export default class ProjectFormController extends Controller {
         if (
           (this.typeOfConstructionProject === 6010 &&
             this.workWithBuildings.length) ||
+          // If typeOfConstruction === hochbau we only display the alert
+          // if we have additional works beside the default work
           (this.typeOfConstructionProject === 6011 &&
             this.workWithoutBuildings.length > 1)
         ) {
@@ -124,7 +128,7 @@ export default class ProjectFormController extends Controller {
         this.intl.t("ember-gwr.constructionProject.saveSuccess")
       );
       // refresh work list
-      yield this.constructionProject.clearCache(this.model.projectId);
+      this.constructionProject.clearCache(this.model.projectId);
       this.fetchProject.perform();
     } catch (error) {
       this.errors = error;
@@ -295,7 +299,7 @@ export default class ProjectFormController extends Controller {
     return yield Promise.all(
       this.workWithoutBuildings.map(async (work) => {
         if (work.ARBID !== defaultWork.ARBID) {
-          if (work.ARBID) {
+          if (!work.isNew) {
             await this.constructionProject.removeWorkFromProject(
               this.project.EPROID,
               work.ARBID

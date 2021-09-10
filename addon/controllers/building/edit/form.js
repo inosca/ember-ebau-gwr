@@ -92,6 +92,8 @@ export default class BuildingFormController extends Controller {
       const project = yield this.constructionProject.get(this.model.projectId);
 
       // remove default work
+      // Since all works have per default a new building model,
+      // we can figure out the default work by filtering `building.isNew`.
       yield Promise.all(
         project.work.map((work) =>
           work.building.isNew

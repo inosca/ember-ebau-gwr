@@ -80,9 +80,9 @@
           @addLink={{this.addWorkLink}}
           as |model|
         >
-          {{#if model.isNew}}
-            <td class="uk-table-expand">
-              <div class="uk-flex-inline uk-flex-middle">
+          <td class="uk-table-expand">
+            <div class="uk-flex-inline uk-flex-middle">
+              {{#if model.isNew}}
                 <div class="uk-form-label uk-margin-small-right">
                   {{t "ember-gwr.buildingWork.kindOfWork"}}:
                 </div>
@@ -100,11 +100,7 @@
                     @noLabel={{true}}
                   />
                 </div>
-              </div>
-            </td>
-          {{else}}
-            <td class="uk-table-expand">
-              <div class="uk-flex-inline">
+              {{else}}
                 <div class="uk-width-medium uk-margin-large-right uk-flex-inline uk-flex-middle">
                   <div class="uk-form-label uk-margin-small-right">
                     {{t "ember-gwr.buildingWork.kindOfWork"}}:
@@ -121,9 +117,9 @@
                     {{model.ARBID}}
                   </div>
                 </div>
-              </div>
-            </td>
-          {{/if}}
+              {{/if}}
+            </div>
+          </td>
         </LinkedModels>
       {{/if}}
 
