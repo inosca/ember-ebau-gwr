@@ -83,7 +83,7 @@ export default class Building extends XMLModel {
   @tracked officialBuildingNo;
   @tracked nameOfBuilding;
   @tracked coordinates = new Coordinates();
-  @tracked realestateIdentification = [];
+  @tracked realestateIdentification = new RealestateIdentification();
   @tracked localCode1;
   @tracked localCode2;
   @tracked localCode3;
@@ -125,7 +125,7 @@ export default class Building extends XMLModel {
         officialBuildingNo: Number,
         nameOfBuilding: String,
         coordinates: Coordinates,
-        realestateIdentification: [RealestateIdentification],
+        realestateIdentification: RealestateIdentification,
         localCode1: String,
         localCode2: String,
         localCode3: String,
@@ -176,6 +176,7 @@ export default class Building extends XMLModel {
       <ns2:nameOfBuilding>{{model.nameOfBuilding}}</ns2:nameOfBuilding>
     {{/if}}
     {{> Coordinates model=model.coordinates}}
+    {{> RealestateIdentification model=model.realestateIdentification}}
     {{#if model.localCode1}}
       <ns2:localCode1>{{model.localCode1}}</ns2:localCode1>
     {{/if}}

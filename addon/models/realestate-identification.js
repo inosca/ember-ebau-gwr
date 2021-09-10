@@ -13,11 +13,11 @@ export default class RealestateIdentification extends XMLModel {
     super(...args);
     this.setFieldsFromXML({
       fields: {
-        number: Number,
+        number: String,
         EGRID: String,
-        numberSuffix: Number,
+        numberSuffix: String,
         subDistrict: Number,
-        lot: Number,
+        lot: String,
       },
     });
   }
@@ -27,17 +27,11 @@ export default class RealestateIdentification extends XMLModel {
   static template = `
   {{#if model.number}}
     <ns2:realestateIdentification>
-      <EGRID>{{model.EGRID}}</EGRID>
+      {{{modelField model "EGRID" namespace=""}}}
       <number>{{model.number}}</number>
-      {{#if model.numberSuffix}}
-        <numberSuffix>{{model.numberSuffix}}</numberSuffix>
-      {{/if}}
-      {{#if model.subDistrict}}
-        <subDistrict>{{model.subDistrict}}</subDistrict>
-      {{/if}}
-      {{#if model.lot}}
-        <lot>{{model.lot}}</lot>
-      {{/if}}
+      {{{modelField model "numberSuffix" namespace=""}}}
+      {{{modelField model "subDistrict" namespace=""}}}
+      {{{modelField model "lot" namespace=""}}}
     </ns2:realestateIdentification>
   {{/if}}
   `;

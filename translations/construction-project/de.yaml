@@ -32,6 +32,9 @@ ember-gwr:
       realestateIdentification:
         EGRID: EGRID
         number: Parzellennummer
+        numberSuffix: Suffix der Parzellennummer
+        subDistrict: Grundbuchkreisnummer
+        lot: Los
 
       client:
         identification:

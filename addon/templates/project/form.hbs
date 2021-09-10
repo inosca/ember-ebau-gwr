@@ -71,6 +71,58 @@
         @on-update={{fn (mut this.typeOfConstructionProject)}}
         @hint={{"Für Tiefbauprojekte sind keine Gebäude zugelassen."}}
       />
+
+      {{#if (eq this.typeOfConstructionProject 6010)}}
+        <LinkedModels
+          @models={{this.workWithoutBuildings}}
+          @modelName="building-work"
+          @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
+          @addLink={{this.addWorkLink}}
+          as |model|
+        >
+          <td class="uk-table-expand">
+            <div class="uk-flex-inline uk-flex-middle">
+              {{#if model.isNew}}
+                <div class="uk-form-label uk-margin-small-right">
+                  {{t "ember-gwr.buildingWork.kindOfWork"}}:
+                </div>
+
+                <div class="uk-width-small">
+                  <Field
+                    @attr="kindOfWork"
+                    @inputType="select"
+                    @convertValueTo="number"
+                    @noPlaceholder={{true}}
+                    @gwrEnumOptions={{this.kindOfWorkOptions}}
+                    @update={{fn this.updateWork model}}
+                    @translationBase="ember-gwr.buildingWork"
+                    @noMargin={{true}}
+                    @noLabel={{true}}
+                  />
+                </div>
+              {{else}}
+                <div class="uk-width-medium uk-margin-large-right uk-flex-inline uk-flex-middle">
+                  <div class="uk-form-label uk-margin-small-right">
+                    {{t "ember-gwr.buildingWork.kindOfWork"}}:
+                  </div>
+                  <div>
+                    {{t (concat "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork)}}
+                  </div>
+                </div>
+                <div class="uk-flex-inline uk-flex-middle">
+                  <div class="uk-form-label uk-margin-small-right">
+                    {{t "ember-gwr.buildingWork.ARBID"}}:
+                  </div>
+                  <div>
+                    {{model.ARBID}}
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+          </td>
+        </LinkedModels>
+      {{/if}}
+
       <Field
         @inputType="textarea"
         @required={{true}}
@@ -170,8 +222,11 @@
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
       </h3>
-      <Field @type="number" @attr="realestateIdentification.number" />
+      <Field @attr="realestateIdentification.number" />
+      <Field @attr="realestateIdentification.numberSuffix" />
       <Field @attr="realestateIdentification.EGRID" />
+      <Field @type="number" @attr="realestateIdentification.subDistrict" />
+      <Field @attr="realestateIdentification.lot" />
       <h3>
         {{t "ember-gwr.components.modelForm.clientHeading"}}
       </h3>
@@ -275,3 +330,37 @@
     </ModelForm>
   {{/if}}
 </div>
+
+<UkModal 
+  @visible={{this.showConfirmationDialog}}
+  @btnClose={{false}}
+  @bgClose={{false}}
+  @escClose={{false}}
+  as |modal|
+>
+  <modal.header>
+    <h2 class="uk-modal-title">
+      {{t "ember-gwr.components.modelForm.project.confirmationTitle"}}
+    </h2>
+  </modal.header>
+  <modal.body>
+    {{#if (eq this.typeOfConstructionProject 6011)}}
+      {{t "ember-gwr.components.modelForm.project.confirmationSuperstructure"}}
+    {{else if (eq this.typeOfConstructionProject 6010)}}
+      {{t "ember-gwr.components.modelForm.project.confirmationInfrastructure"}}
+    {{/if}}
+  </modal.body>
+  <modal.footer @class="uk-text-right">
+    <UkButton 
+      @color="default" 
+      @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}} 
+      {{on "click" (perform this.processTypeOfConstructionProjectChange)}}
+    />
+    <UkButton 
+      @color="primary" 
+      @label={{t "ember-gwr.components.modelForm.project.confirmationCancel"}}
+      {{on "click" this.cancelTypeOfConstructionProjectChange}}
+    />
+  </modal.footer>
+</UkModal>
+

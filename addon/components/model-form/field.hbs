@@ -2,14 +2,14 @@
   {{#let
     (component
       @input
-      label=(t (or @label (concat @translationBase "." @attr)))
+      label=(unless @noLabel (t (or @label (concat @translationBase "." @attr))))
       name=@attr
       inputName=@inputName
       hint=@hint
       type=(or @type @inputType)
       disabled=(or @disabled this.disableInput)
       required=@required
-      value=(get @model @attr)
+      value=(or @value (get @model @attr))
       validateBeforeSubmit=true
       auto-complete=@auto-complete
       placeholder=@placeholder
@@ -29,8 +29,8 @@
       promptIsSelectable=true
       on-update=(if
         @on-update
-        (queue (fn (or @update this.updateModelField) @attr) @on-update)
-        (fn (or @update this.updateModelField) @attr)
+        (queue (fn this.updateModelField @attr) @on-update)
+        (fn this.updateModelField @attr)
       )
       renderComponent=(component
         this.fieldComponent

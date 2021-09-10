@@ -68,6 +68,17 @@
                 modelName=modelName
               }}
             </LinkTo>
+          {{else if @addLink}}
+            <button 
+              type="button" 
+              class="uk-button uk-button-link"
+              {{on "click" @addLink}}
+            >
+              {{t
+                "ember-gwr.components.linkedModels.createEntry"
+                modelName=modelName
+              }}
+            </button>
           {{/if}}
         </td>
       </tr>

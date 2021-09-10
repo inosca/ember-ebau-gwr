@@ -70,14 +70,9 @@ export default class ConstructionProjectService extends GwrService {
     return this.createAndCache(xml);
   }
 
-  async deactivateDefaultWork(projectId) {
-    return await this.removeWorkFromProject(projectId, 1);
-  }
-
   async addDefaultWork(projectId) {
     const buildingWork = new BuildingWork();
-    buildingWork.kindOfWork = 6002;
-    buildingWork.ARBID = 1;
+    buildingWork.kindOfWork = 6001;
     return await this.addWorkToProject(projectId, buildingWork);
   }
 
@@ -108,6 +103,7 @@ export default class ConstructionProjectService extends GwrService {
     );
 
     buildingWork.ARBID = ARBID;
+    buildingWork.isNew = false;
 
     // TODO: apply for type "Umbau" with modifyWork
     // don't execute bindBuildingToConstructionProject

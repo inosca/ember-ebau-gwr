@@ -41,13 +41,20 @@ export default class SearchBuildingController extends Controller {
         buildingWork
       );
 
-      const project = yield this.constructionProject.getFromCacheOrApi(
-        this.model
-      );
+      // refresh work list
+      const project = yield this.constructionProject.get(this.model);
 
-      if (project.work.find((work) => work.ARBID === 1)) {
-        yield this.constructionProject.deactivateDefaultWork(this.model);
-      }
+      // remove default work
+      yield Promise.all(
+        project.work.map((work) =>
+          work.building.isNew
+            ? this.constructionProject.removeWorkFromProject(
+                this.model,
+                work.ARBID
+              )
+            : work
+        )
+      );
 
       this.activeBuilding = null;
       this.transitionToRoute("project.linked-buildings", this.model);

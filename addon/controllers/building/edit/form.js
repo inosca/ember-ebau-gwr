@@ -88,15 +88,22 @@ export default class BuildingFormController extends Controller {
         this.buildingWork
       );
 
-      const project = yield this.constructionProject.getFromCacheOrApi(
-        this.model.projectId
-      );
+      // refresh work list
+      const project = yield this.constructionProject.get(this.model.projectId);
 
-      if (project.work.find((work) => work.ARBID === 1)) {
-        yield this.constructionProject.deactivateDefaultWork(
-          this.model.projectId
-        );
-      }
+      // remove default work
+      // Since all works have per default a new building model,
+      // we can figure out the default work by filtering `building.isNew`.
+      yield Promise.all(
+        project.work.map((work) =>
+          work.building.isNew
+            ? this.constructionProject.removeWorkFromProject(
+                this.model.projectId,
+                work.ARBID
+              )
+            : work
+        )
+      );
 
       // Clear cache so after transition we fetch the project form api
       this.constructionProject.clearCache(this.model.projectId);

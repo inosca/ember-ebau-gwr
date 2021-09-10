@@ -107,3 +107,7 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
     padding-right:  50px;
   }
 }
+
+.uk-button-link {
+  text-transform: unset;
+}
