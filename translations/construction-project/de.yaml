@@ -31,7 +31,7 @@ ember-gwr:
 
       realestateIdentification:
         EGRID: EGRID
-        number: Grundstücksnummer
+        number: Parzellennummer
 
       client:
         identification:
