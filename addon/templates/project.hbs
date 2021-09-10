@@ -8,16 +8,17 @@
       <LandingPage />
     {{else}}
       <div class="projects-header">
-        <LinkedProjects
-          @projects={{this.projects}}
-          @activeProject={{this.activeProject}}
-          @removeProject={{this.removeProjectLink}}
-          class="uk-padding-small"
-        />
+        <div class="uk-padding-small">
+          <LinkedProjects
+            @projects={{this.projects}}
+            @activeProject={{this.activeProject}}
+            @removeProject={{this.removeProjectLink}}
+            class="uk-padding-small"
+          />
+        </div>
         <hr class="uk-margin-remove" />
         <div
           uk-alert
-          id="housing-stat-link"
           class="uk-flex uk-flex-between uk-flex-middle uk-margin-remove"
         >
           <span class="uk-flex uk-flex-middle">

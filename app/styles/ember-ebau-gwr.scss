@@ -88,23 +88,6 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 
   table {
     @extend .uk-margin-remove-bottom;
-
-    tr {
-      td:first-child,
-      th:first-child {
-        padding-left: 50px;
-      }
-
-      td:last-child {
-        padding-right: 50px;
-      }
-    }
-  }
-
-  #housing-stat-link {
-    // So we can apply the vertical padding from alert
-    padding-left:  50px;
-    padding-right:  50px;
   }
 }
 
