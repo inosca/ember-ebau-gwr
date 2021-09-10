@@ -31,14 +31,13 @@ ember-gwr:
 
       realestateIdentification:
         EGRID: EGRID
-        number: Grundstücksnummer
-        numberSuffix: Suffix der Grundstücksnummer
+        number: Parzellennummer
+        numberSuffix: Suffix der Parzellennummer
         subDistrict: Grundbuchkreisnummer
-        lot: Parzellennummer
+        lot: Los
 
       client:
         identification:
-          isOrganisation: Organisation
           personIdentification:
             officialName: Name
             firstName: Vorname
@@ -152,6 +151,7 @@ ember-gwr:
         6101: SBB (Schweizerische Bundesbahnen)
         6103: VBS (Eidg. Departement für Verteidigung, Bevölkerungsschutz und Sport)
         6104: BBL (Bundesamt für Bauten und Logistik)
+        6105: ASTRA (Bundesamt für Strassen)
         6107: SWISSCOM
         6108: Die Post
         6110: Kantone (ohne öffentliche Unternehmen)

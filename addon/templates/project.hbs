@@ -7,11 +7,36 @@
     {{#if this.displayLandingPage}}
       <LandingPage />
     {{else}}
-      <LinkedProjects
-        @projects={{this.projects}}
-        @activeProject={{this.activeProject}}
-        @removeProject={{this.removeProjectLink}}
-      />
+      <div class="projects-header">
+        <LinkedProjects
+          @projects={{this.projects}}
+          @activeProject={{this.activeProject}}
+          @removeProject={{this.removeProjectLink}}
+          class="uk-padding-small"
+        />
+        <hr class="uk-margin-remove" />
+        <div
+          uk-alert
+          id="housing-stat-link"
+          class="uk-flex uk-flex-between uk-flex-middle uk-margin-remove"
+        >
+          <span class="uk-flex uk-flex-middle">
+            <span uk-icon="icon: info" class="uk-margin-small-right"></span>
+            <span>
+              {{t "ember-gwr.nav.housingStatInfo"}}
+            </span>
+          </span>
+          <a
+            class="uk-button uk-button-default"
+            {{! TODO make this configurable}}
+            href="https://www-r.housing-stat.ch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{t "ember-gwr.nav.housingStatLink"}}
+          </a>
+        </div>
+      </div>
       <UkTab as |Tab|>
         <Tab.link-item @route="project.form" @model={{this.activeProject}}>
           {{t "ember-gwr.models.project" count=1}}

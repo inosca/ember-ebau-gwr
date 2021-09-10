@@ -8,20 +8,6 @@ export default class Identification extends XMLModel {
   @tracked personIdentification = new PersonIdentification();
   @tracked organisationIdentification = new OrganisationIdentification();
 
-  // This is not a field in the gwr data model. We use this for state
-  // tracking and to decide which identification type should be used.
-  @tracked _isOrganisation = false;
-  get isOrganisation() {
-    return (
-      this._isOrganisation ??
-      Boolean(this.organisationIdentification.organisationName)
-    );
-  }
-
-  set isOrganisation(value) {
-    this._isOrganisation = value;
-  }
-
   constructor(xmlOrObject, root = "identification") {
     super(xmlOrObject);
     this.setFieldsFromXML({
@@ -34,10 +20,10 @@ export default class Identification extends XMLModel {
 
   static template = `
   <identification>
-    {{#if model.isOrganisation}}
-      {{> OrganisationIdentification model=model.organisationIdentification}}
-    {{else}}
+    {{#if (eq model.typeOfClient 6161)}}
       {{> PersonIdentification model=model.personIdentification}}
+    {{else}}
+      {{> OrganisationIdentification model=model.organisationIdentification}}
     {{/if}}
   </identification>
   `;

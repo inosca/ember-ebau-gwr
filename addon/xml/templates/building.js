@@ -34,10 +34,10 @@ export const getBuilding =
     {{/if}}
     {{#if model.realestateIdentification.number}}
       <ns2:realestateIdentification>
-        <number>{{model.realestateIdentification.number}}</number>
         {{#if model.realestateIdentification.EGRID}}
           <EGRID>{{model.realestateIdentification.EGRID}}</EGRID>
         {{/if}}
+        {{{modelField model.realestateIdentification "number" namespace=""}}}
         {{#if model.realestateIdentification.numberSuffix}}
           <numberSuffix>{{model.realestateIdentification.numberSuffix}}</numberSuffix>
         {{/if}}

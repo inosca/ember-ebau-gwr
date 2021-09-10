@@ -31,7 +31,7 @@
       @getChangeHint={{this.getChangeHint}}
       @modelStatusField="projectStatus"
       {{did-insert (perform this.fetchCalumaData)}}
-      as |Field|
+      as |Field changeset|
     >
       {{#unless this.project.isNew}}
         <div class="uk-flex">
@@ -241,14 +241,9 @@
         @attr="typeOfClient"
         @gwrEnumOptions={{this.choiceOptions.typeOfClientOptions}}
       />
-      <Field
-        @inputType="checkbox"
-        @attr="client.identification.isOrganisation"
-        @on-update={{fn (mut this.isOrganisation)}}
-      />
       {{#if
         (or
-          this.isOrganisation
+          (not-eq changeset.typeOfClient 6161)
           (and
             this.import
             this.importData.client.identification.organisationIdentification.organisationName

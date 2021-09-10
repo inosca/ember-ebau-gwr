@@ -102,11 +102,32 @@ ember-gwr:
     buildingClass: Gebäudeklasse
     buildingClassPlaceholder: Wählen Sie eine Gebäudeklasse aus...
     buildingClassOptions:
-      1231: Restaurants und Bars in Gebäude ohne Wohnnutzung
-      1275: Andere Gebäude für kollektive Beherbergung
-      1276: Gebäude für Tierhaltung;
-      1277: Gebäude für den Pflanzenbau;
-      1278: Andere landwirtschaftliche Gebäude.
+      1110: Gebäude mit einer Wohnung
+      1121: Gebäude mit zwei Wohnungen
+      1122: Gebäude mit drei oder mehr Wohnungen
+      1130: Wohngebäude für Gemeinschaften
+      1211: Hotelgebäude
+      1212: Andere Gebäude für kurzfristige Beherbergungen
+      1220: Bürogebäude
+      1230: Gross- und Einzelhandelsgebäude
+      1231: Restaurants und Bars in Gebäuden ohne Wohnnutzung
+      1241: Bahnhöfe, Abfertigungsgebäude, Fernsprechvermittlungszentralen
+      1242: Garagengebäude
+      1251: Industriegebäude
+      1252: Behälter, Silos und Lagergebäude
+      1261: Gebäude für Kultur- und Freizeitzwecke
+      1262: Museen / Bibliotheken
+      1263: Schul- und Hochschulgebäude, Forschungseinrichtungen
+      1264: Krankenhäuser und Facheinrichtungen des Gesundheitswesens
+      1265: Sporthallen
+      1271: Landwirtschaftliche Betriebsgebäude
+      1272: Kirchen und sonstige Kultgebäude
+      1273: Denkmäler oder unter Denkmalschutz stehende Bauwerke
+      1274: Sonstige Hochbauten, anderweitig nicht genannt
+      1275: Andere Gebäude für die kollektive Unterkunft
+      1276: Gebäude für die Tierhaltung
+      1277: Gebäude für den Pflanzenbau
+      1278: Andere landwirtschaftliche Gebäude
 
     dateOfConstruction:
       year: Baujahr des Gebäudes
@@ -131,12 +152,12 @@ ember-gwr:
     yearOfDemolition: Abbruchjahr des Gebäudes
 
     realestateIdentification:
-        EGRID: EGRID
-        number: Grundstücksnummer
-        numberSuffix: Suffix der Grundstücksnummer
-        subDistrict: Grundbuchkreisnummer
-        lot: Parzellennummer
-        
+      EGRID: EGRID
+      number: Parzellennummer
+      numberSuffix: Suffix der Parzellennummer
+      subDistrict: Grundbuchkreisnummer
+      lot: Los
+
     surfaceAreaOfBuilding: Gebäudefläche (m2)
     volume:
       volume: Gebäudevolumen

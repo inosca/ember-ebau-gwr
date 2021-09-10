@@ -106,10 +106,10 @@ export const getConstructionProject =
     <ns2:constructionSurveyDeptNumber>{{model.constructionSurveyDeptNumber}}</ns2:constructionSurveyDeptNumber>
     {{#if model.realestateIdentification.number}}
       <ns2:realestateIdentification>
-        <number>{{model.realestateIdentification.number}}</number>
         {{#if model.realestateIdentification.EGRID}}
           <EGRID>{{model.realestateIdentification.EGRID}}</EGRID>
         {{/if}}
+        <number>{{model.realestateIdentification.number}}</number>
         {{#if model.realestateIdentification.numberSuffix}}
           <numberSuffix>{{model.realestateIdentification.numberSuffix}}</numberSuffix>
         {{/if}}

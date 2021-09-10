@@ -45,7 +45,7 @@ export default class SearchFiltersComponent extends Component {
       !realestateIdentification.number
     ) {
       this.validationErrors.realestateIdentification = this.intl.t(
-        "ember-gwr.searchProject.validation.realestateIdentification"
+        "ember-gwr.components.search.validation.realestateIdentification"
       );
     }
 
@@ -55,7 +55,7 @@ export default class SearchFiltersComponent extends Component {
       !(modifyDate.dateTo && modifyDate.dateFrom)
     ) {
       this.validationErrors.modifyDate = this.intl.t(
-        "ember-gwr.searchProject.validation.bothDatesSet"
+        "ember-gwr.components.search.validation.bothDatesSet"
       );
     }
 
@@ -64,7 +64,7 @@ export default class SearchFiltersComponent extends Component {
       !(createDate.dateTo && createDate.dateFrom)
     ) {
       this.validationErrors.createDate = this.intl.t(
-        "ember-gwr.searchProject.validation.bothDatesSet"
+        "ember-gwr.components.search.validation.bothDatesSet"
       );
     }
     // Return a boolean if there are errors or not

@@ -35,7 +35,7 @@ ember-gwr:
 
   general:
     or: oder
-  
+
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
@@ -45,7 +45,8 @@ ember-gwr:
   nav:
     projectDetails: Projektdetails
     linkedBuildings: Verknüpfte Gebäude
-
+    housingStatInfo: Der Quartalsabschluss sowie die Verwaltung von Strassen kann im housing-stat des BFS gemacht werden.
+    housingStatLink: Zum housing-stat
   linkedBuildings:
     error: Beim Laden der Projektdaten ist ein Fehler aufgetreten.
     removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
@@ -87,7 +88,7 @@ ember-gwr:
       false: Nur ohne Fehler
 
     realestateIdentification:
-      number: Grundstücksnummer
+      number: Parzellennummer
 
   issues:
     nav: Offene Pendenzen
@@ -133,7 +134,7 @@ ember-gwr:
         3005: Nicht nutzbar
         3007: Aufgehoben
         3008: Nicht realisiert
-    
+
     statusErrorBuilding: <a href="{href}">Gebäude {buildingId}</a> muss im Status {states} sein.
     statusErrorDwelling: <a href="{href}">Wohnung {dwellingId}</a> im Gebäude {buildingId} muss im Status {states} sein.
 
@@ -168,14 +169,14 @@ ember-gwr:
       loading: Laden...
       noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
       validation:
-        realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+        realestateIdentification: Bei erweiterter Suche muss die Parzellennummer gesetzt werden.
         bothDatesSet: Es müssen beide Daten gesetzt sein.
 
       realestateIdentificationHeading: Grundstücksidentifikation
       realestateIdentification:
         EGRID: EGRID
-        numberSuffix: Suffix der Grundstücksnummer
-        subDistrict: Grundbuchkreisnummer
+        numberSuffix: Suffix der Parzellennummer
+        subDistrict: Parzellennummer
         lot: Los
 
       createDateHeading: Erstellungszeitraum
