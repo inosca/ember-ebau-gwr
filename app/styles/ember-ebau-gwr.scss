@@ -82,8 +82,8 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   }
 }
 
-.linked-projects {
-  @extend .uk-box-shadow-small, .uk-margin-large, .uk-padding-small, .uk-background-muted;
+.projects-header {
+  @extend .uk-box-shadow-small, .uk-margin-large, .uk-background-muted;
   border: 1px solid #e5e5e5;
 
   table {
@@ -99,5 +99,11 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
         padding-right: 50px;
       }
     }
+  }
+
+  #housing-stat-link {
+    // So we can apply the vertical padding from alert
+    padding-left:  50px;
+    padding-right:  50px;
   }
 }
