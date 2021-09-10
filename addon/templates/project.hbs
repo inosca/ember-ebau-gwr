@@ -44,10 +44,18 @@
         <Tab.link-item
           @route="project.linked-buildings"
           @model={{this.activeProject}}
-          @disabled={{not this.activeProject}}
+          @disabled={{this.buildingTabInfoText}}
         >
           {{t "ember-gwr.models.building" count=1}}
         </Tab.link-item>
+        {{#if this.buildingTabInfoText}}
+          <div class="uk-padding-remove">
+            <span
+              uk-icon="icon: question"
+              uk-tooltip={{this.buildingTabInfoText}}
+            ></span>
+          </div>
+        {{/if}}
         {{#if this.activeProject}}
           <Tab.link-item
             class="uk-position-right"

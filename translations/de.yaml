@@ -47,9 +47,12 @@ ember-gwr:
     linkedBuildings: Verknüpfte Gebäude
     housingStatInfo: Der Quartalsabschluss sowie die Verwaltung von Strassen kann im housing-stat des BFS gemacht werden.
     housingStatLink: Zum housing-stat
+
   linkedBuildings:
     error: Beim Laden der Projektdaten ist ein Fehler aufgetreten.
     removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
+    buildingDisabledForInfrastructure: Für Tiefbauprojekte sind keine Gebäude zugelassen.
+    buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
 
   searchBuilding:
     heading: Existierendes Gebäude verknüpfen
