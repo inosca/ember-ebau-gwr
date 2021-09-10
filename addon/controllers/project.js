@@ -23,7 +23,7 @@ export default class ProjectController extends Controller {
       );
     } else if (
       this.projects.find((project) => project.EPROID === this.activeProject)
-        ?.typeOfConstructionProject !== 6010
+        ?.typeOfConstructionProject !== 6011
     ) {
       return this.intl.t(
         "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
