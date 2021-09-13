@@ -17,7 +17,11 @@ export default class ModelFormFieldComponent extends Component {
     if (this.args.importData) {
       const currentData = get(this.args.model, this.args.attr);
       const newData = get(this.args.importData, this.args.attr);
-      return !this.diffResolved && newData && newData !== currentData;
+      const showDiff = !this.diffResolved && newData && newData !== currentData;
+      if (showDiff) {
+        this.args.registerDiff(this.args.attr);
+      }
+      return showDiff;
     }
     return false;
   }
@@ -63,13 +67,6 @@ export default class ModelFormFieldComponent extends Component {
         label: this.intl.t(`${intlKey}Options.${option}`),
       }))
     );
-  }
-
-  constructor(...args) {
-    super(...args);
-    if (this.showDiff) {
-      this.args.registerDiff(this.args.attr);
-    }
   }
 
   @action

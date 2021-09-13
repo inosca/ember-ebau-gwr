@@ -36,7 +36,9 @@ export default class ModelFormComponent extends Component {
 
   @action
   registerDiff(attr) {
-    this.diffs.push(attr);
+    if (!this.diffs.find((key) => key === attr)) {
+      this.diffs.push(attr);
+    }
   }
 
   @action
