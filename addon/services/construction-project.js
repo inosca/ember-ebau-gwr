@@ -195,6 +195,11 @@ export default class ConstructionProjectService extends GwrService {
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
+        // don't execute checks for work without building
+        if (buildingWork.building.isNew) {
+          return;
+        }
+
         if (buildingWork.kindOfWork === 6001) {
           if (
             [Building.STATUS_PROJECTED, Building.STATUS_APPROVED].includes(
@@ -268,6 +273,11 @@ export default class ConstructionProjectService extends GwrService {
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
+        // don't execute checks for work without building
+        if (buildingWork.building.isNew) {
+          return;
+        }
+
         if (buildingWork.kindOfWork === 6001) {
           if (
             [
@@ -373,6 +383,11 @@ export default class ConstructionProjectService extends GwrService {
      **/
     await Promise.all(
       project.work.map(async (buildingWork) => {
+        // don't execute checks for work without building
+        if (buildingWork.building.isNew) {
+          return;
+        }
+
         if (buildingWork.kindOfWork === 6001) {
           if (
             buildingWork.building.buildingStatus !== Building.STATUS_COMPLETED
@@ -448,6 +463,11 @@ export default class ConstructionProjectService extends GwrService {
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
+        // don't execute checks for work without building
+        if (buildingWork.building.isNew) {
+          return;
+        }
+
         if (buildingWork.kindOfWork === 6001) {
           if (
             [
@@ -543,6 +563,11 @@ export default class ConstructionProjectService extends GwrService {
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
+        // don't execute checks for work without building
+        if (buildingWork.building.isNew) {
+          return;
+        }
+
         if (buildingWork.kindOfWork === 6001) {
           if (
             project.projectStatus ===
