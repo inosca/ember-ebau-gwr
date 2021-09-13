@@ -9,7 +9,7 @@ export default class DataImport extends Service {
       typeOfConstruction: 6213,
       totalCostsOfProject: 10000,
       typeOfPermit: 5001,
-      projectAnnouncementDate: "11.12.2019",
+      projectAnnouncementDate: "2019-12-11",
       typeOfClient: 6101,
       client: {
         address: { street: "Gässli", houseNumber: 5 },
