@@ -1,3 +1,44 @@
+# [2.7.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.6.0...v2.7.0) (2021-09-13)
+
+
+### Bug Fixes
+
+* **building:** add realestateIdentification form fields ([f9d3e0f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f9d3e0f970f5ba4e22e05b24996242cb7bb71089))
+* **building-entrance:** display coordinates and ARBID ([ce2bbdf](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ce2bbdf70ebf9dc6b41de92963ee0211103f6668))
+* **building-entrance:** fix link to street ([62682a0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/62682a04c03782e22fd56aaf08c2300aaf615a45))
+* **buildingWork:** boolean fields are only allowed on a transformation ([bed4a3a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bed4a3a6a841a67318971c9e7e1f467d11f6cfb6))
+* **dwelling:** make residence flags readonly ([b37c5c1](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b37c5c1977271952754c174ed7f860b4777da1d5))
+* **dwelling:** rename field dateOfConstruction to yearOfConstruction ([5fb41c7](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5fb41c7ee4ba27345cfeed88fc93d01c7ee567e1))
+* **dwelling:** use correct field for dateOfDemolition ([329f91f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/329f91f52b13120571f9fad052af4ea9175ea44b))
+* **dwelling;building:** remove status select ([78d1c31](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/78d1c3138933ca0210ca406d2dc59d4bbdefc173))
+* **fields:** remove unneeded fields and change field types ([0b9ca98](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0b9ca98757af597e46b475372e3e4aae7fd0c5f9))
+* **form:** display plain text with form-labels instead of bold-text ([065c0c5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/065c0c599b326fc63f5c39278651da5bfc690495))
+* **general:** fix minor issues ([a560d9a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/a560d9a807d0cdc8e64d996c747aff59a41ae013))
+* **life-cycles:** cascade building set to realized ([c2fb120](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c2fb1201a3aebd9f380153473d9470419380e6ca))
+* **life-cycles:** cascade project non-realisation and refusal ([2ecefa8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2ecefa8f4bdb0ac619eb43e5942542735128be02))
+* **life-cycles:** complete transition requirements ([dd0cbab](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/dd0cbab4950017f057316f66767870b825b992c2))
+* **life-cycles:** ensure life-cycle preconditions hold ([249556c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/249556c26d6ff5b7cf5c55fd1d265668e9e83977))
+* **life-cycles:** fix set to construction started on dwellings ([3af601e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3af601e8e7521e6d38b7fb234a4cbb6363dfc7bb))
+* **life-cycles:** perform check before life cycle transitions ([47227a6](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/47227a6cd69cb6ca50f558b256cdd543463f217d))
+* **life-cycles:** prohibit checks for infrastructure projects ([3f5a5d0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3f5a5d0415c6e6d5e8af139ff50fac4423b1d18c))
+* **life-cycles:** reload linked objects on status change ([c953b3f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c953b3ffdad1da313e8d94ca84b49b9787ef4656))
+* **life-cycles:** require realestate identification for completion ([158702c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/158702c0b4e369c9d59490a865d3ebbd49ae0d66))
+* **project-nav-tab:** check for superstructure id not infrastructure ([aae885a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/aae885ab62f33a3f437b5784f2e10e5c37fb6b5b))
+* **search-building:** fix translations and add missing search field ([2f18c51](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2f18c51511f86343c104a8c4e56a5ee90b2af8a1))
+* **translations:** add missing values ([7715d1d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7715d1d98a7b0693f7837e380c9300340382fd62))
+
+
+### Features
+
+* **constructionProject:** add projectFreeText1 and 2 to view ([fe8ace2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/fe8ace24f29e113df6175f05eb7a94d3aabfbd92))
+* **dwelling:** add yearOfDemolition and yearOfConstruction ([32a4c52](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/32a4c52ea75dc97eb6c642f6c7e68080c69837f5))
+* **linked-projects:** add a visual separation to projects list ([170a9e0](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/170a9e0d40fb0a2798aa994249dd8fbb2a0ae317))
+* **project:** add editable work list for infrastructure projects ([28dfd39](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/28dfd396dea7afd3e38a1752a7e753d25530f4fe))
+* **project:** confirmation dialog when switching type of construction project ([2548141](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2548141241cf8de4d5da94adbc8b9d0d4334bf79))
+* **project:** full realestateIdentification ([2da1822](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2da182292aa1204b44ea29d11013e1fcffb8e8a9))
+* **project-nav:** add housingstat link ([e9784bb](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e9784bb9ff7b36bb5fbcb68b0f93d3c4fd28d16f))
+* **project-nav:** display building tab on infra projects ([c484256](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c484256f0229a4799444b38afdaaad55aa351812))
+
 # [2.6.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.5.1...v2.6.0) (2021-08-24)
 
 
