@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.7.0...v2.7.1) (2021-09-13)
+
+
+### Bug Fixes
+
+* **import:** ensure diff fields are registered correctly ([33fd1cd](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/33fd1cd36efaaf91cfcfab49f2f1ea7de09270ab))
+
 # [2.7.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.6.0...v2.7.0) (2021-09-13)
 
 
