@@ -331,11 +331,12 @@
   {{/if}}
 </div>
 
-<UkModal 
+<UkModal
   @visible={{this.showConfirmationDialog}}
   @btnClose={{false}}
   @bgClose={{false}}
   @escClose={{false}}
+  @container={{this.config.modalContainer}}
   as |modal|
 >
   <modal.header>
@@ -351,13 +352,13 @@
     {{/if}}
   </modal.body>
   <modal.footer @class="uk-text-right">
-    <UkButton 
-      @color="default" 
-      @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}} 
+    <UkButton
+      @color="default"
+      @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}}
       {{on "click" (perform this.processTypeOfConstructionProjectChange)}}
     />
-    <UkButton 
-      @color="primary" 
+    <UkButton
+      @color="primary"
       @label={{t "ember-gwr.components.modelForm.project.confirmationCancel"}}
       {{on "click" this.cancelTypeOfConstructionProjectChange}}
     />
