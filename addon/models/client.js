@@ -26,7 +26,7 @@ export default class Client extends XMLModel {
     )
   }}
     <ns2:client>
-     {{> Identification model=model.identification}}
+     {{> Identification model=model.identification typeOfClient=typeOfClient}}
      {{> Address model=model.address}}
     </ns2:client>
   {{/if}}
