@@ -55,9 +55,11 @@ export default class ModelFormComponent extends Component {
     // not be classes with tracked fields etc. anymore but just pojos. We need to preserve the classes.
     const deepMerge = (original, objectToApply) => {
       Object.entries(objectToApply).forEach(([key, value]) => {
-        typeof value === "object"
-          ? deepMerge(original[key], objectToApply[key])
-          : (original[key] = value);
+        if (value !== null && value !== undefined) {
+          typeof value === "object"
+            ? deepMerge(original[key], objectToApply[key])
+            : (original[key] = value);
+        }
       });
     };
     deepMerge(this.args.model, this.args.importData);
