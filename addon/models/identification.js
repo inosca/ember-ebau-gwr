@@ -14,13 +14,14 @@ export default class Identification extends XMLModel {
       root,
       fields: {
         personIdentification: PersonIdentification,
+        organisationIdentification: OrganisationIdentification,
       },
     });
   }
 
   static template = `
   <identification>
-    {{#if (eq model.typeOfClient 6161)}}
+    {{#if (eq typeOfClient 6161)}}
       {{> PersonIdentification model=model.personIdentification}}
     {{else}}
       {{> OrganisationIdentification model=model.organisationIdentification}}
