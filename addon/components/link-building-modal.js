@@ -1,8 +1,10 @@
+import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 
 export default class LinkBuildingModalComponent extends Component {
+  @service config;
   @tracked buildingWork = new BuildingWork();
   // Remove the state "Neubau" from the array since you cant link
   // existing buildings as "Neubau".

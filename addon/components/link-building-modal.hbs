@@ -1,7 +1,7 @@
 <UkModal
   @visible={{@visible}}
   @on-hide={{@close}}
-  @container="#ember-camac-ng"
+  @container={{this.config.modalContainer}}
   as |Modal|
 >
   <Modal.header>
