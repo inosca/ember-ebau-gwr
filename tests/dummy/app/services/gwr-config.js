@@ -12,4 +12,6 @@ export default class GwrConfigService extends Service {
   get camacGroup() {
     return "1";
   }
+
+  modalContainer = "#modal-container";
 }
