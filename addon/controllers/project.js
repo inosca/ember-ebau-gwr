@@ -5,6 +5,7 @@ import { inject as service } from "@ember/service";
 export default class ProjectController extends Controller {
   @service router;
   @service store;
+  @service config;
   @service constructionProject;
   @service intl;
 
