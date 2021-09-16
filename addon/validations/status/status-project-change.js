@@ -44,7 +44,7 @@ export default {
       model: "project",
     }),
   ],
-  nonRealisationDate: [
+  cancellationDate: [
     validatePresenceTransition({
       presence: true,
       on: "projectStatus",
