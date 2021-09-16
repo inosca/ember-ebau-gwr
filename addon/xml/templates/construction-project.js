@@ -48,8 +48,7 @@ export const setToWithdrawnConstructionProject =
 export const setToCancelledConstructionProject =
 `{{#>base}}
   <ns2:setToCancelledConstruction>
-    {{! TODO check if should be nonRealisationDate and if state is accepted}}
-    <ns2:cancellationDate>{{echDate model.nonRealisationDate}}</ns2:cancellationDate>
+    <ns2:cancellationDate>{{echDate model.cancellationDate}}</ns2:cancellationDate>
   </ns2:setToCancelledConstruction>
 {{/base}}`;
 

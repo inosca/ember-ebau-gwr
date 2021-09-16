@@ -27,7 +27,7 @@ export default class ConstructionProject extends XMLModel {
   @tracked projectStartDate;
   @tracked durationOfConstructionPhase;
   @tracked constructionAuthorisationDeniedDate;
-  @tracked nonRealisationDate;
+  @tracked cancellationDate;
   @tracked projectCompletionDate;
   @tracked projectSuspensionDate;
   @tracked buildingPermitIssueDate;
@@ -60,7 +60,7 @@ export default class ConstructionProject extends XMLModel {
         projectStartDate: String,
         durationOfConstructionPhase: Number,
         constructionAuthorisationDeniedDate: String,
-        nonRealisationDate: String,
+        cancellationDate: String,
         projectCompletionDate: String,
         projectSuspensionDate: String,
         buildingPermitIssueDate: String,
@@ -96,7 +96,7 @@ export default class ConstructionProject extends XMLModel {
         ? this.STATUS_COMPLETED
         : this.withdrawalDate
         ? this.STATUS_WITHDRAWN
-        : this.nonRealisationDate
+        : this.cancellationDate
         ? this.STATUS_NOT_REALIZED
         : this.constructionAuthorisationDeniedDate
         ? this.STATUS_REFUSED
@@ -141,7 +141,7 @@ export default class ConstructionProject extends XMLModel {
 
       {{! this is accepted by the api but in the response the field is missing. Is this intended?}}
       {{{modelField model "withdrawalDate" value=(echDate model.withdrawalDate)}}}
-      {{{modelField model "cancellationDate" value=(echDate model.nonRealisationDate)}}}
+      {{{modelField model "cancellationDate" value=(echDate model.cancellationDate)}}}
       {{{modelField model "durationOfConstructionPhase"}}}
     {{/unless}}
 
@@ -254,7 +254,7 @@ export default class ConstructionProject extends XMLModel {
       { field: "withdrawalDate", type: "date", required: true },
     ],
     setToCancelledConstructionProject: [
-      { field: "nonRealisationDate", type: "date", required: true },
+      { field: "cancellationDate", type: "date", required: true },
     ],
     setToSuspendedConstructionProject: [
       { field: "projectSuspensionDate", type: "date", required: true },
@@ -288,7 +288,7 @@ export default class ConstructionProject extends XMLModel {
     "projectCompletionDate",
     "projectSuspensionDate",
     "constructionAuthorisationDeniedDate",
-    "nonRealisationDate",
+    "cancellationDate",
     "withdrawalDate",
   ];
 
@@ -363,7 +363,7 @@ export default class ConstructionProject extends XMLModel {
     [this.STATUS_NOT_REALIZED]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
       { field: "buildingPermitIssueDate", type: "date", required: false },
-      { field: "nonRealisationDate", type: "date", required: true },
+      { field: "cancellationDate", type: "date", required: true },
     ],
     [this.STATUS_WITHDRAWN]: [
       { field: "projectAnnouncementDate", type: "date", required: true },
