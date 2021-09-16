@@ -27,7 +27,7 @@
                 type="button"
                 class="uk-icon-button"
                 uk-icon="trash"
-                uk-tooltip={{t "ember-gwr.components.linkedModels.removeLink"}}
+                uk-tooltip="title: {{t "ember-gwr.components.linkedModels.removeLink"}}; container: {{this.config.modalContainer}}"
                 {{on "click" (fn @removeLink model)}}
               ></button>
             </td>
