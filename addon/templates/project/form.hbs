@@ -197,9 +197,9 @@
                 />
               </div>
             {{/if}}
-            {{#if this.project.nonRealisationDate}}
+            {{#if this.project.cancellationDate}}
               <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="nonRealisationDate" />
+                <Field @inputType="date" @attr="cancellationDate" />
               </div>
             {{/if}}
             {{#if this.project.withdrawalDate}}

@@ -94,7 +94,7 @@ export default {
       states: [ConstructionProject.STATUS_REFUSED],
     }),
   ],
-  nonRealisationDate: [
+  cancellationDate: [
     validatePresenceState({
       presence: true,
       on: "projectStatus",

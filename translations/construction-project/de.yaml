@@ -21,7 +21,7 @@ ember-gwr:
       projectCompletionDate: Datum Bauende
       projectSuspensionDate: Datum Sistierung
       constructionAuthorisationDeniedDate: Datum Ablehnung
-      nonRealisationDate: Datum Nichtrealisierung
+      cancellationDate: Datum Nichtrealisierung
       withdrawalDate: Datum Rückzung des Baugesuchs
       projectFreeText1: Freitext Project 1
       projectFreeText2: Freitext Project 2
