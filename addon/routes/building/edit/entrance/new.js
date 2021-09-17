@@ -15,6 +15,7 @@ export default class BuildingEditEntranceNewRoute extends IndexRoute {
   controllerName = "building.edit.entrance.edit.index";
 
   async model() {
+    console.log("new building entrance model");
     const model = this.modelFor("building.edit");
     // Dont reset if there is already a new record
     if (!this.buildingEntrance.newRecord) {

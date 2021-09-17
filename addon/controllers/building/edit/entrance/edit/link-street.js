@@ -7,6 +7,7 @@ import { languageOptions } from "ember-ebau-gwr/models/options";
 export default class BuildingEditEntranceLinkStreetController extends Controller {
   @service street;
   @service buildingEntrance;
+  @service building;
   @service notification;
   @service intl;
 
@@ -18,9 +19,20 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   }
 
   get backRoute() {
+    console.log("buildingId:", this.model.buildingId);
+    if (this.model.buildingId === "new") {
+      return "building.new";
+    }
+
     return `building.edit.entrance.${
       this.buildingEntrance.newRecord ? "new" : "edit.index"
     }`;
+  }
+
+  get backRouteLabel() {
+    return this.intl.t(this.model.buildingId === "new"
+      ? "ember-gwr.buildingEntrance.backToBuilding"
+      : "ember-gwr.buildingEntrance.backToEntrance");
   }
 
   @lastValue("search") searchResults;
@@ -42,7 +54,8 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
     try {
       if (this.buildingEntrance.newRecord) {
         this.buildingEntrance.newRecord.street = street;
-        this.transitionToRoute("building.edit.entrance.new");
+      } else if (this.building.newRecord) {
+        this.building.newRecord.building.buildingEntrance[0].street = street;
       } else {
         const entrance = await this.buildingEntrance.getFromCacheOrApi(
           this.model.entranceId,
@@ -54,8 +67,8 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
           entrance.EGAID,
           street
         );
-        this.transitionToRoute("building.edit.entrance.edit.index");
       }
+      this.transitionToRoute(this.backRoute);
       this.notification.success(
         this.intl.t("ember-gwr.buildingEntrance.linkStreet.linkSuccess")
       );

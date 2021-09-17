@@ -69,7 +69,13 @@
         @disabled={{true}}
       />
 
-      <div class="uk-flex uk-flex-between">
+      <LinkStreet 
+        @fieldComponent={{Field}} 
+        @buildingEntrance={{this.buildingEntrance}} 
+        @translationBase="ember-gwr.buildingEntrance.fields"
+      />
+
+      {{!--<div class="uk-flex uk-flex-between">
         <span>
           {{! this is needed since the h2 selector is * + h2}}
           <span></span>
@@ -127,7 +133,7 @@
           @disabled={{true}}
           readonly
         />
-      {{/if}}
+      {{/if}}--}}
 
     </ModelForm>
   {{/if}}

@@ -19,7 +19,7 @@ export function realestateIdentificationValidation(path = "") {
     realestateIdentification: {
       EGRID: validateLength({
         min: 1,
-        max: 12,
+        //max: 12,
         allowBlank: true,
       }),
       number: [

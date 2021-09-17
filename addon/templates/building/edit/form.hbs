@@ -141,6 +141,47 @@
         @gwrEnumOptions={{this.Models.Building.buildingClassOptions}}
       />
 
+
+      {{#if this.buildingWork.building.isNew}}
+        <h3>
+          {{t "ember-gwr.building.buildingEntrance.mainEntrance"}}
+        </h3>
+        {{#let
+          (object-at
+            0 this.buildingWork.building.buildingEntrance
+          ) as |buildingEntrance|
+        }}
+          {{log "log buildingEntrance:" buildingEntrance.locality.name.nameLong}}
+          <Field
+            @attr="locality.name.nameLong"
+            @required={{true}}
+            @translationBase="ember-gwr.buildingEntrance.fields"
+            @update={{this.updateEntrance}}
+            @value={{buildingEntrance.locality.name.nameLong}}
+          />
+          <Field
+            @attr="buildingEntranceNo"
+            @translationBase="ember-gwr.buildingEntrance.fields"
+            @update={{this.updateEntrance}}
+            @value={{buildingEntrance.buildingEntranceNo}}
+          />
+          <Field
+            @attr="isOfficialAddress"
+            @type="checkbox"
+            @translationBase="ember-gwr.buildingEntrance.fields"
+            @update={{this.updateEntrance}}
+            @value={{buildingEntrance.isOfficialAddress}}
+          />
+          {{log "buildingEntrance:" buildingEntrance}}
+          <LinkStreet
+            @fieldComponent={{Field}}
+            @buildingEntrance={{buildingEntrance}}
+            @routeModels={{array "new" "new"}}
+            @translationBase="ember-gwr.buildingEntrance.fields"
+          />
+        {{/let}}
+      {{/if}}
+
       <h3>
         {{t "ember-gwr.building.sections.locality"}}
       </h3>
