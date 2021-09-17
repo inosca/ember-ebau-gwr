@@ -6,6 +6,7 @@ import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
+import { set } from '@ember/object';
 
 export default class BuildingFormController extends Controller {
   Models = Models;
@@ -38,7 +39,10 @@ export default class BuildingFormController extends Controller {
       yield this.fetchBuilding.perform();
 
       if (this.model.buildingWork?.isNew) {
-        return this.model.buildingWork;
+        console.log("this.building.newRecord:", this.buildingAPI.newRecord);
+        return this.buildingAPI.newRecord
+          ? this.buildingAPI.newRecord
+          : this.model.buildingWork;
       }
 
       const project = yield this.constructionProject.getFromCacheOrApi(
@@ -216,5 +220,11 @@ export default class BuildingFormController extends Controller {
   @action
   getChangeHint(currentStatus, newStatus) {
     return this.buildingAPI.getChangeHint(currentStatus, newStatus);
+  }
+
+  @action
+  updateEntrance(key, value) {
+    console.log("kv:", key, value);
+    set(this.buildingWork.building.buildingEntrance[0], key, value);
   }
 }

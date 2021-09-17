@@ -276,3 +276,7 @@ ember-gwr:
       name:
         nameLong: Ortsname
 
+    buildingEntrance:
+      mainEntrance: Haupteingang
+      info: Sie können nach der Erstellung des Gebäudes weitere Eingänge hinzufügen.
+

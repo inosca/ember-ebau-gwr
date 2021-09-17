@@ -55,12 +55,14 @@ export default class BuildingEntrance extends XMLModel {
 
   static template = `
   {{#if model.isNew}}
-    {{#if model.buildingEntranceNo}}
-      <ns2:buildingEntranceNo>{{model.buildingEntranceNo}}</ns2:buildingEntranceNo>
-    {{/if}}
-    <ns2:isOfficialAddress>{{model.isOfficialAddress}}</ns2:isOfficialAddress>
-    {{> Street model=model.street}}
-    {{> Locality model=model.locality}}
+    <ns2:buildingEntrance>
+      {{#if model.buildingEntranceNo}}
+        <ns2:buildingEntranceNo>{{model.buildingEntranceNo}}</ns2:buildingEntranceNo>
+      {{/if}}
+      <ns2:isOfficialAddress>{{model.isOfficialAddress}}</ns2:isOfficialAddress>
+      {{> Street model=model.street}}
+      {{> Locality model=model.locality}}
+    </ns2:buildingEntrance>
   {{else}}
     <ns2:buildingEntrance>
       <ns2:EGAID>{{model.EGAID}}</ns2:EGAID>

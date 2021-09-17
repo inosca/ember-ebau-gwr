@@ -1,0 +1,79 @@
+{{#let @fieldComponent as |Field|}}
+  {{log "streeting"}}
+  <div class="uk-flex uk-flex-between">
+    <span>
+      {{! this is needed since the h2 selector is * + h2}}
+      <span></span>
+      <h2>
+        {{t "ember-gwr.buildingEntrance.street"}}
+      </h2>
+    </span>
+    <span>
+      <LinkTo
+        class="uk-button
+          {{if @buildingEntrance.isNew "uk-button-primary" "uk-button-default"
+          }}"
+        @route="building.edit.entrance.edit.link-street"
+        @models={{or
+          @routeModels
+          (if @buildingEntrance.isNew (array "new") (array))
+        }}
+      >
+        {{t
+          (if
+            @buildingEntrance.isNew
+            "ember-gwr.buildingEntrance.linkStreet.link"
+            "ember-gwr.buildingEntrance.linkStreet.change"
+          )
+        }}
+      </LinkTo>
+    </span>
+  </div>
+  {{#if @buildingEntrance.street.isNew}}
+    <div uk-alert class="uk-alert-warning">
+      {{t "ember-gwr.buildingEntrance.streetHint"}}
+    </div>
+  {{else}}
+    {{log "@buildingEntrance:" @buildingEntrance}}
+    <Field
+      @attr="street.ESID"
+      @disabled={{true}}
+      @translationBase={{@translationBase}}
+      @value={{@buildingEntrance.street.ESID}}
+      readonly
+    />
+    <Field
+      @attr="street.description.descriptionLong"
+      @disabled={{true}}
+      @translationBase={{@translationBase}}
+      @value={{@buildingEntrance.street.description.descriptionLong}}
+      readonly
+    />
+    <Field
+      @attr="street.streetKind"
+      @type="select"
+      @gwrEnumOptions={{this.Models.Street.streetKindOptions}}
+      @convertValueTo="number"
+      @disabled={{true}}
+      @translationBase={{@translationBase}}
+      @value={{@buildingEntrance.street.streetKind}}
+      readonly
+    />
+    <Field
+      @attr="street.officialStreetNumber"
+      @type="number"
+      @disabled={{true}}
+      @translationBase={{@translationBase}}
+      @value={{@buildingEntrance.street.officialStreetNumber}}
+      readonly
+    />
+    <Field
+      @attr="street.isOfficialDescription"
+      @type="checkbox"
+      @disabled={{true}}
+      @translationBase={{@translationBase}}
+      @value={{@buildingEntrance.street.isOfficialDescription}}
+      readonly
+    />
+  {{/if}}
+{{/let}}

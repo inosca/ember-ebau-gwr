@@ -158,6 +158,8 @@ export default class Building extends XMLModel {
         errorList: [ErrorList],
       },
     });
+
+    console.log("building:", this);
   }
 
   get fullAddressTexts() {
@@ -217,7 +219,7 @@ export default class Building extends XMLModel {
       <ns2:numberOfSeparateHabitableRooms>{{model.numberOfSeparateHabitableRooms}}</ns2:numberOfSeparateHabitableRooms>
     {{/if}}
     {{! Returns no error but not saved by api}}
-    <ns2:civilDefenseShelter>{{model.civilDefenseShelter}}</ns2:civilDefenseShelter>
+    {{{modelField model "civilDefenseShelter"}}}
     {{#if model.energyRelevantSurface}}
       <ns2:energyRelevantSurface>{{model.energyRelevantSurface}}</ns2:energyRelevantSurface>
     {{/if}}
@@ -235,14 +237,27 @@ export default class Building extends XMLModel {
     {{/if}}
 
     {{#if model.isNew}}
-      <ns2:buildingEntrance>
-        <ns2:buildingEntranceNo>4</ns2:buildingEntranceNo>
-        <ns2:locality>
-          <ns2:name>
-            <ns2:nameLong>{{model.municipalityName}}</ns2:nameLong>
-          </ns2:name>
-        </ns2:locality>
-      </ns2:buildingEntrance>
+      {{#each model.buildingEntrance}}
+        {{> BuildingEntrance model=this}}
+
+        {{!--<eCH-0216:buildingEntrance>
+          <eCH-0216:buildingEntranceNo>0</eCH-0216:buildingEntranceNo>
+          <eCH-0216:isOfficialAddress>false</eCH-0216:isOfficialAddress>
+          <eCH-0216:street>
+            <eCH-0216:ESID>10104955</eCH-0216:ESID>
+            <eCH-0216:streetStatus>9813</eCH-0216:streetStatus>
+            <eCH-0216:localisationKind>9809</eCH-0216:localisationKind>
+            <eCH-0216:streetGeometry/>
+          </eCH-0216:street>
+          <eCH-0216:locality>
+            <eCH-0216:swissZipCode>2825</eCH-0216:swissZipCode>
+            <eCH-0216:swissZipCodeAddOn>0</eCH-0216:swissZipCodeAddOn>
+            <eCH-0216:name>
+              <eCH-0216:nameLong>Courchapoix</eCH-0216:nameLong>
+            </eCH-0216:name>
+          </eCH-0216:locality>
+        </eCH-0216:buildingEntrance>--}}
+      {{/each}}
     {{/if}}
   </ns2:building>
 `;
