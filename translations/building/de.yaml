@@ -29,6 +29,8 @@ ember-gwr:
     entrances:
       error: Beim Laden der Eingänge ist ein Fehler aufgetreten.
       removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
+      attachedDwellingsError: Alle verknüpften Wohnungen müssen deaktiviert werden bevor der Eingang entfernt werden kann.
+      removeLinkSuccess: "Ihre Anfrage wurde vom BfS erfasst. Das Support-Team wird Ihre Anfrage bearbeiten und Sie, falls nötig kontaktieren. Telefon: 0800 866 600 E-mail: housing-stat@bfs.admin.ch"
     dwellings:
       entrance: Eingang {number}
       rooms: "{number} Zimmer"

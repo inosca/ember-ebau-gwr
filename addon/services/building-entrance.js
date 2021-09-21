@@ -97,7 +97,7 @@ export default class BuildingEntranceService extends GwrService {
     );
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
+      const errors = this.extractErrorsFromXML(xmlErrors, false);
 
       console.error("GWR API: deactivateBuildingEntrance failed");
       throw errors;
