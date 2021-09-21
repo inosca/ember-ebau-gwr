@@ -182,6 +182,7 @@ export default class ProjectFormController extends ImportController {
         this.intl.t("ember-gwr.constructionProject.saveError")
       );
 
+      // TODO: make error links compatible with Camac-ng
       if (error.isLifeCycleError) {
         const errorType = error.dwellingId
           ? "statusErrorDwelling"

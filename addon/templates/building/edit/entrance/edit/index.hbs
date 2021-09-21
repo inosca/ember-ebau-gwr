@@ -28,6 +28,7 @@
         @attr="locality.name.nameLong"
         @required={{true}}
         @disabled={{not this.buildingEntrance.isNew}}
+        @hint={{t "ember-gwr.components.linkStreet.localityHint"}}
       />
       {{#unless this.buildingEntrance.isNew}}
         <Field

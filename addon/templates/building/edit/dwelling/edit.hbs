@@ -34,7 +34,26 @@
         @noPlaceholder={{true}}
         @required={{true}}
       />
-      <Field @attr="floor" @type="number" @required={{true}} @min="3100" />
+      <div class="uk-flex uk-flex-top uk-child-width-1-2 uk-flex-between" >
+        <div class="uk-margin-large-right">
+          <Field 
+            @noMargin={{true}}
+            @attr="floorNumber" 
+            @type="number" 
+            @required={{true}} 
+          />
+        </div>
+        <div>
+          <Field 
+            @noMargin={{true}}
+            @attr="floorType" 
+            @type="select" @required={{true}} 
+            @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}} 
+            @hint={{t "ember-gwr.dwelling.floorNumberGroundFloorHint"}}
+          />
+        </div>
+      </div>
+
       <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
       <Field @attr="physicalDwellingNo" />
       <Field @attr="administrativeDwellingNo" />

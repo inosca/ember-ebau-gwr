@@ -16,6 +16,15 @@ ember-gwr:
     EGID: Gebäude
     EWID: Wohnung
     floor: Stockwerk
+    floorType: Stockwerktyp
+    floorTypeOptions:
+      3100: Parterre, inkl. Hochparterre
+      3101: Obergeschoss
+      3401: Untergeschoss 
+    floorTypePlaceholder:
+      Wählen Sie eine Art Stockwerk...
+    floorNumber: Stockwerknummer
+    floorNumberGroundFloorHint: Fürs Parterre darf keine Stockwerknummer gesetzt werden.
     multipleFloor: Mehrgeschossige Wohnung
     physicalDwellingNo: Physische Wohnungsnummer
     dwellingStatus: Wohnungsstatus
