@@ -1,4 +1,5 @@
 import { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
@@ -11,6 +12,7 @@ export default class BuildingService extends GwrService {
 
   cacheKey = "EGID";
   cacheClass = Building;
+  @tracked newRecord;
 
   async unbindBuildingFromConstructionProject(EPROID, EGID) {
     const response = await this.authFetch.fetch(
@@ -101,10 +103,14 @@ export default class BuildingService extends GwrService {
       const errors = this.extractErrorsFromXML(xmlErrors);
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
+
+      buildingWork.ARBID = undefined;
+      buildingWork.isNew = true;
       console.error("GWR API: addBuildingToConstructionProject failed");
       throw errors;
     }
 
+    this.newRecord = null;
     const xml = await response.text();
     return this.createAndCache(xml);
   }

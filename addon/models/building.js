@@ -217,7 +217,7 @@ export default class Building extends XMLModel {
       <ns2:numberOfSeparateHabitableRooms>{{model.numberOfSeparateHabitableRooms}}</ns2:numberOfSeparateHabitableRooms>
     {{/if}}
     {{! Returns no error but not saved by api}}
-    <ns2:civilDefenseShelter>{{model.civilDefenseShelter}}</ns2:civilDefenseShelter>
+    {{{modelField model "civilDefenseShelter"}}}
     {{#if model.energyRelevantSurface}}
       <ns2:energyRelevantSurface>{{model.energyRelevantSurface}}</ns2:energyRelevantSurface>
     {{/if}}
@@ -235,13 +235,12 @@ export default class Building extends XMLModel {
     {{/if}}
 
     {{#if model.isNew}}
+      {{!--The default building entrance on a new building is stored as a single 
+         element to facilitate form validation--}}
+      {{!--After building creation the building entrances are stored in an 
+         array on the building and handled through building entrance API requests--}}
       <ns2:buildingEntrance>
-        <ns2:buildingEntranceNo>4</ns2:buildingEntranceNo>
-        <ns2:locality>
-          <ns2:name>
-            <ns2:nameLong>{{model.municipalityName}}</ns2:nameLong>
-          </ns2:name>
-        </ns2:locality>
+        {{> BuildingEntrance model=model.buildingEntrance}}
       </ns2:buildingEntrance>
     {{/if}}
   </ns2:building>

@@ -9,16 +9,7 @@ ember-gwr:
     saveSuccess: Eingang erfolgreich gespeichert.
     loadingError: Beim Laden des Eingangs ist ein Fehler aufgetreten.
     street: Strasse
-    streetHint: Um einen Eingang zu erfassen müssen Sie zuerst eine Strasse verknüpfen.
     coordinates: Koordinaten
-
-    linkStreet:
-      change: Strasse ändern
-      link: Strasse verknüpfen
-      heading: Strasse verknüpfen
-      search: Strasse suchen
-      linkSuccess: Strasse erfolgreich verknüpft.
-      linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
 
     fields:
       EDID: EDID
@@ -44,7 +35,7 @@ ember-gwr:
         isOfficialDescription: Strassenbezeichnung offiziell
         officialStreetNumber: Amtliche Strassennummer
         streetKind: Art der Strasse
-        streetKindPlaceholder: Wählen Sie einen Status aus...
+        streetKindPlaceholder: Wählen Sie eine Art aus...
         streetKindOptions:
           9801: Strasse (Linienobjekt)
           9802: Platz (Punktobjekt)

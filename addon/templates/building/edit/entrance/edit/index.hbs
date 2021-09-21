@@ -44,7 +44,7 @@
       <Field @attr="buildingEntranceNo" />
       <Field @attr="isOfficialAddress" @type="checkbox" />
 
-      <h2>{{t "ember-gwr.buildingEntrance.coordinates"}}</h2>
+      <h3>{{t "ember-gwr.buildingEntrance.coordinates"}}</h3>
       <Field
         @attr="coordinates.north"
         @type="number"
@@ -69,65 +69,11 @@
         @disabled={{true}}
       />
 
-      <div class="uk-flex uk-flex-between">
-        <span>
-          {{! this is needed since the h2 selector is * + h2}}
-          <span></span>
-          <h2>{{t "ember-gwr.buildingEntrance.street"}}</h2>
-        </span>
-        <span>
-          <LinkTo
-            class="uk-button
-              {{if
-                this.buildingEntrance.isNew
-                "uk-button-primary"
-                "uk-button-default"
-              }}"
-            @route="building.edit.entrance.edit.link-street"
-            @models={{if this.buildingEntrance.isNew (array "new") (array)}}
-          >
-            {{t
-              (if
-                this.buildingEntrance.isNew
-                "ember-gwr.buildingEntrance.linkStreet.link"
-                "ember-gwr.buildingEntrance.linkStreet.change"
-              )
-            }}
-          </LinkTo>
-        </span>
-      </div>
-      {{#if this.buildingEntrance.street.isNew}}
-        <div uk-alert class="uk-alert-warning">{{t
-            "ember-gwr.buildingEntrance.streetHint"
-          }}</div>
-      {{else}}
-        <Field @attr="street.ESID" @disabled={{true}} readonly />
-        <Field
-          @attr="street.description.descriptionLong"
-          @disabled={{true}}
-          readonly
-        />
-        <Field
-          @attr="street.streetKind"
-          @type="select"
-          @gwrEnumOptions={{this.Models.Street.streetKindOptions}}
-          @convertValueTo="number"
-          @disabled={{true}}
-          readonly
-        />
-        <Field
-          @attr="street.officialStreetNumber"
-          @type="number"
-          @disabled={{true}}
-          readonly
-        />
-        <Field
-          @attr="street.isOfficialDescription"
-          @type="checkbox"
-          @disabled={{true}}
-          readonly
-        />
-      {{/if}}
+      <LinkStreet 
+        @fieldComponent={{Field}} 
+        @buildingEntrance={{this.buildingEntrance}} 
+        @translationBase="ember-gwr.buildingEntrance.fields"
+      />
 
     </ModelForm>
   {{/if}}

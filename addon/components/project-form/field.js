@@ -25,7 +25,7 @@ export default class ProjectFormFieldComponent extends Component {
   }
 
   get disableInput() {
-    return this.args.importData && !this.showDiff;
+    return (this.args.importData && !this.showDiff) || this.args.disabled;
   }
 
   @action

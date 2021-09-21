@@ -5,11 +5,11 @@ import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
-import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
+import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends Controller {
   Models = Models;
-  BuildingWorkValidations = BuildingWorkValidations;
+  BuildingWorkValidations = buildingWorkValidation(false);
 
   @service constructionProject;
   @service("building") buildingAPI;
@@ -38,7 +38,7 @@ export default class BuildingFormController extends Controller {
       yield this.fetchBuilding.perform();
 
       if (this.model.buildingWork?.isNew) {
-        return this.model.buildingWork;
+        return this.buildingAPI.newRecord ?? this.model.buildingWork;
       }
 
       const project = yield this.constructionProject.getFromCacheOrApi(
@@ -81,12 +81,14 @@ export default class BuildingFormController extends Controller {
         EGID = building.EGID;
       } else {
         yield this.buildingAPI.update(this.buildingWork.building);
+        // Only modify work if of type Umbau (only possible there)
+        if (this.buildingWork.kindOfWork === 6002) {
+          yield this.constructionProject.modifyWork(
+            this.model.projectId,
+            this.buildingWork
+          );
+        }
       }
-      yield this.buildingAPI.bindBuildingToConstructionProject(
-        this.model.projectId,
-        EGID,
-        this.buildingWork
-      );
 
       // refresh work list
       const project = yield this.constructionProject.get(this.model.projectId);

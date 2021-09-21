@@ -301,3 +301,14 @@ ember-gwr:
       issues: Offene Pendenzen für {modelName} {modelId}
       noIssues: Keine offenen Pendenzen für {modelName} {modelId}
       linkIssues: Zur kompletten Pendenzenliste für Bauprojekt {projectId}
+
+    linkStreet:
+      missingLocalityHint: Bitte geben Sie zuerst einen Ortsnamen ein.
+      change: Strasse ändern
+      link: Strasse verknüpfen
+      heading: Strasse verknüpfen
+      search: Strasse suchen
+      linkSuccess: Strasse erfolgreich verknüpft.
+      linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
+      streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
+      localityHint: Der Ortsname des Eingangs und der Strasse müssen übereinstimmen.
