@@ -69,4 +69,7 @@ export default class BuildingEntrance extends XMLModel {
     </ns2:buildingEntrance>
   {{/if}}
   `;
+
+  static DEACTIVATION_ERROR =
+    "Cannot deactivate an entrance while active dwellings are still linked to it";
 }

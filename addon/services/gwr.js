@@ -88,7 +88,7 @@ export default class GwrService extends Service {
     })[searchKey];
   }
 
-  extractErrorsFromXML(xml) {
+  extractErrorsFromXML(xml, showGeneral = true) {
     const model = new XMLModel(xml);
     model.setFieldsFromXML({
       fields: {
@@ -99,7 +99,9 @@ export default class GwrService extends Service {
 
     const errors = [
       ...(model.error
-        ? [this.intl.t("ember-gwr.generalErrors.genericFormError")]
+        ? showGeneral
+          ? [this.intl.t("ember-gwr.generalErrors.genericFormError")]
+          : model.error
         : []),
       ...(model.errorList
         ? model.errorList.map((error) => error.messageOfError)
