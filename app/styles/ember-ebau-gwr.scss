@@ -94,3 +94,7 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 .uk-button-link {
   text-transform: unset;
 }
+
+.uk-button.disabled {
+  @extend .uk-button-default;
+}

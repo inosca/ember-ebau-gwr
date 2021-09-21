@@ -4,10 +4,12 @@ import { inject as service } from "@ember/service";
 export default class BuildingEditIndexRoute extends Route {
   @service building;
 
-  model() {
+  beforeModel() {
     // reset the newRecord
-    console.log("model buidling");
     this.building.newRecord = null;
+  }
+
+  model() {
     return this.modelFor("building.edit");
   }
 }

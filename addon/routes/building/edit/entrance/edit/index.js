@@ -5,7 +5,9 @@ export default class BuildingEditEntranceEditIndexRoute extends Route {
   @service buildingEntrance;
 
   model() {
-    // reset the newRecord
+    // reset the newRecord if building entrance already exists
+    // should be done in model hook, beforeModel causes reset of
+    // changeset on every route entry (also on new route)
     this.buildingEntrance.newRecord = null;
     return this.modelFor("building.edit.entrance.edit");
   }

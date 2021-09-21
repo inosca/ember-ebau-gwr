@@ -1,25 +1,33 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency-decorators";
 import { languageOptions } from "ember-ebau-gwr/models/options";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
+  queryParams = ["locality"];
+
   @service street;
   @service buildingEntrance;
   @service building;
   @service notification;
   @service intl;
 
+  @tracked locality = null;
+
   get baseQuery() {
     return {
       description: {},
-      locality: { name: {} },
+      locality: {
+        name: {
+          nameLong: this.locality,
+        },
+      },
     };
   }
 
   get backRoute() {
-    console.log("buildingId:", this.model.buildingId);
     if (this.model.buildingId === "new") {
       return "building.new";
     }
@@ -30,9 +38,11 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   }
 
   get backRouteLabel() {
-    return this.intl.t(this.model.buildingId === "new"
-      ? "ember-gwr.buildingEntrance.backToBuilding"
-      : "ember-gwr.buildingEntrance.backToEntrance");
+    return this.intl.t(
+      `ember-gwr.buildingEntrance.${
+        this.model.buildingId === "new" ? "backToBuilding" : "backToEntrance"
+      }`
+    );
   }
 
   @lastValue("search") searchResults;
@@ -52,10 +62,11 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @action
   async setStreet(street) {
     try {
-      if (this.buildingEntrance.newRecord) {
+      // check whether street is being set from new entrance form or new building form
+      if (this.buildingEntrance.newRecord && this.model.buildingId !== "new") {
         this.buildingEntrance.newRecord.street = street;
       } else if (this.building.newRecord) {
-        this.building.newRecord.building.buildingEntrance[0].street = street;
+        this.building.newRecord.building.buildingEntrance.street = street;
       } else {
         const entrance = await this.buildingEntrance.getFromCacheOrApi(
           this.model.entranceId,
@@ -70,12 +81,12 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
       }
       this.transitionToRoute(this.backRoute);
       this.notification.success(
-        this.intl.t("ember-gwr.buildingEntrance.linkStreet.linkSuccess")
+        this.intl.t("ember-gwr.components.linkStreet.linkSuccess")
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.buildingEntrance.linkStreet.linkError")
+        this.intl.t("ember-gwr.components.linkStreet.linkError")
       );
     }
   }

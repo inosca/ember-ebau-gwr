@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
-import Models from "ember-ebau-gwr/models";
+import Street from "ember-ebau-gwr/models/street";
 
 export default class LinkStreetComponent extends Component {
-  Models = Models;
+  Street = Street;
 }
