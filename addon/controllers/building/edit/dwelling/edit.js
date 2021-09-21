@@ -81,6 +81,7 @@ export default class BuildingEditDwellingEditController extends ImportController
   @dropTask
   *saveDwelling() {
     try {
+      this.dwelling.floor = this.dwelling.floorComplete;
       if (this.dwelling.isNew) {
         const dwelling = yield this.dwellingAPI.create(
           this.dwelling,
@@ -94,6 +95,8 @@ export default class BuildingEditDwellingEditController extends ImportController
             this.model.buildingId,
             this.dwelling
           );
+          // Ensure dwelling list is refreshed
+          this.building.clearCache(this.model.buildingId);
         }
       }
       this.errors = [];
@@ -150,6 +153,7 @@ export default class BuildingEditDwellingEditController extends ImportController
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.dwelling.saveError"));
 
+      // TODO: make error links compatible with Camac-ng
       if (error.isLifeCycleError) {
         const errorType = error.dwellingId
           ? "statusErrorDwelling"

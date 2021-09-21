@@ -28,6 +28,10 @@ export default class Dwelling extends XMLModel {
   // This is a frontend only state tracking property while creating new records.
   @tracked EDID;
 
+  // Frontend only tracking to display floor in form
+  @tracked floorType;
+  @tracked floorNumber;
+
   constructor(xmlOrObject, root = "dwelling") {
     super(xmlOrObject);
     this.setFieldsFromXML({
@@ -52,6 +56,17 @@ export default class Dwelling extends XMLModel {
         dwellingFreeText2: String,
       },
     });
+
+    const floor = Number(this.floor);
+    if (floor === 3100) {
+      this.floorType = 3100;
+    } else if (floor > 3100 && floor < 3200) {
+      this.floorType = 3101;
+      this.floorNumber = floor - 3100;
+    } else if (floor > 3400 && floor < 3420) {
+      this.floorType = 3401;
+      this.floorNumber = floor - 3400;
+    }
   }
 
   static template = `
@@ -93,6 +108,18 @@ export default class Dwelling extends XMLModel {
     3007, // Aufgehoben
     3008, // Nicht realisiert
   ];
+
+  static floorTypeOptions = [
+    3100, // Parterre
+    3101, // Stock
+    3401, // Untergeschoss
+  ];
+
+  get floorComplete() {
+    return this.floorType === 3100
+      ? this.floorType
+      : Number(this.floorType) + Number(this.floorNumber) - 1;
+  }
 
   get floorLabel() {
     const floor = Number(this.floor);

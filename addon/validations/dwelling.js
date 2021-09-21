@@ -3,6 +3,8 @@ import {
   validateNumber,
   validateLength,
 } from "ember-changeset-validations/validators";
+import validatePresenceState from "ember-ebau-gwr/validators/presence-state";
+import validateRangeState from "ember-ebau-gwr/validators/range-state";
 
 const yearValidation = {
   allowBlank: true,
@@ -13,7 +15,30 @@ const yearValidation = {
 };
 
 export default {
-  floor: [validatePresence(true), validateNumber({ gte: 3100 })],
+  //floor: [validatePresence(true), validateNumber({ gte: 3100 })],
+  floorType: validatePresence(true),
+  floorNumber: [
+    validatePresenceState({
+      presence: true,
+      on: "floorType",
+      states: [3101, 3401],
+    }),
+    validatePresenceState({
+      presence: false,
+      on: "floorType",
+      states: [3100],
+    }),
+    validateRangeState({
+      range: [1, 99],
+      on: "floorType",
+      states: [3101],
+    }),
+    validateRangeState({
+      range: [1, 19],
+      on: "floorType",
+      states: [3401],
+    }),
+  ],
   yearOfConstruction: validateNumber(yearValidation),
   yearOfDemolition: validateNumber(yearValidation),
   multipleFloor: validatePresence(true),
