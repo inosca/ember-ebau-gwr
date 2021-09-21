@@ -1,12 +1,11 @@
 {{#let @fieldComponent as |Field|}}
-  {{log "streeting"}}
   <div class="uk-flex uk-flex-between">
     <span>
       {{! this is needed since the h2 selector is * + h2}}
       <span></span>
-      <h2>
+      <h3>
         {{t "ember-gwr.buildingEntrance.street"}}
-      </h2>
+      </h3>
     </span>
     <span>
       <LinkTo
@@ -18,12 +17,18 @@
           @routeModels
           (if @buildingEntrance.isNew (array "new") (array))
         }}
+        @query={{hash locality=@buildingEntrance.locality.name.nameLong}}
+        @disabled={{not @buildingEntrance.locality.name.nameLong}}
+        uk-tooltip="title: {{unless
+            @buildingEntrance.locality.name.nameLong
+            (t "ember-gwr.components.linkStreet.missingLocalityHint")
+          }}; container: {{this.config.modalContainer}}"
       >
         {{t
           (if
             @buildingEntrance.isNew
-            "ember-gwr.buildingEntrance.linkStreet.link"
-            "ember-gwr.buildingEntrance.linkStreet.change"
+            "ember-gwr.components.linkStreet.link"
+            "ember-gwr.components.linkStreet.change"
           )
         }}
       </LinkTo>
@@ -31,10 +36,9 @@
   </div>
   {{#if @buildingEntrance.street.isNew}}
     <div uk-alert class="uk-alert-warning">
-      {{t "ember-gwr.buildingEntrance.streetHint"}}
+      {{t "ember-gwr.components.linkStreet.streetHint"}}
     </div>
   {{else}}
-    {{log "@buildingEntrance:" @buildingEntrance}}
     <Field
       @attr="street.ESID"
       @disabled={{true}}
@@ -52,7 +56,7 @@
     <Field
       @attr="street.streetKind"
       @type="select"
-      @gwrEnumOptions={{this.Models.Street.streetKindOptions}}
+      @gwrEnumOptions={{this.Street.streetKindOptions}}
       @convertValueTo="number"
       @disabled={{true}}
       @translationBase={{@translationBase}}

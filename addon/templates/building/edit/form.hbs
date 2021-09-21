@@ -147,32 +147,24 @@
           {{t "ember-gwr.building.buildingEntrance.mainEntrance"}}
         </h3>
         {{#let
-          (object-at
-            0 this.buildingWork.building.buildingEntrance
-          ) as |buildingEntrance|
+          this.buildingWork.building.buildingEntrance
+           as |buildingEntrance|
         }}
-          {{log "log buildingEntrance:" buildingEntrance.locality.name.nameLong}}
           <Field
-            @attr="locality.name.nameLong"
+            @attr="building.buildingEntrance.locality.name.nameLong"
             @required={{true}}
-            @translationBase="ember-gwr.buildingEntrance.fields"
-            @update={{this.updateEntrance}}
-            @value={{buildingEntrance.locality.name.nameLong}}
+            @label="ember-gwr.buildingEntrance.fields.locality.name.nameLong"
+            @hint={{t "ember-gwr.components.linkStreet.localityHint"}}
           />
           <Field
-            @attr="buildingEntranceNo"
-            @translationBase="ember-gwr.buildingEntrance.fields"
-            @update={{this.updateEntrance}}
-            @value={{buildingEntrance.buildingEntranceNo}}
+            @attr="building.buildingEntrance.buildingEntranceNo"
+            @label="ember-gwr.buildingEntrance.fields.buildingEntranceNo"
           />
           <Field
-            @attr="isOfficialAddress"
-            @type="checkbox"
-            @translationBase="ember-gwr.buildingEntrance.fields"
-            @update={{this.updateEntrance}}
-            @value={{buildingEntrance.isOfficialAddress}}
+            @attr="building.buildingEntrance.isOfficialAddress"
+            @type="checkbox" 
+            @label="ember-gwr.buildingEntrance.fields.isOfficialAddress"
           />
-          {{log "buildingEntrance:" buildingEntrance}}
           <LinkStreet
             @fieldComponent={{Field}}
             @buildingEntrance={{buildingEntrance}}

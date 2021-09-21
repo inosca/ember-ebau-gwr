@@ -158,8 +158,6 @@ export default class Building extends XMLModel {
         errorList: [ErrorList],
       },
     });
-
-    console.log("building:", this);
   }
 
   get fullAddressTexts() {
@@ -237,27 +235,13 @@ export default class Building extends XMLModel {
     {{/if}}
 
     {{#if model.isNew}}
-      {{#each model.buildingEntrance}}
-        {{> BuildingEntrance model=this}}
-
-        {{!--<eCH-0216:buildingEntrance>
-          <eCH-0216:buildingEntranceNo>0</eCH-0216:buildingEntranceNo>
-          <eCH-0216:isOfficialAddress>false</eCH-0216:isOfficialAddress>
-          <eCH-0216:street>
-            <eCH-0216:ESID>10104955</eCH-0216:ESID>
-            <eCH-0216:streetStatus>9813</eCH-0216:streetStatus>
-            <eCH-0216:localisationKind>9809</eCH-0216:localisationKind>
-            <eCH-0216:streetGeometry/>
-          </eCH-0216:street>
-          <eCH-0216:locality>
-            <eCH-0216:swissZipCode>2825</eCH-0216:swissZipCode>
-            <eCH-0216:swissZipCodeAddOn>0</eCH-0216:swissZipCodeAddOn>
-            <eCH-0216:name>
-              <eCH-0216:nameLong>Courchapoix</eCH-0216:nameLong>
-            </eCH-0216:name>
-          </eCH-0216:locality>
-        </eCH-0216:buildingEntrance>--}}
-      {{/each}}
+      {{!--The default building entrance on a new building is stored as a single 
+         element to facilitate form validation--}}
+      {{!--After building creation the building entrances are stored in an 
+         array on the building and handled through building entrance API requests--}}
+      <ns2:buildingEntrance>
+        {{> BuildingEntrance model=model.buildingEntrance}}
+      </ns2:buildingEntrance>
     {{/if}}
   </ns2:building>
 `;

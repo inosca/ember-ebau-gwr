@@ -82,12 +82,10 @@ export default class BuildingService extends GwrService {
   }
 
   async create(EPROID, buildingWork) {
-    console.log("creation: buildingWork:", buildingWork);
     const work = await this.constructionProject.addWorkToProject(
       EPROID,
       buildingWork
     );
-    console.log("creation: work:", work.building);
     const body = this.xml.buildXMLRequest(
       "addBuildingToConstructionProject",
       work.building
@@ -105,6 +103,9 @@ export default class BuildingService extends GwrService {
       const errors = this.extractErrorsFromXML(xmlErrors);
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
+
+      buildingWork.ARBID = undefined;
+      buildingWork.isNew = true;
       console.error("GWR API: addBuildingToConstructionProject failed");
       throw errors;
     }

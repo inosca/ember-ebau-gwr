@@ -6,15 +6,16 @@ export default class BuildingEditEntranceLinkStreetRoute extends Route {
   @service building;
 
   model() {
-    console.log("model link-street");
     return this.modelFor("building.edit.entrance.edit");
   }
 
   afterModel(model) {
-    console.log("aftermodel:", this.building.newRecord);
-    if (
+    if (model.buildingId === "new" && !this.building.newRecord) {
+      this.transitionTo("building.new");
+    } else if (
       model.entranceId === "new" &&
-      !(this.buildingEntrance.newRecord || this.building.newRecord)
+      model.buildingId !== "new" &&
+      !this.buildingEntrance.newRecord
     ) {
       this.transitionTo("building.edit.entrance.new");
     }

@@ -104,13 +104,7 @@ export default class ConstructionProjectService extends GwrService {
 
     buildingWork.ARBID = ARBID;
     buildingWork.isNew = false;
-
-    // TODO: apply for type "Umbau" with modifyWork
-    // don't execute bindBuildingToConstructionProject
     return buildingWork;
-    /*return buildingWork.kindOfWork === 6002
-      ? await this.modifyWork(projectId, buildingWork)
-      : buildingWork;*/
   }
 
   async modifyWork(projectId, buildingWork) {

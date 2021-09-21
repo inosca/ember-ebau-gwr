@@ -3,12 +3,12 @@
   @backText={{this.backRouteLabel}}
 />
 <h1>
-  {{t "ember-gwr.buildingEntrance.linkStreet.heading"}}
+  {{t "ember-gwr.components.linkStreet.heading"}}
 </h1>
 
 <Search::Filters
   @search={{this.search}}
-  @searchLabel={{t "ember-gwr.buildingEntrance.linkStreet.search"}}
+  @searchLabel={{t "ember-gwr.components.linkStreet.search"}}
   @baseQuery={{this.baseQuery}}
   as |Field|
 >
@@ -22,7 +22,12 @@
       </div>
     </div>
     <div class="uk-width-1-2@m uk-width-1">
-      <Field @attr="locality.name.nameLong" @translationBase="ember-gwr" />
+      <Field 
+        @attr="locality.name.nameLong" 
+        @translationBase="ember-gwr" 
+        @disabled={{true}} 
+        @value={{this.locality}}
+      />
     </div>
   </div>
 

@@ -1,11 +1,10 @@
 import { inject as service } from "@ember/service";
-import BuildingWork from "ember-ebau-gwr/models/building-work";
-import municipalities from "ember-ebau-gwr/models/municipalities";
 import Changeset from "ember-changeset";
 import lookupValidator from "ember-changeset-validations";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
-import BuildingWorkValidations from "ember-ebau-gwr/validations/building-work";
-
+import BuildingWork from "ember-ebau-gwr/models/building-work";
+import municipalities from "ember-ebau-gwr/models/municipalities";
+import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 import BuildingFormRoute from "./edit/form";
 
@@ -21,7 +20,6 @@ export default class BuildingNewRoute extends BuildingFormRoute {
   controllerName = "building.edit.form";
 
   async model() {
-    console.log("building new model");
     const model = { projectId: this.modelFor("building") };
     const buildingWork = new BuildingWork();
     await this.building.authFetch.housingStatToken.lastRunning;
@@ -34,32 +32,18 @@ export default class BuildingNewRoute extends BuildingFormRoute {
 
     // Generate a editable first building entrance for new buildings
     // to prevent having to generate a dummy entrance
-    buildingWork.building.buildingEntrance = [new BuildingEntrance()];
+    buildingWork.building.buildingEntrance = new BuildingEntrance();
 
-    // Reuse changeset if already exists, otherwise changes on building are lost
-    console.log("this.buidling.newRecord:", this.building.newRecord);
+    // Reuse changeset if already exists, otherwise changes on building
+    // are lost after setting street
     if (!this.building.newRecord) {
       this.building.newRecord = new Changeset(
         buildingWork,
-        lookupValidator(BuildingWorkValidations),
-        BuildingWorkValidations
+        lookupValidator(buildingWorkValidation(true)),
+        buildingWorkValidation(true)
       );
     }
-    
-    /*if (!this.building.newRecord) {
-      const buildingEntrance = new BuildingEntrance();
-      buildingEntrance.locality.name.language =
-      languageOptions[this.intl.primaryLocale];
-      
-      this.building.newRecord = new Changeset(
-        buildingEntrance,
-        lookupValidator(BuildingEntranceValidations),
-        BuildingEntranceValidations
-        );
-        
-        model.buildingWork.building.buildingEntrance = [buildingEntrance];
-      }*/
-      
+
     model.buildingWork = buildingWork;
     return model;
   }

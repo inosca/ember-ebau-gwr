@@ -13,4 +13,9 @@ export default {
     },
   },
   ...CoordinatesValidation,
+  street: {
+    description: {
+      descriptionLong: validatePresence(true),
+    },
+  },
 };
