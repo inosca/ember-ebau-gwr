@@ -2,7 +2,9 @@
   {{#let
     (component
       @input
-      label=(unless @noLabel (t (or @label (concat @translationBase "." @attr))))
+      label=(unless
+        @noLabel (t (or @label (concat @translationBase "." @attr)))
+      )
       name=@attr
       inputName=@inputName
       hint=@hint

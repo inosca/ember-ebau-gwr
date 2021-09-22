@@ -65,14 +65,11 @@ export default class ModelFormComponent extends Component {
         }
       });
     };
-    deepMerge(this.args.model, this.args.importData);
+    deepMerge(this.args.model, this.args.import.data);
     this.finishImport();
   }
 
-  get showImport() {
-    return (
-      this.args.hasImport &&
-      this.config.importModels.includes(this.args.headerModelName)
-    );
+  get modelHasImport() {
+    return this.config.importModels.includes(this.args.headerModelName);
   }
 }

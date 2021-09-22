@@ -314,5 +314,4 @@ ember-gwr:
       localityHint: Der Ortsname des Eingangs und der Strasse müssen übereinstimmen.
 
     importModal:
-      notRecorded: Nicht erfasst
       selectImportData: Importdaten
