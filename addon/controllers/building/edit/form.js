@@ -1,4 +1,4 @@
-import Controller from "@ember/controller";
+import ImportController from "ember-ebau-gwr/controllers/import";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
@@ -7,20 +7,18 @@ import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
-export default class BuildingFormController extends Controller {
-  queryParams = ["import", "index"];
+export default class BuildingFormController extends ImportController {
   Models = Models;
   BuildingWorkValidations = buildingWorkValidation(false);
+
+  importModelName = "building";
 
   @service constructionProject;
   @service("building") buildingAPI;
   @service dwelling;
   @service intl;
   @service notification;
-  @service dataImport;
 
-  @tracked import = false;
-  @tracked index = undefined;
   @tracked errors;
 
   get buildingStatusOptions() {
@@ -76,19 +74,9 @@ export default class BuildingFormController extends Controller {
     return building;
   }
 
-  @lastValue("fetchCalumaData") importData;
-  @task
-  *fetchCalumaData() {
-    const data = yield this.dataImport.fetchBuildingsFromProject(
-      this.model.projectId
-    );
-    return data;
-  }
-
   @action
   cancelMerge() {
-    this.import = false;
-    this.index = undefined;
+    this.resetImport();
     this.fetchBuildingWork.perform();
   }
 

@@ -11,7 +11,7 @@
       f.submit
       type="submit"
       label=(t "ember-gwr.components.modelForm.save")
-      disabled=(or this.isSaving @disabled @importData)
+      disabled=(or this.isSaving @disabled @import)
       buttonComponent=(component
         "model-form/submit" loading=this.isSaving color="primary"
       )
@@ -33,10 +33,8 @@
       @modelName={{@headerModelName}}
       @modelDescription={{@headerModelDescription}}
       @hasStatus={{@hasStatus}}
-      @hasImport={{this.showImport}}
       @import={{@import}}
-      @importIndex={{@importIndex}}
-      @importData={{@importData}}
+      @modelHasImport={{this.modelHasImport}}
       @importAllData={{this.importAllData}}
       @modelStatusOptions={{@modelStatusOptions}}
       @nextValidStates={{@nextValidStates}}
@@ -55,7 +53,7 @@
       (component
         "model-form/field"
         model=f.model
-        importData=(or (get @importData @importIndex) @importData)
+        importData=@import.data
         translationBase=@translationBase
         input=f.input
         registerDiff=this.registerDiff
@@ -65,7 +63,7 @@
     }}
     <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
       <Submit class="uk-flex-none" />
-      {{#if @importData}}
+      {{#if @import}}
         <LinkTo
           @query={{hash import=false}}
           class="uk-button uk-button-default uk-flex-none uk-margin-small-left"

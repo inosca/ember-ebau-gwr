@@ -28,10 +28,7 @@
       @projectId={{this.model.projectId}}
       @headerModelName="building"
       @hasStatus={{true}}
-      @hasImport={{this.importData.length}}
-      @importData={{if this.import this.importData}}
       @import={{this.import}}
-      @importIndex={{this.index}}
       @modelStatusOptions={{this.buildingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}
@@ -50,7 +47,7 @@
           }}
         </h3>
         <div class="uk-flex uk-margin">
-          <div class="uk-width-1-2 ">
+          <div class="uk-width-1-2">
             <span class="uk-form-label">{{t
                 "ember-gwr.buildingWork.kindOfWork"
               }}:</span>
@@ -61,7 +58,7 @@
                 )
               }}</span>
           </div>
-          <div class="uk-width-1-2 ">
+          <div class="uk-width-1-2">
             <span class="uk-form-label">{{t
                 "ember-gwr.buildingWork.ARBID"
               }}:</span>
@@ -253,7 +250,10 @@
       <Field @attr="building.realestateIdentification.number" />
       <Field @attr="building.realestateIdentification.numberSuffix" />
       <Field @attr="building.realestateIdentification.EGRID" />
-      <Field @type="number" @attr="building.realestateIdentification.subDistrict" />
+      <Field
+        @type="number"
+        @attr="building.realestateIdentification.subDistrict"
+      />
       <Field @attr="building.realestateIdentification.lot" />
 
       <h3>

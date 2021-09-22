@@ -4,7 +4,6 @@
   @escClose={{false}}
   @bgClose={{false}}
   @on-hide={{@close}}
-  @on-show={{fn (mut this.importIndex) 0}}
   @container={{this.config.modalContainer}}
   as |Modal|
 >
@@ -15,11 +14,11 @@
   </Modal.header>
   <Modal.body class="uk-overflow-auto">
     <ul
-      uk-accordion="collapsible: false;multiple: false;"
+      uk-accordion="collapsible: false;multiple: false; active: 0;"
       class="ember-ebau-gwr-import-building-list"
     >
-      {{#each @importData as |model index|}}
-        <li class={{if (eq index 0) "uk-open"}}>
+      {{#each @import.originalData as |model index|}}
+        <li>
           <a class="uk-accordion-title" href="#">{{t
               "ember-gwr.models.building"
               count=1
@@ -36,7 +35,7 @@
                       model.kindOfWork
                     )
                   )
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}</span>
             </span>
             <hr />
@@ -50,7 +49,7 @@
                       model.building.buildingStatus
                     )
                   )
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}</span>
             </span>
             <hr />
@@ -58,7 +57,7 @@
               <span>{{t "ember-gwr.building.nameOfBuilding"}}</span>
               <span class="uk-text-muted">{{or
                   model.building.nameOfBuilding
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}</span>
             </span>
             <hr />
@@ -73,7 +72,7 @@
                       model.building.buildingCategory
                     )
                   )
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}
               </span>
             </span>
@@ -89,7 +88,7 @@
                       model.building.buildingClass
                     )
                   )
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}
               </span>
             </span>
@@ -98,12 +97,12 @@
               <span>{{t "ember-gwr.building.numberOfFloors"}}</span>
               <span class="uk-text-muted">{{or
                   model.building.numberOfFloors
-                  (t "ember-gwr.components.importModal.notRecorded")
+                  "-"
                 }}</span>
             </span>
 
             <LinkTo
-              @query={{hash import=true index=this.importIndex}}
+              @query={{hash import=true index=index}}
               class="uk-button uk-button-primary uk-margin-medium-top uk-width-1"
               {{on "click" @close}}
             >

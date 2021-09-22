@@ -1,15 +1,14 @@
 <div class="uk-flex uk-flex-column uk-flex-right">
   <ImportModal
-    @visible={{and this.showImportModal @importData.length}}
+    @visible={{and this.showImportModal @import.originalData.length}}
     @close={{fn (mut this.showImportModal) false}}
-    @importData={{@importData}}
-    @importIndex={{@importIndex}}
+    @import={{@import}}
     @modelName={{@modelName}}
     @translationBase={{@translationBase}}
   />
   <div class="uk-flex-inline uk-flex-right uk-flex-middle">
-    {{#if (and @hasImport @import)}}
-      {{#if (and @importData.length (not @importIndex))}}
+    {{#if (and @modelHasImport @import)}}
+      {{#if (and @import.originalData.length (is-unset @import.index))}}
         <button
           class="uk-button uk-button-default uk-margin-small-right uk-flex-none"
           type="button"
@@ -20,13 +19,13 @@
       {{else}}
         <button
           class="uk-button uk-button-default uk-flex-none
-            {{unless @importIndex "uk-margin-small-right"}}"
+            {{if (is-unset @import.index) "uk-margin-small-right"}}"
           type="button"
           {{on "click" @importAllData}}
         >
           {{t "ember-gwr.components.projectForm.applyAll"}}
         </button>
-        {{#if @importIndex}}
+        {{#if @import}}
           <button
             class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical uk-margin-small-right"
             type="button"
@@ -63,7 +62,7 @@
     {{#let @submit as |Submit|}}
       <Submit />
     {{/let}}
-    {{#if (or @hasImport @hasStatus)}}
+    {{#if (or @modelHasImport @hasStatus)}}
       <button
         class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
         type="button"
@@ -77,9 +76,9 @@
         <ul
           class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
         >
-          {{#if @hasImport}}
+          {{#if @modelHasImport}}
             <li>
-              {{#if (and this.project.isNew (not @importData.length))}}
+              {{#if (and this.project.isNew (not @import.originalData.length))}}
                 <button
                   disabled={{@import}}
                   class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
@@ -90,28 +89,16 @@
                 </button>
               {{else}}
 
-                {{!--{{#if @importData.length}}
-                  <LinkTo
-                    @disabled={{@import}}
-                    @query={{hash import=true index=@importIndex}}
-                    class="uk-button uk-text-left uk-highlight-hover
-                      {{if @import "uk-text-muted" "uk-text-secondary"}}
-                      uk-width-1-1 uk-background-default uk-padding-remove"
-                    {{on "click" (fn (mut this.showImportModal) true)}}
-                  >
-                    {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-                  </LinkTo>
-                {{else}}--}}
-                  <LinkTo
-                    @disabled={{@import}}
-                    @query={{hash import=true}}
-                    class="uk-button uk-text-left uk-highlight-hover
-                      {{if @import "uk-text-muted" "uk-text-secondary"}}
-                      uk-width-1-1 uk-background-default uk-padding-remove"
-                      {{on "click" (fn (mut this.showImportModal) true)}}
-                  >
-                    {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-                  </LinkTo>
+                <LinkTo
+                  @disabled={{@import}}
+                  @query={{hash import=true}}
+                  class="uk-button uk-text-left uk-highlight-hover
+                    {{if @import "uk-text-muted" "uk-text-secondary"}}
+                    uk-width-1-1 uk-background-default uk-padding-remove"
+                  {{on "click" (fn (mut this.showImportModal) true)}}
+                >
+                  {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+                </LinkTo>
                 {{!/if}}
               {{/if}}
             </li>

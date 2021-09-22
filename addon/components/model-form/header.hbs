@@ -9,10 +9,8 @@
     @submit={{@submit}}
     @submitErrors={{@submitErrors}}
     @hasStatus={{and @hasStatus @model (not @model.isNew)}}
-    @hasImport={{@hasImport}}
+    @modelHasImport={{@modelHasImport}}
     @import={{@import}}
-    @importIndex={{@importIndex}}
-    @importData={{@importData}}
     @importAllData={{@importAllData}}
     @openStatus={{fn (mut this.changeStatus) true}}
     @modelName={{@modelName}}
