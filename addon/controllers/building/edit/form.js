@@ -37,7 +37,7 @@ export default class BuildingFormController extends ImportController {
   *fetchBuildingWork() {
     try {
       this.errors = [];
-      yield this.fetchBuilding.perform();
+      yield this.fetchCalumaData.perform();
 
       if (this.model.buildingWork?.isNew) {
         return this.buildingAPI.newRecord ?? this.model.buildingWork;
@@ -48,7 +48,6 @@ export default class BuildingFormController extends ImportController {
       );
 
       yield this.fetchBuilding.perform();
-      this.fetchCalumaData.perform();
 
       return project.work?.find(
         (buildingWork) =>

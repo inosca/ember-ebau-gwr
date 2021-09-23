@@ -12,24 +12,28 @@ const IMPORT_MAP = {
 export default class ImportController extends Controller {
   queryParams = [
     {
-      displayImport: "import",
+      showImport: "import",
       importIndex: "index",
     },
   ];
 
   @service dataImport;
 
-  @tracked displayImport = false;
+  @tracked showImport = false;
   @tracked importIndex = undefined;
 
   get import() {
+    if (this.showImport) {
+      assert("`fetchCalumaData` was never called.", this.importData);
+    }
+
     const index = Number(this.importIndex);
     const data =
       Array.isArray(this.importData) && typeof index === "number"
         ? this.importData[index]
         : this.importData;
 
-    return this.displayImport
+    return this.showImport
       ? {
           index,
           data,
@@ -39,13 +43,14 @@ export default class ImportController extends Controller {
   }
 
   resetImport() {
-    this.displayImport = false;
+    this.showImport = false;
     this.importIndex = null;
   }
 
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData(...args) {
+    console.log("fetchCalumaData");
     assert(
       "Must set `importModelName` to a string.",
       typeof this.importModelName === "string"

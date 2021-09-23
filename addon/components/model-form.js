@@ -19,6 +19,10 @@ export default class ModelFormComponent extends Component {
     return this.submit.isRunning || this.args.onSubmit.isRunning;
   }
 
+  get modelHasImport() {
+    return this.config.importModels.includes(this.args.headerModelName);
+  }
+
   finishImport() {
     this.notification.success(
       this.intl.t("ember-gwr.components.modelForm.diff.resolved")
@@ -69,7 +73,4 @@ export default class ModelFormComponent extends Component {
     this.finishImport();
   }
 
-  get modelHasImport() {
-    return this.config.importModels.includes(this.args.headerModelName);
-  }
 }
