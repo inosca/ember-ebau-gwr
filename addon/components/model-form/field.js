@@ -13,15 +13,26 @@ export default class ModelFormFieldComponent extends Component {
   @service intl;
   @tracked diffResolved = false;
 
+  constructor(...args) {
+    super(...args);
+    this.initializeImport();
+  }
+
+  get value() {
+    return get(this.args.model, this.args.attr);
+  }
+
+  get importValue() {
+    return get(this.args.importData, this.args.attr);
+  }
+
   get showDiff() {
     if (this.args.importData) {
-      const currentData = get(this.args.model, this.args.attr);
-      const newData = get(this.args.importData, this.args.attr);
-      const showDiff = !this.diffResolved && newData && newData !== currentData;
-      if (showDiff) {
-        this.args.registerDiff(this.args.attr);
-      }
-      return !this.diffResolved && newData && newData !== currentData;
+      return (
+        !this.diffResolved &&
+        this.importValue &&
+        this.importValue !== this.value
+      );
     }
     return false;
   }
@@ -70,7 +81,25 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   @action
-  updateModelField(attr, eventOrValue) {
+  initializeImport() {
+    if (this.showDiff) {
+      console.log(this.args.attr, this.value, this.importValue);
+      debugger;
+      if (
+        this.value === undefined ||
+        this.value === null ||
+        this.value === ""
+      ) {
+        this.updateModelField(this.importValue);
+      } else {
+        this.args.registerDiff(this.args.attr);
+      }
+    }
+  }
+
+  @action
+  updateModelField(eventOrValue) {
+    const attr = this.args.attr;
     const value = eventOrValue?.target?.value ?? eventOrValue;
 
     // If we supply a custom update method use this

@@ -1,4 +1,7 @@
-<div class="{{unless @noMargin "uk-margin"}}">
+<div
+  class="{{unless @noMargin "uk-margin"}}"
+  {{did-update this.initializeImport @importData @model @attr}}
+>
   {{#let
     (component
       @input
@@ -11,7 +14,7 @@
       type=(or @type @inputType)
       disabled=(or @disabled this.disableInput)
       required=@required
-      value=(or @value (get @model @attr))
+      value=this.value
       validateBeforeSubmit=true
       auto-complete=@auto-complete
       placeholder=@placeholder
@@ -31,8 +34,8 @@
       promptIsSelectable=true
       on-update=(if
         @on-update
-        (queue (fn this.updateModelField @attr) @on-update)
-        (fn this.updateModelField @attr)
+        (queue (fn this.updateModelField) @on-update)
+        (fn this.updateModelField)
       )
       renderComponent=(component
         this.fieldComponent
@@ -47,9 +50,9 @@
     {{#if this.showDiff}}
       <ModelForm::Diff
         @inputComponent={{InputComponent}}
-        @current={{get @model @attr}}
-        @new={{get @importData @attr}}
-        @updateModelField={{fn this.updateModelField @attr}}
+        @current={{this.value}}
+        @new={{this.importValue}}
+        @updateModelField={{fn this.updateModelField}}
         @horizontal={{this.isHorizontal}}
       />
     {{else}}
