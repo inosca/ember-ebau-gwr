@@ -1,0 +1,30 @@
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.dwelling.floor"}}</span>
+  <span class="uk-text-muted">{{or @model.floor "-"}}</span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.dwelling.noOfHabitableRooms"}}</span>
+  <span class="uk-text-muted">{{or @model.noOfHabitableRooms "-"}}</span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.dwelling.dwellingUsage.usageCode"}}</span>
+  <span class="uk-text-muted">{{if
+      @model.dwellingUsage.usageCode
+      (t
+        (concat
+          "ember-gwr.dwelling.dwellingUsage.usageCodeOptions."
+          @model.dwellingUsage.usageCode
+        )
+      )
+      "-"
+    }}</span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.dwelling.locationOfDwellingOnFloor"}}</span>
+  <span class="uk-text-muted">
+    {{or @model.locationOfDwellingOnFloor "-"}}
+  </span>
+</span>

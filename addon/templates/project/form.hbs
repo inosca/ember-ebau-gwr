@@ -1,7 +1,4 @@
-<div
-  {{did-insert (perform this.fetchProject)}}
-  {{did-update (perform this.fetchProject) @model.projectId}}
->
+<div>
   {{#if this.fetchProject.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
       <UkSpinner @ratio="3" />
@@ -10,11 +7,9 @@
     <ModelForm
       @model={{this.project}}
       @validations={{this.ConstructionProjectValidations}}
-      @importData={{if this.import this.importData}}
       @onSubmit={{this.saveProject}}
       @errors={{this.errors}}
       @translationBase="ember-gwr.constructionProject.fields"
-      @hasImport={{true}}
       @import={{this.import}}
       @headerModel={{this.project}}
       @headerModelId={{this.project.EPROID}}
@@ -99,12 +94,19 @@
                   />
                 </div>
               {{else}}
-                <div class="uk-width-medium uk-margin-large-right uk-flex-inline uk-flex-middle">
+                <div
+                  class="uk-width-medium uk-margin-large-right uk-flex-inline uk-flex-middle"
+                >
                   <div class="uk-form-label uk-margin-small-right">
                     {{t "ember-gwr.buildingWork.kindOfWork"}}:
                   </div>
                   <div>
-                    {{t (concat "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork)}}
+                    {{t
+                      (concat
+                        "ember-gwr.buildingWork.kindOfWorkOptions."
+                        model.kindOfWork
+                      )
+                    }}
                   </div>
                 </div>
                 <div class="uk-flex-inline uk-flex-middle">
@@ -240,7 +242,7 @@
           (not-eq changeset.typeOfClient 6161)
           (and
             this.import
-            this.importData.client.identification.organisationIdentification.organisationName
+            this.import.data.client.identification.organisationIdentification.organisationName
           )
         )
       }}
@@ -362,4 +364,3 @@
     />
   </modal.footer>
 </UkModal>
-

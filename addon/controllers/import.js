@@ -1,12 +1,14 @@
 import Controller from "@ember/controller";
-import { inject as service } from "@ember/service";
-import { task, dropTask, lastValue } from "ember-concurrency-decorators";
-import { tracked } from "@glimmer/tracking";
 import { assert } from "@ember/debug";
+import { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
+import { task, lastValue } from "ember-concurrency-decorators";
 
 const IMPORT_MAP = {
   project: "fetchProject",
-  building: "fetchBuildingsFromProject",
+  building: "fetchBuildings",
+  dwelling: "fetchDwellings",
+  buildingEntrance: "fetchEntrances",
 };
 
 export default class ImportController extends Controller {
@@ -29,7 +31,7 @@ export default class ImportController extends Controller {
 
     const index = Number(this.importIndex);
     const data =
-      Array.isArray(this.importData) && typeof index === "number"
+      Array.isArray(this.importData) && !isNaN(index)
         ? this.importData[index]
         : this.importData;
 
@@ -50,7 +52,6 @@ export default class ImportController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData(...args) {
-    console.log("fetchCalumaData");
     assert(
       "Must set `importModelName` to a string.",
       typeof this.importModelName === "string"

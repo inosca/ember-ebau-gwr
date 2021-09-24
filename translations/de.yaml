@@ -242,6 +242,7 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
         resolved: Alle Konflikte sind gelöst. Klicken Sie Speichern um die Änderungen zu übernehmen!
+        cancel: Abbrechen
 
       project:
         title: Bauprojekt {id}
@@ -314,4 +315,4 @@ ember-gwr:
       localityHint: Der Ortsname des Eingangs und der Strasse müssen übereinstimmen.
 
     importModal:
-      selectImportData: Importdaten
+      selectImportData: Importdaten auswählen

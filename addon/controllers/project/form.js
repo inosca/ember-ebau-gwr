@@ -1,15 +1,15 @@
-import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import ImportController from "ember-ebau-gwr/controllers/import";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import Options from "ember-ebau-gwr/models/options";
 import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
 
-export default class ProjectFormController extends Controller {
-  queryParams = ["import"];
+export default class ProjectFormController extends ImportController {
+  importModelName = "project";
   ConstructionProjectValidations = ConstructionProjectValidations;
   kindOfWorkOptions = BuildingWork.kindOfWorkOptions;
 
@@ -17,13 +17,11 @@ export default class ProjectFormController extends Controller {
   @service building;
   @service dwelling;
   @service config;
-  @service dataImport;
   @service store;
   @service router;
   @service intl;
   @service notification;
 
-  @tracked import = false;
   @tracked buildingWork;
   @tracked typeOfConstructionProject;
   @tracked removedWork = [];
@@ -46,6 +44,7 @@ export default class ProjectFormController extends Controller {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
+    yield this.fetchCalumaData.perform();
     // Add a new default work for new projects so we don't have to
     // validate if the user has attached a work or not.
     if (this.model.project?.isNew && !this.model.project?.work.length) {
@@ -60,15 +59,9 @@ export default class ProjectFormController extends Controller {
     return project;
   }
 
-  @lastValue("fetchCalumaData") importData;
-  @task
-  *fetchCalumaData() {
-    return yield this.dataImport.fetchProject(this.model.instanceId);
-  }
-
   @action
   cancelMerge() {
-    this.import = false;
+    this.resetImport();
     this.fetchProject.perform();
   }
 
@@ -122,7 +115,7 @@ export default class ProjectFormController extends Controller {
         yield this.constructionProject.update(this.project);
       }
 
-      this.import = false;
+      this.resetImport();
       this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.constructionProject.saveSuccess")

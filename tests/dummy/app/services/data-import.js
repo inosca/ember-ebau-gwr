@@ -26,7 +26,8 @@ export default class DataImport extends Service {
     };
   }
 
-  async fetchBuildingsFromProject() {
+  async fetchBuildings() {
+    // Theoretically we would have to ignore kindOfWork since this is defined on creation and linking.
     return [
       {
         kindOfWork: 6001,
@@ -34,6 +35,9 @@ export default class DataImport extends Service {
         building: {
           buildingCategory: 1060,
           buildingStatus: 1004,
+          officialBuildingNo: 12220054,
+          buildingClass: 1271,
+          nameOfBuilding: "Stall",
         },
       },
       {
@@ -42,6 +46,9 @@ export default class DataImport extends Service {
         building: {
           buildingCategory: 1030,
           buildingStatus: 1004,
+          officialBuildingNo: 300900,
+          buildingClass: 1220,
+          nameOfBuilding: "Haus",
         },
       },
       {
@@ -50,17 +57,22 @@ export default class DataImport extends Service {
         building: {
           buildingCategory: 1080,
           buildingStatus: 1007,
+          officialBuildingNo: 65900,
+          buildingClass: 1251,
+          nameOfBuilding: "Schopf",
         },
       },
     ];
   }
 
-  async fetchDwellingsFromBuilding() {
+  async fetchDwellings() {
     return [
       {
         EDID: 0, // not sure if information can be given
         floor: 3100,
         dwellingStatus: 3001,
+        noOfHabitableRooms: 8,
+        locationOfDwellingOnFloor: "Rechts",
         dwellingUsage: {
           usageCode: 3010,
         },
@@ -69,6 +81,8 @@ export default class DataImport extends Service {
         EDID: 0,
         floor: 3101,
         dwellingStatus: 3002,
+        noOfHabitableRooms: 3,
+        locationOfDwellingOnFloor: "Links",
         dwellingUsage: {
           usageCode: 3020,
         },
@@ -76,6 +90,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3102,
+        noOfHabitableRooms: 3,
+        locationOfDwellingOnFloor: "Links",
         dwellingStatus: 3003,
         dwellingUsage: {
           usageCode: 3030,
@@ -84,6 +100,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3401,
+        noOfHabitableRooms: 3,
+        locationOfDwellingOnFloor: "Links",
         dwellingStatus: 3004,
         dwellingUsage: {
           usageCode: 3035,
@@ -92,6 +110,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3402,
+        noOfHabitableRooms: 2,
+        locationOfDwellingOnFloor: "Rechts",
         dwellingStatus: 3007,
         dwellingUsage: {
           usageCode: 3036,
@@ -100,9 +120,10 @@ export default class DataImport extends Service {
     ];
   }
 
-  async fetchEntrancesFromBuilding() {
+  async fetchEntrances() {
     return [
       {
+        buildingEntranceNo: "12c",
         locality: {
           swissZipCode: 1234,
           name: {
@@ -111,6 +132,7 @@ export default class DataImport extends Service {
         },
       },
       {
+        buildingEntranceNo: "1",
         locality: {
           swissZipCode: 5678,
           name: {

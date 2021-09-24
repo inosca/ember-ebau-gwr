@@ -7,4 +7,9 @@ export default class ProjectFormRoute extends Route {
       instanceId: this.modelFor("application").id,
     };
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.fetchProject.perform();
+  }
 }

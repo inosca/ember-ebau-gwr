@@ -4,7 +4,6 @@
     @close={{fn (mut this.showImportModal) false}}
     @import={{@import}}
     @modelName={{@modelName}}
-    @translationBase={{@translationBase}}
   />
   <div class="uk-flex-inline uk-flex-right uk-flex-middle">
     {{#if (and @modelHasImport @import)}}
@@ -14,7 +13,7 @@
           type="button"
           {{on "click" (fn (mut this.showImportModal) true)}}
         >
-          Importdaten selektieren
+          {{t "ember-gwr.components.importModal.selectImportData"}}
         </button>
       {{else}}
         <button
@@ -25,7 +24,7 @@
         >
           {{t "ember-gwr.components.projectForm.applyAll"}}
         </button>
-        {{#if @import}}
+        {{#if (and @import @import.originalData.length)}}
           <button
             class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical uk-margin-small-right"
             type="button"
@@ -45,7 +44,7 @@
                   type="button"
                   {{on "click" (fn (mut this.showImportModal) true)}}
                 >
-                  Importdaten selektieren
+                  {{t "ember-gwr.components.importModal.selectImportData"}}
                 </button>
               </li>
             </ul>
@@ -78,29 +77,15 @@
         >
           {{#if @modelHasImport}}
             <li>
-              {{#if (and this.project.isNew (not @import.originalData.length))}}
-                <button
-                  disabled={{@import}}
-                  class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
-                  type="button"
-                  {{on "click" @importAllData}}
-                >
-                  {{t "ember-gwr.components.modelForm.importFromCaluma"}}
-                </button>
-              {{else}}
-
-                <LinkTo
-                  @disabled={{@import}}
-                  @query={{hash import=true}}
-                  class="uk-button uk-text-left uk-highlight-hover
-                    {{if @import "uk-text-muted" "uk-text-secondary"}}
-                    uk-width-1-1 uk-background-default uk-padding-remove"
-                  {{on "click" (fn (mut this.showImportModal) true)}}
-                >
-                  {{t "ember-gwr.components.projectForm.importFromCaluma"}}
-                </LinkTo>
-                {{!/if}}
-              {{/if}}
+              <LinkTo
+                @disabled={{@import}}
+                @query={{hash import=true}}
+                class="uk-button uk-text-left uk-highlight-hover
+                  {{if @import "uk-text-muted" "uk-text-secondary"}}
+                  uk-width-1-1 uk-background-default uk-padding-remove"
+              >
+                {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+              </LinkTo>
             </li>
           {{/if}}
           {{#if @hasStatus}}
