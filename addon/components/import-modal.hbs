@@ -20,86 +20,15 @@
       {{#each @import.originalData as |model index|}}
         <li>
           <a class="uk-accordion-title" href="#">{{t
-              "ember-gwr.models.building"
+              (concat "ember-gwr.models." @modelName)
               count=1
             }}
             {{inc index}}</a>
           <div class="uk-accordion-content">
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.buildingWork.kindOfWork"}}</span>
-              <span class="uk-text-muted">{{if
-                  model.kindOfWork
-                  (t
-                    (concat
-                      "ember-gwr.buildingWork.kindOfWorkOptions."
-                      model.kindOfWork
-                    )
-                  )
-                  "-"
-                }}</span>
-            </span>
-            <hr />
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.building.buildingStatus"}}</span>
-              <span class="uk-text-muted">{{if
-                  model.building.buildingStatus
-                  (t
-                    (concat
-                      "ember-gwr.building.buildingStatusOptions."
-                      model.building.buildingStatus
-                    )
-                  )
-                  "-"
-                }}</span>
-            </span>
-            <hr />
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.building.nameOfBuilding"}}</span>
-              <span class="uk-text-muted">{{or
-                  model.building.nameOfBuilding
-                  "-"
-                }}</span>
-            </span>
-            <hr />
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.building.buildingCategory"}}</span>
-              <span class="uk-text-muted">
-                {{if
-                  model.building.buildingCategory
-                  (t
-                    (concat
-                      "ember-gwr.building.buildingCategoryOptions."
-                      model.building.buildingCategory
-                    )
-                  )
-                  "-"
-                }}
-              </span>
-            </span>
-            <hr />
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.building.buildingClass"}}</span>
-              <span class="uk-text-muted">
-                {{if
-                  model.building.buildingClass
-                  (t
-                    (concat
-                      "ember-gwr.building.buildingClassOptions."
-                      model.building.buildingClass
-                    )
-                  )
-                  "-"
-                }}
-              </span>
-            </span>
-            <hr />
-            <span class="uk-flex uk-child-width-1-2">
-              <span>{{t "ember-gwr.building.numberOfFloors"}}</span>
-              <span class="uk-text-muted">{{or
-                  model.building.numberOfFloors
-                  "-"
-                }}</span>
-            </span>
+            {{component
+              (concat "import-modal/" @modelName "-data")
+              model=model
+            }}
 
             <LinkTo
               @query={{hash import=true index=index}}

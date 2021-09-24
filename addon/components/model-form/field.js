@@ -83,17 +83,7 @@ export default class ModelFormFieldComponent extends Component {
   @action
   initializeImport() {
     if (this.showDiff) {
-      console.log(this.args.attr, this.value, this.importValue);
-      debugger;
-      if (
-        this.value === undefined ||
-        this.value === null ||
-        this.value === ""
-      ) {
-        this.updateModelField(this.importValue);
-      } else {
-        this.args.registerDiff(this.args.attr);
-      }
+      this.args.registerDiff(this.args.attr);
     }
   }
 

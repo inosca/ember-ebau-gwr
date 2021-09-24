@@ -1,8 +1,8 @@
-import ImportController from "ember-ebau-gwr/controllers/import";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
@@ -37,7 +37,7 @@ export default class BuildingFormController extends ImportController {
   *fetchBuildingWork() {
     try {
       this.errors = [];
-      yield this.fetchCalumaData.perform();
+      this.fetchCalumaData.perform();
 
       if (this.model.buildingWork?.isNew) {
         return this.buildingAPI.newRecord ?? this.model.buildingWork;

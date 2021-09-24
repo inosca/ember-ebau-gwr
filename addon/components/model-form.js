@@ -60,6 +60,9 @@ export default class ModelFormComponent extends Component {
   importAllData() {
     // We cannot just `Object.assign` here since the child object like `identification` would
     // not be classes with tracked fields etc. anymore but just pojos. We need to preserve the classes.
+
+    // TODO: How should we handle the status field, if this is in the imported data this will get
+    // set here...
     const deepMerge = (original, objectToApply) => {
       Object.entries(objectToApply).forEach(([key, value]) => {
         if (value !== null && value !== undefined) {
@@ -72,5 +75,4 @@ export default class ModelFormComponent extends Component {
     deepMerge(this.args.model, this.args.import.data);
     this.finishImport();
   }
-
 }

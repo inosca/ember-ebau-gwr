@@ -1,14 +1,14 @@
-import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
 
-export default class BuildingEditDwellingEditController extends Controller {
-  queryParams = ["import", "index"];
+export default class BuildingEditDwellingEditController extends ImportController {
+  importModelName = "dwelling";
   Models = Models;
   DwellingValidations = DwellingValidations;
 
@@ -17,10 +17,7 @@ export default class BuildingEditDwellingEditController extends Controller {
   @service intl;
   @service notification;
   @service router;
-  @service dataImport;
 
-  @tracked import = false;
-  @tracked index = undefined;
   @tracked errors;
 
   dwellingStatusOptions = Models.Dwelling.dwellingStatusOptions;
@@ -38,6 +35,7 @@ export default class BuildingEditDwellingEditController extends Controller {
     try {
       this.errors = [];
 
+      yield this.fetchCalumaData.perform();
       yield this.fetchEntrances.perform();
       if (this.model.dwelling?.isNew) {
         this.model.dwelling.EDID = this.entrances[0].EDID;
@@ -49,8 +47,6 @@ export default class BuildingEditDwellingEditController extends Controller {
         this.model.buildingId
       );
       dwelling.oldEDID = EDID;
-
-      this.fetchCalumaData.perform();
 
       this.errors = [];
       return dwelling;
@@ -76,19 +72,9 @@ export default class BuildingEditDwellingEditController extends Controller {
     }
   }
 
-  @lastValue("fetchCalumaData") importData;
-  @task
-  *fetchCalumaData() {
-    const data = yield this.dataImport.fetchDwellingsFromBuilding(
-      this.model.buildingId
-    );
-    return data;
-  }
-
   @action
   cancelMerge() {
-    this.import = false;
-    this.index = undefined;
+    this.resetImport();
     this.fetchDwelling.perform();
   }
 

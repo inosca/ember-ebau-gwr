@@ -10,73 +10,6 @@ import ThermotechnicalDeviceForHeating from "./thermotechnical-device-for-heatin
 import ThermotechnicalDeviceForWarmWater from "./thermotechnical-device-for-warm-water";
 import XMLModel from "./xml-model";
 
-export class Volume extends XMLModel {
-  @tracked volume;
-  @tracked informationSource;
-  @tracked norm;
-
-  constructor(xmlOrObject, root = "volume") {
-    super(xmlOrObject);
-    this.setFieldsFromXML({
-      root,
-      fields: {
-        volume: Number,
-        informationSource: Number,
-        norm: Number,
-      },
-    });
-  }
-
-  static template = `
-  <ns2:volume>
-    <volume>{{model.volume}}</volume>
-    {{#if model.informationSource}}
-      <informationSource>{{model.informationSource}}</informationSource>
-    {{/if}}
-    <norm>{{model.norm}}</norm>
-  </ns2:volume>
-  `;
-
-  static informationSourceOptions = [
-    869, // Gemäss Baubewilligung
-    858, // Gemäss Gebäudeenergieausweis der Kantone (GEAK)
-    853, // Gemäss Gebäudeversicherung
-    852, // Gemäss amtlicher Schätzung
-    857, // Gemäss Eigentümer / Immobilienverwaltung
-    851, // Gemäss amtlicher Vermessung
-    870, // Gemäss topografisches Landschaft Modell (TLM)
-    878, // Nicht bestimmbares Volumen (Gebäude nicht geschlossen)
-    859, // Andere
-  ];
-
-  static normOptions = [
-    961, // Gemäss SIA-Norm 116
-    962, // Gemäss SIA-Norm 416
-    969, // unbekannt
-  ];
-}
-
-class ThermotechnicalDeviceForHeating1 extends ThermotechnicalDeviceForHeating {
-  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating1") {
-    super(xmlOrObject, root);
-  }
-}
-class ThermotechnicalDeviceForHeating2 extends ThermotechnicalDeviceForHeating {
-  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating2") {
-    super(xmlOrObject, root);
-  }
-}
-class ThermotechnicalDeviceForWarmWater1 extends ThermotechnicalDeviceForWarmWater {
-  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater1") {
-    super(xmlOrObject, root);
-  }
-}
-class ThermotechnicalDeviceForWarmWater2 extends ThermotechnicalDeviceForWarmWater {
-  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater2") {
-    super(xmlOrObject, root);
-  }
-}
-
 export default class Building extends XMLModel {
   @tracked EGID;
   @tracked municipality;
@@ -415,4 +348,71 @@ export default class Building extends XMLModel {
     [this.STATUS_DEMOLISHED]: {},
     [this.STATUS_NOT_REALIZED]: {},
   };
+}
+
+export class Volume extends XMLModel {
+  @tracked volume;
+  @tracked informationSource;
+  @tracked norm;
+
+  constructor(xmlOrObject, root = "volume") {
+    super(xmlOrObject);
+    this.setFieldsFromXML({
+      root,
+      fields: {
+        volume: Number,
+        informationSource: Number,
+        norm: Number,
+      },
+    });
+  }
+
+  static template = `
+  <ns2:volume>
+    <volume>{{model.volume}}</volume>
+    {{#if model.informationSource}}
+      <informationSource>{{model.informationSource}}</informationSource>
+    {{/if}}
+    <norm>{{model.norm}}</norm>
+  </ns2:volume>
+  `;
+
+  static informationSourceOptions = [
+    869, // Gemäss Baubewilligung
+    858, // Gemäss Gebäudeenergieausweis der Kantone (GEAK)
+    853, // Gemäss Gebäudeversicherung
+    852, // Gemäss amtlicher Schätzung
+    857, // Gemäss Eigentümer / Immobilienverwaltung
+    851, // Gemäss amtlicher Vermessung
+    870, // Gemäss topografisches Landschaft Modell (TLM)
+    878, // Nicht bestimmbares Volumen (Gebäude nicht geschlossen)
+    859, // Andere
+  ];
+
+  static normOptions = [
+    961, // Gemäss SIA-Norm 116
+    962, // Gemäss SIA-Norm 416
+    969, // unbekannt
+  ];
+}
+
+class ThermotechnicalDeviceForHeating1 extends ThermotechnicalDeviceForHeating {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating1") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForHeating2 extends ThermotechnicalDeviceForHeating {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForHeating2") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForWarmWater1 extends ThermotechnicalDeviceForWarmWater {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater1") {
+    super(xmlOrObject, root);
+  }
+}
+class ThermotechnicalDeviceForWarmWater2 extends ThermotechnicalDeviceForWarmWater {
+  constructor(xmlOrObject, root = "thermotechnicalDeviceForWarmWater2") {
+    super(xmlOrObject, root);
+  }
 }

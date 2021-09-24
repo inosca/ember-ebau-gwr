@@ -1,13 +1,13 @@
-import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import BuildingEntranceValidations from "ember-ebau-gwr/validations/building-entrance";
 
-export default class BuildingEditEntranceEditIndexController extends Controller {
-  queryParams = ["import", "index"];
+export default class BuildingEditEntranceEditIndexController extends ImportController {
+  importModelName = "buildingEntrance";
   Models = Models;
   BuildingEntranceValidations = BuildingEntranceValidations;
 
@@ -16,10 +16,7 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
   @service intl;
   @service notification;
   @service router;
-  @service dataImport;
 
-  @tracked import = false;
-  @tracked index = undefined;
   @tracked errors;
 
   @lastValue("fetchBuildingEntrance") buildingEntrance;
@@ -29,6 +26,7 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
       this.errors = [];
       let buildingEntrance;
 
+      yield this.fetchCalumaData.perform();
       if (this.buildingEntranceAPI.newRecord) {
         buildingEntrance = this.buildingEntranceAPI.newRecord;
       } else {
@@ -39,12 +37,8 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
 
         buildingEntrance.EGID = this.model.buildingId;
       }
-      this.fetchCalumaData.perform();
       this.errors = [];
-      return yield this.buildingEntranceAPI.getFromCacheOrApi(
-        this.model.entranceId,
-        this.model.buildingId
-      );
+      return buildingEntrance;
     } catch (error) {
       console.error(error);
       this.notification.danger(
@@ -53,19 +47,9 @@ export default class BuildingEditEntranceEditIndexController extends Controller 
     }
   }
 
-  @lastValue("fetchCalumaData") importData;
-  @task
-  *fetchCalumaData() {
-    const data = yield this.dataImport.fetchEntrancesFromBuilding(
-      this.model.buildingId
-    );
-    return data;
-  }
-
   @action
   cancelMerge() {
-    this.import = false;
-    this.index = undefined;
+    this.resetImport();
     this.fetchBuildingEntrance.perform();
   }
 

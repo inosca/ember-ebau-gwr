@@ -7,28 +7,30 @@
       {{if @isInvalid "uk-form-danger"}}
       {{if @isValid "uk-form-success"}}"
   >
-    <div class="uk-margin">
-      <div
-        class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom"
-      >
-        <span>
-          {{t "ember-gwr.components.modelForm.diff.existingData"}}
-        </span>
-        <button
-          type="button"
-          class="uk-button uk-button-default uk-button-small"
-          {{on "click" (fn @updateModelField @current)}}
+    {{#if @current}}
+      <div class="uk-margin">
+        <div
+          class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom"
         >
-          {{t "ember-gwr.components.modelForm.diff.apply"}}
-        </button>
+          <span>
+            {{t "ember-gwr.components.modelForm.diff.existingData"}}
+          </span>
+          <button
+            type="button"
+            class="uk-button uk-button-default uk-button-small"
+            {{on "click" (fn @updateModelField @current)}}
+          >
+            {{t "ember-gwr.components.modelForm.diff.apply"}}
+          </button>
+        </div>
+        {{#let
+          (component @inputComponent disabled=true value=@current)
+          as |InputComponent|
+        }}
+          <InputComponent disabled />
+        {{/let}}
       </div>
-      {{#let
-        (component @inputComponent disabled=true value=@current)
-        as |InputComponent|
-      }}
-        <InputComponent disabled />
-      {{/let}}
-    </div>
+    {{/if}}
     <div>
       <div
         class="uk-flex uk-flex-between uk-flex-bottom uk-margin-small-bottom"
@@ -36,13 +38,24 @@
         <span>
           {{t "ember-gwr.components.modelForm.diff.importData"}}
         </span>
-        <button
-          type="button"
-          class="uk-button uk-button-default uk-button-small"
-          {{on "click" (fn @updateModelField this.newValue)}}
-        >
-          {{t "ember-gwr.components.modelForm.diff.apply"}}
-        </button>
+        <div>
+          <button
+            type="button"
+            class="uk-button uk-button-primary uk-button-small"
+            {{on "click" (fn @updateModelField this.newValue)}}
+          >
+            {{t "ember-gwr.components.modelForm.diff.apply"}}
+          </button>
+          {{#unless @current}}
+            <button
+              type="button"
+              class="uk-button uk-button-default uk-button-small"
+              {{on "click" (fn @updateModelField)}}
+            >
+              {{t "ember-gwr.components.modelForm.diff.cancel"}}
+            </button>
+          {{/unless}}
+        </div>
       </div>
       {{component
         @inputComponent
