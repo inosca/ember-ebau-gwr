@@ -8,8 +8,7 @@
       @models={{this.fetchDwellings.lastSuccessful.value}}
       @modelName="dwelling"
       @newRoute="building.edit.dwelling.new"
-      @removeLink={{this.removeDwelling}}
-      as |model|
+      @removeLink={{this.removeDwelling}} as |model|
     >
       <td class="uk-table-shrink">
         <LinkTo
@@ -21,9 +20,12 @@
         </LinkTo>
       </td>
       <td>
-        {{t
-          "ember-gwr.building.dwellings.entrance"
-          number=model.buildingEntranceNo
+        {{concat
+          (t
+            "ember-gwr.buildingEntrance.title"
+            address=model.buildingEntrance.EDID
+          ) " - "
+          model.buildingEntrance.fullAddressText
         }}
       </td>
       <td>
