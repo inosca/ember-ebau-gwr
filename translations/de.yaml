@@ -242,7 +242,7 @@ ember-gwr:
         importData: Importierte Daten
         apply: Übernehmen
         resolved: Alle Konflikte sind gelöst. Klicken Sie Speichern um die Änderungen zu übernehmen!
-        cancel: Abbrechen
+        cancel: Verwerfen
 
       project:
         title: Bauprojekt {id}
