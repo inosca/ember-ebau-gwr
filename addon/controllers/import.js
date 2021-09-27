@@ -52,6 +52,8 @@ export default class ImportController extends Controller {
   @lastValue("fetchCalumaData") importData;
   @task
   *fetchCalumaData(...args) {
+    // Reset query params to clear singleton state
+    this.resetImport();
     assert(
       "Must set `importModelName` to a string.",
       typeof this.importModelName === "string"
