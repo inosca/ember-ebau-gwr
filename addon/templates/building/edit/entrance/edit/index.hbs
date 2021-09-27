@@ -9,7 +9,6 @@
       @validations={{this.BuildingEntranceValidations}}
       @onSubmit={{this.saveBuildingEntrance}}
       @translationBase="ember-gwr.buildingEntrance.fields"
-      @disabled={{not this.buildingEntrance.street.ESID}}
       @errors={{this.errors}}
       @headerModel={{this.buildingEntrance}}
       @headerModelId={{this.buildingEntrance.EDID}}
@@ -18,6 +17,7 @@
       @headerModelName="entrance"
       @hasStatus={{false}}
       @import={{this.import}}
+      @disabled={{this.hasNoStreet}}
       as |Field|
     >
       {{#unless this.buildingEntrance.isNew}}
@@ -28,55 +28,82 @@
         @attr="locality.name.nameLong"
         @required={{true}}
         @disabled={{not this.buildingEntrance.isNew}}
-        @hint={{t "ember-gwr.components.linkStreet.localityHint"}}
+      />
+      <Field
+        @attr="locality.swissZipCode"
+        @type="number"
+        @disabled={{not this.buildingEntrance.isNew}}
+        @required={{true}}
       />
       {{#unless this.buildingEntrance.isNew}}
-        <Field
-          @attr="locality.swissZipCode"
-          @type="number"
-          @disabled={{not this.buildingEntrance.isNew}}
-        />
         <Field
           @attr="locality.swissZipCodeAddOn"
           @type="number"
           @disabled={{not this.buildingEntrance.isNew}}
         />
       {{/unless}}
-
-      <Field @attr="buildingEntranceNo" />
-      <Field @attr="isOfficialAddress" @type="checkbox" />
-
-      <h3>{{t "ember-gwr.buildingEntrance.coordinates"}}</h3>
-      <Field
-        @attr="coordinates.north"
-        @type="number"
-        @step="0.001"
-        @min="1070000.0"
-        @max="1300000.999"
-        @disabled={{true}}
-      />
-      <Field
-        @attr="coordinates.east"
-        @type="number"
-        @step="0.001"
-        @min="2480000.0"
-        @max="2840000.999"
-        @disabled={{true}}
-      />
-      <Field
-        @attr="coordinates.originOfCoordinates"
-        @type="select"
-        @convertValueTo="number"
-        @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
-        @disabled={{true}}
-      />
-
-      <LinkStreet 
-        @fieldComponent={{Field}} 
-        @buildingEntrance={{this.buildingEntrance}} 
-        @translationBase="ember-gwr.buildingEntrance.fields"
-      />
-
+      {{!-- API rejects any modification of the buildingEntranceNo or isOfficial
+        fields on building entrances that are not linked to a street. --}}
+      <div
+        uk-tooltip="title: {{if
+            this.hasNoStreet
+            (t "ember-gwr.buildingEntrance.missingStreetInfo")
+          }}
+          ; container:
+          {{this.config.modalContainer}}; pos: top-left"
+      >
+        <Field
+          @attr="buildingEntranceNo"
+          @disabled={{this.hasNoStreet}}
+        />
+      </div>
+      <div
+        uk-tooltip="title: {{if
+            this.hasNoStreet
+            (t "ember-gwr.buildingEntrance.missingStreetInfo")
+          }}
+          ; container:
+          {{this.config.modalContainer}}; pos: top-left"
+      >
+        <Field 
+          @attr="isOfficialAddress" 
+          @type="checkbox" 
+          @disabled={{this.hasNoStreet}} 
+        />
+      </div>
+      {{#unless this.buildingEntrance.isNew}}
+        <h3>
+          {{t "ember-gwr.buildingEntrance.coordinates"}}
+        </h3>
+        <Field
+          @attr="coordinates.north"
+          @type="number"
+          @step="0.001"
+          @min="1070000.0"
+          @max="1300000.999"
+          @disabled={{true}}
+        />
+        <Field
+          @attr="coordinates.east"
+          @type="number"
+          @step="0.001"
+          @min="2480000.0"
+          @max="2840000.999"
+          @disabled={{true}}
+        />
+        <Field
+          @attr="coordinates.originOfCoordinates"
+          @type="select"
+          @convertValueTo="number"
+          @gwrEnumOptions={{this.Models.Coordinates.originOfCoordinatesOptions}}
+          @disabled={{true}}
+        />
+        <LinkStreet
+          @fieldComponent={{Field}}
+          @buildingEntrance={{this.buildingEntrance}}
+          @translationBase="ember-gwr.buildingEntrance.fields"
+        />
+      {{/unless}}
     </ModelForm>
   {{/if}}
 </div>

@@ -10,14 +10,16 @@ export default class BuildingEditEntranceLinkStreetRoute extends Route {
   }
 
   afterModel(model) {
-    if (model.buildingId === "new" && !this.building.newRecord) {
+    if (model.buildingId === "new") {
       this.transitionTo("building.new");
-    } else if (
-      model.entranceId === "new" &&
-      model.buildingId !== "new" &&
-      !this.buildingEntrance.newRecord
-    ) {
+    } else if (model.entranceId === "new" && model.buildingId !== "new") {
       this.transitionTo("building.edit.entrance.new");
     }
+  }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    // Reset search results
+    controller.search.last = null;
   }
 }

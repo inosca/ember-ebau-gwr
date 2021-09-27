@@ -1,23 +1,91 @@
-{{#let @fieldComponent as |Field|}}
-  <div class="uk-flex uk-flex-between">
-    <span>
-      {{! this is needed since the h2 selector is * + h2}}
-      <span></span>
-      <h3>
-        {{t "ember-gwr.buildingEntrance.street"}}
-      </h3>
-    </span>
-    <span>
+{{#if this.fetchStreet.isRunning}}
+  <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+    <UkSpinner @ratio="3" />
+  </div>
+{{else}}
+  {{#let @fieldComponent as |Field|}}
+    {{#unless @buildingEntrance.street.isNew}}
+      <span>
+        {{! this is needed since the h2 selector is * + h2}}
+        <span></span>
+        <h3>
+          {{t "ember-gwr.buildingEntrance.street"}}
+        </h3>
+      </span>
+      <Field
+        @attr="street.ESID"
+        @disabled={{true}}
+        @translationBase={{@translationBase}}
+        @value={{@buildingEntrance.street.ESID}}
+        readonly
+      />
+      <Field
+        @attr="street.description.descriptionLong"
+        @disabled={{true}}
+        @translationBase={{@translationBase}}
+        @value={{@buildingEntrance.street.description.descriptionLong}}
+        readonly
+      />
+      <Field
+        @attr="locality.name.nameLong"
+        @disabled={{true}}
+        @value={{this.street.locality.name.nameLong}}
+      />
+      <Field
+        @attr="locality.swissZipCode"
+        @type="number"
+        @disabled={{true}}
+        @value={{this.street.locality.swissZipCode}}
+      />
+      <Field
+        @attr="locality.swissZipCodeAddOn"
+        @type="number"
+        @disabled={{true}}
+        @value={{this.street.locality.swissZipCodeAddOn}}
+      />
+
+      <Field
+        @attr="street.streetKind"
+        @type="select"
+        @gwrEnumOptions={{this.Street.streetKindOptions}}
+        @convertValueTo="number"
+        @disabled={{true}}
+        @translationBase={{@translationBase}}
+        @value={{@buildingEntrance.street.streetKind}}
+        readonly
+      />
+      <Field
+        @attr="street.officialStreetNumber"
+        @type="number"
+        @disabled={{true}}
+        @translationBase={{@translationBase}}
+        @value={{@buildingEntrance.street.officialStreetNumber}}
+        readonly
+      />
+      <Field
+        @attr="street.isOfficialDescription"
+        @type="checkbox"
+        @disabled={{true}}
+        @translationBase={{@translationBase}}
+        @value={{@buildingEntrance.street.isOfficialDescription}}
+        readonly
+      />
+    {{/unless}}
+    <div class="uk-flex-inline">
       <LinkTo
         class="uk-button
-          {{if @buildingEntrance.isNew "uk-button-primary" "uk-button-default"
+          {{if @buildingEntrance.street.isNew "uk-button-primary" "uk-button-default"
           }}"
         @route="building.edit.entrance.edit.link-street"
         @models={{or
           @routeModels
           (if @buildingEntrance.isNew (array "new") (array))
         }}
-        @query={{hash locality=@buildingEntrance.locality.name.nameLong}}
+        @query={{hash
+          locality=@buildingEntrance.locality.name.nameLong
+          PLZ4=@buildingEntrance.locality.swissZipCode
+          PLZ6=@buildingEntrance.locality.swissZipCodeAddOn
+        }}
         @disabled={{not @buildingEntrance.locality.name.nameLong}}
         uk-tooltip="title: {{unless
             @buildingEntrance.locality.name.nameLong
@@ -26,58 +94,12 @@
       >
         {{t
           (if
-            @buildingEntrance.isNew
+            @buildingEntrance.street.isNew
             "ember-gwr.components.linkStreet.link"
             "ember-gwr.components.linkStreet.change"
           )
         }}
       </LinkTo>
-    </span>
-  </div>
-  {{#if @buildingEntrance.street.isNew}}
-    <div uk-alert class="uk-alert-warning">
-      {{t "ember-gwr.components.linkStreet.streetHint"}}
     </div>
-  {{else}}
-    <Field
-      @attr="street.ESID"
-      @disabled={{true}}
-      @translationBase={{@translationBase}}
-      @value={{@buildingEntrance.street.ESID}}
-      readonly
-    />
-    <Field
-      @attr="street.description.descriptionLong"
-      @disabled={{true}}
-      @translationBase={{@translationBase}}
-      @value={{@buildingEntrance.street.description.descriptionLong}}
-      readonly
-    />
-    <Field
-      @attr="street.streetKind"
-      @type="select"
-      @gwrEnumOptions={{this.Street.streetKindOptions}}
-      @convertValueTo="number"
-      @disabled={{true}}
-      @translationBase={{@translationBase}}
-      @value={{@buildingEntrance.street.streetKind}}
-      readonly
-    />
-    <Field
-      @attr="street.officialStreetNumber"
-      @type="number"
-      @disabled={{true}}
-      @translationBase={{@translationBase}}
-      @value={{@buildingEntrance.street.officialStreetNumber}}
-      readonly
-    />
-    <Field
-      @attr="street.isOfficialDescription"
-      @type="checkbox"
-      @disabled={{true}}
-      @translationBase={{@translationBase}}
-      @value={{@buildingEntrance.street.isOfficialDescription}}
-      readonly
-    />
-  {{/if}}
-{{/let}}
+  {{/let}}
+{{/if}}

@@ -1,5 +1,4 @@
 import { inject as service } from "@ember/service";
-import { tracked } from "@glimmer/tracking";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
@@ -12,7 +11,6 @@ export default class BuildingService extends GwrService {
 
   cacheKey = "EGID";
   cacheClass = Building;
-  @tracked newRecord;
 
   async unbindBuildingFromConstructionProject(EPROID, EGID) {
     const response = await this.authFetch.fetch(
@@ -100,7 +98,7 @@ export default class BuildingService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
+      const errors = this.extractErrorsFromXML(xmlErrors, false);
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
 
@@ -110,7 +108,6 @@ export default class BuildingService extends GwrService {
       throw errors;
     }
 
-    this.newRecord = null;
     const xml = await response.text();
     return this.createAndCache(xml);
   }

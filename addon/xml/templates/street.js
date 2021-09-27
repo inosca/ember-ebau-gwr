@@ -8,12 +8,6 @@ export const getStreet =
         <ns2:descriptionLong>{{model.description.descriptionLong}}</ns2:descriptionLong>
       </ns2:description>
     {{/if}}
-    {{#if model.locality.name.nameLong}}
-      <ns2:locality>
-        <ns2:name>
-         <ns2:nameLong>{{model.locality.name.nameLong}}</ns2:nameLong>
-        </ns2:name>
-      </ns2:locality>
-    {{/if}}
+    {{> Locality model=model.locality}}
   </ns2:getStreet>
 {{/base}}`;

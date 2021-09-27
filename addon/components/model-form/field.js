@@ -104,4 +104,8 @@ export default class ModelFormFieldComponent extends Component {
       }
     }
   }
+
+  get value() {
+    return this.args.value ?? this.args.model?.[this.args.attr];
+  }
 }

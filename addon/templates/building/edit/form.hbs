@@ -144,35 +144,32 @@
 
 
       {{#if this.buildingWork.building.isNew}}
-        <h3>
+        <h3 class="uk-margin-remove-bottom">
           {{t "ember-gwr.building.buildingEntrance.mainEntrance"}}
         </h3>
-        {{#let
-          this.buildingWork.building.buildingEntrance
-           as |buildingEntrance|
-        }}
-          <Field
-            @attr="building.buildingEntrance.locality.name.nameLong"
-            @required={{true}}
-            @label="ember-gwr.buildingEntrance.fields.locality.name.nameLong"
-            @hint={{t "ember-gwr.components.linkStreet.localityHint"}}
-          />
-          <Field
-            @attr="building.buildingEntrance.buildingEntranceNo"
-            @label="ember-gwr.buildingEntrance.fields.buildingEntranceNo"
-          />
-          <Field
-            @attr="building.buildingEntrance.isOfficialAddress"
-            @type="checkbox" 
-            @label="ember-gwr.buildingEntrance.fields.isOfficialAddress"
-          />
-          <LinkStreet
-            @fieldComponent={{Field}}
-            @buildingEntrance={{buildingEntrance}}
-            @routeModels={{array "new" "new"}}
-            @translationBase="ember-gwr.buildingEntrance.fields"
-          />
-        {{/let}}
+        <small class="uk-margin-bottom">
+          {{t "ember-gwr.building.buildingEntrance.info"}}
+        </small>
+        <Field
+          @attr="building.buildingEntrance.locality.name.nameLong"
+          @required={{true}}
+          @label="ember-gwr.buildingEntrance.fields.locality.name.nameLong"
+        />
+        <Field
+          @attr="building.buildingEntrance.locality.swissZipCode"
+          @type="number"
+          @label="ember-gwr.buildingEntrance.fields.locality.swissZipCode"
+          @required={{true}}
+        />
+        <Field
+          @attr="building.buildingEntrance.buildingEntranceNo"
+          @label="ember-gwr.buildingEntrance.fields.buildingEntranceNo"
+        />
+        <Field
+          @attr="building.buildingEntrance.isOfficialAddress"
+          @type="checkbox"
+          @label="ember-gwr.buildingEntrance.fields.isOfficialAddress"
+        />
       {{/if}}
 
       <h3>

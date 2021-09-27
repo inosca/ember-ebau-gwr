@@ -62,7 +62,7 @@ export default class BuildingEntrance extends XMLModel {
   {{else}}
     <ns2:buildingEntrance>
       <ns2:EGAID>{{model.EGAID}}</ns2:EGAID>
-      <ns2:buildingEntranceNo>{{model.buildingEntranceNo}}</ns2:buildingEntranceNo>
+      {{{modelField model "buildingEntranceNo"}}}
       <ns2:isOfficialAddress>{{model.isOfficialAddress}}</ns2:isOfficialAddress>
       {{> Street model=model.street}}
       {{> Locality model=model.locality}}
@@ -72,4 +72,5 @@ export default class BuildingEntrance extends XMLModel {
 
   static DEACTIVATION_ERROR =
     "Cannot deactivate an entrance while active dwellings are still linked to it";
+  static LOCALITY_ERROR = "There is no link between Locality and Street";
 }

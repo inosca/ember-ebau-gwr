@@ -6,7 +6,7 @@ import { task, lastValue } from "ember-concurrency-decorators";
 import { languageOptions } from "ember-ebau-gwr/models/options";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
-  queryParams = ["locality"];
+  queryParams = ["locality", "PLZ4", "PLZ6"];
 
   @service street;
   @service buildingEntrance;
@@ -14,12 +14,18 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @service notification;
   @service intl;
 
+  // A locality is uniquely described by either
+  // locality name + PLZ4 or PLZ4 + PLZ6
   @tracked locality = null;
+  @tracked PLZ4 = null;
+  @tracked PLZ6 = null;
 
   get baseQuery() {
     return {
       description: {},
       locality: {
+        swissZipCode: this.PLZ4,
+        swissZipCodeAddOn: this.PLZ6,
         name: {
           nameLong: this.locality,
         },
@@ -33,7 +39,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
     }
 
     return `building.edit.entrance.${
-      this.buildingEntrance.newRecord ? "new" : "edit.index"
+      this.buildingEntrance.isNew ? "new" : "edit.index"
     }`;
   }
 
@@ -62,23 +68,18 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @action
   async setStreet(street) {
     try {
-      // check whether street is being set from new entrance form or new building form
-      if (this.buildingEntrance.newRecord && this.model.buildingId !== "new") {
-        this.buildingEntrance.newRecord.street = street;
-      } else if (this.building.newRecord) {
-        this.building.newRecord.building.buildingEntrance.street = street;
-      } else {
-        const entrance = await this.buildingEntrance.getFromCacheOrApi(
-          this.model.entranceId,
-          this.model.buildingId
-        );
-        await this.buildingEntrance.setStreet(
-          this.model.entranceId,
-          this.model.buildingId,
-          entrance.EGAID,
-          street
-        );
-      }
+      const entrance = await this.buildingEntrance.getFromCacheOrApi(
+        this.model.entranceId,
+        this.model.buildingId
+      );
+      entrance.street = street;
+      await this.buildingEntrance.setStreet(
+        this.model.entranceId,
+        this.model.buildingId,
+        entrance
+      );
+      // Ensure building entrance list is updated
+      this.building.clearCache(this.model.buildingId);
       this.transitionToRoute(this.backRoute);
       this.notification.success(
         this.intl.t("ember-gwr.components.linkStreet.linkSuccess")

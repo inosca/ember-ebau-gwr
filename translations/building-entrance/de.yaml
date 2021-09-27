@@ -8,8 +8,10 @@ ember-gwr:
     saveError: Beim Speichern des Eingangs ist ein Fehler aufgetreten.
     saveSuccess: Eingang erfolgreich gespeichert.
     loadingError: Beim Laden des Eingangs ist ein Fehler aufgetreten.
+    localityError: Beim Speichern der Ortschaft ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Angaben.
     street: Strasse
     coordinates: Koordinaten
+    missingStreetInfo: Bitte verknüpfen Sie zuerst eine Strasse.
 
     fields:
       EDID: EDID

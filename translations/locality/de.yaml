@@ -3,3 +3,5 @@ ember-gwr:
     # Model Fields
     name:
       nameLong: Ortsname
+    swissZipCode: Postleitzahl
+    swissZipCodeAddOn: Postleitzahl-Zusatzziffer
