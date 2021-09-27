@@ -5,11 +5,12 @@ import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
+import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends ImportController {
   Models = Models;
-  BuildingWorkValidations = buildingWorkValidation(false);
+  BuildingEntrance = BuildingEntrance;
 
   importModelName = "building";
 
@@ -19,6 +20,7 @@ export default class BuildingFormController extends ImportController {
   @service intl;
   @service notification;
 
+  @tracked BuildingWorkValidations;
   @tracked errors;
 
   get buildingStatusOptions() {
@@ -38,9 +40,13 @@ export default class BuildingFormController extends ImportController {
     try {
       this.errors = [];
       this.fetchCalumaData.perform();
+      this.BuildingWorkValidations = buildingWorkValidation(
+        this.model.buildingWork?.isNew
+      );
+      yield this.fetchBuilding.perform();
 
       if (this.model.buildingWork?.isNew) {
-        return this.buildingAPI.newRecord ?? this.model.buildingWork;
+        return this.model.buildingWork;
       }
 
       const project = yield this.constructionProject.getFromCacheOrApi(
@@ -124,7 +130,13 @@ export default class BuildingFormController extends ImportController {
       this.transitionToRoute("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
-      this.errors = error;
+      // Throw specific error message for
+      // mismatched locality - zip code errors
+      this.errors =
+        error[0] === this.BuildingEntrance.LOCALITY_ERROR
+          ? [this.intl.t("ember-gwr.building.buildingEntrance.localityError")]
+          : error;
+
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
     }
   }

@@ -312,7 +312,6 @@ ember-gwr:
       linkSuccess: Strasse erfolgreich verknüpft.
       linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
       streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
-      localityHint: Der Ortsname des Eingangs und der Strasse müssen übereinstimmen.
 
     importModal:
       selectImportData: Importdaten auswählen

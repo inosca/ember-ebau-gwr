@@ -16,7 +16,7 @@
       <InputField
         @attr={{@attr}}
         @required={{@required}}
-        @value={{or @value (get @project @attr)}}
+        @value={{this.value}}
         @options={{@options}}
         @noPlaceholder={{@noPlaceholder}}
         @update={{fn (or @update this.updateProjectField) @attr}}

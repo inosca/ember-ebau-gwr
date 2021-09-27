@@ -37,6 +37,7 @@ export default class Street extends XMLModel {
   @tracked streetStatus;
   @tracked streetGeometry;
   @tracked description = new StreetDescription();
+  @tracked locality = new Locality();
 
   constructor(xmlOrObject, root = "street") {
     super(xmlOrObject);
@@ -50,6 +51,7 @@ export default class Street extends XMLModel {
         streetStatus: Number,
         streetGeometry: String,
         description: StreetDescription,
+        locality: Locality,
       },
     });
   }
@@ -59,6 +61,7 @@ export default class Street extends XMLModel {
       <ns2:street>
         <ns2:ESID>{{model.ESID}}</ns2:ESID>
         {{> StreetDescription model=model.description}}
+        {{!> Locality model=model.locality}}
         <ns2:streetGeometry>{{model.streetGeometry}}</ns2:streetGeometry>
         {{#if model.officialStreetNumber}}
           <ns2:officialStreetNumber>{{model.officialStreetNumber}}</ns2:officialStreetNumber>

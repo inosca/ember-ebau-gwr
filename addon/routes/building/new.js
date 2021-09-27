@@ -1,10 +1,7 @@
 import { inject as service } from "@ember/service";
-import Changeset from "ember-changeset";
-import lookupValidator from "ember-changeset-validations";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import municipalities from "ember-ebau-gwr/models/municipalities";
-import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 import BuildingFormRoute from "./edit/form";
 
@@ -33,16 +30,6 @@ export default class BuildingNewRoute extends BuildingFormRoute {
     // Generate a editable first building entrance for new buildings
     // to prevent having to generate a dummy entrance
     buildingWork.building.buildingEntrance = new BuildingEntrance();
-
-    // Reuse changeset if already exists, otherwise changes on building
-    // are lost after setting street
-    if (!this.building.newRecord) {
-      this.building.newRecord = new Changeset(
-        buildingWork,
-        lookupValidator(buildingWorkValidation(true)),
-        buildingWorkValidation(true)
-      );
-    }
 
     model.buildingWork = buildingWork;
     return model;

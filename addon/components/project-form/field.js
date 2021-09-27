@@ -48,4 +48,8 @@ export default class ProjectFormFieldComponent extends Component {
       }
     }
   }
+
+  get value() {
+    return this.args.value ?? this.args.project?.[this.args.attr];
+  }
 }

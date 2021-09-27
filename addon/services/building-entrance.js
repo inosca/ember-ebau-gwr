@@ -1,13 +1,10 @@
 import { inject as service } from "@ember/service";
-import { tracked } from "@glimmer/tracking";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 
 import GwrService from "./gwr";
 
 export default class BuildingEntranceService extends GwrService {
   @service building;
-
-  @tracked newRecord;
 
   cacheKey(buildingEntrance) {
     return `${buildingEntrance.EGAID}-${buildingEntrance.EDID}`;
@@ -67,7 +64,7 @@ export default class BuildingEntranceService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
+      const errors = this.extractErrorsFromXML(xmlErrors, false);
 
       console.error("GWR API: addBuildingEntrance failed");
       throw errors;
@@ -77,7 +74,6 @@ export default class BuildingEntranceService extends GwrService {
     /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
     await this.building.get(EGID);
 
-    this.newRecord = null;
     const xml = await response.text();
     return this.createAndCache(xml);
   }
@@ -107,10 +103,10 @@ export default class BuildingEntranceService extends GwrService {
     await this.building.get(EGID);
   }
 
-  async setStreet(EDID, EGID, EGAID, street) {
+  async setStreet(EDID, EGID, buildingEntrance) {
     const body = this.xml.buildXMLRequest(
-      "setStreet",
-      { EGAID, street },
+      "modifyBuildingEntrance",
+      buildingEntrance,
       "Set street"
     );
     const response = await this.authFetch.fetch(

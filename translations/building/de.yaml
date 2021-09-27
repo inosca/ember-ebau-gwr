@@ -281,5 +281,7 @@ ember-gwr:
 
     buildingEntrance:
       mainEntrance: Haupteingang
-      info: Sie können nach der Erstellung des Gebäudes weitere Eingänge hinzufügen.
+      info: Nach der Erstellung des Gebäudes können weitere Eingänge hinzugefügt werden und die Strassen der Eingänge bearbeitet werden.
+      localityError: Beim Speichern der Ortschaft des Haupteingangs ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Angaben.
+
 

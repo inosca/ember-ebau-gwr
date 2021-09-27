@@ -12,21 +12,41 @@
   @baseQuery={{this.baseQuery}}
   as |Field|
 >
-  <div class="uk-flex uk-flex-wrap uk-flex-between">
-    <div class="uk-width-1-2@m uk-width-1">
-      <div class="uk-margin-small-right">
-        <Field
-          @attr="description.descriptionLong"
-          @translationBase="ember-gwr.street"
+  <div class="uk-flex uk-flex-column uk-flex-wrap">
+    <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
+      <div class="uk-width-expand uk-width-1">
+        <div class="uk-margin-right">
+          <Field 
+            @attr="locality.name.nameLong" 
+            @translationBase="ember-gwr" 
+            @disabled={{true}} 
+            @value={{this.locality}}
+          />
+        </div>
+      </div>
+      <div class="uk-width-small uk-width-1">
+        <div class="uk-margin-right">
+          <Field 
+            @attr="locality.swissZipCode" 
+            @translationBase="ember-gwr" 
+            @disabled={{true}} 
+            @value={{this.PLZ4}}
+          />
+        </div>
+      </div>
+      <div class="uk-width-small uk-width-1">
+        <Field 
+          @attr="locality.swissZipCodeAddOn" 
+          @translationBase="ember-gwr" 
+          @disabled={{true}} 
+          @value={{this.PLZ6}}
         />
       </div>
     </div>
-    <div class="uk-width-1-2@m uk-width-1">
-      <Field 
-        @attr="locality.name.nameLong" 
-        @translationBase="ember-gwr" 
-        @disabled={{true}} 
-        @value={{this.locality}}
+    <div class="uk-width-expand uk-width-1">
+      <Field
+        @attr="description.descriptionLong"
+        @translationBase="ember-gwr.street"
       />
     </div>
   </div>
@@ -42,7 +62,9 @@
     <Search::ResultTable::Head as |Header|>
       <Header class="uk-table-shrink" @label={{t "ember-gwr.street.ESID"}} />
       <Header @label={{t "ember-gwr.street.description.descriptionLong"}} />
-      <Header @label={{t "ember-gwr.locality.name.nameLong"}} />
+      <Header class="uk-table-shrink" @label={{t "ember-gwr.locality.name.nameLong"}} />
+      <Header class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCode"}} />
+      <Header class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCodeAddOn"}} />
     </Search::ResultTable::Head>
     <Row as |Field model|>
       <Field @attr="ESID" as |value|>
@@ -56,6 +78,8 @@
       </Field>
       <Field @attr="description.descriptionLong" />
       <Field @attr="locality.name.nameLong" />
+      <Field @attr="locality.swissZipCode" />
+      <Field @attr="locality.swissZipCodeAddOn" />
     </Row>
   </Search::ResultTable>
 {{/if}}
