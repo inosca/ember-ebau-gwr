@@ -56,6 +56,15 @@ export default class BuildingEditDwellingEditController extends ImportController
     }
   }
 
+  get entranceOptions() {
+    return this.entrances.map((entrance) => ({
+      EDID: entrance.EDID,
+      label: `${this.intl.t("ember-gwr.buildingEntrance.title", {
+        address: entrance.EDID,
+      })} - ${entrance.fullAddressText}`,
+    }));
+  }
+
   @lastValue("fetchEntrances") entrances;
   @task
   *fetchEntrances() {

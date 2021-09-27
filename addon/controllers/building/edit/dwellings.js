@@ -15,7 +15,7 @@ export default class BuildingEditDwellingsController extends Controller {
       const building = yield this.building.getFromCacheOrApi(this.model);
       return building.buildingEntrance.flatMap((entrance) =>
         entrance.dwelling.map((dwelling) => {
-          dwelling.buildingEntranceNo = entrance.buildingEntranceNo;
+          dwelling.buildingEntrance = entrance;
           return dwelling;
         })
       );
