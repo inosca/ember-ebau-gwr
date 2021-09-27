@@ -22,7 +22,7 @@
           type="button"
           {{on "click" @importAllData}}
         >
-          {{t "ember-gwr.components.projectForm.applyAll"}}
+          {{t "ember-gwr.components.modelForm.applyAll"}}
         </button>
         {{#if (and @import @import.originalData.length)}}
           <button
@@ -84,7 +84,7 @@
                   {{if @import "uk-text-muted" "uk-text-secondary"}}
                   uk-width-1-1 uk-background-default uk-padding-remove"
               >
-                {{t "ember-gwr.components.projectForm.importFromCaluma"}}
+                {{t "ember-gwr.components.modelForm.importFromCaluma"}}
               </LinkTo>
             </li>
           {{/if}}
