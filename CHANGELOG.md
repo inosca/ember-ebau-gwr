@@ -1,3 +1,42 @@
+# [3.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.7.1...v3.0.0) (2021-09-28)
+
+
+### Bug Fixes
+
+* **building:** add default building entrance and street validation ([74b1a5b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/74b1a5b13e713e63785a7eb27a2ccba7d22095d9))
+* **building:** make default building entrance editable ([1ca2c4e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1ca2c4e1550da378ac6768c60ebca94f119ed711))
+* **controllers/import:** reset query params while fetching caluma data ([d56ac06](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d56ac06657cd8db3637e6db7c60f29850a787d61))
+* **data-import:** pass instanceId to import functions ([eacdc4f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/eacdc4fbfd9aabd61a744cb7daf9723cb9ff76ed))
+* **import:** ignore null values in import data ([ab7df83](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ab7df83431bab62c0c2edf8b3d5850ce2ff18956))
+* **model-form:** ensure date values are reset on model update ([b73d6a5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b73d6a5dafd6984ebba548abc7e68c67734d74a1))
+* **project:** correct confirmation dialog modal container ([1bd5be9](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1bd5be949225d6d07dfa0670cac3238f5e901a61))
+* **project:** fix client identification template ([9c50743](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/9c50743c069d2a6b21cf0a1ba3f8a9dc2f9e317f))
+* **project:** replace non-realisation date with cancellation date ([bca5f83](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bca5f83ca15f5a5311a86471a9ce9144a31e3bf0))
+* **project/new:** extend new route from form route ([e2837d3](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e2837d3825369033bf14b8e876b9bacddf7b7449))
+* **translations:** use a conciser word for cancel to reject a import value ([1ea1a8e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1ea1a8eb8dcd64e0ffa295784c992d63d2365a1d))
+* **ui:** render tooltips in correct application container ([65f5265](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/65f5265ce8b010fb13933bc808b8cb510272feb0))
+
+
+### Code Refactoring
+
+* **modal-container:** make the modal container configurable via config-service ([328fdd8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/328fdd8e4753cfe41d2d2b5e5c0d49bb931b18de))
+
+
+### Features
+
+* **building:** enable building entrance deactivation ([6840c4a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6840c4a1ab8a913259c8dca976d620340d372047))
+* add import for buildings, entrances & dwellings ([9c80eca](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/9c80eca2d75e154232a4c74b8fb6616bb77c4fff))
+* **import:** implement import-modal for dwelling, entrances and buildings ([10db43c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/10db43ce61e195191f5b02b43c811facaf476826))
+
+
+### BREAKING CHANGES
+
+* **modal-container:** To keep the previous behavior of modals, `modalContainer` now needs to be set to a
+valid dom-selector in the gwr config service.
+
+Example:
+`modalContainer = "#my-modal-div"`
+
 ## [2.7.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.7.0...v2.7.1) (2021-09-13)
 
 
