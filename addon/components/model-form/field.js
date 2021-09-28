@@ -19,7 +19,7 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get value() {
-    return get(this.args.model, this.args.attr);
+    return this.args.value ?? get(this.args.model, this.args.attr);
   }
 
   get importValue() {
@@ -103,9 +103,5 @@ export default class ModelFormFieldComponent extends Component {
         this.args.resolveDiff(this.args.attr);
       }
     }
-  }
-
-  get value() {
-    return this.args.value ?? this.args.model?.[this.args.attr];
   }
 }
