@@ -50,12 +50,17 @@ ember-gwr:
         address:
           street: Strasse
           houseNumber: Nummer
-          swissZipCode: PLZ
+          swissZipCode: Postleitzahl
+          swissZipCodeAddOn: Postleitzahl-Zusatzziffer
+          addressLine2: Ausländische Ortschaft der Auftraggeber
+          addressLine2Hint: Bitte Postleitzahl und Ortschaft angeben.
           town: Stadt
-          country: Land
-          countryPlaceholder: Wählen Sie ein Land...
-          countryOptions:
-            ch: Schweiz
+          country: 
+            countryNameShort: Land
+            countryNameShortOptions:
+              ch: Schweiz
+              de: Deutschland
+            countryNameShortPlaceholder: Wählen Sie ein Land...
 
       typeOfConstructionProject: Bauprojekttyp
       typeOfConstructionProjectPlaceholder: Wählen Sie einen Bauprojekttyp...

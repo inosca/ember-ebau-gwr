@@ -116,7 +116,7 @@ export const projectStatusOptions = [
   6709,
 ];
 
-export const countryOptions = ["ch"];
+export const countryOptions = ["ch", "de"];
 
 export const languageOptions = { de: 9901, fr: 9903, it: 9904 };
 

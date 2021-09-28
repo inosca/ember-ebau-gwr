@@ -1,4 +1,4 @@
-import Address from "./models/address";
+import Address, { Country } from "./models/address";
 import Building, { Volume } from "./models/building";
 import BuildingEntrance from "./models/building-entrance";
 import BuildingWork from "./models/building-work";
@@ -27,6 +27,7 @@ export default {
   Coordinates,
   ConstructionProject,
   ConstructionProjectsList,
+  Country,
   Building,
   Volume,
   BuildingsList,
