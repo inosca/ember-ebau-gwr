@@ -58,6 +58,13 @@ export default class ImportController extends Controller {
       "Must set `importModelName` to a string.",
       typeof this.importModelName === "string"
     );
-    return yield this.dataImport[IMPORT_MAP[this.importModelName]](...args);
+    assert(
+      "Must set `instanceId` on model.",
+      this.model.instanceId !== null && this.model.instanceId !== undefined
+    );
+    return yield this.dataImport[IMPORT_MAP[this.importModelName]](
+      this.model.instanceId,
+      ...args
+    );
   }
 }
