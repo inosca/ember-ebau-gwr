@@ -5,6 +5,7 @@ export default class GwrConfigService extends Service {
   cantonAbbreviation = "SZ";
   gwrAPI = "http://localhost:8010/proxy/regbl/api/ech0216/2";
   modalContainer = "#modal-container";
+  housingStatLink = "https://www-r.housing-stat.ch";
 
   get authToken() {
     return "token";
