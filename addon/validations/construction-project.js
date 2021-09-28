@@ -44,12 +44,27 @@ export default {
   ],
   typeOfClient: [validatePresence(true)],
   client: {
+    address: {
+      country: {
+        countryNameShort: validatePresence({
+          presence: true,
+          on: [
+            "client.identification.organisationIdentification.organisationName",
+            "client.identification.personIdentification.officialName",
+          ],
+        }),
+      },
+    },
     identification: {
-      organisationIdentification: {
-        localOrganisationId: {
-          organisationIdCategory: [validateLength({ max: 20 })],
-          organisationId: [validateLength({ min: 1, max: 36 })],
-        },
+      personIdentification: {
+        officialName: validatePresence({
+          presence: true,
+          on: "client.identification.personIdentification.firstName",
+        }),
+        firstName: validatePresence({
+          presence: true,
+          on: "client.identification.personIdentification.officialName",
+        }),
       },
     },
   },

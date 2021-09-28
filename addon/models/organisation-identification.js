@@ -17,9 +17,12 @@ export class LocalOrganisationId extends XMLModel {
   }
 
   static template = `
+  {{!--TODO: Dummy values to prevent API errors. The API ignores whatever values
+    are entered and returns N/A. But throws an error if localOrganisationId isn't sent.
+    Remove once no longer required by API--}}
   <ns3:localOrganisationId>
-    <ns3:organisationIdCategory>{{model.organisationIdCategory}}</ns3:organisationIdCategory>
-    <ns3:organisationId>{{model.organisationId}}</ns3:organisationId>
+    <ns3:organisationIdCategory>-</ns3:organisationIdCategory>
+    <ns3:organisationId>-</ns3:organisationId>
   </ns3:localOrganisationId>
   `;
 }
@@ -46,7 +49,7 @@ export default class OrganisationIdentification extends XMLModel {
     {{> LocalOrganisationId model=model.localOrganisationId}}
 
     <ns3:organisationName>{{model.organisationName}}</ns3:organisationName>
-    <ns3:organisationAdditionalName>{{model.organisationAdditionalName}}</ns3:organisationAdditionalName>
+    {{{modelField model "organisationAdditionalName" namespace="ns3:"}}}
   </organisationIdentification>
   `;
 }

@@ -260,21 +260,6 @@
             />
           </div>
         </div>
-        <div class="uk-flex uk-margin">
-          <div class="uk-width-1-6">
-            <Field
-              @attr="client.identification.organisationIdentification.localOrganisationId.organisationIdCategory"
-              @noMargin={{true}}
-            />
-          </div>
-          <div class="uk-width-5-6 uk-margin-small-left">
-            <Field
-              @attr="client.identification.organisationIdentification.localOrganisationId.organisationId"
-              @noMargin={{true}}
-              @placeholder="100.200.300"
-            />
-          </div>
-        </div>
       {{else}}
         <div class="uk-flex uk-margin">
           <div class="uk-width-1-2 uk-margin-small-right">
@@ -303,21 +288,32 @@
           />
         </div>
       </div>
-      <div class="{{unless this.import "uk-flex"}} uk-margin">
-        <div class={{if this.import "uk-margin" "uk-width-1-6"}}>
-          <Field
-            @type="number"
-            @attr="client.address.swissZipCode"
-            @noMargin={{true}}
-          />
+      {{#if (eq changeset.client.address.country.countryNameShort "ch")}}
+        <div class="{{unless this.import "uk-flex"}} uk-margin">
+          <div class={{if this.import "uk-margin" "uk-width-1-2 uk-margin-small-right"}}>
+            <Field
+              @type="number"
+              @attr="client.address.swissZipCode"
+              @noMargin={{true}}
+            />
+          </div>
+          <div class={{if this.import "uk-margin" "uk-width-1-2"}}>
+            <Field
+              @type="number"
+              @attr="client.address.swissZipCodeAddOn"
+              @noMargin={{true}}
+            />
+          </div>
         </div>
-        <div class={{unless this.import "uk-width-5-6 uk-margin-small-left"}}>
-          <Field @attr="client.address.town" @noMargin={{true}} />
-        </div>
-      </div>
+      {{else if changeset.client.address.country.countryNameShort}}
+        <Field 
+          @attr="client.address.addressLine2" 
+          @noMargin={{true}} 
+          @hint={{t "ember-gwr.constructionProject.fields.client.address.addressLine2Hint"}}/>
+      {{/if}}
       <Field
         @inputType="select"
-        @attr="client.address.country"
+        @attr="client.address.country.countryNameShort"
         @gwrEnumOptions={{this.choiceOptions.countryOptions}}
       />
 
