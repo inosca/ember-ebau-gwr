@@ -1,8 +1,9 @@
-import Route from "@ember/routing/route";
 import { inject as service } from "@ember/service";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 
-export default class ProjectNewRoute extends Route {
+import FormRoute from "./form";
+
+export default class ProjectNewRoute extends FormRoute {
   @service constructionProject;
   @service config;
 
