@@ -4,14 +4,12 @@ import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
-import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import BuildingEntranceValidations from "ember-ebau-gwr/validations/building-entrance";
 
 export default class BuildingEditEntranceEditIndexController extends ImportController {
   importModelName = "buildingEntrance";
   Models = Models;
   BuildingEntranceValidations = BuildingEntranceValidations;
-  BuildingEntrance = BuildingEntrance;
 
   @service("building-entrance") buildingEntranceAPI;
   @service building;
@@ -77,13 +75,7 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
         this.intl.t("ember-gwr.buildingEntrance.saveSuccess")
       );
     } catch (error) {
-      // Throw specific error message for
-      // mismatched locality - zip code errors
-      this.errors =
-        error[0] === this.BuildingEntrance.LOCALITY_ERROR
-          ? [this.intl.t("ember-gwr.buildingEntrance.localityError")]
-          : error;
-
+      this.errors = error;
       this.notification.danger(
         this.intl.t("ember-gwr.buildingEntrance.saveError")
       );

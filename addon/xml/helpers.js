@@ -9,10 +9,6 @@ export function echDate(date) {
     : date;
 }
 
-export function not(a) {
-  return !a;
-}
-
 export function or(...args) {
   // The last element in args is the helper definition past by handlebars
   // So we dont want to compare this.
@@ -21,6 +17,10 @@ export function or(...args) {
 
 export function eq(a, b) {
   return a === b;
+}
+
+export function notEq(a, b) {
+  return a !== b;
 }
 
 export function and(...args) {

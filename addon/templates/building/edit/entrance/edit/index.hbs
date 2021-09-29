@@ -56,15 +56,6 @@
           @attr="buildingEntranceNo"
           @disabled={{this.hasNoStreet}}
         />
-      </div>
-      <div
-        uk-tooltip="title: {{if
-            this.hasNoStreet
-            (t "ember-gwr.buildingEntrance.missingStreetInfo")
-          }}
-          ; container:
-          {{this.config.modalContainer}}; pos: top-left"
-      >
         <Field 
           @attr="isOfficialAddress" 
           @type="checkbox" 

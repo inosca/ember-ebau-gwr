@@ -5,12 +5,10 @@ import { task, dropTask, lastValue } from "ember-concurrency-decorators";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
-import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
 
 export default class BuildingFormController extends ImportController {
   Models = Models;
-  BuildingEntrance = BuildingEntrance;
 
   importModelName = "building";
 
@@ -130,13 +128,7 @@ export default class BuildingFormController extends ImportController {
       this.transitionToRoute("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
-      // Throw specific error message for
-      // mismatched locality - zip code errors
-      this.errors =
-        error[0] === this.BuildingEntrance.LOCALITY_ERROR
-          ? [this.intl.t("ember-gwr.building.buildingEntrance.localityError")]
-          : error;
-
+      this.errors = error;
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
     }
   }

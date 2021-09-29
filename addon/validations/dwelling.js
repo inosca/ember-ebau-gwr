@@ -15,7 +15,6 @@ const yearValidation = {
 };
 
 export default {
-  //floor: [validatePresence(true), validateNumber({ gte: 3100 })],
   floorType: validatePresence(true),
   floorNumber: [
     validatePresenceState({

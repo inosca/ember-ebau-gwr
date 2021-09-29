@@ -47,16 +47,18 @@ export default class BuildingEntrance extends XMLModel {
   }
 
   get fullAddressText() {
+    const isSet = (value) => value || value === 0;
+
     const { street, buildingEntranceNo, locality } = this;
     const streetText = [street?.description.descriptionLong, buildingEntranceNo]
-      .filter((v) => v || v === 0)
+      .filter(isSet)
       .join(" ");
 
     const localityText = [locality.swissZipCode, locality.name.nameLong]
-      .filter((v) => v || v === 0)
+      .filter(isSet)
       .join(" ");
 
-    return [streetText, localityText].filter((v) => v || v === 0).join(", ");
+    return [streetText, localityText].filter(isSet).join(", ");
   }
 
   static template = `
