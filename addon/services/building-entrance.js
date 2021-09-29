@@ -4,6 +4,8 @@ import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import GwrService from "./gwr";
 
 export default class BuildingEntranceService extends GwrService {
+  BuildingEntrance = BuildingEntrance;
+
   @service building;
 
   cacheKey(buildingEntrance) {
@@ -64,7 +66,13 @@ export default class BuildingEntranceService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors, false);
+      // Throw specific error message for
+      // mismatched locality - zip code errors
+      const errors = this.extractErrorsFromXML(
+        xmlErrors,
+        this.BuildingEntrance.LOCALITY_ERROR,
+        this.intl.t("ember-gwr.buildingEntrance.localityError")
+      );
 
       console.error("GWR API: addBuildingEntrance failed");
       throw errors;

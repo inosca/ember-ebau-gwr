@@ -1,11 +1,14 @@
 import { inject as service } from "@ember/service";
 import Building from "ember-ebau-gwr/models/building";
+import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 import BuildingsList from "ember-ebau-gwr/models/buildings-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
 
 import GwrService from "./gwr";
 
 export default class BuildingService extends GwrService {
+  BuildingEntrance = BuildingEntrance;
+
   @service constructionProject;
   @service dwelling;
 
@@ -98,7 +101,13 @@ export default class BuildingService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors, false);
+      // Throw specific error message for
+      // mismatched locality - zip code errors
+      const errors = this.extractErrorsFromXML(
+        xmlErrors,
+        this.BuildingEntrance.LOCALITY_ERROR,
+        this.intl.t("ember-gwr.building.buildingEntrance.localityError")
+      );
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
 

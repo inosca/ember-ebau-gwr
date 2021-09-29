@@ -47,7 +47,7 @@ export default class Address extends XMLModel {
 
   static template = `
   <address>
-    {{#if (not (eq model.country.countryNameShort "ch"))}}
+    {{#if (notEq model.country.countryNameShort "ch")}}
       {{{modelField model "addressLine2" namespace="ns5:"}}}
     {{/if}}
     <ns5:street>{{model.street}}</ns5:street>

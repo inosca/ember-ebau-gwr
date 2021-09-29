@@ -1,17 +1,27 @@
-import { validateNumber } from "ember-changeset-validations/validators";
+import {
+  validateNumber,
+  validateInclusion,
+} from "ember-changeset-validations/validators";
 
 export default function validateRangeState({ range, on, states } = {}) {
   return (key, newValue, oldValue, changes, content) => {
-    const dependentField = changes[on] ?? content[on];
-    if (!states.includes(dependentField)) {
+    const inclusionValidator = validateInclusion({ list: states });
+    const isIncluded = inclusionValidator(
+      on,
+      changes[on] ?? content[on],
+      content[on],
+      changes,
+      content
+    );
+    if (isIncluded !== true) {
       return true;
     }
 
-    const validator = validateNumber({
+    const numberValidator = validateNumber({
       gte: range[0],
       lte: range[1],
       allowString: true,
     });
-    return validator(key, newValue, oldValue, changes, content);
+    return numberValidator(key, newValue, oldValue, changes, content);
   };
 }
