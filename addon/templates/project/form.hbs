@@ -62,7 +62,7 @@
         @attr="typeOfConstructionProject"
         @gwrEnumOptions={{this.choiceOptions.typeOfConstructionProjectOptions}}
         @on-update={{fn (mut this.typeOfConstructionProject)}}
-        @hint={{"Für Tiefbauprojekte sind keine Gebäude zugelassen."}}
+        @hint={{t "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"}}
       />
 
       {{#if (eq this.typeOfConstructionProject 6010)}}
