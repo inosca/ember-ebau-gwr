@@ -19,23 +19,27 @@
         <hr class="uk-margin-remove" />
         <div
           uk-alert
-          class="uk-flex uk-flex-between uk-flex-middle uk-margin-remove"
+          class="uk-margin-remove"
         >
-          <span class="uk-flex uk-flex-middle">
-            <span uk-icon="icon: info" class="uk-margin-small-right"></span>
-            <span>
-              {{t "ember-gwr.nav.housingStatInfo"}}
+          <div class="uk-flex uk-flex-between uk-flex-middle">
+            <span class="uk-flex-inline uk-flex-middle">
+              <span uk-icon="icon: info" class="uk-margin-small-right"></span>
+              <span>
+                {{t "ember-gwr.nav.housingStatInfo"}}
+              </span>
             </span>
-          </span>
-          <a
-            class="uk-button uk-button-default"
-            {{! TODO make this configurable}}
-            href={{this.config.housingStatLink}}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{t "ember-gwr.nav.housingStatLink"}}
-          </a>
+            <a
+              class="uk-button uk-button-default"
+              href={{this.config.housingStatLink}}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{t "ember-gwr.nav.housingStatLink"}}
+            </a>
+          </div>
+          <div>
+            {{t "ember-gwr.nav.deletionInfo"}}
+          </div>
         </div>
       </div>
       <UkTab as |Tab|>
