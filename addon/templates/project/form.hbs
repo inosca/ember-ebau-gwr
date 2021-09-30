@@ -288,6 +288,7 @@
           />
         </div>
       </div>
+      <Field @attr="client.address.addressLine2" />
       {{#if (eq changeset.client.address.country.countryNameShort "ch")}}
         <div class="{{unless this.import "uk-flex"}} uk-margin">
           <div class={{if this.import "uk-margin" "uk-width-1-2 uk-margin-small-right"}}>
@@ -306,10 +307,10 @@
           </div>
         </div>
       {{else if changeset.client.address.country.countryNameShort}}
-        <Field 
-          @attr="client.address.addressLine2" 
-          @noMargin={{true}} 
-          @hint={{t "ember-gwr.constructionProject.fields.client.address.addressLine2Hint"}}/>
+        <Field
+          @type="number"
+          @attr="client.address.foreignZipCode"
+        />
       {{/if}}
       <Field
         @inputType="select"
