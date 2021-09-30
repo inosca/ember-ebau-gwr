@@ -6,6 +6,7 @@ export default class GwrConfigService extends Service {
   gwrAPI = "http://localhost:8010/proxy/regbl/api/ech0216/2";
   modalContainer = "#modal-container";
   housingStatLink = "https://www-r.housing-stat.ch";
+  mountPoint = "gwr";
 
   get authToken() {
     return "token";

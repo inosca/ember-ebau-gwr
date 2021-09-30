@@ -15,6 +15,7 @@ export default class BuildingFormController extends ImportController {
   @service constructionProject;
   @service("building") buildingAPI;
   @service dwelling;
+  @service gwr;
   @service intl;
   @service notification;
 
@@ -133,18 +134,6 @@ export default class BuildingFormController extends ImportController {
     }
   }
 
-  concatStates(states) {
-    if (states.length === 1) {
-      return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
-    }
-    const tail = states.pop();
-    return `${states
-      .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
-      .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
-      `ember-gwr.lifeCycles.states.${tail}`
-    )}`;
-  }
-
   @task
   *transitionState(currentStatus, newStatus, isCascading) {
     try {
@@ -184,25 +173,9 @@ export default class BuildingFormController extends ImportController {
       console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
 
-      // TODO: make error links compatible with Camac-ng
-      if (error.isLifeCycleError) {
-        const errorType = error.dwellingId
-          ? "statusErrorDwelling"
-          : "statusErrorBuilding";
-        throw [
-          this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
-            dwellingId: error.dwellingId,
-            buildingId: error.buildingId,
-            states: this.concatStates(error.states),
-            href: error.dwellingId
-              ? `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/dwelling/${error.dwellingId}`
-              : `/${this.model.instanceId}/${this.model.projectId}/building/${error.buildingId}/form`,
-            htmlSafe: true,
-          }),
-        ];
-      }
-
-      throw error;
+      throw error.isLifeCycleError
+        ? this.gwr.buildLifeCycleError(error, this.model)
+        : error;
     }
   }
 

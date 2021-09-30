@@ -110,4 +110,41 @@ export default class GwrService extends Service {
 
     return errors;
   }
+
+  get basePath() {
+    const mountPoint = `#/${this.config.mountPoint}`;
+    const href = window.location.href;
+    return href.includes(mountPoint)
+      ? `${href.split(mountPoint, 1)}${mountPoint}`
+      : "";
+  }
+
+  concatStates(states) {
+    if (states.length === 1) {
+      return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
+    }
+    const tail = states.pop();
+    return `${states
+      .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
+      .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
+      `ember-gwr.lifeCycles.states.${tail}`
+    )}`;
+  }
+
+  buildLifeCycleError(error, { instanceId, projectId }) {
+    const errorType = error.dwellingId
+      ? "statusErrorDwelling"
+      : "statusErrorBuilding";
+    return [
+      this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
+        dwellingId: error.dwellingId,
+        buildingId: error.buildingId,
+        states: this.concatStates(error.states),
+        href: `${this.basePath}/${instanceId}/${projectId}/building/${
+          error.buildingId
+        }/${error.dwellingId ? `dwelling/${error.dwellingId}` : `form`}`,
+        htmlSafe: true,
+      }),
+    ];
+  }
 }
