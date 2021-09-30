@@ -47,6 +47,7 @@ ember-gwr:
     linkedBuildings: Verknüpfte Gebäude
     housingStatInfo: Der Quartalsabschluss sowie die Verwaltung von Strassen kann im housing-stat des BFS gemacht werden.
     housingStatLink: Zum housing-stat
+    deletionInfo: "Um Daten in den Formularen zu löschen, bitte das BFS kontaktieren: Telefon: 0800 866 600 E-mail: housing-stat@bfs.admin.ch"
 
   linkedBuildings:
     error: Beim Laden der Projektdaten ist ein Fehler aufgetreten.
