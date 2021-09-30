@@ -19,7 +19,12 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get value() {
-    return this.args.value ?? get(this.args.model, this.args.attr);
+    return (
+      this.args.value ??
+      get(this.args.model, this.args.attr) ??
+      // for zero values get returns undefined instead of 0
+      this.args.model?.[this.args.attr]
+    );
   }
 
   get importValue() {

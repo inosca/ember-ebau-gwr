@@ -92,7 +92,7 @@ ember-gwr:
       false: Nur ohne Fehler
 
     realestateIdentification:
-      number: Parzellennummer
+      number: Grundstücksnummer (Parzellennummer)
 
   issues:
     nav: Offene Pendenzen
@@ -173,15 +173,14 @@ ember-gwr:
       loading: Laden...
       noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
       validation:
-        realestateIdentification: Bei erweiterter Suche muss die Parzellennummer gesetzt werden.
+        realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
         bothDatesSet: Es müssen beide Daten gesetzt sein.
 
       realestateIdentificationHeading: Grundstücksidentifikation
       realestateIdentification:
         EGRID: EGRID
-        numberSuffix: Suffix der Parzellennummer
-        subDistrict: Parzellennummer
-        lot: Los
+        number: Grundstücksnummer (Parzellennummer)
+        subDistrict: Grundbuchkreisnummer
 
       createDateHeading: Erstellungszeitraum
       createDate:

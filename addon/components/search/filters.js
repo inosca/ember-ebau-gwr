@@ -39,9 +39,7 @@ export default class SearchFiltersComponent extends Component {
     // We have to check that the number is set.
     if (
       (realestateIdentification.EGRID ||
-        realestateIdentification.numberSuffix ||
-        realestateIdentification.subDistrict ||
-        realestateIdentification.lot) &&
+        realestateIdentification.subDistrict) &&
       !realestateIdentification.number
     ) {
       this.validationErrors.realestateIdentification = this.intl.t(

@@ -109,14 +109,8 @@ export const getConstructionProject =
           <EGRID>{{model.realestateIdentification.EGRID}}</EGRID>
         {{/if}}
         <number>{{model.realestateIdentification.number}}</number>
-        {{#if model.realestateIdentification.numberSuffix}}
-          <numberSuffix>{{model.realestateIdentification.numberSuffix}}</numberSuffix>
-        {{/if}}
         {{#if model.realestateIdentification.subDistrict}}
           <subDistrict>{{model.realestateIdentification.subDistrict}}</subDistrict>
-        {{/if}}
-        {{#if model.realestateIdentification.lot}}
-          <lot>{{model.realestateIdentification.lot}}</lot>
         {{/if}}
       </ns2:realestateIdentification>
     {{/if}}

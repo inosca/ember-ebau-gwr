@@ -5,9 +5,7 @@ import XMLModel from "./xml-model";
 export default class RealestateIdentification extends XMLModel {
   @tracked number;
   @tracked EGRID;
-  @tracked numberSuffix;
   @tracked subDistrict;
-  @tracked lot;
 
   constructor(...args) {
     super(...args);
@@ -15,9 +13,7 @@ export default class RealestateIdentification extends XMLModel {
       fields: {
         number: String,
         EGRID: String,
-        numberSuffix: String,
         subDistrict: Number,
-        lot: String,
       },
     });
   }
@@ -29,9 +25,7 @@ export default class RealestateIdentification extends XMLModel {
     <ns2:realestateIdentification>
       {{{modelField model "EGRID" namespace=""}}}
       <number>{{model.number}}</number>
-      {{{modelField model "numberSuffix" namespace=""}}}
       {{{modelField model "subDistrict" namespace=""}}}
-      {{{modelField model "lot" namespace=""}}}
     </ns2:realestateIdentification>
   {{/if}}
   `;
