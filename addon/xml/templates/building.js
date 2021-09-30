@@ -38,14 +38,8 @@ export const getBuilding =
           <EGRID>{{model.realestateIdentification.EGRID}}</EGRID>
         {{/if}}
         {{{modelField model.realestateIdentification "number" namespace=""}}}
-        {{#if model.realestateIdentification.numberSuffix}}
-          <numberSuffix>{{model.realestateIdentification.numberSuffix}}</numberSuffix>
-        {{/if}}
         {{#if model.realestateIdentification.subDistrict}}
           <subDistrict>{{model.realestateIdentification.subDistrict}}</subDistrict>
-        {{/if}}
-        {{#if model.realestateIdentification.lot}}
-          <lot>{{model.realestateIdentification.lot}}</lot>
         {{/if}}
       </ns2:realestateIdentification>
     {{/if}}
