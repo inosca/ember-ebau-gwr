@@ -9,10 +9,10 @@ export default {
   locality: {
     swissZipCode: [
       validatePresence(true),
-      validateNumber({ gte: 1000, lte: 9699 }),
+      validateNumber({ integer: true, gte: 1000, lte: 9699 }),
     ],
     name: {
-      nameLong: validatePresence(true),
+      nameLong: [validatePresence(true), validateLength({ min: 2, max: 40 })],
     },
   },
 };

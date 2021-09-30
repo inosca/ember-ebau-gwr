@@ -18,12 +18,12 @@ export function coordinatesValidation(path = "") {
           on: [eastPath, originPath],
         }),
         validateNumber({ gte: 1070000.0, allowBlank: true }),
-        validateNumber({ lte: 1300000.999, allowBlank: true }),
+        validateNumber({ lte: 1300000.0, allowBlank: true }),
       ],
       east: [
         validatePresence({ presence: true, on: [northPath, originPath] }),
         validateNumber({ gte: 2480000.0, allowBlank: true }),
-        validateNumber({ lte: 2840000.999, allowBlank: true }),
+        validateNumber({ lte: 2840000.0, allowBlank: true }),
       ],
       originOfCoordinates: [
         validatePresence({
