@@ -2,6 +2,7 @@ ember-gwr:
   constructionProject:
     saveError: Beim Speichern des Bauprojektes ist ein Fehler aufgetreten.
     saveSuccess: Bauprojekt erfolgreich gespeichert.
+    missingBuildingError: Bitte verknüpfen Sie zuerst ein Gebäude.
 
     sections:
       freeTextFields: Freitext Felder

@@ -402,4 +402,6 @@ export default class ConstructionProject extends XMLModel {
     [this.STATUS_NOT_REALIZED]: {},
     [this.STATUS_WITHDRAWN]: {},
   };
+
+  static MISSING_BUILDING_ERROR = "No link with a building found";
 }
