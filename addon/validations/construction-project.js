@@ -2,6 +2,7 @@ import {
   validatePresence,
   validateLength,
   validateNumber,
+  validateDate,
 } from "ember-changeset-validations/validators";
 
 import realestateIdentification from "./realestate-identification";
@@ -14,6 +15,8 @@ export default {
   }),
   extensionOfOfficialConstructionProjectFileNo: validateNumber({
     integer: true,
+    gte: 0,
+    lte: 99,
     allowBlank: true,
   }),
   typeOfConstructionProject: [
@@ -28,11 +31,105 @@ export default {
   totalCostsOfProject: [
     validatePresence(true),
     validateNumber({ gte: 1000 }),
-    validateNumber({ lte: 99999999900 }),
+    validateNumber({ lte: 999999999000 }),
     validateNumber({ integer: true }),
   ],
   typeOfConstruction: [validatePresence(true)],
-  projectAnnouncementDate: [validatePresence(true)],
+  projectAnnouncementDate: [
+    validatePresence(true),
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+    }),
+  ],
+  buildingPermitIssueDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  withdrawalDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  projectStartDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  constructionAuthorisationDeniedDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  cancellationDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  projectCompletionDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
+  projectSuspensionDate: [
+    validateDate({
+      onOrAfter: new Date("2000-01-01"),
+      message: "{description} must be on or after {onOrAfter}",
+      allowBlank: true,
+    }),
+    validateDate({
+      onOrBefore: new Date(),
+      message: "{description} must be on or before {onOrBefore}",
+      allowBlank: true,
+    }),
+  ],
   durationOfConstructionPhase: [
     validateNumber({
       gte: 1,
@@ -68,5 +165,7 @@ export default {
       },
     },
   },
+  projectFreeText1: validateLength({ max: 32, allowBlank: true }),
+  projectFreeText2: validateLength({ max: 32, allowBlank: true }),
   ...realestateIdentification,
 };
