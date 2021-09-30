@@ -45,26 +45,60 @@ export default {
   typeOfClient: [validatePresence(true)],
   client: {
     address: {
-      country: {
-        countryNameShort: validatePresence({
-          presence: true,
-          on: [
-            "client.identification.organisationIdentification.organisationName",
-            "client.identification.personIdentification.officialName",
-          ],
+      street: validateLength({ max: 60, allowBlank: true }),
+      houseNumber: validateLength({ max: 12, allowBlank: true }),
+      swissZipCode: [
+        validateNumber({
+          integer: true,
+          gte: 1000,
+          lte: 9699,
+          allowBlank: true,
         }),
+      ],
+      swissZipCodeAddOn: [
+        validateNumber({ integer: true, gte: 0, lte: 99, allowBlank: true }),
+      ],
+      foreignZipCode: validateNumber({
+        integer: true,
+        positive: true,
+        allowBlank: true,
+      }),
+      addressLine2: validateLength({ max: 60, allowBlank: true }),
+      country: {
+        countryNameShort: [
+          validatePresence({
+            presence: true,
+            on: [
+              "client.identification.organisationIdentification.organisationName",
+              "client.identification.personIdentification.officialName",
+            ],
+          }),
+        ],
       },
     },
     identification: {
+      organisationIdentification: {
+        organisationName: validateLength({ max: 60, allowBlank: true }),
+        organisationAdditionalName: validateLength({
+          max: 60,
+          allowBlank: true,
+        }),
+      },
       personIdentification: {
-        officialName: validatePresence({
-          presence: true,
-          on: "client.identification.personIdentification.firstName",
-        }),
-        firstName: validatePresence({
-          presence: true,
-          on: "client.identification.personIdentification.officialName",
-        }),
+        officialName: [
+          validatePresence({
+            presence: true,
+            on: "client.identification.personIdentification.firstName",
+          }),
+          validateLength({ max: 60, allowBlank: true }),
+        ],
+        firstName: [
+          validatePresence({
+            presence: true,
+            on: "client.identification.personIdentification.officialName",
+          }),
+          validateLength({ max: 60, allowBlank: true }),
+        ],
       },
     },
   },
