@@ -1,26 +1,44 @@
-{{#if @errors}}
-  {{#if (eq @errors.length 1)}}
-    <div
-      class="uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
-      uk-alert
+{{#if @errors.linkToRoute}}
+  <div
+    class="uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
+    uk-alert
+  >
+    <LinkTo
+      class="uk-text-danger uk-text-small"
+      @route={{@errors.linkToRoute}}
+      @models={{@errors.linkToModels}}
     >
-      {{object-at 0 @errors}}
-    </div>
-  {{else}}
-    <button
-      type="button"
-      class="uk-button ember-ebau-gwr-submit-errors-multiple uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
-      uk-alert
-      {{on "click" this.updateCurrentIndex}}
-    >
-      <div class="uk-flex-inline uk-flex-middle">
-        <div class="uk-text-small uk-margin-small-right">
-          {{inc this.errorIndex}}<span>/</span>{{@errors.length}}
-        </div>
-        <div>
-          {{object-at this.errorIndex @errors}}
-        </div>
+      {{@errors.linkToText}}
+    </LinkTo>
+    <span>
+      {{@errors.linkToTextAfter}}
+    </span>
+  </div>
+{{else if (eq @errors.length 1)}}
+  <div
+    class="uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
+    uk-alert
+  >
+    {{object-at 0 @errors}}
+  </div>
+{{else if (gt @errors.length 1)}}
+  <button
+    type="button"
+    class="uk-button ember-ebau-gwr-submit-errors-multiple uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
+    uk-alert
+    {{on "click" this.updateCurrentIndex}}
+  >
+    <div class="uk-flex-inline uk-flex-middle">
+      <div class="uk-text-small uk-margin-small-right">
+        {{inc this.errorIndex}}
+        <span>
+          /
+        </span>
+        {{@errors.length}}
       </div>
-    </button>
-  {{/if}}
+      <div>
+        {{object-at this.errorIndex @errors}}
+      </div>
+    </div>
+  </button>
 {{/if}}
