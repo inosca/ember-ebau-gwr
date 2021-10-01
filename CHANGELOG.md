@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.1.0...v3.1.1) (2021-10-01)
+
+
+### Bug Fixes
+
+* **components/link-street:** use decorator function from ember-concurrency-decorators ([8dbf001](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8dbf00101a449dec217e97704e415c5a21b75b94))
+
 # [3.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.0.0...v3.1.0) (2021-10-01)
 
 
