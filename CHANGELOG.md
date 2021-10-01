@@ -1,3 +1,28 @@
+# [3.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.0.0...v3.1.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* **client:** correct fields on client model ([8339e91](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8339e91bf744658cf50fac1a1339102ad42fdd35))
+* **client:** ensure client identification type is set correctly ([7d11198](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7d11198026fe612d92afcfc4cd03f9a015bf0d71))
+* **entrance:** ensure entrance & street are within same locality ([d88b91d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d88b91d5d5a8138535e2a50d6eed4f4c9ee1d079))
+* **life-cycles:** correct life cycle error links for camac-ng ([0c3f1c6](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0c3f1c6dc14cca1fbbb75dd52880e5b786d22611))
+* **model-form:** bump ember-validated-form to v4.1.0 to fix on-update issue ([2752b23](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2752b23260d4903c44dc989650e92fb6ad93baa2))
+* **model-form:** fix merge conflict issue ([aaeb372](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/aaeb372ae6965db89209326d4cb5382df3d28070))
+* **model-form:** read dates as date objects instead of strings ([34a525e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/34a525e9145e2f0270751ba4a295b9c1ca7990cb))
+* **project:** differentiate swiss and foreign client addresses ([6a69d14](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6a69d14492481ace39455b1c6870a91573640974))
+* **realestate-identification:** remove unused (ignored) fields ([bf94133](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bf94133029dbf7e08a9c7dc93af87be8920d4397))
+* **translation:** change field label of energy source field ([93740aa](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/93740aa6ff5648cff5e2b2459c9a839b9f546676))
+* **ui:** minor bugfixes and changes ([4bdfe3c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4bdfe3cc8525283ae819bfe45d897a8629210cae))
+
+
+### Features
+
+* **dwelling:** show complete entrance address in dwelling form ([f842502](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f84250296527a4511e421f5b38f80470dd679882))
+* **header:** add info for deleting fields ([1a53df2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1a53df25cd11f86ac4cc8de909d53c00c50da00f))
+* **model-form:** complete validations on models ([6c443af](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6c443af41714276468cba0bd4c358b031d6c5f0c))
+* **project:** alert user about missing buildings on superstructure projects ([caea071](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/caea07138041cc06fc0871faeba8f05b8aec88bc))
+
 # [3.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v2.7.1...v3.0.0) (2021-09-28)
 
 
