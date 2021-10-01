@@ -138,8 +138,9 @@ ember-gwr:
         3007: Aufgehoben
         3008: Nicht realisiert
 
-    statusErrorBuilding: <a href="{href}">Gebäude {buildingId}</a> muss im Status {states} sein.
-    statusErrorDwelling: <a href="{href}">Wohnung {dwellingId}</a> im Gebäude {buildingId} muss im Status {states} sein.
+    statusErrorBuilding: Gebäude {buildingId}
+    statusErrorDwelling: Wohnung {dwellingId} im Gebäude {buildingId}
+    statusError: muss im Status {states} sein.
 
     states:
       6701: projektiert

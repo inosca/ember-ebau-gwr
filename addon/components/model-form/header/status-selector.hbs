@@ -135,7 +135,7 @@
         </div>
       </div>
     {{/if}}
-    {{#if this.errors.length}}
+    {{#if (or this.errors.length this.errors.linkToRoute)}}
       <div class="uk-flex-inline">
         <ModelForm::SubmitErrors @errors={{this.errors}} />
       </div>

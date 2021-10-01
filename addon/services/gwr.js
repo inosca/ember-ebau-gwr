@@ -111,14 +111,6 @@ export default class GwrService extends Service {
     return errors;
   }
 
-  get basePath() {
-    const mountPoint = `#/${this.config.mountPoint}`;
-    const href = window.location.href;
-    return href.includes(mountPoint)
-      ? `${href.split(mountPoint, 1)}${mountPoint}`
-      : "";
-  }
-
   concatStates(states) {
     if (states.length === 1) {
       return this.intl.t(`ember-gwr.lifeCycles.states.${states[0]}`);
@@ -132,19 +124,29 @@ export default class GwrService extends Service {
   }
 
   buildLifeCycleError(error, { instanceId, projectId }) {
-    const errorType = error.dwellingId
-      ? "statusErrorDwelling"
-      : "statusErrorBuilding";
-    return [
-      this.intl.t(`ember-gwr.lifeCycles.${errorType}`, {
-        dwellingId: error.dwellingId,
-        buildingId: error.buildingId,
-        states: this.concatStates(error.states),
-        href: `${this.basePath}/${instanceId}/${projectId}/building/${
-          error.buildingId
-        }/${error.dwellingId ? `dwelling/${error.dwellingId}` : `form`}`,
-        htmlSafe: true,
+    const { buildingId, dwellingId, states } = error;
+    return {
+      linkToRoute: dwellingId
+        ? "building.edit.dwelling.edit"
+        : "building.edit.form",
+      linkToModels: [
+        instanceId,
+        projectId,
+        buildingId,
+        ...(dwellingId ? [dwellingId] : []),
+      ],
+      linkToText: this.intl.t(
+        `ember-gwr.lifeCycles.statusError${
+          dwellingId ? "Dwelling" : "Building"
+        }`,
+        {
+          dwellingId,
+          buildingId,
+        }
+      ),
+      linkToTextAfter: this.intl.t(`ember-gwr.lifeCycles.statusError`, {
+        states: this.concatStates(states),
       }),
-    ];
+    };
   }
 }

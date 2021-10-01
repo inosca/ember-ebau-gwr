@@ -65,7 +65,7 @@
           {{@confirmLabel}}
         </UkButton>
       </div>
-      {{#if @errors.length}}
+      {{#if (or @errors.length @errors.linkToRoute)}}
         <div class="uk-margin-small-top">
           <ModelForm::SubmitErrors @errors={{@errors}} />
         </div>
