@@ -224,8 +224,8 @@ ember-gwr:
         7460: Wärmetauscher (einschliesslich für Fernwärme) für ein Gebäude
         7461: Wärmetauscher (einschliesslich für Fernwärme) für mehrere Gebäude
         7499: Andere
-      energySourceHeating: Energieträger
-      energySourceHeatingPlaceholder: Wählen Sie einen Energieträger...
+      energySourceHeating: Energie-/Wärmequelle
+      energySourceHeatingPlaceholder: Wählen Sie einen Energie-/Wärmequelle...
       energySourceHeatingOptions:
         7500: Keine
         7501: Luft
