@@ -1,7 +1,6 @@
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-import { task } from "ember-concurrency";
-import { lastValue } from "ember-concurrency-decorators";
+import { task, lastValue } from "ember-concurrency-decorators";
 import Street from "ember-ebau-gwr/models/street";
 
 export default class LinkStreetComponent extends Component {
