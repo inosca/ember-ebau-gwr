@@ -14,7 +14,7 @@ export default class Heating extends XMLModel {
       fields: {
         energySourceHeating: Number,
         informationSourceHeating: Number,
-        revisionDate: String,
+        revisionDate: Date,
       },
     });
   }

@@ -20,13 +20,24 @@ export default class XMLModel {
   castToType(element, type) {
     // We dont want to instantiate the types Number or String with new.
     // This would cause problems with comparison.
-    return element.getAttribute("xsi:nil")
-      ? null
-      : element.children.length
-      ? new type(element)
-      : type === Boolean
-      ? element.textContent === "true"
-      : type(element.textContent);
+
+    if (element.getAttribute("xsi:nil")) {
+      return null;
+    }
+
+    if (element.children.length) {
+      return new type(element);
+    }
+
+    if (type === Boolean) {
+      return element.textContent === "true";
+    }
+
+    if (type === Date) {
+      return new type(element.textContent);
+    }
+
+    return type(element.textContent);
   }
 
   getFieldFromXML(path, type, root) {

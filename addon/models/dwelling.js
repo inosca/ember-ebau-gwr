@@ -247,7 +247,7 @@ export class DwellingUsage extends XMLModel {
       fields: {
         usageCode: Number,
         informationSource: Number,
-        revisionDate: String,
+        revisionDate: Date,
         remark: String,
         personWithMainResidence: Boolean,
         personWithSecondaryResidence: Boolean,

@@ -12,7 +12,7 @@ export default class DatePartiallyKnown extends XMLModel {
     this.setFieldsFromXML({
       root,
       fields: {
-        yearMonthDay: String,
+        yearMonthDay: Date,
         yearMonth: String,
         year: String,
       },
