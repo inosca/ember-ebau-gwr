@@ -168,28 +168,58 @@
               @required={{true}}
             />
           </div>
-          {{#if this.project.buildingPermitIssueDate}}
+          {{#if 
+            (or 
+              this.project.buildingPermitIssueDate 
+              changeset.buildingPermitIssueDate 
+              this.import
+            )
+          }}
             <div class={{spacingClass}}>
               <Field @inputType="date" @attr="buildingPermitIssueDate" />
             </div>
           {{/if}}
-          {{#unless this.project.isNew}}
-            {{#if this.project.projectStartDate}}
+          {{#if (or (not this.project.isNew) this.import)}}
+            {{#if
+              (or
+                this.project.projectStartDate
+                changeset.projectStartDate
+                this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field @inputType="date" @attr="projectStartDate" />
               </div>
             {{/if}}
-            {{#if this.project.projectCompletionDate}}
+            {{#if
+              (or
+                this.project.projectCompletionDate
+                changeset.projectCompletionDate
+                this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field @inputType="date" @attr="projectCompletionDate" />
               </div>
             {{/if}}
-            {{#if this.project.projectSuspensionDate}}
+            {{#if
+              (or
+                this.project.projectSuspensionDate
+                changeset.projectSuspensionDate
+                this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field @inputType="date" @attr="projectSuspensionDate" />
               </div>
             {{/if}}
-            {{#if this.project.constructionAuthorisationDeniedDate}}
+            {{#if
+              (or
+                this.project.constructionAuthorisationDeniedDate
+                changeset.constructionAuthorisationDeniedDate
+                this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field
                   @inputType="date"
@@ -197,17 +227,27 @@
                 />
               </div>
             {{/if}}
-            {{#if this.project.cancellationDate}}
+            {{#if
+              (or
+                this.project.cancellationDate
+                changeset.cancellationDate
+                this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field @inputType="date" @attr="cancellationDate" />
               </div>
             {{/if}}
-            {{#if this.project.withdrawalDate}}
+            {{#if
+              (or
+                this.project.withdrawalDate changeset.withdrawalDate this.import
+              )
+            }}
               <div class={{spacingClass}}>
                 <Field @inputType="date" @attr="withdrawalDate" />
               </div>
             {{/if}}
-          {{/unless}}
+          {{/if}}
         {{/let}}
       </div>
       {{#unless this.project.isNew}}

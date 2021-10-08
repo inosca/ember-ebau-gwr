@@ -11,6 +11,7 @@ export const converstionTypeMapping = {
 
 export default class ModelFormFieldComponent extends Component {
   @service intl;
+  @service gwr;
   @tracked diffResolved = false;
 
   constructor(...args) {
@@ -35,7 +36,8 @@ export default class ModelFormFieldComponent extends Component {
     if (this.args.importData) {
       return (
         !this.diffResolved &&
-        this.importValue &&
+        this.importValue !== null &&
+        this.importValue !== undefined &&
         this.importValue !== this.value
       );
     }
@@ -101,7 +103,11 @@ export default class ModelFormFieldComponent extends Component {
     if (this.args.update) {
       this.args.update(attr, value);
     } else {
-      this.args.model.set(attr, value);
+      // Date casts necessary for import
+      this.args.model.set(
+        attr,
+        this.gwr.isIsoDate(value) ? new Date(value) : value
+      );
 
       if (this.args.importData) {
         this.diffResolved = true;
