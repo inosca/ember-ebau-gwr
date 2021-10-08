@@ -9,6 +9,7 @@ export default class ModelFormComponent extends Component {
   @service notification;
   @service intl;
   @service config;
+  @service gwr;
 
   // This array is only used for tracking the still open diffs
   // so we can transition out of the import once the array is empty.
@@ -65,9 +66,16 @@ export default class ModelFormComponent extends Component {
     // set here...
     const deepMerge = (original, objectToApply) => {
       Object.entries(objectToApply).forEach(([key, value]) => {
-        if (value !== null && value !== undefined) {
+        if (
+          original !== null &&
+          original !== undefined &&
+          value !== null &&
+          value !== undefined
+        ) {
           typeof value === "object"
             ? deepMerge(original[key], objectToApply[key])
+            : this.gwr.isIsoDate(value) // Date casts necessary for import
+            ? (original[key] = new Date(value))
             : (original[key] = value);
         }
       });
