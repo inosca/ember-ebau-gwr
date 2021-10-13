@@ -38,7 +38,7 @@ ember-gwr:
 
   landingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
-    infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können etnweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
+    infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können entweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
     createNewProject: Neues Projekt erfassen
     linkExistingProject: Bestehendes Projekt verknüpfen
 

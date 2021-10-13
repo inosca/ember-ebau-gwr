@@ -11,7 +11,7 @@ ember-gwr:
       EPROID: EPROID
       officialConstructionProjectFileNo: Amtliche Baudossiernummer
       extensionOfOfficialConstructionProjectFileNo: Amtliche Baudossiernr. Zusatz
-      constructionProjectDescription: Umschreibung Bauprojekts
+      constructionProjectDescription: Umschreibung Bauprojekt
       constructionSurveyDeptNumber: Erhebungsstellennummer
       totalCostsOfProject: Projektkosten total
       projectAnnouncementDate: Datum Baueingabe
@@ -23,7 +23,7 @@ ember-gwr:
       projectSuspensionDate: Datum Sistierung
       constructionAuthorisationDeniedDate: Datum Ablehnung
       cancellationDate: Datum Nichtrealisierung
-      withdrawalDate: Datum Rückzung des Baugesuchs
+      withdrawalDate: Datum Rückzug des Baugesuchs
       projectFreeText1: Freitext Project 1
       projectFreeText2: Freitext Project 2
 
@@ -53,7 +53,7 @@ ember-gwr:
           swissZipCodeAddOn: Postleitzahl-Zusatzziffer
           foreignZipCode: Postleitzahl im Ausland
           addressLine2: Adresszusatz
-          country: 
+          country:
             countryNameShort: Land
             countryNameShortOptions:
               ch: Schweiz
@@ -104,7 +104,7 @@ ember-gwr:
         6272: Einfamilienhäuser angebaut
         6273: Mehrfamilienhäuser (reine Wohngebäude)
         6274: Wohngebäude mit Nebennutzung (inkl. Bauernhäuser)
-        6276: Wohnheime ohne Pflegedienste und/oder Betreuun
+        6276: Wohnheime ohne Pflegedienste und/oder Betreuung
         6278: Garagen, Parkplätze, Einstellhallen im Zusammenhang mit Wohngebäuden
         6279: Übrige Bauten im Zusammenhang mit Wohngebäuden
         6281: Landwirtschaftsbauten

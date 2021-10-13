@@ -94,7 +94,7 @@ ember-gwr:
     buildingCategory: Gebäudekategorie
     buildingCategoryPlaceholder: Wählen Sie eine Gebäudekategorie aus...
     buildingCategoryOptions:
-      1010: Provisorische Unerkunft
+      1010: Provisorische Unterkunft
       1020: Reine Wohngebäude (Wohnnutzung ausschliesslich)
       1030: Wohngebäude mit Nebennutzung
       1040: Gebäude mit teilweiser Wohnnutzung
@@ -281,5 +281,3 @@ ember-gwr:
       mainEntrance: Haupteingang
       info: Nach der Erstellung des Gebäudes können weitere Eingänge hinzugefügt werden und die Strassen der Eingänge bearbeitet werden.
       localityError: Beim Speichern der Ortschaft des Haupteingangs ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Angaben.
-
-
