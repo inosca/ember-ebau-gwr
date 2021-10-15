@@ -1,6 +1,8 @@
 {{#unless @noHeader}}
   <div class="uk-flex-inline uk-flex-top uk-width-expand">
-    <div class="uk-flex-none">
+    <div
+      class="uk-flex-none ember-ebau-gwr-model-id-width-{{if @smallHeaderIdWidth "small" "large"}}"
+    >
       <LinkTo
         class="uk-text-bold"
         @route={{@linkRoute}}
@@ -9,7 +11,7 @@
         {{@modelId}}
       </LinkTo>
     </div>
-    <div class="uk-margin-left uk-flex uk-width-expand uk-flex-column">
+    <div class="uk-margin-small-left uk-flex uk-width-expand uk-flex-column">
       <div class="uk-flex-inline uk-flex-middle">
         <div class="uk-text-bold">
           {{@modelDescription}}
