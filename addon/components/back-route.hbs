@@ -1,0 +1,10 @@
+{{#if @backRoute}}
+  <LinkTo
+    @route={{@backRoute}}
+    @models={{if @backModel (array @backModel) (array)}}
+    class="uk-link-muted uk-margin-small-bottom"
+  >
+    <span uk-icon="icon: arrow-left"></span>
+    {{@backText}}
+  </LinkTo>
+{{/if}}
