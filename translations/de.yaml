@@ -11,6 +11,11 @@ ember-gwr:
         one {Arbeit}
         other {Arbeiten}
       }
+    building-work-infrastructure: |-
+      {count, plural,
+        one {Tiefbauarbeit}
+        other {Tiefbauarbeiten}
+      }
     project: |-
       {count, plural,
         one {Projekt}
@@ -52,7 +57,11 @@ ember-gwr:
   linkedBuildings:
     error: Beim Laden der Projektdaten ist ein Fehler aufgetreten.
     removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
-    buildingDisabledForInfrastructure: Für Tiefbauprojekte sind keine Gebäude zugelassen.
+    buildingDisabledForInfrastructure: |-
+      Für Tiefbauprojekte sind keine Gebäude zugelassen.
+      Die Art der Arbeiten werden direkt auf dem Projekt erfasst.
+    superstructureInfo: |-
+      Für Hochbauprojekte werden die Art der Arbeiten ausschliesslich gebäudebezogen gemeldet.
     buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
 
   searchBuilding:

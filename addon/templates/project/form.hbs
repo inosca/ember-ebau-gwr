@@ -62,13 +62,18 @@
         @attr="typeOfConstructionProject"
         @gwrEnumOptions={{this.choiceOptions.typeOfConstructionProjectOptions}}
         @on-update={{fn (mut this.typeOfConstructionProject)}}
-        @hint={{t "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"}}
+        @hint={{if 
+          (eq this.typeOfConstructionProject 6010) 
+          (t "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure") 
+          (if (eq this.typeOfConstructionProject 6011)
+            (t "ember-gwr.linkedBuildings.superstructureInfo"))
+        }}
       />
 
       {{#if (eq this.typeOfConstructionProject 6010)}}
         <LinkedModels
           @models={{this.workWithoutBuildings}}
-          @modelName="building-work"
+          @modelName="building-work-infrastructure"
           @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
           @addLink={{this.addWorkLink}}
           as |model|
