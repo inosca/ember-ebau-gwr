@@ -51,11 +51,15 @@
             <LinkTo
               @route={{@searchRoute}}
               @models={{or @searchModels (array)}}
-            >
-              {{t
-                "ember-gwr.components.linkedModels.linkEntry"
-                modelName=modelName
-              }}
+            > 
+              {{#if (eq @modelName "building")}}
+                {{t "ember-gwr.components.linkedModels.linkExistingBuilding"}}
+              {{else}}
+                {{t
+                  "ember-gwr.components.linkedModels.linkEntry"
+                  modelName=modelName
+                }}
+              {{/if}}
             </LinkTo>
           {{/if}}
           {{#if (and @searchRoute @newRoute)}}
@@ -66,6 +70,7 @@
               {{t
                 "ember-gwr.components.linkedModels.createEntry"
                 modelName=modelName
+                model=@modelName 
               }}
             </LinkTo>
           {{else if @addLink}}
@@ -77,6 +82,7 @@
               {{t
                 "ember-gwr.components.linkedModels.createEntry"
                 modelName=modelName
+                model=@modelName
               }}
             </button>
           {{/if}}
