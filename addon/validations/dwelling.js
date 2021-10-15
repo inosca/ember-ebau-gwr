@@ -25,11 +25,6 @@ export default {
       on: "floorType",
       states: [3101, 3401],
     }),
-    validatePresenceState({
-      presence: false,
-      on: "floorType",
-      states: [3100],
-    }),
     validateRangeState({
       range: [1, 99],
       on: "floorType",

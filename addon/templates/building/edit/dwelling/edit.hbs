@@ -23,7 +23,7 @@
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="dwellingStatus"
-      as |Field|
+      as |Field changeset|
     >
       <Field
         @attr="EDID"
@@ -34,25 +34,21 @@
         @noPlaceholder={{true}}
         @required={{true}}
       />
-      <div class="uk-flex uk-flex-top uk-child-width-1-2 uk-flex-between" >
-        <div class="uk-margin-large-right">
-          <Field 
-            @noMargin={{true}}
-            @attr="floorNumber" 
-            @type="number" 
-            @required={{true}} 
-          />
-        </div>
-        <div>
-          <Field 
-            @noMargin={{true}}
-            @attr="floorType" 
-            @type="select" @required={{true}} 
-            @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}} 
-            @hint={{t "ember-gwr.dwelling.floorNumberGroundFloorHint"}}
-          />
-        </div>
-      </div>
+      
+      <Field
+        @attr="floorType" 
+        @type="select" @required={{true}} 
+        @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}} 
+        @hint={{t "ember-gwr.dwelling.floorHint"}}
+      />
+      
+      {{#if (or (eq changeset.floorType 3101) (eq changeset.floorType 3401))}}
+        <Field
+          @attr="floorNumber" 
+          @type="number" 
+          @required={{true}} 
+        />
+      {{/if}}
 
       <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
       <Field @attr="physicalDwellingNo" />

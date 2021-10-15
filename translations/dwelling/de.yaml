@@ -24,7 +24,9 @@ ember-gwr:
     floorTypePlaceholder:
       Wählen Sie eine Art Stockwerk...
     floorNumber: Stockwerknummer
-    floorNumberGroundFloorHint: Fürs Parterre darf keine Stockwerknummer gesetzt werden.
+    floorHint: |-
+        Bei Wohnungen mit mehreren Stockwerken wird das Stockwerk erfasst, 
+        auf dem sich der (Haupt-)Eingang der Wohnung befindet.
     multipleFloor: Mehrgeschossige Wohnung
     physicalDwellingNo: Physische Wohnungsnummer
     dwellingStatus: Wohnungsstatus
