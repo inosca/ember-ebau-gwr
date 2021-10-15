@@ -274,9 +274,18 @@ ember-gwr:
       linkedEntries: Verknüpfte {modelName}
       noLinkedEntries: Es sind noch keine {modelName} verknüpft
       linkEntry: "{modelName} verknüpfen"
-      createEntry: "{modelName} erfassen"
+      linkExistingBuilding: Bestehendes Gebäude verknüpfen (Umbau / Abbruch)
+      createEntry: |-
+        {modelName} erfassen 
+        {model, select, 
+          project {}
+          other {(Neubau)}
+        }
       or: oder
       removeLink: Verknüpfung aufheben
+      buildingInfo: |-
+        Um ein bestehendes Gebäude welches sich nicht im GWR befindet nachzutragen, 
+        wenden Sie sich bitte an das Housing-Stat Portal.
 
     linkBuildingModal:
       linkBuilding: Gebäude verknüpfen
