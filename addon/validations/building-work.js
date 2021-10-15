@@ -7,6 +7,7 @@ import {
 
 import buildingEntranceValidation from "./building-entrance";
 import { coordinatesValidation } from "./coordinates";
+import realestateIdentification from "./realestate-identification";
 
 export function buildingWorkValidation(isNew = false) {
   const validations = {
@@ -117,6 +118,7 @@ export function buildingWorkValidation(isNew = false) {
       },
       buildingFreeText1: validateLength({ max: 32, allowBlank: true }),
       buildingFreeText2: validateLength({ max: 32, allowBlank: true }),
+      ...realestateIdentification,
     },
   };
 
