@@ -220,26 +220,28 @@
 
       <Field @attr="building.nameOfBuilding" />
 
-      <Field @attr="building.dateOfConstruction.yearMonthDay" @type="date" />
-      {{#if this.buildingWork.building.dateOfConstruction.year}}
-        <Field @attr="building.dateOfConstruction.year" @disabled={{true}} />
-      {{/if}}
-      {{#if this.buildingWork.building.dateOfConstruction.yearMonth}}
-        <Field
-          @attr="building.dateOfConstruction.yearMonth"
-          @disabled={{true}}
-        />
-      {{/if}}
-      {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
-        <Field
-          @attr="building.dateOfConstruction.periodOfConstruction"
-          @type="select"
-          @convertValueTo="number"
-          @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
-        />
-      {{/if}}
+      {{#unless this.buildingWork.isNew}}
+        <Field @attr="building.dateOfConstruction.yearMonthDay" @type="date" />
+        {{#if this.buildingWork.building.dateOfConstruction.year}}
+          <Field @attr="building.dateOfConstruction.year" @disabled={{true}} />
+        {{/if}}
+        {{#if this.buildingWork.building.dateOfConstruction.yearMonth}}
+          <Field
+            @attr="building.dateOfConstruction.yearMonth"
+            @disabled={{true}}
+          />
+        {{/if}}
+        {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
+          <Field
+            @attr="building.dateOfConstruction.periodOfConstruction"
+            @type="select"
+            @convertValueTo="number"
+            @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
+          />
+        {{/if}}
 
-      <Field @attr="building.yearOfDemolition" @type="number" />
+        <Field @attr="building.yearOfDemolition" @type="number" />
+      {{/unless}}
 
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}

@@ -63,8 +63,11 @@
       />
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
-      <Field @attr="yearOfConstruction" @type="number" />
-      <Field @attr="yearOfDemolition" @type="number" />
+
+      {{#unless this.dwelling.isNew}}
+        <Field @attr="yearOfConstruction" @type="number" />
+        <Field @attr="yearOfDemolition" @type="number" />
+      {{/unless}}
 
       <h2>{{t "ember-gwr.dwelling.usage.heading"}}</h2>
       <Field
