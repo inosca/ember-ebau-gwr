@@ -105,10 +105,10 @@ export default class BuildingEditDwellingEditController extends ImportController
             this.model.buildingId,
             this.dwelling
           );
-          // Ensure dwelling list is refreshed
-          this.building.clearCache(this.model.buildingId);
         }
       }
+      // Ensure dwelling list is refreshed
+      this.building.clearCache(this.model.buildingId);
       this.errors = [];
       this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
     } catch (error) {
