@@ -3,13 +3,13 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { dropTask } from "ember-concurrency-decorators";
+import { isIsoDate } from "ember-ebau-gwr/utils";
 
 export default class ModelFormComponent extends Component {
   @service router;
   @service notification;
   @service intl;
   @service config;
-  @service gwr;
 
   // This array is only used for tracking the still open diffs
   // so we can transition out of the import once the array is empty.
@@ -74,7 +74,7 @@ export default class ModelFormComponent extends Component {
         ) {
           typeof value === "object"
             ? deepMerge(original[key], objectToApply[key])
-            : this.gwr.isIsoDate(value) // Date casts necessary for import
+            : isIsoDate(value) // Date casts necessary for import
             ? (original[key] = new Date(value))
             : (original[key] = value);
         }

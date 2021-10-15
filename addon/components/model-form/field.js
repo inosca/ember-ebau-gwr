@@ -2,6 +2,7 @@ import { get, action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { isIsoDate } from "ember-ebau-gwr/utils";
 
 export const converstionTypeMapping = {
   number: Number,
@@ -11,7 +12,6 @@ export const converstionTypeMapping = {
 
 export default class ModelFormFieldComponent extends Component {
   @service intl;
-  @service gwr;
   @tracked diffResolved = false;
 
   constructor(...args) {
@@ -104,10 +104,7 @@ export default class ModelFormFieldComponent extends Component {
       this.args.update(attr, value);
     } else {
       // Date casts necessary for import
-      this.args.model.set(
-        attr,
-        this.gwr.isIsoDate(value) ? new Date(value) : value
-      );
+      this.args.model.set(attr, isIsoDate(value) ? new Date(value) : value);
 
       if (this.args.importData) {
         this.diffResolved = true;
