@@ -22,23 +22,29 @@
           class="uk-margin-remove"
         >
           <div class="uk-flex uk-flex-between uk-flex-middle">
-            <span class="uk-flex-inline uk-flex-middle">
-              <span uk-icon="icon: info" class="uk-margin-small-right"></span>
-              <span>
-                {{t "ember-gwr.nav.housingStatInfo"}}
-              </span>
-            </span>
-            <a
-              class="uk-button uk-button-default"
-              href={{this.config.housingStatLink}}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{t "ember-gwr.nav.housingStatLink"}}
-            </a>
-          </div>
-          <div>
-            {{t "ember-gwr.nav.deletionInfo"}}
+            <div class="uk-flex uk-flex-middle uk-width-expand uk-margin-right">
+              <div class="uk-flex-none uk-margin-right">
+                <span uk-icon="icon: info"></span>
+              </div>
+              <div>
+                <div>
+                  {{t "ember-gwr.nav.housingStatInfo"}}
+                </div>
+                <div>
+                 {{t "ember-gwr.nav.deletionInfo"}} 
+                </div>
+              </div>
+            </div>
+            <div class="uk-width-auto">
+              <a
+                class="uk-button uk-button-default"
+                href={{housing-stat-link}}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{t "ember-gwr.nav.housingStatLink"}}
+              </a>
+            </div>
           </div>
         </div>
       </div>
