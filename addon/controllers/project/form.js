@@ -305,6 +305,12 @@ export default class ProjectFormController extends ImportController {
   @action
   cancelTypeOfConstructionProjectChange() {
     this.showConfirmationDialog = false;
+    // Reset the type of construction project set on model during submit
+    // This ensures that the buildings tab is correctly (in)activated
+    this.project.typeOfConstructionProject =
+      this.typeOfConstructionProject === 6011 ? 6010 : 6011;
+
+    this.typeOfConstructionProject = this.project.typeOfConstructionProject;
   }
 
   get workWithoutBuildings() {
