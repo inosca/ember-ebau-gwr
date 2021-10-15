@@ -161,7 +161,7 @@ ember-gwr:
 
     surfaceAreaOfBuilding: Gebäudefläche (m2)
     volume:
-      volume: Gebäudevolumen
+      volume: Gebäudevolumen (m3)
       norm: Norm
       normPlaceholder: Wählen Sie eine Norm aus...
       normOptions:
@@ -184,7 +184,7 @@ ember-gwr:
     numberOfFloors: Anzahl Geschosse
     numberOfSeparateHabitableRooms: Anzahl separate Wohnräume
     civilDefenseShelter: Zivilschutzraum
-    energyRelevantSurface: Energiebezugsfläche
+    energyRelevantSurface: Energiebezugsfläche (m2)
 
     heating:
       heatGeneratorHotWater: Wärmeerzeuger
