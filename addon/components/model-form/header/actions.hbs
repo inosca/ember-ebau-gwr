@@ -90,13 +90,14 @@
           {{/if}}
           {{#if @hasStatus}}
             <li>
-              <button
+              <a 
+                href="#ember-ebau-gwr-status" 
+                uk-scroll 
                 class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
-                type="button"
                 {{on "click" @openStatus}}
               >
                 {{t "ember-gwr.components.modelForm.changeStatus"}}
-              </button>
+              </a>
             </li>
           {{/if}}
         </ul>
