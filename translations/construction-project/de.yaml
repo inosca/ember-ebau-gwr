@@ -56,8 +56,255 @@ ember-gwr:
           country:
             countryNameShort: Land
             countryNameShortOptions:
+              cy: Zypern
+              cf: Zentralafrikanische Republik
+              eh: Westsahara
+              cx: Weihnachtsinsel
+              wf: Wallis und Futuna
+              vn: Vietnam
+              gb: Vereinigtes Königreich
+              us: Vereinigte Staaten von Amerika
+              ae: Vereinigte Arabische Emirate
+              ve: Venezuela
+              va: Vatikanstadt
+              vu: Vanuatu
+              uz: Usbekistan
+              uy: Uruguay
+              hu: Ungarn
+              ua: Ukraine
+              ug: Uganda
+              tv: Tuvalu
+              tc: Turks und Caicosinseln
+              tm: Turkmenistan
+              tr: Türkei
+              tn: Tunesien
+              cz: Tschechien
+              td: Tschad
+              tt: Trinidad und Tobago
+              to: Tonga
+              tk: Tokelau
+              tg: Togo
+              th: Thailand
+              tz: Tansania
+              tw: Taiwan
+              tj: Tadschikistan
+              sy: Syrien
+              sj: Svalbard und Jan Mayen
+              sr: Suriname
+              ss: Südsudan
+              kr: Südkorea
+              gs: Südgeorgien und die Südlichen Sandwichinseln
+              sd: Sudan
+              za: Südafrika
+              vc: St. Vincent und die Grenadinen
+              pm: St. Pierre und Miquelon
+              lc: St. Lucia
+              kn: St. Kitts und Nevis
+              sh: St. Helena, Ascension und Tristan da Cunha
+              lk: Sri Lanka
+              es: Spanien
+              so: Somalia
+              si: Slowenien
+              sk: Slowakei
+              sx: Sint Maarten
+              sg: Singapur
+              zw: Simbabwe
+              sl: Sierra Leone
+              sc: Seychellen
+              rs: Serbien
+              sn: Senegal
               ch: Schweiz
+              se: Schweden
+              sa: Saudi-Arabien
+              st: São Tomé und Príncipe
+              bl: Sankt Bartholomäus
+              sm: San Marino
+              ws: Samoa
+              zm: Sambia
+              sb: Salomonen
+              mf: Saint Martin
+              ru: Russland
+              ro: Rumänien
+              rw: Ruanda
+              re: Réunion
+              cg: Republik Kongo
+              pr: Puerto Rico
+              pt: Portugal
+              pl: Polen
+              pn: Pitcairninseln
+              ph: Philippinen
+              pe: Peru
+              py: Paraguay
+              pg: Papua-Neuguinea
+              pa: Panama
+              pw: Palau
+              ps: Palästina
+              pk: Pakistan
+              tl: Osttimor
+              at: Österreich
+              om: Oman
+              no: Norwegen
+              nf: Norfolkinsel
+              mk: Nordmazedonien
+              mp: Nördliche Marianen
+              kp: Nordkorea
+              nu: Niue
+              ng: Nigeria
+              ne: Niger
+              nl: Niederlande
+              ni: Nicaragua
+              nz: Neuseeland
+              nc: Neukaledonien
+              np: Nepal
+              nr: Nauru
+              na: Namibia
+              mm: Myanmar
+              mz: Mosambik
+              ms: Montserrat
+              me: Montenegro
+              mn: Mongolei
+              mc: Monaco
+              md: Moldawien
+              fm: Mikronesien
+              mx: Mexiko
+              yt: Mayotte
+              mu: Mauritius
+              mr: Mauretanien
+              mq: Martinique
+              mh: Marshallinseln
+              ma: Marokko
+              mt: Malta
+              ml: Mali
+              mv: Malediven
+              my: Malaysia
+              mw: Malawi
+              mg: Madagaskar
+              mo: Macau
+              lu: Luxemburg
+              lt: Litauen
+              li: Liechtenstein
+              ly: Libyen
+              lr: Liberia
+              lb: Libanon
+              lv: Lettland
+              ls: Lesotho
+              la: Laos
+              kw: Kuwait
+              cu: Kuba
+              hr: Kroatien
+              xk: Kosovo
+              km: Komoren
+              co: Kolumbien
+              cc: Kokosinseln
+              ki: Kiribati
+              kg: Kirgisistan
+              ke: Kenia
+              qa: Katar
+              kz: Kasachstan
+              cv: Kap Verde
+              ca: Kanada
+              cm: Kamerun
+              kh: Kambodscha
+              ky: Kaimaninseln
+              vi: Jungferninseln (US)
+              vg: Jungferninseln (UK)
+              jo: Jordanien
+              je: Jersey
+              ye: Jemen
+              jp: Japan
+              jm: Jamaika
+              it: Italien
+              il: Israel
+              is: Island
+              ie: Irland
+              ir: Iran
+              iq: Irak
+              im: Insel Man
+              id: Indonesien
+              in: Indien
+              hk: Hongkong
+              hn: Honduras
+              hm: Heard und McDonaldinseln
+              ht: Haiti
+              gy: Guyana
+              gw: Guinea-Bissau
+              gn: Guinea
+              gg: Guernsey
+              gt: Guatemala
+              gu: Guam
+              gp: Guadeloupe
+              gl: Grönland
+              gr: Griechenland
+              gd: Grenada
+              gi: Gibraltar
+              gh: Ghana
+              ge: Georgien
+              gm: Gambia
+              ga: Gabun
+              tf: Französische Süd- und Antarktisgebiete
+              pf: Französisch-Polynesien
+              gf: Französisch-Guayana
+              fr: Frankreich
+              fi: Finnland
+              fj: Fidschi
+              fo: Färöer-Inseln
+              fk: Falklandinseln
+              sz: Eswatini
+              ee: Estland
+              er: Eritrea
+              ci: Elfenbeinküste
+              sv: El Salvador
+              ec: Ecuador
+              dj: Dschibuti
+              do: Dominikanische Republik
+              dm: Dominica
               de: Deutschland
+              cd: Demokratische Republik Kongo
+              dk: Dänemark
+              cw: Curaçao
+              cr: Costa Rica
+              ck: Cookinseln
+              cn: China
+              cl: Chile
+              bi: Burundi
+              bf: Burkina Faso
+              bg: Bulgarien
+              bn: Brunei
+              io: Britisches Territorium im Indischen Ozean
+              br: Brasilien
+              bv: Bouvetinsel
+              bw: Botswana
+              ba: Bosnien und Herzegowina
+              bq: Bonaire, Sint Eustatius und Saba
+              bo: Bolivien
+              bt: Bhutan
+              bm: Bermuda
+              bj: Benin
+              bz: Belize
+              be: Belgien
+              by: Belarus
+              bb: Barbados
+              bd: Bangladesch
+              bh: Bahrain
+              bs: Bahamas
+              au: Australien
+              et: Äthiopien
+              az: Aserbaidschan
+              aw: Aruba
+              am: Armenien
+              ar: Argentinien
+              gq: Äquatorialguinea
+              ag: Antigua und Barbuda
+              aq: Antarktis
+              ai: Anguilla
+              ao: Angola
+              ad: Andorra
+              as: Amerikanisch Samoa
+              dz: Algerien
+              al: Albanien
+              ax: Ålandinseln
+              eg: Ägypten
+              af: Afghanistan
             countryNameShortPlaceholder: Wählen Sie ein Land...
 
       typeOfConstructionProject: Bauprojekttyp
