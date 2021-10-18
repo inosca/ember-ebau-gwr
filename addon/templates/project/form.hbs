@@ -173,89 +173,67 @@
               @required={{true}}
             />
           </div>
-          {{#if 
-            (or 
-              this.project.buildingPermitIssueDate 
-              changeset.buildingPermitIssueDate 
-              this.import
-            )
-          }}
-            <div class={{spacingClass}}>
-              <Field @inputType="date" @attr="buildingPermitIssueDate" />
-            </div>
-          {{/if}}
-          {{#if (or (not this.project.isNew) this.import)}}
-            {{#if
-              (or
-                this.project.projectStartDate
-                changeset.projectStartDate
-                this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="projectStartDate" />
-              </div>
-            {{/if}}
-            {{#if
-              (or
-                this.project.projectCompletionDate
-                changeset.projectCompletionDate
-                this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="projectCompletionDate" />
-              </div>
-            {{/if}}
-            {{#if
-              (or
-                this.project.projectSuspensionDate
-                changeset.projectSuspensionDate
-                this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="projectSuspensionDate" />
-              </div>
-            {{/if}}
-            {{#if
-              (or
-                this.project.constructionAuthorisationDeniedDate
-                changeset.constructionAuthorisationDeniedDate
-                this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field
-                  @inputType="date"
-                  @attr="constructionAuthorisationDeniedDate"
-                />
-              </div>
-            {{/if}}
-            {{#if
-              (or
-                this.project.cancellationDate
-                changeset.cancellationDate
-                this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="cancellationDate" />
-              </div>
-            {{/if}}
-            {{#if
-              (or
-                this.project.withdrawalDate changeset.withdrawalDate this.import
-              )
-            }}
-              <div class={{spacingClass}}>
-                <Field @inputType="date" @attr="withdrawalDate" />
-              </div>
-            {{/if}}
-          {{/if}}
+          <div 
+            class="{{spacingClass}} 
+              {{if (not (show-model-field 
+                "buildingPermitIssueDate" changeset this.import
+              )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="buildingPermitIssueDate" />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "projectStartDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="projectStartDate" />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "projectCompletionDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="projectCompletionDate" />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "projectSuspensionDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="projectSuspensionDate" />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "constructionAuthorisationDeniedDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field
+              @inputType="date"
+              @attr="constructionAuthorisationDeniedDate"
+            />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "cancellationDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="cancellationDate" />
+          </div>
+          <div class="{{spacingClass}}
+            {{if (not (show-model-field 
+              "withdrawalDate" changeset this.import
+            )) "uk-hidden"}}"
+          >
+            <Field @inputType="date" @attr="withdrawalDate" />
+          </div>
         {{/let}}
       </div>
-      {{#unless this.project.isNew}}
+      {{#if (or 
+        (not this.project.isNew) 
+        (show-model-field 
+          "durationOfConstructionPhase" changeset this.import)
+        )
+      }}
         <Field
           @type="number"
           @attr="durationOfConstructionPhase"
@@ -263,7 +241,7 @@
             "ember-gwr.constructionProject.fields.durationOfConstructionPhase.hint"
           }}
         />
-      {{/unless}}
+      {{/if}}
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
       </h3>
@@ -280,30 +258,20 @@
         @attr="typeOfClient"
         @gwrEnumOptions={{this.choiceOptions.typeOfClientOptions}}
       />
+      {{#if (compute this.isClientMismatch changeset)}}
+        <div class="uk-alert uk-alert-danger" >
+          {{t "ember-gwr.constructionProject.fields.typeOfClientAlert"}}
+        </div>
+      {{/if}}
       {{#if
         (or
-          (not-eq changeset.typeOfClient 6161)
+          (eq changeset.typeOfClient 6161)
           (and
             this.import
-            this.import.data.client.identification.organisationIdentification.organisationName
+            this.import.data.client.identification.personIdentification.officialName
           )
         )
       }}
-        <div class="uk-flex uk-margin">
-          <div class="uk-width-1-2 uk-margin-small-right">
-            <Field
-              @attr="client.identification.organisationIdentification.organisationName"
-              @noMargin={{true}}
-            />
-          </div>
-          <div class="uk-width-1-2">
-            <Field
-              @attr="client.identification.organisationIdentification.organisationAdditionalName"
-              @noMargin={{true}}
-            />
-          </div>
-        </div>
-      {{else}}
         <div class="uk-flex uk-margin">
           <div class="uk-width-1-2 uk-margin-small-right">
             <Field
@@ -314,6 +282,21 @@
           <div class="uk-width-1-2">
             <Field
               @attr="client.identification.personIdentification.firstName"
+              @noMargin={{true}}
+            />
+          </div>
+        </div>
+      {{else}}
+        <div class="uk-flex uk-margin">
+          <div class="uk-width-1-2 uk-margin-small-right">
+            <Field
+              @attr="client.identification.organisationIdentification.organisationName"
+              @noMargin={{true}}
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <Field
+              @attr="client.identification.organisationIdentification.organisationAdditionalName"
               @noMargin={{true}}
             />
           </div>
@@ -332,7 +315,10 @@
         </div>
       </div>
       <Field @attr="client.address.addressLine2" />
-      {{#if (eq changeset.client.address.country.countryNameShort "ch")}}
+      {{#if (or 
+        (eq changeset.client.address.country.countryNameShort "ch")
+        (and this.import this.import.data.client.address.swissZipCode)
+      )}}
         <div class="{{unless this.import "uk-flex"}} uk-margin">
           <div class={{if this.import "uk-margin" "uk-width-1-2 uk-margin-small-right"}}>
             <Field
@@ -349,7 +335,10 @@
             />
           </div>
         </div>
-      {{else if changeset.client.address.country.countryNameShort}}
+      {{else if (or 
+        changeset.client.address.country.countryNameShort
+        (and this.import this.import.data.client.address.foreignZipCode)  
+      )}}
         <Field
           @type="number"
           @attr="client.address.foreignZipCode"

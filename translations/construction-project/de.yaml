@@ -397,6 +397,11 @@ ember-gwr:
 
       typeOfClient: Typ der Auftraggeber
       typeOfClientPlaceholder: Wählen Sie den Typ des Auftraggeber...
+      typeOfClientAlert: |-
+        Für den Typ der Auftraggeber "Privatpersonen, inkl. Erbengemeinschaften" dürfen
+        die Felder "Name des Unternehmens" und "Name des Unternehmens Zusatz"
+        nicht ausgefüllt werden. Für andere Auftraggeber (Organisationen) dürfen
+        die Felder "Name" und "Vorname" nicht ausgefüllt werden. 
       typeOfClientOptions:
         6101: SBB (Schweizerische Bundesbahnen)
         6103: VBS (Eidg. Departement für Verteidigung, Bevölkerungsschutz und Sport)

@@ -315,4 +315,23 @@ export default class ProjectFormController extends ImportController {
   get workWithBuildings() {
     return this.project.work.filter((work) => !work.building.isNew);
   }
+
+  @action
+  isClientMismatch(changeset) {
+    const personNamePath =
+      "client.identification.personIdentification.officialName";
+    const organisationNamePath =
+      "client.identification.organisationIdentification.organisationName";
+
+    const conditionHolds = (isEqual, v, w) => (isEqual ? v === w : v !== w);
+    const isMismatch = (value, isEqual, path) =>
+      conditionHolds(isEqual, changeset.get("typeOfClient"), value) && changeset
+        ? changeset.get(path)
+        : false;
+
+    return (
+      isMismatch(6161, true, organisationNamePath) ||
+      isMismatch(6161, false, personNamePath)
+    );
+  }
 }
