@@ -1,3 +1,27 @@
+# [3.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.1.1...v3.2.0) (2021-10-18)
+
+
+### Bug Fixes
+
+* **building:** add realestate id validation and surface / volume units ([6e8525f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6e8525fe696fb34e718d0c78cdc284c99782101d))
+* **dates:** do not show construction / demolition dates on new models ([d7cc4ac](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d7cc4ac2f071bcdf46a0184364c439cd37d0ed82))
+* **dwelling:** do not show floor number field for ground floor ([dd96b5e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/dd96b5e3ed419b2a0181944a93105ba9d19e2f3d))
+* **dwelling:** refetch dwellings after dwelling update ([bf02e33](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bf02e33dab1d242eb22810c8e87ee27377c21140))
+* **entrance:** fix tooltip container on building entrance number ([d5eb009](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d5eb0091dd554ba69a44cb1c621200bdfec7a26d))
+* **header:** add scroll into view for status change ([7a3ee64](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7a3ee645bd042689829f1050b65c7a33403e2203))
+* **import:** show conditional fields during import ([0952c69](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0952c69567b453cd05ca0145733e6410c90204a9))
+* **import:** show import date fields and cast imported dates ([00fe1fa](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/00fe1fa9a468281d070ef500292e4e1953477ede))
+* **project:** add hints for typeOfConstructionProject ([881a945](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/881a945fd6f69bcc5760c2ce5488c83d204ee41c))
+* **project:** filter project list by local_id ([26c55e1](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/26c55e1807a417203ff9b0b4b2b942ad6464b11a))
+* **translations:** fix some typos ([4227439](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4227439a31190f4cbeb982041530a816925401cf))
+
+
+### Features
+
+* **linked-models:** clarification info for object additions ([12d7886](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/12d7886d258b964a12860cfa7e2430412c9a149a))
+* **project:** complete client country options ([bd36e3f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bd36e3ffe74094021a69ca60c8ff7d824ab55f3b))
+* **search:** add back routes for building and project search ([a22c9d2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/a22c9d2c42a624123814fbc59e449bec94032561))
+
 ## [3.1.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.1.0...v3.1.1) (2021-10-01)
 
 
