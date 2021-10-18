@@ -22,7 +22,7 @@
       @onStatusCorrection={{this.correctState}}
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
-      @getChangeHint={{this.getChangeHint}}
+      @getChangeHint={{fn this.gwr.getChangeHint this.constructionProject.cacheClass}}
       @modelStatusField="projectStatus"
       as |Field changeset|
     >

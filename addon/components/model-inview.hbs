@@ -1,0 +1,8 @@
+<div
+    class="inview-trigger"
+    {{on "inview" (perform this.fetch @model)}}
+>
+    {{yield (hash
+        model=this.fetchedModel
+    )}}
+</div>

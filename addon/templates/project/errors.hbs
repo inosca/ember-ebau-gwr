@@ -24,140 +24,127 @@
     @linkModels={{array this.project.EPROID}}
     @modelDescription={{this.project.constructionProjectDescription}}
   />
-  {{#let (filter-by "building.isNew" false this.project.work) as |work|}}
-    {{#if work.length}}
-      <h3 class="uk-margin-top">
-        {{t "ember-gwr.nav.linkedBuildings"}}
-      </h3>
-      <div
-        uk-scrollspy="cls: uk-animation-fade; target: .inview-trigger; offset-top: 300"
-      >
-        <ul class="uk-list uk-list-divider uk-list-large">
-          {{#each (map-by "building" work) as |building|}}
-            <div
-              class="inview-trigger"
-              {{on "inview" (perform this.fetchModel building.EGID)}}
+  {{#if this.workBuildings.length}}
+    <h3 class="uk-margin-top">
+      {{t "ember-gwr.nav.linkedBuildings"}}
+    </h3>
+    <div
+      uk-scrollspy="cls: uk-animation-fade; target: .inview-trigger; offset-top: 300"
+    >
+      <ul class="uk-list uk-list-divider uk-list-large">
+      {{#each this.workBuildings as |building|}}
+        <ModelInview 
+          @model={{building.EGID}}
+          @fetchModel={{perform this.fetchModel}}
+          as |inview|
+        >
+          {{#let inview.model as |inviewModel|}}
+            <ModelErrors
+              @model={{building}}
+              @modelId={{building.EGID}}
+              @errorModel={{inviewModel.buildingWithErrors}}
+              @linkRoute="building.edit.form"
+              @linkModels={{array this.project.EPROID building.EGID}}
+              @modelDescription={{building.fullAddressTexts
+              }} as |BuildingErrorList|
             >
-              {{#let
-                (get (get this.buildings building.EGID) "building")
-                (get (get this.buildings building.EGID) "entrances")
-                (get
-                  (get this.buildings building.EGID) "dwellings"
-                ) as |buildingWithErrors entrancesWithErrors dwellingsWithErrors|
-              }}
-                <ModelErrors
-                  @model={{building}}
-                  @modelId={{building.EGID}}
-                  @errorModel={{buildingWithErrors}}
-                  @linkRoute="building.edit.form"
-                  @linkModels={{array this.project.EPROID building.EGID}}
-                  @modelDescription={{building.fullAddressTexts
-                  }} as |BuildingErrorList|
+              {{#if inviewModel.buildingWithErrors}}
+                <UkSwitcher
+                  class="uk-margin-small-top uk-animation-fade" as |switcher|
                 >
-                  {{#if buildingWithErrors}}
-                    <UkSwitcher
-                      class="uk-margin-small-top uk-animation-fade" as |switcher|
-                    >
-                      <switcher.nav @type="subnav" as |nav|>
-                        <nav.component uk-switcher @divider={{true}} as |tab|>
-                          {{#if buildingWithErrors.errorList.length}}
-                            <tab.item>
-                              {{t "ember-gwr.issues.switcher.issues"}}
-                            </tab.item>
-                          {{/if}}
-                          {{#if entrancesWithErrors.length}}
-                            <tab.item>
-                              <div class="uk-flex-inline uk-flex-middle">
-                                {{t "ember-gwr.issues.switcher.entrances"}}
-                                <ModelErrors::ErrorIndicator
-                                  @errorCount={{get
-                                    this.entranceErrorCount
-                                    building.EGID
-                                  }}
-                                />
-                              </div>
-                            </tab.item>
-                          {{/if}}
-                          {{#if dwellingsWithErrors.length}}
-                            <tab.item>
-                              <div class="uk-flex-inline uk-flex-middle">
-                                {{t "ember-gwr.issues.switcher.dwellings"}}
-                                <ModelErrors::ErrorIndicator
-                                  @errorCount={{get
-                                    this.dwellingErrorCount
-                                    building.EGID
-                                  }}
-                                />
-                              </div>
-                            </tab.item>
-                          {{/if}}
-                        </nav.component>
-                      </switcher.nav>
-                      <switcher.content as |content|>
-                        {{#if buildingWithErrors.errorList.length}}
-                          <content.item>
-                            <li>
-                              <BuildingErrorList />
-                            </li>
-                          </content.item>
-                        {{/if}}
-                        {{#if entrancesWithErrors.length}}
-                          <content.item>
-                            <ul class="uk-list uk-list-divider uk-list-large">
-                              {{#each entrancesWithErrors as |entrance|}}
-                                <ModelErrors
-                                  @model={{entrance}}
-                                  @modelId={{entrance.EDID}}
-                                  @errorModel={{entrance}}
-                                  @linkRoute="building.edit.entrance.edit"
-                                  @linkModels={{array
-                                    this.project.EPROID
-                                    building.EGID
-                                    entrance.EDID
-                                  }}
-                                  @modelDescription={{entrance.fullAddressText}}
-                                  @smallHeaderIdWidth={{true}}
-                                />
-                              {{/each}}
-                            </ul>
-                          </content.item>
-                        {{/if}}
-                        {{#if dwellingsWithErrors.length}}
-                          <content.item>
-                            <ul class="uk-list uk-list-divider uk-list-large">
-                              {{#each dwellingsWithErrors as |dwelling|}}
-                                <ModelErrors
-                                  @model={{dwelling.dwelling}}
-                                  @modelId={{dwelling.dwelling.EWID}}
-                                  @errorModel={{dwelling.dwelling}}
-                                  @linkRoute="building.edit.dwelling.edit"
-                                  @linkModels={{array
-                                    this.project.EPROID
-                                    building.EGID
-                                    dwelling.dwelling.EWID
-                                  }}
-                                  @modelDescription={{concat
-                                    (t "ember-gwr.models.entrance" count=1)
-                                    " "
-                                    dwelling.EDID
-                                  }}
-                                  @smallHeaderIdWidth={{true}}
-                                />
-                              {{/each}}
-                            </ul>
-                          </content.item>
-                        {{/if}}
-                      </switcher.content>
-                    </UkSwitcher>
-                  {{else}}
-                    <ModelErrors::Skeleton />
-                  {{/if}}
-                </ModelErrors>
-              {{/let}}
-            </div>
-          {{/each}}
-        </ul>
-      </div>
-    {{/if}}
-  {{/let}}
+                  <switcher.nav @type="subnav" as |nav|>
+                    <nav.component uk-switcher @divider={{true}} as |tab|>
+                      {{#if inviewModel.buildingWithErrors.errorList.length}}
+                        <tab.item>
+                          {{t "ember-gwr.issues.switcher.issues"}}
+                        </tab.item>
+                      {{/if}}
+                      {{#if inviewModel.entrancesWithErrors.length}}
+                        <tab.item>
+                          <div class="uk-flex-inline uk-flex-middle">
+                            {{t "ember-gwr.issues.switcher.entrances"}}
+                            <ModelErrors::ErrorIndicator
+                              @errorCount={{inviewModel.entranceErrorCount}}
+                            />
+                          </div>
+                        </tab.item>
+                      {{/if}}
+                      {{#if inviewModel.dwellingsWithErrors.length}}
+                        <tab.item>
+                          <div class="uk-flex-inline uk-flex-middle">
+                            {{t "ember-gwr.issues.switcher.dwellings"}}
+                            <ModelErrors::ErrorIndicator
+                              @errorCount={{inviewModel.dwellingErrorCount}}
+                            />
+                          </div>
+                        </tab.item>
+                      {{/if}}
+                    </nav.component>
+                  </switcher.nav>
+                  <switcher.content as |content|>
+                    {{#if inviewModel.buildingWithErrors.errorList.length}}
+                      <content.item>
+                        <li>
+                          <BuildingErrorList />
+                        </li>
+                      </content.item>
+                    {{/if}}
+                    {{#if inviewModel.entrancesWithErrors.length}}
+                      <content.item>
+                        <ul class="uk-list uk-list-divider uk-list-large">
+                          {{#each inviewModel.entrancesWithErrors as |entrance|}}
+                            <ModelErrors
+                              @model={{entrance}}
+                              @modelId={{entrance.EDID}}
+                              @errorModel={{entrance}}
+                              @linkRoute="building.edit.entrance.edit"
+                              @linkModels={{array
+                                this.project.EPROID
+                                building.EGID
+                                entrance.EDID
+                              }}
+                              @modelDescription={{entrance.fullAddressText}}
+                              @smallHeaderIdWidth={{true}}
+                            />
+                          {{/each}}
+                        </ul>
+                      </content.item>
+                    {{/if}}
+                    {{#if inviewModel.dwellingsWithErrors.length}}
+                      <content.item>
+                        <ul class="uk-list uk-list-divider uk-list-large">
+                          {{#each inviewModel.dwellingsWithErrors as |dwelling|}}
+                            <ModelErrors
+                              @model={{dwelling.dwelling}}
+                              @modelId={{dwelling.dwelling.EWID}}
+                              @errorModel={{dwelling.dwelling}}
+                              @linkRoute="building.edit.dwelling.edit"
+                              @linkModels={{array
+                                this.project.EPROID
+                                building.EGID
+                                dwelling.dwelling.EWID
+                              }}
+                              @modelDescription={{concat
+                                (t "ember-gwr.models.entrance" count=1)
+                                " "
+                                dwelling.EDID
+                              }}
+                              @smallHeaderIdWidth={{true}}
+                            />
+                          {{/each}}
+                        </ul>
+                      </content.item>
+                    {{/if}}
+                  </switcher.content>
+                </UkSwitcher>
+              {{else}}
+                <ModelErrors::Skeleton />
+              {{/if}}
+            </ModelErrors>
+          {{/let}}
+        </ModelInview>
+      {{/each}}
+      </ul>
+    </div>
+  {{/if}}
 {{/if}}

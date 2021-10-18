@@ -209,11 +209,6 @@ export default class ProjectFormController extends ImportController {
   }
 
   @action
-  getChangeHint(currentStatus, newStatus) {
-    return this.constructionProject.getChangeHint(currentStatus, newStatus);
-  }
-
-  @action
   updateWork(work, attr, value) {
     work[attr] = value;
   }

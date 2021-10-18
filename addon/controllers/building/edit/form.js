@@ -202,9 +202,4 @@ export default class BuildingFormController extends ImportController {
   getCorrectionParameters(newStatus) {
     return this.buildingAPI.getCorrectionParameters(newStatus);
   }
-
-  @action
-  getChangeHint(currentStatus, newStatus) {
-    return this.buildingAPI.getChangeHint(currentStatus, newStatus);
-  }
 }
