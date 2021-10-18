@@ -16,11 +16,6 @@ export default class ProjectErrorsController extends Controller {
   @service notification;
 
   @tracked projectErrorCount = 0;
-  @tracked buildingErrorCount = {};
-  @tracked entranceErrorCount = {};
-  @tracked dwellingErrorCount = {};
-
-  @tracked buildings = {};
 
   @lastValue("fetchProject") project;
   @restartableTask
@@ -34,34 +29,36 @@ export default class ProjectErrorsController extends Controller {
     return project;
   }
 
+  get workBuildings() {
+    return this.project.work
+      .filter((w) => !w.building.isNew)
+      .map((w) => w.building);
+  }
+
   @enqueueTask
   *fetchModel(buildingId) {
     // building response only contains entrances
-    const building = yield this.building.getFromCacheOrApi(buildingId);
-    this.buildingErrorCount = {
-      ...this.buildingErrorCount,
-      [buildingId]: building.errorList?.length ?? 0,
-    };
+    const buildingWithErrors = yield this.building.getFromCacheOrApi(
+      buildingId
+    );
+    const buildingErrorCount = buildingWithErrors.errorList?.length ?? 0;
 
     // response contains both entrances and dwellings
     const projectBuilding = this.project.work.find(
       (buildingWork) => buildingWork.building.EGID === buildingId
     ).building;
 
-    const entrances = yield Promise.all(
+    const entrancesWithErrors = yield Promise.all(
       projectBuilding.buildingEntrance.map((entrance) =>
         this.buildingEntrance.getFromCacheOrApi(entrance.EDID, buildingId)
       )
     );
 
-    this.entranceErrorCount = {
-      ...this.entranceErrorCount,
-      [buildingId]: entrances
-        .map((entrance) => entrance.errorList?.length ?? 0)
-        .reduce((a, b) => a + b, 0),
-    };
+    const entranceErrorCount = entrancesWithErrors
+      .map((entrance) => entrance.errorList?.length ?? 0)
+      .reduce((a, b) => a + b, 0);
 
-    const dwellings = (yield Promise.all(
+    const dwellingsWithErrors = (yield Promise.all(
       projectBuilding.buildingEntrance.map((entrance) => {
         return Promise.all(
           entrance.dwelling.map((dwelling) =>
@@ -71,18 +68,17 @@ export default class ProjectErrorsController extends Controller {
       })
     )).flat();
 
-    this.dwellingErrorCount = {
-      ...this.dwellingErrorCount,
-      [buildingId]: dwellings
-        .map((dwelling) => dwelling.errorList?.length ?? 0)
-        .reduce((a, b) => a + b, 0),
-    };
+    const dwellingErrorCount = dwellingsWithErrors
+      .map((dwelling) => dwelling.dwelling.errorList?.length ?? 0)
+      .reduce((a, b) => a + b, 0);
 
-    this.buildings = {
-      ...this.buildings,
-      [buildingId]: { building, entrances, dwellings },
+    return {
+      buildingWithErrors,
+      buildingErrorCount,
+      entrancesWithErrors,
+      entranceErrorCount,
+      dwellingsWithErrors,
+      dwellingErrorCount,
     };
-
-    return building;
   }
 }

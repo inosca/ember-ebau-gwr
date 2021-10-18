@@ -325,7 +325,7 @@ export default class Building extends XMLModel {
     [this.STATUS_NOT_REALIZED]: [],
   };
 
-  static buildingTransitionHint = {
+  static transitionHint = {
     [this.STATUS_PROJECTED]: {
       [this.STATUS_APPROVED]: true,
       [this.STATUS_NOT_REALIZED]: true,

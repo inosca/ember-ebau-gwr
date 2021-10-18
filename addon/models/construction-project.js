@@ -372,7 +372,7 @@ export default class ConstructionProject extends XMLModel {
     ],
   };
 
-  static projectTransitionHint = {
+  static transitionHint = {
     [this.STATUS_PROJECTED]: {
       [this.STATUS_APPROVED]: true,
       [this.STATUS_REFUSED]: true,

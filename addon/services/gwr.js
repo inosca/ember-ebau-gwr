@@ -149,4 +149,8 @@ export default class GwrService extends Service {
       }),
     };
   }
+
+  getChangeHint(cacheClass, currentStatus, newStatus) {
+    return cacheClass.transitionHint[currentStatus][newStatus];
+  }
 }

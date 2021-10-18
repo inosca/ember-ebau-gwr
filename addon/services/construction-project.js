@@ -222,26 +222,25 @@ export default class ConstructionProjectService extends GwrService {
           }
         } else if (buildingWork.kindOfWork === 6002) {
           await Promise.all(
-            buildingWork.building.buildingEntrance.map(
-              async (buildingEntrance) =>
-                await Promise.all(
-                  buildingEntrance.dwelling.map(async (dwelling) => {
-                    if (
-                      [
-                        Dwelling.STATUS_PROJECTED,
-                        Dwelling.STATUS_APPROVED,
-                      ].includes(dwelling.dwellingStatus)
-                    ) {
-                      await this.dwelling.setToApprovedDwelling(
-                        "setToApprovedDwelling",
-                        cascadeLevel - 1,
-                        isDryRun,
-                        dwelling,
-                        buildingWork.building.EGID
-                      );
-                    }
-                  })
-                )
+            buildingWork.building.buildingEntrance.map((buildingEntrance) =>
+              Promise.all(
+                buildingEntrance.dwelling.map(async (dwelling) => {
+                  if (
+                    [
+                      Dwelling.STATUS_PROJECTED,
+                      Dwelling.STATUS_APPROVED,
+                    ].includes(dwelling.dwellingStatus)
+                  ) {
+                    await this.dwelling.setToApprovedDwelling(
+                      "setToApprovedDwelling",
+                      cascadeLevel - 1,
+                      isDryRun,
+                      dwelling,
+                      buildingWork.building.EGID
+                    );
+                  }
+                })
+              )
             )
           );
         }
@@ -305,27 +304,26 @@ export default class ConstructionProjectService extends GwrService {
           }
         } else if (buildingWork.kindOfWork === 6002) {
           await Promise.all(
-            buildingWork.building.buildingEntrance.map(
-              async (buildingEntrance) =>
-                await Promise.all(
-                  buildingEntrance.dwelling.map(async (dwelling) => {
-                    if (
-                      [
-                        Dwelling.STATUS_PROJECTED,
-                        Dwelling.STATUS_APPROVED,
-                        Dwelling.STATUS_NOT_REALIZED,
-                      ].includes(dwelling.dwellingStatus)
-                    ) {
-                      await this.dwelling.setToNotRealizedDwelling(
-                        "setToNotRealizedDwelling",
-                        cascadeLevel - 1,
-                        isDryRun,
-                        dwelling,
-                        buildingWork.building.EGID
-                      );
-                    }
-                  })
-                )
+            buildingWork.building.buildingEntrance.map((buildingEntrance) =>
+              Promise.all(
+                buildingEntrance.dwelling.map(async (dwelling) => {
+                  if (
+                    [
+                      Dwelling.STATUS_PROJECTED,
+                      Dwelling.STATUS_APPROVED,
+                      Dwelling.STATUS_NOT_REALIZED,
+                    ].includes(dwelling.dwellingStatus)
+                  ) {
+                    await this.dwelling.setToNotRealizedDwelling(
+                      "setToNotRealizedDwelling",
+                      cascadeLevel - 1,
+                      isDryRun,
+                      dwelling,
+                      buildingWork.building.EGID
+                    );
+                  }
+                })
+              )
             )
           );
         }
@@ -406,33 +404,30 @@ export default class ConstructionProjectService extends GwrService {
         }
 
         await Promise.all(
-          buildingWork.building.buildingEntrance.map(
-            async (buildingEntrance) =>
-              await Promise.all(
-                buildingEntrance.dwelling.map(async (dwelling) => {
-                  if (buildingWork.kindOfWork === 6001) {
-                    if (dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED) {
-                      throw {
-                        isLifeCycleError: true,
-                        dwellingId: dwelling.EWID,
-                        buildingId: buildingWork.building.EGID,
-                        states: [Dwelling.STATUS_COMPLETED],
-                      };
-                    }
-                  } else if (buildingWork.kindOfWork === 6007) {
-                    if (
-                      dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED
-                    ) {
-                      throw {
-                        isLifeCycleError: true,
-                        dwellingId: dwelling.EWID,
-                        buildingId: buildingWork.building.EGID,
-                        states: [Dwelling.STATUS_DEMOLISHED],
-                      };
-                    }
+          buildingWork.building.buildingEntrance.map((buildingEntrance) =>
+            Promise.all(
+              buildingEntrance.dwelling.map(async (dwelling) => {
+                if (buildingWork.kindOfWork === 6001) {
+                  if (dwelling.dwellingStatus !== Dwelling.STATUS_COMPLETED) {
+                    throw {
+                      isLifeCycleError: true,
+                      dwellingId: dwelling.EWID,
+                      buildingId: buildingWork.building.EGID,
+                      states: [Dwelling.STATUS_COMPLETED],
+                    };
                   }
-                })
-              )
+                } else if (buildingWork.kindOfWork === 6007) {
+                  if (dwelling.dwellingStatus !== Dwelling.STATUS_DEMOLISHED) {
+                    throw {
+                      isLifeCycleError: true,
+                      dwellingId: dwelling.EWID,
+                      buildingId: buildingWork.building.EGID,
+                      states: [Dwelling.STATUS_DEMOLISHED],
+                    };
+                  }
+                }
+              })
+            )
           )
         );
       })
@@ -495,43 +490,42 @@ export default class ConstructionProjectService extends GwrService {
           }
         } else if (buildingWork.kindOfWork === 6002) {
           await Promise.all(
-            buildingWork.building.buildingEntrance.map(
-              async (buildingEntrance) =>
-                await Promise.all(
-                  buildingEntrance.dwelling.map(async (dwelling) => {
-                    if (
-                      [
-                        Dwelling.STATUS_PROJECTED,
-                        Dwelling.STATUS_APPROVED,
-                        Dwelling.STATUS_NOT_REALIZED,
-                      ].includes(dwelling.dwellingStatus)
-                    ) {
-                      await this.dwelling.setToNotRealizedDwelling(
-                        "setToNotRealizedDwelling",
-                        cascadeLevel - 1,
-                        isDryRun,
-                        dwelling,
-                        buildingWork.building.EGID
-                      );
-                    } else {
-                      // Display message with link to dwelling with issue
-                      const states =
-                        cascadeLevel > 1
-                          ? [
-                              Dwelling.STATUS_PROJECTED,
-                              Dwelling.STATUS_APPROVED,
-                              Dwelling.STATUS_NOT_REALIZED,
-                            ]
-                          : [Dwelling.STATUS_NOT_REALIZED];
-                      throw {
-                        isLifeCycleError: true,
-                        dwellingId: dwelling.EWID,
-                        buildingId: buildingWork.building.EGID,
-                        states,
-                      };
-                    }
-                  })
-                )
+            buildingWork.building.buildingEntrance.map((buildingEntrance) =>
+              Promise.all(
+                buildingEntrance.dwelling.map(async (dwelling) => {
+                  if (
+                    [
+                      Dwelling.STATUS_PROJECTED,
+                      Dwelling.STATUS_APPROVED,
+                      Dwelling.STATUS_NOT_REALIZED,
+                    ].includes(dwelling.dwellingStatus)
+                  ) {
+                    await this.dwelling.setToNotRealizedDwelling(
+                      "setToNotRealizedDwelling",
+                      cascadeLevel - 1,
+                      isDryRun,
+                      dwelling,
+                      buildingWork.building.EGID
+                    );
+                  } else {
+                    // Display message with link to dwelling with issue
+                    const states =
+                      cascadeLevel > 1
+                        ? [
+                            Dwelling.STATUS_PROJECTED,
+                            Dwelling.STATUS_APPROVED,
+                            Dwelling.STATUS_NOT_REALIZED,
+                          ]
+                        : [Dwelling.STATUS_NOT_REALIZED];
+                    throw {
+                      isLifeCycleError: true,
+                      dwellingId: dwelling.EWID,
+                      buildingId: buildingWork.building.EGID,
+                      states,
+                    };
+                  }
+                })
+              )
             )
           );
         }
@@ -629,43 +623,42 @@ export default class ConstructionProjectService extends GwrService {
           }
         } else if (buildingWork.kindOfWork === 6002) {
           await Promise.all(
-            buildingWork.building.buildingEntrance.map(
-              async (buildingEntrance) =>
-                await Promise.all(
-                  buildingEntrance.dwelling.map(async (dwelling) => {
-                    if (
-                      [
-                        Dwelling.STATUS_PROJECTED,
-                        Dwelling.STATUS_APPROVED,
-                        Dwelling.STATUS_NOT_REALIZED,
-                      ].includes(dwelling.dwellingStatus)
-                    ) {
-                      await this.dwelling.setToNotRealizedDwelling(
-                        "setToNotRealizedDwelling",
-                        cascadeLevel - 1,
-                        isDryRun,
-                        dwelling,
-                        buildingWork.building.EGID
-                      );
-                    } else {
-                      // Display message with link to dwelling with issue
-                      const states =
-                        cascadeLevel > 1
-                          ? [
-                              Dwelling.STATUS_PROJECTED,
-                              Dwelling.STATUS_APPROVED,
-                              Dwelling.STATUS_NOT_REALIZED,
-                            ]
-                          : [Dwelling.STATUS_NOT_REALIZED];
-                      throw {
-                        isLifeCycleError: true,
-                        dwellingId: dwelling.EWID,
-                        buildingId: buildingWork.building.EGID,
-                        states,
-                      };
-                    }
-                  })
-                )
+            buildingWork.building.buildingEntrance.map((buildingEntrance) =>
+              Promise.all(
+                buildingEntrance.dwelling.map(async (dwelling) => {
+                  if (
+                    [
+                      Dwelling.STATUS_PROJECTED,
+                      Dwelling.STATUS_APPROVED,
+                      Dwelling.STATUS_NOT_REALIZED,
+                    ].includes(dwelling.dwellingStatus)
+                  ) {
+                    await this.dwelling.setToNotRealizedDwelling(
+                      "setToNotRealizedDwelling",
+                      cascadeLevel - 1,
+                      isDryRun,
+                      dwelling,
+                      buildingWork.building.EGID
+                    );
+                  } else {
+                    // Display message with link to dwelling with issue
+                    const states =
+                      cascadeLevel > 1
+                        ? [
+                            Dwelling.STATUS_PROJECTED,
+                            Dwelling.STATUS_APPROVED,
+                            Dwelling.STATUS_NOT_REALIZED,
+                          ]
+                        : [Dwelling.STATUS_NOT_REALIZED];
+                    throw {
+                      isLifeCycleError: true,
+                      dwellingId: dwelling.EWID,
+                      buildingId: buildingWork.building.EGID,
+                      states,
+                    };
+                  }
+                })
+              )
             )
           );
         }
@@ -771,9 +764,5 @@ export default class ConstructionProjectService extends GwrService {
         project[parameter] = "9999-01-01";
       }
     });
-  }
-
-  getChangeHint(currentStatus, newStatus) {
-    return ConstructionProject.projectTransitionHint[currentStatus][newStatus];
   }
 }
