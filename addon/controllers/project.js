@@ -65,6 +65,6 @@ export default class ProjectController extends Controller {
       .peekAll("gwr-link")
       .find(({ eproid }) => Number(eproid) === this.activeProject);
     await link.destroyRecord();
-    await this.constructionProject.all.perform();
+    await this.constructionProject.all.perform(this.model);
   }
 }
