@@ -220,7 +220,7 @@
 
       <Field @attr="building.nameOfBuilding" />
 
-      {{#unless this.buildingWork.isNew}}
+      {{#if (or (not this.buildingWork.isNew) this.import)}}
         <Field @attr="building.dateOfConstruction.yearMonthDay" @type="date" />
         {{#if this.buildingWork.building.dateOfConstruction.year}}
           <Field @attr="building.dateOfConstruction.year" @disabled={{true}} />
@@ -231,17 +231,15 @@
             @disabled={{true}}
           />
         {{/if}}
-        {{#if this.buildingWork.building.dateOfConstruction.periodOfConstruction}}
-          <Field
-            @attr="building.dateOfConstruction.periodOfConstruction"
-            @type="select"
-            @convertValueTo="number"
-            @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
-          />
-        {{/if}}
+        <Field
+          @attr="building.dateOfConstruction.periodOfConstruction"
+          @type="select"
+          @convertValueTo="number"
+          @gwrEnumOptions={{this.Models.DateOfConstruction.periodOfConstructionOptions}}
+        />
 
         <Field @attr="building.yearOfDemolition" @type="number" />
-      {{/unless}}
+      {{/if}}
 
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
@@ -314,7 +312,18 @@
         @label="ember-gwr.building.heating.revisionDate"
       />
 
-      <ul uk-accordion>
+      <ul uk-accordion="active: {{if (or
+            (show-model-field 
+              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating" 
+              changeset 
+              this.import
+            )
+            (show-model-field  
+              "building.thermotechnicalDeviceForHeating2.energySourceHeating" 
+              changeset 
+              this.import
+            )) "0" false}}"
+      >
         <li>
           <a class="uk-accordion-title" href="#">
             <h4>
@@ -382,7 +391,18 @@
         @label="ember-gwr.building.heating.revisionDate"
       />
 
-      <ul uk-accordion>
+      <ul uk-accordion="active: {{if (or
+            (show-model-field 
+              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating" 
+              changeset 
+              this.import
+            )
+            (show-model-field  
+              "building.thermotechnicalDeviceForHeating2.energySourceHeating" 
+              changeset 
+              this.import
+            )) "0" false}}"
+      >
         <li>
           <a class="uk-accordion-title" href="#">
             <h4>

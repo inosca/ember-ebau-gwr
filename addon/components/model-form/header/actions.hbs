@@ -83,6 +83,7 @@
                 class="uk-button uk-text-left uk-highlight-hover
                   {{if @import "uk-text-muted" "uk-text-secondary"}}
                   uk-width-1-1 uk-background-default uk-padding-remove"
+                {{on "click" (fn (mut this.showImportModal) true)}}
               >
                 {{t "ember-gwr.components.modelForm.importFromCaluma"}}
               </LinkTo>

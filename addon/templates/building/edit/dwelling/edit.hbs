@@ -42,7 +42,11 @@
         @hint={{t "ember-gwr.dwelling.floorHint"}}
       />
       
-      {{#if (or (eq changeset.floorType 3101) (eq changeset.floorType 3401))}}
+      {{#if (or 
+        (eq changeset.floorType 3101) 
+        (eq changeset.floorType 3401) 
+        (and this.import this.import.data.floorNumber)
+      )}}
         <Field
           @attr="floorNumber" 
           @type="number" 
@@ -64,10 +68,10 @@
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
 
-      {{#unless this.dwelling.isNew}}
+      {{#if (or (not this.dwelling.isNew) this.import)}}
         <Field @attr="yearOfConstruction" @type="number" />
         <Field @attr="yearOfDemolition" @type="number" />
-      {{/unless}}
+      {{/if}}
 
       <h2>{{t "ember-gwr.dwelling.usage.heading"}}</h2>
       <Field
