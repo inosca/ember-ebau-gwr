@@ -1,6 +1,15 @@
 <span class="uk-flex uk-child-width-1-2">
   <span>{{t "ember-gwr.dwelling.floor"}}</span>
-  <span class="uk-text-muted">{{or @model.floor "-"}}</span>
+  <span class="uk-text-muted">
+    {{#if @model.floorType}}
+      {{concat 
+        (if @model.floorNumber (concat @model.floorNumber ". ")) 
+        (t (concat "ember-gwr.dwelling.floorTypeOptions." @model.floorType))
+      }}
+    {{else}}
+      {{"-"}}
+    {{/if}}
+  </span>
 </span>
 <hr />
 <span class="uk-flex uk-child-width-1-2">

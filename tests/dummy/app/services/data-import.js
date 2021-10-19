@@ -70,6 +70,8 @@ export default class DataImport extends Service {
       {
         EDID: 0, // not sure if information can be given
         floor: 3100,
+        floorType: 3100,
+        floorNumber: null,
         dwellingStatus: 3001,
         noOfHabitableRooms: 8,
         locationOfDwellingOnFloor: "Rechts",
@@ -80,6 +82,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3101,
+        floorType: 3101,
+        floorNumber: 1,
         dwellingStatus: 3002,
         noOfHabitableRooms: 3,
         locationOfDwellingOnFloor: "Links",
@@ -90,6 +94,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3102,
+        floorType: 3101,
+        floorNumber: 2,
         noOfHabitableRooms: 3,
         locationOfDwellingOnFloor: "Links",
         dwellingStatus: 3003,
@@ -99,7 +105,9 @@ export default class DataImport extends Service {
       },
       {
         EDID: 0,
-        floor: 3401,
+        floor: null,
+        floorType: null,
+        floorNumber: null,
         noOfHabitableRooms: 3,
         locationOfDwellingOnFloor: "Links",
         dwellingStatus: 3004,
@@ -110,6 +118,8 @@ export default class DataImport extends Service {
       {
         EDID: 0,
         floor: 3402,
+        floorType: 3401,
+        floorNumber: 2,
         noOfHabitableRooms: 2,
         locationOfDwellingOnFloor: "Rechts",
         dwellingStatus: 3007,
