@@ -17,6 +17,12 @@ export default class AuthFetchService extends Service {
     this.housingStatToken.perform();
   }
 
+  showLogin() {
+    this.showAuthModal = true;
+    this.token = undefined;
+    this.municipality = undefined;
+  }
+
   @task
   *housingStatToken(username, password, municipality) {
     if (
@@ -48,15 +54,17 @@ export default class AuthFetchService extends Service {
 
     if (!response.ok) {
       if (json["400"]?.source === "internal") {
-        this.showAuthModal = true;
+        this.showLogin();
       }
 
       if (json["401"]?.source === "external") {
         this.notification.danger(
           this.intl.t("ember-gwr.generalErrors.loginError")
         );
-        this.showAuthModal = true;
+        this.showLogin();
       }
+
+      return;
     }
 
     this.token = json.token;
@@ -76,9 +84,7 @@ export default class AuthFetchService extends Service {
     });
 
     if (response.ok || (!response.ok && response.status === 401)) {
-      this.showAuthModal = true;
-      this.token = undefined;
-      this.municipality = undefined;
+      this.showLogin();
     } else {
       this.notification.danger(
         this.intl.t("ember-gwr.generalErrors.logoutError")
