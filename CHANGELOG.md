@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.2.0...v3.2.1) (2021-10-22)
+
+
+### Bug Fixes
+
+* **login:** remain on login page after failed login attempt ([0ef2728](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0ef2728ce097b1b892f2a62f5cb69ef4d5f5a60c))
+
 # [3.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.1.1...v3.2.0) (2021-10-18)
 
 
