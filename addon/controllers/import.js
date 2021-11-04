@@ -20,6 +20,7 @@ export default class ImportController extends Controller {
   ];
 
   @service dataImport;
+  @service importState;
 
   @tracked showImport = false;
   @tracked importIndex = undefined;
@@ -47,6 +48,7 @@ export default class ImportController extends Controller {
   resetImport() {
     this.showImport = false;
     this.importIndex = null;
+    this.importState.error = null;
   }
 
   @lastValue("fetchCalumaData") importData;
@@ -62,9 +64,15 @@ export default class ImportController extends Controller {
       "Must set `instanceId` on model.",
       this.model.instanceId !== null && this.model.instanceId !== undefined
     );
-    return yield this.dataImport[IMPORT_MAP[this.importModelName]](
-      this.model.instanceId,
-      ...args
-    );
+    try {
+      return yield this.dataImport[IMPORT_MAP[this.importModelName]](
+        this.model.instanceId,
+        ...args
+      );
+    } catch (error) {
+      console.error(error);
+      this.importState.error = error;
+      return error;
+    }
   }
 }

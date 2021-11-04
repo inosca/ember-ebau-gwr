@@ -78,12 +78,15 @@
           {{#if @modelHasImport}}
             <li>
               <LinkTo
-                @disabled={{@import}}
+                @disabled={{or @import this.importState.hasError}}
                 @query={{hash import=true}}
                 class="uk-button uk-text-left uk-highlight-hover
-                  {{if @import "uk-text-muted" "uk-text-secondary"}}
+                  {{if (or @import this.importState.hasError) "uk-text-muted" "uk-text-secondary"}}
                   uk-width-1-1 uk-background-default uk-padding-remove"
                 {{on "click" (fn (mut this.showImportModal) true)}}
+                uk-tooltip="title: {{if this.importState.hasError
+                    (t "ember-gwr.components.modelForm.importError")
+                  }}; container: {{this.config.modalContainer}}"
               >
                 {{t "ember-gwr.components.modelForm.importFromCaluma"}}
               </LinkTo>
