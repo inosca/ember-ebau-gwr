@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.2.1...v3.3.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* **import:** add error handling for failed data imports ([c9980c1](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c9980c1b1fa4037f4101dc7485dea1af914b99f3))
+
+
+### Features
+
+* **import:** show floor type/number in dwelling import modal ([cde49d1](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/cde49d1f7a94dfdd5c4bd758057ce3f801e561c9))
+
 ## [3.2.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.2.0...v3.2.1) (2021-10-22)
 
 
