@@ -246,6 +246,7 @@ ember-gwr:
       realEstateHeading: Grundstücksidentifikation
       clientHeading: Auftraggeber
       validationError: Im Formular sind Eingabefehler vorhanden. Bitte korrigieren.
+      importError: Beim Importieren ist ein Fehler aufgetreten. Die Daten können zurzeit nicht übernommen werden.
 
       diff:
         existingData: Existierende Daten im GWR
