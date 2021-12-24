@@ -1,0 +1,88 @@
+ember-gwr:
+  dwelling:
+    dwelling: Logement
+    title: Logement {id}
+    createNewDwelling: Saisir un nouveau logement
+    usage:
+      heading: Utilisation du logement
+
+    saveError: Une erreur s'est produite lors de la sauvegarde du logement.
+    saveSuccess: Logement sauvegardé avec succès.
+    loadingError: Une erreur s'est produite lors du chargement du logement.
+
+    # Fields
+    EDID: Entrée
+    EGID: Bâtiments
+    EWID: Logement
+    floor: Etage
+    floorType: Type d'étage
+    floorTypeOptions:
+      3100: Rez-de-chaussée y compris rez-de-chaussée surélevé
+      3101: Étage supérieur
+      3401: Sous-sol
+    floorTypePlaceholder:
+      Choisir un type d'étage...
+    floorNumber: Numéro d'étage
+    floorHint: |-
+      Pour les logements à plusieurs étages, c'est l'étage qui est recensé, 
+      sur lequel se trouve l'entrée (principale) du logement.
+    multipleFloor: Logement sur plusieurs étages
+    physicalDwellingNo: Numéro physique de logement
+    dwellingStatus: Statut du logement
+    dwellingStatusPlaceholder: Sélectionnez un statut...
+    dwellingStatusOptions:
+      3001: En projet
+      3002: Autorisé
+      3003: En construction
+      3004: Existant
+      3005: Non utilisable
+      3007: Eliminé
+      3008: Non réalisé
+    administrativeDwellingNo: Numéro administratif de logement
+    yearOfConstruction: Année de construction du logement
+    yearOfDemolition: Année de démolition du logement
+    noOfHabitableRooms: Nombre de pièces
+    locationOfDwellingOnFloor: Situation sur l’étage
+    usageLimitation: Restriction d’utilisation selon LRS
+    usageLimitationPlaceholder: Sélectionnez une restriction d’utilisation...
+    usageLimitationOptions:
+      3401: Sans restriction (LRS, art. 8, 9 et 10)
+      3402: Résidence principale (LRS, art.7, al.1, let.a)
+      3403: Affecté hébergement tour. qualifié (LRS, art.7, al.2, let.a)
+      3404: Affecté hébergement tour. qualifié (LRS, art.7, al.2, let.b)
+    kitchen: Equipement de cuisine
+    surfaceAreaOfDwelling: Surface du logement
+
+    dwellingUsage:
+      dwellingUsage: Utilisation du logement
+      usageCode: Affectation du logement
+      usageCodePlaceholder: Sélectionnez une affectation...
+      usageCodeOptions:
+        3010: Occupé selon LHR art. 3 let. b (résidence principale, art. 2, al.2, LRS)
+        3020: Occupé temporairement (résidence secondaire, art. 2, al.4, LRS)
+        3030: Utilisé à d'autres fins que l'habitation (art. 2, al.3, let. h, LRS)
+        3031: Occupé en permanence pour activité lucrative ou formation (art. 2, al.3, let. a, LRS)
+        3032: Occupé par un ménage privé occupant un autre logement dans le bâtiment (art. 2, al.3, let. b, LRS)
+        3033: Occupé par des personnes non tenues de s’annoncer au contrôle de l’habitant (art. 2, al.3, let. c, LRS)
+        3034: Vacant depuis deux ans au maximum (art. 2, al.3, let. d, LRS)
+        3035: Utilisé pour l’économie alpestre (art. 2, al.3, let. e, LRS)
+        3036: Logement pour l’hébergement de personnel (art. 2, al.3, let. f, LRS)
+        3037: Logement de service (art. 2, al.3, let. g, LRS)
+        3038: Occupé par un ménage collectif, au sens de l’art. 2, let. a bis de l’ordonnance sur l’harmonisation des registres (OHR)
+        3070: Logement non habitable
+      informationSource: Source d’information de l’affectation
+      informationSourcePlaceholder: Sélectionnez une source d'information...
+      informationSourceOptions:
+        3090: Mise à jour automatique (art.2, al. 1 ordonnance ORSec)
+        3091: Contrôle de l’habitant
+        3092: Indication du propriétaire ou de la gérance
+        3093: Autre source d’information
+      revisionDate: Date d’actualisation de l’affectation
+      remark: Commentaire sur l’affectation
+      personWithMainResidence: Personne(s) avec domicile principal
+      personWithSecondaryResidence: Personne(s) avec domicile secondaire
+      dateFirstOccupancy: Date de la première occupation
+      dateLastOccupancy: Date de la dernière occupation
+
+    dwellingFreeText1: Champ libre pour le logement 1
+    dwellingFreeText2: Champ libre pour le logement 2

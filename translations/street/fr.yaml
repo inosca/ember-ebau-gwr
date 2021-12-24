@@ -1,0 +1,6 @@
+ember-gwr:
+  street:
+    # Model Fields
+    ESID: ESID
+    description:
+      descriptionLong: Nom de la rue

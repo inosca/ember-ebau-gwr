@@ -1,0 +1,7 @@
+ember-gwr:
+  locality:
+    # Model Fields
+    name:
+      nameLong: Nom de la localité
+    swissZipCode: Numéro postal d’acheminement
+    swissZipCodeAddOn: Chiffre complémentaire du NPA

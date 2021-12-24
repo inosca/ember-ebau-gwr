@@ -1,0 +1,56 @@
+ember-gwr:
+  buildingEntrance:
+    title: Entrée {address}
+    backToBuilding: Retour au bâtiment
+    backToEntrance: Retour à l'entrée
+    createNewEntrance: Saisir une nouvelle entrée.
+    
+    saveError: Une erreur s'est produite lors de la sauvegarde de l'entrée.
+    saveSuccess: Entrée sauvegardée avec succès.
+    loadingError: Une erreur s'est produite lors du chargement de l'entrée.
+    localityError: Une erreur est survenue lors de l'enregistrement de la localité. Veuillez vérifier vos données.
+    street: Rue
+    coordinates: Coordonnées
+    missingStreetInfo: Veuillez d'abord lier une rue.
+    
+    fields:
+      EDID: EDID
+      EGAID: EGAID
+      EGID: EGID
+      isOfficialAddress: Adresse officielle
+      buildingEntranceNo: Numéro d'entrée du bâtiment
+      coordinates:
+        east: Coordonnée E du bâtiment
+        north: Coordonnée N du bâtiment
+        originOfCoordinates: Provenance des coordonnées
+        originOfCoordinatesPlaceholder: Sélectionnez la provenance des coordonnées...
+        originOfCoordinatesOptions:
+          901: Mensuration officielle, MD.01
+          902: Produites à partir de la mensuration officielle
+          903: Indication du géomètre conservateur
+          904: Indication de la demande de permis de construire
+          905: Office fédéral de la statistique (OFS)
+          906: Données de GeoPost
+          909: Autre source
+      street:
+        ESID: ESID
+        isOfficialDescription: Désignation officielle
+        officialStreetNumber: Numéro officiel de rue
+        streetKind: Genre de rue
+        streetKindPlaceholder: Sélectionnez un type...
+        streetKindOptions:
+          9801: Rue (objet linéaire)
+          9802: Place (objet ponctuel)
+          9803: Lieu dénommé (surface)
+          9809: Pas d’indication relative au genre de rue
+        streetStatus: État de réalisation de la rue
+        streetGeometry: Géométrie de la rue
+        description:
+          descriptionLong: Nom de la rue
+      locality:
+        locality: Localité
+        swissZipCode: NPA
+        swissZipCodeAddOn: Chiffre complémentaire du NPA
+        name:
+          nameLong: Nom de la localité
+ 

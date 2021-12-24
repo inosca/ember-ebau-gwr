@@ -1,0 +1,337 @@
+ember-gwr:
+  
+  models:
+    building: |-
+      {count, plural,
+        one {Bâtiment}
+        other {Bâtiments}
+      }
+    building-work: |-
+      {count, plural,
+        one {Travail}
+        other {Travaux}
+      }
+    building-work-infrastructure: |-
+      {count, plural,
+        one {Travail de génie civil}
+        other {Travaux de génie civil}
+      }
+    project: |-
+      {count, plural,
+        one {Projet}
+        other {Projets}
+      }
+    entrance: |-
+      {count, plural,
+        one {Entrée}
+        other {Entrées}
+      }
+    dwelling: |-
+      {count, plural,
+        one {Logement}
+        other {Logements}
+      }
+
+  generalErrors:
+    searchError: Une erreur s'est produite lors de la recherche.
+    loginError: Une erreur s'est produite lors de la connexion à l'interface du RegBL. Veuillez réessayer.
+    logoutError: Une erreur s'est produite lors de la déconnexion de l'interface du RegBL. Veuillez réessayer.
+    genericFormError: Une erreur s'est produite lors du traitement de votre requête. Veuillez vérifier les données.
+
+  general:
+    or: ou
+
+  landingPage:
+    heading: Ce dossier n'est pas encore lié à un projet du RegBL.
+    infoText: Il n'y a encore aucun projet de construction RegBL lié. Vous pouvez soit en saisir un nouveau avec ce formulaire, soit en lié un existant.
+    createNewProject: Saisir un nouveau projet
+    linkExistingProject: Lier un projet existant
+  
+  nav:
+    projectDetails: Détails du projet
+    linkedBuildings: Bâtiments liés
+    housingStatInfo: La clôture du trimestre et la gestion des rues peuvent être effectuées dans housing-stat de l'OFS.
+    housingStatLink: Vers housing-stat
+    deletionInfo: "Pour supprimer des données dans les formulaires, veuillez contacter l'OFS : Téléphone : 0800 866 600 E-mail : housing-stat@bfs.admin.ch"
+
+  linkedBuildings:
+    error: Une erreur s'est produite lors du chargement des données du projet.
+    removeLinkError: Une erreur s'est produite lors de la suppression de la liaison.
+    buildingDisabledForInfrastructure: |-
+      Aucun bâtiment n'est autorisé pour les projets de génie civil.
+      Le genre de construction est saisi directement sur le projet.
+    superstructureInfo: |-
+      Pour les projets de construction de bâtiments, le genre de construction est déclaré exclusivement par bâtiment.
+    buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
+  
+  searchBuilding:
+    heading: Lier un bâtiment existant
+    search: Chercher un bâtiment
+    hasError: Statut d'erreur
+    hasErrorPlaceholder: Tous
+    hasErrorOptions:
+      true: Seulement avec erreur
+      false: Seulement sans erreur
+    entrances: Entrées de bâtiment
+    
+    linkSuccess: Le bâtiment a été lié avec succès.
+    linkError: Une erreur s'est produite lors de la liaison du bâtiment.
+  
+  searchProject:
+    heading: Lier un projet de construction existant
+    search: Chercher les projets
+    
+    EPROID: EPROID
+    projectStatus: Statut du projet
+    projectStatusPlaceholder: Tous
+    projectStatusOptions:
+      6701: Demande de permis déposée
+      6702: Permis accordé (valide)
+      6703: En chantier
+      6704: Terminé
+      6706: Projet reporté
+      6707: Permis refusé (valide)
+      6708: Non réalisé
+      6709: Retiré
+
+    hasError: Statut d'erreur
+    hasErrorPlaceholder: tous
+    hasErrorOptions:
+      true: Seulement avec erreur
+      false: Seulement sans erreur
+    
+    realestateIdentification:
+      number: Numéro de parcelle
+
+  issues:
+    nav: Points en suspens
+    infoAlert: Il y a {count} problème(s) dans ce projet de construction qui empêche(nt) de poursuivre son traitement.
+    infoSuccess: Tout est en ordre dans ce projet de construction.
+    info: Les case rouges indiquent combien il y a de points en suspens et pour quel objet.
+    switcher:
+      issues: Points en suspens
+      entrances: Entrées liées
+      dwellings: Logements liés
+
+  lifeCycles:
+    noStatus: Aucune indication de statut
+    cascadeOption: Définir automatiquement les bâtiment et/ou les logements liés?
+    
+    project:
+      statusOptions:
+        6701: Demande de permis déposée
+        6702: Permis accordé (valide)
+        6703: En chantier
+        6704: Terminé
+        6706: Projet reporté
+        6707: Permis refusé (valide)
+        6708: Non réalisé
+        6709: Retiré
+    
+    building:
+      statusOptions:
+        1001: En projet
+        1002: Autorisé
+        1003: En construction
+        1004: Existant
+        1005: Non utilisable
+        1007: Démoli
+        1008: Non réalisé
+    
+    dwelling:
+      statusOptions:
+        3001: En projet
+        3002: Autorisé
+        3003: En construction
+        3004: Existant
+        3005: Non utilisable
+        3007: Eliminé
+        3008: Non réalisé
+
+    statusErrorBuilding: Le bâtiment {buildingId}
+    statusErrorDwelling: Le logement {dwellingId} dans le bâtiment {buildingId}
+    statusError: doit avoir le statut {states}.
+
+    states:
+      6701: en projet
+      6702: autorisé
+      6703: en construction
+      6704: terminé
+      6706: reporté
+      6707: refusé
+      6708: non réalisé
+      6709: retiré
+
+      1001: en projet
+      1002: autorisé
+      1003: en construction
+      1004: existant
+      1005: non utilisable
+      1007: démoli
+      1008: non réalisé
+      
+      3001: en projet
+      3002: autorisé
+      3003: en construction
+      3004: existant
+      3005: non utilisable
+      3007: éliminé
+      3008: non réalisé
+
+  components:
+    search:
+      loading: Charger...
+      noResults: Nous n'avons trouvé aucun résultat pour les critères de recherche choisis.
+      validation:
+        realestateIdentification: Pour la recherche avancée, le numéro de parcelle doit être défini.
+        bothDatesSet: Les deux dates doivent être définies.
+      
+      realestateIdentificationHeading: Identification de l'immeuble (bien-fonds)
+      realestateIdentification:
+        EGRID: EGRID
+        number: Numéro de parcelle
+        subDistrict: Numéro de secteur du registre foncier
+      
+      createDateHeading: Période de réalisation
+      createDate:
+        dateFrom: De
+        dateTo: Jusqu’à
+      
+      modifyDateHeading: Période de traitement
+      modifyDate:
+        dateFrom: De
+        dateTo: Jusqu’à
+
+      extendedSearch:
+        extend: Afficher les filtres avancés
+        collapse: Masquer les filtres avancés
+    
+    loginModal:
+      header: Se connecter au RegBL
+      login: Se connecter
+      password: Mot de passe...
+      username: Nom d'utilisateur...
+      municipality: Sélectionnez votre commune...
+      municipalitySearch: Chercher une commune...
+      municipalityNoneFound: Aucune commune n'a été trouvée
+    
+    logout: Se déconnecter
+
+    projectForm:
+      save: Enregistrer
+      cancelImport: Interrompre l'import
+      applyAll: Tout reprendre
+      importFromCaluma: Importer les données de la demande de permis
+      changeStatus: Changer le statut
+      dates: Dates
+      datePlaceholder: Choisissez une date...
+      title: Projet de construction {id}
+      realEstateHeading: Identification de l'immeuble (bien-fonds)
+      clientHeading: Maître d’ouvrage
+
+      diff:
+        existingData: Données existantes dans le RegBL
+        importData: Données importées
+        apply: Reprendre
+
+    modelForm:
+      save: Enregistrer
+      cancelImport: Interrompre l'import
+      applyAll: Tout reprendre
+      importFromCaluma: Importer les données de la demande de permis
+      changeStatus: Changer le statut
+      dates: Dates
+      datePlaceholder: Choisissez une date...
+      title: Projet de construction {id}
+      realEstateHeading: Identification de l'immeuble (bien-fonds)
+      clientHeading: Maître d’ouvrage
+      validationError: Il y a des erreurs de saisie dans le formulaire. Veuillez corriger.
+      importError: Une erreur est survenue lors de l'importation. Les données ne peuvent pas être transférées pour le moment.
+
+      diff:
+        existingData: Données existantes dans le RegBL
+        importData: Données importées
+        apply: Reprendre
+        resolved: Tous les conflits sont résolus. Cliquez sur enregistrer pour reprendre les modifications!
+        cancel: Rejeter
+
+      project:
+        title: Projet de construction {id}
+        titleNew: Saisir un nouveau projet
+        confirmationTitle: Attention
+        confirmationContinue: Continuer
+        confirmationCancel: Interrompre
+        confirmationSuperstructure: |- 
+          Si vous changez un projet de génie civil en projet
+          de bâtiment, tous les travaux liés seront effacés. Voulez-vous continuer?
+        confirmationInfrastructure: |-
+          Si vous changez un projet de bâtiment en projet
+          de génie civil, tous les bâtiments liés seront effacés. Voulez-vous continuer?
+      
+      building:
+        title: Bâtiments {id}
+        titleNew: Saisir un nouveau bâtiment
+
+      entrance:
+        title: Entrée {modelDescription}
+        titleNew: Saisir une nouvelle entrée
+      
+      dwelling:
+        title: Logement {id}
+        titleNew: Saisir un nouveau logement
+
+    linkedModels:
+      linkedEntries: "{modelName} lié(e)s"
+      noLinkedEntries: Il n'y a encore aucun(e) {modelName} lié(e).
+      linkEntry: Lier le/l' {modelName}
+      linkExistingBuilding: Lier le bâtiment existant (transformation / démolition)
+      createEntry: |-
+        Saisir le/l' {modelName}
+        {model, select,
+          project {}
+          other {(Nouvelle construction)}
+        }
+      or: ou
+      removeLink: Supprimer la liaison
+      buildingInfo: |-
+        Pour ajouter un bâtiment existant qui ne se trouve pas dans le RegBL, 
+        veuillez vous adresser au portail housing-stat de l'OFS.
+
+    linkBuildingModal:
+      linkBuilding: Lier un bâtiment
+      cancel: Interrompre
+
+    header:
+      status:
+        label: Statut
+        placeholder: TODO
+      statusSelector:
+        actionInfo: Un changement de statut représente une transition naturelle dans le cycle de vie d'un objet. 
+          Les corrections de statut offrent la possibilité de corriger des états de statut erronés.
+        statusInfo: "Nouveaux statuts autorisés pour le changement de statut:"
+        noNextStates: Aucun (statut final)
+        statusLabel: Nouveau statut
+        submitChangeLabel: Changer le statut
+        submitCorrectionLabel: Corriger le statut
+        correctionDropTitle: Informations de statut requises pour une correction
+        changeDropTitle: Informations de statut requises pour une modification
+        confirmCorrection: Confirmer la correction de statut
+        confirmChange: Confirmer le changement de statut
+        cancel: Interrompre
+      
+      issues: Points en suspens pour le/l' {modelName} {modelId}
+      noIssues: Pas de points en suspens pour le/l' {modelName} {modelId}
+      linkIssues: Vers la liste complète des points en suspens pour le projet de construction {projectId}
+    
+    linkStreet:
+      missingLocalityHint: Veuillez d'abord saisir un nom de lieu.
+      change: Changer la rue
+      link: Lier une rue
+      heading: Lier une rue
+      search: Chercher une rue
+      linkSuccess: La rue est liée avec succès.
+      linkError: Une erreur est survenue lors de la liaison de la rue.
+      streetHint: Pour saisir une entrée, vous devez associer une rue.
+
+    importModal:
+      selectImportData: Sélectionner les données d'importation
