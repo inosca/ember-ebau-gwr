@@ -101,7 +101,6 @@ ember-gwr:
       1060: Gebäude ohne Wohnnutzung
       1080: Sonderbau
 
-
     buildingClass: Gebäudeklasse
     buildingClassPlaceholder: Wählen Sie eine Gebäudeklasse aus...
     buildingClassOptions:
@@ -225,7 +224,7 @@ ember-gwr:
         7461: Wärmetauscher (einschliesslich für Fernwärme) für mehrere Gebäude
         7499: Andere
       energySourceHeating: Energie-/Wärmequelle
-      energySourceHeatingPlaceholder: Wählen Sie einen Energie-/Wärmequelle...
+      energySourceHeatingPlaceholder: Wählen Sie eine Energie-/Wärmequelle...
       energySourceHeatingOptions:
         7500: Keine
         7501: Luft
@@ -266,7 +265,6 @@ ember-gwr:
 
     buildingFreeText1: Freitext Gebäude 1
     buildingFreeText2: Freitext Gebäude 2
-
 
     street:
       description:

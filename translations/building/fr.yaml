@@ -1,0 +1,281 @@
+ember-gwr:
+  buildingWork:
+    ARBID: Identificateur de travaux (ARBID)
+    kindOfWork: Genre de travaux
+    kindOfWorkPlaceholder: Sélectionnez un genre de travaux...
+    kindOfWorkOptions:
+      6001: Nouvelle construction
+      6002: Transformation
+      6007: Démolition
+    
+    energeticRestauration: Assainissement énergétique
+    renovationHeatingsystem: Assainissement du système de chauffage
+    innerConversionRenovation: Transformations / rénovations intérieures
+    conversion: Changement d’affectation
+    extensionHeighteningHeated: Agrandissement chauffé
+    extensionHeighteningNotHeated: Agrandissement non chauffé
+    thermicSolarFacility: Installation solaire thermique
+    photovoltaicSolarFacility: Installation solaire photovoltaïque
+    otherWorks: Autres travaux de transformation
+    
+  building:
+    building: Bâtiment
+    title: Bâtiment {id} - {status}
+    createNewBuilding: Saisir un nouveau bâtiment
+    
+    backToProject: Retour au projet de construction
+    
+    saveError: Une erreur s'est produite lors de la sauvegarde du bâtiment.
+    saveSuccess: Bâtiment sauvegardé avec succès.
+    entrances:
+      error: Une erreur s'est produite lors du chargement des entrées.
+      removeLinkError: Une erreur s'est produite lors de la suppression du lien.
+      attachedDwellingsError: Tous les logements liés doivent être désactivés avant de pouvoir supprimer l'entrée.
+      removeLinkSuccess: "Votre demande a été enregistrée par l'OFS. L'équipe de support traitera votre demande et vous contactera si nécessaire. Téléphone: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
+    dwellings:
+      entrance: Entrée {number}
+      rooms: "{number} pièce(s)"
+      groundFloor: Rez-de-chaussée
+      cellar: "{number}e sous-sol"
+      floor: "{number}e étage"
+      error: Une erreur s'est produite lors du chargement des logements.
+      removeLinkError: Une erreur s'est produite lors de la suppression du lien.
+      removeLinkSuccess: "Votre demande a été enregistrée par l'OFS. L'équipe de support traitera votre demande et vous contactera si nécessaire. Téléphone: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
+    sections:
+      kindOfWorkForProject: Genre de travaux pour le projet de construction {projectId}
+      building: Bâtiment
+      locality: Localité
+      localCodes: Codes locaux
+      statusAndData: Statut et dates
+      structure: Structure
+      dimensions: Dimensions
+      energy: Energie
+      freeTextFields: Champs libres
+      heating: Chauffage
+      additionalHeating: Système de chauffage supplémentaire
+      warmWater: Eau chaude
+      additionalWarmWater: Système pour l'eau chaude supplémentaire
+
+    EGID: EGID
+    officialBuildingNo: Numéro officiel de bâtiment
+    nameOfBuilding: Nom du bâtiment
+
+    coordinates:
+      east: Coordonnée E du bâtiment
+      north: Coordonnée N du bâtiment
+      originOfCoordinates: Provenance des coordonnées
+      originOfCoordinatesPlaceholder: Sélectionnez la provenance des coordonnées...
+      originOfCoordinatesOptions:
+        901: Mensuration officielle, MD.01
+        902: Produites à partir de la mensuration officielle
+        903: Indication du géomètre conservateur
+        904: Indication de la demande de permis de construire
+        905: Office fédéral de la statistique (OFS)
+        906: Données de GeoPost
+        909: Autre source
+    localCode1: Codes locaux 1
+    localCode2: Codes locaux 2
+    localCode3: Codes locaux 3
+    localCode4: Codes locaux 4
+    
+    neighbourhood: Quartier
+
+    buildingStatus: Statut du bâtiment
+    buildingStatusPlaceholder: Sélectionnez un statut du bâtiment...
+    buildingStatusOptions:
+      1001: En projet
+      1002: Autorisé
+      1003: En construction
+      1004: Existant
+      1005: Non utilisable
+      1007: Démoli
+      1008: Non réalisé
+
+    buildingCategory: Catégorie de bâtiment
+    buildingCategoryPlaceholder: Sélectionnez une catégorie de bâtiment...
+    buildingCategoryOptions:
+      1010: Habitation provisoire
+      1020: Bâtiment exclusivement à usage d’habitation
+      1030: Bâtiment d’habitation à usage annexe)
+      1040: Bâtiment partiellement à usage d’habitation
+      1060: Bâtiment sans usage d’habitation
+      1080: Construction particulière
+
+    buildingClass: Classe de bâtiment
+    buildingClassPlaceholder: Sélectionnez une classe de bâtiment...
+    buildingClassOptions:
+      1110: Maisons individuelles
+      1121: Maisons à deux logements
+      1122: Immeubles à trois logements et plus
+      1130: Habitat communautaire
+      1211: Hôtels
+      1212: Autres bâtiments d’hébergement de tourisme
+      1220: Immeubles de bureaux
+      1230: Bâtiments commerciaux
+      1231: Restaurants et bars dans des bâtiments sans usage résidentiel
+      1241: Gares, aérogares, centraux téléphoniques
+      1242: Garages
+      1251: Bâtiments industriels
+      1252: Réservoirs, silos et entrepôts
+      1261: Bâtiments à usage récréatif ou culturel
+      1262: Musées et bibliothèques
+      1263: Bâtiments pour l’enseignement et la recherche
+      1264: Hôpitaux et établissements de santé
+      1265: Salles de sport
+      1271: Bâtiment d’exploitation agricole
+      1272: Édifices culturels et religieux
+      1273: Monuments historiques ou classés
+      1274: Autres bâtiments non classés ailleurs
+      1275: Autres bâtiments pour l’hébergement collectif
+      1276: Bâtiments pour la garde d’animaux
+      1277: Bâtiments pour les cultures végétales
+      1278: Autres bâtiments d’exploitation agricole
+
+    dateOfConstruction:
+      year: Année de construction du bâtiment
+      yearMonth: Mois de construction du bâtiment
+      yearMonthDay: Date de construction du bâtiment
+      periodOfConstruction: Epoque de construction
+      periodOfConstructionPlaceholder: Sélectionnez une période de construction...
+      periodOfConstructionOptions:
+        8011: Période avant 1919
+        8012: Période de 1919 à 1945
+        8013: Période de 1946 à 1960
+        8014: Période de 1961 à 1970
+        8015: Période de 1971 à 1980
+        8016: Période de 1981 à 1985
+        8017: Période de 1986 à 1990
+        8018: Période de 1991 à 1995
+        8019: Période de 1996 à 2000
+        8020: Période de 2001 à 2005
+        8021: Période de 2006 à 2010
+        8022: Période de 2011 à 2015
+        8023: Période à partir de 2016
+    yearOfDemolition: Année de démolition du bâtiment
+      
+    realestateIdentification:
+      EGRID: EGRID
+      number: Numéro de parcelle
+      subDistrict: Numéro de secteur du registre foncier
+    
+    surfaceAreaOfBuilding: Surface du bâtiment en mètres carrés.
+    volume:
+      volume: Volume du bâtiment (m3)
+      norm: Norme
+      normPlaceholder: Sélectionnez une norme...
+      normOptions:
+        961: Selon norme SIA 116
+        962: Selon norme SIA 416
+        969: Inconnu
+      informationSource: "Volume du bâtiment: indication sur la donnée"
+      informationSourcePlaceholder: Sélectionnez une source d'information...
+      informationSourceOptions:
+        869: Selon permis de construire
+        858: Selon certificat énergétique cantonal des bâtiments (CECB)
+        853: Selon assurance immobilière
+        852: Selon estimation officielle
+        857: Selon propriétaire / gérance immobilière
+        851: Selon mensuration officielle
+        870: Selon le modèle topographique du paysage (MTP)
+        878: Volume non déterminable (bâtiment non fermé)
+        859: Autre
+
+    numberOfFloors: Nombre de niveaux
+    numberOfSeparateHabitableRooms: Nombre de pièces d’habitation indépendantes
+    civilDefenseShelter: Abri de protection civile
+    energyRelevantSurface: Surface de référence énergétique (m2)
+
+    heating:
+      heatGeneratorHotWater: Générateur de chaleur
+      heatGeneratorHotWaterPlaceholder: Sélectionnez un générateur de chaleur...
+      heatGeneratorHotWaterOptions:
+        7600: Pas de générateur de chaleur
+        7610: Pompe à chaleur PAC
+        7620: Installation solaire thermique
+        7630: Chaudière (générique)
+        7632: Chaudière standard
+        7634: Chaudière à condensation
+        7640: Installation couplage chaleur-force
+        7650: Boiler électrique central
+        7651: Petit boiler
+        7660: Echangeur de chaleur (y compris pour la chaleur à distance)
+        7699: Autre
+      heatGeneratorHeating: Générateur de chaleur
+      heatGeneratorHeatingPlaceholder: Sélectionnez un générateur de chaleur...
+      heatGeneratorHeatingOptions:
+        7400: Pas de générateur de chaleur
+        7410: Pompe à chaleur PAC pour un seul bâtiment
+        7411: Pompe à chaleur PAC pour plusieurs bâtiments
+        7420: Installation solaire thermique pour un seul bâtiment
+        7421: Installation solaire thermique pour plusieurs bâtiments
+        7430: Chaudière (générique) pour un seul bâtiment
+        7431: Chaudière (générique) pour plusieurs bâtiments
+        7432: Chaudière standard pour un seul bâtiment
+        7433: Chaudière standard pour plusieurs bâtiments
+        7434: Chaudière à condensation pour un seul bâtiment
+        7435: Chaudière à condensation pour plusieurs bâtiments
+        7436: Poêle
+        7440: Installation couplage chaleur-force pour un seul bâtiment
+        7441: Installation couplage chaleur-force pour plusieurs bâtiments
+        7450: Chauffage central électrique pour un seul bâtiment
+        7451: Chauffage central électrique pour plusieurs bâtiments
+        7452: Chauffage électrique direct
+        7460: Echangeur de chaleur (y compris pour chauffage à distance) pour un seul bâtiment
+        7461: Echangeur de chaleur (y compris pour chauffage à distance) pour plusieurs bâtiments
+        7499: Autre
+      energySourceHeating: Source d’énergie/de chaleur du chauffage
+      energySourceHeatingPlaceholder: Sélectionnez une source d'énergie/de chaleur du chauffage...
+      energySourceHeatingOptions:
+        7500: Aucune
+        7501: Air
+        7510: Géothermie (générique)
+        7511: Sonde géothermique
+        7512: Serpentin géothermique
+        7513: Eau (nappe phréatique, eaux superficielles, eaux résiduelles)
+        7520: Gaz
+        7530: Mazout
+        7540: Bois (générique)
+        7541: Bois (bûches)
+        7542: Bois (granulés - pellets)
+        7543: Bois (bois déchiqueté, copeaux)
+        7550: Rejets thermiques (dans le bâtiment)
+        7560: Electricité
+        7570: Soleil (thermique)
+        7580: Chaleur produite à distance (générique)
+        7581: Chaleur produite à distance (haute température)
+        7582: Chaleur produite à distance (basse température)
+        7598: Indéterminé
+        7599: Autre
+      informationSourceHeating: Source d‘information
+      informationSourceHeatingPlaceholder: Sélectionnez une source d'information...
+      informationSourceHeatingOptions:
+        852: Selon estimation officielle
+        853: Selon assurance immobilière
+        855: Selon contrôle des installations de chauffage
+        857: Selon propriétaire / gérant d'immeuble
+        858: Selon certificat énergétique cantonal des bâtiments (CECB)
+        859: Autre source d’information
+        860: Selon recensement 2000
+        864: Selon données cantonales
+        865: Selon données communales
+        869: Selon permis de construire
+        870: Selon entreprise de distribution (gaz, chaleur à distance)
+        871: Selon Minergie
+      revisionDate: Date de mise à jour
+
+    buildingFreeText1: Champs libres bâtiment 1
+    buildingFreeText2: Champs libres bâtiment 2
+
+    street:
+      description:
+        descriptionLong: Nom de rue
+    buildingEntranceNo: Numéro d'entrée du bâtiment
+    locality:
+      swissZipCode: NPA
+      name:
+        nameLong: Désignation de la localité
+    
+    buildingEntrance:
+      mainEntrance: Entrée principale
+      info: Une fois le bâtiment créé, il est possible d'ajouter d'autres entrées et d'éditer les rues des entrées.
+      localityError: Une erreur est survenue lors de l'enregistrement de la localité de l'entrée principale. Veuillez vérifier vos données.
