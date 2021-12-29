@@ -1,3 +1,15 @@
+# [3.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.3.0...v3.4.0) (2021-12-29)
+
+
+### Bug Fixes
+
+* **ci:** make ember-release scenario optional ([3f665e9](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3f665e9a1b950390927a831567a610fc609d9140))
+
+
+### Features
+
+* **translations:** include French translation files ([a20d7b7](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/a20d7b7f7196655a1d324091dab2c78cb7d7b54c))
+
 # [3.3.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.2.1...v3.3.0) (2021-11-04)
 
 
