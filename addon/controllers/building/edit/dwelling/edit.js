@@ -1,7 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
@@ -97,7 +97,7 @@ export default class BuildingEditDwellingEditController extends ImportController
           this.dwelling,
           this.model.buildingId
         );
-        this.transitionToRoute("building.edit.dwelling.edit", dwelling.EWID);
+        this.router.transitionTo("building.edit.dwelling.edit", dwelling.EWID);
       } else {
         yield this.dwellingAPI.update(this.dwelling, this.model.buildingId);
         if (this.dwelling.oldEDID !== this.dwelling.EDID) {

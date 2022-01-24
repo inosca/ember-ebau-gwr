@@ -20,7 +20,6 @@ export default class App extends Application {
             "notification",
             "dataImport",
             "store",
-            "router",
             "session",
           ],
         },

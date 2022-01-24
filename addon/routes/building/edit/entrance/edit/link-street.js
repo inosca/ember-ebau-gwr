@@ -4,6 +4,7 @@ import { inject as service } from "@ember/service";
 export default class BuildingEditEntranceLinkStreetRoute extends Route {
   @service buildingEntrance;
   @service building;
+  @service router;
 
   model() {
     return this.modelFor("building.edit.entrance.edit");
@@ -11,9 +12,9 @@ export default class BuildingEditEntranceLinkStreetRoute extends Route {
 
   afterModel(model) {
     if (model.buildingId === "new") {
-      this.transitionTo("building.new");
+      this.router.transitionTo("building.new");
     } else if (model.entranceId === "new" && model.buildingId !== "new") {
-      this.transitionTo("building.edit.entrance.new");
+      this.router.transitionTo("building.edit.entrance.new");
     }
   }
 

@@ -8,7 +8,7 @@ export default class BuildingEditDwellingNewRoute extends DwellingEditRoute {
   templateName = "building.edit.dwelling.edit";
   controllerName = "building.edit.dwelling.edit";
 
-  async model() {
+  model() {
     const model = this.modelFor("building.edit");
     const dwelling = new Dwelling();
     dwelling.dwellingStatus = DWELLING_PROJECTED;

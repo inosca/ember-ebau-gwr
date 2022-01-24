@@ -4,7 +4,7 @@
   @color={{if @isPrimary "primary" "default"}}
   @loading={{and @loading (not @showDrop)}}
   @disabled={{@disabled}}
-  {{on "click" (perform @onSubmit false @isChange)}}
+  @onClick={{perform @onSubmit false @isChange}}
 >
   {{@submitLabel}}
 </UkButton>
@@ -19,7 +19,9 @@
       href="#ember-ebau-gwr-status-drop"
       uk-toggle
       uk-close
-    ></a>
+    >
+      <span hidden>{{t "ebau-gwr.close"}}</span>
+    </a>
     <ValidatedForm
       class="validated-form"
       @model={{@changeset}}
@@ -60,7 +62,7 @@
           @type="button"
           @color="primary"
           @loading={{and @loading @showDrop}}
-          {{on "click" (perform @onSubmit true @isChange)}}
+          @onClick={{perform @onSubmit true @isChange}}
         >
           {{@confirmLabel}}
         </UkButton>

@@ -1,7 +1,7 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
-import { task } from "ember-concurrency-decorators";
+import { task } from "ember-concurrency";
 
 export default class BuildingEditDwellingsController extends Controller {
   @service building;

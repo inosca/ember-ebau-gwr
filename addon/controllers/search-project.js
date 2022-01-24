@@ -2,13 +2,14 @@ import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, lastValue } from "ember-concurrency";
 import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchProjectController extends Controller {
   @service constructionProject;
   @service intl;
   @service store;
+  @service router;
 
   @tracked extendedSearch = false;
   @tracked validationErrors = {};
@@ -18,7 +19,8 @@ export default class SearchProjectController extends Controller {
   @lastValue("search") searchResults;
   @task
   *search(query = {}) {
-    query.constructionSurveyDeptNumber = this.constructionProject.constructionSurveyDeptNumber;
+    query.constructionSurveyDeptNumber =
+      this.constructionProject.constructionSurveyDeptNumber;
     return yield this.constructionProject.search(query);
   }
 
@@ -29,6 +31,6 @@ export default class SearchProjectController extends Controller {
       localId: this.model.id,
     });
     link.save();
-    this.transitionToRoute("project.index");
+    this.router.transitionTo("project.index");
   }
 }

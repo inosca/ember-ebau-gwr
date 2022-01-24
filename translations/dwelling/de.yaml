@@ -19,13 +19,12 @@ ember-gwr:
     floorTypeOptions:
       3100: Parterre, inkl. Hochparterre
       3101: Obergeschoss
-      3401: Untergeschoss 
-    floorTypePlaceholder:
-      Wählen Sie eine Art Stockwerk...
+      3401: Untergeschoss
+    floorTypePlaceholder: Wählen Sie eine Art Stockwerk...
     floorNumber: Stockwerknummer
     floorHint: |-
-        Bei Wohnungen mit mehreren Stockwerken wird das Stockwerk erfasst, 
-        auf dem sich der (Haupt-)Eingang der Wohnung befindet.
+      Bei Wohnungen mit mehreren Stockwerken wird das Stockwerk erfasst, 
+      auf dem sich der (Haupt-)Eingang der Wohnung befindet.
     multipleFloor: Mehrgeschossige Wohnung
     physicalDwellingNo: Physische Wohnungsnummer
     dwellingStatus: Wohnungsstatus

@@ -1,5 +1,5 @@
-import AppllicationAdapter from "./appllication";
+import ApplicationAdapter from "./application";
 
-export default class GwrLinkAdapter extends AppllicationAdapter {
+export default class GwrLinkAdapter extends ApplicationAdapter {
   namespace = "api/v1/linker";
 }

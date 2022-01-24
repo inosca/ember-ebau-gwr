@@ -1,7 +1,7 @@
 <div>
   {{#if this.fetchDwelling.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     <ModelForm
@@ -12,7 +12,7 @@
       @translationBase="ember-gwr.dwelling"
       @headerModel={{this.dwelling}}
       @headerModelId={{this.dwelling.EWID}}
-      @projectId={{this.router.currentRoute.attributes.projectId}}
+      @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
       @headerModelName="dwelling"
       @hasStatus={{true}}
       @import={{this.import}}
@@ -34,23 +34,23 @@
         @noPlaceholder={{true}}
         @required={{true}}
       />
-      
+
       <Field
-        @attr="floorType" 
-        @type="select" @required={{true}} 
-        @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}} 
+        @attr="floorType"
+        @type="select" @required={{true}}
+        @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}}
         @hint={{t "ember-gwr.dwelling.floorHint"}}
       />
-      
-      {{#if (or 
-        (eq changeset.floorType 3101) 
-        (eq changeset.floorType 3401) 
+
+      {{#if (or
+        (eq changeset.floorType 3101)
+        (eq changeset.floorType 3401)
         (and this.import this.import.data.floorNumber)
       )}}
         <Field
-          @attr="floorNumber" 
-          @type="number" 
-          @required={{true}} 
+          @attr="floorNumber"
+          @type="number"
+          @required={{true}}
         />
       {{/if}}
 

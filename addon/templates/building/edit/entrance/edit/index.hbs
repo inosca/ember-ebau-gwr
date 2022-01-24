@@ -1,7 +1,7 @@
 <div>
   {{#if this.fetchBuildingEntrance.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     <ModelForm
@@ -13,7 +13,7 @@
       @headerModel={{this.buildingEntrance}}
       @headerModelId={{this.buildingEntrance.EDID}}
       @headerModelDescription={{this.buildingEntrance.fullAddressText}}
-      @projectId={{this.router.currentRoute.attributes.projectId}}
+      @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
       @headerModelName="entrance"
       @hasStatus={{false}}
       @import={{this.import}}
@@ -55,10 +55,10 @@
           @attr="buildingEntranceNo"
           @disabled={{this.hasNoStreet}}
         />
-        <Field 
-          @attr="isOfficialAddress" 
-          @type="checkbox" 
-          @disabled={{this.hasNoStreet}} 
+        <Field
+          @attr="isOfficialAddress"
+          @type="checkbox"
+          @disabled={{this.hasNoStreet}}
         />
       </div>
       {{#unless this.buildingEntrance.isNew}}

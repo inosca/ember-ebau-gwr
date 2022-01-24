@@ -15,6 +15,7 @@
             name="username"
             class="uk-input"
             placeholder={{t "ember-gwr.components.loginModal.username"}}
+            aria-label={{t "ember-gwr.components.loginModal.username"}}
             value={{this.username}}
             {{on "input" this.updateValue}}
           />
@@ -25,6 +26,7 @@
             type="password"
             class="uk-input"
             placeholder={{t "ember-gwr.components.loginModal.password"}}
+            aria-label={{t "ember-gwr.components.loginModal.password"}}
             value={{this.password}}
             {{on "input" this.updateValue}}
           />
@@ -56,7 +58,7 @@
         @color="primary"
         @disabled={{not (and this.username this.password this.municipality)}}
         @loading={{this.authFetch.housingStatToken.isRunning}}
-        {{on "click" this.login}}
+        @onClick={{this.login}}
       >
         {{t "ember-gwr.components.loginModal.login"}}
       </UkButton>

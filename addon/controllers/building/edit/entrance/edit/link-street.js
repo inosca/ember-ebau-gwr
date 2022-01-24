@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, lastValue } from "ember-concurrency";
 import { languageOptions } from "ember-ebau-gwr/models/options";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
@@ -13,6 +13,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @service building;
   @service notification;
   @service intl;
+  @service router;
 
   // A locality is uniquely described by either
   // locality name + PLZ4 or PLZ4 + PLZ6
@@ -80,7 +81,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
       );
       // Ensure building entrance list is updated
       this.building.clearCache(this.model.buildingId);
-      this.transitionToRoute(this.backRoute);
+      this.router.transitionTo(this.backRoute);
       this.notification.success(
         this.intl.t("ember-gwr.components.linkStreet.linkSuccess")
       );

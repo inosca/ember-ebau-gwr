@@ -16,7 +16,6 @@ export default class EmberGWREngine extends Engine {
       "notification",
       "dataImport",
       "store",
-      "router",
       "session",
     ],
   };

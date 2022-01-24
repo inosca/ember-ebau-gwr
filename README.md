@@ -1,9 +1,8 @@
-ember-ebau-gwr
-==============================================================================
+# ember-ebau-gwr
+
 Ember Engine for the [adfinis-sygroup/ebau-gwr](https://github.com/adfinis-sygroup/ebau-gwr) backend.
 
-Development
-------------------------------------------------------------------------------
+## Development
 
 ```
 # start a local CORS proxy
@@ -12,32 +11,19 @@ yarn proxy
 yarn start
 ```
 
+## Compatibility
 
-Compatibility
-------------------------------------------------------------------------------
+- Ember.js v3.24 or above
+- Ember CLI v3.24 or above
+- Node.js v12 or above
 
-* Ember.js v3.16 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
-
-
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-ebau-gwr
 ```
 
-
-Usage
-------------------------------------------------------------------------------
-
-> **Note**
-> If this addon is used in `ember < 3.24.1` the project and buildings navigation
-> won't work since ember does not yet support `@ember/routing/link-component`
-> in engines (which the `uk-tab/link-item`  component from `ember-uikit` extends). 
->
-> The normal workaround for this is to use the `ember-engines/components/link-to-component` if `ember-uikit` is used by an engine but since we would need to add `ember-engines` as dependency of `ember-uikit` this is still an open issue for now.
+## Usage
 
 Mount the engine in your router file. You can specify a param in the url which
 will then be used to filter the `gwr-links` by their attribute `local_id`.
@@ -67,8 +53,7 @@ dependencies = {
     "notification",
     "dataImport",
     "store",
-    "router",
-    session
+    "session",
   ],
 };
 ```
@@ -97,14 +82,10 @@ The service should define a `fetchProject: async () -> Promise<Object>` function
 We expect a `ember-simple-auth` session service which has the
 `data.authenticated.access_token` set.
 
-
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
-
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [AGPLv3](LICENSE.md).

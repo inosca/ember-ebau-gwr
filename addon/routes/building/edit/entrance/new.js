@@ -11,7 +11,7 @@ export default class BuildingEditEntranceNewRoute extends IndexRoute {
   templateName = "building.edit.entrance.edit.index";
   controllerName = "building.edit.entrance.edit.index";
 
-  async model() {
+  model() {
     const model = this.modelFor("building.edit");
 
     const buildingEntrance = new BuildingEntrance();

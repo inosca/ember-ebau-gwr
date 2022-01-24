@@ -13,9 +13,12 @@ export default class ProjectNewRoute extends FormRoute {
   async model() {
     const project = new ConstructionProject();
     await this.constructionProject.authFetch.housingStatToken.lastRunning;
-    project.constructionLocalisation.municipalityId = this.constructionProject.municipality;
-    project.constructionLocalisation.cantonAbbreviation = this.config.cantonAbbreviation;
-    project.constructionSurveyDeptNumber = this.constructionProject.constructionSurveyDeptNumber;
+    project.constructionLocalisation.municipalityId =
+      this.constructionProject.municipality;
+    project.constructionLocalisation.cantonAbbreviation =
+      this.config.cantonAbbreviation;
+    project.constructionSurveyDeptNumber =
+      this.constructionProject.constructionSurveyDeptNumber;
     return { project, instanceId: this.modelFor("application").id };
   }
 }

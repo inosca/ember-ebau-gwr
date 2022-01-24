@@ -1,4 +1,5 @@
 ember-gwr:
+  close: "Schliessen"
 
   models:
     building: |-
@@ -286,15 +287,15 @@ ember-gwr:
       linkEntry: "{modelName} verknüpfen"
       linkExistingBuilding: Bestehendes Gebäude verknüpfen (Umbau / Abbruch)
       createEntry: |-
-        {modelName} erfassen 
-        {model, select, 
+        {modelName} erfassen
+        {model, select,
           project {}
           other {(Neubau)}
         }
       or: oder
       removeLink: Verknüpfung aufheben
       buildingInfo: |-
-        Um ein bestehendes Gebäude welches sich nicht im GWR befindet nachzutragen, 
+        Um ein bestehendes Gebäude welches sich nicht im GWR befindet nachzutragen,
         wenden Sie sich bitte an das Housing-Stat Portal.
 
     linkBuildingModal:
@@ -306,8 +307,9 @@ ember-gwr:
         label: Status
         placeholder: TODO
       statusSelector:
-        actionInfo: Statusänderungen stellen einen natürlichen Übergang innerhalb eines Lebenszyklus eines Objektes dar.
-                    Statuskorrekturen bieten die Möglichkeit falsche Statuszustände zu korrigieren.
+        actionInfo:
+          Statusänderungen stellen einen natürlichen Übergang innerhalb eines Lebenszyklus eines Objektes dar.
+          Statuskorrekturen bieten die Möglichkeit falsche Statuszustände zu korrigieren.
         statusInfo: "Zulässige neue Stati für Statusänderungen:"
         noNextStates: Keine (Endstatus)
         statusLabel: Neuer Status

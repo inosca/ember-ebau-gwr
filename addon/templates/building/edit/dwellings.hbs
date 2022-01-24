@@ -1,7 +1,7 @@
 <div>
   {{#if this.fetchDwellings.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     <LinkedModels

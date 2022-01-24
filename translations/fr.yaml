@@ -1,5 +1,6 @@
 ember-gwr:
-  
+  close: "Fermer"
+
   models:
     building: |-
       {count, plural,
@@ -46,7 +47,7 @@ ember-gwr:
     infoText: Il n'y a encore aucun projet de construction RegBL lié. Vous pouvez soit en saisir un nouveau avec ce formulaire, soit en lié un existant.
     createNewProject: Saisir un nouveau projet
     linkExistingProject: Lier un projet existant
-  
+
   nav:
     projectDetails: Détails du projet
     linkedBuildings: Bâtiments liés
@@ -63,7 +64,7 @@ ember-gwr:
     superstructureInfo: |-
       Pour les projets de construction de bâtiments, le genre de construction est déclaré exclusivement par bâtiment.
     buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
-  
+
   searchBuilding:
     heading: Lier un bâtiment existant
     search: Chercher un bâtiment
@@ -73,14 +74,14 @@ ember-gwr:
       true: Seulement avec erreur
       false: Seulement sans erreur
     entrances: Entrées de bâtiment
-    
+
     linkSuccess: Le bâtiment a été lié avec succès.
     linkError: Une erreur s'est produite lors de la liaison du bâtiment.
-  
+
   searchProject:
     heading: Lier un projet de construction existant
     search: Chercher les projets
-    
+
     EPROID: EPROID
     projectStatus: Statut du projet
     projectStatusPlaceholder: Tous
@@ -99,7 +100,7 @@ ember-gwr:
     hasErrorOptions:
       true: Seulement avec erreur
       false: Seulement sans erreur
-    
+
     realestateIdentification:
       number: Numéro de parcelle
 
@@ -116,7 +117,7 @@ ember-gwr:
   lifeCycles:
     noStatus: Aucune indication de statut
     cascadeOption: Définir automatiquement les bâtiment et/ou les logements liés?
-    
+
     project:
       statusOptions:
         6701: Demande de permis déposée
@@ -127,7 +128,7 @@ ember-gwr:
         6707: Permis refusé (valide)
         6708: Non réalisé
         6709: Retiré
-    
+
     building:
       statusOptions:
         1001: En projet
@@ -137,7 +138,7 @@ ember-gwr:
         1005: Non utilisable
         1007: Démoli
         1008: Non réalisé
-    
+
     dwelling:
       statusOptions:
         3001: En projet
@@ -169,7 +170,7 @@ ember-gwr:
       1005: non utilisable
       1007: démoli
       1008: non réalisé
-      
+
       3001: en projet
       3002: autorisé
       3003: en construction
@@ -185,18 +186,18 @@ ember-gwr:
       validation:
         realestateIdentification: Pour la recherche avancée, le numéro de parcelle doit être défini.
         bothDatesSet: Les deux dates doivent être définies.
-      
+
       realestateIdentificationHeading: Identification de l'immeuble (bien-fonds)
       realestateIdentification:
         EGRID: EGRID
         number: Numéro de parcelle
         subDistrict: Numéro de secteur du registre foncier
-      
+
       createDateHeading: Période de réalisation
       createDate:
         dateFrom: De
         dateTo: Jusqu’à
-      
+
       modifyDateHeading: Période de traitement
       modifyDate:
         dateFrom: De
@@ -205,7 +206,7 @@ ember-gwr:
       extendedSearch:
         extend: Afficher les filtres avancés
         collapse: Masquer les filtres avancés
-    
+
     loginModal:
       header: Se connecter au RegBL
       login: Se connecter
@@ -214,7 +215,7 @@ ember-gwr:
       municipality: Sélectionnez votre commune...
       municipalitySearch: Chercher une commune...
       municipalityNoneFound: Aucune commune n'a été trouvée
-    
+
     logout: Se déconnecter
 
     projectForm:
@@ -261,13 +262,13 @@ ember-gwr:
         confirmationTitle: Attention
         confirmationContinue: Continuer
         confirmationCancel: Interrompre
-        confirmationSuperstructure: |- 
+        confirmationSuperstructure: |-
           Si vous changez un projet de génie civil en projet
           de bâtiment, tous les travaux liés seront effacés. Voulez-vous continuer?
         confirmationInfrastructure: |-
           Si vous changez un projet de bâtiment en projet
           de génie civil, tous les bâtiments liés seront effacés. Voulez-vous continuer?
-      
+
       building:
         title: Bâtiments {id}
         titleNew: Saisir un nouveau bâtiment
@@ -275,7 +276,7 @@ ember-gwr:
       entrance:
         title: Entrée {modelDescription}
         titleNew: Saisir une nouvelle entrée
-      
+
       dwelling:
         title: Logement {id}
         titleNew: Saisir un nouveau logement
@@ -294,7 +295,7 @@ ember-gwr:
       or: ou
       removeLink: Supprimer la liaison
       buildingInfo: |-
-        Pour ajouter un bâtiment existant qui ne se trouve pas dans le RegBL, 
+        Pour ajouter un bâtiment existant qui ne se trouve pas dans le RegBL,
         veuillez vous adresser au portail housing-stat de l'OFS.
 
     linkBuildingModal:
@@ -306,7 +307,8 @@ ember-gwr:
         label: Statut
         placeholder: TODO
       statusSelector:
-        actionInfo: Un changement de statut représente une transition naturelle dans le cycle de vie d'un objet. 
+        actionInfo:
+          Un changement de statut représente une transition naturelle dans le cycle de vie d'un objet.
           Les corrections de statut offrent la possibilité de corriger des états de statut erronés.
         statusInfo: "Nouveaux statuts autorisés pour le changement de statut:"
         noNextStates: Aucun (statut final)
@@ -318,11 +320,11 @@ ember-gwr:
         confirmCorrection: Confirmer la correction de statut
         confirmChange: Confirmer le changement de statut
         cancel: Interrompre
-      
+
       issues: Points en suspens pour le/l' {modelName} {modelId}
       noIssues: Pas de points en suspens pour le/l' {modelName} {modelId}
       linkIssues: Vers la liste complète des points en suspens pour le projet de construction {projectId}
-    
+
     linkStreet:
       missingLocalityHint: Veuillez d'abord saisir un nom de lieu.
       change: Changer la rue

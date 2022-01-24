@@ -1,7 +1,7 @@
 <div {{did-insert this.onLoad}} {{did-update this.onLoad}}>
   {{#if this.constructionProject.all.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     {{#if this.displayLandingPage}}
@@ -31,7 +31,7 @@
                   {{t "ember-gwr.nav.housingStatInfo"}}
                 </div>
                 <div>
-                 {{t "ember-gwr.nav.deletionInfo"}} 
+                 {{t "ember-gwr.nav.deletionInfo"}}
                 </div>
               </div>
             </div>
@@ -49,16 +49,12 @@
         </div>
       </div>
       <UkTab as |Tab|>
-        <Tab.link-item @route="project.form" @model={{this.activeProject}}>
+        <Tab.item @href={{if this.activeProject (build-url "project.form" (array this.activeProject)) (build-url "project.new")}}>
           {{t "ember-gwr.models.project" count=1}}
-        </Tab.link-item>
-        <Tab.link-item
-          @route="project.linked-buildings"
-          @model={{this.activeProject}}
-          @disabled={{this.buildingTabInfoText}}
-        >
+        </Tab.item>
+        <Tab.item @href={{if this.activeProject (build-url "project.linked-buildings" (array this.activeProject))}} @disabled={{this.buildingTabInfoText}}>
           {{t "ember-gwr.models.building" count=1}}
-        </Tab.link-item>
+        </Tab.item>
         {{#if this.buildingTabInfoText}}
           <div class="uk-padding-remove">
             <span
@@ -68,13 +64,9 @@
           </div>
         {{/if}}
         {{#if this.activeProject}}
-          <Tab.link-item
-            class="uk-position-right"
-            @route="project.errors"
-            @model={{this.activeProject}}
-          >
+          <Tab.item class="uk-position-right" @href={{build-url "project.errors" (array this.activeProject)}}>
             {{t "ember-gwr.issues.nav"}}
-          </Tab.link-item>
+          </Tab.item>
         {{/if}}
       </UkTab>
       {{outlet}}
