@@ -1,7 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
@@ -78,7 +78,7 @@ export default class ProjectFormController extends ImportController {
         yield link.save();
         // Reload the overview table to display the new project
         yield this.constructionProject.all.perform(this.model.instanceId);
-        this.transitionToRoute("project.form", project.EPROID);
+        this.router.transitionTo("project.form", project.EPROID);
       } else {
         if (
           (this.typeOfConstructionProject === 6010 &&

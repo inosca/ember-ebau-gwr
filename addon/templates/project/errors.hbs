@@ -1,10 +1,10 @@
 {{#if (or this.fetchProject.isRunning)}}
   <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-    <UkSpinner @ratio="3" />
+    <UkSpinner @ratio={{3}} />
   </div>
 {{else}}
   <div uk-alert>
-    <a href="" class="uk-alert-close" uk-close></a>
+    <a href="" class="uk-alert-close" uk-close><span hidden>{{t "ebau-gwr.close"}}</span></a>
     <div class="uk-flex-inline uk-flex-middle">
       <div uk-icon="info"></div>
       <div class="uk-margin-small-left">
@@ -33,7 +33,7 @@
     >
       <ul class="uk-list uk-list-divider uk-list-large">
       {{#each this.workBuildings as |building|}}
-        <ModelInview 
+        <ModelInview
           @model={{building.EGID}}
           @fetchModel={{perform this.fetchModel}}
           as |inview|

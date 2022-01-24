@@ -7,7 +7,7 @@ ember-gwr:
       6001: Nouvelle construction
       6002: Transformation
       6007: Démolition
-    
+
     energeticRestauration: Assainissement énergétique
     renovationHeatingsystem: Assainissement du système de chauffage
     innerConversionRenovation: Transformations / rénovations intérieures
@@ -17,14 +17,14 @@ ember-gwr:
     thermicSolarFacility: Installation solaire thermique
     photovoltaicSolarFacility: Installation solaire photovoltaïque
     otherWorks: Autres travaux de transformation
-    
+
   building:
     building: Bâtiment
     title: Bâtiment {id} - {status}
     createNewBuilding: Saisir un nouveau bâtiment
-    
+
     backToProject: Retour au projet de construction
-    
+
     saveError: Une erreur s'est produite lors de la sauvegarde du bâtiment.
     saveSuccess: Bâtiment sauvegardé avec succès.
     entrances:
@@ -77,7 +77,7 @@ ember-gwr:
     localCode2: Codes locaux 2
     localCode3: Codes locaux 3
     localCode4: Codes locaux 4
-    
+
     neighbourhood: Quartier
 
     buildingStatus: Statut du bâtiment
@@ -152,12 +152,12 @@ ember-gwr:
         8022: Période de 2011 à 2015
         8023: Période à partir de 2016
     yearOfDemolition: Année de démolition du bâtiment
-      
+
     realestateIdentification:
       EGRID: EGRID
       number: Numéro de parcelle
       subDistrict: Numéro de secteur du registre foncier
-    
+
     surfaceAreaOfBuilding: Surface du bâtiment en mètres carrés.
     volume:
       volume: Volume du bâtiment (m3)
@@ -274,7 +274,7 @@ ember-gwr:
       swissZipCode: NPA
       name:
         nameLong: Désignation de la localité
-    
+
     buildingEntrance:
       mainEntrance: Entrée principale
       info: Une fois le bâtiment créé, il est possible d'ajouter d'autres entrées et d'éditer les rues des entrées.

@@ -26,15 +26,15 @@ ember-gwr:
       withdrawalDate: Date de retrait de la demande de permis
       projectFreeText1: Champ libre pour le projet 1
       projectFreeText2: Champ libre pour le projet 2
-      
+
       constructionLocalisation:
         municipalityName: Commune
-      
+
       realestateIdentification:
         EGRID: EGRID
         number: Numéro de parcelle
         subDistrict: Numéro de secteur du registre foncier
-      
+
       client:
         identification:
           personIdentification:
@@ -53,266 +53,267 @@ ember-gwr:
           swissZipCodeAddOn: Chiffre complémentaire du NPA
           foreignZipCode: Code postal à l'étranger
           addressLine2: Suppl. adresse maître d’ouvrage
-          country: 
+          country:
             countryNameShort: Pays
             countryNameShortOptions:
-              zw: Zimbabwe
-              zm: Zambie
-              ye: Yémen
-              wf: Wallis-et-Futuna
-              vn: Viêt Nam
-              vi: Îles Vierges des États-Unis
-              vg: Îles Vierges britanniques
-              ve: Venezuela
-              vu: Vanuatu
-              uy: Uruguay
-              ua: Ukraine
-              tv: Tuvalu
-              tr: Turquie
-              tc: Îles Turques-et-Caïques
-              tm: Turkménistan
-              tn: Tunisie
-              tt: Trinité-et-Tobago
-              to: Tonga
-              tk: Tokelau
-              tg: Togo
-              tl: Timor oriental
-              th: Thaïlande
-              io: Territoire britannique de locéan Indien
-              tf: Terres australes et antarctiques françaises
-              cz: Tchéquie
-              td: Tchad
-              tz: Tanzanie
-              tw: Taïwan / (République de Chine (Taïwan))
-              tj: Tadjikistan
-              sy: Syrie
-              sj: Svalbard et ile Jan Mayen
-              sr: Suriname
-              ch: Suisse
-              se: Suède
-              lk: Sri Lanka
-              ss: Soudan du Sud
-              sd: Soudan
-              so: Somalie
-              si: Slovénie
-              sk: Slovaquie
-              sg: Singapour
-              sl: Sierra Leone
-              sc: Seychelles
-              rs: Serbie
-              sn: Sénégal
-              st: Sao Tomé-et-Principe
-              as: Samoa américaines
-              ws: Samoa
-              sv: Salvador
-              sb: Îles Salomon
-              lc: Sainte-Lucie
-              sh: Sainte-Hélène, Ascension et Tristan da Cunha
-              va: Saint-Siège (État de la Cité du Vatican)
-              vc: Saint-Vincent-et-les-Grenadines
-              pm: Saint-Pierre-et-Miquelon
-              sx: Saint-Martin
-              mf: Saint-Martin
-              sm: Saint-Marin
-              kn: Saint-Christophe-et-Niévès
-              bl: Saint-Barthélemy
-              rw: Rwanda
-              ru: Russie
-              gb: Royaume-Uni
-              ro: Roumanie
-              re: La Réunion
-              qa: Qatar
-              pt: Portugal
-              pr: Porto Rico
-              pf: Polynésie française
-              pl: Pologne
-              pn: Îles Pitcairn
-              ph: Philippines
-              pe: Pérou
-              bq: Pays-Bas caribéens
-              nl: Pays-Bas
-              py: Paraguay
-              pg: Papouasie-Nouvelle-Guinée
-              pa: Panama
-              ps: Palestine
-              pw: Palaos
-              pk: Pakistan
-              uz: Ouzbékistan
-              ug: Ouganda
-              om: Oman
-              nz: Nouvelle-Zélande
-              nc: Nouvelle-Calédonie
-              no: Norvège
-              nf: Île Norfolk
-              nu: Niue
-              ng: Nigeria
-              ne: Niger
-              ni: Nicaragua
-              np: Népal
-              nr: Nauru
-              na: Namibie
-              mz: Mozambique
-              ms: Montserrat
-              me: Monténégro
-              mn: Mongolie
-              mc: Monaco
-              md: Moldavie
-              um: Îles mineures éloignées des États-Unis
-              fm: États fédérés de Micronésie (pays)
-              mx: Mexique
-              yt: Mayotte
-              mr: Mauritanie
-              mu: Maurice (pays)
-              mq: Martinique
-              mh: Îles Marshall (pays)
-              ma: Maroc
-              mp: Îles Mariannes du Nord
-              im: Île de Man
-              mt: Malte
-              fk: Malouines
-              ml: Mali
-              mv: Maldives
-              mw: Malawi
-              my: Malaisie
-              mg: Madagascar
-              mk: Macédoine du Nord
-              mo: Macao
-              lu: Luxembourg (pays)
-              lt: Lituanie
-              li: Liechtenstein
-              ly: Libye
-              lr: Liberia
-              lb: Liban
-              lv: Lettonie
-              ls: Lesotho
-              la: Laos
-              kw: Koweït
-              ki: Kiribati
-              kg: Kirghizistan
-              ke: Kenya
-              kz: Kazakhstan
-              jo: Jordanie
-              je: Jersey
-              jp: Japon
-              jm: Jamaïque
-              it: Italie
-              il: Israël
-              is: Islande
-              ie: Irlande (pays)
-              ir: Iran
-              iq: Irak
-              id: Indonésie
-              in: Inde
-              hu: Hongrie
-              hk: Hong Kong
-              hn: Honduras
-              hm: Îles Heard-et-MacDonald
-              ht: Haïti
-              gf: Guyane
-              gy: Guyana
-              gq: Guinée équatoriale
-              gw: Guinée-Bissau
-              gn: Guinée
-              gg: Guernesey
-              gt: Guatemala
-              gu: Guam
-              gp: Guadeloupe
-              gl: Groenland
-              gd: Grenade (pays)
-              gr: Grèce
-              gi: Gibraltar
-              gh: Ghana
-              gs: Géorgie du Sud-et-les îles Sandwich du Sud
-              ge: Géorgie (pays)
-              gm: Gambie
-              ga: Gabon
-              fr: France
-              fi: Finlande
-              fj: Fidji
-              fo: Îles Féroé
-              et: Éthiopie
-              us: États-Unis
-              sz: Eswatini
-              ee: Estonie
-              es: Espagne
-              er: Érythrée
-              ec: Équateur (pays)
+              ad: Andorre
               ae: Émirats arabes unis
-              eg: Égypte
-              dm: Dominique
-              do: République dominicaine
-              dj: Djibouti
-              dk: Danemark
-              cw: Curaçao
-              cu: Cuba
-              hr: Croatie
-              ci: Côte d'Ivoire
-              cr: Costa Rica
-              kr: Corée du Sud
-              kp: Corée du Nord
-              ck: Îles Cook
-              cd: République démocratique du Congo
-              cg: République du Congo
-              km: Comores (pays)
-              co: Colombie
-              cc: Îles Cocos
-              cy: Chypre (pays)
-              cx: Île Christmas
-              cn: Chine
-              cl: Chili
-              cf: République centrafricaine
-              cv: Cap-Vert
-              ca: Canada
-              cm: Cameroun
-              kh: Cambodge
-              ky: Îles Caïmans
-              bi: Burundi
-              bf: Burkina Faso
-              bg: Bulgarie
-              bn: Brunei
-              br: Brésil
-              bv: Île Bouvet
-              bw: Botswana
-              ba: Bosnie-Herzégovine
-              bo: Bolivie
-              mm: Birmanie
-              by: Biélorussie
-              bt: Bhoutan
-              bm: Bermudes
-              bj: Bénin
-              bz: Belize
-              be: Belgique
-              bb: Barbade
-              bd: Bangladesh
-              bh: Bahreïn
-              bs: Bahamas
-              az: Azerbaïdjan
+              af: Afghanistan
+              ag: Antigua-et-Barbuda
+              ai: Anguilla
+              al: Albanie
+              am: Arménie
+              ao: Angola
+              aq: Antarctique
+              ar: Argentine
+              as: Samoa américaines
               at: Autriche
               au: Australie
               aw: Aruba
-              am: Arménie
-              ar: Argentine
-              sa: Arabie saoudite
-              eh: République arabe sahraouie démocratique
-              ag: Antigua-et-Barbuda
-              aq: Antarctique
-              ai: Anguilla
-              ao: Angola
-              ad: Andorre
-              de: Allemagne
-              dz: Algérie
-              al: Albanie
               ax: Îles Åland
+              az: Azerbaïdjan
+              ba: Bosnie-Herzégovine
+              bb: Barbade
+              bd: Bangladesh
+              be: Belgique
+              bf: Burkina Faso
+              bg: Bulgarie
+              bh: Bahreïn
+              bi: Burundi
+              bj: Bénin
+              bl: Saint-Barthélemy
+              bm: Bermudes
+              bn: Brunei
+              bo: Bolivie
+              bq: Pays-Bas caribéens
+              br: Brésil
+              bs: Bahamas
+              bt: Bhoutan
+              bv: Île Bouvet
+              bw: Botswana
+              by: Biélorussie
+              bz: Belize
+              ca: Canada
+              cc: Îles Cocos
+              cd: République démocratique du Congo
+              cf: République centrafricaine
+              cg: République du Congo
+              ch: Suisse
+              ci: Côte d'Ivoire
+              ck: Îles Cook
+              cl: Chili
+              cm: Cameroun
+              cn: Chine
+              co: Colombie
+              cr: Costa Rica
+              cu: Cuba
+              cv: Cap-Vert
+              cw: Curaçao
+              cx: Île Christmas
+              cy: Chypre (pays)
+              cz: Tchéquie
+              de: Allemagne
+              dj: Djibouti
+              dk: Danemark
+              dm: Dominique
+              do: République dominicaine
+              dz: Algérie
+              ec: Équateur (pays)
+              ee: Estonie
+              eg: Égypte
+              eh: République arabe sahraouie démocratique
+              er: Érythrée
+              es: Espagne
+              et: Éthiopie
+              fi: Finlande
+              fj: Fidji
+              fk: Malouines
+              fm: États fédérés de Micronésie (pays)
+              fo: Îles Féroé
+              fr: France
+              ga: Gabon
+              gb: Royaume-Uni
+              gd: Grenade (pays)
+              ge: Géorgie (pays)
+              gf: Guyane
+              gg: Guernesey
+              gh: Ghana
+              gi: Gibraltar
+              gl: Groenland
+              gm: Gambie
+              gn: Guinée
+              gp: Guadeloupe
+              gq: Guinée équatoriale
+              gr: Grèce
+              gs: Géorgie du Sud-et-les îles Sandwich du Sud
+              gt: Guatemala
+              gu: Guam
+              gw: Guinée-Bissau
+              gy: Guyana
+              hk: Hong Kong
+              hm: Îles Heard-et-MacDonald
+              hn: Honduras
+              hr: Croatie
+              ht: Haïti
+              hu: Hongrie
+              id: Indonésie
+              ie: Irlande (pays)
+              il: Israël
+              im: Île de Man
+              in: Inde
+              io: Territoire britannique de locéan Indien
+              iq: Irak
+              ir: Iran
+              is: Islande
+              it: Italie
+              je: Jersey
+              jm: Jamaïque
+              jo: Jordanie
+              jp: Japon
+              ke: Kenya
+              kg: Kirghizistan
+              kh: Cambodge
+              ki: Kiribati
+              km: Comores (pays)
+              kn: Saint-Christophe-et-Niévès
+              kp: Corée du Nord
+              kr: Corée du Sud
+              kw: Koweït
+              ky: Îles Caïmans
+              kz: Kazakhstan
+              la: Laos
+              lb: Liban
+              lc: Sainte-Lucie
+              li: Liechtenstein
+              lk: Sri Lanka
+              lr: Liberia
+              ls: Lesotho
+              lt: Lituanie
+              lu: Luxembourg (pays)
+              lv: Lettonie
+              ly: Libye
+              ma: Maroc
+              mc: Monaco
+              md: Moldavie
+              me: Monténégro
+              mf: Saint-Martin
+              mg: Madagascar
+              mh: Îles Marshall (pays)
+              mk: Macédoine du Nord
+              ml: Mali
+              mm: Birmanie
+              mn: Mongolie
+              mo: Macao
+              mp: Îles Mariannes du Nord
+              mq: Martinique
+              mr: Mauritanie
+              ms: Montserrat
+              mt: Malte
+              mu: Maurice (pays)
+              mv: Maldives
+              mw: Malawi
+              mx: Mexique
+              my: Malaisie
+              mz: Mozambique
+              na: Namibie
+              nc: Nouvelle-Calédonie
+              ne: Niger
+              nf: Île Norfolk
+              ng: Nigeria
+              ni: Nicaragua
+              nl: Pays-Bas
+              no: Norvège
+              np: Népal
+              nr: Nauru
+              nu: Niue
+              nz: Nouvelle-Zélande
+              om: Oman
+              pa: Panama
+              pe: Pérou
+              pf: Polynésie française
+              pg: Papouasie-Nouvelle-Guinée
+              ph: Philippines
+              pk: Pakistan
+              pl: Pologne
+              pm: Saint-Pierre-et-Miquelon
+              pn: Îles Pitcairn
+              pr: Porto Rico
+              ps: Palestine
+              pt: Portugal
+              pw: Palaos
+              py: Paraguay
+              qa: Qatar
+              re: La Réunion
+              ro: Roumanie
+              rs: Serbie
+              ru: Russie
+              rw: Rwanda
+              sa: Arabie saoudite
+              sb: Îles Salomon
+              sc: Seychelles
+              sd: Soudan
+              se: Suède
+              sg: Singapour
+              sh: Sainte-Hélène, Ascension et Tristan da Cunha
+              si: Slovénie
+              sj: Svalbard et ile Jan Mayen
+              sk: Slovaquie
+              sl: Sierra Leone
+              sm: Saint-Marin
+              sn: Sénégal
+              so: Somalie
+              sr: Suriname
+              ss: Soudan du Sud
+              st: Sao Tomé-et-Principe
+              sv: Salvador
+              sx: Saint-Martin
+              sy: Syrie
+              sz: Eswatini
+              tc: Îles Turques-et-Caïques
+              td: Tchad
+              tf: Terres australes et antarctiques françaises
+              tg: Togo
+              th: Thaïlande
+              tj: Tadjikistan
+              tk: Tokelau
+              tl: Timor oriental
+              tm: Turkménistan
+              tn: Tunisie
+              to: Tonga
+              tr: Turquie
+              tt: Trinité-et-Tobago
+              tv: Tuvalu
+              tw: Taïwan / (République de Chine (Taïwan))
+              tz: Tanzanie
+              ua: Ukraine
+              ug: Ouganda
+              um: Îles mineures éloignées des États-Unis
+              us: États-Unis
+              uy: Uruguay
+              uz: Ouzbékistan
+              va: Saint-Siège (État de la Cité du Vatican)
+              vc: Saint-Vincent-et-les-Grenadines
+              ve: Venezuela
+              vg: Îles Vierges britanniques
+              vi: Îles Vierges des États-Unis
+              vn: Viêt Nam
+              vu: Vanuatu
+              wf: Wallis-et-Futuna
+              ws: Samoa
+              xk: Kosovo
+              ye: Yémen
+              yt: Mayotte
               za: Afrique du Sud
-              af: Afghanistan
+              zm: Zambie
+              zw: Zimbabwe
             countryNameShortPlaceholder: Sélectionnez un pays...
-          
+
       typeOfConstructionProject: Type de projet de construction
       typeOfConstructionPlaceholder: Sélectionnez un type d’ouvrage...
       typeOfConstructionProjectOptions:
         6010: Génie civil
         6011: Bâtiment
-      
+
       typeOfConstruction: Type d’ouvrage
       typeOfConstructionProjectPlaceholder: Sélectionnez un type de projet de construction...
       typeOfConstructionOptions:
@@ -398,10 +399,10 @@ ember-gwr:
       typeOfClient: Type de maître d’ouvrage
       typeOfClientPlaceholder: Sélectionnez le type de maître d’ouvrage...
       typeOfClientAlert: |-
-        Pour le type de donneur d'ordre "Particuliers, y compris hoiries", les 
-        champs "Nom de l'entreprise" et "Nom supplémentaire de l'entreprise" ne 
-        doivent pas être remplis. Pour les autres donneurs d'ordre (organisations), 
-        les champs "Nom" et "Prénom" ne doivent pas être remplis. 
+        Pour le type de donneur d'ordre "Particuliers, y compris hoiries", les
+        champs "Nom de l'entreprise" et "Nom supplémentaire de l'entreprise" ne
+        doivent pas être remplis. Pour les autres donneurs d'ordre (organisations),
+        les champs "Nom" et "Prénom" ne doivent pas être remplis.
       typeOfClientOptions:
         6101: CFF (Chemins de fer fédéraux)
         6103: DDPS (Département fédéral de la défense, de la protection de la population et des sports)

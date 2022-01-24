@@ -12,9 +12,8 @@
       type="submit"
       label=(t "ember-gwr.components.modelForm.save")
       disabled=(or this.isSaving @disabled @import)
-      buttonComponent=(component
-        "model-form/submit" loading=this.isSaving color="primary"
-      )
+      loading=this.isSaving
+      buttonComponent=(component "model-form/submit" color="primary")
     )
     (component
       "model-form/submit-errors"
@@ -26,6 +25,7 @@
     )
     as |Submit SubmitErrors|
   }}
+    {{!-- template-lint-disable no-passed-in-event-handlers --}}
     <ModelForm::Header
       @model={{@headerModel}}
       @modelId={{@headerModelId}}

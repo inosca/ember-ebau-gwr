@@ -34,8 +34,8 @@
       promptIsSelectable=true
       on-update=(if
         @on-update
-        (queue (fn this.updateModelField) @on-update)
-        (fn this.updateModelField)
+        (queue this.updateModelField @on-update)
+        this.updateModelField
       )
       renderComponent=(component
         this.fieldComponent
@@ -52,7 +52,7 @@
         @inputComponent={{InputComponent}}
         @current={{this.value}}
         @new={{this.importValue}}
-        @updateModelField={{fn this.updateModelField}}
+        @updateModelField={{this.updateModelField}}
         @horizontal={{this.isHorizontal}}
       />
     {{else}}

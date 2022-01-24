@@ -1,11 +1,7 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import {
-  lastValue,
-  restartableTask,
-  enqueueTask,
-} from "ember-concurrency-decorators";
+import { lastValue, restartableTask, enqueueTask } from "ember-concurrency";
 
 export default class ProjectErrorsController extends Controller {
   @service constructionProject;

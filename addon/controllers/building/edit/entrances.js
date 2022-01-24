@@ -1,7 +1,7 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
-import { lastValue, task } from "ember-concurrency-decorators";
+import { lastValue, task } from "ember-concurrency";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
 
 export default class BuildingEntrancesIndexController extends Controller {

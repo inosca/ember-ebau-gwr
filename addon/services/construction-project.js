@@ -1,5 +1,5 @@
 import { inject as service } from "@ember/service";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, lastValue } from "ember-concurrency";
 import Building from "ember-ebau-gwr/models/building";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
@@ -756,9 +756,10 @@ export default class ConstructionProjectService extends GwrService {
   }
 
   correctStatus(project, newStatus) {
-    const necessaryParameters = ConstructionProject.projectTransitionParametersMapping[
-      newStatus
-    ].map((param) => param.field);
+    const necessaryParameters =
+      ConstructionProject.projectTransitionParametersMapping[newStatus].map(
+        (param) => param.field
+      );
     ConstructionProject.statusParameters.forEach((parameter) => {
       if (project[parameter] && !necessaryParameters.includes(parameter)) {
         project[parameter] = "9999-01-01";

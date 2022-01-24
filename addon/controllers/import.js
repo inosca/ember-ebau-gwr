@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 import { assert } from "@ember/debug";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, lastValue } from "ember-concurrency-decorators";
+import { task, lastValue } from "ember-concurrency";
 
 const IMPORT_MAP = {
   project: "fetchProject",

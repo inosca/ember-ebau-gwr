@@ -11,14 +11,11 @@
         {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
       </div>
       <form>
-        <OneWaySelect
-          class="uk-select"
-          @value={{this.newStatus}}
-          @options={{this.statusOptions}}
-          @optionTargetPath="status"
-          @optionLabelPath="label"
-          @update={{this.statusUpdate}}
-        />
+        <select aria-label={{t "ember-gwr.components.header.statusSelector.statusLabel"}} class="uk-select" {{on "change" this.statusUpdate}}>
+          {{#each this.statusOptions as |opt|}}
+            <option value={{opt.status}} selected={{eq this.newStatus opt.status}}>{{opt.label}}</option>
+          {{/each}}
+        </select>
       </form>
       <small class="uk-text-muted uk-flex-inline uk-flex-column uk-width-large">
         {{#if this.changeHint}}

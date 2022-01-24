@@ -56,255 +56,256 @@ ember-gwr:
           country:
             countryNameShort: Land
             countryNameShortOptions:
-              cy: Zypern
-              cf: Zentralafrikanische Republik
-              eh: Westsahara
-              cx: Weihnachtsinsel
-              wf: Wallis und Futuna
-              vn: Vietnam
-              gb: Vereinigtes Königreich
-              us: Vereinigte Staaten von Amerika
+              ad: Andorra
               ae: Vereinigte Arabische Emirate
-              ve: Venezuela
-              va: Vatikanstadt
-              vu: Vanuatu
-              uz: Usbekistan
-              uy: Uruguay
-              hu: Ungarn
-              ua: Ukraine
-              ug: Uganda
-              tv: Tuvalu
-              tc: Turks und Caicosinseln
-              tm: Turkmenistan
-              tr: Türkei
-              tn: Tunesien
-              cz: Tschechien
-              td: Tschad
-              tt: Trinidad und Tobago
-              to: Tonga
-              tk: Tokelau
-              tg: Togo
-              th: Thailand
-              tz: Tansania
-              tw: Taiwan
-              tj: Tadschikistan
-              sy: Syrien
-              sj: Svalbard und Jan Mayen
-              sr: Suriname
-              ss: Südsudan
-              kr: Südkorea
-              gs: Südgeorgien und die Südlichen Sandwichinseln
-              sd: Sudan
-              za: Südafrika
-              vc: St. Vincent und die Grenadinen
-              pm: St. Pierre und Miquelon
-              lc: St. Lucia
-              kn: St. Kitts und Nevis
-              sh: St. Helena, Ascension und Tristan da Cunha
-              lk: Sri Lanka
-              es: Spanien
-              so: Somalia
-              si: Slowenien
-              sk: Slowakei
-              sx: Sint Maarten
-              sg: Singapur
-              zw: Simbabwe
-              sl: Sierra Leone
-              sc: Seychellen
-              rs: Serbien
-              sn: Senegal
-              ch: Schweiz
-              se: Schweden
-              sa: Saudi-Arabien
-              st: São Tomé und Príncipe
-              bl: Sankt Bartholomäus
-              sm: San Marino
-              ws: Samoa
-              zm: Sambia
-              sb: Salomonen
-              mf: Saint Martin
-              ru: Russland
-              ro: Rumänien
-              rw: Ruanda
-              re: Réunion
-              cg: Republik Kongo
-              pr: Puerto Rico
-              pt: Portugal
-              pl: Polen
-              pn: Pitcairninseln
-              ph: Philippinen
-              pe: Peru
-              py: Paraguay
-              pg: Papua-Neuguinea
-              pa: Panama
-              pw: Palau
-              ps: Palästina
-              pk: Pakistan
-              tl: Osttimor
+              af: Afghanistan
+              ag: Antigua und Barbuda
+              ai: Anguilla
+              al: Albanien
+              am: Armenien
+              ao: Angola
+              aq: Antarktis
+              ar: Argentinien
+              as: Amerikanisch Samoa
               at: Österreich
-              om: Oman
-              no: Norwegen
-              nf: Norfolkinsel
-              mk: Nordmazedonien
-              mp: Nördliche Marianen
-              kp: Nordkorea
-              nu: Niue
-              ng: Nigeria
-              ne: Niger
-              nl: Niederlande
-              ni: Nicaragua
-              nz: Neuseeland
-              nc: Neukaledonien
-              np: Nepal
-              nr: Nauru
-              na: Namibia
-              mm: Myanmar
-              mz: Mosambik
-              ms: Montserrat
-              me: Montenegro
-              mn: Mongolei
-              mc: Monaco
-              md: Moldawien
-              fm: Mikronesien
-              mx: Mexiko
-              yt: Mayotte
-              mu: Mauritius
-              mr: Mauretanien
-              mq: Martinique
-              mh: Marshallinseln
-              ma: Marokko
-              mt: Malta
-              ml: Mali
-              mv: Malediven
-              my: Malaysia
-              mw: Malawi
-              mg: Madagaskar
-              mo: Macau
-              lu: Luxemburg
-              lt: Litauen
-              li: Liechtenstein
-              ly: Libyen
-              lr: Liberia
-              lb: Libanon
-              lv: Lettland
-              ls: Lesotho
-              la: Laos
-              kw: Kuwait
-              cu: Kuba
-              hr: Kroatien
-              xk: Kosovo
-              km: Komoren
-              co: Kolumbien
-              cc: Kokosinseln
-              ki: Kiribati
-              kg: Kirgisistan
-              ke: Kenia
-              qa: Katar
-              kz: Kasachstan
-              cv: Kap Verde
-              ca: Kanada
-              cm: Kamerun
-              kh: Kambodscha
-              ky: Kaimaninseln
-              vi: Jungferninseln (US)
-              vg: Jungferninseln (UK)
-              jo: Jordanien
-              je: Jersey
-              ye: Jemen
-              jp: Japan
-              jm: Jamaika
-              it: Italien
-              il: Israel
-              is: Island
-              ie: Irland
-              ir: Iran
-              iq: Irak
-              im: Insel Man
-              id: Indonesien
-              in: Indien
-              hk: Hongkong
-              hn: Honduras
-              hm: Heard und McDonaldinseln
-              ht: Haiti
-              gy: Guyana
-              gw: Guinea-Bissau
-              gn: Guinea
-              gg: Guernsey
-              gt: Guatemala
-              gu: Guam
-              gp: Guadeloupe
-              gl: Grönland
-              gr: Griechenland
-              gd: Grenada
-              gi: Gibraltar
-              gh: Ghana
-              ge: Georgien
-              gm: Gambia
-              ga: Gabun
-              tf: Französische Süd- und Antarktisgebiete
-              pf: Französisch-Polynesien
-              gf: Französisch-Guayana
-              fr: Frankreich
-              fi: Finnland
-              fj: Fidschi
-              fo: Färöer-Inseln
-              fk: Falklandinseln
-              sz: Eswatini
-              ee: Estland
-              er: Eritrea
-              ci: Elfenbeinküste
-              sv: El Salvador
-              ec: Ecuador
-              dj: Dschibuti
-              do: Dominikanische Republik
-              dm: Dominica
-              de: Deutschland
-              cd: Demokratische Republik Kongo
-              dk: Dänemark
-              cw: Curaçao
-              cr: Costa Rica
-              ck: Cookinseln
-              cn: China
-              cl: Chile
-              bi: Burundi
-              bf: Burkina Faso
-              bg: Bulgarien
-              bn: Brunei
-              io: Britisches Territorium im Indischen Ozean
-              br: Brasilien
-              bv: Bouvetinsel
-              bw: Botswana
+              au: Australien
+              aw: Aruba
+              ax: Ålandinseln
+              az: Aserbaidschan
               ba: Bosnien und Herzegowina
-              bq: Bonaire, Sint Eustatius und Saba
-              bo: Bolivien
-              bt: Bhutan
-              bm: Bermuda
-              bj: Benin
-              bz: Belize
-              be: Belgien
-              by: Belarus
               bb: Barbados
               bd: Bangladesch
+              be: Belgien
+              bf: Burkina Faso
+              bg: Bulgarien
               bh: Bahrain
+              bi: Burundi
+              bj: Benin
+              bl: Sankt Bartholomäus
+              bm: Bermuda
+              bn: Brunei
+              bo: Bolivien
+              bq: Bonaire, Sint Eustatius und Saba
+              br: Brasilien
               bs: Bahamas
-              au: Australien
-              et: Äthiopien
-              az: Aserbaidschan
-              aw: Aruba
-              am: Armenien
-              ar: Argentinien
-              gq: Äquatorialguinea
-              ag: Antigua und Barbuda
-              aq: Antarktis
-              ai: Anguilla
-              ao: Angola
-              ad: Andorra
-              as: Amerikanisch Samoa
+              bt: Bhutan
+              bv: Bouvetinsel
+              bw: Botswana
+              by: Belarus
+              bz: Belize
+              ca: Kanada
+              cc: Kokosinseln
+              cd: Demokratische Republik Kongo
+              cf: Zentralafrikanische Republik
+              cg: Republik Kongo
+              ch: Schweiz
+              ci: Elfenbeinküste
+              ck: Cookinseln
+              cl: Chile
+              cm: Kamerun
+              cn: China
+              co: Kolumbien
+              cr: Costa Rica
+              cu: Kuba
+              cv: Kap Verde
+              cw: Curaçao
+              cx: Weihnachtsinsel
+              cy: Zypern
+              cz: Tschechien
+              de: Deutschland
+              dj: Dschibuti
+              dk: Dänemark
+              dm: Dominica
+              do: Dominikanische Republik
               dz: Algerien
-              al: Albanien
-              ax: Ålandinseln
+              ec: Ecuador
+              ee: Estland
               eg: Ägypten
-              af: Afghanistan
+              eh: Westsahara
+              er: Eritrea
+              es: Spanien
+              et: Äthiopien
+              fi: Finnland
+              fj: Fidschi
+              fk: Falklandinseln
+              fm: Mikronesien
+              fo: Färöer-Inseln
+              fr: Frankreich
+              ga: Gabun
+              gb: Vereinigtes Königreich
+              gd: Grenada
+              ge: Georgien
+              gf: Französisch-Guayana
+              gg: Guernsey
+              gh: Ghana
+              gi: Gibraltar
+              gl: Grönland
+              gm: Gambia
+              gn: Guinea
+              gp: Guadeloupe
+              gq: Äquatorialguinea
+              gr: Griechenland
+              gs: Südgeorgien und die Südlichen Sandwichinseln
+              gt: Guatemala
+              gu: Guam
+              gw: Guinea-Bissau
+              gy: Guyana
+              hk: Hongkong
+              hm: Heard und McDonaldinseln
+              hn: Honduras
+              hr: Kroatien
+              ht: Haiti
+              hu: Ungarn
+              id: Indonesien
+              ie: Irland
+              il: Israel
+              im: Insel Man
+              in: Indien
+              io: Britisches Territorium im Indischen Ozean
+              iq: Irak
+              ir: Iran
+              is: Island
+              it: Italien
+              je: Jersey
+              jm: Jamaika
+              jo: Jordanien
+              jp: Japan
+              ke: Kenia
+              kg: Kirgisistan
+              kh: Kambodscha
+              ki: Kiribati
+              km: Komoren
+              kn: St. Kitts und Nevis
+              kp: Nordkorea
+              kr: Südkorea
+              kw: Kuwait
+              ky: Kaimaninseln
+              kz: Kasachstan
+              la: Laos
+              lb: Libanon
+              lc: St. Lucia
+              li: Liechtenstein
+              lk: Sri Lanka
+              lr: Liberia
+              ls: Lesotho
+              lt: Litauen
+              lu: Luxemburg
+              lv: Lettland
+              ly: Libyen
+              ma: Marokko
+              mc: Monaco
+              md: Moldawien
+              me: Montenegro
+              mf: Saint Martin
+              mg: Madagaskar
+              mh: Marshallinseln
+              mk: Nordmazedonien
+              ml: Mali
+              mm: Myanmar
+              mn: Mongolei
+              mo: Macau
+              mp: Nördliche Marianen
+              mq: Martinique
+              mr: Mauretanien
+              ms: Montserrat
+              mt: Malta
+              mu: Mauritius
+              mv: Malediven
+              mw: Malawi
+              mx: Mexiko
+              my: Malaysia
+              mz: Mosambik
+              na: Namibia
+              nc: Neukaledonien
+              ne: Niger
+              nf: Norfolkinsel
+              ng: Nigeria
+              ni: Nicaragua
+              nl: Niederlande
+              no: Norwegen
+              np: Nepal
+              nr: Nauru
+              nu: Niue
+              nz: Neuseeland
+              om: Oman
+              pa: Panama
+              pe: Peru
+              pf: Französisch-Polynesien
+              pg: Papua-Neuguinea
+              ph: Philippinen
+              pk: Pakistan
+              pl: Polen
+              pm: St. Pierre und Miquelon
+              pn: Pitcairninseln
+              pr: Puerto Rico
+              ps: Palästina
+              pt: Portugal
+              pw: Palau
+              py: Paraguay
+              qa: Katar
+              re: Réunion
+              ro: Rumänien
+              rs: Serbien
+              ru: Russland
+              rw: Ruanda
+              sa: Saudi-Arabien
+              sb: Salomonen
+              sc: Seychellen
+              sd: Sudan
+              se: Schweden
+              sg: Singapur
+              sh: St. Helena, Ascension und Tristan da Cunha
+              si: Slowenien
+              sj: Svalbard und Jan Mayen
+              sk: Slowakei
+              sl: Sierra Leone
+              sm: San Marino
+              sn: Senegal
+              so: Somalia
+              sr: Suriname
+              ss: Südsudan
+              st: São Tomé und Príncipe
+              sv: El Salvador
+              sx: Sint Maarten
+              sy: Syrien
+              sz: Eswatini
+              tc: Turks und Caicosinseln
+              td: Tschad
+              tf: Französische Süd- und Antarktisgebiete
+              tg: Togo
+              th: Thailand
+              tj: Tadschikistan
+              tk: Tokelau
+              tl: Osttimor
+              tm: Turkmenistan
+              tn: Tunesien
+              to: Tonga
+              tr: Türkei
+              tt: Trinidad und Tobago
+              tv: Tuvalu
+              tw: Taiwan
+              tz: Tansania
+              ua: Ukraine
+              ug: Uganda
+              um: Kleinere abgelegene Inseln der Vereinigten Staaten
+              us: Vereinigte Staaten von Amerika
+              uy: Uruguay
+              uz: Usbekistan
+              va: Vatikanstadt
+              vc: St. Vincent und die Grenadinen
+              ve: Venezuela
+              vg: Jungferninseln (UK)
+              vi: Jungferninseln (US)
+              vn: Vietnam
+              vu: Vanuatu
+              wf: Wallis und Futuna
+              ws: Samoa
+              xk: Kosovo
+              ye: Jemen
+              yt: Mayotte
+              za: Südafrika
+              zm: Sambia
+              zw: Simbabwe
             countryNameShortPlaceholder: Wählen Sie ein Land...
 
       typeOfConstructionProject: Bauprojekttyp
@@ -391,8 +392,8 @@ ember-gwr:
         5051: Änderung zonenwidrig gewordener Bauten und Anlagen
         5061: Änderungen an ehem. landw. genutzten Wohnbauten
         5062: Vollständige Zweckänderung geschützter Bauten
-        5064: Hobbymässige Tierhaltung in nahe gelegenen Gebäuden
         5063: Aussenanlagen zur hobbymässigen Tierhaltung
+        5064: Hobbymässige Tierhaltung in nahe gelegenen Gebäuden
         5071: Änderung zonenwidrig gewordener gewerblicher Bauten
 
       typeOfClient: Typ der Auftraggeber
@@ -401,7 +402,7 @@ ember-gwr:
         Für den Typ der Auftraggeber "Privatpersonen, inkl. Erbengemeinschaften" dürfen
         die Felder "Name des Unternehmens" und "Name des Unternehmens Zusatz"
         nicht ausgefüllt werden. Für andere Auftraggeber (Organisationen) dürfen
-        die Felder "Name" und "Vorname" nicht ausgefüllt werden. 
+        die Felder "Name" und "Vorname" nicht ausgefüllt werden.
       typeOfClientOptions:
         6101: SBB (Schweizerische Bundesbahnen)
         6103: VBS (Eidg. Departement für Verteidigung, Bevölkerungsschutz und Sport)
@@ -423,8 +424,8 @@ ember-gwr:
         6141: Einzelfirmen oder Personengesellschaften (Einfache-, Kollektiv- oder Kommanditgesellschaft) der Immobilienbranche
         6142: Wohnbaugenossenschaften, deren Mitglieder die Mehrheit der Wohnungen des Gebäudes bewohnen werden
         6143: Kapitalgesellschaften (Aktiengesellschaft, Genossenschaft, Kommandit AG, GmbH) der Immobilienbranche
-        6161: Privatpersonen, inkl. Erbengemeinschaften
         6151: Einzelfirmen oder Personengesellschaften (Einfache-, Kollektiv- oder Kommanditgesellschaft) ohne Immobilienbranche
         6152: Kapitalgesellschaften (Aktiengesellschaft, Genossenschaft, Kommandit AG, GmbH) ohne Immobilienbranche
+        6161: Privatpersonen, inkl. Erbengemeinschaften
         6162: Andere private Auftraggeber (Kirche inkl. Landeskirche; Stiftung, die keine Pensionskasse ist; Verein, etc.)
         6163: Internationale Organisationen, Botschaften

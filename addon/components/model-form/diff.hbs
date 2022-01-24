@@ -50,7 +50,7 @@
             <button
               type="button"
               class="uk-button uk-button-default uk-button-small"
-              {{on "click" (fn @updateModelField)}}
+              {{on "click" @updateModelField}}
             >
               {{t "ember-gwr.components.modelForm.diff.cancel"}}
             </button>
@@ -61,7 +61,7 @@
         @inputComponent
         value=this.newValue
         includeBlank=false
-        on-update=(fn this.updateNewValue)
+        on-update=this.updateNewValue
       }}
     </div>
   </div>

@@ -1,7 +1,7 @@
 <div>
   {{#if this.fetchProject.isRunning}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     <ModelForm
@@ -62,9 +62,9 @@
         @attr="typeOfConstructionProject"
         @gwrEnumOptions={{this.choiceOptions.typeOfConstructionProjectOptions}}
         @on-update={{fn (mut this.typeOfConstructionProject)}}
-        @hint={{if 
-          (eq this.typeOfConstructionProject 6010) 
-          (t "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure") 
+        @hint={{if
+          (eq this.typeOfConstructionProject 6010)
+          (t "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure")
           (if (eq this.typeOfConstructionProject 6011)
             (t "ember-gwr.linkedBuildings.superstructureInfo"))
         }}
@@ -173,37 +173,37 @@
               @required={{true}}
             />
           </div>
-          <div 
-            class="{{spacingClass}} 
-              {{if (not (show-model-field 
+          <div
+            class="{{spacingClass}}
+              {{if (not (show-model-field
                 "buildingPermitIssueDate" changeset this.import
               )) "uk-hidden"}}"
           >
             <Field @inputType="date" @attr="buildingPermitIssueDate" />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "projectStartDate" changeset this.import
             )) "uk-hidden"}}"
           >
             <Field @inputType="date" @attr="projectStartDate" />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "projectCompletionDate" changeset this.import
             )) "uk-hidden"}}"
           >
             <Field @inputType="date" @attr="projectCompletionDate" />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "projectSuspensionDate" changeset this.import
             )) "uk-hidden"}}"
           >
             <Field @inputType="date" @attr="projectSuspensionDate" />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "constructionAuthorisationDeniedDate" changeset this.import
             )) "uk-hidden"}}"
           >
@@ -213,14 +213,14 @@
             />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "cancellationDate" changeset this.import
             )) "uk-hidden"}}"
           >
             <Field @inputType="date" @attr="cancellationDate" />
           </div>
           <div class="{{spacingClass}}
-            {{if (not (show-model-field 
+            {{if (not (show-model-field
               "withdrawalDate" changeset this.import
             )) "uk-hidden"}}"
           >
@@ -228,9 +228,9 @@
           </div>
         {{/let}}
       </div>
-      {{#if (or 
-        (not this.project.isNew) 
-        (show-model-field 
+      {{#if (or
+        (not this.project.isNew)
+        (show-model-field
           "durationOfConstructionPhase" changeset this.import)
         )
       }}
@@ -315,7 +315,7 @@
         </div>
       </div>
       <Field @attr="client.address.addressLine2" />
-      {{#if (or 
+      {{#if (or
         (eq changeset.client.address.country.countryNameShort "ch")
         (and this.import this.import.data.client.address.swissZipCode)
       )}}
@@ -335,9 +335,9 @@
             />
           </div>
         </div>
-      {{else if (or 
+      {{else if (or
         changeset.client.address.country.countryNameShort
-        (and this.import this.import.data.client.address.foreignZipCode)  
+        (and this.import this.import.data.client.address.foreignZipCode)
       )}}
         <Field
           @type="number"
@@ -384,12 +384,12 @@
     <UkButton
       @color="default"
       @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}}
-      {{on "click" (perform this.processTypeOfConstructionProjectChange)}}
+      @onClick={{perform this.processTypeOfConstructionProjectChange}}
     />
     <UkButton
       @color="primary"
       @label={{t "ember-gwr.components.modelForm.project.confirmationCancel"}}
-      {{on "click" this.cancelTypeOfConstructionProjectChange}}
+      @onClick={{this.cancelTypeOfConstructionProjectChange}}
     />
   </modal.footer>
 </UkModal>

@@ -12,8 +12,8 @@ export default class ProjectController extends Controller {
   get displayLandingPage() {
     return (
       !this.projects.length &&
-      this.router.currentRoute.localName !== "new" &&
-      this.router.currentRoute.localName !== "errors"
+      this.router.externalRouter.currentRoute.localName !== "new" &&
+      this.router.externalRouter.currentRoute.localName !== "errors"
     );
   }
 
@@ -35,7 +35,7 @@ export default class ProjectController extends Controller {
   }
 
   get activeProject() {
-    return Number(this.router.currentRoute.params.project_id);
+    return Number(this.router.externalRouter.currentRoute.params.project_id);
   }
 
   get projects() {
@@ -51,11 +51,11 @@ export default class ProjectController extends Controller {
     // Load the first project in the list if none is selected so we always display a project.
     if (
       !["form", "new", "linked-buildings", "errors"].includes(
-        this.router.currentRoute.localName
+        this.router.externalRouter.currentRoute.localName
       ) &&
       projects.length
     ) {
-      this.transitionToRoute("project.form", projects[0].EPROID);
+      this.router.transitionTo("project.form", projects[0].EPROID);
     }
   }
 

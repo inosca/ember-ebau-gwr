@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency";
 import {
   languageOptions,
   periodOfConstructionOptions,
@@ -13,6 +13,7 @@ export default class SearchBuildingController extends Controller {
   @service constructionProject;
   @service intl;
   @service notification;
+  @service router;
 
   @tracked activeBuilding;
   @tracked errors;
@@ -57,7 +58,7 @@ export default class SearchBuildingController extends Controller {
       );
 
       this.activeBuilding = null;
-      this.transitionToRoute("project.linked-buildings", this.model);
+      this.router.transitionTo("project.linked-buildings", this.model);
       this.notification.success(
         this.intl.t("ember-gwr.searchBuilding.linkSuccess")
       );

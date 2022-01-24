@@ -1,6 +1,6 @@
 <UkModal
   @visible={{@visible}}
-  @on-hide={{@close}}
+  @onHide={{@close}}
   @container={{this.config.modalContainer}}
   as |Modal|
 >
@@ -40,13 +40,13 @@
   </Modal.body>
   <Modal.footer class="uk-flex uk-flex-column">
     <div class="uk-flex uk-flex-between">
-      <UkButton {{on "click" @close}}>
+      <UkButton @onClick={{@close}}>
         {{t "ember-gwr.components.linkBuildingModal.cancel"}}
       </UkButton>
       <UkButton
         @color="primary"
         @loading={{@isLoading}}
-        {{on "click" (fn @linkAction this.buildingWork)}}
+        @onClick={{fn @linkAction this.buildingWork}}
       >
         {{t "ember-gwr.components.linkBuildingModal.linkBuilding"}}
       </UkButton>

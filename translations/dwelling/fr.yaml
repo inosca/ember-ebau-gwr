@@ -20,8 +20,7 @@ ember-gwr:
       3100: Rez-de-chaussée y compris rez-de-chaussée surélevé
       3101: Étage supérieur
       3401: Sous-sol
-    floorTypePlaceholder:
-      Choisir un type d'étage...
+    floorTypePlaceholder: Choisir un type d'étage...
     floorNumber: Numéro d'étage
     floorHint: |-
       Pour les logements à plusieurs étages, c'est l'étage qui est recensé, 

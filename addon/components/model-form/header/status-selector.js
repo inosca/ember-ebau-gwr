@@ -4,7 +4,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { Changeset } from "ember-changeset";
 import lookupValidator from "ember-changeset-validations";
-import { dropTask } from "ember-concurrency-decorators";
+import { dropTask } from "ember-concurrency";
 import { statusValidation } from "ember-ebau-gwr/validations/status";
 
 export default class ModelFormHeaderStatusSelectorComponent extends Component {
@@ -42,9 +42,11 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
   }
 
   @action
-  statusUpdate(value) {
+  statusUpdate(event) {
+    event.preventDefault();
+
     this.resetErrors();
-    this.newStatus = value;
+    this.newStatus = parseInt(event.target.value);
     this.isCascading = false;
   }
 

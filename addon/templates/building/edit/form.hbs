@@ -13,7 +13,7 @@
 <div>
   {{#if (or this.fetchBuildingWork.isRunning this.fetchBuilding.isRunning)}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio="3" />
+      <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
     <ModelForm
@@ -313,14 +313,14 @@
       />
 
       <ul uk-accordion="active: {{if (or
-            (show-model-field 
-              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating" 
-              changeset 
+            (show-model-field
+              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
+              changeset
               this.import
             )
-            (show-model-field  
-              "building.thermotechnicalDeviceForHeating2.energySourceHeating" 
-              changeset 
+            (show-model-field
+              "building.thermotechnicalDeviceForHeating2.energySourceHeating"
+              changeset
               this.import
             )) "0" false}}"
       >
@@ -392,14 +392,14 @@
       />
 
       <ul uk-accordion="active: {{if (or
-            (show-model-field 
-              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating" 
-              changeset 
+            (show-model-field
+              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
+              changeset
               this.import
             )
-            (show-model-field  
-              "building.thermotechnicalDeviceForHeating2.energySourceHeating" 
-              changeset 
+            (show-model-field
+              "building.thermotechnicalDeviceForHeating2.energySourceHeating"
+              changeset
               this.import
             )) "0" false}}"
       >

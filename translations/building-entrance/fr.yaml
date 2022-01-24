@@ -4,7 +4,7 @@ ember-gwr:
     backToBuilding: Retour au bâtiment
     backToEntrance: Retour à l'entrée
     createNewEntrance: Saisir une nouvelle entrée.
-    
+
     saveError: Une erreur s'est produite lors de la sauvegarde de l'entrée.
     saveSuccess: Entrée sauvegardée avec succès.
     loadingError: Une erreur s'est produite lors du chargement de l'entrée.
@@ -12,7 +12,7 @@ ember-gwr:
     street: Rue
     coordinates: Coordonnées
     missingStreetInfo: Veuillez d'abord lier une rue.
-    
+
     fields:
       EDID: EDID
       EGAID: EGAID
@@ -53,4 +53,3 @@ ember-gwr:
         swissZipCodeAddOn: Chiffre complémentaire du NPA
         name:
           nameLong: Nom de la localité
- 

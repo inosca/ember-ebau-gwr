@@ -1,7 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { task, dropTask, lastValue } from "ember-concurrency-decorators";
+import { task, dropTask, lastValue } from "ember-concurrency";
 import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
@@ -18,6 +18,7 @@ export default class BuildingFormController extends ImportController {
   @service gwr;
   @service intl;
   @service notification;
+  @service router;
 
   @tracked BuildingWorkValidations;
   @tracked errors;
@@ -126,7 +127,7 @@ export default class BuildingFormController extends ImportController {
       this.constructionProject.clearCache(this.model.projectId);
       this.buildingAPI.clearCache(this.model.buildingId);
       this.errors = [];
-      this.transitionToRoute("building.edit.form", EGID);
+      this.router.transitionTo("building.edit.form", EGID);
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       this.errors = error;
