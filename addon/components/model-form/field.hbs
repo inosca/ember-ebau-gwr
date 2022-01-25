@@ -25,7 +25,7 @@
       optionLabelPath=(if @gwrEnumOptions "label" @optionLabelPath)
       optionTargetPath=(if @gwrEnumOptions "value" @optionTargetPath)
       optionValuePath=@optionValuePath
-      includeBlank=(unless
+      prompt=(unless
         @noPlaceholder
         (t
           (concat (or @label (concat @translationBase "." @attr)) "Placeholder")
