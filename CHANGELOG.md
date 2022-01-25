@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.4.0...v4.0.0) (2022-01-25)
+
+
+### chore
+
+* **deps:** update dependencies and remove deprecations ([6ae955a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6ae955ac007d3076073040aa80a3e1f0b79bb6d1))
+
+
+### BREAKING CHANGES
+
+* **deps:** This drops support for node v10 and requires the host
+app to use `ember-auto-import` v2. Also, the host app doesn't have to
+inject the host router service into the engine anymore.
+
 # [3.4.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.3.0...v3.4.0) (2021-12-29)
 
 
