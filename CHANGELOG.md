@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.0...v4.0.1) (2022-01-25)
+
+
+### Bug Fixes
+
+* **deprecations:** fix all self-inflicted deprecations ([3481dbf](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3481dbf7aa9598474ef733de0326150c01bf79cd))
+
 # [4.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v3.4.0...v4.0.0) (2022-01-25)
 
 
