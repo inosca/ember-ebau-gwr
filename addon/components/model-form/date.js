@@ -18,6 +18,10 @@ export default class ModelFormDateComponent extends Component {
     };
   }
 
+  get yearRange() {
+    return [2000, new Date().getFullYear()];
+  }
+
   @action
   formatDate(value) {
     return this.intl.formatDate(value, {
