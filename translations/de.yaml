@@ -1,5 +1,7 @@
 ember-gwr:
   close: "Schliessen"
+  previousMonth: "Vorheriger Monat"
+  nextMonth: "Nächster Monat"
 
   models:
     building: |-
