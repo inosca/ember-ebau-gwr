@@ -1,13 +1,29 @@
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
+import { Info } from "luxon";
 
-// TODO: remove file once two-way binding issue of value is resolved in ember-pikaday
-// https://github.com/adopted-ember-addons/ember-pikaday/issues/212
 export default class ModelFormDateComponent extends Component {
-  get value() {
-    return this.args.value;
+  @service intl;
+
+  get pikadayTranslations() {
+    const locale = this.intl.primaryLocale;
+
+    return {
+      previousMonth: this.intl.t("ember-gwr.previousMonth"),
+      nextMonth: this.intl.t("ember-gwr.nextMonth"),
+      months: Info.months("long", { locale }),
+      weekdays: Info.weekdays("long", { locale }),
+      weekdaysShort: Info.weekdays("short", { locale }),
+    };
   }
 
-  // prevent pikaday two-way binding from
-  // updating "value" field on input
-  set value(value) {}
+  @action
+  formatDate(value) {
+    return this.intl.formatDate(value, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  }
 }

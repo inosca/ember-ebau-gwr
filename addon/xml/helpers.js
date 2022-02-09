@@ -1,11 +1,11 @@
 import { get } from "@ember/object";
-import dayjs from "dayjs";
+import { DateTime } from "luxon";
 
 // All functions in this file will be registered to handlebars as helpers.
 
 export function echDate(date) {
-  return typeof date === "object" && date !== null
-    ? dayjs(date).format("YYYY-MM-DD")
+  return date instanceof Date && date !== null
+    ? DateTime.fromJSDate(date).toISODate()
     : date;
 }
 
