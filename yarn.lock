@@ -5727,16 +5727,16 @@ ember-changeset-validations@^4.0.0-beta.2:
     ember-validators "~4.0.0"
     validated-changeset "~1.1.0"
 
-ember-changeset@^4.0.0-beta.1, ember-changeset@^4.0.0-beta.3:
-  version "4.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/ember-changeset/-/ember-changeset-4.0.0-beta.3.tgz#df45c89f03c0037aa13277c3f515da9f1b91fd0f"
-  integrity sha512-x/6m12SQlujJmexO5ABJ6gTLt6f7uVpl0BBDeqoiwt+av9DiJMAttuF33mRTaQSoI8wDqKV/vwCPK3BeA63U2w==
+ember-changeset@^4.0.0-beta.1, ember-changeset@^4.0.0-beta.5:
+  version "4.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/ember-changeset/-/ember-changeset-4.0.0-beta.5.tgz#ede25b8373d70ff9b8c6da494d7ca57ad8418ab6"
+  integrity sha512-o8/6Uu8h9MBLQ2BX0tZNIAzgCHcaQHUgfrJc7rN04vIQ2HOTLu6NG3LsuLAXmaDSANml/TvMno15VTDD3VJ+aQ==
   dependencies:
     "@embroider/macros" "^1.0.0"
     "@glimmer/tracking" "^1.0.4"
     ember-auto-import "^2.3.0"
     ember-cli-babel "^7.26.6"
-    validated-changeset "~1.1.1"
+    validated-changeset "~1.1.2"
 
 ember-cli-babel-plugin-helpers@^1.0.0, ember-cli-babel-plugin-helpers@^1.1.0, ember-cli-babel-plugin-helpers@^1.1.1:
   version "1.1.1"
@@ -14288,10 +14288,10 @@ validate-peer-dependencies@^1.2.0:
     resolve-package-path "^3.1.0"
     semver "^7.3.2"
 
-validated-changeset@~1.1.0, validated-changeset@~1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/validated-changeset/-/validated-changeset-1.1.1.tgz#5b4e6a5feba009b3889d6fcfec1daffeb6a070c6"
-  integrity sha512-NTsHTIK3EARyNo6Ss0Xoo1vCNZGEqKP0L3bEcdy+iVZPWX5nKeQsmjzOCVI06X4zCoMWHyfgmBzK6b9cOaSnSA==
+validated-changeset@~1.1.0, validated-changeset@~1.1.2:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/validated-changeset/-/validated-changeset-1.1.3.tgz#2f89cbf5c4f212ab6e5f2fecebf1df47d3b55ec6"
+  integrity sha512-yj+UOz1w7POS/4/No+NamkgLVcmuuP6ehjajVQlepOyHZo1p1/OXnvyjPXYYLIvEgRWaAoGb+dg0O9cPWHmH2Q==
 
 vary@^1, vary@~1.1.2:
   version "1.1.2"
