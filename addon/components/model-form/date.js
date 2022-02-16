@@ -3,6 +3,9 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { Info } from "luxon";
 
+// put the last element to the front of the array
+const shift = (array) => [...array.slice(-1), ...array.slice(0, -1)];
+
 export default class ModelFormDateComponent extends Component {
   @service intl;
 
@@ -13,8 +16,8 @@ export default class ModelFormDateComponent extends Component {
       previousMonth: this.intl.t("ember-gwr.previousMonth"),
       nextMonth: this.intl.t("ember-gwr.nextMonth"),
       months: Info.months("long", { locale }),
-      weekdays: Info.weekdays("long", { locale }),
-      weekdaysShort: Info.weekdays("short", { locale }),
+      weekdays: shift(Info.weekdays("long", { locale })),
+      weekdaysShort: shift(Info.weekdays("short", { locale })),
     };
   }
 
