@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.2...v4.0.3) (2022-02-16)
+
+
+### Bug Fixes
+
+* **date:** pikaday use monday as first day of week ([d5617b2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d5617b2c01b24905cbc3e2b62cd1269347339c75))
+
 ## [4.0.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.1...v4.0.2) (2022-02-09)
 
 
