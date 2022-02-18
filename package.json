@@ -95,7 +95,7 @@
     "qunit": "2.18.0",
     "qunit-dom": "2.0.0",
     "sass": "1.49.7",
-    "webpack": "5.69.0"
+    "webpack": "5.69.1"
   },
   "//": [
     "TODO: remove @embroider/* resolutions when https://github.com/embroider-build/embroider/issues/1077 is resolved",
