@@ -1438,7 +1438,7 @@
     lodash "^4.17.21"
     resolve "^1.20.0"
 
-"@embroider/util@1.1.0", "@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0", "@embroider/util@^0.47.2", "@embroider/util@^1.0.0", "@embroider/util@^1.5.0":
+"@embroider/util@1.1.0", "@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0", "@embroider/util@^1.0.0", "@embroider/util@^1.5.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.1.0.tgz#f4a90ee47bc59bed7b63c6f44dc5ae1ae73f9951"
   integrity sha512-8bch0JkaLEajXNRmFJNaGNWyWeXMRrrFTaojV4V7Q0RQ5HrZyO2VUD+L9m+RZgz749wEjaeCp2uTkIfSNnZtWA==
@@ -6416,12 +6416,12 @@ ember-pikaday@^4.0.0:
     "@embroider/addon-shim" "^0.50.2"
     ember-modifier "^3.0.0"
 
-ember-power-select@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.3.tgz#615da0742a222a8c090590dd2cbb2db3a6147ac5"
-  integrity sha512-V72DxohhuPdsF6Rcxu1cVL2faHSk83RdTCkxeDT71NeQQNpHKbslhc0c+MMU52wm0mzch+oWmti/2McpL/vIvQ==
+ember-power-select@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-5.0.4.tgz#4af485fb7e1e1eca1bedd523892c82c672935dac"
+  integrity sha512-FLVShZr3cYdLzymP+/0rXkfH5tD/FD958kynY86MWvn7ZyL2tXowlgVKY08n+PJHdo/vCrzqubRYckvXRSH6Bg==
   dependencies:
-    "@embroider/util" "^0.47.2"
+    "@embroider/util" "^1.0.0"
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
     ember-assign-helper "^0.4.0"
