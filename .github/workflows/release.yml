@@ -2,21 +2,39 @@ name: Release
 
 on: workflow_dispatch
 
+concurrency:
+  group: release
+  cancel-in-progress: true
+
 jobs:
-  build:
+  release:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
+
+      - name: Get yarn cache directory path
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-
 
       - name: Install dependencies
         run: yarn install
 
       - name: Release on NPM
+        run: yarn semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn semantic-release

@@ -11,6 +11,10 @@ on:
 env:
   NODE_VERSION: 14
 
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: Lint
@@ -22,17 +26,20 @@ jobs:
         target: [js, hbs]
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Get yarn cache directory path
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ${{ steps.yarn-cache.outputs.dir }}
           key: yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            yarn-${{ hashFiles('yarn.lock') }}
             yarn-
 
       - name: Install dependencies
@@ -48,17 +55,20 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Get yarn cache directory path
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ${{ steps.yarn-cache.outputs.dir }}
           key: yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            yarn-${{ hashFiles('yarn.lock') }}
             yarn-
 
       - name: Install dependencies
@@ -74,8 +84,8 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -98,17 +108,20 @@ jobs:
           - ember-lts-3.24
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Get yarn cache directory path
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ${{ steps.yarn-cache.outputs.dir }}
           key: yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            yarn-${{ hashFiles('yarn.lock') }}
             yarn-
 
       - name: Install dependencies
@@ -117,12 +130,11 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: |
-            yarn
+            ${{ steps.yarn-cache.outputs.dir }}
             package
             yarn.lock
-          key: yarn-${{ matrix.scenario }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('config/ember-try.js') }}
+          key: yarn-${{ matrix.scenario }}-${{ hashFiles('yarn.lock') }} }}
           restore-keys: |
-            yarn-${{ matrix.scenario }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('config/ember-try.js') }}
             yarn-${{ matrix.scenario }}-
             yarn-
 
