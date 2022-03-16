@@ -35,7 +35,7 @@
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "ember-auto-import": "^2.4.0",
-    "ember-changeset": "^4.0.0-beta.5",
+    "ember-changeset": "^4.0.0",
     "ember-changeset-validations": "^4.0.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
@@ -44,7 +44,7 @@
     "ember-engines-router-service": "^0.3.0",
     "ember-intl": "^5.7.2",
     "ember-pikaday": "^4.0.0",
-    "ember-power-select": "^5.0.3",
+    "ember-power-select": "^5.0.4",
     "ember-truth-helpers": "^3.0.0",
     "ember-uikit": "^5.1.0",
     "ember-validated-form": "^5.3.0",
@@ -62,13 +62,13 @@
     "ember-cli": "3.28.5",
     "ember-cli-dependency-checker": "3.2.0",
     "ember-cli-inject-live-reload": "2.1.0",
-    "ember-cli-mirage": "2.4.0",
+    "ember-cli-mirage": "3.0.0-alpha.2",
     "ember-cli-sass": "10.0.1",
     "ember-cli-sri": "2.1.1",
     "ember-cli-terser": "4.0.2",
     "ember-data": "3.28.8",
     "ember-disable-prototype-extensions": "1.1.3",
-    "ember-engines": "https://gitpkg.now.sh/anehx/ember-engines/packages/ember-engines?c08f7650ffc4b723e8ba1143d7498e58bc1e4b78",
+    "ember-engines": "https://gitpkg.now.sh/ember-engines/ember-engines/packages/ember-engines?4d8a7607ed690053f6e8ab4f35f9dfa543a3697f",
     "ember-export-application-global": "2.0.1",
     "ember-load-initializers": "2.1.2",
     "ember-maybe-import-regenerator": "^1.0.0",
@@ -91,20 +91,15 @@
     "local-cors-proxy": "1.1.0",
     "miragejs": "0.1.43",
     "npm-run-all": "4.1.5",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "qunit": "2.18.0",
     "qunit-dom": "2.0.0",
     "sass": "1.49.9",
     "webpack": "5.70.0"
   },
   "//": [
-    "TODO: remove @embroider/* resolutions when https://github.com/embroider-build/embroider/issues/1077 is resolved",
     "TODO: remove ember-engines exotic dependency when https://github.com/ember-engines/ember-engines/pull/794 is released"
   ],
-  "resolutions": {
-    "@embroider/macros": "1.1.0",
-    "@embroider/util": "1.1.0"
-  },
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
