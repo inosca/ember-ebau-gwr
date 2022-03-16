@@ -28,7 +28,7 @@ export default class ModelFormComponent extends Component {
     this.notification.success(
       this.intl.t("ember-gwr.components.modelForm.diff.resolved")
     );
-    this.router.transitionTo({
+    this.router.externalRouter.transitionTo({
       queryParams: { import: false, index: undefined },
     });
   }
