@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.3...v4.0.4) (2022-03-17)
+
+
+### Bug Fixes
+
+* **import:** fix query-params-only transition on import all ([8b360a8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8b360a85530465af634499b88d25fa71b6821437))
+
 ## [4.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.2...v4.0.3) (2022-02-16)
 
 
