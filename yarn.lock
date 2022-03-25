@@ -6610,12 +6610,13 @@ ember-try@2.0.0:
     rimraf "^3.0.2"
     walk-sync "^2.2.0"
 
-ember-uikit@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-5.1.0.tgz#b847a9cff6d21c54daed027e1fff881f9344cd7b"
-  integrity sha512-K3ONx0c5eI5JQtz8OCpZf8w88itb43dn5NgzQ0WDtKbhzLnbSJzCuahUAXOW0O9MsTyzz1wSeelzyI+hRYOKsQ==
+ember-uikit@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-5.1.1.tgz#0cc7bd965ad5fba3a48b6e4954ae2da38519fe76"
+  integrity sha512-cGaPtkEz637q4eUGGchVyGjZPZyxVF76zfncMzEHxMrZVHIyjaltFHGDh0RUtY3weWe2NcV+4pysFx3+Tg7UVQ==
   dependencies:
     "@ember/render-modifiers" "^2.0.4"
+    "@ember/string" "^3.0.0"
     "@embroider/util" "^1.5.0"
     "@glimmer/component" "^1.0.4"
     "@glimmer/tracking" "^1.0.4"
@@ -6628,7 +6629,7 @@ ember-uikit@^5.1.0:
     ember-focus-trap "^1.0.1"
     ember-modifier "^3.1.0"
     ember-toggle "^9.0.3"
-    uikit "^3.11.1"
+    uikit "^3.13.1"
 
 ember-validated-form@^5.3.0:
   version "5.3.0"
@@ -14044,10 +14045,10 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.15.3.tgz#9aa82ca22419ba4c0137642ba0df800cb06e0471"
   integrity sha512-6iCVm2omGJbsu3JWac+p6kUiOpg3wFO2f8lIXjfEb8RrmLjzog1wTPMmwKB7swfzzqxj9YM+sGUM++u1qN4qJg==
 
-uikit@^3.11.1:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.12.2.tgz#7c8fa5c352394a134addd4946a35df9e80cb4af6"
-  integrity sha512-YfKozhmHysSZM2f50CR81QsBeWWBdbo1DfpGwJ/n5Q+OPQIY/YteImb+z+HDby+GFKP1crZYxew1EB/x8uvLqw==
+uikit@^3.13.1:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.13.1.tgz#cdcffc4288e7ae27d012f95bd0001d391d2eab04"
+  integrity sha512-KD/iHOD3l77AzSEqGT5UyKfm2I6YDPKceYniMpYSGhr4ZQhaXmjjz1qFfwrDtLxPigChU8gI60Y00geF+cFsVA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
