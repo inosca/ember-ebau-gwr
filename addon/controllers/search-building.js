@@ -3,14 +3,12 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency";
-import {
-  languageOptions,
-  periodOfConstructionOptions,
-} from "ember-ebau-gwr/models/options";
+import { periodOfConstructionOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchBuildingController extends Controller {
   @service building;
   @service constructionProject;
+  @service street;
   @service intl;
   @service notification;
   @service router;
@@ -23,7 +21,7 @@ export default class SearchBuildingController extends Controller {
   @lastValue("search") searchResults;
   @task *search(query) {
     try {
-      query.streetLang = languageOptions[this.intl.primaryLocale];
+      query.streetLang = this.street.language;
       query.municipality = this.building.municipality;
       return yield this.building.search(query);
     } catch (error) {

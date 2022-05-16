@@ -1,11 +1,11 @@
 import { inject as service } from "@ember/service";
 import BuildingEntrance from "ember-ebau-gwr/models/building-entrance";
-import { languageOptions } from "ember-ebau-gwr/models/options";
 
 import IndexRoute from "./edit/index";
 
 export default class BuildingEditEntranceNewRoute extends IndexRoute {
   @service buildingEntrance;
+  @service street;
   @service intl;
 
   templateName = "building.edit.entrance.edit.index";
@@ -15,8 +15,7 @@ export default class BuildingEditEntranceNewRoute extends IndexRoute {
     const model = this.modelFor("building.edit");
 
     const buildingEntrance = new BuildingEntrance();
-    buildingEntrance.locality.name.language =
-      languageOptions[this.intl.primaryLocale];
+    buildingEntrance.locality.name.language = this.street.language;
     buildingEntrance.EGID = model.buildingId;
     return {
       ...model,
