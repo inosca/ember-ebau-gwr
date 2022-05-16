@@ -3,7 +3,6 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency";
-import { languageOptions } from "ember-ebau-gwr/models/options";
 
 export default class BuildingEditEntranceLinkStreetController extends Controller {
   queryParams = ["locality", "PLZ4", "PLZ6"];
@@ -11,6 +10,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @service street;
   @service buildingEntrance;
   @service building;
+  @service street;
   @service notification;
   @service intl;
   @service router;
@@ -56,7 +56,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @task
   *search(query) {
     try {
-      query.language = languageOptions[this.intl.primaryLocale];
+      query.language = this.street.language;
       return yield this.street.search(query);
     } catch (error) {
       console.error(error);

@@ -1,3 +1,4 @@
+import { languageOptions } from "ember-ebau-gwr/models/options";
 import Street, { StreetList } from "ember-ebau-gwr/models/street";
 
 import GWRService from "./gwr";
@@ -14,6 +15,10 @@ export default class StreetService extends GWRService {
     const xml = await response.text();
     const street = new Street(xml, "streetWithoutStreetGeometryType");
     return this.cache(street);
+  }
+
+  get language() {
+    return languageOptions[this.intl.primaryLocale?.split("-")?.[0]];
   }
 
   async search(query = {}) {
