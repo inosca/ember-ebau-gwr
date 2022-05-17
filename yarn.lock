@@ -1353,10 +1353,10 @@
   dependencies:
     ember-cli-babel "^7.26.6"
 
-"@ember/test-helpers@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-2.6.0.tgz#d687515c6ab49ba72717fc62046970ef4a72ea9c"
-  integrity sha512-N5sr3layWk60wB3maCy+/5hFHQRcTh8aqxcZTSs3Od9QkuHdWBtRgMGLP/35mXpJlgWuu3xqLpt6u3dGHc8gCg==
+"@ember/test-helpers@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-2.7.0.tgz#d8e08b614cdd5eac647689d655e78e1de725f474"
+  integrity sha512-eWFtw5+sbci1Fw+E+HoyaMxY126LvK7jul6i8tad48zlWoxrOalbhJhz1mKqIo4daHbqIZWuFgQhOib4QfTKCQ==
   dependencies:
     "@ember/test-waiters" "^3.0.0"
     broccoli-debug "^0.6.5"
@@ -6875,10 +6875,10 @@ eslint-module-utils@^2.7.3:
     debug "^3.2.7"
     find-up "^2.1.0"
 
-eslint-plugin-ember@10.5.9:
-  version "10.5.9"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-10.5.9.tgz#4071ac135c7207c7d4942e9fa75b710214885469"
-  integrity sha512-kJsdAaKNcfRvZBZ+YZ67pxxUgl+aPLFAnoFJNwTo+BsaptiOCsHUEc4xUKXiInH2BJOC6mg0FQcZKn1a6gwKrA==
+eslint-plugin-ember@10.6.1:
+  version "10.6.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-10.6.1.tgz#04ea84cc82307f64a2faa4f2855b30e5ebf9f722"
+  integrity sha512-R+TN3jwhYQ2ytZCA1VkfJDZSGgHFOHjsHU1DrBlRXYRepThe56PpuGxywAyDvQ7inhoAz3e6G6M60PzpvjzmNg==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     css-tree "^2.0.4"
