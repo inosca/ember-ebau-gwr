@@ -278,4 +278,8 @@ ember-gwr:
     buildingEntrance:
       mainEntrance: Entrée principale
       info: Une fois le bâtiment créé, il est possible d'ajouter d'autres entrées et d'éditer les rues des entrées.
-      localityError: Une erreur est survenue lors de l'enregistrement de la localité de l'entrée principale. Veuillez vérifier vos données.
+      localityError: |-
+        Une erreur est survenue lors de l'enregistrement de la localité de 
+        l'entrée principale. Veuillez vérifier la <b>combinaison du NPA et 
+        de la désignation de la localité</b>, ceux-ci doivent correspondre exactement aux données 
+        enregistrées sur la <a target="_blank" href="https://map.geo.admin.ch/?lang=fr">plateforme cartographique fédérale</a>.

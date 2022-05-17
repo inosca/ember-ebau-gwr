@@ -8,7 +8,11 @@ ember-gwr:
     saveError: Beim Speichern des Eingangs ist ein Fehler aufgetreten.
     saveSuccess: Eingang erfolgreich gespeichert.
     loadingError: Beim Laden des Eingangs ist ein Fehler aufgetreten.
-    localityError: Beim Speichern der Ortschaft ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Angaben.
+    localityError: |-
+      Beim Speichern des Eingangs ist ein Fehler aufgetreten. 
+      Bitte überprüfen Sie die <b>Kombination aus PLZ und Ortsname</b>, diese sollten exakt
+      mit den hinterlegten Daten auf der <a target="_blank" href="https://map.geo.admin.ch/?lang=de">eidgenössischen Kartenplattform</a>
+      übereinstimmen.
     street: Strasse
     coordinates: Koordinaten
     missingStreetInfo: Bitte verknüpfen Sie zuerst eine Strasse.

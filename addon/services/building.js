@@ -106,7 +106,9 @@ export default class BuildingService extends GwrService {
       const errors = this.extractErrorsFromXML(
         xmlErrors,
         this.BuildingEntrance.LOCALITY_ERROR,
-        this.intl.t("ember-gwr.building.buildingEntrance.localityError")
+        this.intl.t("ember-gwr.building.buildingEntrance.localityError", {
+          htmlSafe: true,
+        })
       );
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);

@@ -278,4 +278,8 @@ ember-gwr:
     buildingEntrance:
       mainEntrance: Haupteingang
       info: Nach der Erstellung des Gebäudes können weitere Eingänge hinzugefügt werden und die Strassen der Eingänge bearbeitet werden.
-      localityError: Beim Speichern der Ortschaft des Haupteingangs ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Angaben.
+      localityError: |-
+        Beim Speichern der Ortschaft des Haupteingangs ist ein Fehler aufgetreten. 
+        Bitte überprüfen Sie die <b>Kombination aus PLZ und Ortsname</b>, diese sollten exakt
+        mit den hinterlegten Daten auf der <a target="_blank" href="https://map.geo.admin.ch/?lang=de">eidgenössischen Kartenplattform</a>
+        übereinstimmen.
