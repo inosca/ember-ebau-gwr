@@ -6463,10 +6463,10 @@ ember-source-channel-url@3.0.0, ember-source-channel-url@^3.0.0:
   dependencies:
     node-fetch "^2.6.0"
 
-ember-source@3.28.8:
-  version "3.28.8"
-  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.28.8.tgz#c58fd4a1538d6c4b9aebe76c764cabf5396c64d9"
-  integrity sha512-hA15oYzbRdi9983HIemeVzzX2iLcMmSPp6akUiMQhFZYWPrKksbPyLrO6YpZ4hNM8yBjQSDXEkZ1V3yxBRKjUA==
+ember-source@3.28.9:
+  version "3.28.9"
+  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.28.9.tgz#804c56b2d71d3cc3decff15a3273bb35d668300a"
+  integrity sha512-Fy7V3yvj+3oyo2+ke52aaihKMcFnnF7Oj9ixj547yzh2faqRfqouB5ZSiwXFH8rxw22rKaM8DiuQO4JN2Ay6xQ==
   dependencies:
     "@babel/helper-module-imports" "^7.8.3"
     "@babel/plugin-transform-block-scoping" "^7.8.3"
@@ -10487,10 +10487,10 @@ minizlib@^2.0.0, minizlib@^2.1.1:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
-miragejs@0.1.43, miragejs@^0.1.43:
-  version "0.1.43"
-  resolved "https://registry.yarnpkg.com/miragejs/-/miragejs-0.1.43.tgz#47a8546b9e3489f806073e681f380ccfe13d757d"
-  integrity sha512-BhkyxssOZ2i4JqRjWpRnUQu9AFAKHyft8dJbqsg/N64+gCn2vw6vRteMpTKXllLjCPOA9Os8PhGRVXlXs4Ojhw==
+miragejs@0.1.44, miragejs@^0.1.43:
+  version "0.1.44"
+  resolved "https://registry.yarnpkg.com/miragejs/-/miragejs-0.1.44.tgz#9e88f50f14e978c9181b12a5858723f49c9364b5"
+  integrity sha512-uYcWKgvSawAwLoFcheERHmLz1UmyD+4aYB74bB6fcymKQs0cA5oU4GjfnLpKPTeZ58UCwxwfCApL8SM0C2+4BQ==
   dependencies:
     "@miragejs/pretender-node-polyfill" "^0.1.0"
     inflected "^2.0.4"
