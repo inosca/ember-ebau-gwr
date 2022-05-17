@@ -71,7 +71,9 @@ export default class BuildingEntranceService extends GwrService {
       const errors = this.extractErrorsFromXML(
         xmlErrors,
         this.BuildingEntrance.LOCALITY_ERROR,
-        this.intl.t("ember-gwr.buildingEntrance.localityError")
+        this.intl.t("ember-gwr.buildingEntrance.localityError", {
+          htmlSafe: true,
+        })
       );
 
       console.error("GWR API: addBuildingEntrance failed");

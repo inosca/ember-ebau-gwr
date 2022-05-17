@@ -8,7 +8,11 @@ ember-gwr:
     saveError: Une erreur s'est produite lors de la sauvegarde de l'entrée.
     saveSuccess: Entrée sauvegardée avec succès.
     loadingError: Une erreur s'est produite lors du chargement de l'entrée.
-    localityError: Une erreur est survenue lors de l'enregistrement de la localité. Veuillez vérifier vos données.
+    localityError: |-
+      Une erreur s'est produite lors de la sauvegarde de l'entrée.
+      Veuillez vérifier la <b>combinaison du NPA et 
+      de la désignation de la localité</b>, ceux-ci doivent correspondre exactement aux données 
+      enregistrées sur la <a target="_blank" href="https://map.geo.admin.ch/?lang=fr">plateforme cartographique fédérale</a>.
     street: Rue
     coordinates: Coordonnées
     missingStreetInfo: Veuillez d'abord lier une rue.
