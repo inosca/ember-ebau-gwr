@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@ember/render-modifiers": "^2.0.4",
-    "@glimmer/component": "^1.0.4",
+    "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "ember-auto-import": "^2.4.1",
     "ember-changeset": "^4.0.0",
