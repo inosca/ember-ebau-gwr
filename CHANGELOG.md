@@ -1,3 +1,11 @@
+## [4.0.5](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.4...v4.0.5) (2022-05-18)
+
+
+### Bug Fixes
+
+* **intl:** improve locality error messages ([515f7e5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/515f7e54e57208bbd270ecde619d8da47b4aff11))
+* **street:** enable country-coded locales for street language options ([610af16](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/610af1646ba4ce6cfe952782685fe28905f45f1c))
+
 ## [4.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.3...v4.0.4) (2022-03-17)
 
 
