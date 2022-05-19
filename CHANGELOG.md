@@ -1,3 +1,10 @@
+## [4.0.6](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.5...v4.0.6) (2022-05-19)
+
+
+### Bug Fixes
+
+* **deps:** downgrade ember-engines-router-service to v0.3.0 ([c13db17](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c13db1718638ebe32bb822f063b4c576be2b608b))
+
 ## [4.0.5](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.4...v4.0.5) (2022-05-18)
 
 
