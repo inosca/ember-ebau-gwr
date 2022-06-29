@@ -1,5 +1,6 @@
-<div {{did-insert this.onLoad}} {{did-update this.onLoad}}>
-  {{#if this.constructionProject.all.isRunning}}
+{{log @caseId}}
+<div>
+  {{#if this.projects.isLoading}}
     <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
       <UkSpinner @ratio={{3}} />
     </div>
@@ -10,7 +11,7 @@
       <div class="ember-ebau-gwr-projects-header">
         <div class="uk-padding-small">
           <LinkedProjects
-            @projects={{this.projects}}
+            @projects={{this.projects.value}}
             @activeProject={{this.activeProject}}
             @removeProject={{this.removeProjectLink}}
             class="uk-padding-small"
