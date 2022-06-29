@@ -25,12 +25,16 @@ export default class SearchProjectController extends Controller {
   }
 
   @action
-  linkProject(eproid) {
-    const link = this.store.createRecord("gwr-link", {
-      eproid,
-      localId: this.model.id,
-    });
-    link.save();
-    this.router.transitionTo("project.index");
+  selectProject(eproid) {
+    if (this.model?.id) {
+      const link = this.store.createRecord("gwr-link", {
+        eproid,
+        localId: this.model.id,
+      });
+      link.save();
+      this.router.transitionTo("project.index");
+    }
+    // If accessed from global view, redirect to the edit view
+    this.router.transitionTo("project.form", eproid);
   }
 }

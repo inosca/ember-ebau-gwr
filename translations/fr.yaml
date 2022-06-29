@@ -1,4 +1,5 @@
 ember-gwr:
+  soonAvailable: Bientôt disponible!
   close: "Fermer"
   previousMonth: "Mois précédent"
   nextMonth: "Mois suivant"
@@ -44,11 +45,18 @@ ember-gwr:
   general:
     or: ou
 
-  landingPage:
+  projectLandingPage:
     heading: Ce dossier n'est pas encore lié à un projet du RegBL.
     infoText: Il n'y a encore aucun projet de construction RegBL lié. Vous pouvez soit en saisir un nouveau avec ce formulaire, soit en lié un existant.
     createNewProject: Saisir un nouveau projet
     linkExistingProject: Lier un projet existant
+
+  globalLandingPage:
+    heading:
+    infoText:
+    searchProject:
+    searchBuilding:
+    quarterlyClosure:
 
   nav:
     projectDetails: Détails du projet

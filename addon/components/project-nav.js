@@ -1,8 +1,8 @@
-import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
 
-export default class ProjectController extends Controller {
+export default class ProjectNavComponent extends Component {
   @service router;
   @service store;
   @service config;
@@ -46,7 +46,9 @@ export default class ProjectController extends Controller {
   async onLoad() {
     // We then use `gwr.projects` in the template to reference this.
     // This is so we can update the table if we add a new project in the subroute /new
-    const projects = await this.constructionProject.all.perform(this.model);
+    const projects = await this.constructionProject.all.perform(
+      this.args.caseId
+    );
 
     // Load the first project in the list if none is selected so we always display a project.
     if (
@@ -65,6 +67,6 @@ export default class ProjectController extends Controller {
       .peekAll("gwr-link")
       .find(({ eproid }) => Number(eproid) === this.activeProject);
     await link.destroyRecord();
-    await this.constructionProject.all.perform(this.model);
+    await this.constructionProject.all.perform(this.args.caseId);
   }
 }

@@ -1,4 +1,5 @@
 ember-gwr:
+  soonAvailable: Bald verfügbar!
   close: "Schliessen"
   previousMonth: "Vorheriger Monat"
   nextMonth: "Nächster Monat"
@@ -44,11 +45,18 @@ ember-gwr:
   general:
     or: oder
 
-  landingPage:
+  projectLandingPage:
     heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
     infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können entweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
     createNewProject: Neues Projekt erfassen
     linkExistingProject: Bestehendes Projekt verknüpfen
+
+  globalLandingPage:
+    heading: GWR
+    infoText: Im GWR-Modul können Sie existierende Projekte und Gebäude im GWR suchen und Anpassungen vonehmen. Zudem kann der Quartalsabschluss vollzogen werden. GWR-Bauprojekte, die bereits mit einem eBau-Dossier verknüpft sind, können auch unter dem entsprechenden eBau-Dossier eingesehen werden.
+    searchProject: Bauprojekte suchen und bearbeiten
+    searchBuilding: Gebäude suchen und bearbeiten
+    quarterlyClosure: Quartalsabschluss
 
   nav:
     projectDetails: Projektdetails

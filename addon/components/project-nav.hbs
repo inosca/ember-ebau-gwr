@@ -1,0 +1,87 @@
+<div {{did-insert this.onLoad}} {{did-update this.onLoad}}>
+  {{#if this.constructionProject.all.isRunning}}
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
+      <UkSpinner @ratio={{3}} />
+    </div>
+  {{else}}
+    {{#if this.displayLandingPage}}
+      <ProjectLandingPage />
+    {{else}}
+      <div class="ember-ebau-gwr-projects-header">
+        <div class="uk-padding-small">
+          <LinkedProjects
+            @projects={{this.projects}}
+            @activeProject={{this.activeProject}}
+            @removeProject={{this.removeProjectLink}}
+            class="uk-padding-small"
+          />
+        </div>
+        <hr class="uk-margin-remove" />
+        <div uk-alert class="uk-margin-remove">
+          <div class="uk-flex uk-flex-between uk-flex-middle">
+            <div class="uk-flex uk-flex-middle uk-width-expand uk-margin-right">
+              <div class="uk-flex-none uk-margin-right">
+                <span uk-icon="icon: info"></span>
+              </div>
+              <div>
+                <div>
+                  {{t "ember-gwr.nav.housingStatInfo"}}
+                </div>
+                <div>
+                  {{t "ember-gwr.nav.deletionInfo"}}
+                </div>
+              </div>
+            </div>
+            <div class="uk-width-auto">
+              <a
+                class="uk-button uk-button-default"
+                href={{housing-stat-link}}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{t "ember-gwr.nav.housingStatLink"}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <UkTab as |Tab|>
+        <Tab.item
+          @href={{if
+            this.activeProject
+            (build-url "project.form" (array this.activeProject))
+            (build-url "project.new")
+          }}
+        >
+          {{t "ember-gwr.models.project" count=1}}
+        </Tab.item>
+        <Tab.item
+          @href={{if
+            this.activeProject
+            (build-url "project.linked-buildings" (array this.activeProject))
+          }}
+          @disabled={{this.buildingTabInfoText}}
+        >
+          {{t "ember-gwr.models.building" count=1}}
+        </Tab.item>
+        {{#if this.buildingTabInfoText}}
+          <div class="uk-padding-remove">
+            <span
+              uk-icon="icon: question; ratio: 0.8"
+              uk-tooltip="title: {{this.buildingTabInfoText}}; container: {{this.config.modalContainer}}"
+            ></span>
+          </div>
+        {{/if}}
+        {{#if this.activeProject}}
+          <Tab.item
+            class="uk-position-right"
+            @href={{build-url "project.errors" (array this.activeProject)}}
+          >
+            {{t "ember-gwr.issues.nav"}}
+          </Tab.item>
+        {{/if}}
+      </UkTab>
+      {{yield}}
+    {{/if}}
+  {{/if}}
+</div>
