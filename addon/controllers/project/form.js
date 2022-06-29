@@ -7,9 +7,9 @@ import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import Options from "ember-ebau-gwr/models/options";
 import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
+import ImportResource from "ember-ebau-gwr/resources/import";
 
 export default class ProjectFormController extends ImportController {
-  importModelName = "project";
   ConstructionProjectValidations = ConstructionProjectValidations;
   kindOfWorkOptions = BuildingWork.kindOfWorkOptions;
 
@@ -23,6 +23,13 @@ export default class ProjectFormController extends ImportController {
   @service intl;
   @service notification;
   @service quarterlyClosure;
+
+  @tracked import = ImportResource.from(this, () => ({
+    model: this.model,
+    showImport: this.showImport,
+    importIndex: this.importIndex,
+    importModelName: "project",
+  }));
 
   @tracked buildingWork;
   @tracked typeOfConstructionProject;
@@ -46,7 +53,6 @@ export default class ProjectFormController extends ImportController {
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
-    yield this.fetchCalumaData.perform();
     // Add a new default work for new projects so we don't have to
     // validate if the user has attached a work or not.
     if (this.model.project?.isNew && !this.model.project?.work.length) {
@@ -117,7 +123,7 @@ export default class ProjectFormController extends ImportController {
         yield this.constructionProject.update(this.project);
       }
 
-      this.resetImport();
+      this.resetImportQueryParams();
       this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.constructionProject.saveSuccess")

@@ -1,6 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
+import { trackedFunction } from "ember-resources/util/function";
 
 export default class ProjectNavComponent extends Component {
   @service router;
@@ -10,6 +11,7 @@ export default class ProjectNavComponent extends Component {
   @service intl;
 
   get displayLandingPage() {
+    console.log(this.projects)
     return (
       !this.projects.length &&
       this.router.externalRouter.currentRoute.localName !== "new" &&
@@ -38,12 +40,10 @@ export default class ProjectNavComponent extends Component {
     return Number(this.router.externalRouter.currentRoute.params.project_id);
   }
 
-  get projects() {
-    return this.constructionProject.projects;
-  }
-
-  @action
-  async onLoad() {
+  projects = trackedFunction(this, async () => {
+    debugger
+    await Promise.resolve()
+    console.log("called tracked")
     // We then use `gwr.projects` in the template to reference this.
     // This is so we can update the table if we add a new project in the subroute /new
     const projects = await this.constructionProject.all.perform(
@@ -59,7 +59,9 @@ export default class ProjectNavComponent extends Component {
     ) {
       this.router.transitionTo("project.form", projects[0].EPROID);
     }
-  }
+
+    return this.constructionProject.projects;
+  });
 
   @action
   async removeProjectLink() {
