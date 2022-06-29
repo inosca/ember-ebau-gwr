@@ -19,6 +19,6 @@ export default class ProjectNewRoute extends FormRoute {
       this.config.cantonAbbreviation;
     project.constructionSurveyDeptNumber =
       this.constructionProject.constructionSurveyDeptNumber;
-    return { project, instanceId: this.modelFor("application").id };
+    return { project, instanceId: this.modelFor("application")?.id };
   }
 }

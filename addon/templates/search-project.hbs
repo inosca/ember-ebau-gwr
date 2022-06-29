@@ -1,8 +1,10 @@
-<BackRoute 
-  @backRoute="project" 
-  @backModel={{@model}}
-  @backText={{t "ember-gwr.building.backToProject"}}
-/>
+{{#if @model}}
+  <BackRoute
+    @backRoute="project"
+    @backModel={{@model}}
+    @backText={{t "ember-gwr.building.backToProject"}}
+  />
+{{/if}}
 
 <h1>
   {{t "ember-gwr.searchProject.heading"}}
@@ -59,7 +61,9 @@
         @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
       />
       <Header
-        @label={{t "ember-gwr.constructionProject.fields.officialConstructionProjectFileNo"}}
+        @label={{t
+          "ember-gwr.constructionProject.fields.officialConstructionProjectFileNo"
+        }}
       />
       <Header
         class="uk-table-expand"
@@ -74,7 +78,7 @@
         <button
           class="uk-button uk-button-link"
           type="button"
-          {{on "click" (fn this.linkProject value)}}
+          {{on "click" (fn this.selectProject value)}}
         >
           {{value}}
         </button>
