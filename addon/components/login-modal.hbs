@@ -1,7 +1,8 @@
 {{#if this.authFetch.showAuthModal}}
   <UkCard
     @color="default"
-    class="ember-ebau-gwr-login uk-width-2xlarge uk-margin-auto" as |card|
+    class="ember-ebau-gwr-login uk-width-2xlarge uk-margin-auto"
+    as |card|
   >
     <card.header>
       <h2 class="uk-modal-title">
@@ -46,7 +47,8 @@
             @noMatchesMessage={{t
               "ember-gwr.components.loginModal.municipalityNoneFound"
             }}
-            @onChange={{this.updateMunicipality}} as |municipality|
+            @onChange={{this.updateMunicipality}}
+            as |municipality|
           >
             {{municipality.name}}
           </PowerSelect>
@@ -65,6 +67,17 @@
     </card.footer>
   </UkCard>
 {{else}}
-  <Logout />
+  <div class="uk-flex uk-flex-middle uk-flex-right">
+    <span class="uk-margin-right">
+      {{t
+        "ember-gwr.components.loginModal.loginInfo"
+        user=this.authFetch.username
+        municipality=(get
+          (find-by "id" this.authFetch.municipality this.municipalities) "name"
+        )
+      }}
+    </span>
+    <Logout />
+  </div>
   {{yield}}
 {{/if}}

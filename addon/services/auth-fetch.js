@@ -11,6 +11,7 @@ export default class AuthFetchService extends Service {
   @tracked showAuthModal = false;
   @tracked token;
   @tracked municipality;
+  @tracked username;
 
   constructor(...args) {
     super(...args);
@@ -69,6 +70,7 @@ export default class AuthFetchService extends Service {
 
     this.token = json.token;
     this.municipality = json.municipality;
+    this.username = json.username;
     return json;
   }
 

@@ -225,6 +225,7 @@ ember-gwr:
       municipality: Wählen Sie Ihre Gemeinde aus...
       municipalitySearch: Gemeinde suchen...
       municipalityNoneFound: Es wurde keine Gemeinde gefunden
+      loginInfo: "{user} angemeldet in  {municipality}"
 
     logout: Abmelden
 
