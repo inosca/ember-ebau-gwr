@@ -99,7 +99,7 @@
     "qunit": "2.19.1",
     "qunit-dom": "2.0.0",
     "sass": "1.51.0",
-    "webpack": "5.72.1"
+    "webpack": "5.73.0"
   },
   "//": [
     "TODO: remove ember-engines exotic dependency when https://github.com/ember-engines/ember-engines/pull/794 is released"
