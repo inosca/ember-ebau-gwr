@@ -1,0 +1,14 @@
+<h2>
+  {{t "ember-gwr.globalLandingPage.quarterlyClosure" quarter=(current-quarter)}}
+</h2>
+{{#if this.displayErrorInfo}}
+  <div class="uk-flex uk-flex-middle uk-margin-bottom">
+    <FaIcon
+      @icon="circle-exclamation"
+      class="uk-text-danger uk-margin-small-right"
+    />
+    <span class="uk-text-meta">
+      {{t "ember-gwr.quarterlyClosure.needsCorrection"}}
+    </span>
+  </div>
+{{/if}}

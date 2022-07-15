@@ -110,14 +110,21 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 }
 
 .ember-ebau-gwr-title-card {
-  margin-top: 100px;
+  .title-card-content {
+    margin-top: 100px;
 
-  .title-card-text {
-    white-space: pre-line;
-    line-height: 1.5;
-    margin-top: 5px;
-    font-weight: 400;
-    font-size: 15px;
+    .title-card-text {
+      @extend .uk-text-default;
+      white-space: pre-line;
+      line-height: 1.5;
+      margin-top: 5px;
+      font-weight: 400;
+    }
+  }
+
+  .title-card-footer {
+    text-transform: initial;
+    line-height: initial;
   }
 }
 

@@ -105,7 +105,6 @@ jobs:
       matrix:
         scenario:
           - ember-lts-3.28
-          - ember-lts-3.24
 
     steps:
       - uses: actions/checkout@v3

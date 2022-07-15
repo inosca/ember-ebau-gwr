@@ -1,0 +1,11 @@
+<div class="uk-text-small {{this.statusClass.text}}">
+  <FaIcon
+    @icon={{this.statusClass.icon}}
+    @prefix={{this.statusClass.prefix}}
+    @fixedWidth={{true}}
+    @size="lg"
+  />
+  <div>
+    {{this.quarterlyClosure.status.shortLabel}}
+  </div>
+</div>

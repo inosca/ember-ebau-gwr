@@ -10,20 +10,33 @@
     <TitleCard
       @title={{t "ember-gwr.globalLandingPage.searchProject"}}
       @route="search-project"
-      @workInProgress={{true}}
       @icon={{hash name="folder-closed" prefix="far"}}
-    />
+      class="uk-disabled uk-text-muted"
+    >
+      <:header>
+        <SoonAvailable />
+      </:header>
+    </TitleCard>
     <TitleCard
       @title={{t "ember-gwr.globalLandingPage.searchBuilding"}}
       @route="search-building"
       @model="1"
-      @workInProgress={{true}}
       @icon={{hash name="building" prefix="far"}}
-    />
+      class="uk-disabled uk-text-muted"
+    >
+      <:header>
+        <SoonAvailable />
+      </:header>
+    </TitleCard>
     <TitleCard
-      @title={{t "ember-gwr.globalLandingPage.quarterlyClosure"}}
-      @route="global-landing-page"
+      @title={{t "ember-gwr.globalLandingPage.quarterlyClosure" quarter=(current-quarter "q")}}
+      @route="quarterly-closure"
       @icon="list-check"
-    />
+    >
+      <:footer>
+        <QuarterlyClosure::CardStatus />
+      </:footer>
+    </TitleCard>
+
   </div>
 </div>
