@@ -53,10 +53,10 @@ ember-gwr:
 
   globalLandingPage:
     heading: GWR
-    infoText: Im GWR-Modul können Sie existierende Projekte und Gebäude im GWR suchen und Anpassungen vonehmen. Zudem kann der Quartalsabschluss vollzogen werden. GWR-Bauprojekte, die bereits mit einem eBau-Dossier verknüpft sind, können auch unter dem entsprechenden eBau-Dossier eingesehen werden.
+    infoText: Im GWR-Modul können Sie existierende Projekte und Gebäude im GWR suchen und Anpassungen vornehmen. Zudem kann der Quartalsabschluss vollzogen werden. GWR-Bauprojekte, die bereits mit einem eBau-Dossier verknüpft sind, können auch unter dem entsprechenden eBau-Dossier eingesehen werden.
     searchProject: Bauprojekte suchen und bearbeiten
     searchBuilding: Gebäude suchen und bearbeiten
-    quarterlyClosure: Quartalsabschluss
+    quarterlyClosure: Quartalsabschluss {quarter}
 
   nav:
     projectDetails: Projektdetails

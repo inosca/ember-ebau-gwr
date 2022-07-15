@@ -1,0 +1,10 @@
+<div>
+  <UkButton
+    @color="primary"
+    @loading={{this.closeQuarterlySurvey.isRunning}}
+    @disabled={{this.disabledButton}}
+    {{on "click" (perform this.closeQuarterlySurvey)}}
+  >
+    {{t "ember-gwr.quarterlyClosure.closure.close"}}
+  </UkButton>
+</div>

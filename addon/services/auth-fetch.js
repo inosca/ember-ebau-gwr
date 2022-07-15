@@ -13,6 +13,10 @@ export default class AuthFetchService extends Service {
   @tracked municipality;
   @tracked username;
 
+  get constructionSurveyDeptNumber() {
+    return this.municipality && `${this.municipality}00`;
+  }
+
   constructor(...args) {
     super(...args);
     this.housingStatToken.perform();

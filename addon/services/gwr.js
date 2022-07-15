@@ -19,7 +19,7 @@ export default class GwrService extends Service {
   }
 
   get constructionSurveyDeptNumber() {
-    return `${this.municipality}00`;
+    return this.authFetch.constructionSurveyDeptNumber;
   }
 
   createAndCache(xml) {

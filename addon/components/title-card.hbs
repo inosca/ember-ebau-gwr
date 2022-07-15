@@ -1,25 +1,29 @@
-<UkFlex @horizontal="center" ...attributes>
-  <LinkTo
-    @route={{@route}}
-    @model={{@model}}
-    class="uk-button uk-button-default uk-width-medium uk-height-medium uk-flex uk-flex-middle uk-flex-column
-      {{if @workInProgress 'uk-disabled uk-text-muted'}}"
-  >
-    {{#if @workInProgress}}
-      <span
-        class="uk-badge uk-position-absolute uk-margin-top uk-padding-small"
-      >
-        {{t "ember-gwr.soonAvailable"}}
-      </span>
-    {{/if}}
-    <div class="ember-ebau-gwr-title-card">
-      <FaIcon
-        @icon={{or @icon.name @icon}}
-        @prefix={{@icon.prefix}}
-        @fixedWidth={{true}}
-        @size="4x"
-      />
-      <div class="title-card-text">{{@title}}</div>
-    </div>
-  </LinkTo>
+<UkFlex @horizontal="center">
+  {{#let
+    (if
+      @model
+      (component "link-to" route=@route model=@model)
+      (component "link-to" route=@route)
+    )
+    as |Link|
+  }}
+    <Link
+      class="uk-button uk-button-default uk-width-medium uk-height-medium uk-flex uk-flex-middle uk-flex-column ember-ebau-gwr-title-card"
+      ...attributes
+    >
+      {{yield to="header"}}
+      <div class="title-card-content">
+        <FaIcon
+          @icon={{or @icon.name @icon}}
+          @prefix={{@icon.prefix}}
+          @fixedWidth={{true}}
+          @size="4x"
+        />
+        <div class="title-card-text">{{@title}}</div>
+      </div>
+      <div class="title-card-footer uk-margin">
+      {{yield to="footer"}}
+      </div>
+    </Link>
+  {{/let}}
 </UkFlex>

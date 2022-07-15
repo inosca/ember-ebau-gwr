@@ -2,8 +2,11 @@ import buildRoutes from "ember-engines/routes";
 
 export default buildRoutes(function () {
   this.route("global-landing-page", { path: "/" });
+  this.route("quarterly-closure");
+
   this.route("search-project");
   this.route("search-building", { path: "/:project_id/search-building" });
+
   this.route("project", { path: "/projects" }, function () {
     this.route("form", { path: "/:project_id/form" });
     this.route("new");
