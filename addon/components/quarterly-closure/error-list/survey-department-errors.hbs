@@ -1,0 +1,7 @@
+<h3>{{t "ember-gwr.quarterlyClosure.components.departmentErrors.title"}}</h3>
+<p>{{t "ember-gwr.quarterlyClosure.components.departmentErrors.infoText"}}</p>
+
+<ModelErrors::List
+  @errors={{this.errors.value.errorList}}
+  @isRunning={{this.errors.isLoading}}
+/>

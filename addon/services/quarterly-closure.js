@@ -1,6 +1,8 @@
 import { later } from "@ember/runloop";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import CheckConstructionProjectResponse from "ember-ebau-gwr/models/check-construction-project-response";
+import CheckSurveyDepartmentResponse from "ember-ebau-gwr/models/check-survey-department-response";
 import QuarterlyClosureStatus, {
   STATUS_TYPES,
   REQUEST_PENDING,
@@ -31,13 +33,8 @@ export default class QuarterlyClosureService extends Service {
     }
 
     if (!id) {
-      return {
-        ...status,
-        label: this.intl.t(`ember-gwr.quarterlyClosure.status.loading`),
-        shortLabel: this.intl.t(
-          `ember-gwr.quarterlyClosure.status.short.loading`
-        ),
-      };
+      const label = this.intl.t(`ember-gwr.quarterlyClosure.status.loading`);
+      return { ...status, label, shortLabel: label, isLoading: true };
     }
 
     return {
@@ -122,5 +119,25 @@ export default class QuarterlyClosureService extends Service {
     this.quarterlyClosureStatus = new QuarterlyClosureStatus(
       await response.text()
     );
+  }
+
+  async checkQuarterlySurveyDept() {
+    if (!this.constructionSurveyDeptNumber) {
+      return null;
+    }
+
+    const response = await this.authFetch.fetch(
+      `/constructionsurveydepts/${this.constructionSurveyDeptNumber}/check`,
+      { method: "put" }
+    );
+    return new CheckSurveyDepartmentResponse(await response.text());
+  }
+
+  async checkConstructionProject(id) {
+    const response = await this.authFetch.fetch(
+      `/constructionprojects/${id}/check`,
+      { method: "put" }
+    );
+    return new CheckConstructionProjectResponse(await response.text());
   }
 }
