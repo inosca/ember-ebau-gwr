@@ -9,20 +9,18 @@
   @modelDescription={{@modelDescription}}
   @smallHeaderIdWidth={{@smallHeaderIdWidth}}
 >
-  {{#if (has-block)}}
-    {{yield
-      (component
-        "model-errors/list"
-        model=@model
-        errors=@errorModel.errorList
-        isRunning=(not @errorModel)
-      )
-    }}
-  {{else}}
-    <ModelErrors::List
-      @model={{@model}}
-      @errors={{@errorModel.errorList}}
-      @isRunning={{not @errorModel}}
-    />
-  {{/if}}
+  {{#let
+    (component
+      "model-errors/list"
+      errors=@errorModel.errorList
+      isRunning=(not @errorModel)
+    )
+    as |List|
+  }}
+    {{#if (has-block)}}
+      {{yield List}}
+    {{else}}
+      <List />
+    {{/if}}
+  {{/let}}
 </ModelErrors::Header>

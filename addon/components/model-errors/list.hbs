@@ -1,4 +1,6 @@
-{{#if (and @errors.length (not @isRunning))}}
+{{#if @isRunning}}
+  <ModelErrors::SkeletonErrors />
+{{else}}
   <ul class="uk-list uk-list-divider">
     {{#each @errors as |error|}}
       <li>
@@ -8,8 +10,8 @@
               class="uk-label uk-text-small uk-text-center
                 {{if
                   (eq error.action this.options.errorActionOptions.refused)
-                  "ember-ebau-gwr-label-color-danger"
-                  "ember-ebau-gwr-label-color-warning"
+                  'ember-ebau-gwr-label-color-danger'
+                  'ember-ebau-gwr-label-color-warning'
                 }}"
             >
               {{error.action}}
@@ -18,6 +20,13 @@
           <div class="uk-margin-left">
             {{error.messageOfError}}
           </div>
+        </div>
+      </li>
+    {{else}}
+      <li>
+        <div class="uk-text-success">
+          <FaIcon @icon="circle-check" />
+          {{t "ember-gwr.components.modelErrors.empty"}}
         </div>
       </li>
     {{/each}}

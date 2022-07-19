@@ -348,3 +348,6 @@ ember-gwr:
 
     importModal:
       selectImportData: Importdaten auswählen
+
+    modelErrors:
+      empty: Keine offenen Pendenzen

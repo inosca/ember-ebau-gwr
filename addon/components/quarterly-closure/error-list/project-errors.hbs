@@ -1,0 +1,22 @@
+<h3>{{t "ember-gwr.quarterlyClosure.components.projectErrors.title"}}</h3>
+<p>{{t "ember-gwr.quarterlyClosure.components.projectErrors.infoText"}}</p>
+
+<div id="scroll-container uk-overflow-auto">
+  {{#each this.errors.value as |project|}}
+    <ModelInview
+      @model={{project}}
+      @fetchModel={{perform this.performQualityCheck project}}
+      as |result|
+    >
+      <ModelErrors
+        @model={{project}}
+        @modelId={{project.EPROID}}
+        @errorModel={{result.model}}
+        @linkRoute="project.form"
+        @linkModels={{array project.EPROID}}
+        @modelDescription={{project.constructionProjectDescription}}
+      />
+    </ModelInview>
+    <hr />
+  {{/each}}
+</div>

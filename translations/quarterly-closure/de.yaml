@@ -1,9 +1,12 @@
 ember-gwr:
   quarterlyClosure:
     needsCorrection: Der Quartalsabschluss konnte aufgrund von bestehenden Fehlern nicht abgeschlossen werden. Bitte ergänzen Sie fehlende Daten und beheben Sie verbleibende Unstimmigkeiten.
+
+
     closure:
       close: Quartalsabschluss Melden
       error: Beim Melden des Quartalsabschlusses ist ein Fehler aufgetreten.
+
     status:
       pollError: Beim Abrufen des Erhebungsstatus ist ein Fehler aufgetreten. Nächster Versuch in einer Minute.
       label: Status
@@ -43,3 +46,13 @@ ember-gwr:
         680: Finale Qualitätskontrolle des BFS
         690: Abgeschlossen
         691: Erzwungener Abschluss von BFS
+
+    components:
+      projectErrors:
+        error: Beim Abrufen der Fehlerliste der Erhebungsstelle ist ein Fehler aufgetreten.
+        title: Bauprojekte
+        infoText: Nachfolgend finden Sie eine Liste der Bauprojekte, die durch die Erhebungsstelle erfasst wurden und noch Fehler beinhalten. Um die Fehler auf den Gebäuden, Wohnungen und Eingängen einzusehen, wählen Sie bitte das entsprechende Bauprojekt an. Für einen erfolgreichen Quartalsabschluss müssen mindestens alle Fehler vom Typ ADR oder BAU behoben werden.
+      departmentErrors:
+        error: Beim Abrufen der Fehlerliste der Projekte ist ein Fehler aufgetreten.
+        title: Erhebungsstelle
+        infoText: Nachfolgend finden Sie die offenen Pendenzen der Erhebungsstelle. Für einen erfolgreichen Quartalsabschluss müssen mindestens alle Fehler vom Typ ADR oder BAU behoben werden.
