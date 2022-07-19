@@ -1,4 +1,19 @@
 <h3>{{t "ember-gwr.quarterlyClosure.components.departmentErrors.title"}}</h3>
+
+{{#if this.isFirstQuarter}}
+  <UkFlex
+    @horizontal="between"
+    @vertical="middle"
+    uk-alert
+    class="uk-margin-remove uk-alert-default"
+  >
+    {{t
+      "ember-gwr.quarterlyClosure.components.departmentErrors.maintenanceCost"
+    }}
+    <HousingStatLink />
+  </UkFlex>
+{{/if}}
+
 <p>{{t "ember-gwr.quarterlyClosure.components.departmentErrors.infoText"}}</p>
 
 <ModelErrors::List
