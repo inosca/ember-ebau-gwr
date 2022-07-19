@@ -4,6 +4,9 @@
       <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
+    {{#if this.quarterlyClosure.disableForms}}
+      <QuarterlyClosure::DisabledFormInfo />
+    {{/if}}
     <ModelForm
       @model={{this.dwelling}}
       @validations={{this.DwellingValidations}}
@@ -23,6 +26,7 @@
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="dwellingStatus"
+      @disabled={{this.quarterlyClosure.disableForms}}
       as |Field changeset|
     >
       <Field
@@ -37,21 +41,20 @@
 
       <Field
         @attr="floorType"
-        @type="select" @required={{true}}
+        @type="select"
+        @required={{true}}
         @gwrEnumOptions={{this.Models.Dwelling.floorTypeOptions}}
         @hint={{t "ember-gwr.dwelling.floorHint"}}
       />
 
-      {{#if (or
-        (eq changeset.floorType 3101)
-        (eq changeset.floorType 3401)
-        (and this.import this.import.data.floorNumber)
-      )}}
-        <Field
-          @attr="floorNumber"
-          @type="number"
-          @required={{true}}
-        />
+      {{#if
+        (or
+          (eq changeset.floorType 3101)
+          (eq changeset.floorType 3401)
+          (and this.import this.import.data.floorNumber)
+        )
+      }}
+        <Field @attr="floorNumber" @type="number" @required={{true}} />
       {{/if}}
 
       <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />

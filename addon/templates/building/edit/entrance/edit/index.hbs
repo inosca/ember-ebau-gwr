@@ -4,6 +4,9 @@
       <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
+    {{#if this.quarterlyClosure.disableForms}}
+      <QuarterlyClosure::DisabledFormInfo />
+    {{/if}}
     <ModelForm
       @model={{this.buildingEntrance}}
       @validations={{this.BuildingEntranceValidations}}
@@ -17,7 +20,7 @@
       @headerModelName="entrance"
       @hasStatus={{false}}
       @import={{this.import}}
-      @disabled={{this.hasNoStreet}}
+      @disabled={{or this.hasNoStreet this.quarterlyClosure.disableForms}}
       as |Field|
     >
       {{#unless this.buildingEntrance.isNew}}
@@ -27,38 +30,47 @@
       <Field
         @attr="locality.name.nameLong"
         @required={{true}}
-        @disabled={{not this.buildingEntrance.isNew}}
+        @disabled={{or
+          this.quarterlyClosure.disableForms
+          (not this.buildingEntrance.isNew)
+        }}
       />
       <Field
         @attr="locality.swissZipCode"
         @type="number"
-        @disabled={{not this.buildingEntrance.isNew}}
+        @disabled={{or
+          this.quarterlyClosure.disableForms
+          (not this.buildingEntrance.isNew)
+        }}
         @required={{true}}
       />
       {{#unless this.buildingEntrance.isNew}}
         <Field
           @attr="locality.swissZipCodeAddOn"
           @type="number"
-          @disabled={{not this.buildingEntrance.isNew}}
+          @disabled={{or
+            this.quarterlyClosure.disableForms
+            (not this.buildingEntrance.isNew)
+          }}
         />
       {{/unless}}
-      {{!-- API rejects any modification of the buildingEntranceNo or isOfficial
-        fields on building entrances that are not linked to a street. --}}
+      {{! API rejects any modification of the buildingEntranceNo or isOfficial
+        fields on building entrances that are not linked to a street. }}
       <div
         uk-tooltip="title: {{if
-            this.hasNoStreet
-            (t "ember-gwr.buildingEntrance.missingStreetInfo")
-          }}
+          this.hasNoStreet
+          (t 'ember-gwr.buildingEntrance.missingStreetInfo')
+        }}
           ; container: {{this.config.modalContainer}}; pos: top-left"
       >
         <Field
           @attr="buildingEntranceNo"
-          @disabled={{this.hasNoStreet}}
+          @disabled={{or this.quarterlyClosure.disableForms this.hasNoStreet}}
         />
         <Field
           @attr="isOfficialAddress"
           @type="checkbox"
-          @disabled={{this.hasNoStreet}}
+          @disabled={{or this.quarterlyClosure.disableForms this.hasNoStreet}}
         />
       </div>
       {{#unless this.buildingEntrance.isNew}}
@@ -92,6 +104,7 @@
           @fieldComponent={{Field}}
           @buildingEntrance={{this.buildingEntrance}}
           @translationBase="ember-gwr.buildingEntrance.fields"
+          @disabled={{this.quarterlyClosure.disableForms}}
         />
       {{/unless}}
     </ModelForm>

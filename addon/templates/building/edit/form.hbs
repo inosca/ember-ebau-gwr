@@ -16,6 +16,9 @@
       <UkSpinner @ratio={{3}} />
     </div>
   {{else}}
+    {{#if this.quarterlyClosure.disableForms}}
+      <QuarterlyClosure::DisabledFormInfo />
+    {{/if}}
     <ModelForm
       @model={{this.buildingWork}}
       @validations={{this.BuildingWorkValidations}}
@@ -37,6 +40,7 @@
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @getChangeHint={{fn this.gwr.getChangeHint this.buildingAPI.cacheClass}}
       @modelStatusField="buildingStatus"
+      @disabled={{this.quarterlyClosure.disableForms}}
       as |Field changeset|
     >
       {{#unless this.buildingWork.isNew}}
@@ -141,7 +145,6 @@
         @convertValueTo="number"
         @gwrEnumOptions={{this.Models.Building.buildingClassOptions}}
       />
-
 
       {{#if this.buildingWork.building.isNew}}
         <h3 class="uk-margin-remove-bottom">
@@ -312,17 +315,23 @@
         @label="ember-gwr.building.heating.revisionDate"
       />
 
-      <ul uk-accordion="active: {{if (or
+      <ul
+        uk-accordion="active: {{if
+          (or
             (show-model-field
-              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
+              'building.thermotechnicalDeviceForHeating2.heatGeneratorHeating'
               changeset
               this.import
             )
             (show-model-field
-              "building.thermotechnicalDeviceForHeating2.energySourceHeating"
+              'building.thermotechnicalDeviceForHeating2.energySourceHeating'
               changeset
               this.import
-            )) "0" false}}"
+            )
+          )
+          '0'
+          false
+        }}"
       >
         <li>
           <a class="uk-accordion-title" href="#">
@@ -391,17 +400,23 @@
         @label="ember-gwr.building.heating.revisionDate"
       />
 
-      <ul uk-accordion="active: {{if (or
+      <ul
+        uk-accordion="active: {{if
+          (or
             (show-model-field
-              "building.thermotechnicalDeviceForHeating2.heatGeneratorHeating"
+              'building.thermotechnicalDeviceForHeating2.heatGeneratorHeating'
               changeset
               this.import
             )
             (show-model-field
-              "building.thermotechnicalDeviceForHeating2.energySourceHeating"
+              'building.thermotechnicalDeviceForHeating2.energySourceHeating'
               changeset
               this.import
-            )) "0" false}}"
+            )
+          )
+          '0'
+          false
+        }}"
       >
         <li>
           <a class="uk-accordion-title" href="#">

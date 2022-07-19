@@ -56,3 +56,4 @@ ember-gwr:
         error: Beim Abrufen der Fehlerliste der Projekte ist ein Fehler aufgetreten.
         title: Erhebungsstelle
         infoText: Nachfolgend finden Sie die offenen Pendenzen der Erhebungsstelle. Für einen erfolgreichen Quartalsabschluss müssen mindestens alle Fehler vom Typ ADR oder BAU behoben werden.
+      disabledFormInfo: Während das BFS die Daten kontrolliert, welche durch den Quartalsabschluss eingereicht wurden, können keine Objekte mehr editiert werden.

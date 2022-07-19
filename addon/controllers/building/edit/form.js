@@ -19,6 +19,7 @@ export default class BuildingFormController extends ImportController {
   @service intl;
   @service notification;
   @service router;
+  @service quarterlyClosure;
 
   @tracked BuildingWorkValidations;
   @tracked errors;
