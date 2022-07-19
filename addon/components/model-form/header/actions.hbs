@@ -28,6 +28,7 @@
           <button
             class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical uk-margin-small-right"
             type="button"
+            disabled={{@disabled}}
           >
             <span class="uk-icon" uk-icon="more-vertical"></span>
           </button>
@@ -65,6 +66,7 @@
       <button
         class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
         type="button"
+        disabled={{@disabled}}
       >
         <span class="uk-icon" uk-icon="more-vertical"></span>
       </button>
@@ -94,9 +96,9 @@
           {{/if}}
           {{#if @hasStatus}}
             <li>
-              <a 
-                href="#ember-ebau-gwr-status" 
-                uk-scroll 
+              <a
+                href="#ember-ebau-gwr-status"
+                uk-scroll
                 class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
                 {{on "click" @openStatus}}
               >

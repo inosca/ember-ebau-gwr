@@ -17,6 +17,7 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
   @service notification;
   @service router;
   @service config;
+  @service quarterlyClosure;
 
   @tracked errors;
 

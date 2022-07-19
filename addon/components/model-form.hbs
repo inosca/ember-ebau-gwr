@@ -25,7 +25,7 @@
     )
     as |Submit SubmitErrors|
   }}
-    {{!-- template-lint-disable no-passed-in-event-handlers --}}
+    {{! template-lint-disable no-passed-in-event-handlers }}
     <ModelForm::Header
       @model={{@headerModel}}
       @modelId={{@headerModelId}}
@@ -48,6 +48,7 @@
       @translationBase={{@translationBase}}
       @submit={{Submit}}
       @submitErrors={{SubmitErrors}}
+      @disabled={{@disabled}}
     />
     {{yield
       (component
@@ -58,6 +59,7 @@
         input=f.input
         registerDiff=this.registerDiff
         resolveDiff=this.resolveDiff
+        disabled=@disabled
       )
       f.model
     }}

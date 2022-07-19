@@ -71,35 +71,39 @@
         readonly
       />
     {{/unless}}
-    <div class="uk-flex-inline">
-      <LinkTo
-        class="uk-button
-          {{if @buildingEntrance.street.isNew "uk-button-primary" "uk-button-default"
-          }}"
-        @route="building.edit.entrance.edit.link-street"
-        @models={{or
-          @routeModels
-          (if @buildingEntrance.isNew (array "new") (array))
-        }}
-        @query={{hash
-          locality=@buildingEntrance.locality.name.nameLong
-          PLZ4=@buildingEntrance.locality.swissZipCode
-          PLZ6=@buildingEntrance.locality.swissZipCodeAddOn
-        }}
-        @disabled={{not @buildingEntrance.locality.name.nameLong}}
-        uk-tooltip="title: {{unless
+    {{#if (not (or @disabled (not @buildingEntrance.locality.name.nameLong)))}}
+      <div class="uk-flex-inline">
+        <LinkTo
+          class="uk-button
+            {{if
+              @buildingEntrance.street.isNew
+              'uk-button-primary'
+              'uk-button-default'
+            }}"
+          @route="building.edit.entrance.edit.link-street"
+          @models={{or
+            @routeModels
+            (if @buildingEntrance.isNew (array "new") (array))
+          }}
+          @query={{hash
+            locality=@buildingEntrance.locality.name.nameLong
+            PLZ4=@buildingEntrance.locality.swissZipCode
+            PLZ6=@buildingEntrance.locality.swissZipCodeAddOn
+          }}
+          uk-tooltip="title: {{unless
             @buildingEntrance.locality.name.nameLong
-            (t "ember-gwr.components.linkStreet.missingLocalityHint")
+            (t 'ember-gwr.components.linkStreet.missingLocalityHint')
           }}; container: {{this.config.modalContainer}}"
-      >
-        {{t
-          (if
-            @buildingEntrance.street.isNew
-            "ember-gwr.components.linkStreet.link"
-            "ember-gwr.components.linkStreet.change"
-          )
-        }}
-      </LinkTo>
-    </div>
+        >
+          {{t
+            (if
+              @buildingEntrance.street.isNew
+              "ember-gwr.components.linkStreet.link"
+              "ember-gwr.components.linkStreet.change"
+            )
+          }}
+        </LinkTo>
+      </div>
+    {{/if}}
   {{/let}}
 {{/if}}
