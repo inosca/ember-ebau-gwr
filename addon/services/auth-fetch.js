@@ -30,13 +30,6 @@ export default class AuthFetchService extends Service {
 
   @task
   *housingStatToken(username, password, municipality) {
-    if (
-      this.config.username &&
-      this.config.password &&
-      this.config.municipality
-    ) {
-      ({ username, password, municipality } = this.config);
-    }
     const response = yield fetch(`/api/v1/housing-stat-token`, {
       method: "post",
       headers: {

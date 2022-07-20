@@ -1,8 +1,6 @@
 <div>
   {{#if this.fetchDwelling.isRunning}}
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio={{3}} />
-    </div>
+    <Loading />
   {{else}}
     {{#if this.quarterlyClosure.disableForms}}
       <QuarterlyClosure::DisabledFormInfo />

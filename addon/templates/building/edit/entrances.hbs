@@ -1,20 +1,18 @@
 <div>
   {{#if this.fetchEntrances.isRunning}}
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio={{3}} />
-    </div>
+    <Loading />
   {{else}}
     <LinkedModels
       @models={{this.entrances}}
       @modelName="entrance"
       @newRoute="building.edit.entrance.new"
-      {{!--
+      {{!
       TODO removing a entrance is not allowed if there is still a dwelling attached to it
       We also cannot remove an entrance if there is only one. This only applies for active
       instances of dwellings and building entrances. Since building entrance deactivation
       is an asynchronous process, we should check the mutation status of deactivated
       building entrances and dwellings, to ensure that the requirements hold.
-      --}}
+      }}
       @removeLink={{if (gt this.entrances.length 1) this.removeEntranceLink}}
       as |model|
     >

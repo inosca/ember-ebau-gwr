@@ -3,9 +3,7 @@
   {{did-update (perform this.fetchBuildings) @model}}
 >
   {{#if this.fetchBuildings.isRunning}}
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio={{3}} />
-    </div>
+    <Loading />
   {{else}}
     <LinkedModels
       @models={{this.fetchBuildings.lastSuccessful.value}}
@@ -40,15 +38,13 @@
       </td>
       <td>
         {{t
-          (concat
-            "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork
-          )
+          (concat "ember-gwr.buildingWork.kindOfWorkOptions." model.kindOfWork)
         }}
       </td>
     </LinkedModels>
     <div class="uk-flex uk-flex-middle uk-flex-center">
       <div>
-        <span uk-icon="info" class="uk-margin-small-right"/>
+        <span uk-icon="info" class="uk-margin-small-right"></span>
       </div>
       <div>
         {{t "ember-gwr.components.linkedModels.buildingInfo"}}

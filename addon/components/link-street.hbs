@@ -1,7 +1,5 @@
 {{#if this.fetchStreet.isRunning}}
-  <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-    <UkSpinner @ratio={{3}} />
-  </div>
+  <Loading />
 {{else}}
   {{#let @fieldComponent as |Field|}}
     {{#unless @buildingEntrance.street.isNew}}
