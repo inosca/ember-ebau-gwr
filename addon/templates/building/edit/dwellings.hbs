@@ -1,8 +1,6 @@
 <div>
   {{#if this.fetchDwellings.isRunning}}
-    <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-large-top">
-      <UkSpinner @ratio={{3}} />
-    </div>
+    <Loading />
   {{else}}
     <LinkedModels
       @models={{this.fetchDwellings.lastSuccessful.value}}
@@ -25,7 +23,8 @@
           (t
             "ember-gwr.buildingEntrance.title"
             address=model.buildingEntrance.EDID
-          ) " - "
+          )
+          " - "
           model.buildingEntrance.fullAddressText
         }}
       </td>

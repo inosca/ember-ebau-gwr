@@ -1,83 +1,88 @@
-{{#if this.authFetch.showAuthModal}}
-  <UkCard
-    @color="default"
-    class="ember-ebau-gwr-login uk-width-2xlarge uk-margin-auto"
-    as |card|
-  >
-    <card.header>
-      <h2 class="uk-modal-title">
-        {{t "ember-gwr.components.loginModal.header"}}
-      </h2>
-    </card.header>
-    <card.body>
-      <div class="uk-grid-small" uk-grid>
-        <div class="uk-width-1-2">
-          <input
-            name="username"
-            class="uk-input"
-            placeholder={{t "ember-gwr.components.loginModal.username"}}
-            aria-label={{t "ember-gwr.components.loginModal.username"}}
-            value={{this.username}}
-            {{on "input" this.updateValue}}
-          />
-        </div>
-        <div class="uk-width-1-2">
-          <input
-            name="password"
-            type="password"
-            class="uk-input"
-            placeholder={{t "ember-gwr.components.loginModal.password"}}
-            aria-label={{t "ember-gwr.components.loginModal.password"}}
-            value={{this.password}}
-            {{on "input" this.updateValue}}
-          />
-        </div>
-        <div class="uk-width-1">
-          <PowerSelect
-            @renderInPlace={{true}}
-            @triggerClass="uk-select"
-            @options={{this.sortedMunicipalities}}
-            @selected={{find-by "id" this.municipality this.municipalities}}
-            @placeholder={{t "ember-gwr.components.loginModal.municipality"}}
-            @searchEnabled={{true}}
-            @searchField="name"
-            @searchPlaceholder={{t
-              "ember-gwr.components.loginModal.municipalitySearch"
-            }}
-            @noMatchesMessage={{t
-              "ember-gwr.components.loginModal.municipalityNoneFound"
-            }}
-            @onChange={{this.updateMunicipality}}
-            as |municipality|
-          >
-            {{municipality.name}}
-          </PowerSelect>
-        </div>
-      </div>
-    </card.body>
-    <card.footer class="uk-text-right">
-      <UkButton
-        @color="primary"
-        @disabled={{not (and this.username this.password this.municipality)}}
-        @loading={{this.authFetch.housingStatToken.isRunning}}
-        @onClick={{this.login}}
-      >
-        {{t "ember-gwr.components.loginModal.login"}}
-      </UkButton>
-    </card.footer>
-  </UkCard>
+{{#if this.authFetch.housingStatToken.isRunning}}
+  <Loading />
 {{else}}
-  <div class="uk-flex uk-flex-middle uk-flex-right">
-    <span class="uk-margin-right">
-      {{t
-        "ember-gwr.components.loginModal.loginInfo"
-        user=this.authFetch.username
-        municipality=(get
-          (find-by "id" this.authFetch.municipality this.municipalities) "name"
-        )
-      }}
-    </span>
-    <Logout />
-  </div>
-  {{yield}}
+  {{#if this.authFetch.showAuthModal}}
+    <UkCard
+      @color="default"
+      class="ember-ebau-gwr-login uk-width-2xlarge uk-margin-auto"
+      as |card|
+    >
+      <card.header>
+        <h2 class="uk-modal-title">
+          {{t "ember-gwr.components.loginModal.header"}}
+        </h2>
+      </card.header>
+      <card.body>
+        <div class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-2">
+            <input
+              name="username"
+              class="uk-input"
+              placeholder={{t "ember-gwr.components.loginModal.username"}}
+              aria-label={{t "ember-gwr.components.loginModal.username"}}
+              value={{this.username}}
+              {{on "input" this.updateValue}}
+            />
+          </div>
+          <div class="uk-width-1-2">
+            <input
+              name="password"
+              type="password"
+              class="uk-input"
+              placeholder={{t "ember-gwr.components.loginModal.password"}}
+              aria-label={{t "ember-gwr.components.loginModal.password"}}
+              value={{this.password}}
+              {{on "input" this.updateValue}}
+            />
+          </div>
+          <div class="uk-width-1">
+            <PowerSelect
+              @renderInPlace={{true}}
+              @triggerClass="uk-select"
+              @options={{this.sortedMunicipalities}}
+              @selected={{find-by "id" this.municipality this.municipalities}}
+              @placeholder={{t "ember-gwr.components.loginModal.municipality"}}
+              @searchEnabled={{true}}
+              @searchField="name"
+              @searchPlaceholder={{t
+                "ember-gwr.components.loginModal.municipalitySearch"
+              }}
+              @noMatchesMessage={{t
+                "ember-gwr.components.loginModal.municipalityNoneFound"
+              }}
+              @onChange={{this.updateMunicipality}}
+              as |municipality|
+            >
+              {{municipality.name}}
+            </PowerSelect>
+          </div>
+        </div>
+      </card.body>
+      <card.footer class="uk-text-right">
+        <UkButton
+          @color="primary"
+          @disabled={{not (and this.username this.password this.municipality)}}
+          @loading={{this.authFetch.housingStatToken.isRunning}}
+          @onClick={{this.login}}
+        >
+          {{t "ember-gwr.components.loginModal.login"}}
+        </UkButton>
+      </card.footer>
+    </UkCard>
+  {{else}}
+    <div class="uk-flex uk-flex-middle uk-flex-right">
+      <span class="uk-margin-right">
+        {{t
+          "ember-gwr.components.loginModal.loginInfo"
+          user=this.authFetch.username
+          municipality=(get
+            (find-by "id" this.authFetch.municipality this.municipalities)
+            "name"
+          )
+        }}
+      </span>
+      <Logout />
+    </div>
+    {{yield}}
+  {{/if}}
 {{/if}}
