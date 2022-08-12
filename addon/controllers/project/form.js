@@ -9,7 +9,6 @@ import Options from "ember-ebau-gwr/models/options";
 import ConstructionProjectValidations from "ember-ebau-gwr/validations/construction-project";
 
 export default class ProjectFormController extends ImportController {
-  importModelName = "project";
   ConstructionProjectValidations = ConstructionProjectValidations;
   kindOfWorkOptions = BuildingWork.kindOfWorkOptions;
 
@@ -43,10 +42,13 @@ export default class ProjectFormController extends ImportController {
     return states;
   }
 
+  get showStatusActions() {
+    return Boolean(this.caseId);
+  }
+
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
-    yield this.fetchCalumaData.perform();
     // Add a new default work for new projects so we don't have to
     // validate if the user has attached a work or not.
     if (this.model.project?.isNew && !this.model.project?.work.length) {
@@ -74,11 +76,11 @@ export default class ProjectFormController extends ImportController {
         const project = yield this.constructionProject.create(this.project);
         const link = this.store.createRecord("gwr-link", {
           eproid: project.EPROID,
-          localId: this.model.instanceId,
+          localId: this.model.caseId,
         });
         yield link.save();
         // Reload the overview table to display the new project
-        yield this.constructionProject.all.perform(this.model.instanceId);
+        yield this.constructionProject.all.perform(this.model.caseId);
         this.router.transitionTo("project.form", project.EPROID);
       } else {
         if (
@@ -117,7 +119,7 @@ export default class ProjectFormController extends ImportController {
         yield this.constructionProject.update(this.project);
       }
 
-      this.resetImport();
+      this.resetImportQueryParams();
       this.errors = [];
       this.notification.success(
         this.intl.t("ember-gwr.constructionProject.saveSuccess")

@@ -1,83 +1,88 @@
-<ValidatedForm
-  @model={{if @validations (changeset @model @validations) @model}}
-  @on-submit={{perform this.submit}}
-  @validateBeforeSubmit={{true}}
-  class="validated-form"
-  ...attributes
-  as |f|
->
-  {{#let
-    (component
-      f.submit
-      type="submit"
-      label=(t "ember-gwr.components.modelForm.save")
-      disabled=(or this.isSaving @disabled @import)
-      loading=this.isSaving
-      buttonComponent=(component "model-form/submit" color="primary")
-    )
-    (component
-      "model-form/submit-errors"
-      errors=(if
-        (and f.model.isInvalid f.model.isDirty)
-        (array (t "ember-gwr.components.modelForm.validationError"))
-        @errors
-      )
-    )
-    as |Submit SubmitErrors|
-  }}
-    {{! template-lint-disable no-passed-in-event-handlers }}
-    <ModelForm::Header
-      @model={{@headerModel}}
-      @modelId={{@headerModelId}}
-      @projectId={{@projectId}}
-      @modelName={{@headerModelName}}
-      @modelDescription={{@headerModelDescription}}
-      @hasStatus={{@hasStatus}}
-      @import={{@import}}
-      @modelHasImport={{this.modelHasImport}}
-      @importAllData={{this.importAllData}}
-      @modelStatusOptions={{@modelStatusOptions}}
-      @nextValidStates={{@nextValidStates}}
-      @onStatusChange={{@onStatusChange}}
-      @onStatusCorrection={{@onStatusCorrection}}
-      @getChangeParameters={{@getChangeParameters}}
-      @getCorrectionParameters={{@getCorrectionParameters}}
-      @getChangeHint={{@getChangeHint}}
-      @modelStatusField={{@modelStatusField}}
-      @translationBaseHeader={{@translationBaseHeader}}
-      @translationBase={{@translationBase}}
-      @submit={{Submit}}
-      @submitErrors={{SubmitErrors}}
-      @disabled={{@disabled}}
-    />
-    {{yield
+{{#if this.importData.isLoading}}
+  <Loading />
+{{else}}
+  <ValidatedForm
+    @model={{if @validations (changeset @model @validations) @model}}
+    @on-submit={{perform this.submit}}
+    @validateBeforeSubmit={{true}}
+    class="validated-form"
+    ...attributes
+    as |f|
+  >
+    {{#let
       (component
-        "model-form/field"
-        model=f.model
-        importData=@import.data
-        translationBase=@translationBase
-        input=f.input
-        registerDiff=this.registerDiff
-        resolveDiff=this.resolveDiff
-        disabled=@disabled
+        f.submit
+        type="submit"
+        label=(t "ember-gwr.components.modelForm.save")
+        disabled=(or this.isSaving @disabled this.showImport)
+        loading=this.isSaving
+        buttonComponent=(component "model-form/submit" color="primary")
       )
-      f.model
+      (component
+        "model-form/submit-errors"
+        errors=(if
+          (and f.model.isInvalid f.model.isDirty)
+          (array (t "ember-gwr.components.modelForm.validationError"))
+          @errors
+        )
+      )
+      as |Submit SubmitErrors|
     }}
-    <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
-      <Submit class="uk-flex-none" />
-      {{#if @import}}
-        <LinkTo
-          @query={{hash import=false}}
-          class="uk-button uk-button-default uk-flex-none uk-margin-small-left"
-        >
-          {{t "ember-gwr.components.modelForm.cancelImport"}}
-        </LinkTo>
-      {{/if}}
-      {{#if (or (and f.model.isInvalid f.model.isDirty) @errors)}}
-        <div class="uk-margin-left uk-flex-inline">
-          <SubmitErrors />
-        </div>
-      {{/if}}
-    </div>
-  {{/let}}
-</ValidatedForm>
+      {{! template-lint-disable no-passed-in-event-handlers }}
+      <ModelForm::Header
+        @model={{@headerModel}}
+        @modelId={{@headerModelId}}
+        @projectId={{@projectId}}
+        @modelName={{@modelName}}
+        @modelDescription={{@headerModelDescription}}
+        @showStatusActions={{@showStatusActions}}
+        @import={{this.importData.value}}
+        @modelHasImport={{this.modelHasImport}}
+        @importAllData={{this.importAllData}}
+        @modelStatusOptions={{@modelStatusOptions}}
+        @nextValidStates={{@nextValidStates}}
+        @onStatusChange={{@onStatusChange}}
+        @onStatusCorrection={{@onStatusCorrection}}
+        @getChangeParameters={{@getChangeParameters}}
+        @getCorrectionParameters={{@getCorrectionParameters}}
+        @getChangeHint={{@getChangeHint}}
+        @modelStatusField={{@modelStatusField}}
+        @translationBaseHeader={{@translationBaseHeader}}
+        @translationBase={{@translationBase}}
+        @submit={{Submit}}
+        @submitErrors={{SubmitErrors}}
+        @disabled={{@disabled}}
+      />
+      {{yield
+        (component
+          "model-form/field"
+          model=f.model
+          importData=this.importData.value
+          translationBase=@translationBase
+          input=f.input
+          registerDiff=this.registerDiff
+          resolveDiff=this.resolveDiff
+          disabled=@disabled
+        )
+        f.model
+        this.importData.value
+      }}
+      <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
+        <Submit class="uk-flex-none" />
+        {{#if @showImport}}
+          <LinkTo
+            @query={{hash import=false}}
+            class="uk-button uk-button-default uk-flex-none uk-margin-small-left"
+          >
+            {{t "ember-gwr.components.modelForm.cancelImport"}}
+          </LinkTo>
+        {{/if}}
+        {{#if (or (and f.model.isInvalid f.model.isDirty) @errors)}}
+          <div class="uk-margin-left uk-flex-inline">
+            <SubmitErrors />
+          </div>
+        {{/if}}
+      </div>
+    {{/let}}
+  </ValidatedForm>
+{{/if}}

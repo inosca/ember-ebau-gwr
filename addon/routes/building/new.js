@@ -18,7 +18,7 @@ export default class BuildingNewRoute extends BuildingFormRoute {
 
   async model() {
     const model = {
-      instanceId: this.modelFor("application")?.id,
+      caseId: this.modelFor("application")?.id,
       projectId: this.modelFor("building"),
     };
     const buildingWork = new BuildingWork();

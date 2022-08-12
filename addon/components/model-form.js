@@ -3,6 +3,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { dropTask } from "ember-concurrency";
+import ImportResource from "ember-ebau-gwr/resources/import";
 import { isIsoDate } from "ember-ebau-gwr/utils";
 
 export default class ModelFormComponent extends Component {
@@ -16,12 +17,35 @@ export default class ModelFormComponent extends Component {
   // All diff state tracking is done in field.js
   @tracked diffs = [];
 
+  @tracked import = ImportResource.from(this, () => ({
+    caseId: this.args.importQueryParams.caseId,
+    showImport: this.args.importQueryParams.showImport,
+    importIndex: this.args.importQueryParams.importIndex,
+    importModelName: this.args.modelName,
+  }));
+
+  // These getters are a bit funky so they only access the `import`
+  // prop (and trigger the resource) if they need to.
+  get importData() {
+    return this.args.importQueryParams.caseId &&
+      this.args.importQueryParams.showImport
+      ? this.import
+      : null;
+  }
+
+  get showImport() {
+    return Boolean(this.importData);
+  }
+
   get isSaving() {
     return this.submit.isRunning || this.args.onSubmit.isRunning;
   }
 
   get modelHasImport() {
-    return this.config.importModels.includes(this.args.headerModelName);
+    return (
+      this.args.importQueryParams.caseId &&
+      this.config.importModels.includes(this.args.modelName)
+    );
   }
 
   finishImport() {
@@ -80,7 +104,7 @@ export default class ModelFormComponent extends Component {
         }
       });
     };
-    deepMerge(this.args.model, this.args.import.data);
+    deepMerge(this.args.model, this.import.value.data);
     this.finishImport();
   }
 }

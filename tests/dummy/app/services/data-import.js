@@ -2,6 +2,7 @@ import Service from "@ember/service";
 
 export default class DataImport extends Service {
   async fetchProject() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     return {
       constructionProjectDescription:
         "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
@@ -28,6 +29,7 @@ export default class DataImport extends Service {
 
   async fetchBuildings() {
     // Theoretically we would have to ignore kindOfWork since this is defined on creation and linking.
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     return [
       {
         kindOfWork: 6001,
@@ -66,6 +68,7 @@ export default class DataImport extends Service {
   }
 
   async fetchDwellings() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     return [
       {
         EDID: 0, // not sure if information can be given
@@ -131,6 +134,7 @@ export default class DataImport extends Service {
   }
 
   async fetchEntrances() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     return [
       {
         buildingEntranceNo: "12c",
