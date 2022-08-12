@@ -166,6 +166,16 @@ export default class ConstructionProjectService extends GwrService {
     return projects;
   }
 
+  async removeProjectLink(projectId) {
+    const link = this.store
+      .peekAll("gwr-link")
+      .find(({ eproid }) => Number(eproid) === projectId);
+    await link.destroyRecord();
+    this.all.lastSuccessful.value = this.all.lastSuccessful.value.filter(
+      (project) => project.EPROID !== projectId
+    );
+  }
+
   async search(query = {}) {
     return super.search(query, query.EPROID, {
       xmlMethod: "getConstructionProject",

@@ -9,7 +9,7 @@
   <ModelForm::Header::Actions
     @submit={{@submit}}
     @submitErrors={{@submitErrors}}
-    @hasStatus={{and @hasStatus @model (not @model.isNew)}}
+    @showStatusActions={{and @showStatusActions @model (not @model.isNew)}}
     @modelHasImport={{@modelHasImport}}
     @import={{@import}}
     @importAllData={{@importAllData}}
@@ -24,10 +24,10 @@
   {{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
     <div
       class="uk-flex uk-margin-top
-        {{if @hasStatus "uk-flex-between" "uk-flex-right"}}
+        {{if @showStatusActions "uk-flex-between" "uk-flex-right"}}
         uk-flex-bottom uk-flex-wrap uk-flex-wrap-around"
     >
-      {{#if @hasStatus}}
+      {{#if @showStatusActions}}
         <ModelForm::Header::Status
           @model={{@model}}
           @modelName={{@modelName}}

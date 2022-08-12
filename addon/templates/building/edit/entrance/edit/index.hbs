@@ -16,7 +16,7 @@
       @headerModelDescription={{this.buildingEntrance.fullAddressText}}
       @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
       @headerModelName="entrance"
-      @hasStatus={{false}}
+      @showStatusActions={{false}}
       @import={{this.import}}
       @disabled={{or this.hasNoStreet this.quarterlyClosure.disableForms}}
       as |Field|
