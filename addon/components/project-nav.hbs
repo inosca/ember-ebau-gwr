@@ -2,40 +2,44 @@
   {{#if this.constructionProject.all.isRunning}}
     <Loading />
   {{else}}
-    {{#if this.displayLandingPage}}
+    {{#if (and @caseId this.displayLandingPage)}}
       <ProjectLandingPage />
     {{else}}
-      <div class="ember-ebau-gwr-projects-header">
-        <div class="uk-padding-small">
-          <LinkedProjects
-            @projects={{this.projects}}
-            @activeProject={{this.activeProject}}
-            @removeProject={{this.removeProjectLink}}
-            class="uk-padding-small"
-          />
-        </div>
-        <hr class="uk-margin-remove" />
-        <div uk-alert class="uk-margin-remove">
-          <div class="uk-flex uk-flex-between uk-flex-middle">
-            <div class="uk-flex uk-flex-middle uk-width-expand uk-margin-right">
-              <div class="uk-flex-none uk-margin-right">
-                <span uk-icon="icon: info"></span>
-              </div>
-              <div>
-                <div>
-                  {{t "ember-gwr.nav.housingStatInfo"}}
+      {{#if @caseId}}
+        <div class="ember-ebau-gwr-projects-header">
+          <div class="uk-padding-small">
+            <LinkedProjects
+              @projects={{this.projects}}
+              @activeProject={{this.activeProject}}
+              @removeProject={{this.removeProjectLink}}
+              class="uk-padding-small"
+            />
+          </div>
+          <hr class="uk-margin-remove" />
+          <div uk-alert class="uk-margin-remove">
+            <div class="uk-flex uk-flex-between uk-flex-middle">
+              <div
+                class="uk-flex uk-flex-middle uk-width-expand uk-margin-right"
+              >
+                <div class="uk-flex-none uk-margin-right">
+                  <span uk-icon="icon: info"></span>
                 </div>
                 <div>
-                  {{t "ember-gwr.nav.deletionInfo"}}
+                  <div>
+                    {{t "ember-gwr.nav.housingStatInfo"}}
+                  </div>
+                  <div>
+                    {{t "ember-gwr.nav.deletionInfo"}}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="uk-width-auto">
-              <HousingStatLink/>
+              <div class="uk-width-auto">
+                <HousingStatLink />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      {{/if}}
       <UkTab as |Tab|>
         <Tab.item
           @href={{if
