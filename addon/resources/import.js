@@ -22,15 +22,15 @@ export default class ImportResource extends Resource {
   get value() {
     const index = Number(this.importIndex);
     const data =
-      Array.isArray(this.importData) && !isNaN(index)
-        ? this.importData[index]
-        : this.importData;
+      Array.isArray(this.importedData) && !isNaN(index)
+        ? this.importedData[index]
+        : this.importedData;
 
-    return this.showImport && this.caseId
+    return this.showImport && this.instanceId
       ? {
           index,
           data,
-          originalData: this.importData,
+          originalData: this.importedData,
         }
       : false;
   }
@@ -43,24 +43,30 @@ export default class ImportResource extends Resource {
     return Boolean(this.error);
   }
 
-  modify(_positional, { caseId, showImport, importIndex, importModelName }) {
+  modify(
+    _positional,
+    { instanceId, showImport, importIndex, importModelName }
+  ) {
     this.showImport = showImport;
     this.importIndex = importIndex;
-    this.caseId = caseId;
-    this.fetchCalumaData.perform(caseId, importModelName);
+    this.instanceId = instanceId;
+    this.fetchCalumaData.perform(instanceId, importModelName);
   }
 
-  @lastValue("fetchCalumaData") importData;
+  @lastValue("fetchCalumaData") importedData;
   @task
-  *fetchCalumaData(caseId, importModelName, ...args) {
+  *fetchCalumaData(instanceId, importModelName, ...args) {
     assert(
       "Must set `importModelName` to a string.",
       typeof importModelName === "string"
     );
-    assert("Must set `caseId`.", caseId !== null && caseId !== undefined);
+    assert(
+      "Must set `instanceId`.",
+      instanceId !== null && instanceId !== undefined
+    );
     try {
       return yield this.dataImport[IMPORT_MAP[importModelName]](
-        caseId,
+        instanceId,
         ...args
       );
     } catch (error) {

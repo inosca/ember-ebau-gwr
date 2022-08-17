@@ -29,11 +29,11 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get importValue() {
-    return get(this.args.importData, this.args.attr);
+    return get(this.args.importedData, this.args.attr);
   }
 
   get showDiff() {
-    if (this.args.importData) {
+    if (this.args.importedData) {
       return (
         !this.diffResolved &&
         this.importValue !== null &&
@@ -45,7 +45,7 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get disableInput() {
-    return this.args.importData && !this.showDiff;
+    return this.args.importedData && !this.showDiff;
   }
 
   get isStep() {
@@ -106,7 +106,7 @@ export default class ModelFormFieldComponent extends Component {
       // Date casts necessary for import
       this.args.model.set(attr, isIsoDate(value) ? new Date(value) : value);
 
-      if (this.args.importData) {
+      if (this.args.importedData) {
         this.diffResolved = true;
         this.args.resolveDiff(this.args.attr);
       }

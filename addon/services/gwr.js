@@ -123,14 +123,14 @@ export default class GwrService extends Service {
     )}`;
   }
 
-  buildLifeCycleError(error, { caseId, projectId }) {
+  buildLifeCycleError(error, { instanceId, projectId }) {
     const { buildingId, dwellingId, states } = error;
     return {
       linkToRoute: dwellingId
         ? "building.edit.dwelling.edit"
         : "building.edit.form",
       linkToModels: [
-        caseId,
+        instanceId,
         projectId,
         buildingId,
         ...(dwellingId ? [dwellingId] : []),

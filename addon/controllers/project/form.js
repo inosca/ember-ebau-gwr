@@ -43,7 +43,7 @@ export default class ProjectFormController extends ImportController {
   }
 
   get showStatusActions() {
-    return Boolean(this.caseId);
+    return Boolean(this.instanceId);
   }
 
   @lastValue("fetchProject") project;
@@ -76,11 +76,11 @@ export default class ProjectFormController extends ImportController {
         const project = yield this.constructionProject.create(this.project);
         const link = this.store.createRecord("gwr-link", {
           eproid: project.EPROID,
-          localId: this.model.caseId,
+          localId: this.model.instanceId,
         });
         yield link.save();
         // Reload the overview table to display the new project
-        yield this.constructionProject.all.perform(this.model.caseId);
+        yield this.constructionProject.all.perform(this.model.instanceId);
         this.router.transitionTo("project.form", project.EPROID);
       } else {
         if (

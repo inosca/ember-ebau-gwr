@@ -1,4 +1,4 @@
-{{#if this.importData.isLoading}}
+{{#if this.importedData.isLoading}}
   <Loading />
 {{else}}
   <ValidatedForm
@@ -36,7 +36,7 @@
         @modelName={{@modelName}}
         @modelDescription={{@headerModelDescription}}
         @showStatusActions={{@showStatusActions}}
-        @import={{this.importData.value}}
+        @import={{this.importedData.value}}
         @modelHasImport={{this.modelHasImport}}
         @importAllData={{this.importAllData}}
         @modelStatusOptions={{@modelStatusOptions}}
@@ -57,7 +57,7 @@
         (component
           "model-form/field"
           model=f.model
-          importData=this.importData.value
+          importedData=this.importedData.value
           translationBase=@translationBase
           input=f.input
           registerDiff=this.registerDiff
@@ -65,7 +65,7 @@
           disabled=@disabled
         )
         f.model
-        this.importData.value
+        this.importedData.value
       }}
       <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
         <Submit class="uk-flex-none" />

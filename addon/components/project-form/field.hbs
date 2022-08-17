@@ -8,7 +8,7 @@
   {{#if this.showDiff}}
     <ProjectForm::Diff
       @current={{get @project @attr}}
-      @new={{get @importData @attr}}
+      @new={{get @importedData @attr}}
       @updateProjectField={{fn this.updateProjectField @attr}}
     />
   {{else}}

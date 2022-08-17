@@ -243,7 +243,7 @@ ember-gwr:
 
       diff:
         existingData: Existierende Daten im GWR
-        importData: Importierte Daten
+        importedData: Importierte Daten
         apply: Übernehmen
 
     modelForm:
@@ -262,7 +262,7 @@ ember-gwr:
 
       diff:
         existingData: Existierende Daten im GWR
-        importData: Importierte Daten
+        importedData: Importierte Daten
         apply: Übernehmen
         resolved: Alle Konflikte sind gelöst. Klicken Sie Speichern um die Änderungen zu übernehmen!
         cancel: Verwerfen

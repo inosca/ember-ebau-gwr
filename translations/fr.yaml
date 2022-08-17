@@ -243,7 +243,7 @@ ember-gwr:
 
       diff:
         existingData: Données existantes dans le RegBL
-        importData: Données importées
+        importedData: Données importées
         apply: Reprendre
 
     modelForm:
@@ -262,7 +262,7 @@ ember-gwr:
 
       diff:
         existingData: Données existantes dans le RegBL
-        importData: Données importées
+        importedData: Données importées
         apply: Reprendre
         resolved: Tous les conflits sont résolus. Cliquez sur enregistrer pour reprendre les modifications!
         cancel: Rejeter

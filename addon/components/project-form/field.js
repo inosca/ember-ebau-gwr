@@ -16,16 +16,16 @@ export default class ProjectFormFieldComponent extends Component {
   }
 
   get showDiff() {
-    if (this.args.importData) {
+    if (this.args.importedData) {
       const currentData = get(this.args.project, this.args.attr);
-      const newData = get(this.args.importData, this.args.attr);
+      const newData = get(this.args.importedData, this.args.attr);
       return !this.diffResolved && newData && newData !== currentData;
     }
     return false;
   }
 
   get disableInput() {
-    return (this.args.importData && !this.showDiff) || this.args.disabled;
+    return (this.args.importedData && !this.showDiff) || this.args.disabled;
   }
 
   @action
@@ -43,7 +43,7 @@ export default class ProjectFormFieldComponent extends Component {
     } else {
       set(this.args.project, attr, value);
 
-      if (this.args.importData) {
+      if (this.args.importedData) {
         this.diffResolved = true;
       }
     }

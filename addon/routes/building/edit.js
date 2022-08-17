@@ -5,7 +5,7 @@ export default class BuildingEditRoute extends Route {
     return {
       buildingId,
       projectId: this.modelFor("building"),
-      caseId: this.modelFor("application")?.id,
+      instanceId: this.modelFor("application")?.id,
     };
   }
 }

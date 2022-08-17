@@ -13,11 +13,11 @@ export default class ImportController extends Controller {
   @tracked importIndex = undefined;
 
   get importQueryParams() {
-    return this.model.caseId
+    return this.model.instanceId
       ? {
           showImport: this.showImport,
           importIndex: this.importIndex,
-          caseId: this.model.caseId,
+          instanceId: this.model.instanceId,
         }
       : { showImport: false };
   }

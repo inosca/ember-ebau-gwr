@@ -1,3 +1,14 @@
-<ProjectNav @caseId={{this.model}}>
-  {{outlet}}
-</ProjectNav>
+{{#if this.isLoading}}
+  <Loading />
+{{else}}
+  {{#if (and this.model this.displayLandingPage)}}
+    <ProjectLandingPage />
+  {{else}}
+    <ProjectNav
+      @activeProjectId={{this.activeProjectId}}
+      @projects={{this.projects.value}}
+      @instanceId={{this.model}}
+    />
+    {{outlet}}
+  {{/if}}
+{{/if}}

@@ -18,7 +18,7 @@ export default class ModelFormComponent extends Component {
   @tracked diffs = [];
 
   @tracked import = ImportResource.from(this, () => ({
-    caseId: this.args.importQueryParams.caseId,
+    instanceId: this.args.importQueryParams.instanceId,
     showImport: this.args.importQueryParams.showImport,
     importIndex: this.args.importQueryParams.importIndex,
     importModelName: this.args.modelName,
@@ -26,15 +26,15 @@ export default class ModelFormComponent extends Component {
 
   // These getters are a bit funky so they only access the `import`
   // prop (and trigger the resource) if they need to.
-  get importData() {
-    return this.args.importQueryParams.caseId &&
+  get importedData() {
+    return this.args.importQueryParams.instanceId &&
       this.args.importQueryParams.showImport
       ? this.import
       : null;
   }
 
   get showImport() {
-    return Boolean(this.importData);
+    return Boolean(this.importedData);
   }
 
   get isSaving() {
@@ -43,7 +43,7 @@ export default class ModelFormComponent extends Component {
 
   get modelHasImport() {
     return (
-      this.args.importQueryParams.caseId &&
+      this.args.importQueryParams.instanceId &&
       this.config.importModels.includes(this.args.modelName)
     );
   }
