@@ -9,24 +9,26 @@
   <td
     class={{concat
       "uk-table-shrink "
-      (if (eq @activeProject project.EPROID) "uk-text-bold")
+      (if (eq @activeProjectId project.EPROID) "uk-text-bold")
     }}
   >
     <LinkTo @route="project.form" @model={{project.EPROID}} class="uk-link">
       {{project.EPROID}}
     </LinkTo>
   </td>
-  <td class={{if (eq @activeProject project.EPROID) "uk-text-bold"}}>
+  <td class={{if (eq @activeProjectId project.EPROID) "uk-text-bold"}}>
     {{project.constructionProjectDescription}}
   </td>
   <td class="uk-table-shrink">
-    {{#if (eq @activeProject project.EPROID)}}
+    {{#if (eq @activeProjectId project.EPROID)}}
       <button
         type="button"
         class="uk-icon-button"
         uk-icon="trash"
-        uk-tooltip="title: {{t "ember-gwr.components.linkedModels.removeLink"}}; container: {{this.config.modalContainer}}"
-        {{on "click" @removeProject}}
+        uk-tooltip="title: {{t
+          'ember-gwr.components.linkedModels.removeLink'
+        }}; container: {{this.config.modalContainer}}"
+        {{on "click" this.removeProjectLink}}
       >
       </button>
     {{/if}}

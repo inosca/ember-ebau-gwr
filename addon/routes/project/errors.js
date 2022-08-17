@@ -4,7 +4,7 @@ export default class ProjectErrorsRoute extends Route {
   model({ project_id: projectId }) {
     return {
       projectId,
-      caseId: this.modelFor("application")?.id,
+      instanceId: this.modelFor("application")?.id,
     };
   }
 

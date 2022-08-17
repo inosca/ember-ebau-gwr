@@ -3,7 +3,7 @@
     (component
       "project-form/field"
       project=@project
-      importData=@importData
+      importedData=@importedData
       translationBase=@translationBase
     )
   }}
@@ -11,7 +11,7 @@
   <UkButton @type="submit" @color="primary" @loading={{this.isSaving}}>
     {{t "ember-gwr.components.projectForm.save"}}
   </UkButton>
-  {{#if @importData}}
+  {{#if @importedData}}
     <LinkTo @query={{hash import=false}} class="uk-button uk-button-default">
       {{t "ember-gwr.components.projectForm.cancelImport"}}
     </LinkTo>
