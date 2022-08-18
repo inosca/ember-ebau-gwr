@@ -57,6 +57,8 @@ ember-gwr:
     searchProject: Bauprojekte suchen und bearbeiten
     searchBuilding: Gebäude suchen und bearbeiten
     quarterlyClosure: Quartalsabschluss {quarter}
+    backToGlobal: Zurück zur Übersicht
+    backToSearch: Zurück zur Suche
 
   nav:
     projectDetails: Projektdetails

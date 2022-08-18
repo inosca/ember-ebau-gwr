@@ -27,6 +27,13 @@ export default class ProjectController extends Controller {
 
   @tracked projects = trackedFunction(this, async () => {
     await Promise.resolve();
+
+    if (!this.model) {
+      return [
+        await this.constructionProject.getFromCacheOrApi(this.activeProjectId),
+      ];
+    }
+
     // We then use `gwr.projects` in the template to reference this.
     // This is so we can update the table if we add a new project in the subroute /new
     const projects = await this.constructionProject.all.perform(this.model);

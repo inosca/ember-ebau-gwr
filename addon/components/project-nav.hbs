@@ -30,23 +30,19 @@
       </div>
     </div>
   </div>
+{{else}}
+  <BackRoute
+    @backRoute="search-project"
+    @backText={{t "ember-gwr.globalLandingPage.backToSearch"}}
+  />
 {{/if}}
 {{#if @activeProjectId}}
   <UkTab as |Tab|>
-    <Tab.item
-      @href={{if
-        @activeProjectId
-        (build-url "project.form" (array @activeProjectId))
-        (build-url "project.new")
-      }}
-    >
+    <Tab.item @href={{build-url "project.form" (array @activeProjectId)}}>
       {{t "ember-gwr.models.project" count=1}}
     </Tab.item>
     <Tab.item
-      @href={{if
-        @activeProjectId
-        (build-url "project.linked-buildings" (array @activeProjectId))
-      }}
+      @href={{build-url "project.linked-buildings" (array @activeProjectId)}}
       @disabled={{this.buildingTabInfoText}}
     >
       {{t "ember-gwr.models.building" count=1}}
@@ -59,14 +55,11 @@
         ></span>
       </div>
     {{/if}}
-    {{#if @activeProjectId}}
-      <Tab.item
-        class="uk-position-right"
-        @href={{build-url "project.errors" (array @activeProjectId)}}
-      >
-        {{t "ember-gwr.issues.nav"}}
-      </Tab.item>
-    {{/if}}
+    <Tab.item
+      class="uk-position-right"
+      @href={{build-url "project.errors" (array @activeProjectId)}}
+    >
+      {{t "ember-gwr.issues.nav"}}
+    </Tab.item>
   </UkTab>
-
 {{/if}}

@@ -1,8 +1,15 @@
-<BackRoute 
-  @backRoute="project.linked-buildings" 
-  @backModel={{@model}}
-  @backText={{t "ember-gwr.building.backToProject"}}
-/>
+{{#if @model}}
+  <BackRoute
+    @backRoute="project.linked-buildings"
+    @backModel={{@model}}
+    @backText={{t "ember-gwr.building.backToProject"}}
+  />
+{{else}}
+  <BackRoute
+    @backRoute="global-landing-page"
+    @backText={{t "ember-gwr.globalLandingPage.backToGlobal"}}
+  />
+{{/if}}
 
 <h1>
   {{t "ember-gwr.searchBuilding.heading"}}
