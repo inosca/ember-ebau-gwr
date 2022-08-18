@@ -1,130 +1,145 @@
-<form ...attributes {{on "submit" this.submit}}>
-  <div>
-    {{yield
-      (component
-        "project-form/field"
-        update=this.updateField
-        translationBase=@translationBase
-      )
-    }}
+<ValidatedForm
+  @model={{this.changeset}}
+  @on-submit={{perform this.submit}}
+  @validateBeforeSubmit={{true}}
+  class="validated-form"
+  ...attributes
+  as |Form|
+>
+  {{#let
+    (component
+      Form.submit
+      type="submit"
+      label=(t "ember-gwr.components.modelForm.save")
+      disabled=(or this.isSaving @disabled this.isSubmitBtnDisabled)
+      loading=this.submit.isRunning
+      buttonComponent=(component "model-form/submit" color="primary")
+    )
+    as |Submit|
+  }}
+  {{!-- Error Select Component. Allows to filter by "hasError" --}}
+  {{#let
+    (component
+      Form.input
+      name="hasError"
+      type="select"
+      label=(t "ember-gwr.search.hasError")
+      optionLabelPath="label"
+      optionValuePath="value"
+      optionTargetPath="value"
+      options=this.errorOptions
+      prompt=(t "ember-gwr.search.hasErrorPlaceholder")
+      errorComponent=(component "validated-form-error")
+    )
+    as |ErrorSelect|
+  }}
+  {{#let
+    (component
+      "uk-button"
+      label=(if this.extendedSearch (t "ember-gwr.components.search.extendedSearch.collapse") (t "ember-gwr.components.search.extendedSearch.extend"))
+      name=this.extendedSearch
+      value=this.extendedSearch
+      onClick=(fn (mut this.extendedSearch) (not this.extendedSearch))
+    )
+    as |ExtendedSearchToggle|
+  }}
+    {{yield (component Form.input errorComponent=(component "validated-form-error")) Form ErrorSelect ExtendedSearchToggle}}
+    {{#if this.extendedSearch}}
+      <div class="uk-flex uk-flex-between uk-margin-small-bottom uk-margin-top">
+        <div class="uk-width-1-2">
+          <h3>
+            {{t
+              "ember-gwr.components.search.realestateIdentificationHeading"
+            }}
+          </h3>
+          <Form.input
+            @name="realestateIdentification.EGRID"
+            @label={{t "ember-gwr.building.realestateIdentification.EGRID"}}
+          />
+          <Form.input
+            @name="realestateIdentification.subDistrict"
+            @label={{t "ember-gwr.building.realestateIdentification.subDistrict"}}
+            type="number"
+          />
+        </div>
 
-    {{#let
-      (component
-        "project-form/field"
-        update=this.updateField
-        translationBase="ember-gwr.components.search"
-      )
-      as |Field|
-    }}
-      {{#if this.extendedSearch}}
-        <div class="uk-flex uk-flex-between uk-margin-small-bottom">
-          <div class="uk-width-1-2">
+        <div>
+          <hr
+            class="uk-divider-vertical uk-height-1-1 uk-margin-left uk-margin-right"
+          />
+        </div>
+
+        <div class="uk-width-1-2">
+          <div class="uk-margin">
             <h3>
-              {{t
-                "ember-gwr.components.search.realestateIdentificationHeading"
-              }}
+              {{t "ember-gwr.components.search.createDateHeading"}}
             </h3>
-            {{#if this.validationErrors.realestateIdentification}}
-              <div class="uk-alert-danger" uk-alert>
-                <p>
-                  {{this.validationErrors.realestateIdentification}}
-                </p>
-              </div>
-            {{/if}}
-            <Field @attr="realestateIdentification.EGRID" />
-            <Field @attr="realestateIdentification.subDistrict" type="number" />
-          </div>
-
-          <div>
-            <hr
-              class="uk-divider-vertical uk-height-1-1 uk-margin-left uk-margin-right"
-            />
-          </div>
-
-          <div class="uk-width-1-2">
-            <div class="uk-margin">
-              <h3>
-                {{t "ember-gwr.components.search.createDateHeading"}}
-              </h3>
-              {{#if this.validationErrors.createDate}}
-                <div class="uk-alert-danger" uk-alert>
-                  <p>
-                    {{this.validationErrors.createDate}}
-                  </p>
-                </div>
-              {{/if}}
-              <div class="uk-flex">
+            <div class="uk-flex">
+              <div class="uk-width-1-2">
                 <div class="uk-margin-small-right">
-                  <Field
-                    @attr="createDate.dateFrom"
-                    @noMargin={{true}}
-                    @inputType="date"
+                  <Form.input
+                    @name="createDate.dateFrom"
+                    @label={{t "ember-gwr.components.search.createDate.dateFrom"}}
+                    @type="date"
+                    @errorComponent={{component "validated-form-error"}}
                   />
                 </div>
-                <Field
-                  @attr="createDate.dateTo"
-                  @noMargin={{true}}
-                  @inputType="date"
-                />
+              </div>
+              <div class="uk-width-1-2">
+                <div class="uk-margin-small-right">
+                  <Form.input
+                    @name="createDate.dateTo"
+                    @label={{t "ember-gwr.components.search.createDate.dateTo"}}
+                    @type="date"
+                    @errorComponent={{component "validated-form-error"}}
+                  />
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="uk-margin">
-              <h3>
-                {{t "ember-gwr.components.search.modifyDateHeading"}}
-              </h3>
-              {{#if this.validationErrors.modifyDate}}
-                <div class="uk-alert-danger" uk-alert>
-                  <p>
-                    {{this.validationErrors.modifyDate}}
-                  </p>
-                </div>
-              {{/if}}
-              <div class="uk-flex">
+          <div class="uk-margin">
+            <h3>
+              {{t "ember-gwr.components.search.modifyDateHeading"}}
+            </h3>
+            <div class="uk-flex">
+              <div class="uk-width-1-2">
                 <div class="uk-margin-small-right">
-                  <Field
-                    @attr="modifyDate.dateFrom"
-                    @noMargin={{true}}
-                    @inputType="date"
+                  <Form.input
+                    @name="modifyDate.dateFrom"
+                    @label={{t "ember-gwr.components.search.modifyDate.dateFrom"}}
+                    @type="date"
+                    @errorComponent={{component "validated-form-error"}}
                   />
                 </div>
-                <Field
-                  @attr="modifyDate.dateTo"
-                  @noMargin={{true}}
-                  @inputType="date"
-                />
+              </div>
+              <div class="uk-width-1-2">
+                <div class="uk-margin-small-right">
+                  <Form.input
+                    @name="modifyDate.dateTo"
+                    @label={{t "ember-gwr.components.search.modifyDate.dateTo"}}
+                    @type="date"
+                    @errorComponent={{component "validated-form-error"}}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    {{/if}}
+    
+    <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1">
+      <Submit />
+      {{#if this.isSubmitBtnDisabled}}
+        <div uk-alert class="uk-width-1-1 uk-alert-warning uk-margin-left uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle">
+          <span>
+            {{t "ember-gwr.search.minFilterError"}}
+          </span>
+        </div>  
       {{/if}}
-    {{/let}}
-    <div class="uk-flex uk-flex-right">
-      {{#if @showExtendedSearch}}
-        <button
-          type="button"
-          class="uk-button uk-button-default"
-          {{on
-            "click"
-            (fn (mut this.extendedSearch) (not this.extendedSearch))
-          }}
-        >
-          {{t
-            (concat
-              "ember-gwr.components.search.extendedSearch."
-              (if this.extendedSearch "collapse" "extend")
-            )
-          }}
-        </button>
-      {{/if}}
-      <UkButton
-        @color="primary"
-        @type="submit"
-        @loading={{@search.isRunning}}
-        class="uk-margin-small-left"
-      >
-        {{@searchLabel}}
-      </UkButton>
     </div>
-  </div>
-</form>
+  {{/let}}
+  {{/let}}
+  {{/let}}
+</ValidatedForm>
