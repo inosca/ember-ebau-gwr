@@ -17,7 +17,7 @@
       @headerModelId={{this.project.EPROID}}
       @projectId={{this.project.EPROID}}
       @modelName="project"
-      @showStatusActions={{this.showStatusActions}}
+      @showStatusActions={{this.hasInstanceContext}}
       @modelStatusOptions={{this.choiceOptions.projectStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}

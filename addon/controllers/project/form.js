@@ -42,10 +42,6 @@ export default class ProjectFormController extends ImportController {
     return states;
   }
 
-  get showStatusActions() {
-    return Boolean(this.instanceId);
-  }
-
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
@@ -65,7 +61,7 @@ export default class ProjectFormController extends ImportController {
 
   @action
   cancelMerge() {
-    this.resetImport();
+    this.resetImportQueryParams();
     this.fetchProject.perform();
   }
 

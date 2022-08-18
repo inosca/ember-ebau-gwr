@@ -7,6 +7,7 @@
     {{/if}}
     <ModelForm
       @model={{this.buildingEntrance}}
+      @instanceId={{this.model.instanceId}}
       @validations={{this.BuildingEntranceValidations}}
       @onSubmit={{this.saveBuildingEntrance}}
       @translationBase="ember-gwr.buildingEntrance.fields"
@@ -15,9 +16,10 @@
       @headerModelId={{this.buildingEntrance.EDID}}
       @headerModelDescription={{this.buildingEntrance.fullAddressText}}
       @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
-      @headerModelName="entrance"
+      @modelName="entrance"
+      @importModelName="buildingEntrance"
       @showStatusActions={{false}}
-      @import={{this.import}}
+      @importQueryParams={{this.importQueryParams}}
       @disabled={{or this.hasNoStreet this.quarterlyClosure.disableForms}}
       as |Field|
     >

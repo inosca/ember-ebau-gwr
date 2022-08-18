@@ -22,6 +22,10 @@ export default class ImportController extends Controller {
       : { showImport: false };
   }
 
+  get hasInstanceContext() {
+    return Boolean(this.model.instanceId);
+  }
+
   resetImportQueryParams() {
     this.showImport = false;
     this.importIndex = null;

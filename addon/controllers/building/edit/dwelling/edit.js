@@ -8,7 +8,6 @@ import Dwelling from "ember-ebau-gwr/models/dwelling";
 import DwellingValidations from "ember-ebau-gwr/validations/dwelling";
 
 export default class BuildingEditDwellingEditController extends ImportController {
-  importModelName = "dwelling";
   Models = Models;
   DwellingValidations = DwellingValidations;
 
@@ -37,7 +36,6 @@ export default class BuildingEditDwellingEditController extends ImportController
     try {
       this.errors = [];
 
-      yield this.fetchCalumaData.perform();
       yield this.fetchEntrances.perform();
       if (this.model.dwelling?.isNew) {
         this.model.dwelling.EDID = this.entrances[0].EDID;
@@ -85,7 +83,7 @@ export default class BuildingEditDwellingEditController extends ImportController
 
   @action
   cancelMerge() {
-    this.resetImport();
+    this.resetImportQueryParams();
     this.fetchDwelling.perform();
   }
 

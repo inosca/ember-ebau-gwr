@@ -19,6 +19,7 @@
     {{/if}}
     <ModelForm
       @model={{this.buildingWork}}
+      @instanceId={{this.model.instanceId}}
       @validations={{this.BuildingWorkValidations}}
       @onSubmit={{this.saveBuildingWork}}
       @errors={{this.errors}}
@@ -27,9 +28,9 @@
       @headerModel={{this.building}}
       @headerModelId={{this.building.EGID}}
       @projectId={{this.model.projectId}}
-      @headerModelName="building"
-      @showStatusActions={{true}}
-      @import={{this.import}}
+      @modelName="building"
+      @showStatusActions={{this.hasInstanceContext}}
+      @importQueryParams={{this.importQueryParams}}
       @modelStatusOptions={{this.buildingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}
@@ -39,7 +40,7 @@
       @getChangeHint={{fn this.gwr.getChangeHint this.buildingAPI.cacheClass}}
       @modelStatusField="buildingStatus"
       @disabled={{this.quarterlyClosure.disableForms}}
-      as |Field changeset|
+      as |Field changeset import|
     >
       {{#unless this.buildingWork.isNew}}
         <h3>
@@ -221,7 +222,7 @@
 
       <Field @attr="building.nameOfBuilding" />
 
-      {{#if (or (not this.buildingWork.isNew) this.import)}}
+      {{#if (or (not this.buildingWork.isNew) import)}}
         <Field @attr="building.dateOfConstruction.yearMonthDay" @type="date" />
         {{#if this.buildingWork.building.dateOfConstruction.year}}
           <Field @attr="building.dateOfConstruction.year" @disabled={{true}} />
@@ -319,12 +320,12 @@
             (show-model-field
               'building.thermotechnicalDeviceForHeating2.heatGeneratorHeating'
               changeset
-              this.import
+              import
             )
             (show-model-field
               'building.thermotechnicalDeviceForHeating2.energySourceHeating'
               changeset
-              this.import
+              import
             )
           )
           '0'
@@ -404,12 +405,12 @@
             (show-model-field
               'building.thermotechnicalDeviceForHeating2.heatGeneratorHeating'
               changeset
-              this.import
+              import
             )
             (show-model-field
               'building.thermotechnicalDeviceForHeating2.energySourceHeating'
               changeset
-              this.import
+              import
             )
           )
           '0'
