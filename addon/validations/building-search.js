@@ -5,7 +5,6 @@ export default {
     presence: true,
     on: ["EGID", "EGRID", "nameLong"],
   }),
-  EGID: validatePresence(true),
   realestateIdentification: {
     number: validatePresence({
       presence: true,
