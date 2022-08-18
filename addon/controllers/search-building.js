@@ -19,8 +19,6 @@ export default class SearchBuildingController extends Controller {
 
   BuildingSearchValidations = BuildingSearchValidations;
 
-  @tracked searchModel = {};
-
   get periodOfConstructionOptions() {
     return periodOfConstructionOptions.map((option) => ({
       value: option,
@@ -31,10 +29,10 @@ export default class SearchBuildingController extends Controller {
   }
 
   @lastValue("search") searchResults;
-  @task *search() {
+  @task *search(_query) {
     try {
       const query = {
-        ...this.searchModel,
+        ..._query,
         streetLang: this.street.language,
         municipality: this.building.municipality,
       };
