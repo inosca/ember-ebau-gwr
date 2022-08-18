@@ -21,7 +21,14 @@ export default class SearchBuildingController extends Controller {
 
   @tracked searchModel = {};
 
-  periodOfConstruction = periodOfConstructionOptions;
+  get periodOfConstructionOptions() {
+    return periodOfConstructionOptions.map((option) => ({
+      value: option,
+      label: this.intl.t(
+        `ember-gwr.building.dateOfConstruction.periodOfConstructionOptions.${option}`
+      ),
+    }));
+  }
 
   @lastValue("search") searchResults;
   @task *search() {

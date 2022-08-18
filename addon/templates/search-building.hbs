@@ -15,69 +15,81 @@
   {{t "ember-gwr.searchBuilding.heading"}}
 </h1>
 
-<ModelForm
+<Search::Filters
   @model={{this.searchModel}}
   @validations={{this.BuildingSearchValidations}}
-  @onSubmit={{this.search}}
-  @errors={{this.errors}}
-  @translationBase="ember-gwr.searchBuilding"
-  @translationBaseHeader="ember-gwr.searchBuilding"
-  as |Field|
+  @search={{this.search}}
+  @extendedSearch={{true}}
+  as |FilterInput Form ErrorSelect ExtendedSearchToggle|
 >
   <div class="uk-flex uk-flex-wrap uk-flex-between">
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
-          @attr="EGID"
+        <FilterInput
+          @label={{t "ember-gwr.building.EGID"}}
+          @name="EGID"
           @translationBase="ember-gwr.building"
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
+        <FilterInput
+          @label={{t "ember-gwr.building.dateOfConstruction.periodOfConstruction"}}
           @type="select"
-          @attr="periodOfConstruction"
-          @translationBase="ember-gwr.building.dateOfConstruction"
-          @gwrEnumOptions={{this.periodOfConstruction}}
+          @name="periodOfConstruction"
+          @optionLabelPath="label"
+          @optionValuePath="value"
+          @optionTargetPath="value"
+          @prompt={{t "ember-gwr.building.dateOfConstruction.periodOfConstructionPlaceholder"}}
+          @options={{this.periodOfConstructionOptions}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
-          @attr="hasError"
-          @inputType="select"
-          @options={{array true false}}
+        <ErrorSelect />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <FilterInput
+          @name="descriptionLong"
+          @label={{t "ember-gwr.building.street.description.descriptionLong"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
-          @attr="descriptionLong"
-          @translationBase="ember-gwr.building.street.description"
+        <FilterInput
+          @name="buildingEntranceNo"
+          @label={{t "ember-gwr.building.buildingEntranceNo"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
-          @attr="buildingEntranceNo"
-          @translationBase="ember-gwr.building"
+        <FilterInput
+          @name="nameLong"
+          @label={{t "ember-gwr.building.locality.name.nameLong"}}
         />
       </div>
     </div>
     <div class="uk-width-1-3@m uk-width-1">
       <div class="uk-margin-small-right">
-        <Field
-          @attr="nameLong"
-          @translationBase="ember-gwr.building.locality.name"
+        <FilterInput
+          @name="realestateIdentification.number"
+          @label={{t "ember-gwr.building.realestateIdentification.number"}}
         />
+      </div>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1">
+      <div class="uk-margin-small-right">
+        <ExtendedSearchToggle class="uk-margin-top uk-width-1-1"/>
       </div>
     </div>
   </div>
-</ModelForm>
+</Search::Filters>
 
 {{#if this.search.last}}
   <Search::ResultTable
