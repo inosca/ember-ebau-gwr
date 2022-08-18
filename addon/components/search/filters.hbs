@@ -1,6 +1,6 @@
 <ValidatedForm
   @model={{this.changeset}}
-  @on-submit={{perform this.submit}}
+  @on-submit={{perform this.submit this.changeset}}
   @validateBeforeSubmit={{true}}
   class="validated-form"
   ...attributes
