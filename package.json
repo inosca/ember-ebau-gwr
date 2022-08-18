@@ -33,7 +33,7 @@
   "dependencies": {
     "@ember/render-modifiers": "^2.0.4",
     "@fortawesome/ember-fontawesome": "^0.3.3",
-    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
@@ -80,7 +80,7 @@
     "ember-resolver": "8.0.3",
     "ember-source": "3.28.9",
     "ember-source-channel-url": "3.0.0",
-    "ember-template-lint": "4.8.0",
+    "ember-template-lint": "4.12.0",
     "ember-template-lint-plugin-prettier": "4.0.0",
     "ember-test-selectors": "6.0.0",
     "ember-try": "2.0.0",
