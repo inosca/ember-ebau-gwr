@@ -60,7 +60,6 @@ export default class SearchFiltersComponent extends Component {
   }
 
   @task *submit() {
-    debugger;
     if (this.changeset.changes.length === 0) {
       this.validationErrors = [this.intl.t("ember-gwr.search.minFilterError")];
       yield;

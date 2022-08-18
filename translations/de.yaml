@@ -77,14 +77,17 @@ ember-gwr:
       Für Hochbauprojekte werden die Art der Arbeiten ausschliesslich gebäudebezogen gemeldet.
     buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
 
-  searchBuilding:
-    heading: Existierendes Gebäude verknüpfen
-    search: Gebäude suchen
+  search:
     hasError: Fehlerstatus
     hasErrorPlaceholder: Alle
+    minFilterError: Es muss mindestens 1 Filter gesetzt sein.
     hasErrorOptions:
       true: Nur mit Fehler
       false: Nur ohne Fehler
+
+  searchBuilding:
+    heading: Existierendes Gebäude verknüpfen
+    search: Gebäude suchen
     entrances: Gebäudeeingänge
 
     linkSuccess: Gebäude wurde erfolgreich verknüpft.
@@ -108,10 +111,6 @@ ember-gwr:
       6709: Zurückgezogen
 
     hasError: Fehlerstatus
-    hasErrorPlaceholder: Alle
-    hasErrorOptions:
-      true: Nur mit Fehler
-      false: Nur ohne Fehler
 
     realestateIdentification:
       number: Grundstücksnummer (Parzellennummer)
