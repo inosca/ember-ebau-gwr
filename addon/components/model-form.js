@@ -21,7 +21,7 @@ export default class ModelFormComponent extends Component {
     instanceId: this.args.importQueryParams.instanceId,
     showImport: this.args.importQueryParams.showImport,
     importIndex: this.args.importQueryParams.importIndex,
-    importModelName: this.args.modelName,
+    importModelName: this.args.importModelName ?? this.args.modelName,
   }));
 
   // These getters are a bit funky so they only access the `import`

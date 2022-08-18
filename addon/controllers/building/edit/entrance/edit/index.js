@@ -7,7 +7,6 @@ import Models from "ember-ebau-gwr/models";
 import BuildingEntranceValidations from "ember-ebau-gwr/validations/building-entrance";
 
 export default class BuildingEditEntranceEditIndexController extends ImportController {
-  importModelName = "buildingEntrance";
   Models = Models;
   BuildingEntranceValidations = BuildingEntranceValidations;
 
@@ -26,7 +25,6 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
   *fetchBuildingEntrance() {
     try {
       this.errors = [];
-      yield this.fetchCalumaData.perform();
       if (this.model.buildingEntrance?.isNew) {
         return this.model.buildingEntrance;
       }
@@ -47,7 +45,7 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
 
   @action
   cancelMerge() {
-    this.resetImport();
+    this.resetImportQueryParams();
     this.fetchBuildingEntrance.perform();
   }
 

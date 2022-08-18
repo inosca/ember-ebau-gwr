@@ -7,6 +7,7 @@
     {{/if}}
     <ModelForm
       @model={{this.dwelling}}
+      @instanceId={{this.model.instanceId}}
       @validations={{this.DwellingValidations}}
       @onSubmit={{this.saveDwelling}}
       @errors={{this.errors}}
@@ -14,9 +15,9 @@
       @headerModel={{this.dwelling}}
       @headerModelId={{this.dwelling.EWID}}
       @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
-      @headerModelName="dwelling"
-      @showStatusActions={{true}}
-      @import={{this.import}}
+      @modelName="dwelling"
+      @showStatusActions={{this.hasInstanceContext}}
+      @importQueryParams={{this.importQueryParams}}
       @modelStatusOptions={{this.dwellingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}
@@ -25,7 +26,7 @@
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="dwellingStatus"
       @disabled={{this.quarterlyClosure.disableForms}}
-      as |Field changeset|
+      as |Field changeset import|
     >
       <Field
         @attr="EDID"
@@ -49,7 +50,7 @@
         (or
           (eq changeset.floorType 3101)
           (eq changeset.floorType 3401)
-          (and this.import this.import.data.floorNumber)
+          (and import.data.floorNumber)
         )
       }}
         <Field @attr="floorNumber" @type="number" @required={{true}} />
@@ -69,7 +70,7 @@
       <Field @attr="kitchen" @type="checkbox" />
       <Field @attr="surfaceAreaOfDwelling" @type="number" />
 
-      {{#if (or (not this.dwelling.isNew) this.import)}}
+      {{#if (or (not this.dwelling.isNew) import)}}
         <Field @attr="yearOfConstruction" @type="number" />
         <Field @attr="yearOfDemolition" @type="number" />
       {{/if}}

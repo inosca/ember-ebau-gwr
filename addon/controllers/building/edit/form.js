@@ -10,8 +10,6 @@ import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work
 export default class BuildingFormController extends ImportController {
   Models = Models;
 
-  importModelName = "building";
-
   @service constructionProject;
   @service("building") buildingAPI;
   @service dwelling;
@@ -40,7 +38,6 @@ export default class BuildingFormController extends ImportController {
   *fetchBuildingWork() {
     try {
       this.errors = [];
-      this.fetchCalumaData.perform();
       this.BuildingWorkValidations = buildingWorkValidation(
         this.model.buildingWork?.isNew
       );
@@ -82,7 +79,7 @@ export default class BuildingFormController extends ImportController {
 
   @action
   cancelMerge() {
-    this.resetImport();
+    this.resetImportQueryParams();
     this.fetchBuildingWork.perform();
   }
 
