@@ -14,6 +14,8 @@ module.exports = function (environment) {
         // default components
       },
     },
+
+    "changeset-validations": { rawOutput: true },
   };
 
   return ENV;
