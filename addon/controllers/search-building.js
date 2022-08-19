@@ -17,6 +17,10 @@ export default class SearchBuildingController extends Controller {
   @tracked activeBuilding;
   @tracked errors;
 
+  @tracked page = 0;
+  @tracked searchResults = [];
+  @tracked noMoreResults = false;
+
   BuildingSearchValidations = BuildingSearchValidations;
 
   get periodOfConstructionOptions() {
@@ -28,21 +32,34 @@ export default class SearchBuildingController extends Controller {
     }));
   }
 
-  @lastValue("search") searchResults;
+  // @lastValue("search") searchResults;
   @task *search(_query) {
+    this.rawQuery = _query;
+    // https://localhost:9090/regbl/api/ech0216/2/buildings?page=0&size=10&sortColumn=geb_egid&sortDirection=asc
     try {
       const query = {
-        ..._query,
+        ...this.rawQuery,
+        page: this.page,
         streetLang: this.street.language,
         municipality: this.building.municipality,
       };
-      return yield this.building.search(query);
+      const _results = yield this.building.search(query);
+      if (_results.length === 0) {
+        this.noMoreResults = true;
+      } else {
+        this.searchResults = this.searchResults.concat(_results);
+      }
     } catch (error) {
       console.error(error);
       this.notification.danger(
         this.intl.t("ember-gwr.generalErrors.searchError")
       );
     }
+  }
+
+  @action loadMore() {
+    this.page += 1;
+    this.search.perform(this.rawQuery);
   }
 
   @dropTask *linkBuilding(EGID, buildingWork) {
