@@ -12,6 +12,8 @@ export default class GwrService extends Service {
   @service xml;
   @service intl;
 
+  pageSize = 3;
+
   _cache = {};
 
   get municipality() {
@@ -56,7 +58,9 @@ export default class GwrService extends Service {
   }
 
   async search(
-    query = {},
+    query = {
+      page: 0,
+    },
     id,
     { xmlMethod, urlPath, listModel, listKey, searchKey }
   ) {
@@ -71,14 +75,20 @@ export default class GwrService extends Service {
     }
     // We replace the newlines since they would be encoded in the query param
     // and this would break the xml.
+
+    // https://localhost:9090/regbl/api/ech0216/2/buildings?page=0&size=10&sortColumn=geb_egid&sortDirection=asc
     const queryXML = this.xml
       .buildXMLRequest(xmlMethod, query)
       .replace(/\r?\n|\r/g, "");
-    response = await this.authFetch.fetch(`/${urlPath}/`, {
-      headers: {
-        query: queryXML,
-      },
-    });
+
+    response = await this.authFetch.fetch(
+      `/${urlPath}?page=${query.page}&size=${this.pageSize}`,
+      {
+        headers: {
+          query: queryXML,
+        },
+      }
+    );
     // The api returns a 404 if no results are found for the query
     if (!response.ok && response.status === 404) {
       return [];
