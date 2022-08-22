@@ -81,6 +81,7 @@ ember-gwr:
     hasError: Fehlerstatus
     hasErrorPlaceholder: Alle
     minFilterError: Es muss mindestens 1 Filter gesetzt sein.
+    loadMoreResults: mehr Ergebnisse laden
     hasErrorOptions:
       true: Nur mit Fehler
       false: Nur ohne Fehler

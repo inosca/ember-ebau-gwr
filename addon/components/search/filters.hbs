@@ -1,6 +1,6 @@
 <ValidatedForm
-  @model={{this.changeset}}
-  @on-submit={{perform this.submit this.changeset}}
+  @model={{@changeset}}
+  @on-submit={{(perform @onSubmit @changeset)}}
   @validateBeforeSubmit={{true}}
   class="validated-form"
   ...attributes
@@ -17,7 +17,6 @@
     )
     as |Submit|
   }}
-  {{!-- Error Select Component. Allows to filter by "hasError" --}}
   {{#let
     (component
       Form.input
@@ -43,7 +42,7 @@
     )
     as |ExtendedSearchToggle|
   }}
-    {{yield (component Form.input errorComponent=(component "validated-form-error")) Form ErrorSelect ExtendedSearchToggle}}
+    {{yield (component Form.input errorComponent=(component "validated-form-error")) ErrorSelect ExtendedSearchToggle}}
     {{#if this.extendedSearch}}
       <div class="uk-flex uk-flex-between uk-margin-small-bottom uk-margin-top">
         <div class="uk-width-1-2">
