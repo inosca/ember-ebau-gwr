@@ -21,9 +21,11 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @tracked PLZ4 = null;
   @tracked PLZ6 = null;
 
-  get baseQuery() {
+  get baseModel() {
     return {
-      description: {},
+      description: {
+        descriptionLong: "",
+      },
       locality: {
         swissZipCode: this.PLZ4,
         swissZipCodeAddOn: this.PLZ6,
@@ -31,6 +33,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
           nameLong: this.locality,
         },
       },
+      language: this.street.language,
     };
   }
 

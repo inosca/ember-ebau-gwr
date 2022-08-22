@@ -19,6 +19,7 @@
   @validations={{this.BuildingSearchValidations}}
   @extendedSearch={{true}}
   @service={{this.building}}
+  @baseModel={{this.baseModel}}
   as |Filters Results|
 >
   <Filters as |FilterInput ErrorSelect ExtendedSearchToggle| >
@@ -28,7 +29,6 @@
           <FilterInput
             @label={{t "ember-gwr.building.EGID"}}
             @name="EGID"
-            @translationBase="ember-gwr.building"
           />
         </div>
       </div>
@@ -106,7 +106,7 @@
     </TableHeader>
 
     <Rows as |TableRowColumn| >
-       <TableRowColumn @attr="EGID" as |value|>
+      <TableRowColumn @attr="EGID" as |value|>
           <button
             class="uk-button uk-button-link"
             type="button"
