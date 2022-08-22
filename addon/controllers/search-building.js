@@ -9,6 +9,7 @@ import BuildingSearchValidations from "ember-ebau-gwr/validations/building-searc
 export default class SearchBuildingController extends Controller {
   @service constructionProject;
   @service building;
+  @service street;
   @service intl;
   @service notification;
   @service router;
@@ -16,6 +17,13 @@ export default class SearchBuildingController extends Controller {
   @tracked activeBuilding;
   @tracked errors;
   BuildingSearchValidations = BuildingSearchValidations;
+
+  get baseModel() {
+    return {
+      streetLang: this.street?.language,
+      municipality: this.building?.municipality,
+    };
+  }
 
   get periodOfConstructionOptions() {
     return periodOfConstructionOptions.map((option) => ({

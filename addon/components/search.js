@@ -18,9 +18,9 @@ export default class SearchComponent extends Component {
   constructor(owner, args) {
     super(owner, args);
     this.changeset = new Changeset(
-      {},
-      lookupValidator(this.args.validations),
-      this.args.validations
+      this.args.baseModel ?? {},
+      this.args.validations ? lookupValidator(this.args.validations) : {},
+      this.args.validations ?? {}
     );
   }
 
@@ -28,20 +28,19 @@ export default class SearchComponent extends Component {
   *search(_query) {
     try {
       this.rawQuery = {
-        ..._query?.change,
         ...this.rawQuery,
+        ..._query?.pendingData,
         page: this.page,
-        streetLang: this.street.language,
-        municipality: this.building.municipality,
       };
+
       const _results = yield this.args.service.search(this.rawQuery);
       if (!_results || _results.length < 3) {
         // todo: change this to match the page size
         this.hasMoreResults = false;
       } else {
-        this.searchResults = this.searchResults.concat(_results);
         this.hasMoreResults = true;
       }
+      this.searchResults = this.searchResults.concat(_results);
     } catch (error) {
       console.error(error);
       this.notification.danger(
