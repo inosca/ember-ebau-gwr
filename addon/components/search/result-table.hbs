@@ -1,8 +1,11 @@
-<table
-  class="uk-table uk-table-middle uk-table-divider uk-table-striped"
-  ...attributes
->
-  {{yield
-    (component "search/result-table/row" results=@results loading=@loading)
-  }}
-</table>
+{{#if (gt @results.length 0)}}
+  <table
+    class="uk-table uk-table-middle uk-table-divider uk-table-striped uk-margin-top"
+    ...attributes
+  >
+    {{yield
+      (component "search/result-table/head")
+      (component "search/result-table/row" results=@results loading=@loading)
+    }}
+  </table>
+{{/if}}

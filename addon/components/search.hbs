@@ -1,0 +1,28 @@
+{{#let
+  (component
+    "search/filters"
+    changeset=this.changeset
+    onSubmit=this.onSubmit
+    validateBeforeSubmit=true
+  )
+  as |Filters|
+}}
+{{#let
+  (component
+    "search/result-table"
+    results=this.searchResults
+    loading=this.search.isRunning
+  )
+  as |Results|
+}}
+
+{{yield Filters Results}}
+
+{{#if this.hasMoreResults}}
+  <Search::ResultTable::LoadMore
+    @onClick={{(perform this.loadMore)}}
+    @loading={{this.search.isRunning}}
+  />
+{{/if}}
+{{/let}}
+{{/let}}
