@@ -1,8 +1,6 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
-import { tracked } from "@glimmer/tracking";
-import { task, lastValue } from "ember-concurrency";
 import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchProjectController extends Controller {
@@ -11,17 +9,20 @@ export default class SearchProjectController extends Controller {
   @service store;
   @service router;
 
-  @tracked extendedSearch = false;
-  @tracked validationErrors = {};
+  get baseModel() {
+    return {
+      constructionSurveyDeptNumber:
+        this.constructionProject.constructionSurveyDeptNumber,
+    };
+  }
 
-  projectStatusOptions = projectStatusOptions;
-
-  @lastValue("search") searchResults;
-  @task
-  *search(query = {}) {
-    query.constructionSurveyDeptNumber =
-      this.constructionProject.constructionSurveyDeptNumber;
-    return yield this.constructionProject.search(query);
+  get projectStatusOptions() {
+    return projectStatusOptions.map((option) => ({
+      value: option,
+      label: this.intl.t(
+        `ember-gwr.searchProject.projectStatusOptions.${option}`
+      ),
+    }));
   }
 
   @action

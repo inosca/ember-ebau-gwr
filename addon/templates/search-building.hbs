@@ -107,37 +107,37 @@
 
     <Rows as |TableRowColumn| >
       <TableRowColumn @attr="EGID" as |value|>
-          <button
-            class="uk-button uk-button-link"
-            type="button"
-            {{on "click" (fn this.setActiveBuilding value)}}
-          >
-            {{value}}
-          </button>
-        </TableRowColumn>
-        <TableRowColumn @attr="fullAddressTexts" as |value|>
-          <ul class="uk-list">
-            {{#each value as |entrance|}}
-              <li>
-                {{entrance}}
-              </li>
-            {{/each}}
-          </ul>
-        </TableRowColumn>
-        <TableRowColumn @attr="dateOfConstruction" as |value|>
-          {{#if value.periodOfConstruction}}
-            {{t
-              (concat
-                "ember-gwr.building.dateOfConstruction.periodOfConstructionOptions."
-                value.periodOfConstruction
-              )
-            }}
-          {{else if value.year}}
-            {{value.year}}
-          {{else}}
-            -
-          {{/if}}
-        </TableRowColumn>
+        <button
+          class="uk-button uk-button-link"
+          type="button"
+          {{on "click" (fn this.setActiveBuilding value)}}
+        >
+          {{value}}
+        </button>
+      </TableRowColumn>
+      <TableRowColumn @attr="fullAddressTexts" as |value|>
+        <ul class="uk-list">
+          {{#each value as |entrance|}}
+            <li>
+              {{entrance}}
+            </li>
+          {{/each}}
+        </ul>
+      </TableRowColumn>
+      <TableRowColumn @attr="dateOfConstruction" as |value|>
+        {{#if value.periodOfConstruction}}
+          {{t
+            (concat
+              "ember-gwr.building.dateOfConstruction.periodOfConstructionOptions."
+              value.periodOfConstruction
+            )
+          }}
+        {{else if value.year}}
+          {{value.year}}
+        {{else}}
+          -
+        {{/if}}
+      </TableRowColumn>
     </Rows>
   </Results>
 </Search>
