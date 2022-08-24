@@ -11,8 +11,8 @@
       Form.submit
       type="submit"
       label=(t "ember-gwr.components.modelForm.save")
-      disabled=(or this.isSaving @disabled this.isSubmitBtnDisabled)
-      loading=this.submit.isRunning
+      disabled=(or this.isSaving @disabled this.isSubmitDisabled)
+      loading=@onSubmit.isRunning
       buttonComponent=(component "model-form/submit" color="primary")
     )
     as |Submit|
@@ -20,29 +20,36 @@
   {{#let
     (component
       Form.input
-      name="hasError"
-      type="select"
-      label=(t "ember-gwr.search.hasError")
+      errorComponent=(component "validated-form-error")
       optionLabelPath="label"
       optionValuePath="value"
       optionTargetPath="value"
-      options=this.errorOptions
-      prompt=(t "ember-gwr.search.hasErrorPlaceholder")
-      errorComponent=(component "validated-form-error")
     )
-    as |ErrorSelect|
+    as |FilterField|
   }}
-  {{#let
-    (component
-      "uk-button"
-      label=(if this.extendedSearch (t "ember-gwr.components.search.extendedSearch.collapse") (t "ember-gwr.components.search.extendedSearch.extend"))
-      name=this.extendedSearch
-      value=this.extendedSearch
-      onClick=(fn (mut this.extendedSearch) (not this.extendedSearch))
-    )
-    as |ExtendedSearchToggle|
-  }}
-    {{yield (component Form.input errorComponent=(component "validated-form-error")) ErrorSelect ExtendedSearchToggle}}
+    {{yield
+      FilterField
+      (component
+        Form.input
+        name="hasError"
+        type="select"
+        label=(t "ember-gwr.search.hasError")
+        optionLabelPath="label"
+        optionValuePath="value"
+        optionTargetPath="value"
+        options=this.errorOptions
+        prompt=(t "ember-gwr.search.hasErrorPlaceholder")
+        errorComponent=(component "validated-form-error")
+      )
+      (component
+        "uk-button"
+        label=(if this.extendedSearch (t "ember-gwr.components.search.extendedSearch.collapse") (t "ember-gwr.components.search.extendedSearch.extend"))
+        name=this.extendedSearch
+        value=this.extendedSearch
+        onClick=(fn (mut this.extendedSearch) (not this.extendedSearch))
+      )
+      Form
+    }}
     {{#if this.extendedSearch}}
       <div class="uk-flex uk-flex-between uk-margin-small-bottom uk-margin-top">
         <div class="uk-width-1-2">
@@ -128,9 +135,9 @@
       </div>
     {{/if}}
     
-    <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1">
-      <Submit />
-      {{#if this.isSubmitBtnDisabled}}
+    <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1 uk-margin-bottom">
+      <Submit data-test-submit-btn/>
+      {{#if this.isSubmitDisabled}}
         <div uk-alert class="uk-width-1-1 uk-alert-warning uk-margin-left uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle">
           <span>
             {{t "ember-gwr.search.minFilterError"}}
@@ -138,7 +145,6 @@
         </div>  
       {{/if}}
     </div>
-  {{/let}}
   {{/let}}
   {{/let}}
 </ValidatedForm>

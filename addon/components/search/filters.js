@@ -1,8 +1,7 @@
-import { action, set } from "@ember/object";
+import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { task } from "ember-concurrency";
 
 export default class SearchFiltersComponent extends Component {
   @service intl;
@@ -19,7 +18,7 @@ export default class SearchFiltersComponent extends Component {
     },
   ];
 
-  get isSubmitBtnDisabled() {
+  get isSubmitDisabled() {
     return !this.hasChanges;
   }
 
@@ -29,15 +28,6 @@ export default class SearchFiltersComponent extends Component {
 
   @action
   updateField(fieldName, value) {
-    set(this.query, fieldName, value);
-  }
-
-  @task *submit() {
-    if (this.args.changeset.changes.length === 0) {
-      this.validationErrors = [this.intl.t("ember-gwr.search.minFilterError")];
-      yield;
-    } else {
-      this.args.search.perform(this.args.changeset.change);
-    }
+    this.query[fieldName] = value;
   }
 }
