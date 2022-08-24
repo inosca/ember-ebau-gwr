@@ -18,7 +18,7 @@ export default class SearchBuildingController extends Controller {
   @tracked errors;
   BuildingSearchValidations = BuildingSearchValidations;
 
-  get baseModel() {
+  get baseQuery() {
     return {
       streetLang: this.street?.language,
       municipality: this.building?.municipality,

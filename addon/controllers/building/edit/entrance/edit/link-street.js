@@ -21,7 +21,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @tracked PLZ4 = null;
   @tracked PLZ6 = null;
 
-  get baseModel() {
+  get baseQuery() {
     return {
       description: {
         descriptionLong: "",

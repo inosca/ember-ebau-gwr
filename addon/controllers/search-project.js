@@ -9,7 +9,7 @@ export default class SearchProjectController extends Controller {
   @service store;
   @service router;
 
-  get baseModel() {
+  get baseQuery() {
     return {
       constructionSurveyDeptNumber:
         this.constructionProject.constructionSurveyDeptNumber,

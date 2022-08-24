@@ -18,7 +18,7 @@ export default class SearchComponent extends Component {
   constructor(owner, args) {
     super(owner, args);
     this.changeset = new Changeset(
-      this.args.baseModel ?? {},
+      this.args.baseQuery ?? {},
       this.args.validations ? lookupValidator(this.args.validations) : {},
       this.args.validations ?? {}
     );
