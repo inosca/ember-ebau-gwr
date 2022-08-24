@@ -10,69 +10,72 @@
 <Search
   @service={{this.street}}
   @baseModel={{this.baseModel}} 
-  as |Filters Results|
 >
-  <Filters as |FilterInput| >
-    <div class="uk-flex uk-flex-column uk-flex-wrap">
-      <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
+  <:filters as |Filters|>
+    <Filters as |FilterInput| >
+      <div class="uk-flex uk-flex-column uk-flex-wrap">
+        <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
+          <div class="uk-width-expand uk-width-1">
+            <div class="uk-margin-right">
+              <FilterInput 
+                @name="locality.name.nameLong"
+                @label={{t "ember-gwr.locality.name.nameLong"}}
+                @disabled={{true}} 
+              />
+            </div>
+          </div>
+          <div class="uk-width-small uk-width-1">
+            <div class="uk-margin-right">
+              <FilterInput 
+                @name="locality.swissZipCode" 
+                @label={{t "ember-gwr.locality.swissZipCode"}}
+                @disabled={{true}} 
+              />
+            </div>
+          </div>
+          <div class="uk-width-small uk-width-1">
+            <FilterInput 
+              @name="locality.swissZipCodeAddOn" 
+              @label={{t "ember-gwr.locality.swissZipCodeAddOn"}}
+              @disabled={{true}} 
+            />
+          </div>
+        </div>
         <div class="uk-width-expand uk-width-1">
-          <div class="uk-margin-right">
-            <FilterInput 
-              @name="locality.name.nameLong"
-              @label={{t "ember-gwr.locality.name.nameLong"}}
-              @disabled={{true}} 
-            />
-          </div>
-        </div>
-        <div class="uk-width-small uk-width-1">
-          <div class="uk-margin-right">
-            <FilterInput 
-              @name="locality.swissZipCode" 
-              @label={{t "ember-gwr.locality.swissZipCode"}}
-              @disabled={{true}} 
-            />
-          </div>
-        </div>
-        <div class="uk-width-small uk-width-1">
-          <FilterInput 
-            @name="locality.swissZipCodeAddOn" 
-            @label={{t "ember-gwr.locality.swissZipCodeAddOn"}}
-            @disabled={{true}} 
+          <FilterInput
+            @name="description.descriptionLong"
+            @label={{t "ember-gwr.building.street.description.descriptionLong"}}
           />
         </div>
       </div>
-      <div class="uk-width-expand uk-width-1">
-        <FilterInput
-          @name="description.descriptionLong"
-          @label={{t "ember-gwr.building.street.description.descriptionLong"}}
-        />
-      </div>
-    </div>
-  </Filters>
+    </Filters>
+  </:filters>
 
-  <Results as |TableHeader Rows| >
-    <TableHeader as |HeaderColumn| >
-      <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.street.ESID"}} />
-      <HeaderColumn @label={{t "ember-gwr.street.description.descriptionLong"}} />
-      <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.name.nameLong"}} />
-      <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCode"}} />
-      <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCodeAddOn"}} />
-    </TableHeader>
+  <:results as |Results|>
+    <Results as |TableHeader Rows| >
+      <TableHeader as |HeaderColumn| >
+        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.street.ESID"}} />
+        <HeaderColumn @label={{t "ember-gwr.street.description.descriptionLong"}} />
+        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.name.nameLong"}} />
+        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCode"}} />
+        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCodeAddOn"}} />
+      </TableHeader>
 
-    <Rows as |TableRowColumn| >
-      <TableRowColumn @attr="ESID" as |value| >
-        <button
-          class="uk-button uk-button-link"
-          type="button"
-          {{on "click" (fn this.setStreet this.model)}}
-        >
-          {{value}}
-        </button>
-      </TableRowColumn>
-      <TableRowColumn @attr="description.descriptionLong" />
-      <TableRowColumn @attr="locality.name.nameLong" />
-      <TableRowColumn @attr="locality.swissZipCode" />
-      <TableRowColumn @attr="locality.swissZipCodeAddOn" />
-    </Rows>
-  </Results>
+      <Rows as |TableRowColumn| >
+        <TableRowColumn @attr="ESID" as |value| >
+          <button
+            class="uk-button uk-button-link"
+            type="button"
+            {{on "click" (fn this.setStreet this.model)}}
+          >
+            {{value}}
+          </button>
+        </TableRowColumn>
+        <TableRowColumn @attr="description.descriptionLong" />
+        <TableRowColumn @attr="locality.name.nameLong" />
+        <TableRowColumn @attr="locality.swissZipCode" />
+        <TableRowColumn @attr="locality.swissZipCodeAddOn" />
+      </Rows>
+    </Results>
+  </:results>
 </Search>

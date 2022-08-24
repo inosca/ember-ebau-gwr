@@ -6,8 +6,8 @@ import lookupValidator from "ember-changeset-validations";
 import { dropTask } from "ember-concurrency";
 
 export default class SearchComponent extends Component {
-  @tracked page = 0;
-  @tracked searchResults = [];
+  @tracked page = 1;
+  @tracked searchResults = null;
   @tracked hasMoreResults = false;
 
   @service notification;
@@ -40,7 +40,9 @@ export default class SearchComponent extends Component {
       } else {
         this.hasMoreResults = true;
       }
-      this.searchResults = this.searchResults.concat(_results);
+
+      this.searchResults =
+        this.page === 0 ? _results : this.searchResults.concat(_results);
     } catch (error) {
       console.error(error);
       this.notification.danger(
