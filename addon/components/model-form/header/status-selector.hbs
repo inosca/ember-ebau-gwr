@@ -11,9 +11,18 @@
         {{t "ember-gwr.components.header.statusSelector.statusLabel"}}
       </div>
       <form>
-        <select aria-label={{t "ember-gwr.components.header.statusSelector.statusLabel"}} class="uk-select" {{on "change" this.statusUpdate}}>
+        <select
+          aria-label={{t
+            "ember-gwr.components.header.statusSelector.statusLabel"
+          }}
+          class="uk-select"
+          {{on "change" this.statusUpdate}}
+        >
           {{#each this.statusOptions as |opt|}}
-            <option value={{opt.status}} selected={{eq this.newStatus opt.status}}>{{opt.label}}</option>
+            <option
+              value={{opt.status}}
+              selected={{eq this.newStatus opt.status}}
+            >{{opt.label}}</option>
           {{/each}}
         </select>
       </form>
@@ -39,7 +48,10 @@
       </small>
     </div>
     <div class="uk-flex-inline uk-flex-middle uk-flex-right">
-      <div class="uk-margin-small-right uk-flex-none" uk-icon="icon: question"></div>
+      <div
+        class="uk-margin-small-right uk-flex-none"
+        uk-icon="icon: question"
+      ></div>
       <div
         class="uk-width-large"
         uk-dropdown="mode: hover; pos: bottom-left; delay-show: 500; offset: 20"

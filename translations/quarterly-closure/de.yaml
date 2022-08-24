@@ -2,7 +2,6 @@ ember-gwr:
   quarterlyClosure:
     needsCorrection: Der Quartalsabschluss konnte aufgrund von bestehenden Fehlern nicht abgeschlossen werden. Bitte ergänzen Sie fehlende Daten und beheben Sie verbleibende Unstimmigkeiten.
 
-
     closure:
       close: Quartalsabschluss Melden
       error: Beim Melden des Quartalsabschlusses ist ein Fehler aufgetreten.

@@ -1,12 +1,12 @@
-<div class="{{if @horizontal "uk-flex"}}">
-  <div class="{{if @horizontal "uk-margin-left uk-flex-last"}}">
+<div class="{{if @horizontal 'uk-flex'}}">
+  <div class="{{if @horizontal 'uk-margin-left uk-flex-last'}}">
     {{component @labelComponent}}
   </div>
   <input
     type="number"
     class="uk-width-1 uk-input
-      {{if @isInvalid "uk-form-danger"}}
-      {{if @isValid "uk-form-success"}}"
+      {{if @isInvalid 'uk-form-danger'}}
+      {{if @isValid 'uk-form-success'}}"
     name={{@name}}
     required={{@required}}
     value={{@value}}

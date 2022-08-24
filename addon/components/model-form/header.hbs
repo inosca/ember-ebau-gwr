@@ -5,7 +5,7 @@
     @modelName={{@modelName}}
     @modelDescription={{@modelDescription}}
   />
-  {{!-- template-lint-disable no-passed-in-event-handlers --}}
+  {{! template-lint-disable no-passed-in-event-handlers }}
   <ModelForm::Header::Actions
     @submit={{@submit}}
     @submitErrors={{@submitErrors}}
@@ -24,7 +24,7 @@
   {{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
     <div
       class="uk-flex uk-margin-top
-        {{if @showStatusActions "uk-flex-between" "uk-flex-right"}}
+        {{if @showStatusActions 'uk-flex-between' 'uk-flex-right'}}
         uk-flex-bottom uk-flex-wrap uk-flex-wrap-around"
     >
       {{#if @showStatusActions}}

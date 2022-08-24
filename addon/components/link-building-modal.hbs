@@ -29,17 +29,19 @@
         @validateBeforeSubmit={{false}}
       />
       {{#if (eq this.buildingWork.kindOfWork 6002)}}
-        {{#each (array 
-          "energeticRestauration"
-          "renovationHeatingsystem"
-          "innerConversionRenovation"
-          "conversion"
-          "extensionHeighteningHeated"
-          "extensionHeighteningNotHeated"
-          "thermicSolarFacility"
-          "photovoltaicSolarFacility"
-          "otherWorks"
-          ) as |attr|
+        {{#each
+          (array
+            "energeticRestauration"
+            "renovationHeatingsystem"
+            "innerConversionRenovation"
+            "conversion"
+            "extensionHeighteningHeated"
+            "extensionHeighteningNotHeated"
+            "thermicSolarFacility"
+            "photovoltaicSolarFacility"
+            "otherWorks"
+          )
+          as |attr|
         }}
           <Form.input
             @name={{attr}}
