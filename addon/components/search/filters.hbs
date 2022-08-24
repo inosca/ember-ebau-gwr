@@ -15,9 +15,6 @@
       loading=@onSubmit.isRunning
       buttonComponent=(component "model-form/submit" color="primary")
     )
-    as |Submit|
-  }}
-  {{#let
     (component
       Form.input
       errorComponent=(component "validated-form-error")
@@ -25,7 +22,7 @@
       optionValuePath="value"
       optionTargetPath="value"
     )
-    as |FilterField|
+    as |Submit FilterField|
   }}
     {{yield
       FilterField
@@ -145,6 +142,5 @@
         </div>  
       {{/if}}
     </div>
-  {{/let}}
   {{/let}}
 </ValidatedForm>

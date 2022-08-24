@@ -12,8 +12,6 @@ export default class SearchComponent extends Component {
 
   @service notification;
   @service intl;
-  @service building;
-  @service street;
 
   constructor(owner, args) {
     super(owner, args);
