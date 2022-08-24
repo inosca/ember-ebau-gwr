@@ -23,7 +23,9 @@ export default class SearchFiltersComponent extends Component {
   }
 
   get hasChanges() {
-    return !!this.args.changeset.changes.find(({ value }) => value !== "");
+    return Boolean(
+      this.args.changeset.changes.find(({ value }) => value !== "")
+    );
   }
 
   @action

@@ -5,29 +5,23 @@
     onSubmit=this.onSubmit
     validateBeforeSubmit=true
   )
-  as |Filters|
-}}
-{{#let
   (component
     "search/result-table"
     results=this.searchResults
     loading=this.search.isRunning
   )
-  as |Results|
+  as |Filters Results|
 }}
-{{yield Filters to="filters"}}
+  {{yield Filters to="filters"}}
 
-{{#if this.search.lastSuccessful}}
-  {{yield Results to="results"}}
-{{/if}}
+  {{#if this.search.lastSuccessful}}
+    {{yield Results to="results"}}
+  {{/if}}
 
-{{yield Filters Results}}
-
-{{#if this.hasMoreResults}}
-  <Search::ResultTable::LoadMore
-    @onClick={{(perform this.loadMore)}}
-    @loading={{this.search.isRunning}}
-  />
-{{/if}}
-{{/let}}
+  {{#if this.hasMoreResults}}
+    <Search::ResultTable::LoadMore
+      @onClick={{(perform this.loadMore)}}
+      @loading={{this.search.isRunning}}
+    />
+  {{/if}}
 {{/let}}
