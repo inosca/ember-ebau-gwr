@@ -40,7 +40,11 @@
       )
       (component
         "uk-button"
-        label=(if this.extendedSearch (t "ember-gwr.components.search.extendedSearch.collapse") (t "ember-gwr.components.search.extendedSearch.extend"))
+        label=(if
+          this.extendedSearch
+          (t "ember-gwr.components.search.extendedSearch.collapse")
+          (t "ember-gwr.components.search.extendedSearch.extend")
+        )
         name=this.extendedSearch
         value=this.extendedSearch
         onClick=(fn (mut this.extendedSearch) (not this.extendedSearch))
@@ -51,9 +55,7 @@
       <div class="uk-flex uk-flex-between uk-margin-small-bottom uk-margin-top">
         <div class="uk-width-1-2">
           <h3>
-            {{t
-              "ember-gwr.components.search.realestateIdentificationHeading"
-            }}
+            {{t "ember-gwr.components.search.realestateIdentificationHeading"}}
           </h3>
           <Form.input
             @name="realestateIdentification.EGRID"
@@ -61,7 +63,9 @@
           />
           <Form.input
             @name="realestateIdentification.subDistrict"
-            @label={{t "ember-gwr.building.realestateIdentification.subDistrict"}}
+            @label={{t
+              "ember-gwr.building.realestateIdentification.subDistrict"
+            }}
             type="number"
           />
         </div>
@@ -82,7 +86,9 @@
                 <div class="uk-margin-small-right">
                   <Form.input
                     @name="createDate.dateFrom"
-                    @label={{t "ember-gwr.components.search.createDate.dateFrom"}}
+                    @label={{t
+                      "ember-gwr.components.search.createDate.dateFrom"
+                    }}
                     @type="date"
                     @errorComponent={{component "validated-form-error"}}
                   />
@@ -110,7 +116,9 @@
                 <div class="uk-margin-small-right">
                   <Form.input
                     @name="modifyDate.dateFrom"
-                    @label={{t "ember-gwr.components.search.modifyDate.dateFrom"}}
+                    @label={{t
+                      "ember-gwr.components.search.modifyDate.dateFrom"
+                    }}
                     @type="date"
                     @errorComponent={{component "validated-form-error"}}
                   />
@@ -131,15 +139,20 @@
         </div>
       </div>
     {{/if}}
-    
-    <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1 uk-margin-bottom">
-      <Submit data-test-submit-btn/>
+
+    <div
+      class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1 uk-margin-bottom"
+    >
+      <Submit data-test-submit-btn />
       {{#if this.isSubmitDisabled}}
-        <div uk-alert class="uk-width-1-1 uk-alert-warning uk-margin-left uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle">
+        <div
+          uk-alert
+          class="uk-width-1-1 uk-alert-warning uk-margin-left uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle"
+        >
           <span>
             {{t "ember-gwr.search.minFilterError"}}
           </span>
-        </div>  
+        </div>
       {{/if}}
     </div>
   {{/let}}

@@ -18,7 +18,7 @@
       {{else}}
         <button
           class="uk-button uk-button-default uk-flex-none
-            {{if (is-unset @import.index) "uk-margin-small-right"}}"
+            {{if (is-unset @import.index) 'uk-margin-small-right'}}"
           type="button"
           {{on "click" @importAllData}}
         >
@@ -83,12 +83,17 @@
                 @disabled={{or @import this.importState.hasError}}
                 @query={{hash import=true}}
                 class="uk-button uk-text-left uk-highlight-hover
-                  {{if (or @import this.importState.hasError) "uk-text-muted" "uk-text-secondary"}}
+                  {{if
+                    (or @import this.importState.hasError)
+                    'uk-text-muted'
+                    'uk-text-secondary'
+                  }}
                   uk-width-1-1 uk-background-default uk-padding-remove"
                 {{on "click" (fn (mut this.showImportModal) true)}}
-                uk-tooltip="title: {{if this.importState.hasError
-                    (t "ember-gwr.components.modelForm.importError")
-                  }}; container: {{this.config.modalContainer}}"
+                uk-tooltip="title: {{if
+                  this.importState.hasError
+                  (t 'ember-gwr.components.modelForm.importError')
+                }}; container: {{this.config.modalContainer}}"
               >
                 {{t "ember-gwr.components.modelForm.importFromCaluma"}}
               </LinkTo>

@@ -21,11 +21,15 @@
   @extendedSearch={{true}}
 >
   <:filters as |Filters|>
-    <Filters as |FilterInput ErrorSelect ExtendedSearchToggle Form| >
+    <Filters as |FilterInput ErrorSelect ExtendedSearchToggle Form|>
       <div class="uk-flex uk-flex-wrap uk-flex-between">
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <FilterInput @name="EPROID" type="number" @label={{t "ember-gwr.searchProject.EPROID"}}/>
+            <FilterInput
+              @name="EPROID"
+              type="number"
+              @label={{t "ember-gwr.searchProject.EPROID"}}
+            />
           </div>
         </div>
         <div class="uk-width-1-3@m uk-width-1">
@@ -42,26 +46,36 @@
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <ErrorSelect @disabled={{Form.model.EPROID}}/>
+            <ErrorSelect @disabled={{Form.model.EPROID}} />
           </div>
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <FilterInput @name="realestateIdentification.number" type="number" @label={{t "ember-gwr.searchProject.realestateIdentification.number"}} @disabled={{Form.model.EPROID}}/>
+            <FilterInput
+              @name="realestateIdentification.number"
+              type="number"
+              @label={{t
+                "ember-gwr.searchProject.realestateIdentification.number"
+              }}
+              @disabled={{Form.model.EPROID}}
+            />
           </div>
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <ExtendedSearchToggle class="uk-margin-top uk-width-1-1"@disabled={{Form.model.EPROID}}/>
+            <ExtendedSearchToggle
+              class="uk-margin-top uk-width-1-1"
+              @disabled={{Form.model.EPROID}}
+            />
           </div>
         </div>
       </div>
     </Filters>
   </:filters>
-  
+
   <:results as |Results|>
-    <Results as |TableHeader Rows| >
-      <TableHeader as |HeaderColumn| >
+    <Results as |TableHeader Rows|>
+      <TableHeader as |HeaderColumn|>
         <HeaderColumn
           class="uk-table-shrink"
           @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
@@ -80,7 +94,7 @@
         <HeaderColumn @label={{t "ember-gwr.searchProject.projectStatus"}} />
       </TableHeader>
 
-      <Rows as |TableRowColumn| >
+      <Rows as |TableRowColumn|>
         <TableRowColumn @attr="EPROID" as |value|>
           <button
             class="uk-button uk-button-link"

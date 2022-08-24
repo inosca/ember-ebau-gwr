@@ -22,23 +22,24 @@
   @baseQuery={{this.baseQuery}}
 >
   <:filters as |Filters|>
-    <Filters as |FilterInput ErrorSelect ExtendedSearchToggle Form| >
+    <Filters as |FilterInput ErrorSelect ExtendedSearchToggle Form|>
       <div class="uk-flex uk-flex-wrap uk-flex-between">
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <FilterInput
-              @label={{t "ember-gwr.building.EGID"}}
-              @name="EGID"
-            />
+            <FilterInput @label={{t "ember-gwr.building.EGID"}} @name="EGID" />
           </div>
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
             <FilterInput
-              @label={{t "ember-gwr.building.dateOfConstruction.periodOfConstruction"}}
+              @label={{t
+                "ember-gwr.building.dateOfConstruction.periodOfConstruction"
+              }}
               @type="select"
               @name="periodOfConstruction"
-              @prompt={{t "ember-gwr.building.dateOfConstruction.periodOfConstructionPlaceholder"}}
+              @prompt={{t
+                "ember-gwr.building.dateOfConstruction.periodOfConstructionPlaceholder"
+              }}
               @options={{this.periodOfConstructionOptions}}
               @disabled={{Form.model.EGID}}
             />
@@ -46,14 +47,16 @@
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <ErrorSelect @disabled={{Form.model.EGID}}/>
+            <ErrorSelect @disabled={{Form.model.EGID}} />
           </div>
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
             <FilterInput
               @name="descriptionLong"
-              @label={{t "ember-gwr.building.street.description.descriptionLong"}}
+              @label={{t
+                "ember-gwr.building.street.description.descriptionLong"
+              }}
               @disabled={{Form.model.EGID}}
             />
           </div>
@@ -87,7 +90,10 @@
         </div>
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
-            <ExtendedSearchToggle class="uk-margin-top uk-width-1-1" @disabled={{Form.model.EGID}}/>
+            <ExtendedSearchToggle
+              class="uk-margin-top uk-width-1-1"
+              @disabled={{Form.model.EGID}}
+            />
           </div>
         </div>
       </div>
@@ -95,9 +101,12 @@
   </:filters>
 
   <:results as |Results|>
-    <Results as |TableHeader Rows| >
-      <TableHeader as |HeaderColumn| >
-        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.building.EGID"}} />
+    <Results as |TableHeader Rows|>
+      <TableHeader as |HeaderColumn|>
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.building.EGID"}}
+        />
         <HeaderColumn
           @label={{t "ember-gwr.searchBuilding.entrances"}}
           class="uk-table-expand"
@@ -109,7 +118,7 @@
         />
       </TableHeader>
 
-      <Rows as |TableRowColumn| >
+      <Rows as |TableRowColumn|>
         <TableRowColumn @attr="EGID" as |value|>
           <button
             class="uk-button uk-button-link"

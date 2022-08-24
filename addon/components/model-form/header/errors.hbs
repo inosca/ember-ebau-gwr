@@ -1,12 +1,12 @@
 {{#unless @model.isNew}}
   <div
     uk-alert
-    class="{{if this.errorCount "uk-alert-warning" "uk-alert-success"}}
+    class="{{if this.errorCount 'uk-alert-warning' 'uk-alert-success'}}
       uk-margin-remove-top uk-margin-small-bottom uk-padding-small uk-flex-inline uk-flex-middle"
   >
     <div
       class="uk-label
-        {{if this.errorCount "uk-label-warning" "uk-label-success"}}"
+        {{if this.errorCount 'uk-label-warning' 'uk-label-success'}}"
     >
       {{this.errorCount}}
     </div>
@@ -41,9 +41,7 @@
     {{#if this.errorCount}}
       <ModelErrors::List @errors={{@model.errorList}} />
     {{else}}
-      <div
-        class="uk-margin-medium-bottom"
-      >
+      <div class="uk-margin-medium-bottom">
         {{t
           "ember-gwr.components.header.noIssues"
           modelName=@modelName

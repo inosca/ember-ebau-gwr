@@ -1,7 +1,11 @@
 {{#unless @noHeader}}
   <div class="uk-flex-inline uk-flex-top uk-width-expand">
     <div
-      class="uk-flex-none ember-ebau-gwr-model-id-width-{{if @smallHeaderIdWidth "small" "large"}}"
+      class="uk-flex-none ember-ebau-gwr-model-id-width-{{if
+          @smallHeaderIdWidth
+          'small'
+          'large'
+        }}"
     >
       <LinkTo
         class="uk-text-bold"

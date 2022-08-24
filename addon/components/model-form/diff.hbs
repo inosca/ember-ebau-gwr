@@ -1,11 +1,11 @@
-<div class="{{if @horizontal "uk-flex"}}">
-  <div class="uk-text-bold {{if @horizontal "uk-margin-left uk-flex-last"}}">
+<div class="{{if @horizontal 'uk-flex'}}">
+  <div class="uk-text-bold {{if @horizontal 'uk-margin-left uk-flex-last'}}">
     {{component @labelComponent}}
   </div>
   <div
     class="uk-box-shadow-small uk-padding-small uk-width-1-1
-      {{if @isInvalid "uk-form-danger"}}
-      {{if @isValid "uk-form-success"}}"
+      {{if @isInvalid 'uk-form-danger'}}
+      {{if @isValid 'uk-form-success'}}"
   >
     {{#if @current}}
       <div class="uk-margin">

@@ -2,8 +2,8 @@
   <span>{{t "ember-gwr.dwelling.floor"}}</span>
   <span class="uk-text-muted">
     {{#if @model.floorType}}
-      {{concat 
-        (if @model.floorNumber (concat @model.floorNumber ". ")) 
+      {{concat
+        (if @model.floorNumber (concat @model.floorNumber ". "))
         (t (concat "ember-gwr.dwelling.floorTypeOptions." @model.floorType))
       }}
     {{else}}

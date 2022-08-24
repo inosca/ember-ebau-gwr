@@ -6,7 +6,9 @@
   />
   <UkTab ...attributes as |Tab|>
     {{#each @links as |link|}}
-      <Tab.item @href={{build-url link.route link.models}}>{{link.text}}</Tab.item>
+      <Tab.item
+        @href={{build-url link.route link.models}}
+      >{{link.text}}</Tab.item>
     {{/each}}
   </UkTab>
 {{/unless}}

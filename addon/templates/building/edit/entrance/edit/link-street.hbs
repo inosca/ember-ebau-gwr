@@ -1,43 +1,37 @@
-<SubNav
-  @backRoute={{this.backRoute}}
-  @backText={{this.backRouteLabel}}
-/>
+<SubNav @backRoute={{this.backRoute}} @backText={{this.backRouteLabel}} />
 
 <h1>
   {{t "ember-gwr.components.linkStreet.heading"}}
 </h1>
 
-<Search
-  @service={{this.street}}
-  @baseQuery={{this.baseQuery}} 
->
+<Search @service={{this.street}} @baseQuery={{this.baseQuery}}>
   <:filters as |Filters|>
-    <Filters as |FilterInput| >
+    <Filters as |FilterInput|>
       <div class="uk-flex uk-flex-column uk-flex-wrap">
         <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
           <div class="uk-width-expand uk-width-1">
             <div class="uk-margin-right">
-              <FilterInput 
+              <FilterInput
                 @name="locality.name.nameLong"
                 @label={{t "ember-gwr.locality.name.nameLong"}}
-                @disabled={{true}} 
+                @disabled={{true}}
               />
             </div>
           </div>
           <div class="uk-width-small uk-width-1">
             <div class="uk-margin-right">
-              <FilterInput 
-                @name="locality.swissZipCode" 
+              <FilterInput
+                @name="locality.swissZipCode"
                 @label={{t "ember-gwr.locality.swissZipCode"}}
-                @disabled={{true}} 
+                @disabled={{true}}
               />
             </div>
           </div>
           <div class="uk-width-small uk-width-1">
-            <FilterInput 
-              @name="locality.swissZipCodeAddOn" 
+            <FilterInput
+              @name="locality.swissZipCodeAddOn"
               @label={{t "ember-gwr.locality.swissZipCodeAddOn"}}
-              @disabled={{true}} 
+              @disabled={{true}}
             />
           </div>
         </div>
@@ -52,17 +46,31 @@
   </:filters>
 
   <:results as |Results|>
-    <Results as |TableHeader Rows| >
-      <TableHeader as |HeaderColumn| >
-        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.street.ESID"}} />
-        <HeaderColumn @label={{t "ember-gwr.street.description.descriptionLong"}} />
-        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.name.nameLong"}} />
-        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCode"}} />
-        <HeaderColumn class="uk-table-shrink" @label={{t "ember-gwr.locality.swissZipCodeAddOn"}} />
+    <Results as |TableHeader Rows|>
+      <TableHeader as |HeaderColumn|>
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.street.ESID"}}
+        />
+        <HeaderColumn
+          @label={{t "ember-gwr.street.description.descriptionLong"}}
+        />
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.locality.name.nameLong"}}
+        />
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.locality.swissZipCode"}}
+        />
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.locality.swissZipCodeAddOn"}}
+        />
       </TableHeader>
 
-      <Rows as |TableRowColumn| >
-        <TableRowColumn @attr="ESID" as |value| >
+      <Rows as |TableRowColumn|>
+        <TableRowColumn @attr="ESID" as |value|>
           <button
             class="uk-button uk-button-link"
             type="button"

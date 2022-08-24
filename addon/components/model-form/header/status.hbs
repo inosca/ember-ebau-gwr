@@ -1,6 +1,7 @@
 {{#let
   (t (concat "ember-gwr.models." @modelName) count=1)
-  (get @model (concat @modelName "Status")) as |modelName modelStatus|
+  (get @model (concat @modelName "Status"))
+  as |modelName modelStatus|
 }}
   <div
     class="uk-margin-right uk-margin-small-bottom uk-width-medium uk-width-1-2@m"
