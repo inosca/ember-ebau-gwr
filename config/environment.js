@@ -15,6 +15,8 @@ module.exports = function (environment) {
       },
     },
 
+    // !!! WARNING !!!
+    // TODO: We have to find out how we can configure this in the host app.
     "changeset-validations": { rawOutput: true },
   };
 
