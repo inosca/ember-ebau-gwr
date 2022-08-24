@@ -19,84 +19,85 @@
   @service={{this.constructionProject}}
   @baseModel={{this.baseModel}}
   @extendedSearch={{true}}
-  as |Filters Results|
 >
-  <Filters as |FilterInput ErrorSelect ExtendedSearchToggle| >
-    <div class="uk-flex uk-flex-wrap uk-flex-between">
-      <div class="uk-width-1-3@m uk-width-1">
-        <div class="uk-margin-small-right">
-          <FilterInput @name="EPROID" type="number" @label={{t "ember-gwr.searchProject.EPROID"}}/>
+  <:filters as |Filters|>
+    <Filters as |FilterInput ErrorSelect ExtendedSearchToggle Form| >
+      <div class="uk-flex uk-flex-wrap uk-flex-between">
+        <div class="uk-width-1-3@m uk-width-1">
+          <div class="uk-margin-small-right">
+            <FilterInput @name="EPROID" type="number" @label={{t "ember-gwr.searchProject.EPROID"}}/>
+          </div>
+        </div>
+        <div class="uk-width-1-3@m uk-width-1">
+          <div class="uk-margin-small-right">
+            <FilterInput
+              @label={{t "ember-gwr.searchProject.projectStatus"}}
+              @type="select"
+              @name="projectStatus"
+              @prompt={{t "ember-gwr.searchProject.projectStatusPlaceholder"}}
+              @options={{this.projectStatusOptions}}
+              @disabled={{Form.model.EPROID}}
+            />
+          </div>
+        </div>
+        <div class="uk-width-1-3@m uk-width-1">
+          <div class="uk-margin-small-right">
+            <ErrorSelect @disabled={{Form.model.EPROID}}/>
+          </div>
+        </div>
+        <div class="uk-width-1-3@m uk-width-1">
+          <div class="uk-margin-small-right">
+            <FilterInput @name="realestateIdentification.number" type="number" @label={{t "ember-gwr.searchProject.realestateIdentification.number"}} @disabled={{Form.model.EPROID}}/>
+          </div>
+        </div>
+        <div class="uk-width-1-3@m uk-width-1">
+          <div class="uk-margin-small-right">
+            <ExtendedSearchToggle class="uk-margin-top uk-width-1-1"@disabled={{Form.model.EPROID}}/>
+          </div>
         </div>
       </div>
-      <div class="uk-width-1-3@m uk-width-1">
-        <div class="uk-margin-small-right">
-          <FilterInput
-            @label={{t "ember-gwr.searchProject.projectStatus"}}
-            @type="select"
-            @name="projectStatus"
-            @optionLabelPath="label"
-            @optionValuePath="value"
-            @optionTargetPath="value"
-            @prompt={{t "ember-gwr.searchProject.projectStatusPlaceholder"}}
-            @options={{this.projectStatusOptions}}
-          />
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1">
-        <div class="uk-margin-small-right">
-          <ErrorSelect />
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1">
-        <div class="uk-margin-small-right">
-          <FilterInput @name="realestateIdentification.number" type="number" @label={{t "ember-gwr.searchProject.realestateIdentification.number"}} />
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1">
-        <div class="uk-margin-small-right">
-          <ExtendedSearchToggle class="uk-margin-top uk-width-1-1"/>
-        </div>
-      </div>
-    </div>
-  </Filters>
+    </Filters>
+  </:filters>
   
-  <Results as |TableHeader Rows| >
-    <TableHeader as |HeaderColumn| >
-      <HeaderColumn
-        class="uk-table-shrink"
-        @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
-      />
-      <HeaderColumn
-        @label={{t
-          "ember-gwr.constructionProject.fields.officialConstructionProjectFileNo"
-        }}
-      />
-      <HeaderColumn
-        class="uk-table-expand"
-        @label={{t
-          "ember-gwr.constructionProject.fields.constructionProjectDescription"
-        }}
-      />
-      <HeaderColumn @label={{t "ember-gwr.searchProject.projectStatus"}} />
-    </TableHeader>
+  <:results as |Results|>
+    <Results as |TableHeader Rows| >
+      <TableHeader as |HeaderColumn| >
+        <HeaderColumn
+          class="uk-table-shrink"
+          @label={{t "ember-gwr.constructionProject.fields.EPROID"}}
+        />
+        <HeaderColumn
+          @label={{t
+            "ember-gwr.constructionProject.fields.officialConstructionProjectFileNo"
+          }}
+        />
+        <HeaderColumn
+          class="uk-table-expand"
+          @label={{t
+            "ember-gwr.constructionProject.fields.constructionProjectDescription"
+          }}
+        />
+        <HeaderColumn @label={{t "ember-gwr.searchProject.projectStatus"}} />
+      </TableHeader>
 
-    <Rows as |TableRowColumn| >
-      <TableRowColumn @attr="EPROID" as |value|>
-        <button
-          class="uk-button uk-button-link"
-          type="button"
-          {{on "click" (fn this.selectProject value)}}
-        >
-          {{value}}
-        </button>
-      </TableRowColumn>
-      <TableRowColumn @attr="officialConstructionProjectFileNo" />
-      <TableRowColumn @attr="constructionProjectDescription" />
-      <TableRowColumn @attr="projectStatus" as |value|>
-        {{#if value}}
-          {{t (concat "ember-gwr.searchProject.projectStatusOptions." value)}}
-        {{/if}}
-      </TableRowColumn>
-    </Rows>
-  </Results>
+      <Rows as |TableRowColumn| >
+        <TableRowColumn @attr="EPROID" as |value|>
+          <button
+            class="uk-button uk-button-link"
+            type="button"
+            {{on "click" (fn this.selectProject value)}}
+          >
+            {{value}}
+          </button>
+        </TableRowColumn>
+        <TableRowColumn @attr="officialConstructionProjectFileNo" />
+        <TableRowColumn @attr="constructionProjectDescription" />
+        <TableRowColumn @attr="projectStatus" as |value|>
+          {{#if value}}
+            {{t (concat "ember-gwr.searchProject.projectStatusOptions." value)}}
+          {{/if}}
+        </TableRowColumn>
+      </Rows>
+    </Results>
+  </:results>
 </Search>
