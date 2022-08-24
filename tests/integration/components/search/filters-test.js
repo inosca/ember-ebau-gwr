@@ -1,26 +1,51 @@
-import { render } from "@ember/test-helpers";
+import { click, fillIn, render } from "@ember/test-helpers";
+import { Changeset } from "ember-changeset";
 import { hbs } from "ember-cli-htmlbars";
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
-import { module, todo } from "qunit";
+import { module, test } from "qunit";
+
+const modulePrefix = "ember-ebau-gwr";
+const resolver = engineResolverFor(modulePrefix);
 
 module("Integration | Component | search/filters", function (hooks) {
-  setupRenderingTest(hooks);
+  setupRenderingTest(hooks, { resolver, integration: true });
 
-  todo("it renders", async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test("it allows toggling of the extended search fields", async function (assert) {
+    this.changeset = new Changeset({});
+    this.onSubmit = function () {};
 
-    await render(hbs`<Search::Filters />`);
-
-    assert.equal(this.element.textContent.trim(), "");
-
-    // Template block usage:
     await render(hbs`
-      <Search::Filters>
-        template block text
-      </Search::Filters>
-    `);
+    <Search::Filters
+      @changeset={{this.changeset}}
+      @onSubmit={{this.onSubmit}}
+      as |FilterInput ErrorSelect ExtendedSearchToggle|
+    >
+      <ExtendedSearchToggle />
+    </Search::Filters>`);
 
-    assert.equal(this.element.textContent.trim(), "template block text");
+    assert.dom('input[name="realestateIdentification.EGRID"]').isNotVisible();
+
+    await click("button");
+
+    assert.dom('input[name="realestateIdentification.EGRID"]').isVisible();
+  });
+
+  test("the submit button is disabled unless there are inputs", async function (assert) {
+    this.changeset = new Changeset({ EGID: null });
+    this.onSubmit = function () {};
+
+    await render(hbs`
+    <Search::Filters
+      @changeset={{this.changeset}}
+      @onSubmit={{this.onSubmit}}
+      as |FilterInput ErrorSelect ExtendedSearchToggle|
+    >
+      <FilterInput @label="EGID" @name="EGID" />
+    </Search::Filters>`);
+
+    assert.dom("button").isDisabled();
+    await fillIn("input", "some value");
+    assert.dom("button").isEnabled();
   });
 });
