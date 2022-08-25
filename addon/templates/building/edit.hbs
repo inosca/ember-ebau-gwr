@@ -1,24 +1,34 @@
-<SubNav
-  @backRoute="project.linked-buildings"
-  @backModel={{@model.projectId}}
-  @backText={{t "ember-gwr.building.backToProject"}}
-  @hiddenOnRoute={{array "entrance" "dwelling"}}
-  @links={{array
-    (hash
-      route="building.edit.form"
-      models=(array @model.buildingId)
-      text=(t "ember-gwr.models.building" count=1)
-    )
-    (hash
-      route="building.edit.entrances"
-      models=(array @model.buildingId)
-      text=(t "ember-gwr.models.entrance" count=2)
-    )
-    (hash
-      route="building.edit.dwellings"
-      models=(array @model.buildingId)
-      text=(t "ember-gwr.models.dwelling" count=2)
-    )
-  }}
-/>
+{{#if (current-route-is-not "entrance" "dwelling")}}
+  {{#if @model.projectId}}
+    <BackRoute
+      @backRoute="project.linked-buildings"
+      @backModel={{@model.projectId}}
+      @backText={{t "ember-gwr.building.backToProject"}}
+    />
+  {{else}}
+    <BackRoute
+      @backRoute="search-building"
+      @backText={{t "ember-gwr.globalLandingPage.backToSearch"}}
+    />
+  {{/if}}
+  <SubNav
+    @links={{array
+      (hash
+        route="building.edit.form"
+        models=(array @model.buildingId)
+        text=(t "ember-gwr.models.building" count=1)
+      )
+      (hash
+        route="building.edit.entrances"
+        models=(array @model.buildingId)
+        text=(t "ember-gwr.models.entrance" count=2)
+      )
+      (hash
+        route="building.edit.dwellings"
+        models=(array @model.buildingId)
+        text=(t "ember-gwr.models.dwelling" count=2)
+      )
+    }}
+  />
+{{/if}}
 {{outlet}}

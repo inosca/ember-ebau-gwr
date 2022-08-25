@@ -1,9 +1,4 @@
-{{#unless this.isHidden}}
-  <BackRoute
-    @backRoute={{@backRoute}}
-    @backModel={{@backModel}}
-    @backText={{@backText}}
-  />
+{{#if (current-route-is-not @hiddenOnRoute)}}
   <UkTab ...attributes as |Tab|>
     {{#each @links as |link|}}
       <Tab.item
@@ -11,4 +6,4 @@
       >{{link.text}}</Tab.item>
     {{/each}}
   </UkTab>
-{{/unless}}
+{{/if}}

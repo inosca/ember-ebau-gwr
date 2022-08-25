@@ -1,6 +1,7 @@
-<SubNav
-  @backRoute="building.edit.entrances"
-  @backText={{t "ember-gwr.buildingEntrance.backToBuilding"}}
-  @hiddenOnRoute="link-street"
-/>
+{{#if (current-route-is-not "link-street")}}
+  <BackRoute
+    @backRoute="building.edit.entrances"
+    @backText={{t "ember-gwr.buildingEntrance.backToBuilding"}}
+  />
+{{/if}}
 {{outlet}}

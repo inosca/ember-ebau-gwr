@@ -5,7 +5,7 @@ export default buildRoutes(function () {
   this.route("quarterly-closure");
 
   this.route("search-project");
-  this.route("search-building", { path: "/:project_id/search-building" });
+  this.route("search-building");
 
   this.route("project", { path: "/projects" }, function () {
     this.route("form", { path: "/:project_id/form" });
@@ -13,7 +13,7 @@ export default buildRoutes(function () {
     this.route("linked-buildings", { path: "/:project_id/buildings" });
     this.route("errors", { path: "/:project_id/errors" });
   });
-  this.route("building", { path: "/:project_id/buildings/" }, function () {
+  this.route("building", function () {
     this.route("new");
     this.route("edit", { path: "/:building_id" }, function () {
       this.route("form");
