@@ -18,7 +18,8 @@
       <td class="uk-table-shrink">
         <LinkTo
           @route="building.edit.form"
-          @models={{array @model model.building.EGID}}
+          @query={{hash projectId=@model}}
+          @model={{model.building.EGID}}
           class="uk-link"
         >
           {{model.building.EGID}}

@@ -6,6 +6,7 @@ import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
+import { trackedFunction } from "ember-resources/util/function";
 
 export default class BuildingFormController extends ImportController {
   Models = Models;
@@ -19,7 +20,13 @@ export default class BuildingFormController extends ImportController {
   @service router;
   @service quarterlyClosure;
 
-  @tracked BuildingWorkValidations;
+  @tracked BuildingWorkValidations = trackedFunction(this, () => {
+    return buildingWorkValidation({
+      isNew: this.model.buildingWork?.isNew,
+      validateOnlyBuilding: this.hasNoProject,
+    });
+  });
+
   @tracked errors;
 
   get buildingStatusOptions() {
@@ -33,15 +40,24 @@ export default class BuildingFormController extends ImportController {
     return states;
   }
 
+  get hasNoProject() {
+    return !this.model.projectId;
+  }
+
   @lastValue("fetchBuildingWork") buildingWork;
   @task
   *fetchBuildingWork() {
     try {
       this.errors = [];
-      this.BuildingWorkValidations = buildingWorkValidation(
-        this.model.buildingWork?.isNew
-      );
+
       yield this.fetchBuilding.perform();
+
+      // If the edit view is accessed from the global search,
+      // we dont have a buildingWork. In this case we just return
+      // a mock building work.
+      if (this.hasNoProject) {
+        return { building: this.building };
+      }
 
       if (this.model.buildingWork?.isNew) {
         return this.model.buildingWork;
@@ -50,8 +66,6 @@ export default class BuildingFormController extends ImportController {
       const project = yield this.constructionProject.getFromCacheOrApi(
         this.model.projectId
       );
-
-      yield this.fetchBuilding.perform();
 
       return project.work?.find(
         (buildingWork) =>
@@ -87,42 +101,48 @@ export default class BuildingFormController extends ImportController {
   *saveBuildingWork() {
     try {
       let EGID = this.buildingWork.building.EGID;
-      if (this.buildingWork.isNew) {
-        const building = yield this.buildingAPI.create(
-          this.model.projectId,
-          this.buildingWork
-        );
-        EGID = building.EGID;
-      } else {
+      if (this.hasNoProject) {
         yield this.buildingAPI.update(this.buildingWork.building);
-        // Only modify work if of type Umbau (only possible there)
-        if (this.buildingWork.kindOfWork === 6002) {
-          yield this.constructionProject.modifyWork(
+      } else {
+        if (this.buildingWork.isNew) {
+          const building = yield this.buildingAPI.create(
             this.model.projectId,
             this.buildingWork
           );
+          EGID = building.EGID;
+        } else {
+          yield this.buildingAPI.update(this.buildingWork.building);
+          // Only modify work if of type Umbau (only possible there)
+          if (this.buildingWork.kindOfWork === 6002) {
+            yield this.constructionProject.modifyWork(
+              this.model.projectId,
+              this.buildingWork
+            );
+          }
         }
+
+        // refresh work list
+        const project = yield this.constructionProject.get(
+          this.model.projectId
+        );
+
+        // remove default work
+        // Since all works have per default a new building model,
+        // we can figure out the default work by filtering `building.isNew`.
+        yield Promise.all(
+          project.work.map((work) =>
+            work.building.isNew
+              ? this.constructionProject.removeWorkFromProject(
+                  this.model.projectId,
+                  work.ARBID
+                )
+              : work
+          )
+        );
+
+        // Clear cache so after transition we fetch the project form api
+        this.constructionProject.clearCache(this.model.projectId);
       }
-
-      // refresh work list
-      const project = yield this.constructionProject.get(this.model.projectId);
-
-      // remove default work
-      // Since all works have per default a new building model,
-      // we can figure out the default work by filtering `building.isNew`.
-      yield Promise.all(
-        project.work.map((work) =>
-          work.building.isNew
-            ? this.constructionProject.removeWorkFromProject(
-                this.model.projectId,
-                work.ARBID
-              )
-            : work
-        )
-      );
-
-      // Clear cache so after transition we fetch the project form api
-      this.constructionProject.clearCache(this.model.projectId);
       this.buildingAPI.clearCache(this.model.buildingId);
       this.errors = [];
       this.router.transitionTo("building.edit.form", EGID);

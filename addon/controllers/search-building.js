@@ -77,4 +77,9 @@ export default class SearchBuildingController extends Controller {
   setActiveBuilding(EGID) {
     this.activeBuilding = EGID;
   }
+
+  @action
+  redirectToBuilding(EGID) {
+    this.router.transitionTo("building.edit.form", EGID);
+  }
 }

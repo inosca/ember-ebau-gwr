@@ -123,7 +123,12 @@
           <button
             class="uk-button uk-button-link"
             type="button"
-            {{on "click" (fn this.setActiveBuilding value)}}
+            {{on
+              "click"
+              (fn
+                (if @model this.setActiveBuilding this.redirectToBuilding) value
+              )
+            }}
           >
             {{value}}
           </button>

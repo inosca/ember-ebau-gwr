@@ -27,16 +27,18 @@
       {{@modelName}}
       {{@modelId}}
     </h3>
-    <LinkTo
-      @route="project.errors"
-      @model={{@projectId}}
-      class="uk-link-muted uk-text-small"
-    >
-      <span>
-        {{t "ember-gwr.components.header.linkIssues" projectId=@projectId}}
-      </span>
-      <span uk-icon="icon: arrow-right"></span>
-    </LinkTo>
+    {{#if @projectId}}
+      <LinkTo
+        @route="project.errors"
+        @model={{@projectId}}
+        class="uk-link-muted uk-text-small"
+      >
+        <span>
+          {{t "ember-gwr.components.header.linkIssues" projectId=@projectId}}
+        </span>
+        <span uk-icon="icon: arrow-right"></span>
+      </LinkTo>
+    {{/if}}
     <hr class="uk-margin-small-bottom" />
     {{#if this.errorCount}}
       <ModelErrors::List @errors={{@model.errorList}} />

@@ -1,14 +1,12 @@
 {{#if
   (and this.buildingWork.building.isNew (not this.fetchBuildingWork.isRunning))
 }}
-  <LinkTo
-    @route="project.linked-buildings"
-    @model={{this.model.projectId}}
-    class="uk-link-muted uk-margin-small-bottom"
-  >
-    <span uk-icon="icon: arrow-left"></span>
-    {{t "ember-gwr.building.backToProject"}}
-  </LinkTo>
+  <BackRoute
+    @backRoute="project.linked-buildings"
+    @backModel={{this.model.projectId}}
+    @backText={{t "ember-gwr.building.backToProject"}}
+  />
+
 {{/if}}
 <div>
   {{#if (or this.fetchBuildingWork.isRunning this.fetchBuilding.isRunning)}}
@@ -20,7 +18,7 @@
     <ModelForm
       @model={{this.buildingWork}}
       @instanceId={{this.model.instanceId}}
-      @validations={{this.BuildingWorkValidations}}
+      @validations={{this.BuildingWorkValidations.value}}
       @onSubmit={{this.saveBuildingWork}}
       @errors={{this.errors}}
       @translationBase="ember-gwr"
@@ -42,92 +40,94 @@
       @disabled={{this.quarterlyClosure.disableForms}}
       as |Field changeset import|
     >
-      {{#unless this.buildingWork.isNew}}
+      {{#unless this.hasNoProject}}
+        {{#unless this.buildingWork.isNew}}
+          <h3>
+            {{t
+              "ember-gwr.building.sections.kindOfWorkForProject"
+              projectId=@model.projectId
+            }}
+          </h3>
+          <div class="uk-flex uk-margin">
+            <div class="uk-width-1-2">
+              <span class="uk-form-label">{{t
+                  "ember-gwr.buildingWork.kindOfWork"
+                }}:</span>
+              <span>{{t
+                  (concat
+                    "ember-gwr.buildingWork.kindOfWorkOptions."
+                    this.buildingWork.kindOfWork
+                  )
+                }}</span>
+            </div>
+            <div class="uk-width-1-2">
+              <span class="uk-form-label">{{t
+                  "ember-gwr.buildingWork.ARBID"
+                }}:</span>
+              <span>{{this.buildingWork.ARBID}}</span>
+            </div>
+          </div>
+        {{/unless}}
+
+        {{#if (eq changeset.kindOfWork 6002)}}
+          <div class="uk-flex">
+            <div class="uk-width-1-2">
+              <Field
+                @attr="energeticRestauration"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="renovationHeatingsystem"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="innerConversionRenovation"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="conversion"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="extensionHeighteningHeated"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+            </div>
+            <div class="uk-width-1-2">
+              <Field
+                @attr="extensionHeighteningNotHeated"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="thermicSolarFacility"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="photovoltaicSolarFacility"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+              <Field
+                @attr="otherWorks"
+                @type="checkbox"
+                @translationBase="ember-gwr.buildingWork"
+              />
+            </div>
+          </div>
+        {{/if}}
+        <hr />
+
         <h3>
-          {{t
-            "ember-gwr.building.sections.kindOfWorkForProject"
-            projectId=@model.projectId
-          }}
+          {{t "ember-gwr.building.sections.building"}}
         </h3>
-        <div class="uk-flex uk-margin">
-          <div class="uk-width-1-2">
-            <span class="uk-form-label">{{t
-                "ember-gwr.buildingWork.kindOfWork"
-              }}:</span>
-            <span>{{t
-                (concat
-                  "ember-gwr.buildingWork.kindOfWorkOptions."
-                  this.buildingWork.kindOfWork
-                )
-              }}</span>
-          </div>
-          <div class="uk-width-1-2">
-            <span class="uk-form-label">{{t
-                "ember-gwr.buildingWork.ARBID"
-              }}:</span>
-            <span>{{this.buildingWork.ARBID}}</span>
-          </div>
-        </div>
       {{/unless}}
-
-      {{#if (eq changeset.kindOfWork 6002)}}
-        <div class="uk-flex">
-          <div class="uk-width-1-2">
-            <Field
-              @attr="energeticRestauration"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="renovationHeatingsystem"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="innerConversionRenovation"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="conversion"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="extensionHeighteningHeated"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-          </div>
-          <div class="uk-width-1-2">
-            <Field
-              @attr="extensionHeighteningNotHeated"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="thermicSolarFacility"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="photovoltaicSolarFacility"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-            <Field
-              @attr="otherWorks"
-              @type="checkbox"
-              @translationBase="ember-gwr.buildingWork"
-            />
-          </div>
-        </div>
-      {{/if}}
-      <hr />
-
-      <h3>
-        {{t "ember-gwr.building.sections.building"}}
-      </h3>
 
       <Field @attr="building.officialBuildingNo" @type="number" />
 
