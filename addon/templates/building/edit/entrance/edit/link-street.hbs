@@ -6,7 +6,7 @@
 
 <Search @service={{this.street}} @baseQuery={{this.baseQuery}}>
   <:filters as |Filters|>
-    <Filters as |FilterInput|>
+    <Filters @submitLabel={{t "ember-gwr.components.linkStreet.search"}} as |FilterInput|>
       <div class="uk-flex uk-flex-column uk-flex-wrap">
         <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
           <div class="uk-width-expand uk-width-1">
