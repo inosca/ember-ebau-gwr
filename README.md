@@ -32,6 +32,19 @@ will then be used to filter the `gwr-links` by their attribute `local_id`.
 this.mount("ember-ebau-gwr", { as: "gwr", path: "gwr/:id" });
 ```
 
+### Enviroment configuration
+In your `config/environment.js` you need to define the following option for
+`changeset-validations`. We use this feature to generate translated errors:
+```js
+"changeset-validations": { rawOutput: true },
+```
+
+> **Important**
+> This currentlry has the limitation, that if your app uses
+`changeset-validations` itself, this option changes the behaviour in the whole
+app. Due to engine config restrictions, there is sadly currently no other way
+than maybe implementing something on build-pipeline level.
+
 ### Styling
 
 The engine uses the UI framework "UIkit" through [ember-uikit](https://github.com/adfinis-sygroup/ember-uikit). To enable the styling, add the following import to `app/styles/app.scss`:
