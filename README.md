@@ -62,12 +62,16 @@ dependencies = {
 
 The config service is used to pass config to the engine. The following properties can be configured:
 
-| Name                           | Type     |
-| ------------------------------ | -------- |
-| `municipalityId`               | `Number` |
-| `municipalityName`             | `String` |
-| `cantonAbbreviation`           | `String` |
-| `constructionSurveyDeptNumber` | `Number` |
+| Name                 | Type             | Description                                                                                        |
+| -------------------- | ---------------- | -------------------------------------------------------------------------------------------------- |
+| `gwrAPI`             | `URL Path`       | URL path to the gwr api proxy. Example: `/housing-stat/regbl/api/ech0216/`                         |
+| `isTestEnvironment`  | `Boolean`        | Is the code deployed on staging or production                                                      |
+| `cantonAbbreviation` | `String`         | `BE`, `SZ`,`UR` etc.                                                                               |
+| `importModels`       | `[String]`       | A list of model names for which the import should be available. Example: `["project", "building"]` |
+| `authToken`          | `String`         | The authentication toke from the host app.                                                         |
+| `camacGroup`         | `String\|Number` | The current camac group of the user.                                                               |
+| `pageSize`           | `Number`         | The page size which the gwr api should return.                                                     |
+| `modalContainer`     | `CSS Selector`   | A CSS selector to render the modal's in.                                                           |
 
 All values should follow the officially used format.
 
