@@ -3,7 +3,6 @@
   @btnClose={{false}}
   @escClose={{false}}
   @bgClose={{false}}
-  @onHide={{@close}}
   @container={{this.config.modalContainer}}
   as |Modal|
 >
@@ -33,7 +32,6 @@
             <LinkTo
               @query={{hash import=true index=index}}
               class="uk-button uk-button-primary uk-margin-medium-top uk-width-1"
-              {{on "click" @close}}
             >
               {{t "ember-gwr.components.modelForm.importFromCaluma"}}
             </LinkTo>
@@ -44,9 +42,8 @@
   </Modal.body>
   <Modal.footer>
     <LinkTo
-      @query={{hash import=false index=undefined}}
+      @query={{hash import=false index=null}}
       class="uk-button uk-button-default uk-width-1"
-      {{on "click" @close}}
     >
       {{t "ember-gwr.components.modelForm.cancelImport"}}
     </LinkTo>

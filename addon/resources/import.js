@@ -17,25 +17,7 @@ export default class ImportResource extends Resource {
   @service dataImport;
   @service router;
 
-  @tracked showImport = false;
-  @tracked importIndex = null;
   @tracked error = null;
-
-  get value() {
-    const index = Number(this.importIndex);
-    const data =
-      Array.isArray(this.importedData) && !isNaN(index)
-        ? this.importedData[index]
-        : this.importedData;
-
-    return data
-      ? {
-          index,
-          data,
-          originalData: this.importedData,
-        }
-      : false;
-  }
 
   get isLoading() {
     return this.fetchCalumaData.isRunning;
@@ -45,46 +27,45 @@ export default class ImportResource extends Resource {
     return Boolean(this.error);
   }
 
-  modify(
-    _positional,
-    { instanceId, showImport, importIndex, importModelName }
-  ) {
-    this.showImport = showImport;
-    this.importIndex = importIndex;
-    this.instanceId = instanceId;
-    if (this.instanceId && this.showImport) {
-      this.fetchCalumaData.perform(instanceId, importModelName);
-    }
+  modify(_positional, named) {
+    this.fetchCalumaData.perform(named);
   }
 
-  @lastValue("fetchCalumaData") importedData;
+  @lastValue("fetchCalumaData") value;
   @task
-  *fetchCalumaData(instanceId, importModelName, ...args) {
-    assert(
-      "Must set `importModelName` to a string.",
-      typeof importModelName === "string"
-    );
-    assert(
-      "Must set `instanceId`.",
-      instanceId !== null && instanceId !== undefined
-    );
-    try {
-      const data = yield this.dataImport[IMPORT_MAP[importModelName]](
-        instanceId,
-        ...args
+  *fetchCalumaData({ instanceId, showImport, importModelName }) {
+    this.error = null;
+
+    if (instanceId && showImport) {
+      assert(
+        "Must set `importModelName` to a string.",
+        typeof importModelName === "string"
       );
-      if (Object.keys(data).length === 0 || data.length === 0) {
-        this.router.externalRouter.transitionTo({
-          queryParams: { import: false },
-        });
-        this.error = NO_DATA_ERROR;
-      } else {
-        return data?.length === 1 ? data[0] : data;
+      assert(
+        "Must set `instanceId`.",
+        instanceId !== null && instanceId !== undefined
+      );
+      try {
+        console.log("fetching data");
+        const data = yield this.dataImport[IMPORT_MAP[importModelName]](
+          instanceId
+        );
+        if (Object.keys(data).length === 0 || data.length === 0) {
+          this.router.externalRouter.transitionTo({
+            queryParams: { import: false },
+          });
+          this.error = NO_DATA_ERROR;
+        } else {
+          return data?.length === 1 ? data[0] : data;
+        }
+      } catch (error) {
+        console.error(error);
+        this.error = error;
+        return null;
       }
-    } catch (error) {
-      console.error(error);
-      this.error = error;
-      return error;
+    } else {
+      console.log("no instanceId or showImport");
+      return null;
     }
   }
 }

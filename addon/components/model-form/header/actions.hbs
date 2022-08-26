@@ -1,20 +1,18 @@
 <div class="uk-flex uk-flex-column uk-flex-right">
   <ImportModal
-    @visible={{and this.showImportModal @import.originalData.length}}
-    @close={{fn (mut this.showImportModal) false}}
+    @visible={{this.showImportModal}}
     @import={{@import}}
     @modelName={{@modelName}}
   />
   <div class="uk-flex-inline uk-flex-right uk-flex-middle">
     {{#if (and @modelHasImport @import)}}
       {{#if (and @import.originalData.length (is-unset @import.index))}}
-        <button
+        <LinkTo
           class="uk-button uk-button-default uk-margin-small-right uk-flex-none"
-          type="button"
-          {{on "click" (fn (mut this.showImportModal) true)}}
+          @query={{hash index=null}}
         >
           {{t "ember-gwr.components.importModal.selectImportData"}}
-        </button>
+        </LinkTo>
       {{else}}
         <button
           class="uk-button uk-button-default uk-flex-none
@@ -40,13 +38,12 @@
               class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
             >
               <li>
-                <button
+                <LinkTo
                   class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
-                  type="button"
-                  {{on "click" (fn (mut this.showImportModal) true)}}
+                  @query={{hash index=null}}
                 >
                   {{t "ember-gwr.components.importModal.selectImportData"}}
-                </button>
+                </LinkTo>
               </li>
             </ul>
           </div>
@@ -89,7 +86,6 @@
                     'uk-text-secondary'
                   }}
                   uk-width-1-1 uk-background-default uk-padding-remove"
-                {{on "click" (fn (mut this.showImportModal) true)}}
                 uk-tooltip="title: {{if
                   @import.error
                   (t 'ember-gwr.components.modelForm.importError')

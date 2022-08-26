@@ -1,8 +1,12 @@
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
 
 export default class ModelFormHeaderActionsComponent extends Component {
-  @tracked showImportModal = false;
   @service config;
+
+  get showImportModal() {
+    return (
+      this.args.import?.originalData?.length && isNaN(this.args.import?.index)
+    );
+  }
 }

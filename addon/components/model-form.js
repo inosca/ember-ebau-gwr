@@ -18,19 +18,31 @@ export default class ModelFormComponent extends Component {
   @tracked diffs = [];
 
   @tracked import = ImportResource.from(this, () => ({
-    instanceId: this.args.importQueryParams.instanceId,
-    showImport: this.args.importQueryParams.showImport,
-    importIndex: this.args.importQueryParams.importIndex,
+    instanceId: this.args.instanceId,
+    showImport: this.args.showImport,
     importModelName: this.args.importModelName ?? this.args.modelName,
   }));
+
+  get importData() {
+    const index = Number(this.args.importIndex);
+    const data =
+      Array.isArray(this.import.value) && !isNaN(index)
+        ? this.import.value[index]
+        : this.import.value;
+
+    return data
+      ? {
+          index,
+          data,
+          originalData: this.import.value,
+        }
+      : null;
+  }
 
   // These getters are a bit funky so they only access the `import`
   // prop (and trigger the resource) if they need to.
   get showImport() {
-    return Boolean(
-      this.args.importQueryParams.instanceId &&
-        this.args.importQueryParams.showImport
-    );
+    return Boolean(this.args.instanceId && this.args.showImport);
   }
 
   get noImportData() {
@@ -43,7 +55,7 @@ export default class ModelFormComponent extends Component {
 
   get modelHasImport() {
     return (
-      this.args.importQueryParams.instanceId &&
+      this.args.instanceId &&
       this.config.importModels.includes(this.args.modelName)
     );
   }
