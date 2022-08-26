@@ -12,7 +12,9 @@ export default class GwrService extends Service {
   @service xml;
   @service intl;
 
-  pageSize = 3;
+  get pageSize() {
+    return this.config.pageSize;
+  }
 
   _cache = {};
 
@@ -58,9 +60,7 @@ export default class GwrService extends Service {
   }
 
   async search(
-    query = {
-      page: 0,
-    },
+    query,
     id,
     { xmlMethod, urlPath, listModel, listKey, searchKey }
   ) {
@@ -82,7 +82,9 @@ export default class GwrService extends Service {
       .replace(/\r?\n|\r/g, "");
 
     response = await this.authFetch.fetch(
-      `/${urlPath}?page=${query.page}&size=${this.pageSize}`,
+      query.page
+        ? `/${urlPath}?page=${query.page}&size=${this.pageSize}`
+        : `/${urlPath}`,
       {
         headers: {
           query: queryXML,
