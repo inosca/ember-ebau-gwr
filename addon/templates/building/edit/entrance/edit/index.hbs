@@ -19,7 +19,8 @@
       @modelName="entrance"
       @importModelName="buildingEntrance"
       @showStatusActions={{false}}
-      @importQueryParams={{this.importQueryParams}}
+      @showImport={{this.showImport}}
+      @importIndex={{this.importIndex}}
       @disabled={{or this.hasNoStreet this.quarterlyClosure.disableForms}}
       as |Field|
     >

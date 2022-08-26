@@ -62,7 +62,7 @@
         @modelName={{@modelName}}
         @modelDescription={{@headerModelDescription}}
         @showStatusActions={{@showStatusActions}}
-        @import={{this.import.value}}
+        @import={{this.importData}}
         @modelHasImport={{this.modelHasImport}}
         @importAllData={{this.importAllData}}
         @modelStatusOptions={{@modelStatusOptions}}
@@ -83,7 +83,7 @@
         (component
           "model-form/field"
           model=f.model
-          importedData=this.import.value
+          importedData=this.importData
           translationBase=@translationBase
           input=f.input
           registerDiff=this.registerDiff
@@ -91,7 +91,7 @@
           disabled=@disabled
         )
         f.model
-        this.import.value
+        this.importData
       }}
       <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
         <Submit class="uk-flex-none" />

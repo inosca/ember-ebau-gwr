@@ -17,7 +17,8 @@
       @projectId={{this.router.externalRouter.currentRoute.attributes.projectId}}
       @modelName="dwelling"
       @showStatusActions={{this.hasInstanceContext}}
-      @importQueryParams={{this.importQueryParams}}
+      @showImport={{this.showImport}}
+      @importIndex={{this.importIndex}}
       @modelStatusOptions={{this.dwellingStatusOptions}}
       @nextValidStates={{this.nextValidStates}}
       @onStatusChange={{this.transitionState}}
