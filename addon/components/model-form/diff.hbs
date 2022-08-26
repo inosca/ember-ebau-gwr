@@ -17,10 +17,10 @@
           </span>
           <button
             type="button"
-            class="uk-button uk-button-default uk-button-small"
+            class="uk-button uk-button-default uk-button-small uk-width-small"
             {{on "click" (fn @updateModelField @current)}}
           >
-            {{t "ember-gwr.components.modelForm.diff.apply"}}
+            {{t "ember-gwr.components.modelForm.diff.cancel"}}
           </button>
         </div>
         {{#let
@@ -41,7 +41,7 @@
         <div>
           <button
             type="button"
-            class="uk-button uk-button-primary uk-button-small"
+            class="uk-button uk-button-primary uk-button-small uk-width-small"
             {{on "click" (fn @updateModelField this.newValue)}}
           >
             {{t "ember-gwr.components.modelForm.diff.apply"}}

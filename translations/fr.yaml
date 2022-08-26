@@ -229,23 +229,6 @@ ember-gwr:
 
     logout: Se déconnecter
 
-    projectForm:
-      save: Enregistrer
-      cancelImport: Interrompre l'import
-      applyAll: Tout reprendre
-      importFromCaluma: Importer les données de la demande de permis
-      changeStatus: Changer le statut
-      dates: Dates
-      datePlaceholder: Choisissez une date...
-      title: Projet de construction {id}
-      realEstateHeading: Identification de l'immeuble (bien-fonds)
-      clientHeading: Maître d’ouvrage
-
-      diff:
-        existingData: Données existantes dans le RegBL
-        importedData: Données importées
-        apply: Reprendre
-
     modelForm:
       save: Enregistrer
       cancelImport: Interrompre l'import

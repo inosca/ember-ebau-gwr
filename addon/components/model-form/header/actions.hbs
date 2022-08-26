@@ -80,7 +80,7 @@
           {{#if @modelHasImport}}
             <li>
               <LinkTo
-                @disabled={{or @import this.importState.hasError}}
+                @disabled={{or @import @import.error}}
                 @query={{hash import=true}}
                 class="uk-button uk-text-left uk-highlight-hover
                   {{if
@@ -91,7 +91,7 @@
                   uk-width-1-1 uk-background-default uk-padding-remove"
                 {{on "click" (fn (mut this.showImportModal) true)}}
                 uk-tooltip="title: {{if
-                  this.importState.hasError
+                  @import.error
                   (t 'ember-gwr.components.modelForm.importError')
                 }}; container: {{this.config.modalContainer}}"
               >

@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { dropTask } from "ember-concurrency";
-import ImportResource from "ember-ebau-gwr/resources/import";
+import ImportResource, { NO_DATA_ERROR } from "ember-ebau-gwr/resources/import";
 import { isIsoDate } from "ember-ebau-gwr/utils";
 
 export default class ModelFormComponent extends Component {
@@ -26,15 +26,15 @@ export default class ModelFormComponent extends Component {
 
   // These getters are a bit funky so they only access the `import`
   // prop (and trigger the resource) if they need to.
-  get importedData() {
-    return this.args.importQueryParams.instanceId &&
-      this.args.importQueryParams.showImport
-      ? this.import
-      : null;
+  get showImport() {
+    return Boolean(
+      this.args.importQueryParams.instanceId &&
+        this.args.importQueryParams.showImport
+    );
   }
 
-  get showImport() {
-    return Boolean(this.importedData);
+  get noImportData() {
+    return this.import.error === NO_DATA_ERROR;
   }
 
   get isSaving() {

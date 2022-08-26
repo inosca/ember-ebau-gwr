@@ -1,6 +1,32 @@
-{{#if this.importedData.isLoading}}
+{{#if this.import.isLoading}}
   <Loading />
 {{else}}
+
+  {{#if this.import.error}}
+    <div
+      class={{if this.noImportData "uk-alert-warning" "uk-alert-error"}}
+      uk-alert
+    >
+
+      {{! The aria-label attr results in a template-lint error for some reason: error  Cannot read properties of undefined (reading 'replace')  undefined}}
+      {{! template-lint-disable}}
+      <a
+        aria-label={{t "ember-gwr.close"}}
+        class="uk-alert-close"
+        href=""
+        uk-close
+      ></a>
+      {{! template-lint-enable}}
+      <p>
+        {{#if this.noImportData}}
+          {{t "ember-gwr.components.modelForm.noImportData"}}
+        {{else}}
+          {{t "ember-gwr.components.modelForm.importError"}}
+        {{/if}}
+      </p>
+    </div>
+  {{/if}}
+
   <ValidatedForm
     @model={{if @validations (changeset @model @validations) @model}}
     @on-submit={{perform this.submit}}
@@ -36,7 +62,7 @@
         @modelName={{@modelName}}
         @modelDescription={{@headerModelDescription}}
         @showStatusActions={{@showStatusActions}}
-        @import={{this.importedData.value}}
+        @import={{this.import.value}}
         @modelHasImport={{this.modelHasImport}}
         @importAllData={{this.importAllData}}
         @modelStatusOptions={{@modelStatusOptions}}
@@ -57,7 +83,7 @@
         (component
           "model-form/field"
           model=f.model
-          importedData=this.importedData.value
+          importedData=this.import.value
           translationBase=@translationBase
           input=f.input
           registerDiff=this.registerDiff
@@ -65,7 +91,7 @@
           disabled=@disabled
         )
         f.model
-        this.importedData.value
+        this.import.value
       }}
       <div class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top">
         <Submit class="uk-flex-none" />

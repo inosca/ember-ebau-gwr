@@ -231,28 +231,12 @@ ember-gwr:
 
     logout: Abmelden
 
-    projectForm:
-      save: Speichern
-      cancelImport: Import abbrechen
-      applyAll: Alles übernehmen
-      importFromCaluma: Baugesuchsdaten importieren
-      changeStatus: Status ändern
-      dates: Daten
-      datePlaceholder: Wählen Sie ein Datum...
-      title: Bauprojekt {id}
-      realEstateHeading: Grundstücksidentifikation
-      clientHeading: Auftraggeber
-
-      diff:
-        existingData: Existierende Daten im GWR
-        importedData: Importierte Daten
-        apply: Übernehmen
-
     modelForm:
       save: Speichern
       cancelImport: Import abbrechen
       applyAll: Alles übernehmen
       importFromCaluma: Baugesuchsdaten importieren
+      noImportData: Es existieren keine Daten zum importieren.
       changeStatus: Status ändern
       dates: Daten
       datePlaceholder: Wählen Sie ein Datum...
