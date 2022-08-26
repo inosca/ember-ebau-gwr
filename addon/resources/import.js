@@ -46,7 +46,6 @@ export default class ImportResource extends Resource {
         instanceId !== null && instanceId !== undefined
       );
       try {
-        console.log("fetching data");
         const data = yield this.dataImport[IMPORT_MAP[importModelName]](
           instanceId
         );
@@ -64,7 +63,6 @@ export default class ImportResource extends Resource {
         return null;
       }
     } else {
-      console.log("no instanceId or showImport");
       return null;
     }
   }
