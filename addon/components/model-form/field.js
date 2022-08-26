@@ -1,4 +1,4 @@
-import { action } from "@ember/object";
+import { action, get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
@@ -22,14 +22,16 @@ export default class ModelFormFieldComponent extends Component {
   get value() {
     return (
       this.args.value ??
-      this.args.model?.[this.args.attr] ??
+      // Using get here since `attr` can be a property path.
+      get(this.args.model, this.args.attr) ??
       // for zero values get returns undefined instead of 0
       this.args.model?.[this.args.attr]
     );
   }
 
   get importValue() {
-    return this.args.importedData?.data?.[this.args.attr];
+    // Using get here since `attr` can be a property path.
+    return get(this.args.importedData?.data, this.args.attr);
   }
 
   get showDiff() {

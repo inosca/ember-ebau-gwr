@@ -7,8 +7,8 @@ export default class ImportController extends Controller {
   @tracked _showImport = false;
   @tracked importIndex = undefined;
 
-  get showImport(){
-    return Boolean(this.model.instanceId && this._showImport)
+  get showImport() {
+    return Boolean(this.model.instanceId && this._showImport);
   }
 
   get hasInstanceContext() {
