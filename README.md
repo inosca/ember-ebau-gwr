@@ -84,7 +84,7 @@ The config service is used to pass config to the engine. The following propertie
 | `authToken`          | `String`         | The authentication toke from the host app.                                                         |
 | `camacGroup`         | `String\|Number` | The current camac group of the user.                                                               |
 | `pageSize`           | `Number`         | The page size which the gwr api should return.                                                     |
-| `modalContainer`     | `CSS Selector`   | A CSS selector to render the modal's in.                                                           |
+| `modalContainer`     | `CSS Selector`   | A CSS selector to render the modals in.                                                           |
 
 All values should follow the officially used format.
 
