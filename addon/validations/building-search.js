@@ -1,10 +1,8 @@
 import { validatePresence } from "ember-changeset-validations/validators";
 
+import { realestateIdentificationValidation } from "./realestate-identification";
+
 export default {
-  buildingEntranceNo: validatePresence({
-    presence: true,
-    on: ["EGID", "EGRID", "nameLong"],
-  }),
   realestateIdentification: {
     number: validatePresence({
       presence: true,
@@ -13,25 +11,6 @@ export default {
         "realestateIdentification.subDistrict",
       ],
     }),
-  },
-  createDate: {
-    dateTo: validatePresence({
-      presence: true,
-      on: ["createDate.dateFrom"],
-    }),
-    dateFrom: validatePresence({
-      presence: true,
-      on: ["createDate.dateTo"],
-    }),
-  },
-  modifyDate: {
-    dateTo: validatePresence({
-      presence: true,
-      on: ["modifyDate.dateFrom"],
-    }),
-    dateFrom: validatePresence({
-      presence: true,
-      on: ["modifyDate.dateFrom"],
-    }),
+    EGRID: realestateIdentificationValidation(),
   },
 };
