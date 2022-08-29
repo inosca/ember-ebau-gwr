@@ -25,6 +25,14 @@ export default class SearchBuildingController extends Controller {
       realestateIdentification: {
         number: null,
       },
+      createDate: {
+        dateFrom: null,
+        dateTo: null,
+      },
+      modifyDate: {
+        dateFrom: null,
+        dateTo: null,
+      },
     };
   }
 
