@@ -13,20 +13,25 @@ export default class SearchComponent extends Component {
 
   @service notification;
   @service intl;
+  @service config;
 
   constructor(owner, args) {
     super(owner, args);
 
-    let validations;
-    let baseQuery;
+    let validations = {
+      ...this.args.validations,
+    };
+    let baseQuery = {
+      ...(this.args.baseQuery ?? {}),
+    };
 
     if (this.args.extendedSearch) {
       validations = {
-        ...this.args.validations,
+        ...validations,
         ...ExtendedSearchValidations,
       };
       baseQuery = {
-        ...(this.args.baseQuery ?? {}),
+        ...baseQuery,
         createDate: {
           dateFrom: null,
           dateTo: null,
@@ -35,13 +40,6 @@ export default class SearchComponent extends Component {
           dateFrom: null,
           dateTo: null,
         },
-      };
-    } else {
-      validations = {
-        ...this.args.validations,
-      };
-      baseQuery = {
-        ...(this.args.baseQuery ?? {}),
       };
     }
 
@@ -62,8 +60,7 @@ export default class SearchComponent extends Component {
       };
 
       const _results = yield this.args.service.search(this.rawQuery);
-      if (!_results || _results.length < 3) {
-        // todo: change this to match the page size
+      if (!_results || _results.length < this.config.pageSize) {
         this.hasMoreResults = false;
       } else {
         this.hasMoreResults = true;
