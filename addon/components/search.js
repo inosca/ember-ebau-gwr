@@ -40,7 +40,7 @@ export default class SearchComponent extends Component {
       }
 
       this.searchResults =
-        this.page === 0 ? _results : this.searchResults.concat(_results);
+        this.page === 1 ? _results : this.searchResults.concat(_results);
     } catch (error) {
       console.error(error);
       this.notification.danger(
@@ -52,7 +52,7 @@ export default class SearchComponent extends Component {
   @dropTask
   *onSubmit(args) {
     this.searchResults = [];
-    this.page = 0;
+    this.page = 1;
     yield this.search.perform(args);
   }
 
