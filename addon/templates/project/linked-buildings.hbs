@@ -10,9 +10,9 @@
       @modelName="building"
       @removeLink={{this.removeBuildingLink}}
       @searchRoute="search-building"
-      @searchModels={{array @model}}
+      @searchQuery={{hash projectId=@model}}
       @newRoute="building.new"
-      @newModels={{array @model}}
+      @newQuery={{hash projectId=@model}}
       as |model|
     >
       <td class="uk-table-shrink">

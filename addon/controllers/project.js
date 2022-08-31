@@ -39,7 +39,7 @@ export default class ProjectController extends Controller {
     const projects = await this.constructionProject.all.perform(this.model);
 
     // Load the first project in the list if none is selected so we always display a project.
-    if (this.router.currentRouteName === "project.index") {
+    if (projects.length && this.router.currentRouteName === "project.index") {
       this.router.transitionTo("project.form", projects[0].EPROID);
     }
 
