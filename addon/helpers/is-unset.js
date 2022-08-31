@@ -1,7 +1,7 @@
 import { helper } from "@ember/component/helper";
 
-const isUnset = function isUnset([value]) {
-  return value === null || value === undefined || isNaN(value);
-};
+export function isUnset([value]) {
+  return value === null || value === undefined;
+}
 
 export default helper(isUnset);

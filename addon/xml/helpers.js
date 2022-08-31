@@ -38,4 +38,5 @@ export function modelField(...args) {
     : "";
 }
 
-export { isUnset } from "ember-gwr/helpers/is-unset";
+export { isSet } from "ember-ebau-gwr/helpers/is-set";
+export { isUnset } from "ember-ebau-gwr/helpers/is-unset";
