@@ -18,16 +18,6 @@ export default class SearchFiltersComponent extends Component {
     },
   ];
 
-  get isSubmitDisabled() {
-    return !this.hasChanges;
-  }
-
-  get hasChanges() {
-    return Boolean(
-      this.args.changeset.changes.find(({ value }) => value !== "")
-    );
-  }
-
   @action
   updateField(fieldName, value) {
     this.query[fieldName] = value;

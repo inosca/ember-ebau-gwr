@@ -31,7 +31,11 @@ export default class SearchComponent extends Component {
         ...ExtendedSearchValidations,
       };
       baseQuery = {
-        ...baseQuery,
+        realestateIdentification: {
+          number: null,
+          EGRID: null,
+          subDistrict: null,
+        },
         createDate: {
           dateFrom: null,
           dateTo: null,
@@ -40,6 +44,7 @@ export default class SearchComponent extends Component {
           dateFrom: null,
           dateTo: null,
         },
+        ...baseQuery,
       };
     }
 

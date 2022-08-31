@@ -4,7 +4,6 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { dropTask } from "ember-concurrency";
 import { periodOfConstructionOptions } from "ember-ebau-gwr/models/options";
-import BuildingSearchValidations from "ember-ebau-gwr/validations/building-search";
 
 export default class SearchBuildingController extends Controller {
   @service constructionProject;
@@ -16,15 +15,11 @@ export default class SearchBuildingController extends Controller {
 
   @tracked activeBuilding;
   @tracked errors;
-  BuildingSearchValidations = BuildingSearchValidations;
 
   get baseQuery() {
     return {
       streetLang: this.street?.language,
       municipality: this.building?.municipality,
-      realestateIdentification: {
-        number: null,
-      },
     };
   }
 
