@@ -43,7 +43,7 @@ export const getBuilding =
         {{/if}}
       </ns2:realestateIdentification>
     {{/if}}
-    {{#if model.hasError}}
+    {{#if (isSet model.hasError)}}
       <ns2:hasError>{{model.hasError}}</ns2:hasError>
     {{/if}}
     {{#if (or model.createDate.dateFrom model.createDate.dateTo)}}
