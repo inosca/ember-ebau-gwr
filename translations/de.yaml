@@ -88,6 +88,7 @@ ember-gwr:
 
   searchBuilding:
     heading: Existierendes Gebäude verknüpfen
+    headingGlobal: Gebäude im GWR suchen
     search: Gebäude suchen
     entrances: Gebäudeeingänge
 
@@ -96,6 +97,7 @@ ember-gwr:
 
   searchProject:
     heading: Existierendes Bauprojekt verknüpfen
+    searchGlobal: Bauprojekt im GWR suchen
     search: Projekte suchen
 
     EPROID: EPROID

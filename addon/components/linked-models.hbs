@@ -53,6 +53,7 @@
             <LinkTo
               @route={{@searchRoute}}
               @models={{or @searchModels (array)}}
+              @query={{or @searchQuery (hash)}}
             >
               {{#if (eq @modelName "building")}}
                 {{t "ember-gwr.components.linkedModels.linkExistingBuilding"}}
@@ -68,7 +69,11 @@
             {{t "ember-gwr.components.linkedModels.or"}}
           {{/if}}
           {{#if @newRoute}}
-            <LinkTo @route={{@newRoute}} @models={{or @newModels (array)}}>
+            <LinkTo
+              @route={{@newRoute}}
+              @models={{or @newModels (array)}}
+              @query={{or @newQuery (hash)}}
+            >
               {{t
                 "ember-gwr.components.linkedModels.createEntry"
                 modelName=modelName

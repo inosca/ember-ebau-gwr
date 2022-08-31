@@ -46,7 +46,7 @@
                 @modelId={{building.EGID}}
                 @errorModel={{inviewModel.buildingWithErrors}}
                 @linkRoute="building.edit.form"
-                @linkModels={{array this.project.EPROID building.EGID}}
+                @linkModels={{array building.EGID}}
                 @modelDescription={{building.fullAddressTexts}}
                 as |BuildingErrorList|
               >
@@ -105,7 +105,6 @@
                                 @errorModel={{entrance}}
                                 @linkRoute="building.edit.entrance.edit"
                                 @linkModels={{array
-                                  this.project.EPROID
                                   building.EGID
                                   entrance.EDID
                                 }}
@@ -129,7 +128,6 @@
                                 @errorModel={{dwelling.dwelling}}
                                 @linkRoute="building.edit.dwelling.edit"
                                 @linkModels={{array
-                                  this.project.EPROID
                                   building.EGID
                                   dwelling.dwelling.EWID
                                 }}

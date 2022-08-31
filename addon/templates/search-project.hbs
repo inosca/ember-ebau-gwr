@@ -4,16 +4,18 @@
     @backModel={{@model}}
     @backText={{t "ember-gwr.building.backToProject"}}
   />
+  <h1>
+    {{t "ember-gwr.searchProject.heading"}}
+  </h1>
 {{else}}
   <BackRoute
     @backRoute="global-landing-page"
     @backText={{t "ember-gwr.globalLandingPage.backToGlobal"}}
   />
+  <h1>
+    {{t "ember-gwr.searchProject.searchGlobal"}}
+  </h1>
 {{/if}}
-
-<h1>
-  {{t "ember-gwr.searchProject.heading"}}
-</h1>
 
 <Search
   @service={{this.constructionProject}}
@@ -21,7 +23,10 @@
   @extendedSearch={{true}}
 >
   <:filters as |Filters|>
-    <Filters @submitLabel={{t "ember-gwr.searchProject.search"}} as |FilterInput ErrorSelect ExtendedSearchToggle Form|>
+    <Filters
+      @submitLabel={{t "ember-gwr.searchProject.search"}}
+      as |FilterInput ErrorSelect ExtendedSearchToggle Form|
+    >
       <div class="uk-flex uk-flex-wrap uk-flex-between">
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
