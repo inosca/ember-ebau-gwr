@@ -26,6 +26,7 @@ export function realestateIdentificationValidation(path = "") {
         }),
         validateLength({ min: 1, max: 12, allowBlank: true }),
       ],
+
       subDistrict: validateNumber({
         integer: true,
         gte: 0,

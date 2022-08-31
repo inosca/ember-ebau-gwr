@@ -13,9 +13,6 @@ export default class SearchProjectController extends Controller {
     return {
       constructionSurveyDeptNumber:
         this.constructionProject.constructionSurveyDeptNumber,
-      realestateIdentification: {
-        number: null,
-      },
     };
   }
 

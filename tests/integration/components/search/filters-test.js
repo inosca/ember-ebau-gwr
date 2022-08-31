@@ -30,22 +30,4 @@ module("Integration | Component | search/filters", function (hooks) {
 
     assert.dom('input[name="realestateIdentification.EGRID"]').isVisible();
   });
-
-  test("the submit button is disabled unless there are inputs", async function (assert) {
-    this.changeset = new Changeset({ EGID: null });
-    this.onSubmit = function () {};
-
-    await render(hbs`
-    <Search::Filters
-      @changeset={{this.changeset}}
-      @onSubmit={{this.onSubmit}}
-      as |FilterInput ErrorSelect ExtendedSearchToggle|
-    >
-      <FilterInput @label="EGID" @name="EGID" />
-    </Search::Filters>`);
-
-    assert.dom("button").isDisabled();
-    await fillIn("input", "some value");
-    assert.dom("button").isEnabled();
-  });
 });
