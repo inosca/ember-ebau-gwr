@@ -117,7 +117,7 @@ export const getConstructionProject =
     {{#if model.projectStatus}}
       <ns2:projectStatus>{{model.projectStatus}}</ns2:projectStatus>
     {{/if}}
-    {{#if model.hasError}}
+    {{#if (isUnset model.hasError)}}
       <ns2:hasError>{{model.hasError}}</ns2:hasError>
     {{/if}}
     {{#if (or model.createDate.dateFrom model.createDate.dateTo)}}
