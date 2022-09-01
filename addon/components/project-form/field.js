@@ -12,6 +12,10 @@ export default class ProjectFormFieldComponent extends Component {
   @tracked diffResolved = false;
 
   get componentName() {
+    // Temporary fix, project-form will be replaced by model-form 
+    if (this.args.inputType === "date") {
+      return "model-form/date";
+    }
     return `project-form/${this.args.inputType ?? "input"}`;
   }
 
