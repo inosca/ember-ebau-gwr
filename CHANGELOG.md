@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.1...v5.0.2) (2022-09-02)
+
+
+### Bug Fixes
+
+* **ember-engines-router-service:** downgrade to 0.3.0 since 0.4.0 has an issue ([bfbd79d](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/bfbd79da91195778ec11391aebf11dec9db2c9e0))
+
 ## [5.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.0...v5.0.1) (2022-09-02)
 
 
