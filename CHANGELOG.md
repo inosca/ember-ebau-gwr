@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.0...v5.0.1) (2022-09-02)
+
+
+### Bug Fixes
+
+* **search:** make prompt selectable ([d55800a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d55800a9effd3a4085fd42c4c3dec75a4b79667f))
+
 # [5.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.6...v5.0.0) (2022-09-02)
 
 
