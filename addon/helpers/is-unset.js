@@ -1,7 +1,7 @@
 import { helper } from "@ember/component/helper";
 
-export function isUnset([value]) {
+export function isUnset(value) {
   return value === null || value === undefined;
 }
 
-export default helper(isUnset);
+export default helper(([value]) => isUnset(value));

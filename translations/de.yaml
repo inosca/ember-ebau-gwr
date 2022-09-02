@@ -92,6 +92,9 @@ ember-gwr:
     search: Gebäude suchen
     entrances: Gebäudeeingänge
 
+    previewBuilding: Gebäudedaten anzeigen
+    previewBuildingError: Beim Laden der Gebäudedaten ist ein Fehler aufgetreten.
+
     linkSuccess: Gebäude wurde erfolgreich verknüpft.
     linkError: Bei der Verknüpfung des Gebäudes ist ein Fehler aufgetreten.
 
