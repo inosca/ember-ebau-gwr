@@ -1,3 +1,72 @@
+# [5.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.6...v5.0.0) (2022-09-02)
+
+
+### Bug Fixes
+
+* **building/import:** revert a refactor from 4894e52 ([60f7998](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/60f799898bca7917b8aa71d46068343cac845348))
+* **building/import:** state is now handled correctly and the modal is shown when you click import ([0b7b533](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0b7b53359340d022b615a50af4234a5566209d77))
+* correct query ([d12dd78](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d12dd785681245c193e35ef850f2eed860a21206))
+* createDate and modifyDate for search project and search building ([3771311](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3771311e5dee6c237210d797960cb223bf209839))
+* **deps:** upgrade dependencies to fix ember-power-select issue ([7a6ad41](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7a6ad41171cffd8d03ca4854dcaf040021b841a4))
+* **import:** show a warning if no import data was loaded ([4894e52](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4894e52195fe824f7cf3d4c42f6fb7865f453536))
+* incorrect search btn labels ([850a368](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/850a368a11729a2b9ea1f5bebbd8ef169d14c040))
+* **login:** prevent flickering while token is fetched ([4ceaabe](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4ceaabe6d0579e4a5117a81eb4c9d3297c6f518d))
+* pagination ([988231a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/988231a43e2a2230f2764f2633d0df0e5fd2d222))
+* **pagination:** handle if no page is supplied and update doc ([74b3431](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/74b3431aeb60f49a25515fe2c5bfbdaedc0584c9))
+* pr comments ([5c1ecb8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5c1ecb8f331704e4138c04e1692f4e5a30c67370))
+* PR feedback ([5894602](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/58946025090ff763ef8b94856d76e6e7c9e9bb12))
+* **project-nav:** fix linked-building-tab bug ([88abc2f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/88abc2facdf8512db5746d27caafa78ccdbf8449))
+* **project-search:** fix hasError in xml template ([c772799](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c772799d70ba4352636a2227af06a82ed80846fc))
+* **quarterly-closure:** various integration fixes ([d095d6f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d095d6f07248df841c69dbac82c239a050af93ab))
+* refactor filters and results table ([6d8f89f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/6d8f89fbf85cb5330253ddbb7ec1a51e14eb2888))
+* refactor validations for building and project search ([856773c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/856773c92745392183204159863a3d2b23913934))
+* remove EGID presence validation ([be82a73](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/be82a736e335d25305674fa7649ef616da552ee6))
+* rename baseModel to baseQuery ([5b3dba8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5b3dba81fd9fba1e009f09eb08a4533aeee84d7f))
+* **search:** check hasError for unset and not falsy ([879a0c2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/879a0c2e7054ee3eb753152e42be38f9a9881161))
+* **search:** fix validation lookup and simplify validation ([4a966f8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4a966f80a1d8c56760f508ad957509e7632a3f5c))
+* use the correct pageSize for pagination ([a0f37bd](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/a0f37bd6e492ac75cf5625ef862226a269a8c7b2))
+
+
+### Documentation
+
+* **README:** document needed changeset-validations configuration ([164bd9f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/164bd9fef37e0efcb24da20734cd3e0c34bdb60b))
+
+
+### Features
+
+* basic pagination ([793b578](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/793b578d674e763aa24d9d2b91bc9aee139f258f))
+* building search validations ([fe6f4b8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/fe6f4b8bc13aa83e2bc1ccb6c96786fb91f21de6))
+* **building-search:** implement building preview ([0a1d6e8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0a1d6e837c9e2649e68bbf7fc0f74de5715190f3))
+* custom translated validate form error component ([3ec3813](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3ec38134b73832aafc99a13d6ada7fb3406bef4c))
+* enable raw changeset validation errors ([d06e25c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d06e25c0ea3657d0ac03b1703d4a334a09f6b188))
+* filter component refactored to not use project form anymore ([ac90d17](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ac90d17b46c621642ecf8b532b9502be9635c180))
+* German validation errors ([dd5bf60](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/dd5bf60f8e41b3d43ad4693e81aa4d730e5e2caa))
+* **global-landing-page:** enable global search links ([04765ba](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/04765bad122820e051b164d0721b04b2bf25510a))
+* **global:** add back navigation for global views ([f32607a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f32607a2f343a9680598e751b6f430f0f1cfe0f9))
+* **global:** add landing page ([b238dd7](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b238dd72c31ea8006b4dacaf4a79e95d183f27e5))
+* **global:** all edit forms now work globally when navigated to from project context ([0a4cfef](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0a4cfef073727466c2a0ef11f989500ea0ee2cc4))
+* **global:** building can now be edited outside of project context ([69a881b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/69a881bea01c41f8416326b81798c1fb660f3afd))
+* **global:** display tab nav in global project edit view ([07f5ca3](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/07f5ca3f6a6df5d1ead7a7cbfa0f627c5ccd8ecb))
+* **global:** linked building list works now for projects ([8e18f54](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8e18f5427bd5d94352e4b9a45db24d2f06ac98bc))
+* **global:** project edit view works with global search ([e8f0265](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e8f02651c63702f6ee72da008e2b2fbefc6afc4d))
+* **login:** display currently logged in user and municipality ([4e24d1e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4e24d1eb24fee65f7e39e622e2ad0247ddcdcb66))
+* pass changeset/data back up to on-submit function ([1690c66](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/1690c660b4517802abf42938738a845fef394b4b))
+* **quarterly-closure:** add error list to quarterly closure ([94ef81a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/94ef81aa18db70eccafbc6ef42befbf524ef40d2))
+* **quarterly-closure:** add fist closure status handling ([5d835ce](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5d835ce22e96a8f26e1123cf14b1d93d363628ca))
+* **quarterly-closure:** add link to housing stat for maintenance cost ([a5ab6f8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/a5ab6f8c9476c1fff32fff073e89ca75208d9081))
+* **quarterly-closure:** disable forms while bfs is checking data ([07ff49c](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/07ff49c665f92c2239909999b109c84a24a8ccea))
+* refactor "search building" to use new Search::Filter component ([b71e56b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b71e56ba3044c091d55e342c20a425944948bf4e))
+
+
+### BREAKING CHANGES
+
+* **README:** This change requires the consuming app to specify
+`"changeset-validations": { rawOutput: true },` in their environment file.
+This currentlry has the limitation, that if your app uses
+`changeset-validations` itself, this option changes the behaviour in the whole
+app. Due to engine config restrictions, there is sadly currently no other way
+than maybe implementing something on build-pipeline level.
+
 ## [4.0.7](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.6...v4.0.7) (2022-09-02)
 
 
