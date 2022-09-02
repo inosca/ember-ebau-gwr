@@ -1,3 +1,10 @@
+## [4.0.7](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.6...v4.0.7) (2022-09-02)
+
+
+### Bug Fixes
+
+* **deps:** upgrade dependencies to fix ember-power-select issue ([c45aa33](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c45aa3309db2d54407606410697cfb5438c037e1))
+
 ## [4.0.6](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v4.0.5...v4.0.6) (2022-05-19)
 
 ### Bug Fixes
