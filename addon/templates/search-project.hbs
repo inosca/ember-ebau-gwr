@@ -45,6 +45,7 @@
               @type="select"
               @name="projectStatus"
               @prompt={{t "ember-gwr.searchProject.projectStatusPlaceholder"}}
+              @promptIsSelectable={{true}}
               @options={{this.projectStatusOptions}}
               @disabled={{Form.model.EPROID}}
             />
