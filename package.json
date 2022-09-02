@@ -114,6 +114,7 @@
     "configPath": "tests/dummy/config"
   },
   "release": {
-    "extends": "@adfinis-sygroup/semantic-release-config"
+    "extends": "@adfinis-sygroup/semantic-release-config",
+    "branches": ["main", "cherry-release"]
   }
 }
