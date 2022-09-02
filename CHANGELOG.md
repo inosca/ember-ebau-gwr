@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.2...v5.0.3) (2022-09-02)
+
+
+### Bug Fixes
+
+* **ember-resources:** update to prevent integration issue into camac-ng ([24b1d63](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/24b1d63854e9ea85d6bcbeabe7cc51eb07596943))
+
 ## [5.0.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.1...v5.0.2) (2022-09-02)
 
 
