@@ -13,15 +13,14 @@ module("Integration | Component | search/filters", function (hooks) {
 
   test("it allows toggling of the extended search fields", async function (assert) {
     this.changeset = new Changeset({});
-    this.onSubmit = function () {};
+    this.onSubmit = { perform: () => {} };
 
     await render(hbs`
     <Search::Filters
       @changeset={{this.changeset}}
       @onSubmit={{this.onSubmit}}
-      as |FilterInput ErrorSelect ExtendedSearchToggle|
+      @extendedSearch={{true}}
     >
-      <ExtendedSearchToggle />
     </Search::Filters>`);
 
     assert.dom('input[name="realestateIdentification.EGRID"]').isNotVisible();

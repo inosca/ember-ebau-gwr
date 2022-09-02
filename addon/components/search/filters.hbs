@@ -25,22 +25,15 @@
       prompt=(t "ember-gwr.search.hasErrorPlaceholder")
       errorComponent=(component "validated-form-error")
     )
-    (component
-      "uk-button"
-      label=(if
-        this.extendedSearch
-        (t "ember-gwr.components.search.extendedSearch.collapse")
-        (t "ember-gwr.components.search.extendedSearch.extend")
-      )
-      name=this.extendedSearch
-      value=this.extendedSearch
-      onClick=(fn (mut this.extendedSearch) (not this.extendedSearch))
-    )
     Form
   }}
-  {{#if this.extendedSearch}}
+  {{#if (and @extendedSearch this.extendedSearchActive)}}
     {{#let
-      (component Form.input errorComponent=(component "validated-form-error"))
+      (component
+        Form.input
+        errorComponent=(component "validated-form-error")
+        disabled=(get Form.model @idField)
+      )
       as |FilterInput|
     }}
       <div class="uk-flex uk-flex-between uk-margin-small-bottom uk-margin-top">
@@ -132,9 +125,22 @@
     {{/let}}
   {{/if}}
 
-  <div
-    class="uk-flex-inline uk-flex-nowrap uk-flex-top uk-margin-top uk-width-1-1 uk-margin-bottom"
-  >
+  <div class="uk-flex uk-flex-right">
+    {{#if @extendedSearch}}
+      <UkButton
+        @label={{if
+          this.extendedSearchActive
+          (t "ember-gwr.components.search.extendedSearch.collapse")
+          (t "ember-gwr.components.search.extendedSearch.extend")
+        }}
+        @value={{this.extendedSearchActive}}
+        @onClick={{fn
+          (mut this.extendedSearchActive)
+          (not this.extendedSearchActive)
+        }}
+        class="uk-margin-small-right"
+      />
+    {{/if}}
     <Form.submit
       data-test-submit-btn
       @label={{@submitLabel}}

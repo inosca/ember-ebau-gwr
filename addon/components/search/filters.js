@@ -6,7 +6,7 @@ import { tracked } from "@glimmer/tracking";
 export default class SearchFiltersComponent extends Component {
   @service intl;
 
-  @tracked extendedSearch = false;
+  @tracked extendedSearchActive = false;
   @tracked errorOptions = [
     {
       value: true,

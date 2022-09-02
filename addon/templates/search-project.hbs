@@ -21,11 +21,12 @@
   @service={{this.constructionProject}}
   @baseQuery={{this.baseQuery}}
   @extendedSearch={{true}}
+  @idField="EPROID"
 >
   <:filters as |Filters|>
     <Filters
       @submitLabel={{t "ember-gwr.searchProject.search"}}
-      as |FilterInput ErrorSelect ExtendedSearchToggle Form|
+      as |FilterInput ErrorSelect Form|
     >
       <div class="uk-flex uk-flex-wrap uk-flex-between">
         <div class="uk-width-1-3@m uk-width-1">
@@ -52,14 +53,6 @@
         <div class="uk-width-1-3@m uk-width-1">
           <div class="uk-margin-small-right">
             <ErrorSelect @disabled={{Form.model.EPROID}} />
-          </div>
-        </div>
-        <div class="uk-width-1 uk-flex uk-flex-right">
-          <div class="uk-margin-small-right">
-            <ExtendedSearchToggle
-              class="uk-margin-top uk-width-1-1"
-              @disabled={{Form.model.EPROID}}
-            />
           </div>
         </div>
       </div>
