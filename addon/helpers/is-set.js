@@ -6,4 +6,4 @@ export function isSet(...args) {
   return !isUnset(...args);
 }
 
-export default helper(isSet);
+export default helper(([value]) => isSet(value));

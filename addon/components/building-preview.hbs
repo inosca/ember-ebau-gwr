@@ -1,0 +1,53 @@
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.building.buildingStatus"}}</span>
+  <span class="uk-text-muted">{{if
+      @model.buildingStatus
+      (t
+        (concat
+          "ember-gwr.building.buildingStatusOptions." @model.buildingStatus
+        )
+      )
+      "-"
+    }}</span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.building.nameOfBuilding"}}</span>
+  <span class="uk-text-muted">{{or @model.nameOfBuilding "-"}}</span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.building.buildingCategory"}}</span>
+  <span class="uk-text-muted">
+    {{if
+      @model.buildingCategory
+      (t
+        (concat
+          "ember-gwr.building.buildingCategoryOptions."
+          @model.buildingCategory
+        )
+      )
+      "-"
+    }}
+  </span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.building.buildingClass"}}</span>
+  <span class="uk-text-muted">
+    {{if
+      @model.buildingClass
+      (t
+        (concat
+          "ember-gwr.building.buildingClassOptions." @model.buildingClass
+        )
+      )
+      "-"
+    }}
+  </span>
+</span>
+<hr />
+<span class="uk-flex uk-child-width-1-2">
+  <span>{{t "ember-gwr.building.numberOfFloors"}}</span>
+  <span class="uk-text-muted">{{or @model.numberOfFloors "-"}}</span>
+</span>

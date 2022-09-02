@@ -9,6 +9,7 @@ module.exports = function () {
       "clock",
       "circle-info",
       "circle-exclamation",
+      "eye",
     ],
   };
 };

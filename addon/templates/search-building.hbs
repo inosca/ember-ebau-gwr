@@ -115,9 +115,13 @@
             "ember-gwr.building.dateOfConstruction.periodOfConstruction"
           }}
         />
+        <HeaderColumn
+          @label={{t "ember-gwr.searchBuilding.previewBuilding"}}
+          class="uk-table-shrink uk-text-nowrap"
+        />
       </TableHeader>
 
-      <Rows as |TableRowColumn|>
+      <Rows class="uk-visible-toggle" as |TableRowColumn|>
         <TableRowColumn @attr="EGID" as |value|>
           <button
             class="uk-button uk-button-link"
@@ -155,10 +159,56 @@
             -
           {{/if}}
         </TableRowColumn>
+        <TableRowColumn class="uk-flex uk-flex-center" as |_ data|>
+          <a
+            href="#"
+            class="uk-icon-button uk-invisible-hover"
+            {{inverse-background inverse="white" compareTo="tr"}}
+            {{on "click" (perform this.loadBuildingPreview data)}}
+          >
+            {{#if
+              (and
+                this.loadBuildingPreview.isRunning
+                (call (fn this.isCurrentlySelectedBuilding data))
+              )
+            }}
+              <UkSpinner />
+            {{else}}
+              <FaIcon @icon="eye" @fixedWidth={{true}} />
+            {{/if}}
+          </a>
+        </TableRowColumn>
       </Rows>
     </Results>
   </:results>
 </Search>
+
+<UkModal
+  @visible={{this.previewBuilding}}
+  @onHide={{fn (mut this.loadBuildingPreview.lastSuccessful.value) null}}
+  @container={{this.config.modalContainer}}
+  as |Modal|
+>
+  {{#if this.previewBuilding}}
+    <Modal.header>
+      <h2 class="uk-modal-title">
+        {{t
+          "ember-gwr.building.title"
+          id=this.previewBuilding.EGID
+          status=(t
+            (concat
+              "ember-gwr.building.buildingStatusOptions."
+              this.previewBuilding.buildingStatus
+            )
+          )
+        }}
+      </h2>
+    </Modal.header>
+    <Modal.body class="uk-overflow-auto">
+      <BuildingPreview @model={{this.previewBuilding}} />
+    </Modal.body>
+  {{/if}}
+</UkModal>
 
 <LinkBuildingModal
   @visible={{this.activeBuilding}}
