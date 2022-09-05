@@ -12,6 +12,7 @@ export default class SearchBuildingController extends Controller {
   @service intl;
   @service notification;
   @service router;
+  @service config;
 
   @tracked activeBuilding;
   @tracked errors;
