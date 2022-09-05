@@ -20,7 +20,7 @@ ember-gwr:
 
   building:
     building: Bâtiment
-    title: Bâtiment {id} - {status}
+    title: Bâtiment {id} {status, select, undefined {} other {- {status}}}
     createNewBuilding: Saisir un nouveau bâtiment
 
     backToProject: Retour au projet de construction

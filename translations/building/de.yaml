@@ -20,7 +20,7 @@ ember-gwr:
 
   building:
     building: Gebäude
-    title: Gebäude {id} - {status}
+    title: Gebäude {id} {status, select, undefined {} other {- {status}}}
     createNewBuilding: Neues Gebäude erfassen
 
     backToProject: Zurück zum Bauprojekt
