@@ -11,8 +11,8 @@ export default class ImportController extends Controller {
     return Boolean(this.model.instanceId && this._showImport);
   }
 
-  get hasInstanceContext() {
-    return Boolean(this.model.instanceId);
+  get hasProjectContext() {
+    return Boolean(this.model.projectId);
   }
 
   resetImportQueryParams() {
