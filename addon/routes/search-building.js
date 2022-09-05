@@ -9,4 +9,10 @@ export default class SearchBuildingRoute extends Route {
   model({ projectId }) {
     return projectId;
   }
+
+  resetController(controller, isExiting) {
+    if (isExiting) {
+      controller.projectId = null;
+    }
+  }
 }
