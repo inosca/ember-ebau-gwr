@@ -17,6 +17,9 @@ export default class SearchBuildingController extends Controller {
   @tracked activeBuilding;
   @tracked errors;
 
+  queryParams = ["projectId"];
+  @tracked projectId = null;
+
   get baseQuery() {
     return {
       streetLang: this.street?.language,
