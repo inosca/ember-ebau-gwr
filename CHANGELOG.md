@@ -1,3 +1,13 @@
+## [5.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.3...v5.0.4) (2022-09-05)
+
+
+### Bug Fixes
+
+* **search:** handle missing building status in preview title ([5809eb4](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/5809eb47e31b79d27ba7e1b1cb970fb64b814c50))
+* **search:** include gwr-config service for modal container ([c89288e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c89288ec11675db7d2d016441f53e6f1dc4d39d7))
+* **search:** reset projectId query-params on route exit ([736a70e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/736a70e0179c1011e668285cc122bc7d31e40628))
+* **status:** include status actions in project context ([9a22571](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/9a225714572a9fb9afbbffe6d9d9db27ffb94d07))
+
 ## [5.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.2...v5.0.3) (2022-09-02)
 
 
