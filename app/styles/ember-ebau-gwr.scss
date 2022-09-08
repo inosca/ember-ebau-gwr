@@ -140,3 +140,7 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 .uk-highlight-hover:hover {
   @extend .uk-text-muted;
 }
+
+.margin-right-xs {
+  margin-right: 3px;
+}
