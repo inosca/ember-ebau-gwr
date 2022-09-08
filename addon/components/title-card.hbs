@@ -15,12 +15,11 @@
         <FaIcon
           @icon={{or @icon.name @icon}}
           @prefix={{@icon.prefix}}
-          @fixedWidth={{true}}
           @size="4x"
         />
         <div class="title-card-text">{{@title}}</div>
       </div>
-      <div class="title-card-footer uk-margin">
+      <div class="title-card-footer uk-margin-small-top">
         {{yield to="footer"}}
       </div>
     </Link>
