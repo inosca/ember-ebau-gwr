@@ -1,5 +1,8 @@
 <h2>
-  {{t "ember-gwr.globalLandingPage.quarterlyClosure" quarter=(current-quarter)}}
+  {{t
+    "ember-gwr.globalLandingPage.quarterlyClosure"
+    quarter=(current-quarter showYear=true)
+  }}
 </h2>
 {{#if this.displayErrorInfo}}
   <div class="uk-flex uk-flex-middle uk-margin-bottom">
