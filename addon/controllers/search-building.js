@@ -24,6 +24,8 @@ export default class SearchBuildingController extends Controller {
     return {
       streetLang: this.street?.language,
       municipality: this.building?.municipality,
+      sortColumn: this.config.buildingSortColumn,
+      sortDirection: this.config.buildingSortDirection,
     };
   }
 

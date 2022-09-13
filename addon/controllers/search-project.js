@@ -13,6 +13,8 @@ export default class SearchProjectController extends Controller {
     return {
       constructionSurveyDeptNumber:
         this.constructionProject.constructionSurveyDeptNumber,
+      sortColumn: this.config.projectSortColumn,
+      sortDirection: this.config.projectSortDirection,
     };
   }
 
