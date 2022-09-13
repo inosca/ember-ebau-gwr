@@ -117,6 +117,8 @@ ember-gwr:
       6708: Nicht realisiert
       6709: Zurückgezogen
 
+    instanceIds: Verknüpfte eBau-Dossiers
+
     hasError: Fehlerstatus
 
     realestateIdentification:

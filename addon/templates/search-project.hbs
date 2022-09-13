@@ -22,6 +22,7 @@
   @baseQuery={{this.baseQuery}}
   @extendedSearch={{true}}
   @idField="EPROID"
+  @onSearch={{perform this.fetchInstanceLinks}}
 >
   <:filters as |Filters|>
     <Filters
@@ -78,6 +79,7 @@
             "ember-gwr.constructionProject.fields.constructionProjectDescription"
           }}
         />
+        <HeaderColumn @label={{t "ember-gwr.searchProject.instanceIds"}} />
         <HeaderColumn @label={{t "ember-gwr.searchProject.projectStatus"}} />
       </TableHeader>
 
@@ -93,6 +95,9 @@
         </TableRowColumn>
         <TableRowColumn @attr="officialConstructionProjectFileNo" />
         <TableRowColumn @attr="constructionProjectDescription" />
+        <TableRowColumn @attr="EPROID" as |value|>
+          <InstanceLink @links={{filter-by "eproid" value this.links}} />
+        </TableRowColumn>
         <TableRowColumn @attr="projectStatus" as |value|>
           {{#if value}}
             {{t (concat "ember-gwr.searchProject.projectStatusOptions." value)}}
