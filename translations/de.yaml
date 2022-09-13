@@ -102,6 +102,7 @@ ember-gwr:
     heading: Existierendes Bauprojekt verknüpfen
     searchGlobal: Bauprojekt im GWR suchen
     search: Projekte suchen
+    alreadyLinkedInfo: Dieses Bauprojekt ist bereits mit dem aktuellen eBau-Dossier verknüpft.
 
     EPROID: EPROID
     projectStatus: Projektstatus

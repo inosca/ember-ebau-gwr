@@ -8,6 +8,7 @@ export default class SearchProjectController extends Controller {
   @service intl;
   @service store;
   @service router;
+  @service notification;
 
   get baseQuery() {
     return {
@@ -28,14 +29,22 @@ export default class SearchProjectController extends Controller {
   }
 
   @action
-  selectProject(eproid) {
+  async selectProject(eproid) {
     if (this.model?.id) {
       const link = this.store.createRecord("gwr-link", {
         eproid,
         localId: this.model.id,
       });
-      link.save();
-      this.router.transitionTo("project.index");
+      try {
+        await link.save();
+      } catch {
+        // Ignore, trying to link project that is already linked.
+        // Simply cleanup and redirect to project.
+        await link.deleteRecord();
+        this.notification.warning(
+          this.intl.t("ember-gwr.searchProject.alreadyLinkedInfo")
+        );
+      }
     }
     // If accessed from global view, redirect to the edit view
     this.router.transitionTo("project.form", eproid);
