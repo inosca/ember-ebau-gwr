@@ -17,7 +17,7 @@ export default class ModelFormComponent extends Component {
   // All diff state tracking is done in field.js
   @tracked diffs = [];
 
-  @tracked import = ImportResource.from(this, () => ({
+  import = ImportResource.from(this, () => ({
     instanceId: this.args.instanceId,
     showImport: this.args.showImport,
     importModelName: this.args.importModelName ?? this.args.modelName,
