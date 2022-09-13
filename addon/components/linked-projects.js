@@ -14,6 +14,6 @@ export default class LinkedProjectsComponent extends Component {
       .peekAll("gwr-link")
       .find(({ eproid }) => Number(eproid) === this.args.activeProjectId);
     await link.destroyRecord();
-    await this.constructionProject.all.perform(this.args.instanceId);
+    this.router.transitionTo("project.index");
   }
 }
