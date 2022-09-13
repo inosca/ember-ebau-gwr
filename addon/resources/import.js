@@ -1,4 +1,5 @@
 import { assert } from "@ember/debug";
+import { registerDestructor } from "@ember/destroyable";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency";
@@ -18,6 +19,14 @@ export default class ImportResource extends Resource {
   @service router;
 
   @tracked error = null;
+
+  constructor(owner) {
+    super(owner);
+
+    registerDestructor(this, () => {
+      this.fetchCalumaData.cancelAll({ resetState: true });
+    });
+  }
 
   get isLoading() {
     return this.fetchCalumaData.isRunning;
