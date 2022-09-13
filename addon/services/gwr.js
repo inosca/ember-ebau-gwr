@@ -81,10 +81,23 @@ export default class GwrService extends Service {
       .buildXMLRequest(xmlMethod, query)
       .replace(/\r?\n|\r/g, "");
 
+    const queryParams = new URLSearchParams({
+      ...(query.page
+        ? {
+            page: query.page,
+            size: this.pageSize,
+          }
+        : {}),
+      ...(query.sortColumn
+        ? {
+            sortColumn: query.sortColumn,
+            sortDirection: query.sortDirection,
+          }
+        : {}),
+    }).toString();
+
     response = await this.authFetch.fetch(
-      query.page
-        ? `/${urlPath}?page=${query.page}&size=${this.pageSize}`
-        : `/${urlPath}`,
+      queryParams ? `/${urlPath}?${queryParams}` : `/${urlPath}`,
       {
         headers: {
           query: queryXML,

@@ -8,6 +8,10 @@ export default class GwrConfigService extends Service {
   pageSize = 20;
   authToken = "token";
   camacGroup = "1";
+  projectSortColumn = "bau_modify_date";
+  projectSortDirection = "desc";
+  buildingSortColumn = "geb_modify_date";
+  buildingSortDirection = "desc";
 
   get importModels() {
     return ["project", "building", "dwelling", "entrance"];
