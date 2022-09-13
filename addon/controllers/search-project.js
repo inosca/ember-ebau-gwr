@@ -1,6 +1,7 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import { dropTask, lastValue } from "ember-concurrency";
 import { projectStatusOptions } from "ember-ebau-gwr/models/options";
 
 export default class SearchProjectController extends Controller {
@@ -9,6 +10,7 @@ export default class SearchProjectController extends Controller {
   @service store;
   @service router;
   @service notification;
+  @service config;
 
   get baseQuery() {
     return {
@@ -25,6 +27,25 @@ export default class SearchProjectController extends Controller {
       label: this.intl.t(
         `ember-gwr.searchProject.projectStatusOptions.${option}`
       ),
+    }));
+  }
+
+  @lastValue("fetchInstanceLinks") links;
+  @dropTask
+  *fetchInstanceLinks(projects) {
+    const links = yield this.store.query("gwr-link", {
+      filter: {
+        eproid: projects.map(({ EPROID }) => EPROID),
+      },
+    });
+    const instanceLinks = yield this.config.fetchInstanceLinks(
+      links.map(({ localId }) => localId)
+    );
+
+    return links.map(({ eproid, localId }) => ({
+      eproid: Number(eproid),
+      ...instanceLinks.find((instanceLink) => instanceLink.localId === localId),
+      localLink: `/projects/${eproid}/form`,
     }));
   }
 

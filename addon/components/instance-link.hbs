@@ -1,0 +1,16 @@
+{{#if @links.length}}
+    <div class="uk-flex uk-flex-inline uk-flex-middle">
+    <UkIcon @icon="link" class="uk-text-emphasis" />
+    {{#each @links as |link index|}}
+        {{#if index}}
+            <span class="margin-right-xs">,</span>
+        {{/if}}
+        <a 
+            class="uk-button uk-button-link"
+            href={{concat link.hostLink link.localLink}}
+        >
+            {{link.identifier}}
+        </a>
+    {{/each}}
+    </div>
+{{/if}}

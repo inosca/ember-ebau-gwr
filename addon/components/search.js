@@ -73,6 +73,8 @@ export default class SearchComponent extends Component {
 
       this.searchResults =
         this.page === 1 ? _results : this.searchResults.concat(_results);
+
+      yield this.args.onSearch?.(this.searchResults);
     } catch (error) {
       console.error(error);
       this.notification.danger(

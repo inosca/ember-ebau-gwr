@@ -1,3 +1,4 @@
+import { action } from "@ember/object";
 import Service from "@ember/service";
 
 export default class GwrConfigService extends Service {
@@ -15,5 +16,14 @@ export default class GwrConfigService extends Service {
 
   get importModels() {
     return ["project", "building", "dwelling", "entrance"];
+  }
+
+  @action
+  async fetchInstanceLinks(localIds) {
+    return [...new Set(localIds)].map((localId) => ({
+      localId,
+      identifier: `1234-12-${localId}`,
+      hostLink: `/${localId}`,
+    }));
   }
 }
