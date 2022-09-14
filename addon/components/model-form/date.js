@@ -33,4 +33,10 @@ export default class ModelFormDateComponent extends Component {
       year: "numeric",
     });
   }
+
+  @action
+  clearDate(event) {
+    event.preventDefault();
+    this.args.update(null);
+  }
 }

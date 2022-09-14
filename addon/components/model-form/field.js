@@ -70,11 +70,7 @@ export default class ModelFormFieldComponent extends Component {
   }
 
   get fieldComponent() {
-    return this.isStep
-      ? "model-form/step"
-      : this.isDate
-      ? "model-form/date"
-      : "validated-input/render";
+    return this.isStep ? "model-form/step" : "validated-input/render";
   }
 
   get options() {

@@ -13,4 +13,14 @@ module.exports = EngineAddon.extend({
       handlebars: "handlebars/dist/handlebars",
     },
   },
+  included(...args) {
+    const app = this._findHost(this);
+    app.options["ember-validated-form"] = {
+      theme: "uikit",
+      defaults: {
+        "types/date": "ember-ebau-gwr/components/model-form/date",
+      },
+    };
+    this._super.included.apply(this, args);
+  },
 });

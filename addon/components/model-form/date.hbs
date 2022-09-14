@@ -15,24 +15,36 @@
       ...attributes
     />
   {{else}}
-    <input
-      type="text"
-      class="uk-input uk-width-1
-        {{if @isInvalid 'uk-form-danger'}}
-        {{if @isValid 'uk-form-success'}}"
-      name={{@name}}
-      required={{@required}}
-      placeholder={{t "ember-gwr.components.modelForm.datePlaceholder"}}
-      ...attributes
-      {{pikaday
-        value=@value
-        yearRange=this.yearRange
-        onSelect=@update
-        toString=this.formatDate
-        firstDay=1
-        i18n=this.pikadayTranslations
-      }}
-    />
+
+    <div class="uk-inline uk-width-1-1">
+      {{#if @value}}
+        <a
+          class="uk-form-icon uk-form-icon-flip"
+          href="#"
+          {{on "click" this.clearDate}}
+        >
+          <FaIcon @icon="xmark" @fixedWith={{true}} />
+        </a>
+      {{/if}}
+      <input
+        type="text"
+        class="uk-input uk-width-1
+          {{if @isInvalid 'uk-form-danger'}}
+          {{if @isValid 'uk-form-success'}}"
+        name={{@name}}
+        required={{@required}}
+        placeholder={{t "ember-gwr.components.modelForm.datePlaceholder"}}
+        ...attributes
+        {{pikaday
+          value=@value
+          yearRange=this.yearRange
+          onSelect=@update
+          toString=this.formatDate
+          firstDay=1
+          i18n=this.pikadayTranslations
+        }}
+      />
+    </div>
   {{/if}}
 </div>
 {{component @hintComponent}}
