@@ -95,20 +95,25 @@ export default class AuthFetchService extends Service {
     if (this.housingStatToken.isRunning) {
       await this.housingStatToken.lastRunning;
     }
-    let response = await fetch(`${this.config.gwrAPI}${url}`, {
-      method,
-      headers: {
-        token: this.token,
-        ...headers,
-      },
-      body,
-    });
-    if (!response.ok && response.status === 401 && !this.showAuthModal) {
-      if (retry) {
-        await this.housingStatToken.perform();
-        response = await this.fetch(url, { method, headers, body }, false);
+
+    if (this.token) {
+      let response = await fetch(`${this.config.gwrAPI}${url}`, {
+        method,
+        headers: {
+          token: this.token,
+          ...headers,
+        },
+        body,
+      });
+      if (!response.ok && response.status === 401 && !this.showAuthModal) {
+        if (retry) {
+          await this.housingStatToken.perform();
+          response = await this.fetch(url, { method, headers, body }, false);
+        }
       }
+      return response;
     }
-    return response;
+
+    this.showLogin();
   }
 }
