@@ -5,7 +5,7 @@
     @horizontal="between"
     @vertical="middle"
     uk-alert
-    class="uk-margin-remove uk-alert-default"
+    class="uk-margin-bottom uk-margin-remove-top uk-alert-default"
   >
     {{t
       "ember-gwr.quarterlyClosure.components.departmentErrors.maintenanceCost"
@@ -14,7 +14,11 @@
   </UkFlex>
 {{/if}}
 
-<p>{{t "ember-gwr.quarterlyClosure.components.departmentErrors.infoText"}}</p>
+<div 
+  class={{if this.errors.value.errorList.length "uk-margin-bottom"}}
+>
+  {{t "ember-gwr.quarterlyClosure.components.departmentErrors.infoText"}}
+</div>
 
 <ModelErrors::List
   @errors={{this.errors.value.errorList}}

@@ -24,9 +24,11 @@
       </li>
     {{else}}
       <li>
-        <div class="uk-text-success">
-          <FaIcon @icon="circle-check" @fixedWidth={{true}} />
-          {{t "ember-gwr.components.modelErrors.empty"}}
+        <div class="uk-text-success uk-flex uk-flex-middle">
+          <FaIcon @icon="circle-check" @fixedWidth={{true}} class="margin-right-xs" @size="sm" />
+          <div>
+            {{t "ember-gwr.components.modelErrors.empty"}}
+          </div>
         </div>
       </li>
     {{/each}}

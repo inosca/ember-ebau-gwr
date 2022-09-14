@@ -1,9 +1,10 @@
 <QuarterlyClosure::Title />
-<UkFlex @horizontal="between" @vertical="bottom" class="uk-margin-bottom">
+<hr />
+<UkFlex @horizontal="between" @vertical="middle">
   <QuarterlyClosure::Status />
   <QuarterlyClosure::CloseSurveyButton />
 </UkFlex>
-
+<hr />
 <QuarterlyClosure::ErrorList
   @isLoading={{this.quarterlyClosure.status.isLoading}}
 />

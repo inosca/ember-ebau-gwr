@@ -1,8 +1,16 @@
 <div>
-  <span class="uk-text-bold">{{t
-      "ember-gwr.quarterlyClosure.status.label"
-    }}</span>
-  <div uk-alert class="uk-margin-remove">
-    <p>{{this.quarterlyClosure.status.label}}</p>
+  <div class="uk-flex uk-flex-middle">
+    <span class="uk-text-bold margin-right-xs">
+      {{t "ember-gwr.quarterlyClosure.status.label"}}
+    </span>
+    <FaIcon class={{this.statusClass.text}}
+      @icon={{this.statusClass.icon}}
+      @prefix={{this.statusClass.prefix}}
+      @fixedWidth={{true}}
+      @size="sm"
+    />
+  </div>
+  <div>
+    {{this.quarterlyClosure.status.label}}
   </div>
 </div>

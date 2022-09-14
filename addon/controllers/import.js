@@ -5,7 +5,7 @@ export default class ImportController extends Controller {
   queryParams = [{ _showImport: "import" }, { importIndex: "index" }];
 
   @tracked _showImport = false;
-  @tracked importIndex = undefined;
+  @tracked importIndex = null;
 
   get showImport() {
     return Boolean(this.model.instanceId && this._showImport);
@@ -16,7 +16,7 @@ export default class ImportController extends Controller {
   }
 
   resetImportQueryParams() {
-    this.showImport = false;
+    this._showImport = false;
     this.importIndex = null;
   }
 }

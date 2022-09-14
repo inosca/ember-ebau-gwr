@@ -16,6 +16,7 @@ export default class ModelFormComponent extends Component {
   // so we can transition out of the import once the array is empty.
   // All diff state tracking is done in field.js
   @tracked diffs = [];
+  @tracked invalidSubmit = false;
 
   import = ImportResource.from(this, () => ({
     instanceId: this.args.instanceId,
