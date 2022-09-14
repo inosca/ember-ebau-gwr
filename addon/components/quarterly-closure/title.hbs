@@ -5,14 +5,14 @@
   }}
 </h2>
 {{#if this.displayErrorInfo}}
-  <div class="uk-flex uk-flex-middle uk-margin-bottom">
-    <FaIcon
-      @icon="circle-exclamation"
-      @fixedWidth={{true}}
-      class="uk-text-danger uk-margin-small-right"
-    />
-    <span class="uk-text-meta">
+  <div uk-alert class="uk-alert-warning uk-margin-remove">
+    <div class="uk-flex uk-flex-middle">
+      <FaIcon
+        @icon="circle-exclamation"
+        @fixedWidth={{true}}
+        class="uk-text-warning uk-margin-small-right"
+      />
       {{t "ember-gwr.quarterlyClosure.needsCorrection"}}
-    </span>
-  </div>
+    </div>
+</div>
 {{/if}}

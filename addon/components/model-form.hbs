@@ -30,6 +30,7 @@
   <ValidatedForm
     @model={{if @validations (changeset @model @validations) @model}}
     @on-submit={{perform this.submit}}
+    @on-invalid-submit={{fn (mut this.invalidSubmit) true}}
     @validateBeforeSubmit={{true}}
     class="validated-form"
     ...attributes
@@ -47,7 +48,7 @@
       (component
         "model-form/submit-errors"
         errors=(if
-          (and f.model.isInvalid f.model.isDirty)
+          (and f.model.isInvalid f.model.isDirty this.invalidSubmit)
           (array (t "ember-gwr.components.modelForm.validationError"))
           @errors
         )
@@ -103,7 +104,7 @@
             {{t "ember-gwr.components.modelForm.cancelImport"}}
           </LinkTo>
         {{/if}}
-        {{#if (or (and f.model.isInvalid f.model.isDirty) @errors)}}
+        {{#if (or (and f.model.isInvalid f.model.isDirty this.invalidSubmit) @errors)}}
           <div class="uk-margin-left uk-flex-inline">
             <SubmitErrors />
           </div>

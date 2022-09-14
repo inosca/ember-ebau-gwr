@@ -1,4 +1,14 @@
-<div>
+<div class="uk-flex-inline uk-flex-middle uk-flex-right">
+  <div
+    class="uk-margin-small-right uk-flex-none"
+    uk-icon="icon: question"
+  ></div>
+  <div
+    class="uk-width-large"
+    uk-dropdown="mode: hover; pos: bottom-left; delay-show: 500; offset: 20"
+  >
+    {{t "ember-gwr.quarterlyClosure.closure.closeInfo"}}
+  </div>
   <UkButton
     @color="primary"
     @loading={{this.closeQuarterlySurvey.isRunning}}
