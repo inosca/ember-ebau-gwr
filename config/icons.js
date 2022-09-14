@@ -10,6 +10,7 @@ module.exports = function () {
       "circle-info",
       "circle-exclamation",
       "eye",
+      "xmark",
     ],
   };
 };

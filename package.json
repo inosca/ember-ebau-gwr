@@ -51,7 +51,7 @@
     "ember-resources": "^5.3.2",
     "ember-truth-helpers": "^3.1.1",
     "ember-uikit": "^6.1.0",
-    "ember-validated-form": "^5.3.1",
+    "ember-validated-form": "velrest/ember-validated-form#a5bf884b83daa3a094b1100c8d855a27c2c21295",
     "handlebars": "^4.7.7",
     "luxon": "^3.0.2"
   },
