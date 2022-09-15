@@ -9,7 +9,7 @@
   <ModelForm::Header::Actions
     @submit={{@submit}}
     @submitErrors={{@submitErrors}}
-    @showStatusActions={{and @showStatusActions @model (not @model.isNew)}}
+    @statusConfiguration={{and @statusConfiguration @model (not @model.isNew)}}
     @modelHasImport={{@modelHasImport}}
     @import={{@import}}
     @importAllData={{@importAllData}}
@@ -24,10 +24,10 @@
   {{#let (t (concat "ember-gwr.models." @modelName) count=1) as |modelName|}}
     <div
       class="uk-flex uk-margin-top
-        {{if @showStatusActions 'uk-flex-between' 'uk-flex-right'}}
+        {{if @statusConfiguration 'uk-flex-between' 'uk-flex-right'}}
         uk-flex-bottom uk-flex-wrap uk-flex-wrap-around"
     >
-      {{#if @showStatusActions}}
+      {{#if @statusConfiguration}}
         <ModelForm::Header::Status
           @model={{@model}}
           @modelName={{@modelName}}
@@ -54,6 +54,7 @@
         @getChangeHint={{@getChangeHint}}
         @modelStatusField={{@modelStatusField}}
         @translationBase={{or @translationBaseHeader @translationBase}}
+        @statusConfiguration={{@statusConfiguration}}
       />
     {{/if}}
   {{/let}}

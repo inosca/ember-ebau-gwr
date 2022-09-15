@@ -59,7 +59,7 @@
     {{#let @submit as |Submit|}}
       <Submit />
     {{/let}}
-    {{#if (or @modelHasImport @showStatusActions)}}
+    {{#if (or @modelHasImport @statusConfiguration)}}
       <button
         class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
         type="button"
@@ -95,7 +95,7 @@
               </LinkTo>
             </li>
           {{/if}}
-          {{#if @showStatusActions}}
+          {{#if @statusConfiguration}}
             <li>
               <a
                 href="#ember-ebau-gwr-status"

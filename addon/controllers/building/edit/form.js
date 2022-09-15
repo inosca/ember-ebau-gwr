@@ -44,6 +44,10 @@ export default class BuildingFormController extends ImportController {
     return !this.model.projectId;
   }
 
+  get statusConfiguration() {
+    return { correction: true, change: this.hasProjectContext };
+  }
+
   @lastValue("fetchBuildingWork") buildingWork;
   @task
   *fetchBuildingWork() {
