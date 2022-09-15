@@ -2,8 +2,8 @@
   {{#if this.fetchBuildingEntrance.isRunning}}
     <Loading />
   {{else}}
-    {{#if this.quarterlyClosure.disableForms}}
-      <QuarterlyClosure::DisabledFormInfo />
+    {{#if this.quarterlyClosure.formsDisabled}}
+      <QuarterlyClosure::DisabledFormAlert />
     {{/if}}
     <ModelForm
       @model={{this.buildingEntrance}}
@@ -21,7 +21,7 @@
       @showStatusActions={{false}}
       @showImport={{this.showImport}}
       @importIndex={{this.importIndex}}
-      @disabled={{or this.hasNoStreet this.quarterlyClosure.disableForms}}
+      @disabled={{or this.hasNoStreet this.quarterlyClosure.formsDisabled}}
       as |Field|
     >
       {{#unless this.buildingEntrance.isNew}}
@@ -32,7 +32,7 @@
         @attr="locality.name.nameLong"
         @required={{true}}
         @disabled={{or
-          this.quarterlyClosure.disableForms
+          this.quarterlyClosure.formsDisabled
           (not this.buildingEntrance.isNew)
         }}
       />
@@ -40,7 +40,7 @@
         @attr="locality.swissZipCode"
         @type="number"
         @disabled={{or
-          this.quarterlyClosure.disableForms
+          this.quarterlyClosure.formsDisabled
           (not this.buildingEntrance.isNew)
         }}
         @required={{true}}
@@ -50,7 +50,7 @@
           @attr="locality.swissZipCodeAddOn"
           @type="number"
           @disabled={{or
-            this.quarterlyClosure.disableForms
+            this.quarterlyClosure.formsDisabled
             (not this.buildingEntrance.isNew)
           }}
         />
@@ -66,12 +66,12 @@
       >
         <Field
           @attr="buildingEntranceNo"
-          @disabled={{or this.quarterlyClosure.disableForms this.hasNoStreet}}
+          @disabled={{or this.quarterlyClosure.formsDisabled this.hasNoStreet}}
         />
         <Field
           @attr="isOfficialAddress"
           @type="checkbox"
-          @disabled={{or this.quarterlyClosure.disableForms this.hasNoStreet}}
+          @disabled={{or this.quarterlyClosure.formsDisabled this.hasNoStreet}}
         />
       </div>
       {{#unless this.buildingEntrance.isNew}}
@@ -105,7 +105,7 @@
           @fieldComponent={{Field}}
           @buildingEntrance={{this.buildingEntrance}}
           @translationBase="ember-gwr.buildingEntrance.fields"
-          @disabled={{this.quarterlyClosure.disableForms}}
+          @disabled={{this.quarterlyClosure.formsDisabled}}
         />
       {{/unless}}
     </ModelForm>
