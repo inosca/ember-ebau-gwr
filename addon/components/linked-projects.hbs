@@ -20,7 +20,12 @@
     {{project.constructionProjectDescription}}
   </td>
   <td class="uk-table-shrink">
-    {{#if (eq @activeProjectId project.EPROID)}}
+    {{#if
+      (and
+        (eq @activeProjectId project.EPROID)
+        (not this.quarterlyClosure.formsDisabled)
+      )
+    }}
       <button
         type="button"
         class="uk-icon-button"

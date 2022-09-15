@@ -2,8 +2,8 @@
   {{#if this.fetchProject.isRunning}}
     <Loading />
   {{else}}
-    {{#if this.quarterlyClosure.disableForms}}
-      <QuarterlyClosure::DisabledFormInfo />
+    {{#if this.quarterlyClosure.formsDisabled}}
+      <QuarterlyClosure::DisabledFormAlert />
     {{/if}}
     <ModelForm
       @model={{this.project}}
@@ -30,7 +30,7 @@
         this.constructionProject.cacheClass
       }}
       @modelStatusField="projectStatus"
-      @disabled={{this.quarterlyClosure.disableForms}}
+      @disabled={{this.quarterlyClosure.formsDisabled}}
       as |Field changeset import|
     >
       {{#unless this.project.isNew}}

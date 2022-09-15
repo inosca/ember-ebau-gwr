@@ -9,18 +9,22 @@
         {{t "ember-gwr.projectLandingPage.infoText"}}
       </p>
 
-      <div class="uk-flex uk-flex-between">
-        <div class="uk-margin-large-right">
-          <LinkTo @route="project.new" class="uk-button uk-button-primary">
-            {{t "ember-gwr.projectLandingPage.createNewProject"}}
-          </LinkTo>
+      {{#if this.quarterlyClosure.formsDisabled}}
+        <QuarterlyClosure::DisabledFormAlert />
+      {{else}}
+        <div class="uk-flex uk-flex-between">
+          <div class="uk-margin-large-right">
+            <LinkTo @route="project.new" class="uk-button uk-button-primary">
+              {{t "ember-gwr.projectLandingPage.createNewProject"}}
+            </LinkTo>
+          </div>
+          <div>
+            <LinkTo @route="search-project" class="uk-button uk-button-primary">
+              {{t "ember-gwr.projectLandingPage.linkExistingProject"}}
+            </LinkTo>
+          </div>
         </div>
-        <div>
-          <LinkTo @route="search-project" class="uk-button uk-button-primary">
-            {{t "ember-gwr.projectLandingPage.linkExistingProject"}}
-          </LinkTo>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 </div>
