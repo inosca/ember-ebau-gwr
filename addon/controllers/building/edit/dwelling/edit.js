@@ -30,6 +30,10 @@ export default class BuildingEditDwellingEditController extends ImportController
     return states;
   }
 
+  get statusConfiguration() {
+    return { correction: true, change: true };
+  }
+
   @lastValue("fetchDwelling") dwelling;
   @task
   *fetchDwelling() {

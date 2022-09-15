@@ -42,6 +42,10 @@ export default class ProjectFormController extends ImportController {
     return states;
   }
 
+  get statusConfiguration() {
+    return { correction: true, change: true };
+  }
+
   @lastValue("fetchProject") project;
   @task
   *fetchProject() {
