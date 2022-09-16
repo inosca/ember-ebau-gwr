@@ -1,3 +1,36 @@
+# [6.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.4...v6.0.0) (2022-09-16)
+
+
+### Bug Fixes
+
+* **date:** update validated form and allow date to be cleared ([006653a](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/006653a1246343a934a306b4402dd957867200cd))
+* **forms:** disable object links during quarterly closure ([b9d054f](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b9d054f8bf756bcc742639ff84f8d4fa20166572))
+* **global:** display both status change and correction in global view ([256b7d8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/256b7d814ae68a6fd2465450b723deeeab9fa762))
+* **global:** minor layout fixes ([295d6cb](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/295d6cb9ddac13095ab6fb636fde11bd5ddf7e62))
+* **global:** minor ui fixes ([b9b1abd](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b9b1abdd9f1f7cc0b0c48cd92bbce4372b379865))
+* **import:** fix access to import resource after it was destroyed ([08830ef](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/08830ef43a13dc8de24e045dbe2f35e4276e5746))
+* **login:** prevent requests if no token is returned from gwr api ([ad2b9b8](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/ad2b9b8bf59715250827b267467368fb3a334375))
+* **projects:** ensure linked projects are recomputed correctly ([e018a29](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e018a29d9f6450af5bb19ca9287be7543cda751f))
+* **quarterly-closure:** display quarter according to bfs ([7fdfde4](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/7fdfde485a6b04cf1680d43c53ed8f85b99c12a1))
+* **search:** minor table styling fixes ([d451149](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/d4511497b0645be9f148e56cfb5b2e5178726441))
+* **search:** validate building and search id in search ([8b731ea](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8b731ea8d878219599263735cdea98034f466233))
+
+
+### Documentation
+
+* **readme:** update supported node version ([94af4da](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/94af4daf66d3c2db1d16ee6267862909d957fe01))
+
+
+### Features
+
+* **search:** include instance links for linked projects ([2f8d348](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/2f8d348410dc95dc3e2ae4e5a1f525e2241be7ae))
+* **search:** sort results by descending modification date ([8b0d46e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/8b0d46eac8a28adc49dbcfbb53f5ebd8e9b41c7e))
+
+
+### BREAKING CHANGES
+
+* **readme:** Drop node v12 support.
+
 ## [5.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.3...v5.0.4) (2022-09-05)
 
 
