@@ -70,7 +70,7 @@
     "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "2.1.1",
     "ember-cli-terser": "4.0.2",
-    "ember-data": "3.28.10",
+    "ember-data": "3.28.12",
     "ember-disable-prototype-extensions": "1.1.3",
     "ember-engines": "https://gitpkg.now.sh/ember-engines/ember-engines/packages/ember-engines?4d8a7607ed690053f6e8ab4f35f9dfa543a3697f",
     "ember-export-application-global": "2.0.1",
