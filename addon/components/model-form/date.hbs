@@ -18,13 +18,12 @@
 
     <div class="uk-inline uk-width-1-1">
       {{#if @value}}
-        <a
+        <button
+          type="button"
           class="uk-form-icon uk-form-icon-flip"
-          href="#"
+          uk-icon="icon: close; ratio: 0.7"
           {{on "click" this.clearDate}}
-        >
-          <FaIcon @icon="xmark" @fixedWith={{true}} />
-        </a>
+        />
       {{/if}}
       <input
         type="text"
