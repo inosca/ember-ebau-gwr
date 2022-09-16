@@ -3,6 +3,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { dropTask, lastValue } from "ember-concurrency";
 import { projectStatusOptions } from "ember-ebau-gwr/models/options";
+import SearchProjectValidations from "ember-ebau-gwr/validations/search-project";
 
 export default class SearchProjectController extends Controller {
   @service constructionProject;
@@ -11,6 +12,8 @@ export default class SearchProjectController extends Controller {
   @service router;
   @service notification;
   @service config;
+
+  validations = SearchProjectValidations;
 
   get baseQuery() {
     return {

@@ -4,6 +4,7 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, dropTask, lastValue } from "ember-concurrency";
 import { periodOfConstructionOptions } from "ember-ebau-gwr/models/options";
+import SearchBuildingValidations from "ember-ebau-gwr/validations/search-building";
 
 export default class SearchBuildingController extends Controller {
   @service constructionProject;
@@ -19,6 +20,8 @@ export default class SearchBuildingController extends Controller {
 
   queryParams = ["projectId"];
   @tracked projectId = null;
+
+  validations = SearchBuildingValidations;
 
   get baseQuery() {
     return {
