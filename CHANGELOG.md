@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.0...v6.0.1) (2022-09-19)
+
+
+### Bug Fixes
+
+* **search:** separate project and building search validations ([0510045](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/0510045b6d2f09615afcc241f1a61aaa4ddd95eb))
+
 # [6.0.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v5.0.4...v6.0.0) (2022-09-16)
 
 
