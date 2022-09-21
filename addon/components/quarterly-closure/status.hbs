@@ -1,16 +1,17 @@
-<div>
+<div class="ember-ebau-gwr-quarterly-closure-status">
   <div class="uk-flex uk-flex-middle">
-    <span class="uk-text-bold margin-right-xs">
+    <div
+      class="uk-text-bold uk-text-meta uk-text-emphasis uk-text-uppercase margin-right-xs"
+    >
       {{t "ember-gwr.quarterlyClosure.status.label"}}
-    </span>
+    </div>
     <FaIcon class={{this.statusClass.text}}
       @icon={{this.statusClass.icon}}
       @prefix={{this.statusClass.prefix}}
-      @fixedWidth={{true}}
       @size="sm"
     />
   </div>
-  <div>
+  <div class="uk-text-meta uk-text-emphasis">
     {{this.quarterlyClosure.status.label}}
   </div>
 </div>

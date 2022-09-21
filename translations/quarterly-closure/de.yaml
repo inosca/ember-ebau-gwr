@@ -34,7 +34,7 @@ ember-gwr:
       690: Kopieren der Daten in den Snapshot
       691: Erzwungener Abschluss von BFS
       short:
-        processing: Eine Anfrage ist noch nicht verarbeitet
+        processing: Anfrage noch nicht verarbeitet
         610: Quartalsabschluss initialisiert
         620: Abschluss erforderlich
         630: Fehler müssen korrigiert werden
