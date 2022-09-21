@@ -36,10 +36,12 @@ export default class SearchProjectController extends Controller {
   @lastValue("fetchInstanceLinks") links;
   @dropTask
   *fetchInstanceLinks(projects) {
+    if (!projects) {
+      return [];
+    }
+
     const links = yield this.store.query("gwr-link", {
-      filter: {
-        eproid: projects.map(({ EPROID }) => EPROID),
-      },
+      eproid__in: projects.map(({ EPROID }) => EPROID).join(","),
     });
     const instanceLinks = yield this.config.fetchInstanceLinks(
       links.map(({ localId }) => localId)
