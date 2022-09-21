@@ -33,7 +33,7 @@ export default class QuarterlyClosureStatus extends Component {
 
       const notificationType =
         NOTIFICATION_TYPES[this.quarterlyClosure.status.type];
-      this.notification[notificationType](
+      this.notification[notificationType]?.(
         this.quarterlyClosure.status.shortLabel
       );
     } catch (error) {

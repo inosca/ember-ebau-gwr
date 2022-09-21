@@ -119,13 +119,12 @@ export default class QuarterlyClosureService extends Service {
       return null;
     }
 
-    const response = await this.authFetch.fetch(
+    await this.authFetch.fetch(
       `/constructionsurveydepts/${this.constructionSurveyDeptNumber}/closeQuarterlySurvey`,
       { method: "put" }
     );
-    this.quarterlyClosureStatus = new QuarterlyClosureStatus(
-      await response.text()
-    );
+
+    await this.pollProgressStatus();
   }
 
   async checkQuarterlySurveyDept() {
