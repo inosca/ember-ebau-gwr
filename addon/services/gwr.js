@@ -155,8 +155,7 @@ export default class GwrService extends Service {
         ? "building.edit.dwelling.edit"
         : "building.edit.form",
       linkToModels: [
-        instanceId,
-        projectId,
+        ...(instanceId ? [instanceId] : []),
         buildingId,
         ...(dwellingId ? [dwellingId] : []),
       ],
@@ -172,6 +171,7 @@ export default class GwrService extends Service {
       linkToTextAfter: this.intl.t(`ember-gwr.lifeCycles.statusError`, {
         states: this.concatStates(states),
       }),
+      linkToQuery: projectId ? { projectId } : {},
     };
   }
 
