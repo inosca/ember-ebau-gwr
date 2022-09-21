@@ -10,6 +10,7 @@ export default class SearchComponent extends Component {
   @tracked page = 1;
   @tracked searchResults = null;
   @tracked hasMoreResults = false;
+  @tracked rawQuery = {};
 
   @service notification;
   @service intl;
@@ -53,6 +54,11 @@ export default class SearchComponent extends Component {
       lookupValidator(validations),
       validations
     );
+
+    this.rawQuery = baseQuery;
+    if (this.args.paginate) {
+      this.onSubmit.perform();
+    }
   }
 
   @dropTask
@@ -61,11 +67,15 @@ export default class SearchComponent extends Component {
       this.rawQuery = {
         ...this.rawQuery,
         ..._query?.pendingData,
-        page: this.page,
+        ...(this.args.paginate ? { page: this.page } : {}),
       };
 
       const _results = yield this.args.service.search(this.rawQuery);
-      if (!_results || _results.length < this.config.pageSize) {
+      if (
+        !this.args.paginate ||
+        !_results ||
+        _results.length < this.config.pageSize
+      ) {
         this.hasMoreResults = false;
       } else {
         this.hasMoreResults = true;
