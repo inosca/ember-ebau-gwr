@@ -1,3 +1,14 @@
+## [6.0.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.1...v6.0.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* **global:** minor ui change ([524b789](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/524b78955f723ba24f17547136afe02a82dc09ed))
+* **projects:** fix instance link querying by eproid ([e1fff2e](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/e1fff2ed40b5b33b9ed3d8b1aea41b688749a59b))
+* **quarterly-closure:** fix fetching of status after closure ([4f19d91](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/4f19d91b797c34631d7741e5dcbb698dc7cb427c))
+* **search:** make search pagination optional ([3e883e9](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/3e883e96bb9d624c90b57029db44346d15902047))
+* **status:** fix lifecycle error links for global views ([801936b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/801936bdf11c40a67fdcd5f5024a5edfa9ff1365))
+
 ## [6.0.1](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.0...v6.0.1) (2022-09-19)
 
 
