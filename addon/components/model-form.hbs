@@ -1,41 +1,40 @@
-{{#if this.import.isLoading}}
-  <Loading />
-{{else}}
-
-  {{#if this.import.error}}
-    <div
-      class={{if this.noImportData "uk-alert-warning" "uk-alert-error"}}
-      uk-alert
-    >
-
-      {{! The aria-label attr results in a template-lint error for some reason: error  Cannot read properties of undefined (reading 'replace')  undefined}}
-      {{! template-lint-disable}}
-      <a
-        aria-label={{t "ember-gwr.close"}}
-        class="uk-alert-close"
-        href=""
-        uk-close
-      ></a>
-      {{! template-lint-enable}}
-      <p>
-        {{#if this.noImportData}}
-          {{t "ember-gwr.components.modelForm.noImportData"}}
-        {{else}}
-          {{t "ember-gwr.components.modelForm.importError"}}
-        {{/if}}
-      </p>
-    </div>
-  {{/if}}
-
-  <ValidatedForm
-    @model={{if @validations (changeset @model @validations) @model}}
-    @on-submit={{perform this.submit}}
-    @on-invalid-submit={{fn (mut this.invalidSubmit) true}}
-    @validateBeforeSubmit={{true}}
-    class="validated-form"
-    ...attributes
-    as |f|
+{{#if this.import.error}}
+  <div
+    class={{if this.noImportData "uk-alert-warning" "uk-alert-error"}}
+    uk-alert
   >
+
+    {{! The aria-label attr results in a template-lint error for some reason: error  Cannot read properties of undefined (reading 'replace')  undefined}}
+    {{! template-lint-disable}}
+    <a
+      aria-label={{t "ember-gwr.close"}}
+      class="uk-alert-close"
+      href=""
+      uk-close
+    ></a>
+    {{! template-lint-enable}}
+    <p>
+      {{#if this.noImportData}}
+        {{t "ember-gwr.components.modelForm.noImportData"}}
+      {{else}}
+        {{t "ember-gwr.components.modelForm.importError"}}
+      {{/if}}
+    </p>
+  </div>
+{{/if}}
+
+<ValidatedForm
+  @model={{if @validations (changeset @model @validations) @model}}
+  @on-submit={{perform this.submit}}
+  @on-invalid-submit={{fn (mut this.invalidSubmit) true}}
+  @validateBeforeSubmit={{true}}
+  class="validated-form"
+  ...attributes
+  as |f|
+>
+  {{#if this.import.isLoading}}
+    <Loading />
+  {{else}}
     {{#let
       (component
         f.submit
@@ -111,5 +110,5 @@
         {{/if}}
       </div>
     {{/let}}
-  </ValidatedForm>
-{{/if}}
+  {{/if}}
+</ValidatedForm>

@@ -147,6 +147,9 @@ export default class BuildingFormController extends ImportController {
         // Clear cache so after transition we fetch the project form api
         this.constructionProject.clearCache(this.model.projectId);
       }
+
+      this.resetImportQueryParams();
+
       this.buildingAPI.clearCache(this.model.buildingId);
       this.errors = [];
       this.router.transitionTo("building.edit.form", EGID);

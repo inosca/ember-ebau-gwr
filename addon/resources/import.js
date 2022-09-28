@@ -43,7 +43,6 @@ export default class ImportResource extends Resource {
   @lastValue("fetchCalumaData") value;
   @task
   *fetchCalumaData({ instanceId, showImport, importModelName }) {
-    this.error = null;
 
     if (instanceId && showImport) {
       assert(
@@ -64,6 +63,7 @@ export default class ImportResource extends Resource {
           });
           this.error = NO_DATA_ERROR;
         } else {
+          this.error = null;
           return data?.length === 1 ? data[0] : data;
         }
       } catch (error) {

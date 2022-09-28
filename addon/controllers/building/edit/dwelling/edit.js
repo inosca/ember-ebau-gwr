@@ -110,6 +110,9 @@ export default class BuildingEditDwellingEditController extends ImportController
           );
         }
       }
+
+      this.resetImportQueryParams();
+
       // Ensure dwelling list is refreshed
       this.building.clearCache(this.model.buildingId);
       this.errors = [];

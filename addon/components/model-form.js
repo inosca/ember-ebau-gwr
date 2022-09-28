@@ -25,7 +25,7 @@ export default class ModelFormComponent extends Component {
   }));
 
   get importData() {
-    const index = Number(this.args.importIndex);
+    const index = parseInt(this.args.importIndex);
     const data =
       Array.isArray(this.import.value) && !isNaN(index)
         ? this.import.value[index]
@@ -117,7 +117,7 @@ export default class ModelFormComponent extends Component {
         }
       });
     };
-    deepMerge(this.args.model, this.import.value.data);
+    deepMerge(this.args.model, this.importData.data);
     this.finishImport();
   }
 }
