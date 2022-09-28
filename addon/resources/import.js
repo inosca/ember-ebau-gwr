@@ -43,7 +43,6 @@ export default class ImportResource extends Resource {
   @lastValue("fetchCalumaData") value;
   @task
   *fetchCalumaData({ instanceId, showImport, importModelName }) {
-
     if (instanceId && showImport) {
       assert(
         "Must set `importModelName` to a string.",
