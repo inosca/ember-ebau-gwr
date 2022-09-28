@@ -1,11 +1,12 @@
 import Controller from "@ember/controller";
+import { registerDestructor } from "@ember/destroyable";
 import { inject as service } from "@ember/service";
-import { trackedFunction } from "ember-resources/util/function";
+import { task, lastValue } from "ember-concurrency";
+import { Resource } from "ember-resources";
 
 export default class ProjectController extends Controller {
   @service router;
   @service config;
-  @service intl;
   @service constructionProject;
 
   get activeProjectId() {
@@ -24,30 +25,70 @@ export default class ProjectController extends Controller {
     );
   }
 
-  projects = trackedFunction(this, async () => {
-    // TrackedFunction only re-runs in case of changes in tracked properties
-    // appearing before the first await / yield expression (which is necessary in this
-    // case due to the infinite loop of fetching issue).
-    // Related issue: https://github.com/NullVoxPopuli/ember-resources/issues/340
-    const activeProjectId = this.activeProjectId;
-    const model = this.model;
-    await Promise.resolve();
+  projects = ProjectsResource.from(this, () => ({
+    model: this.model,
+    activeProjectId: this.activeProjectId,
+  }));
+}
 
-    if (!model) {
-      return [
-        await this.constructionProject.getFromCacheOrApi(activeProjectId),
-      ];
+// The `ProjectController.activeProjectId` getter is computed even if
+// `ProjectController.router.externalRouter.currentRoute` has changes
+// in its query params and `ProjectController.activeProjectId` has not actually
+// changed. This could be the case when all import fields are resolved
+// and we transition form `?import=true` to `?import=false`.
+//
+// To prevent a rerender of the whole form (since if `ProjectController.isLoading` is true,
+// we render a spinner) the `ProjectsResource.fetchProjects` task is only performed, if the
+// `ProjectController.activeProjectId` has actually changed.
+export class ProjectsResource extends Resource {
+  @service constructionProject;
+  @service router;
+
+  _lastActiveProjectId = null;
+
+  constructor(owner) {
+    super(owner);
+
+    registerDestructor(this, () => {
+      this.fetchProjects.cancelAll({ resetState: true });
+    });
+  }
+
+  modify(_positional, named) {
+    // The task is only performed, if the `activeProjectId` has changed
+    // since the last run.
+    if (this._lastActiveProjectId !== named.activeProjectId) {
+      this.fetchProjects.perform(named);
+      this._lastActiveProjectId = named.activeProjectId;
     }
+  }
 
-    // We then use `gwr.projects` in the template to reference this.
-    // This is so we can update the table if we add a new project in the subroute /new
-    const projects = await this.constructionProject.all.perform(model);
+  get isLoading() {
+    return this.fetchProjects.isRunning;
+  }
 
-    // Load the first project in the list if none is selected so we always display a project.
-    if (projects.length && this.router.currentRouteName === "project.index") {
-      this.router.transitionTo("project.form", projects[0].EPROID);
+  @lastValue("fetchProjects") value;
+  @task
+  *fetchProjects({ model, activeProjectId }) {
+    try {
+      if (!model) {
+        return [
+          yield this.constructionProject.getFromCacheOrApi(activeProjectId),
+        ];
+      }
+
+      // We then use `gwr.projects` in the template to reference this.
+      // This is so we can update the table if we add a new project in the subroute /new
+      const projects = yield this.constructionProject.all.perform(model);
+
+      // Load the first project in the list if none is selected so we always display a project.
+      if (projects.length && this.router.currentRouteName === "project.index") {
+        this.router.transitionTo("project.form", projects[0].EPROID);
+      }
+
+      return this.constructionProject.projects;
+    } catch (error) {
+      console.error(error);
     }
-
-    return this.constructionProject.projects;
-  });
+  }
 }
