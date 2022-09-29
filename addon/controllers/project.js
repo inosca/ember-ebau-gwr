@@ -56,8 +56,9 @@ export class ProjectsResource extends Resource {
 
   modify(_positional, named) {
     // The task is only performed, if the `activeProjectId` has changed
-    // since the last run.
-    if (this._lastActiveProjectId !== named.activeProjectId) {
+    // since the last run. String cast is used to catch NaN values, since NaN
+    // is not equal to NaN.
+    if (String(this._lastActiveProjectId) !== String(named.activeProjectId)) {
       this.fetchProjects.perform(named);
       this._lastActiveProjectId = named.activeProjectId;
     }
