@@ -1,3 +1,12 @@
+## [6.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.2...v6.0.3) (2022-09-29)
+
+
+### Bug Fixes
+
+* **import:** fix import functionality ([27da792](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/27da792438fe63b37e54cd6ff8d41f5816a8664c))
+* **project:** don't rerender unnecessarily ([df737d5](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/df737d57ca5048574e684f1eac3705cc34f83c19))
+* **projects:** handle refetching of projects for new projects ([192fddb](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/192fddb0b7325ececd8d95acfe0390c3d9576100))
+
 ## [6.0.2](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.1...v6.0.2) (2022-09-21)
 
 
