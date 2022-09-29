@@ -10,7 +10,11 @@ export default class ProjectController extends Controller {
   @service constructionProject;
 
   get activeProjectId() {
-    return Number(this.router.externalRouter.currentRoute.params.project_id);
+    const projectId = Number(
+      this.router.externalRouter.currentRoute.params.project_id
+    );
+
+    return isNaN(projectId) ? null : projectId;
   }
 
   get isLoading() {
@@ -58,7 +62,7 @@ export class ProjectsResource extends Resource {
     // The task is only performed, if the `activeProjectId` has changed
     // since the last run. String cast is used to catch NaN values, since NaN
     // is not equal to NaN.
-    if (String(this._lastActiveProjectId) !== String(named.activeProjectId)) {
+    if (this._lastActiveProjectId !== named.activeProjectId) {
       this.fetchProjects.perform(named);
       this._lastActiveProjectId = named.activeProjectId;
     }
