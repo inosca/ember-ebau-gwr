@@ -6,7 +6,7 @@ export default class GwrConfigService extends Service {
   gwrAPI = "http://localhost:8010/proxy/regbl/api/ech0216/2";
   modalContainer = "#modal-container";
   isTestEnvironment = true;
-  pageSize = 20;
+  pageSize = 5;
   authToken = "token";
   camacGroup = "1";
   projectSortColumn = "bau_modify_date";
