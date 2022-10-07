@@ -9,6 +9,7 @@ export default class SurveyDepartmentErrors extends Component {
   @service constructionProject;
   @service notification;
   @service intl;
+  @service config;
 
   @tracked errors = trackedFunction(this, async () => {
     try {
@@ -16,6 +17,8 @@ export default class SurveyDepartmentErrors extends Component {
         constructionSurveyDeptNumber:
           this.quarterlyClosure.constructionSurveyDeptNumber,
         hasError: true,
+        sortColumn: this.config.quarterlyClosureSortColumn,
+        sortDirection: this.config.quarterlyClosureSortDirection,
       });
     } catch (error) {
       console.error(error);
