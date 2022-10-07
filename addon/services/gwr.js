@@ -82,7 +82,7 @@ export default class GwrService extends Service {
       .replace(/\r?\n|\r/g, "");
 
     const queryParams = new URLSearchParams({
-      ...(query.page
+      ...(query.page !== null && query.page !== undefined
         ? {
             page: query.page,
             size: this.pageSize,

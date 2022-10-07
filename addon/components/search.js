@@ -7,7 +7,7 @@ import { dropTask } from "ember-concurrency";
 import ExtendedSearchValidations from "ember-ebau-gwr/validations/extended-search-fields";
 
 export default class SearchComponent extends Component {
-  @tracked page = 1;
+  @tracked page = 0;
   @tracked searchResults = null;
   @tracked hasMoreResults = false;
   @tracked rawQuery = {};
@@ -82,7 +82,7 @@ export default class SearchComponent extends Component {
       }
 
       this.searchResults =
-        this.page === 1 ? _results : this.searchResults.concat(_results);
+        this.page === 0 ? _results : this.searchResults.concat(_results);
 
       yield this.args.onSearch?.(this.searchResults);
     } catch (error) {
@@ -96,7 +96,7 @@ export default class SearchComponent extends Component {
   @dropTask
   *onSubmit(args) {
     this.searchResults = [];
-    this.page = 1;
+    this.page = 0;
     yield this.search.perform(args);
   }
 
