@@ -1,3 +1,12 @@
+## [6.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.3...v6.0.4) (2022-10-10)
+
+
+### Bug Fixes
+
+* **qc:** sort projects in quarterly closure by creation date ([b162f30](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/b162f305705cd632a07494e459de68634564f24e))
+* **search:** prevent project link query for empty search results ([f22664b](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f22664b273892cadcae42a288e9cc1e4b23238ba))
+* **search:** start pagination at index 0 ([c37b411](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/c37b41150b8b405582c6e4d19672fc7647c356e1))
+
 ## [6.0.3](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.2...v6.0.3) (2022-09-29)
 
 
