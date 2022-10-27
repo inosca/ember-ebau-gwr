@@ -1,24 +1,21 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-import { Info } from "luxon";
-
-// put the last element to the front of the array
-const shift = (array) => [...array.slice(-1), ...array.slice(0, -1)];
+import { DateTime } from "luxon";
 
 export default class ModelFormDateComponent extends Component {
   @service intl;
 
-  get pikadayTranslations() {
-    const locale = this.intl.primaryLocale;
+  get locale() {
+    return this.intl.primaryLocale.split("-")[0];
+  }
 
-    return {
-      previousMonth: this.intl.t("ember-gwr.previousMonth"),
-      nextMonth: this.intl.t("ember-gwr.nextMonth"),
-      months: Info.months("long", { locale }),
-      weekdays: shift(Info.weekdays("long", { locale })),
-      weekdaysShort: shift(Info.weekdays("short", { locale })),
-    };
+  get minDate() {
+    return new Date(2000, 0, 1);
+  }
+
+  get maxDate() {
+    return DateTime.now().endOf("year").toJSDate();
   }
 
   get yearRange() {
@@ -26,17 +23,11 @@ export default class ModelFormDateComponent extends Component {
   }
 
   @action
-  formatDate(value) {
-    return this.intl.formatDate(value, {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  }
-
-  @action
-  clearDate(event) {
-    event.preventDefault();
-    this.args.update(null);
+  onChange(dates) {
+    if (!dates.length) {
+      this.args.update(null);
+    } else {
+      this.args.update(DateTime.fromJSDate(dates[0]).toISODate());
+    }
   }
 }
