@@ -28,7 +28,7 @@
     "test:ember-compatibility": "ember try:each"
   },
   "peerDependencies": {
-    "ember-engines": ">= 8"
+    "ember-engines": ">= 0.8"
   },
   "dependencies": {
     "@ember/render-modifiers": "^2.0.4",
@@ -37,23 +37,24 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "ember-auto-import": "^2.4.1",
-    "ember-changeset": "^4.1.1",
+    "ember-auto-import": "^2.4.3",
+    "ember-changeset": "^4.1.2",
     "ember-changeset-validations": "^4.1.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.1.1",
     "ember-composable-helpers": "^5.0.0",
     "ember-concurrency": "^2.3.7",
+    "ember-data": "^3.28.12",
     "ember-engines-router-service": "0.3.0",
     "ember-intl": "^5.7.2",
     "ember-pikaday": "^4.0.0",
     "ember-power-select": "^6.0.1",
-    "ember-resources": "^5.4.0",
+    "ember-resources": "^5.5.0",
     "ember-truth-helpers": "^3.1.1",
     "ember-uikit": "^6.1.0",
-    "ember-validated-form": "^6.1.0",
+    "ember-validated-form": "^6.1.2",
     "handlebars": "^4.7.7",
-    "luxon": "^3.0.2"
+    "luxon": "^3.0.4"
   },
   "devDependencies": {
     "@adfinis-sygroup/eslint-config": "1.5.0",
@@ -63,30 +64,29 @@
     "@embroider/test-setup": "1.8.3",
     "babel-eslint": "10.1.0",
     "broccoli-asset-rev": "3.0.0",
-    "ember-cli": "3.28.5",
+    "ember-cli": "3.28.6",
     "ember-cli-dependency-checker": "3.3.1",
     "ember-cli-inject-live-reload": "2.1.0",
     "ember-cli-mirage": "3.0.0-alpha.3",
     "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "2.1.1",
     "ember-cli-terser": "4.0.2",
-    "ember-data": "3.28.12",
     "ember-disable-prototype-extensions": "1.1.3",
-    "ember-engines": "https://gitpkg.now.sh/ember-engines/ember-engines/packages/ember-engines?4d8a7607ed690053f6e8ab4f35f9dfa543a3697f",
+    "ember-engines": "0.8.23",
     "ember-export-application-global": "2.0.1",
     "ember-load-initializers": "2.1.2",
     "ember-maybe-import-regenerator": "^1.0.0",
-    "ember-qunit": "5.1.5",
+    "ember-qunit": "6.0.0",
     "ember-resolver": "8.0.3",
     "ember-source": "3.28.9",
     "ember-source-channel-url": "3.0.0",
-    "ember-template-lint": "4.14.0",
+    "ember-template-lint": "4.16.1",
     "ember-template-lint-plugin-prettier": "4.0.0",
     "ember-test-selectors": "6.0.0",
     "ember-try": "2.0.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-ember": "11.0.6",
+    "eslint-plugin-ember": "11.2.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "4.2.1",
@@ -96,14 +96,11 @@
     "miragejs": "0.1.45",
     "npm-run-all": "4.1.5",
     "prettier": "2.7.1",
-    "qunit": "2.19.1",
+    "qunit": "2.19.3",
     "qunit-dom": "2.0.0",
-    "sass": "1.54.9",
+    "sass": "1.55.0",
     "webpack": "5.74.0"
   },
-  "//": [
-    "TODO: remove ember-engines exotic dependency when https://github.com/ember-engines/ember-engines/pull/794 is released"
-  ],
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
@@ -114,10 +111,6 @@
     "configPath": "tests/dummy/config"
   },
   "release": {
-    "extends": "@adfinis-sygroup/semantic-release-config",
-    "branches": [
-      "main",
-      "cherry-release"
-    ]
+    "extends": "@adfinis-sygroup/semantic-release-config"
   }
 }
