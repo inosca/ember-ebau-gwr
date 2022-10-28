@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.4...v6.1.0) (2022-10-28)
+
+
+### Features
+
+* **date:** use flatpickr instead of deprecated pikaday ([705a879](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/705a8799cde6ab6062ebe05a8e25eed1c9e1f7a5))
+
 ## [6.0.4](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.3...v6.0.4) (2022-10-10)
 
 
