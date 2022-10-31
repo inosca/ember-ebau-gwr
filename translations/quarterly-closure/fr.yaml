@@ -1,0 +1,61 @@
+ember-gwr:
+  quarterlyClosure:
+    needsCorrection: 
+
+    closure:
+      close: 
+      closeInfo:
+
+      error:
+
+    status:
+      pollError:
+      label:
+      loading:
+      processing:
+      610:
+      620:
+      630:
+      640:
+      650:
+      651:
+      660:
+      661:
+      662:
+      663:
+      665:
+      667:
+      670:
+      680:
+      690:
+      691:
+      short:
+        processing:
+        610:
+        620:
+        630:
+        640:
+        650:
+        651:
+        660:
+        661:
+        662:
+        663:
+        665:
+        667:
+        670:
+        680:
+        690:
+        691:
+
+    components:
+      projectErrors:
+        error:
+        title:
+        infoText:
+      departmentErrors:
+        error:
+        title:
+        infoText:
+        maintenanceCost:
+      disabledFormInfo: Pendant que l'OFS contrôle les données qui ont été soumises pour la clôture trimestrielle, il n'est plus possible d'éditer des objets.

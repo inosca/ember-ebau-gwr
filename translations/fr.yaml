@@ -52,17 +52,22 @@ ember-gwr:
     linkExistingProject: Lier un projet existant
 
   globalLandingPage:
-    heading:
-    infoText:
-    searchProject:
-    searchBuilding:
-    quarterlyClosure:
+    heading: RegBL
+    infoText: |-
+      Dans le module RegBL, vous pouvez chercher des projets et des bâtiments existants dans le RegBL et procéder à des adaptations. 
+      De plus, la clôture trimestrielle peut être effectuée. Les projets de construction RegBL qui sont déjà liés à un dossier eBau peuvent 
+      également être consultés sous le dossier eBau correspondant.
+    searchProject: Chercher et traiter des projets de construction
+    searchBuilding: Chercher et modifier des bâtiments
+    quarterlyClosure: Clôture trimestrielle {quarter}
+    backToGlobal: Retour à l'aperçu
+    backToSearch: Retour à la cherche
 
   nav:
     projectDetails: Détails du projet
     linkedBuildings: Bâtiments liés
-    housingStatInfo: La clôture du trimestre et la gestion des rues peuvent être effectuées dans housing-stat de l'OFS.
-    housingStatLink: Vers housing-stat
+    housingStatInfo: La gestion des rues peuvent être effectuées dans Housing-Stat de l'OFS.
+    housingStatLink: Vers Housing-Stat
     deletionInfo: "Pour supprimer des données dans les formulaires, veuillez contacter l'OFS : Téléphone : 0800 866 600 E-mail : housing-stat@bfs.admin.ch"
 
   linkedBuildings:
@@ -75,7 +80,19 @@ ember-gwr:
       Pour les projets de construction de bâtiments, le genre de construction est déclaré exclusivement par bâtiment.
     buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
 
+  search:
+    hasError: Statut d'erreur
+    hasErrorPlaceholder: Tous
+    minFilterError: Au moins 1 filtre doit être activé.
+    loadMoreResults: charger plus de résultats
+    hasErrorOptions:
+      true: Seulement avec erreur
+      false: Seulement sans erreur
+    
   searchBuilding:
+    headingGlobal: Chercher un bâtiment dans le RegBL
+    previewBuilding: Afficher les données du bâtiment
+    previewBuildingError: Une erreur est survenue lors du chargement des données du bâtiment.
     heading: Lier un bâtiment existant
     search: Chercher un bâtiment
     hasError: Statut d'erreur
@@ -89,6 +106,9 @@ ember-gwr:
     linkError: Une erreur s'est produite lors de la liaison du bâtiment.
 
   searchProject:
+    searchGlobal: Chercher un projet de construction dans le RegBL
+    alreadyLinkedInfo: Ce projet de construction est déjà lié au dossier eBau actuel.
+    instanceIds: Dossiers eBau liés
     heading: Lier un projet de construction existant
     search: Chercher les projets
 
@@ -225,7 +245,7 @@ ember-gwr:
       municipality: Sélectionnez votre commune...
       municipalitySearch: Chercher une commune...
       municipalityNoneFound: Aucune commune n'a été trouvée
-      loginInfo:
+      loginInfo: "<b>{user}</b> connecté à <b>{municipality}</b>"
 
     logout: Se déconnecter
 
@@ -242,6 +262,7 @@ ember-gwr:
       clientHeading: Maître d’ouvrage
       validationError: Il y a des erreurs de saisie dans le formulaire. Veuillez corriger.
       importError: Une erreur est survenue lors de l'importation. Les données ne peuvent pas être transférées pour le moment.
+      noImportData: Il n'existe aucune donnée à importer.
 
       diff:
         existingData: Données existantes dans le RegBL
@@ -331,3 +352,6 @@ ember-gwr:
 
     importModal:
       selectImportData: Sélectionner les données d'importation
+
+    modelErrors:
+      empty: Pas de points en suspens
