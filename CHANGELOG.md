@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.1.0...v6.2.0) (2022-10-31)
+
+
+### Features
+
+* **intl:** include French translations ([f7f7dd2](https://github.com/adfinis-sygroup/ember-ebau-gwr/commit/f7f7dd2d5eced325ed1c009ad92aecd4f31a65d3))
+
 # [6.1.0](https://github.com/adfinis-sygroup/ember-ebau-gwr/compare/v6.0.4...v6.1.0) (2022-10-28)
 
 
