@@ -1,6 +1,6 @@
 # ember-ebau-gwr
 
-Ember Engine for the [adfinis-sygroup/ebau-gwr](https://github.com/adfinis-sygroup/ebau-gwr) backend.
+Ember Engine for the [inosca/ebau-gwr](https://github.com/inosca/ebau-gwr) backend.
 
 ## Development
 
