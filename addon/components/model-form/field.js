@@ -76,13 +76,22 @@ export default class ModelFormFieldComponent extends Component {
   get options() {
     const intlKey =
       this.args.label ?? `${this.args.translationBase}.${this.args.attr}`;
-    return (
+
+    let options =
       this.args.options ??
       this.args.gwrEnumOptions?.map((option) => ({
         value: option,
         label: this.intl.t(`${intlKey}Options.${option}`),
-      }))
-    );
+      }));
+
+    const sortBy = this.args.sortBy;
+    if (sortBy) {
+      options = options.sort((a, b) =>
+        a[sortBy].localeCompare(b[sortBy], this.intl.primaryLocale)
+      );
+    }
+
+    return options;
   }
 
   @action
