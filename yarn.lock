@@ -1427,7 +1427,7 @@
     lodash "^4.17.21"
     resolve "^1.20.0"
 
-"@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0 || ^1.0.0", "@embroider/util@^1.0.0", "@embroider/util@^1.2.0", "@embroider/util@^1.6.0", "@embroider/util@^1.8.3":
+"@embroider/util@^0.39.1 || ^0.40.0 || ^0.41.0 || ^1.0.0", "@embroider/util@^1.0.0", "@embroider/util@^1.2.0", "@embroider/util@^1.6.0", "@embroider/util@^1.8.3", "@embroider/util@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.9.0.tgz#331c46bdf106c44cb1dd6baaa9030d322c13cfca"
   integrity sha512-9I63iJK6N01OHJafmS/BX0msUkTlmhFMIEmDl/SRNACVi0nS6QfNyTgTTeji1P/DALf6eobg/9t/N4VhS9G9QA==
@@ -7118,25 +7118,25 @@ ember-try@2.0.0:
     rimraf "^3.0.2"
     walk-sync "^2.2.0"
 
-ember-uikit@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-6.1.0.tgz#4112f94ab65f48953acb00326a760003e5841420"
-  integrity sha512-Q53owUuytxWBsehpz+/4ZPLShpooVuNpa9/uTmuE2X6KjM8fAn0Yu+utWCbgb887vEgDbxeyt4BGIqt+MHm8Kw==
+ember-uikit@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-6.1.1.tgz#ece31447724f730a1bfde2650c383e3d1eb11f90"
+  integrity sha512-8gLzSS23Gab6WYA3gRFbnvjjgvvTIf5YRjE5JPu523yEkVCQ6kqlntg0MklYuxnEBYAKpzna7IA1H2JPsriYIg==
   dependencies:
     "@ember/string" "^3.0.0"
-    "@embroider/util" "^1.8.3"
+    "@embroider/util" "^1.9.0"
     "@glimmer/component" "^1.1.2"
     "@glimmer/tracking" "^1.1.2"
     broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
     broccoli-stew "^3.0.0"
-    ember-auto-import "^2.4.2"
+    ember-auto-import "^2.4.3"
     ember-cli-babel "^7.26.11"
     ember-cli-htmlbars "^6.1.1"
     ember-focus-trap "^1.0.1"
     ember-modifier "^3.2.7"
     ember-toggle "^9.0.3"
-    uikit "^3.15.6"
+    uikit "^3.15.11"
 
 ember-validated-form@^6.1.2:
   version "6.1.2"
@@ -15247,10 +15247,10 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
-uikit@^3.15.6:
-  version "3.15.11"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.15.11.tgz#e5112dc6ccdd56d2969114131c282e5c053ae0ab"
-  integrity sha512-3qJJsfSHiq1iFelumosXCvVT1HvcCZArRCewtOcyRz8m4KbcliymwKn+J5MfgshN9yBkozQvwNv8kVgJbvW7OA==
+uikit@^3.15.11:
+  version "3.15.18"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.15.18.tgz#cecb22057fc91d5aef8014e781c24748cd835a50"
+  integrity sha512-+ffjpjzmX1o+SXNfzAgVpH77AhlMrBcisNz/jDz8YK+YD16Hh23Fvi/MQYr2OMxbXGeLVc9eARWNN9U+oZkWiQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
