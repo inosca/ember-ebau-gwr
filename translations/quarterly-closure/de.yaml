@@ -1,6 +1,9 @@
 ember-gwr:
   quarterlyClosure:
-    needsCorrection: Der Quartalsabschluss konnte aufgrund von bestehenden Fehlern nicht abgeschlossen werden. Bitte ergänzen Sie fehlende Daten und beheben Sie verbleibende Unstimmigkeiten.
+    needsCorrection: |-
+      Der Quartalsabschluss konnte aufgrund von bestehenden Fehlern nicht abgeschlossen 
+      werden. Bitte ergänzen Sie fehlende Daten und beheben Sie verbleibende 
+      Unstimmigkeiten.
 
     closure:
       close: Quartalsabschluss melden
@@ -54,11 +57,14 @@ ember-gwr:
 
     components:
       projectErrors:
-        error: Beim Abrufen der Fehlerliste der Erhebungsstelle ist ein Fehler aufgetreten.
-        title: Bauprojekte
-        infoText: Nachfolgend finden Sie eine Liste der Bauprojekte, die durch die Erhebungsstelle erfasst wurden und noch Fehler beinhalten. Um die Fehler auf den Gebäuden, Wohnungen und Eingängen einzusehen, wählen Sie bitte das entsprechende Bauprojekt an.
-      departmentErrors:
         error: Beim Abrufen der Fehlerliste der Projekte ist ein Fehler aufgetreten.
+        title: Bauprojekte
+        infoText: 
+          Nachfolgend finden Sie eine Liste der Bauprojekte, die durch die Erhebungsstelle erfasst wurden 
+          und noch Fehler beinhalten. Um die Fehler auf den Gebäuden, Wohnungen und Eingängen einzusehen, 
+          wählen Sie bitte das entsprechende Bauprojekt an.
+      departmentErrors:
+        error: Beim Abrufen der Fehlerliste der Erhebungsstelle ist ein Fehler aufgetreten.
         title: Erhebungsstelle
         infoText: Nachfolgend finden Sie die offenen Pendenzen der Erhebungsstelle.
         maintenanceCost: Die Ausgaben für den Unterhalt an eigenen Bauwerken müssen im 1. Quartal im Housing-Stat gesetzt werden.

@@ -1,5 +1,4 @@
 ember-gwr:
-  soonAvailable: Bientôt disponible!
   close: "Fermer"
   previousMonth: "Mois précédent"
   nextMonth: "Mois suivant"
@@ -54,20 +53,21 @@ ember-gwr:
   globalLandingPage:
     heading: RegBL
     infoText: |-
-      Dans le module RegBL, vous pouvez chercher des projets et des bâtiments existants dans le RegBL et procéder à des adaptations. 
-      De plus, la clôture trimestrielle peut être effectuée. Les projets de construction RegBL qui sont déjà liés à un dossier eBau peuvent 
-      également être consultés sous le dossier eBau correspondant.
-    searchProject: Chercher et traiter des projets de construction
-    searchBuilding: Chercher et modifier des bâtiments
+      Dans le module RegBL, vous pouvez rechercher des projets et des bâtiments
+      existants dans le RegBL et procéder à des adaptations. De plus, la clôture trimestrielle
+      peut être effectuée. Les projets de construction RegBL qui sont déjà liés à un
+      dossier eBau peuvent également être consultés sous le dossier eBau correspondant.
+    searchProject: Rechercher des projets de construction dans le RegBL
+    searchBuilding: Rechercher des bâtiments dans le RegBL
     quarterlyClosure: Clôture trimestrielle {quarter}
     backToGlobal: Retour à l'aperçu
-    backToSearch: Retour à la cherche
+    backToSearch: Retour à la recherche
 
   nav:
     projectDetails: Détails du projet
     linkedBuildings: Bâtiments liés
-    housingStatInfo: La gestion des rues peuvent être effectuées dans Housing-Stat de l'OFS.
-    housingStatLink: Vers Housing-Stat
+    housingStatInfo: La gestion des rues peut être effectuée dans le Housing-Stat de l'OFS.
+    housingStatLink: Vers le Housing-Stat
     deletionInfo: "Pour supprimer des données dans les formulaires, veuillez contacter l'OFS : Téléphone : 0800 866 600 E-mail : housing-stat@bfs.admin.ch"
 
   linkedBuildings:
@@ -81,36 +81,31 @@ ember-gwr:
     buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
 
   search:
-    hasError: Statut d'erreur
-    hasErrorPlaceholder: Tous
+    hasError: État d'erreur
+    hasErrorPlaceholder: Tous les
     minFilterError: Au moins 1 filtre doit être activé.
     loadMoreResults: charger plus de résultats
     hasErrorOptions:
-      true: Seulement avec erreur
-      false: Seulement sans erreur
+      true: Avec erreur uniquement
+      false: Sans erreur uniquement
     
   searchBuilding:
-    headingGlobal: Chercher un bâtiment dans le RegBL
+    heading: Lier un bâtiment existant
+    headingGlobal: Rechercher un bâtiment dans le RegBL
+    search: Chercher un bâtiment
+    entrances: Entrées de bâtiment
+
     previewBuilding: Afficher les données du bâtiment
     previewBuildingError: Une erreur est survenue lors du chargement des données du bâtiment.
-    heading: Lier un bâtiment existant
-    search: Chercher un bâtiment
-    hasError: Statut d'erreur
-    hasErrorPlaceholder: Tous
-    hasErrorOptions:
-      true: Seulement avec erreur
-      false: Seulement sans erreur
-    entrances: Entrées de bâtiment
 
     linkSuccess: Le bâtiment a été lié avec succès.
     linkError: Une erreur s'est produite lors de la liaison du bâtiment.
 
   searchProject:
-    searchGlobal: Chercher un projet de construction dans le RegBL
-    alreadyLinkedInfo: Ce projet de construction est déjà lié au dossier eBau actuel.
-    instanceIds: Dossiers eBau liés
     heading: Lier un projet de construction existant
+    searchGlobal: Rechercher un projet de construction dans le RegBL
     search: Chercher les projets
+    alreadyLinkedInfo: Ce projet de construction est déjà lié au dossier eBau actuel.
 
     EPROID: EPROID
     projectStatus: Statut du projet
@@ -125,11 +120,9 @@ ember-gwr:
       6708: Non réalisé
       6709: Retiré
 
+    instanceIds: Dossiers eBau liés
+    
     hasError: Statut d'erreur
-    hasErrorPlaceholder: tous
-    hasErrorOptions:
-      true: Seulement avec erreur
-      false: Seulement sans erreur
 
     realestateIdentification:
       number: Numéro de parcelle
@@ -245,7 +238,7 @@ ember-gwr:
       municipality: Sélectionnez votre commune...
       municipalitySearch: Chercher une commune...
       municipalityNoneFound: Aucune commune n'a été trouvée
-      loginInfo: "<b>{user}</b> connecté à <b>{municipality}</b>"
+      loginInfo: "<b>{user}</b> enregistré dans <b>{municipality}</b>"
 
     logout: Se déconnecter
 
@@ -254,6 +247,7 @@ ember-gwr:
       cancelImport: Interrompre l'import
       applyAll: Tout reprendre
       importFromCaluma: Importer les données de la demande de permis
+      noImportData: Il n'existe pas de données à importer.
       changeStatus: Changer le statut
       dates: Dates
       datePlaceholder: Choisissez une date...
@@ -262,7 +256,6 @@ ember-gwr:
       clientHeading: Maître d’ouvrage
       validationError: Il y a des erreurs de saisie dans le formulaire. Veuillez corriger.
       importError: Une erreur est survenue lors de l'importation. Les données ne peuvent pas être transférées pour le moment.
-      noImportData: Il n'existe aucune donnée à importer.
 
       diff:
         existingData: Données existantes dans le RegBL
@@ -354,4 +347,4 @@ ember-gwr:
       selectImportData: Sélectionner les données d'importation
 
     modelErrors:
-      empty: Pas de points en suspens
+      empty: Pas de dossiers/ cas en suspens

@@ -1,61 +1,71 @@
 ember-gwr:
   quarterlyClosure:
-    needsCorrection: 
+    needsCorrection: |-
+      La clôture trimestrielle n'a pas pu être achevée en raison d'erreurs
+      existantes. Veuillez compléter les données manquantes et corriger les divergences
+      restantes.
 
     closure:
-      close: 
-      closeInfo:
+      close: Annoncer la clôture trimestrielle
+      closeInfo: |-
+        La clôture trimestrielle peut être annoncée à la fin du trimestre à l'OFS, qui procède alors à des contrôles 
+        de qualité des données saisies. Il n'est plus possible d'apporter d'autres modifications aux données pendant 
+        cette période, jusqu'à ce que d'éventuelles autres corrections de données soient nécessaires ou que la clôture 
+        trimestrielle soit terminée. Après correction des données, la clôture trimestrielle peut être à nouveau annoncée.
 
-      error:
+      error: Une erreur est survenue lors de I'annonce de la clôture trimestrielle.
 
     status:
-      pollError:
-      label:
-      loading:
-      processing:
-      610:
-      620:
-      630:
-      640:
-      650:
-      651:
-      660:
-      661:
-      662:
-      663:
-      665:
-      667:
-      670:
-      680:
-      690:
-      691:
+      pollError: Une erreur est survenue lors de la consultation du statut de l'enquête. Prochaine tentative dans une minute.
+      label: Statut/ état
+      loading: Le statut actuel est récupéré...
+      processing: La requête de clôture trimestrielle n'a pas encore été traitée.
+      610: Collecte des données initialisée
+      620: Collecte initialisée
+      630: La clôture formelle n'a pas été accordée
+      640: La clôture formelle n'a pas été accordée
+      650: La clôture formelle n'a pas été accordée
+      651: La clôture formelle n'a pas été accordée
+      660: Clôture formelle effectuée par la commune
+      661: Clôture de la collecte accordée par la commune
+      662: Mise à jour automatique après 7 jours ou mise à jour manuelle du statut.
+      663: Clôture définitive non validée
+      665: Clôture définitive non validée
+      667: Clôture de la collecte par la commune
+      670: Établir liste de contrôle et procéder aux contrôles de qualité
+      680: Clôture définitive validée
+      690: Copier les données dans le snapshot
+      691: Clôture forcée de l'OFS
       short:
-        processing:
-        610:
-        620:
-        630:
-        640:
-        650:
-        651:
-        660:
-        661:
-        662:
-        663:
-        665:
-        667:
-        670:
-        680:
-        690:
-        691:
+        processing: Demande pas encore traitée
+        610: Clôture trimestrielle initialisée
+        620: Clôture requise
+        630: Erreurs à corriger
+        640: Erreurs à corriger
+        650: Erreurs à corriger
+        651: Erreurs à corriger
+        660: Contrôle de qualité de l'OFS
+        661: Contrôle de qualité de l'OFS
+        662: Contrôle de qualité de l'OFS
+        663: Erreurs à corriger
+        665: Erreurs à corriger
+        667: Contrôle de qualité de l'OFS
+        670: Contrôle de qualité de l'OFS
+        680: Contrôle final de qualité de l'OFS
+        690: Terminé
+        691: Clôture forcée de l'OFS
 
     components:
       projectErrors:
-        error:
-        title:
-        infoText:
+        error: Une erreur est survenue lors de la consultation de la liste des erreurs des projets.
+        title: Projets de construction
+        infoText: |-
+          Vous trouverez ci-dessous une liste des projets de construction qui ont été saisis par l'organe 
+          de perception et qui contiennent encore des erreurs. Pour consulter les erreurs sur les bâtiments, 
+          les logements et les entrées, veuillez sélectionner le projet de construction correspondant.
       departmentErrors:
-        error:
-        title:
-        infoText:
-        maintenanceCost:
-      disabledFormInfo: Pendant que l'OFS contrôle les données qui ont été soumises pour la clôture trimestrielle, il n'est plus possible d'éditer des objets.
+        error: Une erreur est survenue lors de la consultation de la liste des erreurs de l'organe de perception.
+        title: Organe de perception
+        infoText: Vous trouverez ci-dessous les dossiers en suspens de l'organe de perception.
+        maintenanceCost: Les dépenses d'entretien des constructions propres doivent être placées dans le Housing-Stat au cours du 1er trimestre.
+      disabledFormInfo: Pendant que l'OFS vérifie les données qui ont été soumises suite à la clôture trimestrielle, il n'est pas possible de modifier des objets.
