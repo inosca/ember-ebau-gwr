@@ -1,3 +1,16 @@
+# [6.3.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.2.0...v6.3.0) (2022-12-29)
+
+
+### Bug Fixes
+
+* **deps:** update git repository url in package.json ([2f56c44](https://github.com/inosca/ember-ebau-gwr/commit/2f56c440d3974093c78cebb059da486ccbc97b7a))
+
+
+### Features
+
+* **form:** sort contries by label ([04a7b3d](https://github.com/inosca/ember-ebau-gwr/commit/04a7b3dbe046a5d7f734c64e97d84d8be9e487bc))
+* **intl:** include French translations for global functionality ([a83b9f9](https://github.com/inosca/ember-ebau-gwr/commit/a83b9f964e1f28e819719697761f1bdcf9a164e4))
+
 # [6.2.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.1.0...v6.2.0) (2022-10-31)
 
 
