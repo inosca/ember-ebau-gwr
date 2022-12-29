@@ -6,7 +6,7 @@
     "ember-addon",
     "ember-engine"
   ],
-  "repository": "https://github.com/adfinis-sygroup/ember-ebau-gwr",
+  "repository": "https://github.com/inosca/ember-ebau-gwr",
   "license": "AGPL-3.0",
   "author": "",
   "directories": {
