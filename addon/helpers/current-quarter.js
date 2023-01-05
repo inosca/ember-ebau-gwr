@@ -10,20 +10,25 @@ const quarters = [
   { text: "Q4", firstWeekOfQuarter: 1 },
 ];
 
-export const getCurrentQuarter = (
-  _,
-  { currentWeek = DateTime.now().toFormat("W"), showYear = false }
-) => {
+export const getCurrentQuarter = (_, { showYear = false }) => {
+  const now = DateTime.now();
+  const currentWeek = now.toFormat("W");
+
   const quarter = quarters.find(
     ({ firstWeekOfQuarter }) => currentWeek >= firstWeekOfQuarter
   )?.text;
-  const now = DateTime.now();
-  // If we're already in the new year but not yet in week 11, this means we're still
-  // working on the Q4 closure from last year. That's why we subtract one year from today.
-  const year = (
-    quarter === "Q4" && currentWeek < 11 ? now.minus({ years: 1 }) : now
-  ).toFormat("yyyy");
-  return showYear ? `${quarter}/${year}` : quarter;
+
+  if (showYear) {
+    // If we're already in the new year but not yet in week 11, this means we're still
+    // working on the Q4 closure from last year. That's why we subtract one year from today.
+    const year = (
+      quarter === "Q4" && currentWeek < 11 ? now.minus({ years: 1 }) : now
+    ).toFormat("yyyy");
+
+    return `${quarter}/${year}`;
+  }
+
+  return quarter;
 };
 
 export default helper(getCurrentQuarter);
