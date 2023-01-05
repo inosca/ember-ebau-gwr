@@ -69,12 +69,12 @@
         />
       </TableHeader>
 
-      <Rows as |TableRowColumn|>
+      <Rows as |TableRowColumn street|>
         <TableRowColumn @attr="ESID" as |value|>
           <button
             class="uk-button uk-button-link"
             type="button"
-            {{on "click" (fn this.setStreet this.model)}}
+            {{on "click" (fn this.setStreet street)}}
           >
             {{value}}
           </button>
