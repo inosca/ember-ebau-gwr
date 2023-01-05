@@ -10,13 +10,6 @@ updates:
     open-pull-requests-limit: 10
     versioning-strategy: increase
     ignore:
-      # ember-engines doesn't work yet with ember v4
-      - dependency-name: ember-source
-        versions:
-          - ">= 4"
-      - dependency-name: ember-cli
-        versions:
-          - ">= 4"
       - dependency-name: ember-data
         versions:
           - ">= 4"
