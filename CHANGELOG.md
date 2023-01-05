@@ -1,3 +1,10 @@
+## [6.3.1](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.0...v6.3.1) (2023-01-05)
+
+
+### Bug Fixes
+
+* **link-street:** pass correct street model to `setStreet` function ([ab19b6c](https://github.com/inosca/ember-ebau-gwr/commit/ab19b6c177bc7c9dafc78542c21df8dea0225813))
+
 # [6.3.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.2.0...v6.3.0) (2022-12-29)
 
 
