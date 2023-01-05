@@ -16,6 +16,7 @@ export default class ConstructionProjectService extends GwrService {
 
   @service building;
   @service dwelling;
+  @service store;
 
   async get(EPROID) {
     if (!EPROID) {
