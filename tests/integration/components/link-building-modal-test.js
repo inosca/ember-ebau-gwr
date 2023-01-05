@@ -1,14 +1,10 @@
 import { render } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import { module, todo } from "qunit";
 
-const modulePrefix = "ember-ebau-gwr";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | link-building-modal", function (hooks) {
-  setupRenderingTest(hooks, { resolver, integration: true });
+  setupRenderingTest(hooks);
 
   todo("it renders", async function (assert) {
     // Set any properties with this.set('myProperty', 'value');

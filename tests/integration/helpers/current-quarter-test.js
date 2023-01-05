@@ -1,14 +1,11 @@
 import { render } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import { Settings } from "luxon";
 import { module, test } from "qunit";
 
-const modulePrefix = "ember-ebau-gwr";
-const resolver = engineResolverFor(modulePrefix);
 module("Integration | Helper | current-quarter", function (hooks) {
-  setupRenderingTest(hooks, { resolver, integration: true });
+  setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     this.oldNow = Settings.now;

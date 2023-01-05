@@ -1,6 +1,6 @@
 import { render } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import { setupRenderingTest } from "ember-qunit";
 import { module, todo } from "qunit";
 
 module("Integration | Component | Search", function (hooks) {
@@ -19,6 +19,8 @@ module("Integration | Component | Search", function (hooks) {
     `);
 
     assert.equal(this.element.textContent.trim(), "template block text");
+
+    assert.ok(false);
   });
   // todo("calls the supplied service search function with the correct arguments");
 });

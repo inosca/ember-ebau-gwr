@@ -1,14 +1,10 @@
 import { render } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 
-const modulePrefix = "ember-ebau-gwr";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | instance-link", function (hooks) {
-  setupRenderingTest(hooks, { resolver, integration: true });
+  setupRenderingTest(hooks);
 
   test("it renders instance links", async function (assert) {
     this.links = [
