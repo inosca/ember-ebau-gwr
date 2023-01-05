@@ -1,6 +1,6 @@
 import { render } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import { setupRenderingTest } from "ember-qunit";
 import { module, todo } from "qunit";
 
 module(
@@ -24,6 +24,8 @@ module(
     `);
 
       assert.equal(this.element.textContent.trim(), "template block text");
+
+      assert.ok(false);
     });
   }
 );

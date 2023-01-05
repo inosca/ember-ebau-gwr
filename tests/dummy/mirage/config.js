@@ -23,10 +23,10 @@ export default function makeServer(config) {
       this.post("/linker/gwr-links");
       this.delete("/linker/gwr-links/:id");
 
-      let gwrToken;
+      let tokenResponse;
       this.post("/housing-stat-token", async (_, request) => {
-        if (gwrToken) {
-          return gwrToken;
+        if (tokenResponse) {
+          return tokenResponse;
         }
 
         let username, password, municipality;
@@ -69,9 +69,9 @@ export default function makeServer(config) {
           }
         ).then((response) => response.json());
 
-        gwrToken = token;
+        tokenResponse = { token, municipality };
 
-        return JSON.stringify({ token: gwrToken, municipality });
+        return tokenResponse;
       });
 
       this.post(
@@ -81,7 +81,7 @@ export default function makeServer(config) {
           localStorage.removeItem("password");
           localStorage.removeItem("municipality");
           localStorage.removeItem("wsk_id");
-          gwrToken = undefined;
+          tokenResponse = undefined;
         },
         204
       );
