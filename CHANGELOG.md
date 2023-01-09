@@ -1,3 +1,10 @@
+## [6.3.2](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.1...v6.3.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* remove deprecations for ember v4 ([8a8c929](https://github.com/inosca/ember-ebau-gwr/commit/8a8c929454a6ae021140c34f89bd5404ed354225))
+
 ## [6.3.1](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.0...v6.3.1) (2023-01-05)
 
 
