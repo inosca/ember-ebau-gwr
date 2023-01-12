@@ -7,7 +7,6 @@ export default class LinkedProjectsComponent extends Component {
   @service router;
   @service store;
   @service constructionProject;
-  @service quarterlyClosure;
 
   @action
   async removeProjectLink() {

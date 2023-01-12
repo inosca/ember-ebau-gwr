@@ -3,5 +3,4 @@ import Component from "@glimmer/component";
 
 export default class LinkedModelsComponent extends Component {
   @service config;
-  @service quarterlyClosure;
 }

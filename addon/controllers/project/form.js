@@ -21,7 +21,6 @@ export default class ProjectFormController extends ImportController {
   @service router;
   @service intl;
   @service notification;
-  @service quarterlyClosure;
 
   @tracked buildingWork;
   @tracked typeOfConstructionProject;

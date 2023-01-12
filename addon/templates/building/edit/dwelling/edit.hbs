@@ -2,9 +2,6 @@
   {{#if this.fetchDwelling.isRunning}}
     <Loading />
   {{else}}
-    {{#if this.quarterlyClosure.formsDisabled}}
-      <QuarterlyClosure::DisabledFormAlert />
-    {{/if}}
     <ModelForm
       @model={{this.dwelling}}
       @instanceId={{this.model.instanceId}}
@@ -26,7 +23,6 @@
       @getChangeParameters={{this.getChangeParameters}}
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @modelStatusField="dwellingStatus"
-      @disabled={{this.quarterlyClosure.formsDisabled}}
       as |Field changeset import|
     >
       <Field

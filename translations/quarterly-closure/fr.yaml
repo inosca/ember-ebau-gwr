@@ -8,9 +8,9 @@ ember-gwr:
     closure:
       close: Annoncer la clôture trimestrielle
       closeInfo: |-
-        La clôture trimestrielle peut être annoncée à la fin du trimestre à l'OFS, qui procède alors à des contrôles 
-        de qualité des données saisies. Il n'est plus possible d'apporter d'autres modifications aux données pendant 
-        cette période, jusqu'à ce que d'éventuelles autres corrections de données soient nécessaires ou que la clôture 
+        La clôture trimestrielle peut être annoncée à la fin du trimestre à l'OFS, qui procède alors à des contrôles
+        de qualité des données saisies. Il n'est plus possible d'apporter d'autres modifications aux données pendant
+        cette période, jusqu'à ce que d'éventuelles autres corrections de données soient nécessaires ou que la clôture
         trimestrielle soit terminée. Après correction des données, la clôture trimestrielle peut être à nouveau annoncée.
 
       error: Une erreur est survenue lors de I'annonce de la clôture trimestrielle.
@@ -60,12 +60,11 @@ ember-gwr:
         error: Une erreur est survenue lors de la consultation de la liste des erreurs des projets.
         title: Projets de construction
         infoText: |-
-          Vous trouverez ci-dessous une liste des projets de construction qui ont été saisis par l'organe 
-          de perception et qui contiennent encore des erreurs. Pour consulter les erreurs sur les bâtiments, 
+          Vous trouverez ci-dessous une liste des projets de construction qui ont été saisis par l'organe
+          de perception et qui contiennent encore des erreurs. Pour consulter les erreurs sur les bâtiments,
           les logements et les entrées, veuillez sélectionner le projet de construction correspondant.
       departmentErrors:
         error: Une erreur est survenue lors de la consultation de la liste des erreurs de l'organe de perception.
         title: Organe de perception
         infoText: Vous trouverez ci-dessous les dossiers en suspens de l'organe de perception.
         maintenanceCost: Les dépenses d'entretien des constructions propres doivent être placées dans le Housing-Stat au cours du 1er trimestre.
-      disabledFormInfo: Pendant que l'OFS vérifie les données qui ont été soumises suite à la clôture trimestrielle, il n'est pas possible de modifier des objets.

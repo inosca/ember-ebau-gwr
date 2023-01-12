@@ -17,7 +17,6 @@ export default class BuildingEditDwellingEditController extends ImportController
   @service intl;
   @service notification;
   @service router;
-  @service quarterlyClosure;
 
   @tracked errors;
 

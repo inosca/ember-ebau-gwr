@@ -2,9 +2,6 @@
   {{#if this.fetchBuildingEntrance.isRunning}}
     <Loading />
   {{else}}
-    {{#if this.quarterlyClosure.formsDisabled}}
-      <QuarterlyClosure::DisabledFormAlert />
-    {{/if}}
     <ModelForm
       @model={{this.buildingEntrance}}
       @instanceId={{this.model.instanceId}}
@@ -21,7 +18,7 @@
       @statusConfiguration={{false}}
       @showImport={{this.showImport}}
       @importIndex={{this.importIndex}}
-      @disabled={{or this.hasNoStreet this.quarterlyClosure.formsDisabled}}
+      @disabled={{this.hasNoStreet}}
       as |Field|
     >
       {{#unless this.buildingEntrance.isNew}}
@@ -31,28 +28,19 @@
       <Field
         @attr="locality.name.nameLong"
         @required={{true}}
-        @disabled={{or
-          this.quarterlyClosure.formsDisabled
-          (not this.buildingEntrance.isNew)
-        }}
+        @disabled={{not this.buildingEntrance.isNew}}
       />
       <Field
         @attr="locality.swissZipCode"
         @type="number"
-        @disabled={{or
-          this.quarterlyClosure.formsDisabled
-          (not this.buildingEntrance.isNew)
-        }}
+        @disabled={{not this.buildingEntrance.isNew}}
         @required={{true}}
       />
       {{#unless this.buildingEntrance.isNew}}
         <Field
           @attr="locality.swissZipCodeAddOn"
           @type="number"
-          @disabled={{or
-            this.quarterlyClosure.formsDisabled
-            (not this.buildingEntrance.isNew)
-          }}
+          @disabled={{not this.buildingEntrance.isNew}}
         />
       {{/unless}}
       {{! API rejects any modification of the buildingEntranceNo or isOfficial
@@ -64,14 +52,11 @@
         }}
           ; container: {{this.config.modalContainer}}; pos: top-left"
       >
-        <Field
-          @attr="buildingEntranceNo"
-          @disabled={{or this.quarterlyClosure.formsDisabled this.hasNoStreet}}
-        />
+        <Field @attr="buildingEntranceNo" @disabled={{this.hasNoStreet}} />
         <Field
           @attr="isOfficialAddress"
           @type="checkbox"
-          @disabled={{or this.quarterlyClosure.formsDisabled this.hasNoStreet}}
+          @disabled={{this.hasNoStreet}}
         />
       </div>
       {{#unless this.buildingEntrance.isNew}}
@@ -105,7 +90,6 @@
           @fieldComponent={{Field}}
           @buildingEntrance={{this.buildingEntrance}}
           @translationBase="ember-gwr.buildingEntrance.fields"
-          @disabled={{this.quarterlyClosure.formsDisabled}}
         />
       {{/unless}}
     </ModelForm>
