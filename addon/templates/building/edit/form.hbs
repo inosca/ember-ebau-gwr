@@ -12,9 +12,6 @@
   {{#if (or this.fetchBuildingWork.isRunning this.fetchBuilding.isRunning)}}
     <Loading />
   {{else}}
-    {{#if this.quarterlyClosure.formsDisabled}}
-      <QuarterlyClosure::DisabledFormAlert />
-    {{/if}}
     <ModelForm
       @model={{this.buildingWork}}
       @instanceId={{this.model.instanceId}}
@@ -38,7 +35,6 @@
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @getChangeHint={{fn this.gwr.getChangeHint this.buildingAPI.cacheClass}}
       @modelStatusField="buildingStatus"
-      @disabled={{this.quarterlyClosure.formsDisabled}}
       as |Field changeset import|
     >
       {{#unless this.hasNoProject}}

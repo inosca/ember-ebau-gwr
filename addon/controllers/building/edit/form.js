@@ -18,7 +18,6 @@ export default class BuildingFormController extends ImportController {
   @service intl;
   @service notification;
   @service router;
-  @service quarterlyClosure;
 
   @tracked BuildingWorkValidations = trackedFunction(this, () => {
     return buildingWorkValidation({

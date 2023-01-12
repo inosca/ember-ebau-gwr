@@ -44,13 +44,6 @@ export default class QuarterlyClosureService extends Service {
     };
   }
 
-  get formsDisabled() {
-    return (
-      this.status.id &&
-      ![620, 630, 650, 651, 663, 665, 690].includes(this.status.id)
-    );
-  }
-
   get constructionSurveyDeptNumber() {
     return this.authFetch.constructionSurveyDeptNumber;
   }

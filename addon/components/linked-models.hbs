@@ -21,7 +21,7 @@
       {{#each @models as |model|}}
         <tr>
           {{yield model}}
-          {{#if (and (not this.quarterlyClosure.formsDisabled) @removeLink)}}
+          {{#if @removeLink}}
             <td class="uk-table-shrink">
               <button
                 type="button"
@@ -49,25 +49,21 @@
     <tfoot>
       <tr>
         <td colspan="99" class="uk-text-center">
-          {{#if this.quarterlyClosure.formsDisabled}}
-            <QuarterlyClosure::DisabledFormInfo />
-          {{else}}
-            {{#if @searchRoute}}
-              <LinkTo
-                @route={{@searchRoute}}
-                @models={{or @searchModels (array)}}
-                @query={{or @searchQuery (hash)}}
-              >
-                {{#if (eq @modelName "building")}}
-                  {{t "ember-gwr.components.linkedModels.linkExistingBuilding"}}
-                {{else}}
-                  {{t
-                    "ember-gwr.components.linkedModels.linkEntry"
-                    modelName=modelName
-                  }}
-                {{/if}}
-              </LinkTo>
-            {{/if}}
+          {{#if @searchRoute}}
+            <LinkTo
+              @route={{@searchRoute}}
+              @models={{or @searchModels (array)}}
+              @query={{or @searchQuery (hash)}}
+            >
+              {{#if (eq @modelName "building")}}
+                {{t "ember-gwr.components.linkedModels.linkExistingBuilding"}}
+              {{else}}
+                {{t
+                  "ember-gwr.components.linkedModels.linkEntry"
+                  modelName=modelName
+                }}
+              {{/if}}
+            </LinkTo>
             {{#if (and @searchRoute @newRoute)}}
               {{t "ember-gwr.components.linkedModels.or"}}
             {{/if}}
