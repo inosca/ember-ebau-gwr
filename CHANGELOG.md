@@ -1,3 +1,10 @@
+## [6.3.3](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.2...v6.3.3) (2023-01-13)
+
+
+### Bug Fixes
+
+* **quarterly-closure:** closure states after 640 should not block editing ([836abf2](https://github.com/inosca/ember-ebau-gwr/commit/836abf2ace94d3bdfdfb1bbdad4f4a4cd293eee3))
+
 ## [6.3.2](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.1...v6.3.2) (2023-01-09)
 
 
