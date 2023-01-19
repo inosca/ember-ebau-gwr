@@ -1,8 +1,8 @@
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { getCurrentQuarter } from "ember-ebau-gwr/helpers/current-quarter";
 import { trackedFunction } from "ember-resources/util/function";
-import { DateTime } from "luxon";
 
 export default class SurveyDepartmentErrors extends Component {
   @service quarterlyClosure;
@@ -10,7 +10,7 @@ export default class SurveyDepartmentErrors extends Component {
   @service intl;
 
   get isFirstQuarter() {
-    return DateTime.now().toFormat("q") === "1";
+    return getCurrentQuarter()?.quarter === 1;
   }
 
   @tracked errors = trackedFunction(this, async () => {
