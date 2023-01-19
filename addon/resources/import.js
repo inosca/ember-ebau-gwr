@@ -3,6 +3,7 @@ import { registerDestructor } from "@ember/destroyable";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency";
+import { stripLeadingZero, applyTransforms } from "ember-ebau-gwr/utils";
 import { Resource } from "ember-resources";
 
 const IMPORT_MAP = {
@@ -10,6 +11,12 @@ const IMPORT_MAP = {
   building: "fetchBuildings",
   dwelling: "fetchDwellings",
   buildingEntrance: "fetchEntrances",
+};
+
+const TRANSFORM_MAP = {
+  project: {
+    officialConstructionProjectFileNo: stripLeadingZero,
+  },
 };
 
 export const NO_DATA_ERROR = Symbol("no-data");
@@ -53,7 +60,7 @@ export default class ImportResource extends Resource {
         instanceId !== null && instanceId !== undefined
       );
       try {
-        const data = yield this.dataImport[IMPORT_MAP[importModelName]](
+        let data = yield this.dataImport[IMPORT_MAP[importModelName]](
           instanceId
         );
         if (Object.keys(data).length === 0 || data.length === 0) {
@@ -63,7 +70,14 @@ export default class ImportResource extends Resource {
           this.error = NO_DATA_ERROR;
         } else {
           this.error = null;
-          return data?.length === 1 ? data[0] : data;
+
+          data = data?.length === 1 ? data[0] : data;
+
+          const transforms = TRANSFORM_MAP[importModelName];
+          return transforms
+            ? data.map?.((object) => applyTransforms(object, transforms)) ??
+                applyTransforms(data, transforms)
+            : data;
         }
       } catch (error) {
         console.error(error);

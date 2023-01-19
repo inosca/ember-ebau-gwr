@@ -6,3 +6,19 @@ export function isIsoDate(value) {
     !isNaN(new Date(value))
   );
 }
+
+// Transforms for data import
+export const stripLeadingZero = (string) =>
+  string.trim().replace(/^0+/, "").trim();
+
+export const applyTransforms = (
+  object,
+  transforms // {key: (any) => any}
+) =>
+  Object.keys(transforms).reduce((transformedData, transformKey) => {
+    // No spread to improve performance
+    transformedData[transformKey] = transforms[transformKey](
+      object[transformKey]
+    );
+    return transformedData;
+  }, object);

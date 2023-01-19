@@ -10,6 +10,7 @@ ember-gwr:
     fields:
       EPROID: EPROID
       officialConstructionProjectFileNo: Numéro officiel de dossier de construction
+      officialConstructionProjectFileNo.hint: Numéro officiel de dossier de construction ne doit pas commencer par 0 (zéro).
       extensionOfOfficialConstructionProjectFileNo: Numéro officiel de dossier de construction suffixe
       constructionProjectDescription: Description du projet de construction
       constructionSurveyDeptNumber: Numéro de service d’enquête

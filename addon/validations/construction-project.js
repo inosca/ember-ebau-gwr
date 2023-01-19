@@ -3,16 +3,23 @@ import {
   validateLength,
   validateNumber,
   validateDate,
+  validateFormat,
 } from "ember-changeset-validations/validators";
 
 import realestateIdentification from "./realestate-identification";
 
 export default {
-  officialConstructionProjectFileNo: validateLength({
-    min: 1,
-    max: 15,
-    allowBlank: true,
-  }),
+  officialConstructionProjectFileNo: [
+    /* eslint-disable-next-line  no-useless-escape   */
+    validateFormat({
+      regex: "^(s+[^0]|[^s0]).*$",
+    }),
+    validateLength({
+      min: 1,
+      max: 15,
+      allowBlank: true,
+    }),
+  ],
   extensionOfOfficialConstructionProjectFileNo: validateNumber({
     integer: true,
     gte: 0,
