@@ -4,6 +4,7 @@ export default class DataImport extends Service {
   async fetchProject() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return {
+      officialConstructionProjectFileNo: "0995-2019/03",
       constructionProjectDescription:
         "Donec mollis hendrerit risus. Fusce ac felis sit amet ligula pharetra condimentum.",
       typeOfConstructionProject: 6011,
