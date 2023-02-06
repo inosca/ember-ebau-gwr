@@ -1,3 +1,11 @@
+## [6.3.4](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.3...v6.3.4) (2023-02-06)
+
+
+### Bug Fixes
+
+* **maintenance-costs:** only display maintenance-costs link in q1 ([0319233](https://github.com/inosca/ember-ebau-gwr/commit/0319233bda73d282ffb9b11f166fba3344e2e17e))
+* **project-validation:** prevent officialConstructionProjectFileNo from starting with zero ([b83a211](https://github.com/inosca/ember-ebau-gwr/commit/b83a21122a27675d401db532aa4fe4c34939389b))
+
 ## [6.3.3](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.2...v6.3.3) (2023-01-13)
 
 
