@@ -64,34 +64,34 @@
                 }}
               {{/if}}
             </LinkTo>
-            {{#if (and @searchRoute @newRoute)}}
-              {{t "ember-gwr.components.linkedModels.or"}}
-            {{/if}}
-            {{#if @newRoute}}
-              <LinkTo
-                @route={{@newRoute}}
-                @models={{or @newModels (array)}}
-                @query={{or @newQuery (hash)}}
-              >
-                {{t
-                  "ember-gwr.components.linkedModels.createEntry"
-                  modelName=modelName
-                  model=@modelName
-                }}
-              </LinkTo>
-            {{else if @addLink}}
-              <button
-                type="button"
-                class="uk-button uk-button-link"
-                {{on "click" @addLink}}
-              >
-                {{t
-                  "ember-gwr.components.linkedModels.createEntry"
-                  modelName=modelName
-                  model=@modelName
-                }}
-              </button>
-            {{/if}}
+          {{/if}}
+          {{#if (and @searchRoute @newRoute)}}
+            {{t "ember-gwr.components.linkedModels.or"}}
+          {{/if}}
+          {{#if @newRoute}}
+            <LinkTo
+              @route={{@newRoute}}
+              @models={{or @newModels (array)}}
+              @query={{or @newQuery (hash)}}
+            >
+              {{t
+                "ember-gwr.components.linkedModels.createEntry"
+                modelName=modelName
+                model=@modelName
+              }}
+            </LinkTo>
+          {{else if @addLink}}
+            <button
+              type="button"
+              class="uk-button uk-button-link"
+              {{on "click" @addLink}}
+            >
+              {{t
+                "ember-gwr.components.linkedModels.createEntry"
+                modelName=modelName
+                model=@modelName
+              }}
+            </button>
           {{/if}}
         </td>
       </tr>
