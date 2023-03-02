@@ -1,3 +1,12 @@
+## [6.3.5](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.4...v6.3.5) (2023-03-02)
+
+
+### Bug Fixes
+
+* **intl:** improve fr translation of official construction project file no hint ([9e4ca5b](https://github.com/inosca/ember-ebau-gwr/commit/9e4ca5b973d9a761f8059ae57f2b435f09cd8262))
+* **linked-models:** ensure creation link is shown independently of search route ([847fe2e](https://github.com/inosca/ember-ebau-gwr/commit/847fe2e7dad54bd4a9160be6cf9b3744fc2d2684)), closes [#462](https://github.com/inosca/ember-ebau-gwr/issues/462)
+* **validations:** allow blank entries for official construction project file no ([1ae5fb3](https://github.com/inosca/ember-ebau-gwr/commit/1ae5fb3cbfcc53857c863f8027beed4885925692))
+
 ## [6.3.4](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.3...v6.3.4) (2023-02-06)
 
 
