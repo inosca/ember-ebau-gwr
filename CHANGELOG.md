@@ -1,3 +1,16 @@
+# [6.4.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.5...v6.4.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* incorrect municipality name ([ebf0afa](https://github.com/inosca/ember-ebau-gwr/commit/ebf0afa998c1fb7313652fbe0274480077d1297e))
+* set correct content type for xml requests ([b6b7c62](https://github.com/inosca/ember-ebau-gwr/commit/b6b7c62ba087e7035658429f29a20c97973c18dd))
+
+
+### Features
+
+* **login:** add a contact to the login site in case it doesn't work ([ed194ce](https://github.com/inosca/ember-ebau-gwr/commit/ed194cec99d575471ea4b5088496a8e093440df8))
+
 ## [6.3.5](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.4...v6.3.5) (2023-03-02)
 
 
