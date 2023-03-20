@@ -101,6 +101,7 @@ export default class AuthFetchService extends Service {
         method,
         headers: {
           token: this.token,
+          "content-type": "application/xml",
           ...headers,
         },
         body,
