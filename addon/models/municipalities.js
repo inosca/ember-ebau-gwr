@@ -69,7 +69,7 @@ export default {
     { id: 355, name: "Köniz" },
     { id: 356, name: "Muri bei Bern" },
     { id: 357, name: "Oberbalm" },
-    { id: 358, name: "FBE" },
+    { id: 358, name: "Stettlen" },
     { id: 359, name: "Vechigen" },
     { id: 360, name: "Wohlen bei Bern" },
     { id: 361, name: "Zollikofen" },
