@@ -239,7 +239,7 @@ ember-gwr:
       municipalitySearch: Gemeinde suchen...
       municipalityNoneFound: Es wurde keine Gemeinde gefunden
       loginInfo: "<b>{user}</b> angemeldet in <b>{municipality}</b>"
-      loginIssueContact: "<b>Falls sie sich nicht anmelden können, melden sie sich direkt bei...</b><br><br>Hotline<br>housing-stat@bfs.admin.ch<br>0800 866 600<br>Von Montag bis Freitag<br>08:30-11:30 und 14:00-16:00"
+      loginIssueContact: "<b>Falls Sie sich nicht anmelden können, melden Sie sich direkt bei...</b><br><br>Hotline<br>housing-stat@bfs.admin.ch<br>0800 866 600<br>Von Montag bis Freitag<br>08:30-11:30 und 14:00-16:00"
 
     logout: Abmelden
 
