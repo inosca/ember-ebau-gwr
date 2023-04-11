@@ -36,7 +36,7 @@
     "@ember/render-modifiers": "^2.0.4",
     "@fortawesome/ember-fontawesome": "^0.4.1",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "ember-auto-import": "^2.6.1",
