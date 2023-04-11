@@ -1,3 +1,10 @@
+## [6.4.1](https://github.com/inosca/ember-ebau-gwr/compare/v6.4.0...v6.4.1) (2023-04-11)
+
+
+### Bug Fixes
+
+* **intl:** correct typos in login info text ([46f60ee](https://github.com/inosca/ember-ebau-gwr/commit/46f60eecdb037a5420a53820bb9df68a6189b0b9))
+
 # [6.4.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.3.5...v6.4.0) (2023-03-20)
 
 
