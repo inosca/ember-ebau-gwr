@@ -1343,7 +1343,7 @@
     ember-cli-babel "^7.26.11"
     ember-modifier-manager-polyfill "^1.2.0"
 
-"@ember/string@^3.0.0":
+"@ember/string@^3.0.0", "@ember/string@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@ember/string/-/string-3.0.1.tgz#42cf032031a4432c2dd69c327ae1876d2c13df9c"
   integrity sha512-ntnmXS+upOWVXE+rVw2l03DjdMnaGdWbYVUxUBuPJqnIGZu2XFRsoXc7E6mOw62s8i1Xh1RgTuFHN41QGIolEQ==
@@ -6113,7 +6113,7 @@ ember-auto-import@^1.5.3:
     walk-sync "^0.3.3"
     webpack "^4.43.0"
 
-ember-auto-import@^2.3.0, ember-auto-import@^2.4.0, ember-auto-import@^2.4.3, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.1:
+ember-auto-import@^2.3.0, ember-auto-import@^2.4.0, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.6.1.tgz#bd8d434143bd411b99f4a8f32d8b58414d7da4f3"
   integrity sha512-3bCRi/pXp4QslmuCXGlSz9xwR7DF5oDx3zZO5OXKzNZihtkqAM1xvGuRIdQSl46pvbAXOkp8Odl5fOen1i0dRw==
@@ -6857,7 +6857,7 @@ ember-modifier-manager-polyfill@^1.2.0:
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
 
-ember-modifier@^3.0.0, ember-modifier@^3.2.7:
+ember-modifier@^3.0.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-3.2.7.tgz#f2d35b7c867cbfc549e1acd8d8903c5ecd02ea4b"
   integrity sha512-ezcPQhH8jUfcJQbbHji4/ZG/h0yyj1jRDknfYue/ypQS8fM8LrGcCMo0rjDZLzL1Vd11InjNs3BD7BdxFlzGoA==
@@ -6868,7 +6868,7 @@ ember-modifier@^3.0.0, ember-modifier@^3.2.7:
     ember-cli-typescript "^5.0.0"
     ember-compatibility-helpers "^1.2.5"
 
-"ember-modifier@^3.2.7 || ^4.0.0":
+"ember-modifier@^3.2.7 || ^4.0.0", ember-modifier@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-4.1.0.tgz#cb91efbf8ca4ff4a1a859767afa42dddba5a2bbd"
   integrity sha512-YFCNpEYj6jdyy3EjslRb2ehNiDvaOrXTilR9+ngq+iUqSHYto2zKV0rleiA1XJQ27ELM1q8RihT29U6Lq5EyqQ==
@@ -7112,25 +7112,27 @@ ember-try@2.0.0:
     rimraf "^3.0.2"
     walk-sync "^2.2.0"
 
-ember-uikit@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-6.1.1.tgz#ece31447724f730a1bfde2650c383e3d1eb11f90"
-  integrity sha512-8gLzSS23Gab6WYA3gRFbnvjjgvvTIf5YRjE5JPu523yEkVCQ6kqlntg0MklYuxnEBYAKpzna7IA1H2JPsriYIg==
+ember-uikit@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-7.0.1.tgz#c9c5eb8840f3e422b5f985b0ab364abf24d9712b"
+  integrity sha512-WCU1YA+lHN77xF477Zl8cmpJiQF93UlL844ZRpixamD5nc0ry+7L5ZH5cdQQVdtBaNmh9RB7mrPdayvC1sSiSw==
   dependencies:
-    "@ember/string" "^3.0.0"
-    "@embroider/util" "^1.9.0"
+    "@ember/string" "^3.0.1"
+    "@embroider/util" "^1.10.0"
     "@glimmer/component" "^1.1.2"
     "@glimmer/tracking" "^1.1.2"
     broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
     broccoli-stew "^3.0.0"
-    ember-auto-import "^2.4.3"
+    ember-auto-import "^2.6.1"
     ember-cli-babel "^7.26.11"
-    ember-cli-htmlbars "^6.1.1"
+    ember-cli-htmlbars "^6.2.0"
+    ember-composable-helpers "^5.0.0"
     ember-focus-trap "^1.0.1"
-    ember-modifier "^3.2.7"
+    ember-modifier "^4.1.0"
     ember-toggle "^9.0.3"
-    uikit "^3.15.11"
+    ember-truth-helpers "^3.1.1"
+    uikit "^3.16.13"
 
 ember-validated-form@^6.2.0:
   version "6.2.0"
@@ -15384,10 +15386,10 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
-uikit@^3.15.11:
-  version "3.15.21"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.15.21.tgz#92a7a4acf65c953fd9883f117f55fb8b151711cc"
-  integrity sha512-+iHlWVCr/zTJxGdsGWvkWLKIgoZpZSq1fp0Td3O8U5twvVWhrA/no4X6Sx1t7tN9D4LH2WYhBsJyOSJd2KMJNQ==
+uikit@^3.16.13:
+  version "3.16.14"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.16.14.tgz#ec3a5ba6079b43a4886f2fd65d8ec3ec094e5db8"
+  integrity sha512-pP/uQbP7MfkzsP8pEvYYfZ9/t5lsK3EYc0U+EFTsALwGZwCRg4f0XMZC0crIElfuV1HtTlU+sIMMarw8IJUJqw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
