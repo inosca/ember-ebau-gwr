@@ -6113,7 +6113,7 @@ ember-auto-import@^1.5.3:
     walk-sync "^0.3.3"
     webpack "^4.43.0"
 
-ember-auto-import@^2.3.0, ember-auto-import@^2.4.0, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.1, ember-auto-import@^2.6.3:
+ember-auto-import@^2.3.0, ember-auto-import@^2.4.0, ember-auto-import@^2.5.0, ember-auto-import@^2.6.0, ember-auto-import@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.6.3.tgz#f18d1b93dd10b08ba5496518436f9d56dd4e000a"
   integrity sha512-uLhrRDJYWCRvQ4JQ1e64XlSrqAKSd6PXaJ9ZsZI6Tlms9T4DtQFxNXasqji2ZRJBVrxEoLCRYX3RTldsQ0vNGQ==
@@ -7113,10 +7113,10 @@ ember-try@2.0.0:
     rimraf "^3.0.2"
     walk-sync "^2.2.0"
 
-ember-uikit@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-7.0.1.tgz#c9c5eb8840f3e422b5f985b0ab364abf24d9712b"
-  integrity sha512-WCU1YA+lHN77xF477Zl8cmpJiQF93UlL844ZRpixamD5nc0ry+7L5ZH5cdQQVdtBaNmh9RB7mrPdayvC1sSiSw==
+ember-uikit@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-7.0.3.tgz#33344a612258b0df833a758567b8f4edcfb05277"
+  integrity sha512-JKCOiP1paiJLMYK3fPlTDCCSCt4+6VLGchs1QL788S0hgkMJ2bCnA7JPMJ/Cb8Syzv3Lwk3b5XsLCF3NNmZ7MA==
   dependencies:
     "@ember/string" "^3.0.1"
     "@embroider/util" "^1.10.0"
@@ -7125,7 +7125,7 @@ ember-uikit@^7.0.1:
     broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
     broccoli-stew "^3.0.0"
-    ember-auto-import "^2.6.1"
+    ember-auto-import "^2.6.3"
     ember-cli-babel "^7.26.11"
     ember-cli-htmlbars "^6.2.0"
     ember-composable-helpers "^5.0.0"
@@ -7133,7 +7133,7 @@ ember-uikit@^7.0.1:
     ember-modifier "^4.1.0"
     ember-toggle "^9.0.3"
     ember-truth-helpers "^3.1.1"
-    uikit "^3.16.13"
+    uikit "^3.16.15"
 
 ember-validated-form@^6.2.0:
   version "6.2.0"
@@ -15387,10 +15387,10 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
-uikit@^3.16.13:
-  version "3.16.14"
-  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.16.14.tgz#ec3a5ba6079b43a4886f2fd65d8ec3ec094e5db8"
-  integrity sha512-pP/uQbP7MfkzsP8pEvYYfZ9/t5lsK3EYc0U+EFTsALwGZwCRg4f0XMZC0crIElfuV1HtTlU+sIMMarw8IJUJqw==
+uikit@^3.16.15:
+  version "3.16.15"
+  resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.16.15.tgz#47599dc1851bd803bc2a760da3a946d55a6dc290"
+  integrity sha512-uw0vn+h+isInT4Eq/CPxwQx5X0CDS2I9FQwgnxHyDDXOBEnnMEpCxiQWEvVgwkelJlMh/Qv+2ePyXVcb9Wx93A==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
