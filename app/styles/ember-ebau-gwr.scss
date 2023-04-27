@@ -9,6 +9,7 @@
 }
 
 $ember-ebau-gwr-required-color: $alert-danger-color !default;
+
 .required-indicator {
   color: $ember-ebau-gwr-required-color;
 }
@@ -36,12 +37,6 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 
 .ember-ebau-gwr-label-height {
   height: 24.5px;
-}
-
-#ember-ebau-gwr-header-errors {
-  li:last-child {
-    padding-bottom: $padding-padding;
-  }
 }
 
 .ember-ebau-gwr-label-color-danger {
@@ -88,6 +83,7 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 
 .ember-ebau-gwr-projects-header {
   @extend .uk-box-shadow-small, .uk-margin-large, .uk-background-muted;
+
   border: 1px solid #e5e5e5;
 
   table {
@@ -109,12 +105,19 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
   }
 }
 
+#ember-ebau-gwr-header-errors {
+  li:last-child {
+    padding-bottom: $padding-padding;
+  }
+}
+
 .ember-ebau-gwr-title-card {
   .title-card-content {
     margin-top: 100px;
 
     .title-card-text {
       @extend .uk-text-large, .uk-text-light;
+
       white-space: pre-line;
       line-height: 1.5;
       margin-top: 10px;

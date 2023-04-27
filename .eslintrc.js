@@ -1,5 +1,5 @@
 "use strict";
 
 module.exports = {
-  extends: "@adfinis-sygroup/eslint-config/ember-addon",
+  extends: "@adfinis/eslint-config/ember-addon",
 };
