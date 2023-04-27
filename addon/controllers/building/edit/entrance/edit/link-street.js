@@ -10,7 +10,6 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
   @service street;
   @service buildingEntrance;
   @service building;
-  @service street;
   @service notification;
   @service intl;
   @service router;

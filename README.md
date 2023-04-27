@@ -13,8 +13,8 @@ yarn start
 
 ## Compatibility
 
-- Ember.js v3.28 or above
-- Ember CLI v3.28 or above
+- Ember.js v4.4 or above
+- Ember CLI v4.4 or above
 - Node.js v14 or above
 
 ## Installation
@@ -33,17 +33,19 @@ this.mount("ember-ebau-gwr", { as: "gwr", path: "gwr/:id" });
 ```
 
 ### Enviroment configuration
+
 In your `config/environment.js` you need to define the following option for
 `changeset-validations`. We use this feature to generate translated errors:
+
 ```js
 "changeset-validations": { rawOutput: true },
 ```
 
 > **Important**
 > This currentlry has the limitation, that if your app uses
-`changeset-validations` itself, this option changes the behaviour in the whole
-app. Due to engine config restrictions, there is sadly currently no other way
-than maybe implementing something on build-pipeline level.
+> `changeset-validations` itself, this option changes the behaviour in the whole
+> app. Due to engine config restrictions, there is sadly currently no other way
+> than maybe implementing something on build-pipeline level.
 
 ### Styling
 
@@ -84,7 +86,7 @@ The config service is used to pass config to the engine. The following propertie
 | `authToken`          | `String`         | The authentication toke from the host app.                                                         |
 | `camacGroup`         | `String\|Number` | The current camac group of the user.                                                               |
 | `pageSize`           | `Number`         | The page size which the gwr api should return.                                                     |
-| `modalContainer`     | `CSS Selector`   | A CSS selector to render the modals in.                                                           |
+| `modalContainer`     | `CSS Selector`   | A CSS selector to render the modals in.                                                            |
 
 All values should follow the officially used format.
 

@@ -29,7 +29,9 @@ export default function makeServer(config) {
           return tokenResponse;
         }
 
-        let username, password, municipality;
+        let username;
+        let password;
+        let municipality;
 
         if (!request.requestBody) {
           username = localStorage.getItem("username");
