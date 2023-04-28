@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adfinis-sygroup/eslint-config@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@adfinis-sygroup/eslint-config/-/eslint-config-1.5.0.tgz#559ed9aef2311cb48a284b2f43d30c7e616e129a"
-  integrity sha512-BhHH00dJC5fJmz0lf16e355a1ecPzKR4hPpCcYUzzZWb5Ti1OkrAG0ZZxrF6gCIt+0DummdqgRUr74r/zdFNBg==
+"@adfinis-sygroup/eslint-config@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@adfinis-sygroup/eslint-config/-/eslint-config-1.6.1.tgz#53f4ed0da7bac672407fbb65cad5ee49616fd295"
+  integrity sha512-oW/qB0XZcY3ELW7fX6DGKjU3dTBok47AsLhtxdzvFEITMU1vi9SInf7POKC0Dl0pBp1xLSv+WCKtYHyZiJMpbQ==
 
 "@adfinis-sygroup/semantic-release-config@3.4.0":
   version "3.4.0"
