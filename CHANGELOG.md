@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.4.1...v7.0.0) (2023-05-01)
+
+
+### chore
+
+* **deps:** update dependencies ([c3035de](https://github.com/inosca/ember-ebau-gwr/commit/c3035de22b22edb112c2f0d35aac08dfedc08126))
+
+
+### BREAKING CHANGES
+
+* **deps:** Drop support for Ember v3.
+
 ## [6.4.1](https://github.com/inosca/ember-ebau-gwr/compare/v6.4.0...v6.4.1) (2023-04-11)
 
 
