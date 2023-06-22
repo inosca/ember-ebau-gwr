@@ -349,3 +349,9 @@ ember-gwr:
 
     modelErrors:
       empty: Keine offenen Pendenzen
+
+  specialConstructionWarning:
+    header: Information zum Bauprojekttyp
+    part1: Bauprojekte vom Typ Sonderbau können aktuell noch nicht im eBau erfasst werden. Verwenden Sie dafür bitte das
+    link: Housing-Stat
+    part2: des BFS.
