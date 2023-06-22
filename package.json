@@ -48,7 +48,7 @@
     "ember-cli-htmlbars": "^6.2.0",
     "ember-composable-helpers": "^5.0.0",
     "ember-concurrency": "^2.3.7",
-    "ember-data": "^3.28.13",
+    "ember-data": "^3.28.13 || ^4.8.8",
     "ember-engines-router-service": "0.3.0",
     "ember-flatpickr": "^4.0.0",
     "ember-intl": "^5.7.2",
