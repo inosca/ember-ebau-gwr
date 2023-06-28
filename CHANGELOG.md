@@ -1,3 +1,11 @@
+# [7.1.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.0.0...v7.1.0) (2023-06-28)
+
+
+### Features
+
+* **deps:** add support for ember-data v4 ([db8a6ce](https://github.com/inosca/ember-ebau-gwr/commit/db8a6cedd469fe15693f1705e8a4c4df6b7223b3))
+* **project:** add special construction project info text ([e7be035](https://github.com/inosca/ember-ebau-gwr/commit/e7be0357aa3da5fe30d1abc095929bfc9acac37c))
+
 # [7.0.0](https://github.com/inosca/ember-ebau-gwr/compare/v6.4.1...v7.0.0) (2023-05-01)
 
 
