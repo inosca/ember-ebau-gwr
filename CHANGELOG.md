@@ -1,3 +1,15 @@
+# [7.2.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.1.0...v7.2.0) (2023-06-29)
+
+
+### Bug Fixes
+
+* **deps:** remove ember-data 4 from package.json since were not ready yet ([3347d89](https://github.com/inosca/ember-ebau-gwr/commit/3347d891739814e87f242828bc6e3e2106f57ac9))
+
+
+### Features
+
+* **translations:** add fr for translations special construction info text ([73402b3](https://github.com/inosca/ember-ebau-gwr/commit/73402b3bbb0b6f1541d47799f68a1d8e53ca2758))
+
 # [7.1.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.0.0...v7.1.0) (2023-06-28)
 
 
