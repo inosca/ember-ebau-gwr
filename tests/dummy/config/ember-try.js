@@ -37,6 +37,9 @@ module.exports = async function () {
           devDependencies: {
             "ember-source": await getChannelURL("release"),
           },
+          dependencies: {
+            "ember-data": "latest",
+          },
         },
       },
       {
