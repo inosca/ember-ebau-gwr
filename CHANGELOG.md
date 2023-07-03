@@ -1,3 +1,10 @@
+## [7.2.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.2.0...v7.2.1) (2023-07-03)
+
+
+### Bug Fixes
+
+* **project:** improve styling of info box for special constructions ([bceb735](https://github.com/inosca/ember-ebau-gwr/commit/bceb735736fad4a45a062f42ef1bbce7960c9b16))
+
 # [7.2.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.1.0...v7.2.0) (2023-06-29)
 
 
