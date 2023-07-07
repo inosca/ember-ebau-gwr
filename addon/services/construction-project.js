@@ -737,11 +737,10 @@ export default class ConstructionProjectService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(
-        xmlErrors,
+      const errors = this.extractErrorsFromXML(xmlErrors, [
         this.ConstructionProject.MISSING_BUILDING_ERROR,
-        this.intl.t("ember-gwr.constructionProject.missingBuildingError")
-      );
+        this.intl.t("ember-gwr.constructionProject.missingBuildingError"),
+      ]);
 
       console.error(`GWR API: ${transition} failed`);
       throw errors;

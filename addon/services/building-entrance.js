@@ -68,13 +68,12 @@ export default class BuildingEntranceService extends GwrService {
       const xmlErrors = await response.text();
       // Throw specific error message for
       // mismatched locality - zip code errors
-      const errors = this.extractErrorsFromXML(
-        xmlErrors,
+      const errors = this.extractErrorsFromXML(xmlErrors, [
         this.BuildingEntrance.LOCALITY_ERROR,
         this.intl.t("ember-gwr.buildingEntrance.localityError", {
           htmlSafe: true,
-        })
-      );
+        }),
+      ]);
 
       console.error("GWR API: addBuildingEntrance failed");
       throw errors;

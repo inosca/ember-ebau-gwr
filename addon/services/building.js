@@ -72,7 +72,10 @@ export default class BuildingService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      const errors = this.extractErrorsFromXML(xmlErrors);
+      const errors = this.extractErrorsFromXML(xmlErrors, [
+        Building.FORBIDDEN_BUILDING_CLASS_ERROR,
+        this.intl.t("ember-gwr.building.forbiddenBuildingClassError"),
+      ]);
 
       console.error("GWR API: modifyBuilding failed");
       throw errors;
@@ -101,15 +104,19 @@ export default class BuildingService extends GwrService {
 
     if (!response.ok) {
       const xmlErrors = await response.text();
-      // Throw specific error message for
-      // mismatched locality - zip code errors
-      const errors = this.extractErrorsFromXML(
-        xmlErrors,
-        this.BuildingEntrance.LOCALITY_ERROR,
-        this.intl.t("ember-gwr.building.buildingEntrance.localityError", {
-          htmlSafe: true,
-        })
-      );
+      const errors = this.extractErrorsFromXML(xmlErrors, [
+        [
+          Building.FORBIDDEN_BUILDING_CLASS_ERROR,
+
+          this.intl.t("ember-gwr.building.forbiddenBuildingClassError"),
+        ],
+        [
+          this.BuildingEntrance.LOCALITY_ERROR,
+          this.intl.t("ember-gwr.building.buildingEntrance.localityError", {
+            htmlSafe: true,
+          }),
+        ],
+      ]);
 
       await this.constructionProject.removeWorkFromProject(EPROID, work.ARBID);
 
