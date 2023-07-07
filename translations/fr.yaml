@@ -349,9 +349,3 @@ ember-gwr:
 
     modelErrors:
       empty: Pas de dossiers/ cas en suspens
-
-  specialConstructionWarning:
-    header: Information relative au type de projet de construction
-    part1: Les projets de construction de type construction spéciale ne peuvent actuellement pas encore être saisis dans eBau. Veuillez utiliser pour cela le
-    link: Housing-Stat
-    part2: de l'OFS.

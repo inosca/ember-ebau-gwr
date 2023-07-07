@@ -80,21 +80,6 @@
         }}
       />
 
-      <div uk-alert>
-        <div class="uk-text-bold">
-          {{t "ember-gwr.specialConstructionWarning.header"}}
-        </div>
-        <div>
-          {{t "ember-gwr.specialConstructionWarning.part1"}}
-          <a
-            href={{housing-stat-link}}
-            target="_blank"
-            rel="noopener noreferrer"
-          >{{t "ember-gwr.specialConstructionWarning.link"}}</a>
-          {{t "ember-gwr.specialConstructionWarning.part2"}}
-        </div>
-      </div>
-
       {{#if (eq this.typeOfConstructionProject 6010)}}
         <LinkedModels
           @models={{this.workWithoutBuildings}}
