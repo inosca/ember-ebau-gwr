@@ -168,9 +168,9 @@ export default class Building extends XMLModel {
     {{/if}}
 
     {{#if model.isNew}}
-      {{!--The default building entrance on a new building is stored as a single 
+      {{!--The default building entrance on a new building is stored as a single
          element to facilitate form validation--}}
-      {{!--After building creation the building entrances are stored in an 
+      {{!--After building creation the building entrances are stored in an
          array on the building and handled through building entrance API requests--}}
       <ns2:buildingEntrance>
         {{> BuildingEntrance model=model.buildingEntrance}}
@@ -348,6 +348,9 @@ export default class Building extends XMLModel {
     [this.STATUS_DEMOLISHED]: {},
     [this.STATUS_NOT_REALIZED]: {},
   };
+
+  static FORBIDDEN_BUILDING_CLASS_ERROR =
+    "This building class is not allowed for a building newly being added into the FRBD. Please chose among building classes 1276, 1277, 1278 instead.";
 }
 
 export class Volume extends XMLModel {

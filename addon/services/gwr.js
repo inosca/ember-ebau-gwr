@@ -113,7 +113,8 @@ export default class GwrService extends Service {
     })[searchKey];
   }
 
-  extractErrorsFromXML(xml, specificError, specificErrorMsg) {
+  // (xml: String, errorsToMatch: [[errorKey: String,errorMsg: String]]) => [String]
+  extractErrorsFromXML(xml, errorsToMatch = []) {
     const model = new XMLModel(xml);
     model.setFieldsFromXML({
       fields: {
@@ -122,18 +123,14 @@ export default class GwrService extends Service {
       },
     });
 
-    const errors = [
-      ...(model.error
-        ? model.error[0] === specificError
-          ? [specificErrorMsg]
-          : [this.intl.t("ember-gwr.generalErrors.genericFormError")]
-        : []),
-      ...(model.errorList
-        ? model.errorList.map((error) => error.messageOfError)
-        : []),
-    ];
-
-    return errors;
+    const customErrors = model.error.map(
+      (error) =>
+        errorsToMatch.find(([errorKey]) => error === errorKey)?.[1] ??
+        this.intl.t("ember-gwr.generalErrors.genericFormError")
+    );
+    return customErrors.concat(
+      model.errorList?.map((error) => error.messageOfError) ?? []
+    );
   }
 
   concatStates(states) {
