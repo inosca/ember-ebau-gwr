@@ -80,14 +80,13 @@
         }}
       />
 
-      {{#if (eq this.typeOfConstructionProject 6010)}}
-        <LinkedModels
-          @models={{this.workWithoutBuildings}}
-          @modelName="building-work-infrastructure"
-          @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
-          @addLink={{this.addWorkLink}}
-          as |model|
-        >
+      <LinkedModels
+        @models={{this.project.work}}
+        @modelName="building-work"
+        @removeLink={{if (gt this.project.work.length 1) this.removeWorkLink}}
+        @addLink={{this.addWorkLink}}
+      >
+        <:list as |model|>
           <td class="uk-table-expand">
             <div class="uk-flex-inline uk-flex-middle">
               {{#if model.isNew}}
@@ -135,8 +134,21 @@
               {{/if}}
             </div>
           </td>
-        </LinkedModels>
-      {{/if}}
+        </:list>
+        <:buildingLink as |model|>
+          <td class="uk-text-nowrap">
+            {{t "ember-gwr.constructionProject.linkedWithBuilding"}}
+            <LinkTo
+              @route="building.edit.form"
+              @query={{hash projectId=this.project.EPROID}}
+              @model={{model.building.EGID}}
+              class="ukLink"
+            >
+              {{model.building.EGID}}
+            </LinkTo>
+          </td>
+        </:buildingLink>
+      </LinkedModels>
 
       <Field
         @inputType="textarea"
@@ -372,10 +384,12 @@
             />
           </div>
         </div>
-      {{else if (or
-        changeset.client.address.country.countryNameShort
-        (and import import.data.client.address.foreignZipCode)
-      )}}
+      {{else if
+        (or
+          changeset.client.address.country.countryNameShort
+          (and import import.data.client.address.foreignZipCode)
+        )
+      }}
         <Field @type="number" @attr="client.address.foreignZipCode" />
       {{/if}}
       <Field
@@ -394,37 +408,3 @@
     </ModelForm>
   {{/if}}
 </div>
-
-<UkModal
-  @visible={{this.showConfirmationDialog}}
-  @btnClose={{false}}
-  @bgClose={{false}}
-  @escClose={{false}}
-  @container={{this.config.modalContainer}}
-  as |modal|
->
-  <modal.header>
-    <h2 class="uk-modal-title">
-      {{t "ember-gwr.components.modelForm.project.confirmationTitle"}}
-    </h2>
-  </modal.header>
-  <modal.body>
-    {{#if (eq this.typeOfConstructionProject 6011)}}
-      {{t "ember-gwr.components.modelForm.project.confirmationSuperstructure"}}
-    {{else if (eq this.typeOfConstructionProject 6010)}}
-      {{t "ember-gwr.components.modelForm.project.confirmationInfrastructure"}}
-    {{/if}}
-  </modal.body>
-  <modal.footer @class="uk-text-right">
-    <UkButton
-      @color="default"
-      @label={{t "ember-gwr.components.modelForm.project.confirmationContinue"}}
-      @onClick={{perform this.processTypeOfConstructionProjectChange}}
-    />
-    <UkButton
-      @color="primary"
-      @label={{t "ember-gwr.components.modelForm.project.confirmationCancel"}}
-      @onClick={{this.cancelTypeOfConstructionProjectChange}}
-    />
-  </modal.footer>
-</UkModal>

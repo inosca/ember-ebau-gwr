@@ -14,20 +14,21 @@
       building entrances and dwellings, to ensure that the requirements hold.
       }}
       @removeLink={{if (gt this.entrances.length 1) this.removeEntranceLink}}
-      as |model|
     >
-      <td class="uk-table-shrink">
-        <LinkTo
-          @route="building.edit.entrance.edit"
-          @model={{model.EDID}}
-          class="uk-link"
-        >
-          {{model.EDID}}
-        </LinkTo>
-      </td>
-      <td>
-        {{model.fullAddressText}}
-      </td>
+      <:list as |model|>
+        <td class="uk-table-shrink">
+          <LinkTo
+            @route="building.edit.entrance.edit"
+            @model={{model.EDID}}
+            class="uk-link"
+          >
+            {{model.EDID}}
+          </LinkTo>
+        </td>
+        <td>
+          {{model.fullAddressText}}
+        </td>
+      </:list>
     </LinkedModels>
   {{/if}}
 </div>

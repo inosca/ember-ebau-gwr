@@ -18,7 +18,7 @@ export default class ProjectNavComponent extends Component {
         )
       : this.args.projects[0];
 
-    return project?.typeOfConstructionProject !== 6011
+    return project?.typeOfConstructionProject === 6010
       ? this.intl.t(
           "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
         )

@@ -4,33 +4,34 @@
   @searchRoute="search-project"
   @newRoute="project.new"
   ...attributes
-  as |project|
 >
-  <td
-    class={{concat
-      "uk-table-shrink "
-      (if (eq @activeProjectId project.EPROID) "uk-text-bold")
-    }}
-  >
-    <LinkTo @route="project.form" @model={{project.EPROID}} class="uk-link">
-      {{project.EPROID}}
-    </LinkTo>
-  </td>
-  <td class={{if (eq @activeProjectId project.EPROID) "uk-text-bold"}}>
-    {{project.constructionProjectDescription}}
-  </td>
-  <td class="uk-table-shrink">
-    {{#if (eq @activeProjectId project.EPROID)}}
-      <button
-        type="button"
-        class="uk-icon-button"
-        uk-icon="trash"
-        uk-tooltip="title: {{t
-          'ember-gwr.components.linkedModels.removeLink'
-        }}; container: {{this.config.modalContainer}}"
-        {{on "click" this.removeProjectLink}}
-      >
-      </button>
-    {{/if}}
-  </td>
+  <:list as |project|>
+    <td
+      class={{concat
+        "uk-table-shrink "
+        (if (eq @activeProjectId project.EPROID) "uk-text-bold")
+      }}
+    >
+      <LinkTo @route="project.form" @model={{project.EPROID}} class="uk-link">
+        {{project.EPROID}}
+      </LinkTo>
+    </td>
+    <td class={{if (eq @activeProjectId project.EPROID) "uk-text-bold"}}>
+      {{project.constructionProjectDescription}}
+    </td>
+    <td class="uk-table-shrink">
+      {{#if (eq @activeProjectId project.EPROID)}}
+        <button
+          type="button"
+          class="uk-icon-button"
+          uk-icon="trash"
+          uk-tooltip="title: {{t
+            'ember-gwr.components.linkedModels.removeLink'
+          }}; container: {{this.config.modalContainer}}"
+          {{on "click" this.removeProjectLink}}
+        >
+        </button>
+      {{/if}}
+    </td>
+  </:list>
 </LinkedModels>

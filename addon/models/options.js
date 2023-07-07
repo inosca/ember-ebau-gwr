@@ -8,7 +8,7 @@ export const typeOfConstructionOptions = [
   6258, 6259, 6261, 6262, 6269, 6271, 6272, 6273, 6274, 6276, 6278, 6279, 6281,
   6282, 6283, 6291, 6292, 6293, 6294, 6295, 6296, 6299,
 ];
-export const typeOfConstructionProjectOptions = [6010, 6011];
+export const typeOfConstructionProjectOptions = [6010, 6011, 6012];
 export const typeOfPermitOptions = [
   5000, 5001, 5002, 5003, 5004, 5005, 5006, 5007, 5008, 5009, 5011, 5012, 5015,
   5021, 5022, 5023, 5031, 5041, 5043, 5044, 5051, 5061, 5062, 5064, 5063, 5071,

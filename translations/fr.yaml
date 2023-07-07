@@ -14,11 +14,6 @@ ember-gwr:
         one {Travail}
         other {Travaux}
       }
-    building-work-infrastructure: |-
-      {count, plural,
-        one {Travail de génie civil}
-        other {Travaux de génie civil}
-      }
     project: |-
       {count, plural,
         one {Projet}
@@ -268,15 +263,6 @@ ember-gwr:
       project:
         title: Projet de construction {id}
         titleNew: Saisir un nouveau projet
-        confirmationTitle: Attention
-        confirmationContinue: Continuer
-        confirmationCancel: Interrompre
-        confirmationSuperstructure: |-
-          Si vous changez un projet de génie civil en projet
-          de bâtiment, tous les travaux liés seront effacés. Voulez-vous continuer?
-        confirmationInfrastructure: |-
-          Si vous changez un projet de bâtiment en projet
-          de génie civil, tous les bâtiments liés seront effacés. Voulez-vous continuer?
 
       building:
         title: Bâtiments {id}
@@ -298,8 +284,8 @@ ember-gwr:
       createEntry: |-
         Saisir le/l' {modelName}
         {model, select,
-          project {}
-          other {(Nouvelle construction)}
+          building {(Nouvelle construction)}
+          other {}
         }
       or: ou
       removeLink: Supprimer la liaison
