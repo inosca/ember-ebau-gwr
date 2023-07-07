@@ -14,11 +14,6 @@ ember-gwr:
         one {Arbeit}
         other {Arbeiten}
       }
-    building-work-infrastructure: |-
-      {count, plural,
-        one {Tiefbauarbeit}
-        other {Tiefbauarbeiten}
-      }
     project: |-
       {count, plural,
         one {Projekt}
@@ -268,15 +263,6 @@ ember-gwr:
       project:
         title: Bauprojekt {id}
         titleNew: Neues Projekt erfassen
-        confirmationTitle: Achtung
-        confirmationContinue: Fortfahren
-        confirmationCancel: Abbrechen
-        confirmationSuperstructure: |-
-          Wenn Sie von einem Tiefbauprojekt in ein Hochbauprojekt wechseln,
-          werden alle verknüpfte Arbeiten gelöscht. Wollen Sie fortfahren?
-        confirmationInfrastructure: |-
-          Wenn Sie von einem Hochbauprojekt in ein Tiefbauprojekt wechseln,
-          werden alle verknüpften Gebäude gelöscht. Wollen Sie fortfahren?
 
       building:
         title: Gebäude {id}
@@ -298,8 +284,8 @@ ember-gwr:
       createEntry: |-
         {modelName} erfassen
         {model, select,
-          project {}
-          other {(Neubau)}
+          building {(Neubau)}
+          other {}
         }
       or: oder
       removeLink: Verknüpfung aufheben

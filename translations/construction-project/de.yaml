@@ -3,6 +3,7 @@ ember-gwr:
     saveError: Beim Speichern des Bauprojektes ist ein Fehler aufgetreten.
     saveSuccess: Bauprojekt erfolgreich gespeichert.
     missingBuildingError: Bitte verknüpfen Sie zuerst ein Gebäude.
+    linkedWithBuilding: Verknüpft mit Gebäude
 
     sections:
       freeTextFields: Freitext Felder
@@ -309,11 +310,12 @@ ember-gwr:
               zw: Simbabwe
             countryNameShortPlaceholder: Wählen Sie ein Land...
 
-      typeOfConstructionProject: Bauprojekttyp
-      typeOfConstructionProjectPlaceholder: Wählen Sie einen Bauprojekttyp...
+      typeOfConstructionProject: Art der Bauwerke
+      typeOfConstructionProjectPlaceholder: Wählen Sie einen Art der Bauwerke...
       typeOfConstructionProjectOptions:
         6010: Tiefbau
         6011: Hochbau
+        6012: Sonderbau
 
       typeOfConstruction: Bauwerkstyp
       typeOfConstructionPlaceholder: Wählen Sie einen Bauwerkstyp...

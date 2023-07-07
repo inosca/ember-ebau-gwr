@@ -20,9 +20,14 @@
     <tbody>
       {{#each @models as |model|}}
         <tr>
-          {{yield model}}
-          {{#if @removeLink}}
-            <td class="uk-table-shrink">
+          {{yield model to="list"}}
+          {{! If the model is a work and has a linked building, we display an infotext that the work is linked to the building}}
+          {{#if
+            (and (eq @modelName "building-work") (not model.building.isNew))
+          }}
+            {{yield model to="buildingLink"}}
+          {{else if @removeLink}}
+            <td class="uk-table-shrink uk-text-right">
               <button
                 type="button"
                 class="uk-icon-button"

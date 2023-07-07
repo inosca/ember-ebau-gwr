@@ -26,7 +26,6 @@ export default class ProjectFormController extends ImportController {
   @tracked typeOfConstructionProject;
   @tracked removedWork = [];
   @tracked errors;
-  @tracked showConfirmationDialog = false;
 
   choiceOptions = Options;
 
@@ -82,39 +81,25 @@ export default class ProjectFormController extends ImportController {
         yield this.constructionProject.all.perform(this.model.instanceId);
         this.router.transitionTo("project.form", project.EPROID);
       } else {
-        if (
-          (this.typeOfConstructionProject === 6010 &&
-            this.workWithBuildings.length) ||
-          // If typeOfConstruction === hochbau we only display the alert
-          // if we have additional works beside the default work
-          (this.typeOfConstructionProject === 6011 &&
-            this.workWithoutBuildings.length > 1)
-        ) {
-          this.showConfirmationDialog = true;
-          return;
-        }
-
-        if (this.typeOfConstructionProject === 6010) {
-          const added = this.project.work.filter((work) => work.isNew);
-          yield Promise.all(
-            added.map((work) =>
-              this.constructionProject.addWorkToProject(
-                this.model.projectId,
-                work
-              )
+        const added = this.project.work.filter((work) => work.isNew);
+        yield Promise.all(
+          added.map((work) =>
+            this.constructionProject.addWorkToProject(
+              this.model.projectId,
+              work
             )
-          );
+          )
+        );
 
-          yield Promise.all(
-            this.removedWork.map((work) =>
-              this.constructionProject.removeWorkFromProject(
-                this.model.projectId,
-                work.ARBID
-              )
+        yield Promise.all(
+          this.removedWork.map((work) =>
+            this.constructionProject.removeWorkFromProject(
+              this.model.projectId,
+              work.ARBID
             )
-          );
-          this.removedWork = [];
-        }
+          )
+        );
+        this.removedWork = [];
         yield this.constructionProject.update(this.project);
       }
 
@@ -229,93 +214,6 @@ export default class ProjectFormController extends ImportController {
   @action
   addWorkLink() {
     this.project.work = [...this.project.work, new BuildingWork()];
-  }
-
-  @task
-  *addDefaultWork() {
-    const buildingWork = yield this.constructionProject.addDefaultWork(
-      this.project.EPROID
-    );
-    this.project.work = [...this.project.work, buildingWork];
-    return buildingWork;
-  }
-
-  @task
-  *removeBuildings() {
-    return yield Promise.all(
-      this.workWithBuildings.map(async (work) => {
-        await this.building.unbindBuildingFromConstructionProject(
-          this.project.EPROID,
-          work.building.EGID
-        );
-        // locally remove building from work list
-        // so that it runs through second save check
-        this.project.work = this.project.work.filter((w) => w !== work);
-      })
-    );
-  }
-
-  @task
-  *removeWork() {
-    // always create default work of type "Neubau" to
-    // prevent errors from API, remove all others
-    const defaultWork = yield this.addDefaultWork.perform();
-    return yield Promise.all(
-      this.workWithoutBuildings.map(async (work) => {
-        if (work.ARBID !== defaultWork.ARBID) {
-          if (!work.isNew) {
-            await this.constructionProject.removeWorkFromProject(
-              this.project.EPROID,
-              work.ARBID
-            );
-          }
-          // locally remove work from work list
-          // so that it runs through second save check
-          this.project.work = this.project.work.filter((w) => w !== work);
-        }
-      })
-    );
-  }
-
-  @task
-  *processTypeOfConstructionProjectChange() {
-    this.showConfirmationDialog = false;
-
-    if (
-      this.typeOfConstructionProject === 6010 &&
-      this.workWithBuildings.length
-    ) {
-      if (!this.workWithoutBuildings.length) {
-        yield this.addDefaultWork.perform();
-      }
-      yield this.removeBuildings.perform();
-    } else if (
-      this.typeOfConstructionProject === 6011 &&
-      this.workWithoutBuildings.length
-    ) {
-      yield this.removeWork.perform();
-    }
-
-    this.saveProject.perform();
-  }
-
-  @action
-  cancelTypeOfConstructionProjectChange() {
-    this.showConfirmationDialog = false;
-    // Reset the type of construction project set on model during submit
-    // This ensures that the buildings tab is correctly (in)activated
-    this.project.typeOfConstructionProject =
-      this.typeOfConstructionProject === 6011 ? 6010 : 6011;
-
-    this.typeOfConstructionProject = this.project.typeOfConstructionProject;
-  }
-
-  get workWithoutBuildings() {
-    return this.project.work.filter((work) => work.building.isNew);
-  }
-
-  get workWithBuildings() {
-    return this.project.work.filter((work) => !work.building.isNew);
   }
 
   @action
