@@ -22,6 +22,10 @@ export default class ProjectFormController extends ImportController {
   @service intl;
   @service notification;
 
+  INFRASTRUCTURE = 6010;
+  SUPERSTRUCTURE = 6011;
+  SPECIALSTRUCTURE = 6012;
+
   @tracked buildingWork;
   @tracked typeOfConstructionProject;
   @tracked removedWork = [];
@@ -42,6 +46,29 @@ export default class ProjectFormController extends ImportController {
 
   get statusConfiguration() {
     return { correction: true, change: true };
+  }
+
+  get hasRemoveWorkLink() {
+    return !(this.project.isNew && this.project.work.length === 1);
+  }
+
+  get typeOfConstructionProjectHint() {
+    switch (this.typeOfConstructionProject) {
+      case this.INFRASTRUCTURE: {
+        return this.intl.t(
+          "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
+        );
+      }
+      case this.SUPERSTRUCTURE: {
+        return this.intl.t("ember-gwr.linkedBuildings.superstructureInfo");
+      }
+      case this.SPECIALSTRUCTURE: {
+        return this.intl.t("ember-gwr.linkedBuildings.specialstructureInfo");
+      }
+      default: {
+        return "";
+      }
+    }
   }
 
   @lastValue("fetchProject") project;

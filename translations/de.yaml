@@ -73,6 +73,8 @@ ember-gwr:
       Die Art der Arbeiten werden direkt auf dem Projekt erfasst.
     superstructureInfo: |-
       Für Hochbauprojekte werden die Art der Arbeiten ausschliesslich gebäudebezogen gemeldet.
+    specialstructureInfo: |-
+      Für Sonderbauprojekte sind ausschliesslich Gebäude der Gebäudekategorie Sonderbau zugelassen.
     buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
 
   search:

@@ -123,11 +123,12 @@ export default class GwrService extends Service {
       },
     });
 
-    const customErrors = model.error.map(
-      (error) =>
-        errorsToMatch.find(([errorKey]) => error === errorKey)?.[1] ??
-        this.intl.t("ember-gwr.generalErrors.genericFormError")
-    );
+    const customErrors =
+      model.error?.map(
+        (error) =>
+          errorsToMatch.find(([errorKey]) => error === errorKey)?.[1] ??
+          this.intl.t("ember-gwr.generalErrors.genericFormError")
+      ) ?? [];
     return customErrors.concat(
       model.errorList?.map((error) => error.messageOfError) ?? []
     );

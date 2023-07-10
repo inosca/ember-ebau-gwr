@@ -149,19 +149,9 @@ export default class ConstructionProject extends XMLModel {
     {{{modelField model "projectFreeText2"}}}
 
     {{#if model.isNew}}
-      {{#if (or
-        (eq model.typeOfConstructionProject 6011)
-        (eq model.typeOfConstructionProject 6012)
-      )}}
-        <ns2:work>
-          <ns2:kindOfWork>6001</ns2:kindOfWork>
-          <ns2:ARBID>1</ns2:ARBID>
-        </ns2:work>
-      {{else if (eq model.typeOfConstructionProject 6010)}}
-        {{#each model.work}}
-          {{> BuildingWork model=this}}
-        {{/each}}
-      {{/if}}
+      {{#each model.work}}
+        {{> BuildingWork model=this}}
+      {{/each}}
     {{/if}}
   </ns2:constructionProject>
   `;
