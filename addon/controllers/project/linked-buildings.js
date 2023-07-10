@@ -41,13 +41,6 @@ export default class ProjectLinkedBuildingsController extends Controller {
         this.model,
         EGID
       );
-
-      if (
-        !this.workWithoutBuildings.length &&
-        this.workWithBuildings.length === 1
-      ) {
-        await this.constructionProject.addDefaultWork(this.model);
-      }
       await this.fetchBuildings.perform();
     } catch (error) {
       console.error(error);

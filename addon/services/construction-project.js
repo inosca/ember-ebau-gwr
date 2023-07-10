@@ -1,7 +1,6 @@
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency";
 import Building from "ember-ebau-gwr/models/building";
-import BuildingWork from "ember-ebau-gwr/models/building-work";
 import ConstructionProject from "ember-ebau-gwr/models/construction-project";
 import ConstructionProjectsList from "ember-ebau-gwr/models/construction-projects-list";
 import Dwelling from "ember-ebau-gwr/models/dwelling";
@@ -70,12 +69,6 @@ export default class ConstructionProjectService extends GwrService {
 
     const xml = await response.text();
     return this.createAndCache(xml);
-  }
-
-  async addDefaultWork(projectId) {
-    const buildingWork = new BuildingWork();
-    buildingWork.kindOfWork = 6001;
-    return await this.addWorkToProject(projectId, buildingWork);
   }
 
   async addWorkToProject(projectId, buildingWork) {
