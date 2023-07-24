@@ -2,7 +2,7 @@ import { action } from "@ember/object";
 import Service from "@ember/service";
 
 export default class GwrConfigService extends Service {
-  cantonAbbreviation = "BE";
+  cantonAbbreviation = localStorage.getItem("canton");
   gwrAPI = "http://localhost:8010/proxy/regbl/api/ech0216/2";
   modalContainer = "#modal-container";
   isTestEnvironment = true;
