@@ -26,7 +26,7 @@ ember-gwr:
     backToProject: Zurück zum Bauprojekt
 
     saveError: Beim Speichern des Gebäudes ist ein Fehler aufgetreten.
-    forbiddenBuildingClassError: "Die Gebäudeklasse Landwirtschaftliche Betriebsgebäude darf nicht mehr vergeben werden. Wählen Sie anstelle aus de folgenden Gebäudeklassen: Gebäude für die Tierhaltung, Gebäude für den Pflanzenbau und Andere landwirtschaftliche Gebäude."
+    forbiddenBuildingClassError: 'Die Gebäudeklasse "Landwirtschaftliche Betriebsgebäude" darf bei der Erfassung von Gebäuden (Neubau) nicht mehr vergeben werden. Wählen Sie anstelle aus den folgenden Gebäudeklassen: "Gebäude für die Tierhaltung", "Gebäude für den Pflanzenbau" und "Andere landwirtschaftliche Gebäude".'
     saveSuccess: Gebäude erfolgreich gespeichert.
     entrances:
       error: Beim Laden der Eingänge ist ein Fehler aufgetreten.
