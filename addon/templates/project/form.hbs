@@ -77,13 +77,7 @@
         @models={{this.project.work}}
         @modelName="building-work"
         @removeLink={{if this.hasRemoveWorkLink this.removeWorkLink}}
-        @addLink={{if
-          (eq
-            this.typeOfConstructionProject
-            this.ConstructionProject.INFRASTRUCTURE
-          )
-          this.addWorkLink
-        }}
+        @addLink={{this.addWorkLink}}
       >
         <:list as |model|>
           <td class="uk-table-expand">

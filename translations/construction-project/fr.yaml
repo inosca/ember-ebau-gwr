@@ -315,7 +315,7 @@ ember-gwr:
       typeOfConstructionProjectOptions:
         6010: Génie civil
         6011: Bâtiment
-        6012: Construction spéciale
+        6012: Constructions particulières
 
       typeOfConstruction: Type d’ouvrage
       typeOfConstructionPlaceholder: Sélectionnez un type d’ouvrage...
