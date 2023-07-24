@@ -287,6 +287,8 @@ ember-gwr:
         {modelName} erfassen
         {model, select,
           building {(Neubau)}
+          dwelling {(Neubau)}
+          entrance {(Neubau)}
           other {}
         }
       or: oder

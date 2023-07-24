@@ -73,6 +73,8 @@ ember-gwr:
       Le genre de construction est saisi directement sur le projet.
     superstructureInfo: |-
       Pour les projets de construction de bâtiments, le genre de construction est déclaré exclusivement par bâtiment.
+    specialstructureInfo: |-
+      Seuls les bâtiments de la catégorie "construction spéciale" sont autorisés pour les projets de construction spéciale.
     buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
 
   search:
@@ -285,6 +287,8 @@ ember-gwr:
         Saisir le/l' {modelName}
         {model, select,
           building {(Nouvelle construction)}
+          dwelling {(Nouvelle construction)}
+          entrance {(Nouvelle construction)}
           other {}
         }
       or: ou
