@@ -113,7 +113,7 @@ export default class GwrService extends Service {
     })[searchKey];
   }
 
-  // (xml: String, errorsToMatch: [[errorKey: String,errorMsg: String]]) => [String]
+  // (xml: String, errorsToMatch: [{errorKey: String,errorMsg: String}]) => [String]
   extractErrorsFromXML(xml, errorsToMatch = []) {
     const model = new XMLModel(xml);
     model.setFieldsFromXML({
@@ -126,7 +126,8 @@ export default class GwrService extends Service {
     const customErrors =
       model.error?.map(
         (error) =>
-          errorsToMatch.find(([errorKey]) => error === errorKey)?.[1] ??
+          errorsToMatch.find(({ errorKey }) => error === errorKey)
+            ?.errorMessage ??
           this.intl.t("ember-gwr.generalErrors.genericFormError")
       ) ?? [];
     return customErrors.concat(

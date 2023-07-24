@@ -11,6 +11,7 @@ import ConstructionProjectValidations from "ember-ebau-gwr/validations/construct
 export default class ProjectFormController extends ImportController {
   ConstructionProjectValidations = ConstructionProjectValidations;
   kindOfWorkOptions = BuildingWork.kindOfWorkOptions;
+  ConstructionProject = ConstructionProject;
 
   @service constructionProject;
   @service building;
@@ -21,10 +22,6 @@ export default class ProjectFormController extends ImportController {
   @service router;
   @service intl;
   @service notification;
-
-  INFRASTRUCTURE = 6010;
-  SUPERSTRUCTURE = 6011;
-  SPECIALSTRUCTURE = 6012;
 
   @tracked buildingWork;
   @tracked typeOfConstructionProject;
@@ -54,15 +51,15 @@ export default class ProjectFormController extends ImportController {
 
   get typeOfConstructionProjectHint() {
     switch (this.typeOfConstructionProject) {
-      case this.INFRASTRUCTURE: {
+      case this.ConstructionProject.INFRASTRUCTURE: {
         return this.intl.t(
           "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
         );
       }
-      case this.SUPERSTRUCTURE: {
+      case this.ConstructionProject.SUPERSTRUCTURE: {
         return this.intl.t("ember-gwr.linkedBuildings.superstructureInfo");
       }
-      case this.SPECIALSTRUCTURE: {
+      case this.ConstructionProject.SPECIALSTRUCTURE: {
         return this.intl.t("ember-gwr.linkedBuildings.specialstructureInfo");
       }
       default: {
