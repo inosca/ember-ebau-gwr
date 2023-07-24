@@ -78,7 +78,10 @@
         @modelName="building-work"
         @removeLink={{if this.hasRemoveWorkLink this.removeWorkLink}}
         @addLink={{if
-          (eq this.typeOfConstructionProject this.INFRASTRUCTURE)
+          (eq
+            this.typeOfConstructionProject
+            this.ConstructionProject.INFRASTRUCTURE
+          )
           this.addWorkLink
         }}
       >

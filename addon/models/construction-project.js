@@ -165,6 +165,10 @@ export default class ConstructionProject extends XMLModel {
   static STATUS_NOT_REALIZED = 6708;
   static STATUS_WITHDRAWN = 6709;
 
+  static INFRASTRUCTURE = 6010;
+  static SUPERSTRUCTURE = 6011;
+  static SPECIALSTRUCTURE = 6012;
+
   // valid state transitions
   static projectStatesMapping = {
     [this.STATUS_PROJECTED]: [
