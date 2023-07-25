@@ -1,3 +1,20 @@
+# [7.3.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.2.1...v7.3.0) (2023-07-25)
+
+
+### Bug Fixes
+
+* **extractErrorsFromXML:** use object for error list for readability ([5f552b8](https://github.com/inosca/ember-ebau-gwr/commit/5f552b80a448ed54845fe22d6ab2823d0652b738))
+* **project/form:** fix spelling error on class ([f036b31](https://github.com/inosca/ember-ebau-gwr/commit/f036b310170c2369fa10ec9f47f8e79484b1ccaf))
+* **translations:** add french deepl translations ([eeab6fe](https://github.com/inosca/ember-ebau-gwr/commit/eeab6febca62c37765860c2cb728bf81fc6e4d93))
+* **translations:** spelling ([2802f37](https://github.com/inosca/ember-ebau-gwr/commit/2802f376747ad26cf6606cc9dcd9fc6d6b039e7e))
+* **work:** allow linked work for all types of constructions ([cde554b](https://github.com/inosca/ember-ebau-gwr/commit/cde554bbe0851360c397ad69c348b56a3d2b3642))
+
+
+### Features
+
+* **building:** add error mapping for forbidden buildingClass Landwirtschaftliche Betriebsgebäude ([027357f](https://github.com/inosca/ember-ebau-gwr/commit/027357fc8ab91ec8abc04197ab223ae91013d910))
+* **constructionProject:** add Sonderbau as a typeOfConstructionProject ([defbd9b](https://github.com/inosca/ember-ebau-gwr/commit/defbd9b649adf767c61dabfa17159b002e12e683))
+
 ## [7.2.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.2.0...v7.2.1) (2023-07-03)
 
 
