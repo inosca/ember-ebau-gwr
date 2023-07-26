@@ -6,7 +6,10 @@
 
 <Search @service={{this.street}} @baseQuery={{this.baseQuery}}>
   <:filters as |Filters|>
-    <Filters @submitLabel={{t "ember-gwr.components.linkStreet.search"}} as |FilterInput|>
+    <Filters
+      @submitLabel={{t "ember-gwr.components.linkStreet.search"}}
+      as |FilterInput|
+    >
       <div class="uk-flex uk-flex-column uk-flex-wrap">
         <div class="uk-flex uk-flex-between uk-flex-bottom uk-flex-wrap">
           <div class="uk-width-expand uk-width-1">
@@ -40,6 +43,26 @@
             @name="description.descriptionLong"
             @label={{t "ember-gwr.building.street.description.descriptionLong"}}
           />
+          <div uk-alert class="uk-flex uk-flex-middle uk-flex-between">
+            <span>
+              {{t "ember-gwr.components.linkStreet.searchHint"}}
+            </span>
+
+            <div class="uk-inline">
+              <UkIcon @icon="question" />
+              <div uk-dropdown class="uk-width-large">
+
+                <b>{{t
+                    "ember-gwr.components.linkStreet.searchHintExamples"
+                  }}</b>
+                <ul class="uk-list uk-list-collapse uk-list-bullet">
+                  <li>{{t "ember-gwr.components.linkStreet.searchHintExamples1"}}</li>
+                  <li>{{t "ember-gwr.components.linkStreet.searchHintExamples2"}}</li>
+                  <li>{{t "ember-gwr.components.linkStreet.searchHintExamples3"}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Filters>
