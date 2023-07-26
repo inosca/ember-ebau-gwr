@@ -30,9 +30,16 @@ export function and(...args) {
 }
 
 export function modelField(...args) {
-  const { value: argValue, namespace = "ns2:" } = args.pop().hash;
+  const {
+    value: argValue,
+    namespace = "ns2:",
+    renderZero = true,
+  } = args.pop().hash;
   const [model, key] = args;
   const value = argValue ?? get(model, key);
+  if (!renderZero && !Array.isArray(value) && parseInt(value) === 0) {
+    return "";
+  }
   return value !== undefined && value !== null && value?.length !== 0
     ? `<${namespace}${key}>${value}</${namespace}${key}>`
     : "";

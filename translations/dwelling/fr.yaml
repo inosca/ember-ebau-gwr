@@ -23,7 +23,7 @@ ember-gwr:
     floorTypePlaceholder: Choisir un type d'étage...
     floorNumber: Numéro d'étage
     floorHint: |-
-      Pour les logements à plusieurs étages, c'est l'étage qui est recensé, 
+      Pour les logements à plusieurs étages, c'est l'étage qui est recensé,
       sur lequel se trouve l'entrée (principale) du logement.
     multipleFloor: Logement sur plusieurs étages
     physicalDwellingNo: Numéro physique de logement
@@ -80,6 +80,8 @@ ember-gwr:
       remark: Commentaire sur l’affectation
       personWithMainResidence: Personne(s) avec domicile principal
       personWithSecondaryResidence: Personne(s) avec domicile secondaire
+      mainAndSecondaryResidenceInfoHeading: Informations sur les "Personne(s) avec domicile principal" et les "Personne(s) avec domicile secondaire"
+      mainAndSecondaryResidenceInfo: Pour les "Personne(s) avec domicile principal" et les "Personne(s) avec domicile secondaire", la mise à jour dans le RegBL fédéral est automatique et se base sur la mise en relation des données du RegBL fédéral avec les données des registres de personnes.
       dateFirstOccupancy: Date de la première occupation
       dateLastOccupancy: Date de la dernière occupation
 

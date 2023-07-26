@@ -155,6 +155,7 @@ export default class BuildingFormController extends ImportController {
       this.notification.success(this.intl.t("ember-gwr.building.saveSuccess"));
     } catch (error) {
       this.errors = error;
+      console.error(error);
       this.notification.danger(this.intl.t("ember-gwr.building.saveError"));
     }
   }

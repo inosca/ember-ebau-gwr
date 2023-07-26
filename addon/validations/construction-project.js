@@ -2,7 +2,6 @@ import {
   validatePresence,
   validateLength,
   validateNumber,
-  validateDate,
   validateFormat,
 } from "ember-changeset-validations/validators";
 
@@ -43,101 +42,7 @@ export default {
     validateNumber({ integer: true }),
   ],
   typeOfConstruction: [validatePresence(true)],
-  projectAnnouncementDate: [
-    validatePresence(true),
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-    }),
-  ],
-  buildingPermitIssueDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  withdrawalDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  projectStartDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  constructionAuthorisationDeniedDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  cancellationDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  projectCompletionDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
-  projectSuspensionDate: [
-    validateDate({
-      onOrAfter: new Date("2000-01-01"),
-      message: "{description} must be on or after {onOrAfter}",
-      allowBlank: true,
-    }),
-    validateDate({
-      onOrBefore: new Date(),
-      message: "{description} must be on or before {onOrBefore}",
-      allowBlank: true,
-    }),
-  ],
+  projectAnnouncementDate: [validatePresence(true)],
   durationOfConstructionPhase: [
     validateNumber({
       gte: 1,

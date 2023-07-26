@@ -58,7 +58,7 @@ export function buildingWorkValidation({
     volume: {
       volume: validateNumber({
         integer: true,
-        gte: 1,
+        gte: 5,
         lte: 3000000,
         allowBlank: true,
       }),
