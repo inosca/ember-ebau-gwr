@@ -97,6 +97,14 @@
         @type="checkbox"
         @disabled={{true}}
       />
+      <div uk-alert>
+        <div class="uk-text-bold">
+          {{t "ember-gwr.dwelling.dwellingUsage.mainAndSecondaryResidenceInfoHeading"}}
+        </div>
+        <div>
+          {{t "ember-gwr.dwelling.dwellingUsage.mainAndSecondaryResidenceInfo"}}
+        </div>
+      </div>
       <Field
         @attr="dwellingUsage.dateFirstOccupancy"
         @type="date"

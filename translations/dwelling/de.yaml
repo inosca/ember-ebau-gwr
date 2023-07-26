@@ -23,7 +23,7 @@ ember-gwr:
     floorTypePlaceholder: Wählen Sie eine Art Stockwerk...
     floorNumber: Stockwerknummer
     floorHint: |-
-      Bei Wohnungen mit mehreren Stockwerken wird das Stockwerk erfasst, 
+      Bei Wohnungen mit mehreren Stockwerken wird das Stockwerk erfasst,
       auf dem sich der (Haupt-)Eingang der Wohnung befindet.
     multipleFloor: Mehrgeschossige Wohnung
     physicalDwellingNo: Physische Wohnungsnummer
@@ -78,8 +78,10 @@ ember-gwr:
         3093: Andere Datenquelle
       revisionDate: Aktualisierungsdatum der Nutzungsart
       remark: Kommentar zur Nutzungsart der Wohnung
-      personWithMainResidence: Personen mit Hauptwohnsitz
-      personWithSecondaryResidence: Personen mit Nebenwohnsitz
+      personWithMainResidence: Person(en) mit Hauptwohnsitz
+      personWithSecondaryResidence: Person(en) mit Nebenwohnsitz
+      mainAndSecondaryResidenceInfoHeading: 'Information zu "Person(en) mit Hauptwohnsitz" und "Person(en) mit Nebenwohnsitz"'
+      mainAndSecondaryResidenceInfo: 'Für "Person(en) mit Hauptwohnsitz" und "Person(en) mit Nebenwohnsitz" erfolgt die Aktualisierung im eidg. GWR automatisch und basiert auf der Verknüpfung der eidg. GWR-Daten mit Daten aus den Personenregistern.'
       dateFirstOccupancy: Datum der ersten Belegung
       dateLastOccupancy: Datum der letzten Belegung
 

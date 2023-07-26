@@ -146,9 +146,7 @@ export default class Building extends XMLModel {
     {{#if model.numberOfFloors}}
       <ns2:numberOfFloors>{{model.numberOfFloors}}</ns2:numberOfFloors>
     {{/if}}
-    {{#if model.numberOfSeparateHabitableRooms}}
-      <ns2:numberOfSeparateHabitableRooms>{{model.numberOfSeparateHabitableRooms}}</ns2:numberOfSeparateHabitableRooms>
-    {{/if}}
+    {{{modelField model "numberOfSeparateHabitableRooms" renderZero=false}}}
     {{! Returns no error but not saved by api}}
     {{{modelField model "civilDefenseShelter"}}}
     {{#if model.energyRelevantSurface}}
