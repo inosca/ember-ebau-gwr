@@ -333,6 +333,11 @@ ember-gwr:
       linkSuccess: Strasse erfolgreich verknüpft.
       linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
       streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
+      searchHint: 'Ein Stern (*) kann in der Suche als Platzhalter verwendet werden, um nach Teilen eines Strassennamen zu suchen.'
+      searchHintExamples: Beispiele
+      searchHintExamples1: 'Unter* : Unterfeldweg, Unterschlossweg'
+      searchHintExamples2: '*weg : Waldweg, Unterschlossweg'
+      searchHintExamples3: 'B*strasse : Bernstrasse, Bachstrasse'
 
     importModal:
       selectImportData: Importdaten auswählen

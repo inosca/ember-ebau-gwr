@@ -5,7 +5,7 @@
       Globale Ansicht
     </LinkTo>
   </li>
-  {{#if (eq @model "SZ")}}
+  {{#if (eq this.canton "SZ")}}
     <li>
       <LinkTo @route="gwr" @model={{1}}>
         Dossier 1
@@ -16,7 +16,7 @@
         Dossier 2
       </LinkTo>
     </li>
-  {{else if (eq @model "BE")}}
+  {{else if (eq this.canton "BE")}}
     <li>
       <LinkTo @route="gwr" @model={{3}}>
         Dossier 3

@@ -333,6 +333,11 @@ ember-gwr:
       linkSuccess: La rue est liée avec succès.
       linkError: Une erreur est survenue lors de la liaison de la rue.
       streetHint: Pour saisir une entrée, vous devez associer une rue.
+      searchHint: Un astérisque (*) peut être utilisé comme caractère de remplacement dans la recherche pour rechercher des parties d'un nom de rue.
+      searchHintExamples: Exemples
+      searchHintExamples1: 'Rue* : Rue de Lausanne, Rue des Sablons'
+      searchHintExamples2: '*de la Gare : Avenue de la Gare'
+      searchHintExamples3: 'Rue*Viret : Rue Pierre-Viret'
 
     importModal:
       selectImportData: Sélectionner les données d'importation
