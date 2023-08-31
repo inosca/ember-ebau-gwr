@@ -72,7 +72,7 @@ ember-gwr:
       Für Tiefbauprojekte sind keine Gebäude zugelassen.
       Die Art der Arbeiten werden direkt auf dem Projekt erfasst.
     superstructureInfo: |-
-      Für Hochbauprojekte werden die Art der Arbeiten ausschliesslich gebäudebezogen gemeldet.
+      Für Hochbauprojekte werden die Art der Arbeiten gebäudebezogen gemeldet.
     specialstructureInfo: |-
       Für Sonderbauprojekte sind ausschliesslich Gebäude der Gebäudekategorie Sonderbau zugelassen.
     buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
@@ -333,7 +333,7 @@ ember-gwr:
       linkSuccess: Strasse erfolgreich verknüpft.
       linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
       streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
-      searchHint: 'Ein Stern (*) kann in der Suche als Platzhalter verwendet werden, um nach Teilen eines Strassennamen zu suchen.'
+      searchHint: 'Ein Stern (*) kann in der Suche als Platzhalter verwendet werden, um nach Teilen eines Strassennamens zu suchen.'
       searchHintExamples: Beispiele
       searchHintExamples1: 'Unter* : Unterfeldweg, Unterschlossweg'
       searchHintExamples2: '*weg : Waldweg, Unterschlossweg'

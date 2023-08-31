@@ -4,18 +4,19 @@
     @import={{@import}}
     @modelName={{@modelName}}
   />
-  <div class="uk-flex-inline uk-flex-right uk-flex-middle">
+  <div class="uk-flex uk-flex-bottom uk-flex-column-reverse">
     {{#if (and @modelHasImport @import)}}
+    <div class="uk-flex uk-flex-wrap uk-flex-right">
       {{#if (and @import.originalData.length (is-unset @import.index))}}
         <LinkTo
-          class="uk-button uk-button-default uk-margin-small-right uk-flex-none"
+          class="uk-button uk-button-default uk-flex-none"
           @query={{hash index=null}}
         >
           {{t "ember-gwr.components.importModal.selectImportData"}}
         </LinkTo>
       {{else}}
         <button
-          class="uk-button uk-button-default uk-flex-none
+          class="uk-button uk-button-default uk-flex-none uk-margin-small-left
             {{if (is-unset @import.index) 'uk-margin-small-right'}}"
           type="button"
           {{on "click" @importAllData}}
@@ -24,7 +25,7 @@
         </button>
         {{#if (and @import @import.originalData.length)}}
           <button
-            class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical uk-margin-small-right"
+            class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
             type="button"
             disabled={{@disabled}}
           >
@@ -51,11 +52,13 @@
       {{/if}}
       <LinkTo
         @query={{hash import=false index=undefined}}
-        class="uk-button uk-button-default uk-flex-none uk-margin-small-right"
+        class="uk-button uk-button-default uk-flex-none uk-margin-small-left"
       >
         {{t "ember-gwr.components.modelForm.cancelImport"}}
       </LinkTo>
+    </div>
     {{/if}}
+    <div class="uk-margin-small-bottom uk-margin-small-left">
     {{#let @submit as |Submit|}}
       <Submit />
     {{/let}}
@@ -110,6 +113,7 @@
         </ul>
       </div>
     {{/if}}
+    </div>
   </div>
   <div class="uk-margin-small-top uk-flex uk-flex-right">
     {{#let @submitErrors as |SubmitErrors|}}

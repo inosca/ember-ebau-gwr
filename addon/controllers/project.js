@@ -19,7 +19,7 @@ export default class ProjectController extends Controller {
 
   get displayLandingPage() {
     return (
-      !this.projects.value.length &&
+      !this.projects.value?.length &&
       this.router.externalRouter.currentRoute.localName !== "new" &&
       this.router.externalRouter.currentRoute.localName !== "errors"
     );
