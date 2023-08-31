@@ -1,3 +1,10 @@
+## [7.4.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.0...v7.4.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* **projects:** ignore linked archived projects & improve header layout ([8861c04](https://github.com/inosca/ember-ebau-gwr/commit/8861c043cbadd679734e50aff638d5f58fb7f5b2))
+
 # [7.4.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.3.0...v7.4.0) (2023-08-31)
 
 
