@@ -1,3 +1,15 @@
+# [7.4.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.3.0...v7.4.0) (2023-08-31)
+
+
+### Bug Fixes
+
+* **validations:** remove unndeeded validations and add some missing validation ([bcad503](https://github.com/inosca/ember-ebau-gwr/commit/bcad503ad85cd7c01b41c9fbfb6f4f78f6f9cc34))
+
+
+### Features
+
+* **search-street:** add info about wildcard search ([b76dc97](https://github.com/inosca/ember-ebau-gwr/commit/b76dc9776306ed0ceb0f6c7ed377db6a352c4813))
+
 # [7.3.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.2.1...v7.3.0) (2023-07-25)
 
 
