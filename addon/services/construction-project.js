@@ -25,7 +25,17 @@ export default class ConstructionProjectService extends GwrService {
       `/constructionprojects/${EPROID}`
     );
     const xml = await response.text();
-    return this.createAndCache(xml);
+    const project = this.createAndCache(xml);
+
+    // Archived GWR projects aren't removed from the stored instance links, but
+    // can no longer be fetched through the API. Those projects are therefore
+    // ignored, might be better to properly remove the associated links in the
+    // future.
+    if (!project.EPROID) {
+      return null;
+    }
+
+    return project;
   }
 
   async update(project) {
@@ -157,7 +167,9 @@ export default class ConstructionProjectService extends GwrService {
     const projects = yield Promise.all(
       links.map(({ eproid }) => this.getFromCacheOrApi(eproid))
     );
-    return projects;
+
+    // Remove no longer available projects
+    return projects.filter(Boolean);
   }
 
   async removeProjectLink(projectId) {
