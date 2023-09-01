@@ -1,3 +1,10 @@
+## [7.4.2](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.1...v7.4.2) (2023-09-01)
+
+
+### Bug Fixes
+
+* **buildings:** never disable linked building tab ([7bae82c](https://github.com/inosca/ember-ebau-gwr/commit/7bae82cea6d764b752697c44bda494dc1b793e39))
+
 ## [7.4.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.0...v7.4.1) (2023-08-31)
 
 
