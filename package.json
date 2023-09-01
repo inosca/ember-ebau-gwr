@@ -58,7 +58,7 @@
     "ember-uikit": "^8.0.0",
     "ember-validated-form": "^6.2.0",
     "handlebars": "^4.7.8",
-    "luxon": "^3.3.0"
+    "luxon": "^3.4.2"
   },
   "devDependencies": {
     "@adfinis/eslint-config": "2.0.0",
