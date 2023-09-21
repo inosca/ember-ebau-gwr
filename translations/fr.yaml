@@ -72,9 +72,9 @@ ember-gwr:
       Aucun bâtiment n'est autorisé pour les projets de génie civil.
       Le genre de construction est saisi directement sur le projet.
     superstructureInfo: |-
-      Pour les projets de construction de bâtiments, le genre de construction est déclaré exclusivement par bâtiment.
+      Pour les projets de construction de bâtiments, le genre de travaux est déclaré en fonction du bâtiment.
     specialstructureInfo: |-
-      Seuls les bâtiments de la catégorie "construction spéciale" sont autorisés pour les projets de construction spéciale.
+      Pour les projets de construction particulière, seuls les bâtiments de la catégorie de bâtiment "construction particulière" sont autorisés.
     buildingDisabledForNewProject: Pendant la création d'un projet, il n'est pas encore possible de saisir des bâtiments.
 
   search:
@@ -333,7 +333,7 @@ ember-gwr:
       linkSuccess: La rue est liée avec succès.
       linkError: Une erreur est survenue lors de la liaison de la rue.
       streetHint: Pour saisir une entrée, vous devez associer une rue.
-      searchHint: Un astérisque (*) peut être utilisé comme caractère de remplacement dans la recherche pour rechercher des parties d'un nom de rue.
+      searchHint: Un astérisque (*) peut être utilisé comme espace réservé dans la recherche de parties d'un nom de rue.
       searchHintExamples: Exemples
       searchHintExamples1: 'Rue* : Rue de Lausanne, Rue des Sablons'
       searchHintExamples2: '*de la Gare : Avenue de la Gare'

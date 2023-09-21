@@ -80,8 +80,8 @@ ember-gwr:
       remark: Commentaire sur l’affectation
       personWithMainResidence: Personne(s) avec domicile principal
       personWithSecondaryResidence: Personne(s) avec domicile secondaire
-      mainAndSecondaryResidenceInfoHeading: Informations sur les "Personne(s) avec domicile principal" et les "Personne(s) avec domicile secondaire"
-      mainAndSecondaryResidenceInfo: Pour les "Personne(s) avec domicile principal" et les "Personne(s) avec domicile secondaire", la mise à jour dans le RegBL fédéral est automatique et se base sur la mise en relation des données du RegBL fédéral avec les données des registres de personnes.
+      mainAndSecondaryResidenceInfoHeading: Information sur "Personne(s) avec domicile principal" et "Personne(s) avec domicile secondaire"
+      mainAndSecondaryResidenceInfo: Pour "Personne(s) avec domicile principal" et "Personne(s) avec domicile secondaire", la mise à jour dans le RegBL fédéral est automatique et se base sur le lien entre les données du RegBL fédéral et les données des registres de personnes.
       dateFirstOccupancy: Date de la première occupation
       dateLastOccupancy: Date de la dernière occupation
 

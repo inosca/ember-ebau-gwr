@@ -27,7 +27,7 @@ ember-gwr:
 
     saveError: Une erreur s'est produite lors de la sauvegarde du bâtiment.
     forbiddenBuildingClassError: |-
-      La classe de bâtiment "Bâtiments d'exploitation agricole" ne doit plus être attribuée lors de la saisie des bâtiments (nouvelles constructions). Choisissez à la place parmi les classes de bâtiments suivantes: "Bâtiments pour l'élevage", "Bâtiments pour la production végétale" et "Autres bâtiments agricoles".
+      La classe de bâtiment "Bâtiments d'exploitation agricole" ne peut plus être attribuée lors de la saisie de bâtiments (nouvelle construction). Choisissez plutôt parmi les classes de bâtiments suivantes : "Bâtiments pour la garde d'animaux", "Bâtiments pour la culture végétale" et "Autres bâtiments d'exploitation agricole".
     saveSuccess: Bâtiment sauvegardé avec succès.
     entrances:
       error: Une erreur s'est produite lors du chargement des entrées.
