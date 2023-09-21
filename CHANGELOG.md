@@ -1,3 +1,10 @@
+## [7.4.3](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.2...v7.4.3) (2023-09-21)
+
+
+### Bug Fixes
+
+* **intl:** improve french translations ([ba07720](https://github.com/inosca/ember-ebau-gwr/commit/ba07720b4e4d684f4446be7df03e84a374fc4b9a))
+
 ## [7.4.2](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.1...v7.4.2) (2023-09-01)
 
 
