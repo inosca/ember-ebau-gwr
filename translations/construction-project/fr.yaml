@@ -3,7 +3,7 @@ ember-gwr:
     saveError: Une erreur s'est produite lors de la sauvegarde du projet.
     saveSuccess: Projet de construction sauvegardé avec succès.
     missingBuildingError: Veuillez d'abord associer un bâtiment.
-    linkedWithBuilding: Lié à Bâtiment
+    linkedWithBuilding: Lié à bâtiment
 
     sections:
       freeTextFields: Champs libres
@@ -315,7 +315,7 @@ ember-gwr:
       typeOfConstructionProjectOptions:
         6010: Génie civil
         6011: Bâtiment
-        6012: Constructions particulières
+        6012: Construction particulière
 
       typeOfConstruction: Type d’ouvrage
       typeOfConstructionPlaceholder: Sélectionnez un type d’ouvrage...
