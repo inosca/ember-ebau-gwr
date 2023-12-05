@@ -87,7 +87,7 @@ export default class ModelFormFieldComponent extends Component {
     const sortBy = this.args.sortBy;
     if (sortBy) {
       options = options.sort((a, b) =>
-        a[sortBy].localeCompare(b[sortBy], this.intl.primaryLocale)
+        a[sortBy].localeCompare(b[sortBy], this.intl.primaryLocale),
       );
     }
 

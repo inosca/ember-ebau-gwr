@@ -28,7 +28,7 @@ export default class BuildingsList extends XMLModel {
           buildingEntrance.buildingEntranceNo ?? ""
         }, ${buildingEntrance.locality.swissZipCode ?? ""} ${
           buildingEntrance.locality.name.nameLong ?? ""
-        }`
+        }`,
     );
   }
 }

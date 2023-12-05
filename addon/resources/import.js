@@ -53,16 +53,15 @@ export default class ImportResource extends Resource {
     if (instanceId && showImport) {
       assert(
         "Must set `importModelName` to a string.",
-        typeof importModelName === "string"
+        typeof importModelName === "string",
       );
       assert(
         "Must set `instanceId`.",
-        instanceId !== null && instanceId !== undefined
+        instanceId !== null && instanceId !== undefined,
       );
       try {
-        let data = yield this.dataImport[IMPORT_MAP[importModelName]](
-          instanceId
-        );
+        let data =
+          yield this.dataImport[IMPORT_MAP[importModelName]](instanceId);
         if (Object.keys(data).length === 0 || data.length === 0) {
           this.router.externalRouter.transitionTo({
             queryParams: { import: false },

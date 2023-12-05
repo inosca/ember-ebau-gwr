@@ -126,10 +126,13 @@ export default class Dwelling extends XMLModel {
     return floor === 3100
       ? { label: "ember-gwr.building.dwellings.groundFloor" }
       : floor > 3100 && floor < 3200
-      ? { label: "ember-gwr.building.dwellings.floor", number: floor - 3100 }
-      : floor > 3400 && floor < 3420
-      ? { label: "ember-gwr.building.dwellings.cellar", number: floor - 3400 }
-      : "";
+        ? { label: "ember-gwr.building.dwellings.floor", number: floor - 3100 }
+        : floor > 3400 && floor < 3420
+          ? {
+              label: "ember-gwr.building.dwellings.cellar",
+              number: floor - 3400,
+            }
+          : "";
   }
 
   static STATUS_PROJECTED = 3001;
@@ -308,7 +311,7 @@ export class DwellingComplete extends XMLModel {
       this.getFieldFromXML(
         "errorList",
         [ErrorList],
-        "dwellingCompleteResponse"
+        "dwellingCompleteResponse",
       ) ?? [];
     this.dwelling.errorList = errorList;
   }

@@ -13,12 +13,12 @@ export const stripLeadingZero = (string) =>
 
 export const applyTransforms = (
   object,
-  transforms // {key: (any) => any}
+  transforms, // {key: (any) => any}
 ) =>
   Object.keys(transforms).reduce((transformedData, transformKey) => {
     // No spread to improve performance
     transformedData[transformKey] = transforms[transformKey](
-      object[transformKey]
+      object[transformKey],
     );
     return transformedData;
   }, object);

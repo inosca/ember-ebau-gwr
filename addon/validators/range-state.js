@@ -11,7 +11,7 @@ export default function validateRangeState({ range, on, states } = {}) {
       changes[on] ?? content[on],
       content[on],
       changes,
-      content
+      content,
     );
     if (isIncluded !== true) {
       return true;

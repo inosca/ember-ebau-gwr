@@ -14,7 +14,7 @@ export const getCurrentQuarter = (date = DateTime.now()) => {
   const currentWeek = parseInt(date.toFormat("W"));
 
   const currentQuarter = quarters.find(
-    ({ firstWeekOfQuarter }) => currentWeek >= firstWeekOfQuarter
+    ({ firstWeekOfQuarter }) => currentWeek >= firstWeekOfQuarter,
   );
   return {
     ...currentQuarter,

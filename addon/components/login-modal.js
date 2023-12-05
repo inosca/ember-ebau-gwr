@@ -21,7 +21,7 @@ export default class LoginModalComponent extends Component {
     const token = await this.authFetch.housingStatToken.perform(
       this.username,
       this.password,
-      this.municipality
+      this.municipality,
     );
     if (token) {
       this.authFetch.showAuthModal = false;
@@ -41,7 +41,7 @@ export default class LoginModalComponent extends Component {
   get sortedMunicipalities() {
     const municipalities = this.municipalities;
     municipalities.sort((a, b) =>
-      a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+      a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
     );
     return municipalities;
   }

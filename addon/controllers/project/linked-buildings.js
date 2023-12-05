@@ -18,14 +18,14 @@ export default class ProjectLinkedBuildingsController extends Controller {
   *fetchBuildings() {
     try {
       const project = yield this.constructionProject.getFromCacheOrApi(
-        this.model
+        this.model,
       );
       this.project = project;
       this.workWithoutBuildings = project.work.filter(
-        (work) => work.building.isNew
+        (work) => work.building.isNew,
       );
       this.workWithBuildings = project.work.filter(
-        (work) => !work.building.isNew
+        (work) => !work.building.isNew,
       );
       return this.workWithBuildings;
     } catch (error) {
@@ -39,13 +39,13 @@ export default class ProjectLinkedBuildingsController extends Controller {
     try {
       await this.building.unbindBuildingFromConstructionProject(
         this.model,
-        EGID
+        EGID,
       );
       await this.fetchBuildings.perform();
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.linkedBuildings.removeLinkError")
+        this.intl.t("ember-gwr.linkedBuildings.removeLinkError"),
       );
     }
   }

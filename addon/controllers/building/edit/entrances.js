@@ -21,7 +21,7 @@ export default class BuildingEntrancesIndexController extends Controller {
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.building.entrances.error")
+        this.intl.t("ember-gwr.building.entrances.error"),
       );
     }
   }
@@ -32,7 +32,7 @@ export default class BuildingEntrancesIndexController extends Controller {
       await this.buildingEntrance.deactivate(EDID, this.model);
       await this.fetchEntrances.perform();
       this.notification.success(
-        this.intl.t("ember-gwr.building.entrances.removeLinkSuccess")
+        this.intl.t("ember-gwr.building.entrances.removeLinkSuccess"),
       );
     } catch (error) {
       console.error(error);
@@ -45,8 +45,8 @@ export default class BuildingEntrancesIndexController extends Controller {
             error[0] === this.BuildingEntrance.DEACTIVATION_ERROR
               ? "building.entrances.attachedDwellingsError"
               : "linkedBuildings.removeLinkError"
-          }`
-        )
+          }`,
+        ),
       );
     }
   }

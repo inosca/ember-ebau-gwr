@@ -93,20 +93,20 @@ export default class ConstructionProject extends XMLModel {
       this.projectStatus = this.projectSuspensionDate
         ? this.STATUS_SUSPENDED
         : this.projectCompletionDate
-        ? this.STATUS_COMPLETED
-        : this.withdrawalDate
-        ? this.STATUS_WITHDRAWN
-        : this.cancellationDate
-        ? this.STATUS_NOT_REALIZED
-        : this.constructionAuthorisationDeniedDate
-        ? this.STATUS_REFUSED
-        : this.projectStartDate
-        ? this.STATUS_CONSTRUCTION_STARTED
-        : this.buildingPermitIssueDate
-        ? this.STATUS_APPROVED
-        : this.projectAnnouncementDate
-        ? this.STATUS_PROJECTED
-        : undefined;
+          ? this.STATUS_COMPLETED
+          : this.withdrawalDate
+            ? this.STATUS_WITHDRAWN
+            : this.cancellationDate
+              ? this.STATUS_NOT_REALIZED
+              : this.constructionAuthorisationDeniedDate
+                ? this.STATUS_REFUSED
+                : this.projectStartDate
+                  ? this.STATUS_CONSTRUCTION_STARTED
+                  : this.buildingPermitIssueDate
+                    ? this.STATUS_APPROVED
+                    : this.projectAnnouncementDate
+                      ? this.STATUS_PROJECTED
+                      : undefined;
     }
   }
   // The order of the fields seems to be important. Sometimes fields in wrong orders throw errors.

@@ -36,7 +36,7 @@ export default class SearchBuildingController extends Controller {
     return periodOfConstructionOptions.map((option) => ({
       value: option,
       label: this.intl.t(
-        `ember-gwr.building.dateOfConstruction.periodOfConstructionOptions.${option}`
+        `ember-gwr.building.dateOfConstruction.periodOfConstructionOptions.${option}`,
       ),
     }));
   }
@@ -46,7 +46,7 @@ export default class SearchBuildingController extends Controller {
       yield this.building.bindBuildingToConstructionProject(
         this.model,
         EGID,
-        buildingWork
+        buildingWork,
       );
 
       // refresh work list
@@ -58,21 +58,21 @@ export default class SearchBuildingController extends Controller {
           work.building.isNew
             ? this.constructionProject.removeWorkFromProject(
                 this.model,
-                work.ARBID
+                work.ARBID,
               )
-            : work
-        )
+            : work,
+        ),
       );
 
       this.activeBuilding = null;
       this.router.transitionTo("project.linked-buildings", this.model);
       this.notification.success(
-        this.intl.t("ember-gwr.searchBuilding.linkSuccess")
+        this.intl.t("ember-gwr.searchBuilding.linkSuccess"),
       );
     } catch (error) {
       this.errors = error;
       this.notification.danger(
-        this.intl.t("ember-gwr.searchBuilding.linkError")
+        this.intl.t("ember-gwr.searchBuilding.linkError"),
       );
     }
   }
@@ -102,7 +102,7 @@ export default class SearchBuildingController extends Controller {
     } catch (error) {
       this.errors = error;
       this.notification.danger(
-        this.intl.t("ember-gwr.searchBuilding.previewBuildingError")
+        this.intl.t("ember-gwr.searchBuilding.previewBuildingError"),
       );
     }
   }

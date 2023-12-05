@@ -42,13 +42,13 @@ export default class XMLModel {
 
   getFieldFromXML(path, type, root) {
     const elements = this.document.querySelectorAll(
-      root ? `${root} > ${path}` : path
+      root ? `${root} > ${path}` : path,
     );
 
     if (elements.length) {
       return Array.isArray(type)
         ? Array.from(elements).map((element) =>
-            this.castToType(element, type[0])
+            this.castToType(element, type[0]),
           )
         : this.castToType(elements[0], type);
     }

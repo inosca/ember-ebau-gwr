@@ -53,7 +53,7 @@ export default class SearchComponent extends Component {
     this.changeset = new Changeset(
       baseQuery,
       lookupValidator(validations),
-      validations
+      validations,
     );
 
     this.rawQuery = baseQuery;
@@ -91,7 +91,7 @@ export default class SearchComponent extends Component {
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.generalErrors.searchError")
+        this.intl.t("ember-gwr.generalErrors.searchError"),
       );
     }
   }

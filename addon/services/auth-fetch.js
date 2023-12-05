@@ -57,7 +57,7 @@ export default class AuthFetchService extends Service {
 
       if (json["401"]?.source === "external") {
         this.notification.danger(
-          this.intl.t("ember-gwr.generalErrors.loginError")
+          this.intl.t("ember-gwr.generalErrors.loginError"),
         );
         this.showLogin();
       }
@@ -86,7 +86,7 @@ export default class AuthFetchService extends Service {
       this.showLogin();
     } else {
       this.notification.danger(
-        this.intl.t("ember-gwr.generalErrors.logoutError")
+        this.intl.t("ember-gwr.generalErrors.logoutError"),
       );
     }
   }

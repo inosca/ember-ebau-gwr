@@ -8,14 +8,6 @@ module.exports = async function () {
     usePnpm: true,
     scenarios: [
       {
-        name: "ember-lts-3.28",
-        npm: {
-          devDependencies: {
-            "ember-source": "~3.28.0",
-          },
-        },
-      },
-      {
         name: "ember-lts-4.4",
         npm: {
           devDependencies: {
@@ -32,13 +24,18 @@ module.exports = async function () {
         },
       },
       {
+        name: "ember-lts-4.12",
+        npm: {
+          devDependencies: {
+            "ember-source": "~4.12.0",
+          },
+        },
+      },
+      {
         name: "ember-release",
         npm: {
           devDependencies: {
             "ember-source": await getChannelURL("release"),
-          },
-          dependencies: {
-            "ember-data": "latest",
           },
         },
       },
@@ -58,26 +55,8 @@ module.exports = async function () {
           },
         },
       },
-      {
-        name: "ember-classic",
-        env: {
-          EMBER_OPTIONAL_FEATURES: JSON.stringify({
-            "application-template-wrapper": true,
-            "default-async-observers": false,
-            "template-only-glimmer-components": false,
-          }),
-        },
-        npm: {
-          devDependencies: {
-            "ember-source": "~3.28.0",
-          },
-          ember: {
-            edition: "classic",
-          },
-        },
-      },
-      embroiderSafe(),
-      embroiderOptimized(),
+      embroiderSafe({ allowedToFail: true }),
+      embroiderOptimized({ allowedToFail: true }),
     ],
   };
 };

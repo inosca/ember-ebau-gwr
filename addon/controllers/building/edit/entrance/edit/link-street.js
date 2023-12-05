@@ -50,7 +50,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
     return this.intl.t(
       `ember-gwr.buildingEntrance.${
         this.model.buildingId === "new" ? "backToBuilding" : "backToEntrance"
-      }`
+      }`,
     );
   }
 
@@ -63,7 +63,7 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.generalErrors.searchError")
+        this.intl.t("ember-gwr.generalErrors.searchError"),
       );
     }
   }
@@ -73,24 +73,24 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
     try {
       const entrance = await this.buildingEntrance.getFromCacheOrApi(
         this.model.entranceId,
-        this.model.buildingId
+        this.model.buildingId,
       );
       entrance.street = street;
       await this.buildingEntrance.setStreet(
         this.model.entranceId,
         this.model.buildingId,
-        entrance
+        entrance,
       );
       // Ensure building entrance list is updated
       this.building.clearCache(this.model.buildingId);
       this.router.transitionTo(this.backRoute);
       this.notification.success(
-        this.intl.t("ember-gwr.components.linkStreet.linkSuccess")
+        this.intl.t("ember-gwr.components.linkStreet.linkSuccess"),
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.components.linkStreet.linkError")
+        this.intl.t("ember-gwr.components.linkStreet.linkError"),
       );
     }
   }

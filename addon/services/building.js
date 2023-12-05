@@ -20,7 +20,7 @@ export default class BuildingService extends GwrService {
       `/buildings/${EGID}/unbindToConstructionProject/${EPROID}`,
       {
         method: "put",
-      }
+      },
     );
     if (!response.ok) {
       const xmlErrors = await response.text();
@@ -45,7 +45,7 @@ export default class BuildingService extends GwrService {
       {
         method: "put",
         body,
-      }
+      },
     );
     if (!response.ok) {
       const xmlErrors = await response.text();
@@ -76,7 +76,7 @@ export default class BuildingService extends GwrService {
         {
           errorKey: Building.FORBIDDEN_BUILDING_CLASS_ERROR,
           errorMessage: this.intl.t(
-            "ember-gwr.building.forbiddenBuildingClassError"
+            "ember-gwr.building.forbiddenBuildingClassError",
           ),
         },
       ]);
@@ -92,18 +92,18 @@ export default class BuildingService extends GwrService {
   async create(EPROID, buildingWork) {
     const work = await this.constructionProject.addWorkToProject(
       EPROID,
-      buildingWork
+      buildingWork,
     );
     const body = this.xml.buildXMLRequest(
       "addBuildingToConstructionProject",
-      work.building
+      work.building,
     );
     const response = await this.authFetch.fetch(
       `/constructionprojects/${EPROID}/work/${work.ARBID}`,
       {
         method: "post",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -113,7 +113,7 @@ export default class BuildingService extends GwrService {
           errorKey: Building.FORBIDDEN_BUILDING_CLASS_ERROR,
 
           errorMessage: this.intl.t(
-            "ember-gwr.building.forbiddenBuildingClassError"
+            "ember-gwr.building.forbiddenBuildingClassError",
           ),
         },
 
@@ -123,7 +123,7 @@ export default class BuildingService extends GwrService {
             "ember-gwr.building.buildingEntrance.localityError",
             {
               htmlSafe: true,
-            }
+            },
           ),
         },
       ]);
@@ -169,7 +169,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -177,7 +177,7 @@ export default class BuildingService extends GwrService {
           buildingEntrance.dwelling.map(async (dwelling) => {
             if (
               [Dwelling.STATUS_PROJECTED, Dwelling.STATUS_APPROVED].includes(
-                dwelling.dwellingStatus
+                dwelling.dwellingStatus,
               )
             ) {
               await this.dwelling.setToApprovedDwelling(
@@ -185,7 +185,7 @@ export default class BuildingService extends GwrService {
                 cascadeLevel - 1,
                 isDryRun,
                 dwelling,
-                buildingWork.building.EGID
+                buildingWork.building.EGID,
               );
             } else {
               // Display message with link to dwelling with issue
@@ -200,9 +200,9 @@ export default class BuildingService extends GwrService {
                 states,
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -230,7 +230,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -253,9 +253,9 @@ export default class BuildingService extends GwrService {
                 ],
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -285,7 +285,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -310,9 +310,9 @@ export default class BuildingService extends GwrService {
                 ],
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -340,7 +340,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -362,7 +362,7 @@ export default class BuildingService extends GwrService {
                 cascadeLevel - 1,
                 isDryRun,
                 dwelling,
-                buildingWork.building.EGID
+                buildingWork.building.EGID,
               );
             } else {
               // Display message with link to dwelling with issue
@@ -381,9 +381,9 @@ export default class BuildingService extends GwrService {
                 states,
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -411,7 +411,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -430,7 +430,7 @@ export default class BuildingService extends GwrService {
                 cascadeLevel - 1,
                 isDryRun,
                 dwelling,
-                buildingWork.building.EGID
+                buildingWork.building.EGID,
               );
             } else {
               // Display message with link to dwelling with issue
@@ -450,9 +450,9 @@ export default class BuildingService extends GwrService {
                 states,
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -480,7 +480,7 @@ export default class BuildingService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    buildingWork
+    buildingWork,
   ) {
     await Promise.all(
       buildingWork.building.buildingEntrance.map((buildingEntrance) =>
@@ -497,7 +497,7 @@ export default class BuildingService extends GwrService {
                 cascadeLevel - 1,
                 isDryRun,
                 dwelling,
-                buildingWork.building.EGID
+                buildingWork.building.EGID,
               );
             } else {
               // Display message with link to dwelling with issue
@@ -515,9 +515,9 @@ export default class BuildingService extends GwrService {
                 states,
               };
             }
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
 
     if (
@@ -549,7 +549,7 @@ export default class BuildingService extends GwrService {
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {

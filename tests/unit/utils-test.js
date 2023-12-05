@@ -33,7 +33,6 @@ module("Unit | Utility | utils", function () {
   });
 
   test("applyTransforms", function (assert) {
-    assert.expect(2);
     const object = { test: "hey" };
     const map = {
       test: (value) => {

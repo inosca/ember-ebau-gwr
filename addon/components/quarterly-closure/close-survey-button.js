@@ -22,7 +22,7 @@ export default class QuarterlyClosureStatus extends Component {
 
   get disabledButton() {
     return ![620, 630, 650, 651, 663, 665].includes(
-      this.quarterlyClosure.status.id
+      this.quarterlyClosure.status.id,
     );
   }
 
@@ -34,12 +34,12 @@ export default class QuarterlyClosureStatus extends Component {
       const notificationType =
         NOTIFICATION_TYPES[this.quarterlyClosure.status.type];
       this.notification[notificationType]?.(
-        this.quarterlyClosure.status.shortLabel
+        this.quarterlyClosure.status.shortLabel,
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.quarterlyClosure.closure.error")
+        this.intl.t("ember-gwr.quarterlyClosure.closure.error"),
       );
     }
   }
