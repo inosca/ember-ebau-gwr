@@ -6,9 +6,9 @@ Ember Engine for the [inosca/ebau-gwr](https://github.com/inosca/ebau-gwr) backe
 
 ```
 # start a local CORS proxy
-yarn proxy
+pnpm proxy
 # start dev server
-yarn start
+pnpm start
 ```
 
 ## Compatibility
