@@ -23,7 +23,9 @@ export default class SurveyDepartmentErrors extends Component {
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.quarterlyClosure.components.projectErrors.error")
+        this.intl.t(
+          "ember-gwr.quarterlyClosure.components.projectErrors.error",
+        ),
       );
     }
   });
@@ -32,12 +34,14 @@ export default class SurveyDepartmentErrors extends Component {
   *performQualityCheck(project) {
     try {
       return yield this.quarterlyClosure.checkConstructionProject(
-        project.EPROID
+        project.EPROID,
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.quarterlyClosure.components.projectErrors.error")
+        this.intl.t(
+          "ember-gwr.quarterlyClosure.components.projectErrors.error",
+        ),
       );
     }
   }

@@ -34,7 +34,7 @@ export default class BuildingFormController extends ImportController {
 
   get nextValidStates() {
     const states = this.buildingAPI.nextValidStates(
-      this.building.buildingStatus
+      this.building.buildingStatus,
     );
     return states;
   }
@@ -67,12 +67,12 @@ export default class BuildingFormController extends ImportController {
       }
 
       const project = yield this.constructionProject.getFromCacheOrApi(
-        this.model.projectId
+        this.model.projectId,
       );
 
       return project.work?.find(
         (buildingWork) =>
-          buildingWork.building.EGID === Number(this.model.buildingId)
+          buildingWork.building.EGID === Number(this.model.buildingId),
       );
     } catch (error) {
       console.error(error);
@@ -89,7 +89,7 @@ export default class BuildingFormController extends ImportController {
     }
 
     const building = yield this.buildingAPI.getFromCacheOrApi(
-      this.model.buildingId
+      this.model.buildingId,
     );
     return building;
   }
@@ -110,7 +110,7 @@ export default class BuildingFormController extends ImportController {
         if (this.buildingWork.isNew) {
           const building = yield this.buildingAPI.create(
             this.model.projectId,
-            this.buildingWork
+            this.buildingWork,
           );
           EGID = building.EGID;
         } else {
@@ -119,14 +119,14 @@ export default class BuildingFormController extends ImportController {
           if (this.buildingWork.kindOfWork === 6002) {
             yield this.constructionProject.modifyWork(
               this.model.projectId,
-              this.buildingWork
+              this.buildingWork,
             );
           }
         }
 
         // refresh work list
         const project = yield this.constructionProject.get(
-          this.model.projectId
+          this.model.projectId,
         );
 
         // remove default work
@@ -137,10 +137,10 @@ export default class BuildingFormController extends ImportController {
             work.building.isNew
               ? this.constructionProject.removeWorkFromProject(
                   this.model.projectId,
-                  work.ARBID
+                  work.ARBID,
                 )
-              : work
-          )
+              : work,
+          ),
         );
 
         // Clear cache so after transition we fetch the project form api
@@ -178,7 +178,7 @@ export default class BuildingFormController extends ImportController {
         transition,
         2,
         true,
-        this.buildingWork
+        this.buildingWork,
       );
 
       // execute transition(s)
@@ -189,7 +189,7 @@ export default class BuildingFormController extends ImportController {
         transition,
         isCascading ? 2 : 1,
         false,
-        this.buildingWork
+        this.buildingWork,
       );
 
       yield this.buildingAPI.clearCache(this.model.buildingId);

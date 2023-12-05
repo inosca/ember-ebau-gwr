@@ -15,7 +15,7 @@ export default function makeServer(config) {
             .filter(
               (link) =>
                 Number(link.attrs.localId) ===
-                Number(request.queryParams.local_id)
+                Number(request.queryParams.local_id),
             );
         }
         return schema.gwrLinks.all();
@@ -43,7 +43,7 @@ export default function makeServer(config) {
           }
         } else {
           ({ username, password, municipality } = JSON.parse(
-            request.requestBody
+            request.requestBody,
           ));
           localStorage.setItem("username", username);
           localStorage.setItem("password", password);
@@ -68,7 +68,7 @@ export default function makeServer(config) {
               password,
               wsk_id: Number(wsk_id),
             }),
-          }
+          },
         ).then((response) => response.json());
 
         tokenResponse = { token, municipality };
@@ -85,7 +85,7 @@ export default function makeServer(config) {
           localStorage.removeItem("wsk_id");
           tokenResponse = undefined;
         },
-        204
+        204,
       );
 
       this.passthrough("http://localhost:8010/**");

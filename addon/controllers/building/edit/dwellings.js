@@ -17,12 +17,12 @@ export default class BuildingEditDwellingsController extends Controller {
         entrance.dwelling.map((dwelling) => {
           dwelling.buildingEntrance = entrance;
           return dwelling;
-        })
+        }),
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.building.dwellings.error")
+        this.intl.t("ember-gwr.building.dwellings.error"),
       );
     }
   }
@@ -33,12 +33,12 @@ export default class BuildingEditDwellingsController extends Controller {
       await this.dwelling.deactivate(this.model, dwelling.EWID);
       await this.fetchDwellings.perform();
       this.notification.success(
-        this.intl.t("ember-gwr.building.dwellings.removeLinkSuccess")
+        this.intl.t("ember-gwr.building.dwellings.removeLinkSuccess"),
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.building.dwellings.removeLinkError")
+        this.intl.t("ember-gwr.building.dwellings.removeLinkError"),
       );
     }
   }

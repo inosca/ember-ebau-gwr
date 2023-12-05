@@ -10,7 +10,7 @@ import { modifier } from "ember-modifier";
 export default modifier(function inverseBackground(
   element,
   _,
-  { inverse, compareTo }
+  { inverse, compareTo },
 ) {
   const style = window.getComputedStyle(element);
   const parentElement = element.closest(compareTo);

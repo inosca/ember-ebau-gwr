@@ -17,7 +17,7 @@ export default class ProjectErrorsController extends Controller {
   @restartableTask
   *fetchProject() {
     const project = yield this.constructionProject.getFromCacheOrApi(
-      this.model.projectId
+      this.model.projectId,
     );
 
     this.projectErrorCount = project.errorList?.length ?? 0;
@@ -34,20 +34,19 @@ export default class ProjectErrorsController extends Controller {
   @enqueueTask
   *fetchModel(buildingId) {
     // building response only contains entrances
-    const buildingWithErrors = yield this.building.getFromCacheOrApi(
-      buildingId
-    );
+    const buildingWithErrors =
+      yield this.building.getFromCacheOrApi(buildingId);
     const buildingErrorCount = buildingWithErrors.errorList?.length ?? 0;
 
     // response contains both entrances and dwellings
     const projectBuilding = this.project.work.find(
-      (buildingWork) => buildingWork.building.EGID === buildingId
+      (buildingWork) => buildingWork.building.EGID === buildingId,
     ).building;
 
     const entrancesWithErrors = yield Promise.all(
       projectBuilding.buildingEntrance.map((entrance) =>
-        this.buildingEntrance.getFromCacheOrApi(entrance.EDID, buildingId)
-      )
+        this.buildingEntrance.getFromCacheOrApi(entrance.EDID, buildingId),
+      ),
     );
 
     const entranceErrorCount = entrancesWithErrors
@@ -58,10 +57,10 @@ export default class ProjectErrorsController extends Controller {
       projectBuilding.buildingEntrance.map((entrance) => {
         return Promise.all(
           entrance.dwelling.map((dwelling) =>
-            this.dwelling.getFromCacheOrApi(dwelling.EWID, buildingId)
-          )
+            this.dwelling.getFromCacheOrApi(dwelling.EWID, buildingId),
+          ),
         );
-      })
+      }),
     )).flat();
 
     const dwellingErrorCount = dwellingsWithErrors

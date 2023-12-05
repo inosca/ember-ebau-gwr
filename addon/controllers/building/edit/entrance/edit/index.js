@@ -29,7 +29,7 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
       }
       const buildingEntrance = yield this.buildingEntranceAPI.getFromCacheOrApi(
         this.model.entranceId,
-        this.model.buildingId
+        this.model.buildingId,
       );
 
       buildingEntrance.EGID = this.model.buildingId;
@@ -37,7 +37,7 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.buildingEntrance.loadingError")
+        this.intl.t("ember-gwr.buildingEntrance.loadingError"),
       );
     }
   }
@@ -54,28 +54,28 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
       if (this.buildingEntrance.isNew) {
         const buildingEntrance = yield this.buildingEntranceAPI.create(
           this.buildingEntrance,
-          this.model.buildingId
+          this.model.buildingId,
         );
         this.router.transitionTo(
           "building.edit.entrance.edit",
-          buildingEntrance.EDID
+          buildingEntrance.EDID,
         );
       } else {
         yield this.buildingEntranceAPI.update(
           this.buildingEntrance,
-          this.model.buildingId
+          this.model.buildingId,
         );
       }
       // Ensure building entrance list is refreshed
       this.building.clearCache(this.model.buildingId);
       this.errors = [];
       this.notification.success(
-        this.intl.t("ember-gwr.buildingEntrance.saveSuccess")
+        this.intl.t("ember-gwr.buildingEntrance.saveSuccess"),
       );
     } catch (error) {
       this.errors = error;
       this.notification.danger(
-        this.intl.t("ember-gwr.buildingEntrance.saveError")
+        this.intl.t("ember-gwr.buildingEntrance.saveError"),
       );
     }
   }

@@ -20,8 +20,8 @@ export default class SurveyDepartmentErrors extends Component {
       console.error(error);
       this.notification.danger(
         this.intl.t(
-          "ember-gwr.quarterlyClosure.components.departmentErrors.error"
-        )
+          "ember-gwr.quarterlyClosure.components.departmentErrors.error",
+        ),
       );
     }
   });

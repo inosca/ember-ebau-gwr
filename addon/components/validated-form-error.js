@@ -7,7 +7,7 @@ export default class ValidatedFormErrorComponent extends Component {
   get errorString() {
     return this.args.errors
       ?.map((error) =>
-        this.intl.t(`ember-gwr.validation-errors.${error.type}`, error.context)
+        this.intl.t(`ember-gwr.validation-errors.${error.type}`, error.context),
       )
       .join(", ");
   }

@@ -36,7 +36,7 @@ export default class ProjectFormController extends ImportController {
 
   get nextValidStates() {
     const states = this.constructionProject.nextValidStates(
-      this.project.projectStatus
+      this.project.projectStatus,
     );
     return states;
   }
@@ -53,7 +53,7 @@ export default class ProjectFormController extends ImportController {
     switch (this.typeOfConstructionProject) {
       case this.ConstructionProject.INFRASTRUCTURE: {
         return this.intl.t(
-          "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure"
+          "ember-gwr.linkedBuildings.buildingDisabledForInfrastructure",
         );
       }
       case this.ConstructionProject.SUPERSTRUCTURE: {
@@ -110,18 +110,18 @@ export default class ProjectFormController extends ImportController {
           added.map((work) =>
             this.constructionProject.addWorkToProject(
               this.model.projectId,
-              work
-            )
-          )
+              work,
+            ),
+          ),
         );
 
         yield Promise.all(
           this.removedWork.map((work) =>
             this.constructionProject.removeWorkFromProject(
               this.model.projectId,
-              work.ARBID
-            )
-          )
+              work.ARBID,
+            ),
+          ),
         );
         this.removedWork = [];
         yield this.constructionProject.update(this.project);
@@ -130,7 +130,7 @@ export default class ProjectFormController extends ImportController {
       this.resetImportQueryParams();
       this.errors = [];
       this.notification.success(
-        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+        this.intl.t("ember-gwr.constructionProject.saveSuccess"),
       );
       // refresh work list
       this.constructionProject.clearCache(this.model.projectId);
@@ -138,7 +138,7 @@ export default class ProjectFormController extends ImportController {
     } catch (error) {
       this.errors = error;
       this.notification.danger(
-        this.intl.t("ember-gwr.constructionProject.saveError")
+        this.intl.t("ember-gwr.constructionProject.saveError"),
       );
     }
   }
@@ -158,7 +158,7 @@ export default class ProjectFormController extends ImportController {
         transition,
         3,
         true,
-        this.project
+        this.project,
       );
 
       // execute transition(s)
@@ -169,17 +169,17 @@ export default class ProjectFormController extends ImportController {
         transition,
         isCascading ? 3 : 1,
         false,
-        this.project
+        this.project,
       );
       yield this.constructionProject.clearCache(this.model.projectId);
       this.fetchProject.perform(); // reload for errors;
       this.notification.success(
-        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+        this.intl.t("ember-gwr.constructionProject.saveSuccess"),
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.constructionProject.saveError")
+        this.intl.t("ember-gwr.constructionProject.saveError"),
       );
 
       throw error.isLifeCycleError
@@ -192,7 +192,7 @@ export default class ProjectFormController extends ImportController {
   getChangeParameters(currentStatus, newStatus) {
     return this.constructionProject.getChangeParameters(
       currentStatus,
-      newStatus
+      newStatus,
     );
   }
 
@@ -204,12 +204,12 @@ export default class ProjectFormController extends ImportController {
       yield this.constructionProject.clearCache(this.model.projectId);
       this.fetchProject.perform(); // reload for errors;
       this.notification.success(
-        this.intl.t("ember-gwr.constructionProject.saveSuccess")
+        this.intl.t("ember-gwr.constructionProject.saveSuccess"),
       );
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.constructionProject.saveError")
+        this.intl.t("ember-gwr.constructionProject.saveError"),
       );
       throw error;
     }
@@ -231,7 +231,7 @@ export default class ProjectFormController extends ImportController {
     }
 
     this.project.work = this.project.work.filter(
-      (work) => work !== buildingWork
+      (work) => work !== buildingWork,
     );
   }
 

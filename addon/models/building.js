@@ -95,7 +95,7 @@ export default class Building extends XMLModel {
 
   get fullAddressTexts() {
     return this.buildingEntrance?.map(
-      (buildingEntrance) => buildingEntrance.fullAddressText
+      (buildingEntrance) => buildingEntrance.fullAddressText,
     );
   }
 

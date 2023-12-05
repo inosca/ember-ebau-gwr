@@ -28,7 +28,7 @@ export default class SearchProjectController extends Controller {
     return projectStatusOptions.map((option) => ({
       value: option,
       label: this.intl.t(
-        `ember-gwr.searchProject.projectStatusOptions.${option}`
+        `ember-gwr.searchProject.projectStatusOptions.${option}`,
       ),
     }));
   }
@@ -45,7 +45,7 @@ export default class SearchProjectController extends Controller {
     if (!links.length) return [];
 
     const instanceLinks = yield this.config.fetchInstanceLinks(
-      links.map(({ localId }) => localId)
+      links.map(({ localId }) => localId),
     );
 
     return links.map(({ eproid, localId }) => ({
@@ -69,7 +69,7 @@ export default class SearchProjectController extends Controller {
         // Simply cleanup and redirect to project.
         await link.deleteRecord();
         this.notification.warning(
-          this.intl.t("ember-gwr.searchProject.alreadyLinkedInfo")
+          this.intl.t("ember-gwr.searchProject.alreadyLinkedInfo"),
         );
       }
     }

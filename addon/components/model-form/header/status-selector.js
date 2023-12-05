@@ -25,16 +25,16 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     this.changesetChange = new Changeset(
       this.args.model,
       lookupValidator(statusValidationsChange),
-      statusValidationsChange
+      statusValidationsChange,
     );
     const statusValidationsCorrection = statusValidation(
       this.args.modelName,
-      false
+      false,
     );
     this.changesetCorrection = new Changeset(
       this.args.model,
       lookupValidator(statusValidationsCorrection),
-      statusValidationsCorrection
+      statusValidationsCorrection,
     );
 
     this.modelStatus = this.args.model[this.args.modelStatusField];
@@ -54,7 +54,7 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     return this.args.modelStatusOptions.map((option) => ({
       status: option,
       label: this.intl.t(
-        `ember-gwr.lifeCycles.${this.args.modelName}.statusOptions.${option}`
+        `ember-gwr.lifeCycles.${this.args.modelName}.statusOptions.${option}`,
       ),
     }));
   }
@@ -89,8 +89,8 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     const errorsField = !parameters.length
       ? "errors"
       : isChange
-      ? "changeErrors"
-      : "correctionErrors";
+        ? "changeErrors"
+        : "correctionErrors";
 
     const changeset = isChange
       ? this.changesetChange
@@ -120,7 +120,7 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
         ? this.args.onStatusChange.perform(
             this.modelStatus,
             this.newStatus,
-            this.isCascading
+            this.isCascading,
           )
         : this.args.onStatusCorrection.perform(this.newStatus);
 

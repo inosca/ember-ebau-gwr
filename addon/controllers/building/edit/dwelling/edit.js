@@ -24,7 +24,7 @@ export default class BuildingEditDwellingEditController extends ImportController
 
   get nextValidStates() {
     const states = this.dwellingAPI.nextValidStates(
-      this.dwelling.dwellingStatus
+      this.dwelling.dwellingStatus,
     );
     return states;
   }
@@ -47,7 +47,7 @@ export default class BuildingEditDwellingEditController extends ImportController
 
       const { EDID, dwelling } = yield this.dwellingAPI.getFromCacheOrApi(
         this.model.dwellingId,
-        this.model.buildingId
+        this.model.buildingId,
       );
       dwelling.oldEDID = EDID;
 
@@ -73,13 +73,13 @@ export default class BuildingEditDwellingEditController extends ImportController
   *fetchEntrances() {
     try {
       const building = yield this.building.getFromCacheOrApi(
-        this.model.buildingId
+        this.model.buildingId,
       );
       return building.buildingEntrance;
     } catch (error) {
       console.error(error);
       this.notification.danger(
-        this.intl.t("ember-gwr.building.entrances.error")
+        this.intl.t("ember-gwr.building.entrances.error"),
       );
     }
   }
@@ -97,7 +97,7 @@ export default class BuildingEditDwellingEditController extends ImportController
       if (this.dwelling.isNew) {
         const dwelling = yield this.dwellingAPI.create(
           this.dwelling,
-          this.model.buildingId
+          this.model.buildingId,
         );
         this.router.transitionTo("building.edit.dwelling.edit", dwelling.EWID);
       } else {
@@ -105,7 +105,7 @@ export default class BuildingEditDwellingEditController extends ImportController
         if (this.dwelling.oldEDID !== this.dwelling.EDID) {
           yield this.dwellingAPI.reallocate(
             this.model.buildingId,
-            this.dwelling
+            this.dwelling,
           );
         }
       }
@@ -134,7 +134,7 @@ export default class BuildingEditDwellingEditController extends ImportController
         1,
         true,
         this.dwelling,
-        this.model.buildingId
+        this.model.buildingId,
       );
 
       // execute transition(s)
@@ -145,10 +145,10 @@ export default class BuildingEditDwellingEditController extends ImportController
         1,
         false,
         this.dwelling,
-        this.model.buildingId
+        this.model.buildingId,
       );
       yield this.dwellingAPI.clearCache(
-        this.dwellingAPI.cacheKey(this.dwelling)
+        this.dwellingAPI.cacheKey(this.dwelling),
       );
       this.fetchDwelling.perform(); // reload for errors;
       this.notification.success(this.intl.t("ember-gwr.dwelling.saveSuccess"));
@@ -172,7 +172,7 @@ export default class BuildingEditDwellingEditController extends ImportController
     try {
       yield this.dwellingAPI.update(this.dwelling, this.model.buildingId);
       yield this.dwellingAPI.clearCache(
-        this.dwellingAPI.cacheKey(this.dwelling)
+        this.dwellingAPI.cacheKey(this.dwelling),
       );
       this.fetchDwelling.perform(); // reload for errors;
 

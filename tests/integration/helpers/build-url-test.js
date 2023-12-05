@@ -7,8 +7,6 @@ module("Integration | Helper | build-url", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
-    assert.expect(3);
-
     this.owner.mountPoint = "my-engine";
     this.owner.lookup("service:router").urlFor = (routeName, model) => {
       assert.strictEqual(routeName, "some.route");

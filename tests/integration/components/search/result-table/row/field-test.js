@@ -27,5 +27,5 @@ module(
 
       assert.ok(false);
     });
-  }
+  },
 );

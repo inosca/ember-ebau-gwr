@@ -18,7 +18,7 @@ export default class BuildingEntranceService extends GwrService {
       return null;
     }
     const response = await this.authFetch.fetch(
-      `/buildings/${EGID}/entrance/${EDID}`
+      `/buildings/${EGID}/entrance/${EDID}`,
     );
     const xml = await response.text();
     return this.createAndCache(xml);
@@ -29,14 +29,14 @@ export default class BuildingEntranceService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "modifyBuildingEntrance",
       buildingEntrance,
-      "Update building entrance"
+      "Update building entrance",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/${buildingEntrance.EDID}`,
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -54,14 +54,14 @@ export default class BuildingEntranceService extends GwrService {
   async create(buildingEntrance, EGID) {
     const body = this.xml.buildXMLRequest(
       "addBuildingEntrance",
-      buildingEntrance
+      buildingEntrance,
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/`,
       {
         method: "post",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -75,7 +75,7 @@ export default class BuildingEntranceService extends GwrService {
             "ember-gwr.buildingEntrance.localityError",
             {
               htmlSafe: true,
-            }
+            },
           ),
         },
       ]);
@@ -96,14 +96,14 @@ export default class BuildingEntranceService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "deactivateBuildingEntrance",
       { EDID, EGID },
-      "Deactivate building entrance"
+      "Deactivate building entrance",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/${EDID}`,
       {
         method: "delete",
         body,
-      }
+      },
     );
     if (!response.ok) {
       const xmlErrors = await response.text();
@@ -121,14 +121,14 @@ export default class BuildingEntranceService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "modifyBuildingEntrance",
       buildingEntrance,
-      "Set street"
+      "Set street",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/${EDID}`,
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {

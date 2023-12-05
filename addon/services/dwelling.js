@@ -18,7 +18,7 @@ export default class DwellingService extends GwrService {
       return null;
     }
     const response = await this.authFetch.fetch(
-      `/buildings/${EGID}/dwellings/${EWID}`
+      `/buildings/${EGID}/dwellings/${EWID}`,
     );
     const xml = await response.text();
     const dwellingComplete = new DwellingComplete(xml);
@@ -33,14 +33,14 @@ export default class DwellingService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "modifyDwelling",
       dwelling,
-      "Update dwelling"
+      "Update dwelling",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/dwellings/${dwelling.EWID}`,
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -59,14 +59,14 @@ export default class DwellingService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "reallocateDwelling",
       { newEDID: dwelling.EDID, oldEDID: dwelling.oldEDID },
-      "Reallocate dwelling"
+      "Reallocate dwelling",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/dwellings/${dwelling.EWID}/reallocate`,
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -82,14 +82,14 @@ export default class DwellingService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "addDwelling",
       dwelling,
-      "Add dwelling"
+      "Add dwelling",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/entrance/${dwelling.EDID}/dwellings/work`,
       {
         method: "post",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -112,14 +112,14 @@ export default class DwellingService extends GwrService {
     const body = this.xml.buildXMLRequest(
       "deactivateDwelling",
       null,
-      "Remove Dwelling"
+      "Remove Dwelling",
     );
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/dwellings/${EWID}`,
       {
         method: "delete",
         body,
-      }
+      },
     );
     if (!response.ok) {
       const xmlErrors = await response.text();
@@ -144,7 +144,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     if (
       !isDryRun &&
@@ -171,7 +171,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
@@ -214,7 +214,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     if (
       !isDryRun &&
@@ -241,7 +241,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
@@ -284,7 +284,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
@@ -331,7 +331,7 @@ export default class DwellingService extends GwrService {
     cascadeLevel,
     isDryRun,
     dwelling,
-    EGID
+    EGID,
   ) {
     const building = await this.building.getFromCacheOrApi(EGID);
     if (
@@ -377,7 +377,7 @@ export default class DwellingService extends GwrService {
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {

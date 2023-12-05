@@ -27,7 +27,7 @@ export default class QuarterlyClosureService extends Service {
         type: REQUEST_PENDING,
         label: this.intl.t(`ember-gwr.quarterlyClosure.status.processing`),
         shortLabel: this.intl.t(
-          `ember-gwr.quarterlyClosure.status.short.processing`
+          `ember-gwr.quarterlyClosure.status.short.processing`,
         ),
       };
     }
@@ -62,17 +62,17 @@ export default class QuarterlyClosureService extends Service {
           this.pollProgressStatus,
           this.status.type === REQUEST_PENDING
             ? 5000 //5sec
-            : 1800000 // 30min
+            : 1800000, // 30min
         );
       } catch (error) {
         console.error(error);
         this.notification.danger(
-          this.intl.t("ember-gwr.quarterlyClosure.status.pollError")
+          this.intl.t("ember-gwr.quarterlyClosure.status.pollError"),
         );
         later(
           this,
           this.pollProgressStatus,
-          60000 // 1min
+          60000, // 1min
         );
       }
     } else {
@@ -88,10 +88,10 @@ export default class QuarterlyClosureService extends Service {
 
     const response = await this.authFetch.fetch(
       `/constructionsurveydepts/${this.constructionSurveyDeptNumber}/getProgressStatusQuarterlyClosure`,
-      { method: "get" }
+      { method: "get" },
     );
     const quarterlyClosureStatus = new QuarterlyClosureStatus(
-      await response.text()
+      await response.text(),
     );
 
     if (quarterlyClosureStatus.error?.length) {
@@ -114,7 +114,7 @@ export default class QuarterlyClosureService extends Service {
 
     await this.authFetch.fetch(
       `/constructionsurveydepts/${this.constructionSurveyDeptNumber}/closeQuarterlySurvey`,
-      { method: "put" }
+      { method: "put" },
     );
 
     await this.pollProgressStatus();
@@ -127,7 +127,7 @@ export default class QuarterlyClosureService extends Service {
 
     const response = await this.authFetch.fetch(
       `/constructionsurveydepts/${this.constructionSurveyDeptNumber}/check`,
-      { method: "put" }
+      { method: "put" },
     );
     return new CheckSurveyDepartmentResponse(await response.text());
   }
@@ -135,7 +135,7 @@ export default class QuarterlyClosureService extends Service {
   async checkConstructionProject(id) {
     const response = await this.authFetch.fetch(
       `/constructionprojects/${id}/check`,
-      { method: "put" }
+      { method: "put" },
     );
     return new CheckConstructionProjectResponse(await response.text());
   }

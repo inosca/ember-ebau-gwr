@@ -63,7 +63,7 @@ export default class ModelFormComponent extends Component {
 
   finishImport() {
     this.notification.success(
-      this.intl.t("ember-gwr.components.modelForm.diff.resolved")
+      this.intl.t("ember-gwr.components.modelForm.diff.resolved"),
     );
     this.router.externalRouter.transitionTo({
       queryParams: { import: false, index: undefined },
@@ -112,8 +112,8 @@ export default class ModelFormComponent extends Component {
           typeof value === "object"
             ? deepMerge(original[key], objectToApply[key])
             : isIsoDate(value) // Date casts necessary for import
-            ? (original[key] = new Date(value))
-            : (original[key] = value);
+              ? (original[key] = new Date(value))
+              : (original[key] = value);
         }
       });
     };

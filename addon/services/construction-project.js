@@ -22,7 +22,7 @@ export default class ConstructionProjectService extends GwrService {
       return null;
     }
     const response = await this.authFetch.fetch(
-      `/constructionprojects/${EPROID}`
+      `/constructionprojects/${EPROID}`,
     );
     const xml = await response.text();
     const project = this.createAndCache(xml);
@@ -46,7 +46,7 @@ export default class ConstructionProjectService extends GwrService {
         method: "put",
 
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -88,7 +88,7 @@ export default class ConstructionProjectService extends GwrService {
       {
         method: "post",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -104,7 +104,7 @@ export default class ConstructionProjectService extends GwrService {
     const ARBID = model.getFieldFromXML(
       "ARBID",
       Number,
-      "addWorkToProjectResponse"
+      "addWorkToProjectResponse",
     );
 
     buildingWork.ARBID = ARBID;
@@ -119,7 +119,7 @@ export default class ConstructionProjectService extends GwrService {
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -139,7 +139,7 @@ export default class ConstructionProjectService extends GwrService {
       `/constructionprojects/${projectId}/work/${workId}`,
       {
         method: "delete",
-      }
+      },
     );
 
     if (!response.ok) {
@@ -165,7 +165,7 @@ export default class ConstructionProjectService extends GwrService {
     // should be okay. Would be a future pain point if this requirement
     // would change.
     const projects = yield Promise.all(
-      links.map(({ eproid }) => this.getFromCacheOrApi(eproid))
+      links.map(({ eproid }) => this.getFromCacheOrApi(eproid)),
     );
 
     // Remove no longer available projects
@@ -178,7 +178,7 @@ export default class ConstructionProjectService extends GwrService {
       .find(({ eproid }) => Number(eproid) === projectId);
     await link.destroyRecord();
     this.all.lastSuccessful.value = this.all.lastSuccessful.value.filter(
-      (project) => project.EPROID !== projectId
+      (project) => project.EPROID !== projectId,
     );
   }
 
@@ -202,7 +202,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
@@ -214,14 +214,14 @@ export default class ConstructionProjectService extends GwrService {
         if (buildingWork.kindOfWork === 6001) {
           if (
             [Building.STATUS_PROJECTED, Building.STATUS_APPROVED].includes(
-              buildingWork.building.buildingStatus
+              buildingWork.building.buildingStatus,
             )
           ) {
             await this.building.setToApprovedBuilding(
               "setToApprovedBuilding",
               cascadeLevel - 1,
               isDryRun,
-              buildingWork
+              buildingWork,
             );
           } else {
             // Display message with link to building with issue
@@ -252,15 +252,15 @@ export default class ConstructionProjectService extends GwrService {
                       cascadeLevel - 1,
                       isDryRun,
                       dwelling,
-                      buildingWork.building.EGID
+                      buildingWork.building.EGID,
                     );
                   }
-                })
-              )
-            )
+                }),
+              ),
+            ),
           );
         }
-      })
+      }),
     );
 
     if (
@@ -279,7 +279,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
@@ -300,7 +300,7 @@ export default class ConstructionProjectService extends GwrService {
               "setToNotRealizedBuilding",
               cascadeLevel - 1,
               isDryRun,
-              buildingWork
+              buildingWork,
             );
           } else {
             // Display message with link to building with issue
@@ -335,15 +335,15 @@ export default class ConstructionProjectService extends GwrService {
                       cascadeLevel - 1,
                       isDryRun,
                       dwelling,
-                      buildingWork.building.EGID
+                      buildingWork.building.EGID,
                     );
                   }
-                })
-              )
-            )
+                }),
+              ),
+            ),
           );
         }
-      })
+      }),
     );
 
     if (
@@ -362,7 +362,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     if (
       !isDryRun &&
@@ -380,7 +380,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     /** TODO: throws error for any kind of project (Tiefbau / Hochbau)
      *<ns2:errorList>
@@ -442,11 +442,11 @@ export default class ConstructionProjectService extends GwrService {
                     };
                   }
                 }
-              })
-            )
-          )
+              }),
+            ),
+          ),
         );
-      })
+      }),
     );
 
     if (
@@ -465,7 +465,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
@@ -486,7 +486,7 @@ export default class ConstructionProjectService extends GwrService {
               "setToNotRealizedBuilding",
               cascadeLevel - 1,
               isDryRun,
-              buildingWork
+              buildingWork,
             );
           } else {
             // Display message with link to building with issue
@@ -521,7 +521,7 @@ export default class ConstructionProjectService extends GwrService {
                       cascadeLevel - 1,
                       isDryRun,
                       dwelling,
-                      buildingWork.building.EGID
+                      buildingWork.building.EGID,
                     );
                   } else {
                     // Display message with link to dwelling with issue
@@ -540,12 +540,12 @@ export default class ConstructionProjectService extends GwrService {
                       states,
                     };
                   }
-                })
-              )
-            )
+                }),
+              ),
+            ),
           );
         }
-      })
+      }),
     );
 
     if (
@@ -564,7 +564,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     await Promise.all(
       project.work.map(async (buildingWork) => {
@@ -589,7 +589,7 @@ export default class ConstructionProjectService extends GwrService {
                 "setToNotUsableBuilding",
                 cascadeLevel - 1,
                 isDryRun,
-                buildingWork
+                buildingWork,
               );
             } else {
               // Display message with link to building with issue
@@ -618,7 +618,7 @@ export default class ConstructionProjectService extends GwrService {
                 "setToNotRealizedBuilding",
                 cascadeLevel - 1,
                 isDryRun,
-                buildingWork
+                buildingWork,
               );
             } else {
               // Display message with link to building with issue
@@ -654,7 +654,7 @@ export default class ConstructionProjectService extends GwrService {
                       cascadeLevel - 1,
                       isDryRun,
                       dwelling,
-                      buildingWork.building.EGID
+                      buildingWork.building.EGID,
                     );
                   } else {
                     // Display message with link to dwelling with issue
@@ -673,12 +673,12 @@ export default class ConstructionProjectService extends GwrService {
                       states,
                     };
                   }
-                })
-              )
-            )
+                }),
+              ),
+            ),
           );
         }
-      })
+      }),
     );
 
     if (
@@ -697,7 +697,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     if (
       !isDryRun &&
@@ -715,7 +715,7 @@ export default class ConstructionProjectService extends GwrService {
     transition,
     cascadeLevel,
     isDryRun,
-    project
+    project,
   ) {
     if (
       !isDryRun &&
@@ -737,7 +737,7 @@ export default class ConstructionProjectService extends GwrService {
       {
         method: "put",
         body,
-      }
+      },
     );
 
     if (!response.ok) {
@@ -746,7 +746,7 @@ export default class ConstructionProjectService extends GwrService {
         {
           errorKey: this.ConstructionProject.MISSING_BUILDING_ERROR,
           errorMessage: this.intl.t(
-            "ember-gwr.constructionProject.missingBuildingError"
+            "ember-gwr.constructionProject.missingBuildingError",
           ),
         },
       ]);
@@ -777,7 +777,7 @@ export default class ConstructionProjectService extends GwrService {
   correctStatus(project, newStatus) {
     const necessaryParameters =
       ConstructionProject.projectTransitionParametersMapping[newStatus].map(
-        (param) => param.field
+        (param) => param.field,
       );
     ConstructionProject.statusParameters.forEach((parameter) => {
       if (project[parameter] && !necessaryParameters.includes(parameter)) {

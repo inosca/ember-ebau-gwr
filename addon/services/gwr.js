@@ -62,7 +62,7 @@ export default class GwrService extends Service {
   async search(
     query,
     id,
-    { xmlMethod, urlPath, listModel, listKey, searchKey }
+    { xmlMethod, urlPath, listModel, listKey, searchKey },
   ) {
     let response;
     if (id) {
@@ -102,7 +102,7 @@ export default class GwrService extends Service {
         headers: {
           query: queryXML,
         },
-      }
+      },
     );
     // The api returns a 404 if no results are found for the query
     if (!response.ok && response.status === 404) {
@@ -128,10 +128,10 @@ export default class GwrService extends Service {
         (error) =>
           errorsToMatch.find(({ errorKey }) => error === errorKey)
             ?.errorMessage ??
-          this.intl.t("ember-gwr.generalErrors.genericFormError")
+          this.intl.t("ember-gwr.generalErrors.genericFormError"),
       ) ?? [];
     return customErrors.concat(
-      model.errorList?.map((error) => error.messageOfError) ?? []
+      model.errorList?.map((error) => error.messageOfError) ?? [],
     );
   }
 
@@ -143,7 +143,7 @@ export default class GwrService extends Service {
     return `${states
       .map((state) => this.intl.t(`ember-gwr.lifeCycles.states.${state}`))
       .join(", ")} ${this.intl.t("ember-gwr.general.or")} ${this.intl.t(
-      `ember-gwr.lifeCycles.states.${tail}`
+      `ember-gwr.lifeCycles.states.${tail}`,
     )}`;
   }
 
@@ -165,7 +165,7 @@ export default class GwrService extends Service {
         {
           dwellingId,
           buildingId,
-        }
+        },
       ),
       linkToTextAfter: this.intl.t(`ember-gwr.lifeCycles.statusError`, {
         states: this.concatStates(states),

@@ -25,7 +25,7 @@ export default class XmlService extends Service {
 
     return this._compiledTemplates[type](
       { model, reason },
-      { allowProtoPropertiesByDefault: true }
+      { allowProtoPropertiesByDefault: true },
     );
   }
 
