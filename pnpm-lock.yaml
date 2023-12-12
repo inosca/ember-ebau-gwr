@@ -60,8 +60,8 @@ dependencies:
     specifier: ^4.0.0
     version: 4.0.0(@babel/core@7.23.5)(@glint/template@1.2.1)(ember-source@5.4.0)
   ember-intl:
-    specifier: ^6.3.2
-    version: 6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
+    specifier: ^6.4.0
+    version: 6.4.0(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
   ember-power-select:
     specifier: ^7.2.0
     version: 7.2.0(@babel/core@7.23.5)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0)
@@ -6989,8 +6989,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /ember-intl@6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0):
-    resolution: {integrity: sha512-UJ91JjlY3z6fjajoHhhJtKUbgqEr/l6Ie4Viqn0B3Lrbavxg5IgAIvyZZ9fOVtq05MDtCuc610zV6vLOc71G0w==}
+  /ember-intl@6.4.0(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0):
+    resolution: {integrity: sha512-BXxscjgoqzXQ6tUSV8aJsQcUAIcfqLJnNjegarFWdBBHLEOffQ8xARhvQC0hW40zGi/RHFEyTTx7vbiCPGtP1A==}
     engines: {node: 16.* || >= 18}
     peerDependencies:
       typescript: ^4.8.0 || ^5.0.0
