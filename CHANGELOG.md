@@ -1,3 +1,10 @@
+## [7.4.4](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.3...v7.4.4) (2023-12-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([7fe9406](https://github.com/inosca/ember-ebau-gwr/commit/7fe94068e746f065bd6ab4b4d72e416276636795))
+
 ## [7.4.3](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.2...v7.4.3) (2023-09-21)
 
 
