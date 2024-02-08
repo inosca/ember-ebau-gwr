@@ -1,3 +1,10 @@
+## [7.4.6](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.5...v7.4.6) (2024-02-08)
+
+
+### Bug Fixes
+
+* add SO municipalities ([9605a79](https://github.com/inosca/ember-ebau-gwr/commit/9605a79cb251f9b2dde358262fd3d903f479d37f))
+
 ## [7.4.5](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.4...v7.4.5) (2024-01-30)
 
 
