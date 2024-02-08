@@ -7,10 +7,12 @@ export default class ApplicationController extends Controller {
   constructor(...args) {
     super(...args);
     let canton = localStorage.getItem("canton");
-    if (!canton) {
+    if (!canton || canton === "null") {
       //eslint-disable-next-line no-alert
       canton = prompt("canton (BE|SZ)");
-      localStorage.setItem("canton", canton);
+      if (canton) {
+        localStorage.setItem("canton", canton);
+      }
     }
     this.canton = canton;
   }
