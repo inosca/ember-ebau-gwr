@@ -19,7 +19,7 @@
       @showImport={{this.showImport}}
       @importIndex={{this.importIndex}}
       @disabled={{this.hasNoStreet}}
-      as |Field|
+      as |Field changeset|
     >
       {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" @type="number" @disabled={{true}} />
@@ -36,13 +36,26 @@
         @disabled={{not this.buildingEntrance.isNew}}
         @required={{true}}
       />
-      {{#unless this.buildingEntrance.isNew}}
+      {{#if this.buildingEntrance.isNew}}
+        <SearchStreet
+          @locality={{changeset-get changeset "locality"}}
+          @street={{changeset-get changeset "street"}}
+          @disabled={{not
+            (and
+              (changeset-get changeset "locality.swissZipCode")
+              (changeset-get changeset "locality.name.nameLong")
+            )
+          }}
+          @required={{true}}
+          @onChange={{fn (mut this.buildingEntrance.street)}}
+        />
+      {{else}}
         <Field
           @attr="locality.swissZipCodeAddOn"
           @type="number"
           @disabled={{not this.buildingEntrance.isNew}}
         />
-      {{/unless}}
+      {{/if}}
       {{! API rejects any modification of the buildingEntranceNo or isOfficial
         fields on building entrances that are not linked to a street. }}
       <div
