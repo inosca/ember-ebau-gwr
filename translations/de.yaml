@@ -329,7 +329,7 @@ ember-gwr:
       change: Strasse ändern
       link: Strasse verknüpfen
       heading: Strasse verknüpfen
-      search: Strasse suchen
+      search: Strasse suchen...
       linkSuccess: Strasse erfolgreich verknüpft.
       linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
       streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
@@ -344,3 +344,8 @@ ember-gwr:
 
     modelErrors:
       empty: Keine offenen Pendenzen
+
+    streetSearch:
+      requiredInputs: Bitte geben Sie zuerst Ortsname und PLZ an.
+
+

@@ -160,6 +160,18 @@
           @label="ember-gwr.buildingEntrance.fields.locality.swissZipCode"
           @required={{true}}
         />
+        <SearchStreet
+          @locality={{changeset-get changeset "building.buildingEntrance.locality"}}
+          @street={{changeset-get changeset "building.buildingEntrance.street"}}
+          @disabled={{not
+            (and
+              (changeset-get changeset "building.buildingEntrance.locality.swissZipCode")
+              (changeset-get changeset "building.buildingEntrance.locality.name.nameLong")
+            )
+          }}
+          @required={{true}}
+          @onChange={{fn (changeset-set changeset "building.buildingEntrance.street")}}
+        />
         <Field
           @attr="building.buildingEntrance.buildingEntranceNo"
           @label="ember-gwr.buildingEntrance.fields.buildingEntranceNo"
