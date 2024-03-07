@@ -8,6 +8,10 @@ $ember-power-select-trigger-icon-color: transparent;
   .ember-ebau-gwr-login .ember-power-select-status-icon {
     @extend .uk-invisible;
   }
+
+  .ember-power-select-option:hover > small {
+    mix-blend-mode: multiply;
+  }
 }
 
 $ember-ebau-gwr-required-color: $alert-danger-color !default;
