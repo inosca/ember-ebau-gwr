@@ -1,3 +1,16 @@
+# [7.5.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.6...v7.5.0) (2024-03-11)
+
+
+### Bug Fixes
+
+* initial setup of canton to local storage ([cfdba83](https://github.com/inosca/ember-ebau-gwr/commit/cfdba83e5bb84504154b94ab918c9c631df853fe))
+* **search-street:** improve contrast for hovered item ESID ([73e1785](https://github.com/inosca/ember-ebau-gwr/commit/73e1785a490b315677ed79decf88f4795de065a9))
+
+
+### Features
+
+* **street-search:** replace linkStreet sub-form with street select ([3db3d70](https://github.com/inosca/ember-ebau-gwr/commit/3db3d7074c81203b17bd45b0391f0e92f06fe203))
+
 ## [7.4.6](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.5...v7.4.6) (2024-02-08)
 
 
