@@ -6,7 +6,7 @@ import ImportController from "ember-ebau-gwr/controllers/import";
 import Models from "ember-ebau-gwr/models";
 import Building from "ember-ebau-gwr/models/building";
 import { buildingWorkValidation } from "ember-ebau-gwr/validations/building-work";
-import { trackedFunction } from "ember-resources/util/function";
+import { trackedFunction } from "reactiveweb/function";
 
 export default class BuildingFormController extends ImportController {
   Models = Models;

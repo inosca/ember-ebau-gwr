@@ -3,6 +3,8 @@ $ember-power-select-trigger-icon-color: transparent;
 @import "ember-uikit/variables-theme";
 @import "validated-form";
 @import "ember-power-select";
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/airbnb";
 
 .ebau-gwr {
   .ember-ebau-gwr-login .ember-power-select-status-icon {

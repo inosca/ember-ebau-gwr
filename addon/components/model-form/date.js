@@ -7,7 +7,10 @@ export default class ModelFormDateComponent extends Component {
   @service intl;
 
   get locale() {
-    return this.intl.primaryLocale.split("-")[0];
+    const lang = this.intl.primaryLocale.split("-")[0];
+
+    // Workaround for https://github.com/RobbieTheWagner/ember-flatpickr/pull/2098
+    return lang === "en" ? null : lang;
   }
 
   get minDate() {
