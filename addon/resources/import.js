@@ -4,7 +4,7 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task, lastValue } from "ember-concurrency";
 import { stripLeadingZero, applyTransforms } from "ember-ebau-gwr/utils";
-import { Resource } from "ember-resources";
+import { Resource } from "ember-modify-based-class-resource";
 
 const IMPORT_MAP = {
   project: "fetchProject",

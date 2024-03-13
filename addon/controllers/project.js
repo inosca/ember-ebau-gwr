@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 import { registerDestructor } from "@ember/destroyable";
 import { inject as service } from "@ember/service";
 import { task, lastValue } from "ember-concurrency";
-import { Resource } from "ember-resources";
+import { Resource } from "ember-modify-based-class-resource";
 
 export default class ProjectController extends Controller {
   @service router;

@@ -23,4 +23,7 @@ module.exports = EngineAddon.extend({
     };
     this._super.included.apply(this, args);
   },
+  babel: {
+    plugins: [require.resolve("ember-concurrency/async-arrow-task-transform")],
+  },
 });
