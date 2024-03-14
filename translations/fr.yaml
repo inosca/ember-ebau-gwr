@@ -346,4 +346,4 @@ ember-gwr:
       empty: Pas de dossiers/ cas en suspens
 
     streetSearch:
-      requiredInputs: Veuillez d'abord indiquer le nom de la ville et le code postal.
+      requiredInputs: Veuillez d'abord entrer le nom de votre ville et votre code postal.
