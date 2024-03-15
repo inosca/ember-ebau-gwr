@@ -110,7 +110,7 @@
     "stylelint-prettier": "5.0.0",
     "stylelint-scss": "6.0.0",
     "uikit": "3.19.2",
-    "webpack": "5.89.0"
+    "webpack": "5.90.3"
   },
   "engines": {
     "node": ">= 18"
