@@ -1,3 +1,10 @@
+## [7.5.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.0...v7.5.1) (2024-03-15)
+
+
+### Bug Fixes
+
+* **readme:** node compatibility ([0a32ea8](https://github.com/inosca/ember-ebau-gwr/commit/0a32ea836cf482277102ee0e81944f8e3722d93a))
+
 # [7.5.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.4.6...v7.5.0) (2024-03-11)
 
 
