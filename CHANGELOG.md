@@ -1,3 +1,10 @@
+## [7.5.3](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.2...v7.5.3) (2024-03-18)
+
+
+### Bug Fixes
+
+* **project:** revert handling of missing current route information ([d263bff](https://github.com/inosca/ember-ebau-gwr/commit/d263bffb1ac20bb503ec1280f27c7db9222e83b8))
+
 ## [7.5.2](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.1...v7.5.2) (2024-03-18)
 
 
