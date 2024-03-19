@@ -9,8 +9,14 @@ export default class ProjectController extends Controller {
   @service config;
   @service constructionProject;
 
+  get currentRoute() {
+    return this.router.externalRouter.recognize(
+      this.router.externalRouter.currentURL,
+    );
+  }
+
   get activeProjectId() {
-    return Number(this.router.externalRouter.currentRoute.params.project_id);
+    return Number(this.currentRoute.params.project_id);
   }
 
   get isLoading() {
@@ -20,8 +26,8 @@ export default class ProjectController extends Controller {
   get displayLandingPage() {
     return (
       !this.projects.value?.length &&
-      this.router.externalRouter.currentRoute.localName !== "new" &&
-      this.router.externalRouter.currentRoute.localName !== "errors"
+      this.currentRoute.localName !== "new" &&
+      this.currentRoute.localName !== "errors"
     );
   }
 
