@@ -1,3 +1,10 @@
+## [7.5.5](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.4...v7.5.5) (2024-03-19)
+
+
+### Bug Fixes
+
+* **projects:** fix detection of active project id ([c9df3d4](https://github.com/inosca/ember-ebau-gwr/commit/c9df3d40f41956498515659513a445f8dc71a312))
+
 ## [7.5.4](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.3...v7.5.4) (2024-03-19)
 
 
