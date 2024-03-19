@@ -72,8 +72,8 @@ dependencies:
     specifier: ^4.0.3
     version: 4.0.3(ember-source@5.7.0)
   ember-uikit:
-    specifier: ^9.1.0
-    version: 9.1.0(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3)
+    specifier: ^9.1.1
+    version: 9.1.1(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3)
   ember-validated-form:
     specifier: ^7.0.1
     version: 7.0.1(@glint/template@1.3.0)(ember-data@4.12.5)(ember-source@5.7.0)(webpack@5.90.3)
@@ -7874,8 +7874,8 @@ packages:
       - supports-color
     dev: true
 
-  /ember-uikit@9.1.0(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3):
-    resolution: {integrity: sha512-O9YWhDZkqDT3oIBVKB64se8Ju5lkJLMqZTg7mxCjZfCTdG5MPdqTSj5i+VjOsgw9UNQnKXw0kzwENMEW8eD4Og==}
+  /ember-uikit@9.1.1(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3):
+    resolution: {integrity: sha512-MOFtBN/pwYyvvkFTGeBK3tRdXQcOzxIS326dc1IT+WMtlThtaItf832V27CRLjEMqhqE0CKUojtvxqCHWDEScw==}
     engines: {node: '>= 18'}
     peerDependencies:
       ember-source: '>= 4.0.0'
