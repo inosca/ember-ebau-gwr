@@ -1,3 +1,11 @@
+## [7.5.4](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.3...v7.5.4) (2024-03-19)
+
+
+### Bug Fixes
+
+* **deps:** fix dependency ranges and update ember-flatpickr ([2e8c9e2](https://github.com/inosca/ember-ebau-gwr/commit/2e8c9e243c06b7e330e0b75f14bb31d954709678))
+* **deps:** update dependencies ([a55274f](https://github.com/inosca/ember-ebau-gwr/commit/a55274fe738a0d312ad6849c1937e2f7c1f8aa07))
+
 ## [7.5.3](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.2...v7.5.3) (2024-03-18)
 
 
