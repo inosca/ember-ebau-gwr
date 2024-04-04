@@ -19,10 +19,6 @@ export default class SearchStreetComponent extends Component {
     this.guid = guidFor(this);
   }
 
-  get localityName() {
-    return this.args.locality.name.nameLong;
-  }
-
   get swissZipCode() {
     return this.args.locality.swissZipCode;
   }
@@ -40,9 +36,6 @@ export default class SearchStreetComponent extends Component {
       locality: {
         swissZipCode: this.swissZipCode,
         swissZipCodeAddOn: this.swissZipCodeAddOn,
-        name: {
-          nameLong: this.localityName,
-        },
       },
       language: this.streetAPI.language,
     };
