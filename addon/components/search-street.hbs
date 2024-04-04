@@ -3,33 +3,39 @@
       "ember-gwr.buildingEntrance.fields.street.description.descriptionLong"
     }}{{if @required " *"}}
   </label>
-  <PowerSelect
-    @disabled={{@disabled}}
-    @renderInPlace={{true}}
-    @tabIndex={{"0"}}
-    @triggerClass="uk-select"
-    @searchEnabled={{true}}
-    @search={{perform this.search}}
-    @selected={{@street}}
-    @onChange={{@onChange}}
-    @onFocus={{this.handleFocus}}
-    @searchMessage={{t "ember-gwr.components.linkStreet.search"}}
-    @noMatchesMessage={{t "ember-gwr.components.search.noResults"}}
-    @loadingMessage={{t "ember-gwr.components.search.loading"}}
-    id={{this.guid}}
-    class="uk-overflow-hidden"
-    ...attributes
-    as |streetList|
-  >
-    {{streetList.description.descriptionLong}}{{#if
-      streetList.description.descriptionLong
-    }}
-      <small
-        data-test-street-esid
-        class="uk-text-muted uk-text-right uk-text-italic uk-margin-small-left"
-      >{{t "ember-gwr.street.ESID"}}: {{streetList.ESID}}</small>
-    {{/if}}
-  </PowerSelect>
+  <div class="uk-form-controls">
+    <PowerSelect
+      @disabled={{@disabled}}
+      @renderInPlace={{true}}
+      @tabIndex={{"0"}}
+      @triggerClass="uk-select"
+      @searchEnabled={{true}}
+      @search={{perform this.search}}
+      @selected={{@value}}
+      @onChange={{queue (fn (mut this.dirty) true) @on-update}}
+      @onFocus={{this.handleFocus}}
+      @searchMessage={{t "ember-gwr.components.linkStreet.search"}}
+      @noMatchesMessage={{t "ember-gwr.components.search.noResults"}}
+      @loadingMessage={{t "ember-gwr.components.search.loading"}}
+      id={{this.inputId}}
+      class={{class-list
+        "uk-overflow-hidden"
+        (if this.isValid "uk-form-success")
+        (if this.isInvalid "uk-form-danger")
+      }}
+      ...attributes
+      as |streetList|
+    >
+      {{streetList.description.descriptionLong}}{{#if
+        streetList.description.descriptionLong
+      }}
+        <small
+          data-test-street-esid
+          class="uk-text-muted uk-text-right uk-text-italic uk-margin-small-left"
+        >{{t "ember-gwr.locality.name.nameLong"}}: {{streetList.locality.name.nameLong}}, {{t "ember-gwr.street.ESID"}}: {{streetList.ESID}}</small>
+      {{/if}}
+    </PowerSelect>
+  </div>
   {{#if @disabled}}
     <small data-test-hint class="uk-text-muted">{{t
         "ember-gwr.components.streetSearch.requiredInputs"

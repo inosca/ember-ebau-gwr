@@ -8,16 +8,15 @@ import {
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
 
-module("Integration | Component | search-street", function (hooks) {
+module("Integration | Component | search-street", function(hooks) {
   setupRenderingTest(hooks);
 
-  test("it renders", async function (assert) {
+  test("it renders", async function(assert) {
     this.set("street");
-    this.set("locality", {
-      swissZipCode: "8862",
-      swissZipCodeAddOn: "",
-      name: {
-        nameLong: "Schübelbach",
+    this.set("options", {
+      locality: {
+        swissZipCode: "8862",
+        swissZipCodeAddOn: "",
       },
     });
     this.set("disabled", true);
@@ -37,9 +36,6 @@ module("Integration | Component | search-street", function (hooks) {
         locality: {
           swissZipCode: "8862",
           swissZipCodeAddOn: "",
-          name: {
-            nameLong: "Schübelbach",
-          },
         },
         language: undefined,
       });
@@ -55,11 +51,11 @@ module("Integration | Component | search-street", function (hooks) {
     };
 
     await render(hbs`<SearchStreet
-      @locality={{this.locality}}
-      @street={{this.street}}
+      @options={{this.options}}
+      @value={{this.street}}
       @disabled={{this.disabled}}
       @required={{true}}
-      @onChange={{this.update}}
+      @on-update={{this.update}}
       class="test-search"
     />`);
 
@@ -86,6 +82,6 @@ module("Integration | Component | search-street", function (hooks) {
       .containsText("Eisenburgstrasse");
     assert
       .dom(".ember-power-select-selected-item [data-test-street-esid]")
-      .hasText("t:ember-gwr.street.ESID:(): 1234");
+      .hasText("t:ember-gwr.locality.name.nameLong:(): , t:ember-gwr.street.ESID:(): 1234");
   });
 });

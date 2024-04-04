@@ -1,6 +1,6 @@
 // prettier-ignore
 export const getStreet =
-`{{#>base}}
+  `{{#>base}}
   <ns2:getStreet>
     {{#if model.description.descriptionLong}}
       <ns2:description>
@@ -8,6 +8,8 @@ export const getStreet =
         <ns2:descriptionLong>{{model.description.descriptionLong}}</ns2:descriptionLong>
       </ns2:description>
     {{/if}}
-    {{> Locality model=model.locality}}
+    {{#if model.locality.nameLong}}
+      {{> Locality model=model.locality}}
+    {{/if}}
   </ns2:getStreet>
 {{/base}}`;
