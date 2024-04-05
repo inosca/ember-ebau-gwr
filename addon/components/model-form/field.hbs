@@ -4,7 +4,7 @@
 >
   {{#let
     (component
-      @input
+      @inputComponent
       label=(unless
         @noLabel (t (or @label (concat @translationBase "." @attr)))
       )
@@ -45,6 +45,7 @@
         max=@max
       )
       errorComponent=(component "validated-form-error")
+      model=@model
     )
     as |InputComponent|
   }}

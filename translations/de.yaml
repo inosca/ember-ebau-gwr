@@ -346,4 +346,4 @@ ember-gwr:
       empty: Keine offenen Pendenzen
 
     streetSearch:
-      requiredInputs: Bitte geben Sie zuerst Ortsname und PLZ an.
+      requiredInputs: Bitte geben Sie zuerst Ihre PLZ an.

@@ -1,30 +1,23 @@
 import { action } from "@ember/object";
-import { guidFor } from "@ember/object/internals";
 import { inject as service } from "@ember/service";
 import { isBlank } from "@ember/utils";
-import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task, timeout } from "ember-concurrency";
+import ValidatedInput from "ember-validated-form/components/validated-input";
 
-export default class SearchStreetComponent extends Component {
+export default class SearchStreetComponent extends ValidatedInput {
   @service("street") streetAPI;
   @service notification;
   @service intl;
 
   @tracked searchTerm = "";
 
-  constructor(...args) {
-    super(...args);
-
-    this.guid = guidFor(this);
-  }
-
   get swissZipCode() {
-    return this.args.locality.swissZipCode;
+    return this.args.options.locality.swissZipCode;
   }
 
   get swissZipCodeAddOn() {
-    return this.args.locality.swissZipCodeAddOn;
+    return this.args.options.locality.swissZipCodeAddOn;
   }
 
   get query() {

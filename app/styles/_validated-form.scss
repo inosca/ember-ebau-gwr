@@ -2,4 +2,14 @@
   .uk-form-label {
     @extend .uk-text-bold;
   }
+
+  .ember-power-select-trigger {
+    &.uk-form-success {
+      border-color: $alert-success-color;
+    }
+
+    &.uk-form-danger {
+      border-color: $alert-danger-color;
+    }
+  }
 }
