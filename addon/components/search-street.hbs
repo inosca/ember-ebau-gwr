@@ -1,5 +1,5 @@
 <div class="uk-margin">
-  <label class="uk-form-label" for={{this.guid}}>{{t
+  <label class="uk-form-label" for={{this.inputId}}>{{t
       "ember-gwr.buildingEntrance.fields.street.description.descriptionLong"
     }}{{if @required " *"}}
   </label>
@@ -32,7 +32,10 @@
         <small
           data-test-street-esid
           class="uk-text-muted uk-text-right uk-text-italic uk-margin-small-left"
-        >{{t "ember-gwr.locality.name.nameLong"}}: {{streetList.locality.name.nameLong}}, {{t "ember-gwr.street.ESID"}}: {{streetList.ESID}}</small>
+        >{{t "ember-gwr.locality.name.nameLong"}}:
+          {{streetList.locality.name.nameLong}},
+          {{t "ember-gwr.street.ESID"}}:
+          {{streetList.ESID}}</small>
       {{/if}}
     </PowerSelect>
   </div>
@@ -40,5 +43,7 @@
     <small data-test-hint class="uk-text-muted">{{t
         "ember-gwr.components.streetSearch.requiredInputs"
       }}</small>
+    <br />
   {{/if}}
+  {{component @errorComponent errors=this.errors}}
 </div>
