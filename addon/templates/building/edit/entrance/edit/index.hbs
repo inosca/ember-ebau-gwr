@@ -27,8 +27,8 @@
       {{/unless}}
       <Field
         @attr="locality.name.nameLong"
-        @required={{true}}
         @disabled={{not this.buildingEntrance.isNew}}
+        @required={{true}}
       />
       <Field
         @attr="locality.swissZipCode"
@@ -37,17 +37,22 @@
         @required={{true}}
       />
       {{#if this.buildingEntrance.isNew}}
-        <SearchStreet
-          @locality={{changeset-get changeset "locality"}}
-          @street={{changeset-get changeset "street"}}
+        <Field
+          @attr="street"
+          @label="ember-gwr.buildingEntrance.fields.street.description.descriptionLong"
+          @inputComponent="search-street"
+          @options={{hash
+            locality=(changeset-get
+              changeset "locality"
+            )
+          }}
+          @on-update={{fn this.syncLocalityWithSelectedStreet changeset}}
           @disabled={{not
-            (and
-              (changeset-get changeset "locality.swissZipCode")
-              (changeset-get changeset "locality.name.nameLong")
+            (changeset-get
+              changeset "locality.swissZipCode"
             )
           }}
           @required={{true}}
-          @onChange={{fn (mut this.buildingEntrance.street)}}
         />
       {{else}}
         <Field
