@@ -164,6 +164,7 @@
               changeset "building.buildingEntrance.locality"
             )
           }}
+          @on-update={{fn this.syncLocalityWithStreet changeset}}
           @disabled={{not
             (changeset-get
               changeset "building.buildingEntrance.locality.swissZipCode"
