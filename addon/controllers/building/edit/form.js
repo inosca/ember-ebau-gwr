@@ -102,9 +102,18 @@ export default class BuildingFormController extends ImportController {
 
   @action
   syncLocalityWithStreet(changeset, streetList) {
-    changeset.set("building.buildingEntrance.locality.name.nameLong", streetList.locality.name.nameLong)
-    changeset.set("building.buildingEntrance.locality.swissZipCode", streetList.locality.swissZipCode)
-    changeset.set("building.buildingEntrance.locality.swissZipCodeAddOn", streetList.locality.swissZipCodeAddOn)
+    changeset.set(
+      "building.buildingEntrance.locality.name.nameLong",
+      streetList.locality.name.nameLong,
+    );
+    changeset.set(
+      "building.buildingEntrance.locality.swissZipCode",
+      streetList.locality.swissZipCode,
+    );
+    changeset.set(
+      "building.buildingEntrance.locality.swissZipCodeAddOn",
+      streetList.locality.swissZipCodeAddOn,
+    );
   }
 
   @dropTask

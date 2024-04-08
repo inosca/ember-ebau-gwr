@@ -48,6 +48,17 @@ export default class BuildingEditEntranceEditIndexController extends ImportContr
     this.fetchBuildingEntrance.perform();
   }
 
+  @action
+  syncLocalityWithSelectedStreet(changeset, streetList) {
+    changeset.set("locality.street", streetList);
+    changeset.set("locality.name.nameLong", streetList.locality.name.nameLong);
+    changeset.set("locality.swissZipCode", streetList.locality.swissZipCode);
+    changeset.set(
+      "locality.swissZipCodeAddOn",
+      streetList.locality.swissZipCodeAddOn,
+    );
+  }
+
   @dropTask
   *saveBuildingEntrance() {
     try {
