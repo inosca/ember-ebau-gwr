@@ -8,10 +8,10 @@ import {
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
 
-module("Integration | Component | search-street", function (hooks) {
+module("Integration | Component | search-street", function(hooks) {
   setupRenderingTest(hooks);
 
-  test("it renders", async function (assert) {
+  test("it renders", async function(assert) {
     this.set("street");
     this.set("options", {
       locality: {
@@ -81,9 +81,12 @@ module("Integration | Component | search-street", function (hooks) {
       .dom(".ember-power-select-selected-item")
       .containsText("Eisenburgstrasse");
     assert
-      .dom(".ember-power-select-selected-item [data-test-street-esid]")
-      .hasText(
-        "t:ember-gwr.locality.name.nameLong:(): , t:ember-gwr.street.ESID:(): 1234",
-      );
+      .dom(
+        ".ember-power-select-selected-item [data-test-search-street-locality-name]",
+      )
+      .hasText("t:ember-gwr.locality.name.nameLong:(): ,");
+    assert
+      .dom(".ember-power-select-selected-item [data-test-search-street-esid]")
+      .hasText("t:ember-gwr.street.ESID:(): 1234");
   });
 });

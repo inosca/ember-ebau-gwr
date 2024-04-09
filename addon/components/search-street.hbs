@@ -30,10 +30,15 @@
         streetList.description.descriptionLong
       }}
         <small
-          data-test-street-esid
+          data-test-search-street-locality-name
           class="uk-text-muted uk-text-right uk-text-italic uk-margin-small-left"
         >{{t "ember-gwr.locality.name.nameLong"}}:
           {{streetList.locality.name.nameLong}},
+        </small>
+        <small
+          data-test-search-street-esid
+          class="uk-text-muted uk-text-right uk-text-italic uk-margin-small-left"
+        >
           {{t "ember-gwr.street.ESID"}}:
           {{streetList.ESID}}</small>
       {{/if}}
