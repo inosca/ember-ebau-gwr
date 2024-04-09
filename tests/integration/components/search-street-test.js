@@ -8,10 +8,10 @@ import {
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
 
-module("Integration | Component | search-street", function(hooks) {
+module("Integration | Component | search-street", function (hooks) {
   setupRenderingTest(hooks);
 
-  test("it renders", async function(assert) {
+  test("it renders", async function (assert) {
     this.set("street");
     this.set("options", {
       locality: {
