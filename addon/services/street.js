@@ -6,6 +6,7 @@ import GWRService from "./gwr";
 export default class StreetService extends GWRService {
   cacheKey = "ESID";
   cacheClass = Street;
+  cachedLanguageOverride;
 
   async get(ESID) {
     if (!ESID) {
@@ -22,12 +23,49 @@ export default class StreetService extends GWRService {
   }
 
   async search(query = {}) {
-    return super.search(query, query.EGID, {
+    if (this.cachedLanguageOverride) {
+      query.language = this.cachedLanguageOverride;
+    }
+
+    const searchResult = await super.search(query, query.EGID, {
       xmlMethod: "getStreet",
       urlPath: "streets",
       listModel: StreetList,
       listKey: "street",
       searchKey: "streetWithoutStreetGeometryType",
     });
+
+    if (!searchResult) {
+      let results = [];
+
+      for (const [lang, code] of Object.entries(languageOptions)) {
+        query.language = code;
+
+        results.push({
+          lang: [lang, code],
+          result: super.search(query, query.EGID, {
+            xmlMethod: "getStreet",
+            urlPath: "streets",
+            listModel: StreetList,
+            listKey: "street",
+            searchKey: "streetWithoutStreetGeometryType",
+          }),
+        });
+      }
+
+      results = await Promise.allSettled(
+        results.map(async ({ lang, result }) => {
+          return { lang, result: await result };
+        }),
+      );
+      return results
+        .filter(({ value }) => value.result?.length)
+        .reduce((previous, { value: { lang, result } }) => {
+          this.cachedLanguageOverride = lang[1];
+          return previous.concat(result);
+        }, []);
+    }
+
+    return searchResult;
   }
 }
