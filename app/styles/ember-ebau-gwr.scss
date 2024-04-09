@@ -11,7 +11,8 @@ $ember-power-select-trigger-icon-color: transparent;
     @extend .uk-invisible;
   }
 
-  .ember-power-select-option:hover > small {
+  .ember-power-select-option:hover > small,
+  .ember-power-select-option[aria-current="true"] > small {
     mix-blend-mode: multiply;
   }
 }
