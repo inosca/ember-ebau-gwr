@@ -270,7 +270,7 @@ export const countryOptions = [
   "cy",
 ];
 
-export const languageOptions = { de: 9901, fr: 9903, it: 9904 };
+export const languageOptions = { de: 9901, rm: 9902, fr: 9903, it: 9904 };
 
 export const periodOfConstructionOptions = [
   8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8021, 8022, 8023,
