@@ -1,12 +1,21 @@
-import { languageOptions } from "ember-ebau-gwr/models/options";
+import { inject as service } from "@ember/service";
+import { task } from "ember-concurrency";
 import Street, { StreetList } from "ember-ebau-gwr/models/street";
 
 import GWRService from "./gwr";
 
 export default class StreetService extends GWRService {
+  @service languages;
+
   cacheKey = "ESID";
   cacheClass = Street;
-  cachedLanguageOverride;
+  cachedLanguageOverrides;
+
+  constructor(...args) {
+    super(...args);
+
+    this.resetCachedLanguages();
+  }
 
   async get(ESID) {
     if (!ESID) {
@@ -18,54 +27,79 @@ export default class StreetService extends GWRService {
     return this.cache(street);
   }
 
-  get language() {
-    return languageOptions[this.intl.primaryLocale?.split("-")?.[0]];
+  get primaryLanguage() {
+    return this.intl.primaryLocale?.split("-")?.[0];
   }
 
-  async search(query = {}) {
-    if (this.cachedLanguageOverride) {
-      query.language = this.cachedLanguageOverride;
-    }
+  get language() {
+    return this.languages.languageToCode(this.primaryLanguage);
+  }
 
-    const searchResult = await super.search(query, query.EGID, {
+  @task
+  *_search(query) {
+    return yield super.search(query, query.EGID, {
       xmlMethod: "getStreet",
       urlPath: "streets",
       listModel: StreetList,
       listKey: "street",
       searchKey: "streetWithoutStreetGeometryType",
     });
+  }
 
-    if (!searchResult) {
-      let results = [];
+  resetCachedLanguages() {
+    this.cachedLanguageOverrides = new Set([]);
+  }
 
-      for (const [lang, code] of Object.entries(languageOptions)) {
-        query.language = code;
+  async searchMultiple(query, useCachedLanguagesOnly) {
+    let results = [];
 
-        results.push({
-          lang: [lang, code],
-          result: super.search(query, query.EGID, {
-            xmlMethod: "getStreet",
-            urlPath: "streets",
-            listModel: StreetList,
-            listKey: "street",
-            searchKey: "streetWithoutStreetGeometryType",
-          }),
-        });
-      }
+    for (const lang of useCachedLanguagesOnly
+      ? this.cachedLanguageOverrides
+      : this.languages.availableLanguages) {
+      const code = this.languages.languageToCode(lang);
+      query.language = code;
 
-      results = await Promise.allSettled(
-        results.map(async ({ lang, result }) => {
-          return { lang, result: await result };
+      results.push({
+        lang: [lang, code],
+        result: this._search.perform(query, query.EGID, {
+          xmlMethod: "getStreet",
+          urlPath: "streets",
+          listModel: StreetList,
+          listKey: "street",
+          searchKey: "streetWithoutStreetGeometryType",
         }),
-      );
-      return results
-        .filter(({ value }) => value.result?.length)
-        .reduce((previous, { value: { lang, result } }) => {
-          this.cachedLanguageOverride = lang[1];
-          return previous.concat(result);
-        }, []);
+      });
     }
 
-    return searchResult;
+    results = await Promise.allSettled(
+      results.map(async ({ lang, result }) => {
+        return { lang, result: await result };
+      }),
+    );
+    return results
+      .filter(({ value }) => value.result?.length)
+      .reduce((previous, { value: { lang, result } }) => {
+        this.cachedLanguageOverrides.add(lang[0]);
+        return previous.concat(result);
+      }, []);
+  }
+
+  async search(query = {}) {
+    const lastQueryString =
+      this._search.lastPerformed?.args[0]?.description?.descriptionLong.replaceAll(
+        "*",
+        "",
+      ) || "";
+    const currentQueryString =
+      query.description?.descriptionLong?.replaceAll("*", "") || "";
+
+    // In order to avoid unnecessary requests while typing (and thereby "refining"
+    // the search), we continue searching only with the languages for which we
+    // previously received results.
+    if (lastQueryString && currentQueryString.includes(lastQueryString)) {
+      return this.searchMultiple(query, true);
+    }
+    this.resetCachedLanguages();
+    return this.searchMultiple(query);
   }
 }
