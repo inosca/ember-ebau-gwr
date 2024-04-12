@@ -39,7 +39,7 @@
     "@ember/render-modifiers": "^2.1.0",
     "@fortawesome/ember-fontawesome": "^2.0.0",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "ember-auto-import": "^2.7.2",
