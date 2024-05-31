@@ -87,8 +87,8 @@ dependencies:
     specifier: ^3.4.4
     version: 3.4.4
   reactiveweb:
-    specifier: ^1.2.2
-    version: 1.2.2(@babel/core@7.24.4)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.7.0)
+    specifier: ^1.3.0
+    version: 1.3.0(@babel/core@7.24.4)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.7.0)
 
 devDependencies:
   '@adfinis/eslint-config':
@@ -9538,6 +9538,7 @@ packages:
 
   /glob@5.0.15:
     resolution: {integrity: sha512-c9IPMazfRITpmAAKi22dK1VKxGDX9ehhqfABDriL/lzO92xcUKEJPQHrVA/2YHSNFB4iFlykVmWvwo48nr3OxA==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       inflight: 1.0.6
       inherits: 2.0.4
@@ -12721,8 +12722,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
-  /reactiveweb@1.2.2(@babel/core@7.24.4)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.7.0):
-    resolution: {integrity: sha512-eYSYMfPPlEiRI/emc8g61TSqxKlchWQzvUWURZvj7LV0LjdyZT2DD0UjC1NUBflvj9zFK7A8V/rjv6ec/ZUOLw==}
+  /reactiveweb@1.3.0(@babel/core@7.24.4)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.7.0):
+    resolution: {integrity: sha512-+HIF4nW2iiHrZYvMyaFJopL/ljEW8e8s9HS+I6kAtSeJqtJtox577qviywU8ffHRmHPZP4owTlSWg3F4nAj4Vg==}
     peerDependencies:
       '@ember/test-waiters': '>= 3.1.0'
       ember-source: '>= 3.28.0'
@@ -13113,6 +13114,7 @@ packages:
 
   /rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -13120,12 +13122,14 @@ packages:
 
   /rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
 
   /rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
