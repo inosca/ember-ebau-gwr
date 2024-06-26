@@ -10,16 +10,19 @@ module("Integration | Component | link-building-modal", function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<LinkBuildingModal />`);
+    await render(hbs`<LinkBuildingModal />`, { owner: this.engine });
 
     assert.equal(this.element.textContent.trim(), "");
 
     // Template block usage:
-    await render(hbs`
+    await render(
+      hbs`
       <LinkBuildingModal>
         template block text
       </LinkBuildingModal>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     assert.equal(this.element.textContent.trim(), "template block text");
   });

@@ -5,7 +5,7 @@ module("Unit | Route | project/linked-buildings", function (hooks) {
   setupTest(hooks);
 
   test("it exists", function (assert) {
-    const route = this.owner.lookup("route:project/linked-buildings");
+    const route = this.engine.lookup("route:project/linked-buildings");
     assert.ok(route);
   });
 });

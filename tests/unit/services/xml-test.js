@@ -6,7 +6,7 @@ module("Unit | Service | xml", function (hooks) {
 
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:xml");
+    const service = this.engine.lookup("service:xml");
     assert.ok(service);
   });
 });

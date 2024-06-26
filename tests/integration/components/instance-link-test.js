@@ -24,7 +24,9 @@ module("Integration | Component | instance-link", function (hooks) {
       },
     ];
 
-    await render(hbs`<InstanceLink @links={{this.links}}/>`);
+    await render(hbs`<InstanceLink @links={{this.links}}/>`, {
+      owner: this.engine,
+    });
 
     assert.dom("a:first-of-type").hasText("identifier1");
     assert.dom("a:first-of-type").hasAttribute("href", "/hostLink1/localLink1");

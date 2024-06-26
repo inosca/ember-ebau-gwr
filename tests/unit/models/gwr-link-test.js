@@ -6,7 +6,7 @@ module("Unit | Model | gwr link", function (hooks) {
 
   // Replace this with your real tests.
   test("it exists", function (assert) {
-    const store = this.owner.lookup("service:store");
+    const store = this.engine.lookup("service:store");
     const model = store.createRecord("gwr-link", {});
     assert.ok(model);
   });

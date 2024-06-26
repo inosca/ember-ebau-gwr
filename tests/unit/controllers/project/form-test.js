@@ -8,7 +8,7 @@ module("Unit | Controller | project/form", function (hooks) {
   // TODO: Replace this with your real tests.
   test("it exists", function (assert) {
     this.owner.register("service:dataImport", DataImportStub);
-    const controller = this.owner.lookup("controller:project/form");
+    const controller = this.engine.lookup("controller:project/form");
     assert.ok(controller);
   });
 });

@@ -1,10 +1,10 @@
 import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
+import { selectChoose } from "ember-power-select/test-support";
 import {
   typeInSearch,
   clickTrigger,
-  selectChoose,
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
 
@@ -27,7 +27,7 @@ module("Integration | Component | search-street", function (hooks) {
 
     const testQueryTerm = "burg";
 
-    const service = this.owner.lookup("service:street");
+    const service = this.engine.lookup("service:street");
     service.search = (query) => {
       assert.deepEqual(query, {
         description: {
@@ -37,7 +37,7 @@ module("Integration | Component | search-street", function (hooks) {
           swissZipCode: "8862",
           swissZipCodeAddOn: "",
         },
-        language: undefined,
+        language: 9901,
       });
 
       return [
@@ -50,24 +50,23 @@ module("Integration | Component | search-street", function (hooks) {
       ];
     };
 
-    await render(hbs`<SearchStreet
+    await render(
+      hbs`<SearchStreet
       @options={{this.options}}
       @value={{this.street}}
       @disabled={{this.disabled}}
       @required={{true}}
       @on-update={{this.update}}
       class="test-search"
-    />`);
+    />`,
+      { owner: this.engine },
+    );
 
     //disabled state
-    assert
-      .dom("label")
-      .hasText(
-        "t:ember-gwr.buildingEntrance.fields.street.description.descriptionLong:() *",
-      );
+    assert.dom("label").hasText("Strassenname *");
     assert
       .dom("[data-test-hint]")
-      .hasText("t:ember-gwr.components.streetSearch.requiredInputs:()");
+      .hasText("Bitte geben Sie zuerst Ihre PLZ an.");
 
     this.set("disabled", false);
     assert.dom("[data-test-hint]").isNotVisible();
@@ -84,9 +83,9 @@ module("Integration | Component | search-street", function (hooks) {
       .dom(
         ".ember-power-select-selected-item [data-test-search-street-locality-name]",
       )
-      .hasText("t:ember-gwr.locality.name.nameLong:(): ,");
+      .hasText("Ortsname: ,");
     assert
       .dom(".ember-power-select-selected-item [data-test-search-street-esid]")
-      .hasText("t:ember-gwr.street.ESID:(): 1234");
+      .hasText("ESID: 1234");
   });
 });

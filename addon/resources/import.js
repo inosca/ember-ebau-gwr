@@ -74,8 +74,8 @@ export default class ImportResource extends Resource {
 
           const transforms = TRANSFORM_MAP[importModelName];
           return transforms
-            ? data.map?.((object) => applyTransforms(object, transforms)) ??
-                applyTransforms(data, transforms)
+            ? (data.map?.((object) => applyTransforms(object, transforms)) ??
+                applyTransforms(data, transforms))
             : data;
         }
       } catch (error) {
