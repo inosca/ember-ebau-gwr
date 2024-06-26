@@ -10,16 +10,19 @@ module("Integration | Component | project-nav", function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<ProjectNav />`);
+    await render(hbs`<ProjectNav />`, { owner: this.engine });
 
     assert.dom(this.element).hasText("");
 
     // Template block usage:
-    await render(hbs`
+    await render(
+      hbs`
       <ProjectNav>
         template block text
       </ProjectNav>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     assert.dom(this.element).hasText("template block text");
   });

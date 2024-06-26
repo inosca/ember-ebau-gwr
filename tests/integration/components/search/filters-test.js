@@ -11,13 +11,16 @@ module("Integration | Component | search/filters", function (hooks) {
     this.changeset = new Changeset({});
     this.onSubmit = { perform: () => {} };
 
-    await render(hbs`
+    await render(
+      hbs`
     <Search::Filters
       @changeset={{this.changeset}}
       @onSubmit={{this.onSubmit}}
       @extendedSearch={{true}}
     >
-    </Search::Filters>`);
+    </Search::Filters>`,
+      { owner: this.engine },
+    );
 
     assert.dom('input[name="realestateIdentification.EGRID"]').isNotVisible();
 

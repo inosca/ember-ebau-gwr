@@ -7,16 +7,19 @@ module("Integration | Component | Search", function (hooks) {
   setupRenderingTest(hooks);
 
   todo("it renders FilterInputs", async function (assert) {
-    await render(hbs`<Search/>`);
+    await render(hbs`<Search/>`, { owner: this.engine });
 
     assert.equal(this.element.textContent.trim(), "");
 
     // Template block usage:
-    await render(hbs`
+    await render(
+      hbs`
       <Search::ResultTable>
         template block text
       </Search::ResultTable>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     assert.equal(this.element.textContent.trim(), "template block text");
 

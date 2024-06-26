@@ -12,16 +12,21 @@ module(
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
 
-      await render(hbs`<Search::ResultTable::Head::Header />`);
+      await render(hbs`<Search::ResultTable::Head::Header />`, {
+        owner: this.engine,
+      });
 
       assert.equal(this.element.textContent.trim(), "");
 
       // Template block usage:
-      await render(hbs`
+      await render(
+        hbs`
       <Search::ResultTable::Head::Header>
         template block text
       </Search::ResultTable::Head::Header>
-    `);
+    `,
+        { owner: this.engine },
+      );
 
       assert.equal(this.element.textContent.trim(), "template block text");
     });

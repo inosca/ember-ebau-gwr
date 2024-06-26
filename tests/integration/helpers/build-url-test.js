@@ -8,14 +8,16 @@ module("Integration | Helper | build-url", function (hooks) {
 
   test("it renders", async function (assert) {
     this.owner.mountPoint = "my-engine";
-    this.owner.lookup("service:router").urlFor = (routeName, model) => {
+    this.engine.lookup("service:router").urlFor = (routeName, model) => {
       assert.strictEqual(routeName, "some.route");
       assert.strictEqual(model, "model");
 
       return "/";
     };
 
-    await render(hbs`{{build-url "some.route" (array "model")}}`);
+    await render(hbs`{{build-url "some.route" (array "model")}}`, {
+      owner: this.engine,
+    });
 
     assert.dom(this.element).hasText("/");
   });

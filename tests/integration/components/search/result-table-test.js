@@ -10,16 +10,19 @@ module("Integration | Component | search/result-table", function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Search::ResultTable />`);
+    await render(hbs`<Search::ResultTable />`, { owner: this.engine });
 
     assert.equal(this.element.textContent.trim(), "");
 
     // Template block usage:
-    await render(hbs`
+    await render(
+      hbs`
       <Search::ResultTable>
         template block text
       </Search::ResultTable>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     assert.equal(this.element.textContent.trim(), "template block text");
 

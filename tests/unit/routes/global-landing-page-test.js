@@ -5,7 +5,7 @@ module("Unit | Route | global-landing-page", function (hooks) {
   setupTest(hooks);
 
   test("it exists", function (assert) {
-    const route = this.owner.lookup("route:global-landing-page");
+    const route = this.engine.lookup("route:global-landing-page");
     assert.ok(route);
   });
 });

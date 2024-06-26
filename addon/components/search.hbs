@@ -22,7 +22,7 @@
 
   {{#if this.hasMoreResults}}
     <Search::ResultTable::LoadMore
-      @onClick={{(perform this.loadMore)}}
+      @onClick={{perform this.loadMore}}
       @loading={{this.search.isRunning}}
     />
   {{/if}}

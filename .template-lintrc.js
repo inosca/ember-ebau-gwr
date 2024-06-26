@@ -6,6 +6,7 @@ module.exports = {
     "no-bare-strings": true,
     "no-implicit-this": { allow: ["housing-stat-link", "current-quarter"] },
     "no-curly-component-invocation": { allow: ["current-quarter"] },
+    "no-at-ember-render-modifiers": "warn",
   },
   overrides: [
     {
