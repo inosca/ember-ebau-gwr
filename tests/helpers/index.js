@@ -15,7 +15,7 @@ const resolver = engineResolverFor("ember-ebau-gwr");
 
 function setupApplicationTest(hooks, options) {
   upstreamSetupApplicationTest(hooks, { ...options, resolver });
-  setupIntl(hooks);
+  setupIntl(hooks, "de");
 
   hooks.beforeEach(function () {
     UIkit.container = this.owner.rootElement;
@@ -24,7 +24,7 @@ function setupApplicationTest(hooks, options) {
 
 function setupRenderingTest(hooks, options) {
   upstreamSetupRenderingTest(hooks, { ...options, resolver });
-  setupIntl(hooks);
+  setupIntl(hooks, "de");
 
   hooks.beforeEach(function () {
     UIkit.container = this.owner.rootElement;

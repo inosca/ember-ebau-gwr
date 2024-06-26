@@ -37,7 +37,7 @@ module("Integration | Component | search-street", function (hooks) {
           swissZipCode: "8862",
           swissZipCodeAddOn: "",
         },
-        language: undefined,
+        language: 9901,
       });
 
       return [
@@ -60,14 +60,10 @@ module("Integration | Component | search-street", function (hooks) {
     />`);
 
     //disabled state
-    assert
-      .dom("label")
-      .hasText(
-        "t:ember-gwr.buildingEntrance.fields.street.description.descriptionLong:() *",
-      );
+    assert.dom("label").hasText("Strassenname *");
     assert
       .dom("[data-test-hint]")
-      .hasText("t:ember-gwr.components.streetSearch.requiredInputs:()");
+      .hasText("Bitte geben Sie zuerst Ihre PLZ an.");
 
     this.set("disabled", false);
     assert.dom("[data-test-hint]").isNotVisible();
@@ -84,9 +80,9 @@ module("Integration | Component | search-street", function (hooks) {
       .dom(
         ".ember-power-select-selected-item [data-test-search-street-locality-name]",
       )
-      .hasText("t:ember-gwr.locality.name.nameLong:(): ,");
+      .hasText("Ortsname: ,");
     assert
       .dom(".ember-power-select-selected-item [data-test-search-street-esid]")
-      .hasText("t:ember-gwr.street.ESID:(): 1234");
+      .hasText("ESID: 1234");
   });
 });
