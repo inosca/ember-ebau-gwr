@@ -1,5 +1,5 @@
 import { inject as service } from "@ember/service";
-import { task } from "ember-concurrency";
+import { restartableTask, task } from "ember-concurrency";
 import Street, { StreetList } from "ember-ebau-gwr/models/street";
 
 import GWRService from "./gwr";
@@ -50,7 +50,8 @@ export default class StreetService extends GWRService {
     this.cachedLanguageOverrides = new Set([]);
   }
 
-  async searchMultiple(query, useCachedLanguagesOnly) {
+  @restartableTask
+  *searchMultiple(query, useCachedLanguagesOnly) {
     let results = [];
 
     for (const lang of useCachedLanguagesOnly
@@ -71,7 +72,7 @@ export default class StreetService extends GWRService {
       });
     }
 
-    results = await Promise.allSettled(
+    results = yield Promise.allSettled(
       results.map(async ({ lang, result }) => {
         return { lang, result: await result };
       }),
@@ -97,9 +98,9 @@ export default class StreetService extends GWRService {
     // the search), we continue searching only with the languages for which we
     // previously received results.
     if (lastQueryString && currentQueryString.includes(lastQueryString)) {
-      return this.searchMultiple(query, true);
+      return this.searchMultiple.perform(query, true);
     }
     this.resetCachedLanguages();
-    return this.searchMultiple(query);
+    return this.searchMultiple.perform(query);
   }
 }
