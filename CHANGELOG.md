@@ -1,3 +1,21 @@
+# [7.6.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.5...v7.6.0) (2024-07-17)
+
+
+### Bug Fixes
+
+* **search-street:** improve contrast for hovered dropdown item ([4f29486](https://github.com/inosca/ember-ebau-gwr/commit/4f2948615ed7493ca467ee0fc0e4347ef396429e))
+* **street-search:** remove locality name from query ([1d47d54](https://github.com/inosca/ember-ebau-gwr/commit/1d47d540ed753993fa53e750c16228f7f805a574))
+
+
+### Features
+
+* **options:** add romance/rm language code ([1b25bc0](https://github.com/inosca/ember-ebau-gwr/commit/1b25bc0d604e34ecd823e82c102cd40600a709cc))
+* **search-street:** add validation support for component ([98c0290](https://github.com/inosca/ember-ebau-gwr/commit/98c029042420a500db78b79c3bf973ea1221b66d))
+* **search-street:** update locality after street selection ([a31b818](https://github.com/inosca/ember-ebau-gwr/commit/a31b818bbbd936a855a2f16a8b3bf10fd33dcc6e))
+* **search-street:** update search-street component usage ([c39ef38](https://github.com/inosca/ember-ebau-gwr/commit/c39ef38227c755e70c3bff6bc40e5201d4ea6ec7))
+* **street-service:** add low level request optimization for multi language search ([d6d35ff](https://github.com/inosca/ember-ebau-gwr/commit/d6d35ff98bda6d7c447fd8bb9864b4a7ac3736b5))
+* **street-service:** second guess with all available languages ([71b8dd7](https://github.com/inosca/ember-ebau-gwr/commit/71b8dd78bf96f019a529b554cc3f5515747a2959))
+
 ## [7.5.5](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.4...v7.5.5) (2024-03-19)
 
 
