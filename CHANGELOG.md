@@ -1,3 +1,16 @@
+# [8.0.0-beta.1](https://github.com/inosca/ember-ebau-gwr/compare/v7.6.0...v8.0.0-beta.1) (2024-07-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([fa89ba0](https://github.com/inosca/ember-ebau-gwr/commit/fa89ba072478ef0f5382ec80df68b754b361d804))
+
+
+### BREAKING CHANGES
+
+* **deps:** Drop support for Ember LTS < v4.12. This addon now
+requires the usage of `ember-intl` v7 and `ember-power-select` v8.
+
 # [7.6.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.5.5...v7.6.0) (2024-07-17)
 
 
