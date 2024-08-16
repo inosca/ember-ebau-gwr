@@ -63,8 +63,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))(flatpickr@4.6.13)(webpack@5.93.0)
       ember-intl:
-        specifier: ^7.0.3
-        version: 7.0.4(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0)
+        specifier: ^7.0.5
+        version: 7.0.5(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0)
       ember-modify-based-class-resource:
         specifier: ^1.1.0
         version: 1.1.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-resources@7.0.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0)))(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))
@@ -3529,8 +3529,8 @@ packages:
     peerDependencies:
       ember-source: ^3.16.0 || ^4.0.0 || ^5.0.0
 
-  ember-intl@7.0.4:
-    resolution: {integrity: sha512-EKIEV24BiUTx05+zi1Y37+qaOwVO/bFMZtsHPzndMDJcj6wjC1e3aMm5nvs4+jldh1TVwnIMVs9ivEoUNeijHQ==}
+  ember-intl@7.0.5:
+    resolution: {integrity: sha512-B+G6y6q52iHWG3IfsD74h7xP2qdaDdVmWOTGz+c11AmtxHRg98JpuVbyBsfHiazwfo3gPC/9qdaCQjkMsXTlOw==}
     engines: {node: 18.* || >= 20}
     peerDependencies:
       typescript: ^5.0.0
@@ -12269,7 +12269,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-intl@7.0.4(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0):
+  ember-intl@7.0.5(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0):
     dependencies:
       '@babel/core': 7.25.2
       '@formatjs/icu-messageformat-parser': 2.7.8
