@@ -1,0 +1,285 @@
+ember-gwr:
+  buildingWork:
+    ARBID: ARBID
+    kindOfWork: Tipo di lavori
+    kindOfWorkPlaceholder: Seleziona un tipo di lavori...
+    kindOfWorkOptions:
+      6001: Nuova costruzione
+      6002: Ristrutturazione
+      6007: Demolizione
+
+    energeticRestauration: Risanamento energetico
+    renovationHeatingsystem: Risanamento del sistema di riscaldamento
+    innerConversionRenovation: Trasformazioni / rinnovazioni degli spazi interni
+    conversion: Destinazione ad altro scopo
+    extensionHeighteningHeated: Ampliamento riscaldato
+    extensionHeighteningNotHeated: Ampliamento non riscaldato
+    thermicSolarFacility: Installazione impianto solare termico
+    photovoltaicSolarFacility: Installazione impianto fotovoltaico
+    otherWorks: Altri lavori
+
+  building:
+    building: Edificio
+    title: "Edificio {id} {status, select, undefined {} other {- {status}}}"
+    createNewBuilding: Registra un nuovo edificio
+
+    backToProject: Torna a progetto di costruzione
+
+    saveError: Errore nel tentativo di salvare l'edificio.
+    forbiddenBuildingClassError: 'La classe di edificio «Fabbricati rurali non residenziali» non può più essere attribuita alle nuove registrazioni (nuova costruzione). Seleziona invece una delle seguenti classi di edificio: «Edifici per la tenuta di animali», «Edifici per le colture vegetali» e «Altri fabbricati rurali non residenziali».'
+    saveSuccess: Edificio salvato con successo.
+    entrances:
+      error: Errore nel tentativo di caricare le entrate.
+      removeLinkError: Errore nel tentativo di eliminare il collegamento.
+      attachedDwellingsError: Tutte le abitazioni collegate devono essere disattivate prima che sia possibile eliminare l'entrata.
+      removeLinkSuccess: "L'UFS ha registrato la sua richiesta. Il team di supporto procederà all'elaborazione della richiesta e, se necessario, si metterà in contatto con lei. Telefono: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
+    dwellings:
+      entrance: "Entrata {number}"
+      rooms: "{number} locali"
+      groundFloor: Pianterreno
+      cellar: "{number}° piano interrato"
+      floor: "{number}° piano"
+      error: Errore nel tentativo di caricare le abitazioni.
+      removeLinkError: Errore nel tentativo di eliminare il collegamento.
+      removeLinkSuccess: "L'UFS ha registrato la sua richiesta. Il team di supporto procederà all'elaborazione della richiesta e, se necessario, si metterà in contatto con lei. Telefono: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
+    sections:
+      kindOfWorkForProject: "Tipo di lavori per progetto di costruzione {projectId}"
+      building: Edificio
+      locality: Località
+      localCodes: Codici locali
+      statusAndData: Stato e dati
+      structure: Struttura
+      dimensions: Dimensioni
+      energy: Energia
+      freeTextFields: Campo libero
+      heating: Riscaldamento
+      additionalHeating: Sistema di riscaldamento supplementare
+      warmWater: Acqua calda
+      additionalWarmWater: Sistema supplementare per la produzione di acqua calda
+
+    EGID: EGID
+    officialBuildingNo: Numero ufficiale dell'edificio
+    nameOfBuilding: Nome dell'edificio
+
+    coordinates:
+      east: Coordinata E dell'edificio
+      north: Coordinata N dell'edificio
+      originOfCoordinates: Provenienza delle coordinate
+      originOfCoordinatesPlaceholder: Seleziona la provenienza delle coordinate da...
+      originOfCoordinatesOptions:
+        901: "Misurazione ufficiale, MD.01"
+        902: Derivazione dalla Misurazione ufficiale
+        903: Indicazione della/del geometra revisora/e
+        904: Indicazione domanda di costruzione
+        905: Ufficio federale di statistica (UFS)
+        906: Dati GeoPost
+        909: Altra fonte d'informazione
+    localCode1: Codice locale 1
+    localCode2: Codice locale 2
+    localCode3: Codice locale 3
+    localCode4: Codice locale 4
+
+    neighbourhood: Quartiere
+
+    buildingStatus: Stato dell'edificio
+    buildingStatusPlaceholder: Seleziona uno stato dell'edificio...
+    buildingStatusOptions:
+      1001: in progetto
+      1002: Autorizzato
+      1003: In costruzione
+      1004: esistente
+      1005: Non utilizzabile
+      1007: Demolito
+      1008: Non realizzato
+
+    buildingCategory: Categoria di edificio
+    buildingCategoryPlaceholder: Seleziona una categoria di edificio...
+    buildingCategoryOptions:
+      1010: Abitazione provvisoria
+      1020: Edificio ad uso esclusivamente abitativo
+      1030: Edificio abitativo con utilizzazione accessoria
+      1040: Edificio ad uso parzialmente abitativo
+      1060: Edificio ad uso non abitativo
+      1080: Costruzione speciale
+
+    buildingClass: Classe di edificio
+    buildingClassPlaceholder: Seleziona una classe di edificio...
+    buildingClassOptions:
+      1110: Edifici a un'abitazione
+      1121: Edifici a due abitazioni
+      1122: Edifici a tre e più abitazioni
+      1130: Residenze per collettività
+      1211: Edifici alberghieri
+      1212: Altri edifici per abitazione di breve durata
+      1220: Fabbricati per uffici
+      1230: Fabbricati per il commercio all'ingrosso e al dettaglio
+      1231: Ristoranti e bar in edifici non residenziali
+      1241: "Stazioni ferroviarie, terminal, centrali telefoniche"
+      1242: Fabbricati per garage
+      1251: Fabbricati industriali
+      1252: "Serbatoi, silos e depositi"
+      1261: Edifici destinati ad attività ricreative o culturali
+      1262: Musei e biblioteche
+      1263: "Edifici scolastici, universitari ed edifici di ricerca"
+      1264: Edifici per fini ospedalieri e di assistenza sanitaria
+      1265: Sale sportive
+      1271: Fabbricati rurali non residenziali
+      1272: Edifici utilizzati come luoghi di culto e per attività religiose
+      1273: Monumenti storici o protetti
+      1274: "Altri edifici, non meglio specificati"
+      1275: Altri edifici che ospitano collettività
+      1276: Edifici per la tenuta di animali
+      1277: Edifici per le colture vegetali
+      1278: Altri fabbricati rurali non residenziali
+
+    dateOfConstruction:
+      year: Anno di costruzione dell'edificio
+      yearMonth: Mese di costruzione dell'edificio
+      yearMonthDay: Data di costruzione dell'edificio
+      periodOfConstruction: Epoca di costruzione
+      periodOfConstructionPlaceholder: Seleziona un'epoca di costruzione...
+      periodOfConstructionOptions:
+        8011: Periodo prima del 1919
+        8012: Periodo dal 1919 al 1945
+        8013: Periodo dal 1946 al 1960
+        8014: Periodo dal 1961 al 1970
+        8015: Periodo dal 1971 al 1980
+        8016: Periodo dal 1981 al 1985
+        8017: Periodo dal 1986 al 1990
+        8018: Periodo dal 1991 al 1995
+        8019: Periodo dal 1996 al 2000
+        8020: Periodo dal 2001 al 2005
+        8021: Periodo dal 2006 al 2010
+        8022: Periodo dal 2011 al 2015
+        8023: Periodo a partire dal 2016
+    yearOfDemolition: Anno di demolizione dell'edificio
+
+    realestateIdentification:
+      EGRID: EGRID
+      number: Numero del fondo (numero della particella)
+      subDistrict: Numero del circondario del registro fondiario
+
+    surfaceAreaOfBuilding: Superficie dell'edificio (m2)
+    volume:
+      volume: Volume dell'edificio (m3)
+      norm: Norma
+      normPlaceholder: Seleziona una norma...
+      normOptions:
+        961: Secondo la norma SIA 116
+        962: Secondo la norma SIA 416
+        969: Non noto
+      informationSource: "Volume dell'edificio: fonte d'informazione"
+      informationSourcePlaceholder: Seleziona una fonte d'informazione...
+      informationSourceOptions:
+        869: Secondo la licenza di costruzione
+        858: Secondo il Certificato energetico cantonale degli edifici (CECE)
+        853: Secondo l'Assicurazione fabbricati
+        852: Secondo la stima ufficiale
+        857: Secondo proprietaria/o / amministrazione immobiliare
+        851: Secondo la misurazione ufficiale
+        870: Secondo il modello topografico del paesaggio (MTP)
+        878: Volume non determinabile (edificio non chiuso)
+        859: Altro
+
+    numberOfFloors: Numero di piani
+    numberOfSeparateHabitableRooms: Numero di locali abitabili indipendenti
+    civilDefenseShelter: Rifugio di protezione civile
+    energyRelevantSurface: Superficie di riferimento energetico (m2)
+
+    heating:
+      heatGeneratorHotWater: Generatore di calore
+      heatGeneratorHotWaterPlaceholder: Seleziona un generatore di calore...
+      heatGeneratorHotWaterOptions:
+        7600: Senza generatore di calore
+        7610: Pompa di calore
+        7620: Impianto solare termico
+        7630: Caldaia (generica)
+        7632: Caldaia standard
+        7634: Caldaia a condensazione
+        7640: Impianto di cogenerazione di energia elettrica e termica
+        7650: Boiler centrale elettrico
+        7651: Piccolo boiler
+        7660: Scambiatore di calore e impianto ad hoc per teleriscaldamento
+        7699: Altro
+      heatGeneratorHeating: Generatore di calore
+      heatGeneratorHeatingPlaceholder: Seleziona un generatore di calore...
+      heatGeneratorHeatingOptions:
+        7400: Senza generatore di calore
+        7410: Pompa di calore per un solo edificio
+        7411: Pompa di calore per più edifici
+        7420: Impianto solare termico per un solo edificio
+        7421: Impianto solare termico per più edifici
+        7430: Caldaia (generica) per un solo edificio
+        7431: Caldaia (generica) per più edifici
+        7432: Caldaia standard per un solo edificio
+        7433: Caldaia standard per più edifici
+        7434: Caldaia a condensazione per un solo edificio
+        7435: Caldaia a condensazione per più edifici
+        7436: Stufa
+        7440: Impianto di cogenerazione di energia elettrica e termica per un solo edificio
+        7441: Impianto di cogenerazione di energia elettrica e termica per più edifici
+        7450: Riscaldamento centrale elettrico per un solo edificio
+        7451: Riscaldamento centrale elettrico per più edifici
+        7452: Radiatori elettrici
+        7460: Scambiatore di calore e impianto ad hoc per teleriscaldamento per un solo edificio
+        7461: Scambiatore di calore e impianto ad hoc per teleriscaldamento per più edifici
+        7499: Altro
+      energySourceHeating: Fonte di energia/calore
+      energySourceHeatingPlaceholder: Seleziona una fonte di energia/calore...
+      energySourceHeatingOptions:
+        7500: Nessuna
+        7501: Aria
+        7510: Geotermia (generica)
+        7511: Sonda geotermica
+        7512: Scambiatore geotermico
+        7513: "Acqua (acque sotterranee, acque di superficie, acque residue)"
+        7520: Gas
+        7530: Olio da riscaldamento
+        7540: Legna (generica)
+        7541: Legna (ceppi)
+        7542: Legna (granulati pellet)
+        7543: Legna (trucioli)
+        7550: Scarichi termici (nell'edificio)
+        7560: Elettricità
+        7570: Sole (termico)
+        7580: Calore prodotto a distanza (generico)
+        7581: Calore prodotto a distanza (alta temperatura)
+        7582: Calore prodotto a distanza (bassa temperatura)
+        7598: Indeterminata
+        7599: Altro
+      informationSourceHeating: Fonte d'informazione
+      informationSourceHeatingPlaceholder: Seleziona una fonte d'informazione...
+      informationSourceHeatingOptions:
+        852: Secondo la stima ufficiale
+        853: Secondo l'Assicurazione fabbricati
+        855: Secondo il controllo degli impianti di riscaldamento
+        857: Secondo proprietaria/o / gerente dell'edificio
+        858: Secondo il Certificato energetico cantonale degli edifici (CECE)
+        859: Altra fonte d'informazione
+        860: Secondo censimento 2000
+        864: Secondo dati cantonali
+        865: Secondo dati comunali
+        869: Secondo la licenza di costruzione
+        870: "Secondo l'impresa di erogazione (gas, calore a distanza)"
+        871: Secondo Minergie
+      revisionDate: Data aggiornamento
+
+    buildingFreeText1: Campo libero per l'edificio 1
+    buildingFreeText2: Campo libero per l'edificio 2
+
+    street:
+      description:
+        descriptionLong: Nome della via
+    buildingEntranceNo: Entrata dell'edificio numero
+    locality:
+      swissZipCode: NPA
+      name:
+        nameLong: Nome della località
+
+    buildingEntrance:
+      mainEntrance: Entrata principale
+      info: Dopo la realizzazione dell'edificio è possibile aggiungere altre entrate ed elaborare le vie in cui si trovano le entrate.
+      localityError: |-
+        Errore nel tentativo di salvare la località dell'entrata principale.
+        Verifica la <b>combinazione tra NPA e località</b>, che dovrebbe coincidere
+        con i dati salvati sul <a target="_blank" href="https://map.geo.admin.ch/?lang=it">geoportale federale</a>.

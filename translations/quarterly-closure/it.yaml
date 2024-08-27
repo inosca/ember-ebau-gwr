@@ -1,0 +1,64 @@
+ember-gwr:
+  quarterlyClosure:
+    needsCorrection: |-
+      La chiusura trimestrale non ha potuto essere conclusa a causa della presenza di errori. Completa i dati mancanti ed elimina le incoerenze rimanenti.
+
+    closure:
+      close: Notifica chiusura trimestrale
+      closeInfo: |-
+        La chiusura trimestrale può essere notificata all'UFS alla fine di un trimestre, in seguito l'Ufficio svolgerà dei controlli di qualità sui dati inseriti. In questo periodo non saranno più possibili modifiche ai dati fino a quando saranno necessarie eventuali correzioni di dati o la chiusura trimestrale non sarà conclusa.
+        Una volta avvenuta la correzione dei dati è possibile notificare nuovamente la chiusura trimestrale.
+
+      error: Errore nel tentativo di notificare la chiusura trimestrale.
+
+    status:
+      pollError: Errore nel tentativo di consultare lo stato del rilevamento. Riprova tra un minuto.
+      label: Stato
+      loading: Richiamo dello stato attuale...
+      processing: La richiesta relativa alla chiusura trimestrale non è ancora stata elaborata
+      610: Rilevamento dei dati avviato
+      620: Rilevamento avviato
+      630: La chiusura formale non è stata concessa
+      640: La chiusura formale non è stata concessa
+      650: La chiusura formale non è stata concessa
+      651: La chiusura formale non è stata concessa
+      660: Chiusura formale ad opera del comune
+      661: Conclusione del rilevamento concessa dal comune
+      662: La chiusura formale è stata concessa. Adeguamento automatico dopo 7 giorni o adeguamento manuale dello stato
+      663: Conclusione definitiva non confermata
+      665: Conclusione definitiva non confermata
+      667: Conclusione del rilevamento da parte del comune
+      670: Crea lista di controllo e svolgi controlli di qualità
+      680: Chiusura definitiva confermata
+      690: Copia i dati nello snapshot
+      691: Chiusura forzata da parte dell'UFS
+      short:
+        processing: Richiesta non ancora elaborata
+        610: Chiusura trimestrale avviata
+        620: Chiusura necessaria
+        630: È necessario correggere gli errori
+        640: È necessario correggere gli errori
+        650: È necessario correggere gli errori
+        651: È necessario correggere gli errori
+        660: Controllo della qualità dell'UFS
+        661: Controllo della qualità dell'UFS
+        662: Controllo della qualità dell'UFS
+        663: È necessario correggere gli errori
+        665: È necessario correggere gli errori
+        667: Controllo della qualità dell'UFS
+        670: Controllo della qualità dell'UFS
+        680: Controllo finale della qualità dell'UFS
+        690: Conclusa
+        691: Chiusura forzata da parte dell'UFS
+
+    components:
+      projectErrors:
+        error: Errore nel tentativo di consultare l'elenco degli errori dei progetti.
+        title: Progetti di costruzione
+        infoText:
+          "Di seguito trova un elenco dei progetti di costruzione registrati dal servizio di rilevazione e che contengono ancora degli errori. Clicchi sul singolo progetto di costruzione per visualizzare gli errori relativi a edifici, abitazioni ed entrate."
+      departmentErrors:
+        error: Errore nel tentativo di consultare l'elenco degli errori del servizio di rilevazione.
+        title: Servizio di rilevazione
+        infoText: Di seguito trova le pendenze in sospeso del servizio di rilevazione.
+        maintenanceCost: Le uscite per la manutenzione a opere proprie devono essere inserite nel 1° trimestre in Housing-Stat.

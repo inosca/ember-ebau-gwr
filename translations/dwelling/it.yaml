@@ -1,0 +1,89 @@
+ember-gwr:
+  dwelling:
+    dwelling: Abitazione
+    title: "Abitazione {id}"
+    createNewDwelling: Registra nuova abitazione
+    usage:
+      heading: Utilizzazione dell'abitazione
+
+    saveError: Errore nel tentativo di salvare l'abitazione.
+    saveSuccess: Abitazione salvata con successo.
+    loadingError: Errore nel tentativo di caricare l'abitazione.
+
+    # Fields
+    EDID: Entrata
+    EGID: Edificio
+    EWID: Abitazione
+    floor: Piano
+    floorType: Tipo di piano
+    floorTypeOptions:
+      3100: "Pianterreno, compreso il pianterreno sopraelevato"
+      3101: Piano superiore
+      3401: Piano interrato
+    floorTypePlaceholder: Seleziona un tipo di piano...
+    floorNumber: Numero di piano
+    floorHint: |-
+      Per le abitazioni costruite su più piani, va registrato il piano 
+      sul quale si situa l'entrata (principale) dell'abitazione.
+    multipleFloor: Abitazione su più piani
+    physicalDwellingNo: Numero fisico dell'abitazione
+    dwellingStatus: Stato dell'abitazione
+    dwellingStatusPlaceholder: Seleziona uno stato dell'abitazione...
+    dwellingStatusOptions:
+      3001: in progetto
+      3002: Autorizzato
+      3003: In costruzione
+      3004: esistente
+      3005: Non utilizzabile
+      3007: Eliminato
+      3008: Non realizzato
+    administrativeDwellingNo: Numero amministrativo dell'abitazione
+    yearOfConstruction: Anno di costruzione dell'abitazione
+    yearOfDemolition: Anno di demolizione dell'abitazione
+    noOfHabitableRooms: Numero di locali
+    locationOfDwellingOnFloor: Situazione sul piano
+    usageLimitation: Limitazione d'uso secondo la LASec
+    usageLimitationPlaceholder: Seleziona una limitazione d'uso...
+    usageLimitationOptions:
+      3401: "Senza limitazione d'uso (art. 8, 9 e 10 LASec)"
+      3402: Abitazione primaria (art. 7 cpv. 1 lett. a LASec)
+      3403: Abitazione sfruttata a scopi turistici (art. 7 cpv. 2 lett. a LASec)
+      3404: Abitazione sfruttata a scopi turistici (art. 7 cpv. 2 lett. b LASec)
+    kitchen: Fornelli
+    surfaceAreaOfDwelling: Superficie dell'abitazione
+
+    dwellingUsage:
+      dwellingUsage: Utilizzazione dell'abitazione
+      usageCode: Tipo di utilizzazione dell'abitazione
+      usageCodePlaceholder: Seleziona un tipo di utilizzazione...
+      usageCodeOptions:
+        3010: "Occupata secondo la LArRa, art. 3 lett. b (abitazione primaria, art. 2 cpv. 2 LASec)"
+        3020: "Occupata temporaneamente (abitazione secondaria, art. 2 cpv. 4 LASec)"
+        3030: Utilizzata per usi diversi da quello abitativo (art. 2 cpv. 3 lett. h LASec)
+        3031: Occupata in permanenza a scopo di lavoro o di formazione (art. 2 cpv. 3 lett. a LASec)
+        3032: Occupata da un'economia domestica privata occupante un'altra abitazione nell'edificio (art. 2 cpv. 3 lett. b LASec)
+        3033: Occupata da persone che non sono tenute ad annunciarsi al controllo degli abitanti (art. 2 cvp. 3 lett. c LASec)
+        3034: Non occupata da al massimo due anni (art. 2 cpv. 3 lett. d LASec)
+        3035: Utilizzata per l'agricoltura alpestre (art. 2 cpv. 3 lett. e LASec)
+        3036: Utilizzata da imprese per ospitarvi il personale (art. 2 cpv. 3 lett. f LASec)
+        3037: Utilizzata quale abitazione di servizio (art. 2 cpv. 3 lett. g LASec)
+        3038: Occupate da collettività ai sensi dell'art. 2 lett. a bis dell'ordinanza sull'armonizzazione dei registri (OArRa)
+        3070: Abitazione inabitabile
+      informationSource: Fonte di informazioni relativa all'utilizzazione
+      informationSourcePlaceholder: Seleziona una fonte d'informazione...
+      informationSourceOptions:
+        3090: Aggiornamento automatico (art. 2 cvp. 1 OASec)
+        3091: Controllo abitanti
+        3092: Indicazione proprietaria/o / amministrazione immobiliare
+        3093: Altra fonte d'informazione
+      revisionDate: Data di aggiornamento del tipo di utilizzazione
+      remark: Commento sul tipo di utilizzazione
+      personWithMainResidence: Persona/e con domicilio principale
+      personWithSecondaryResidence: Persona/e con domicilio secondario
+      mainAndSecondaryResidenceInfoHeading: 'Informazione relativa a «Persona/e con domicilio principale» e «Persona/e con domicilio secondario»'
+      mainAndSecondaryResidenceInfo: 'Per «Persona/e con domicilio principale» e «Persona/e con domicilio secondario» l''aggiornamento nel REA federale è automatico e si basa sulla relazione dei dati del REA federale con i dati dei registri delle persone.'
+      dateFirstOccupancy: Data della prima occupazione
+      dateLastOccupancy: Data dell'ultima occupazione
+
+    dwellingFreeText1: Campo libero per l'abitazione 1
+    dwellingFreeText2: Campo libero per l'abitazione 2
