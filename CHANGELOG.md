@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.0...v8.0.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* add italian translations ([a80b5b4](https://github.com/inosca/ember-ebau-gwr/commit/a80b5b4a1eeecb2cc493d3cd088c4ed4eb78bb0a))
+
 # [8.0.0](https://github.com/inosca/ember-ebau-gwr/compare/v7.6.0...v8.0.0) (2024-08-06)
 
 
