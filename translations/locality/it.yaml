@@ -1,0 +1,7 @@
+ember-gwr:
+  locality:
+    # Model Fields
+    name:
+      nameLong: Nome della località
+    swissZipCode: Numero postale di avviamento
+    swissZipCodeAddOn: Cifre supplementari del numero postale di avviamento

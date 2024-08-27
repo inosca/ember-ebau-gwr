@@ -1,0 +1,347 @@
+ember-gwr:
+  close: "Chiudi"
+  previousMonth: "Mese precedente"
+  nextMonth: "Mese successivo"
+
+  models:
+    building: |-
+      {count, plural,
+        one {edificio}
+        other {edifici}
+      }
+    building-work: |-
+      {count, plural,
+        one {lavoro}
+        other {lavori}
+      }
+    project: |-
+      {count, plural,
+        one {progetto}
+        other {progetti}
+      }
+    entrance: |-
+      {count, plural,
+        one {entrata}
+        other {entrate}
+      }
+    dwelling: |-
+      {count, plural,
+        one {abitazione}
+        other {abitazioni}
+      }
+
+  generalErrors:
+    searchError: Errore nel tentativo di svolgere la ricerca.
+    loginError: Nel corso del login con l'interfaccia REA si è verificato un errore. Riprova
+    logoutError: Nel corso del logout dall'interfaccia REA si è verificato un errore. Riprova
+    genericFormError: Nel tentativo di elaborare la richiesta si è verificato un errore. Verifica i dati inseriti.
+
+  general:
+    or: oppure
+
+  projectLandingPage:
+    heading: Questo dossier non è ancora collegato con un progetto REA
+    infoText: Non è ancora collegato un progetto di costruzione REA esistente. Può crearne uno nuovo usando questo modulo oppure creare un collegamento con un progetto esistente.
+    createNewProject: Registra un nuovo progetto
+    linkExistingProject: Crea un collegamento con un progetto esistente
+
+  globalLandingPage:
+    heading: REA
+    infoText: |-
+      Nel modulo REA è possibile cercare progetti ed edifici esistenti nel REA
+      e procedere ad adeguamenti. È inoltre possibile eseguire la chiusura trimestrale.
+      I progetti di costruzione REA già collegati con un dossier eBau possono essere
+      consultati anche nel relativo dossier eBau.
+    searchProject: Cerca ed elabora progetti di costruzione
+    searchBuilding: Cerca ed elabora edifici
+    quarterlyClosure: "Chiusura trimestrale {quarter}"
+    backToGlobal: Ritorna alla panoramica
+    backToSearch: Ritorna alla ricerca
+
+  nav:
+    projectDetails: Dettagli del progetto
+    linkedBuildings: Edifici collegati
+    housingStatInfo: Sul portale housing-stat dell'UFS è possibile gestire le vie.
+    housingStatLink: Vai al sito housing-stat
+    deletionInfo: "Per eliminare dei dati dai moduli occorre contattare l'UFS: telefono: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
+
+  linkedBuildings:
+    error: Errore nel tentativo di caricare i dati del progetto.
+    removeLinkError: Errore nel tentativo di eliminare il collegamento.
+    buildingDisabledForInfrastructure: |-
+      Non sono ammessi edifici per progetti del genio civile.
+      Il tipo di lavori viene registrato direttamente nel progetto.
+    superstructureInfo: |-
+      Per progetti edili il tipo di lavori viene notificato per i singoli edifici.
+    specialstructureInfo: |-
+      Per progetti edilizi speciali sono ammessi esclusivamente edifici della categoria «costruzioni speciali».
+    buildingDisabledForNewProject: Durante la creazione di un progetto non è ancora possibile registrare degli edifici.
+
+  search:
+    hasError: Stato di errore
+    hasErrorPlaceholder: Tutti
+    minFilterError: Deve essere impostato almeno 1 filtro.
+    loadMoreResults: Carica più risultati
+    hasErrorOptions:
+      true: Solo con errori
+      false: Solo senza errori
+
+  searchBuilding:
+    heading: Collega edificio esistente
+    headingGlobal: Cerca edificio nel REA
+    search: Cerca edificio
+    entrances: Entrate degli edifici
+
+    previewBuilding: Visualizza dati degli edifici
+    previewBuildingError: Errore nel tentativo di caricare i dati dell'edificio.
+
+    linkSuccess: L'edificio è stato collegato con successo.
+    linkError: Errore nel tentativo di collegare l'edificio.
+
+  searchProject:
+    heading: Collega progetto di costruzione esistente
+    searchGlobal: Cerca progetto di costruzione nel REA
+    search: Cerca progetti
+    alreadyLinkedInfo: Questo progetto di costruzione è già collegato con l'attuale dossier eBau.
+
+    EPROID: EPROID
+    projectStatus: Stato del progetto
+    projectStatusPlaceholder: Tutti
+    projectStatusOptions:
+      6701: Domanda di costruzione presentata
+      6702: Licenza edilizia rilasciata (con validità giuridica)
+      6703: in corso
+      6704: concluso
+      6706: Progetto rinviato
+      6707: Domanda di costruzione respinta (con validità giuridica)
+      6708: Non realizzato
+      6709: Ritirato
+
+    instanceIds: Dossier eBau collegati
+
+    hasError: Stato di errore
+
+    realestateIdentification:
+      number: Numero del fondo (numero della particella)
+
+  issues:
+    nav: Pendenze in sospeso
+    infoAlert: "In questo progetto di costruzione è presente/sono presenti {count} problema/i che impediscono l'ulteriore elaborazione del progetto."
+    infoSuccess: Questo progetto di costruzione non presenta problemi.
+    info: Le caselle rosse indicano quante pendenze sono in sospeso per quali oggetti.
+    switcher:
+      issues: Pendenze
+      entrances: Entrate collegate
+      dwellings: Abitazioni collegate
+
+  lifeCycles:
+    noStatus: Nessuna indicazione dello stato
+    cascadeOption: Inserire automaticamente gli edifici e/o le abitazioni collegati?
+
+    project:
+      statusOptions:
+        6701: Domanda di costruzione presentata
+        6702: Licenza edilizia rilasciata (con validità giuridica)
+        6703: in corso
+        6704: Concluso
+        6706: Progetto rinviato
+        6707: Domanda di costruzione respinta (con validità giuridica)
+        6708: Non realizzato
+        6709: Ritirato
+
+    building:
+      statusOptions:
+        1001: In progetto
+        1002: Autorizzato
+        1003: In costruzione
+        1004: esistente
+        1005: Non utilizzabile
+        1007: Demolito
+        1008: Non realizzato
+
+    dwelling:
+      statusOptions:
+        3001: in progetto
+        3002: Autorizzato
+        3003: In costruzione
+        3004: esistente
+        3005: Non utilizzabile
+        3007: Abrogato
+        3008: Non realizzato
+
+    statusErrorBuilding: "Edificio {buildingId}"
+    statusErrorDwelling: "Abitazione {dwellingId} nell'edificio {buildingId}"
+    statusError: "deve avere lo stato {states}."
+
+    states:
+      6701: in progetto
+      6702: autorizzato
+      6703: in costruzione
+      6704: concluso
+      6706: rinviato
+      6707: rifiutato
+      6708: non realizzato
+      6709: ritirato
+
+      1001: in progetto
+      1002: autorizzato
+      1003: in costruzione
+      1004: esistente
+      1005: Non utilizzabile
+      1007: Demolito
+      1008: non realizzato
+
+      3001: in progetto
+      3002: autorizzato
+      3003: in costruzione
+      3004: esistente
+      3005: Non utilizzabile
+      3007: Abrogato
+      3008: non realizzato
+
+  components:
+    search:
+      loading: Carica...
+      noResults: Non abbiamo trovato alcun risultato per i criteri di ricerca selezionati.
+      validation:
+        realestateIdentification: Per la ricerca avanzata occorre indicare il numero del fondo.
+        bothDatesSet: Occorre indicare entrambe le date.
+
+      realestateIdentificationHeading: Identificatore dei fondi
+      realestateIdentification:
+        EGRID: EGRID
+        number: Numero del fondo (numero della particella)
+        subDistrict: Numero del circondario del registro fondiario
+
+      createDateHeading: Periodo di realizzazione
+      createDate:
+        dateFrom: "da"
+        dateTo: "a"
+
+      modifyDateHeading: Periodo di elaborazione
+      modifyDate:
+        dateFrom: "da"
+        dateTo: "a"
+
+      extendedSearch:
+        extend: Visualizza filtri avanzati
+        collapse: Nascondi filtri avanzati
+
+    loginModal:
+      header: Effettua login nel REA
+      login: Login
+      password: Password...
+      username: Nome utente...
+      municipality: Seleziona un comune...
+      municipalitySearch: Cerca comune...
+      municipalityNoneFound: Non è stato trovato alcun comune
+      loginInfo: "<b>{user}</b> login effettuato per <b>{municipality}</b>"
+      loginIssueContact: "<b>Se non è possibile effettuare il login contattare direttamente...</b><br><br>hotline<br>housing-stat@bfs.admin.ch<br>0800 866 600<br>Dal lunedì al venerdì<br>08.30-11.30 e 14.00-16.00"
+
+    logout: Logout
+
+    modelForm:
+      save: Salva
+      cancelImport: Annulla import
+      applyAll: Riprendi tutto
+      importFromCaluma: Importa dati della domanda di costruzione
+      noImportData: Non esistono dati da importare.
+      changeStatus: Modifica stato
+      dates: Date
+      datePlaceholder: Seleziona una data...
+      title: "Progetto di costruzione {id}"
+      realEstateHeading: Identificatore dei fondi
+      clientHeading: Committente
+      validationError: Nel modulo sono presenti errori di immissione. Correggi.
+      importError: Errore durante l'importazione. Al momento non è possibile riprendere i dati.
+
+      diff:
+        existingData: Dati esistenti nel REA
+        importedData: Dati importati
+        apply: Riprendi
+        resolved: Tutti i conflitti sono stati risolti. Clicca su Salva per riprendere le modifiche!
+        cancel: Rifiuta
+
+      project:
+        title: "Progetto di costruzione {id}"
+        titleNew: Registra un nuovo progetto
+
+      building:
+        title: "Edificio {id}"
+        titleNew: Registra un nuovo edificio
+
+      entrance:
+        title: "Entrata {modelDescription}"
+        titleNew: Registra una nuova entrata
+
+      dwelling:
+        title: "Abitazione {id}"
+        titleNew: Registra nuova abitazione
+
+    linkedModels:
+      linkedEntries: "{modelName} collegati"
+      noLinkedEntries: "Non sono ancora collegati {modelName}"
+      linkEntry: "Collega {modelName}"
+      linkExistingBuilding: Collega edificio esistente (trasformazione / demolizione)
+      createEntry: |-
+        Registra {modelName}
+        {model, select,
+          building {(nuova costruzione)}
+          dwelling {(nuova costruzione)}
+          entrance {(nuova costruzione)}
+          other {}
+        }
+      or: oppure
+      removeLink: elimina collegamento
+      buildingInfo: |-
+        Rivolgersi al portale Housing-Stat per aggiungere un edificio esistente non ancora inserito nel REA.
+
+    linkBuildingModal:
+      linkBuilding: Collega edificio
+      cancel: Annulla
+
+    header:
+      status:
+        label: Stato
+        placeholder: TODO
+      statusSelector:
+        actionInfo:
+          Le modifiche dello stato rappresentano un passaggio naturale all'interno del ciclo di vita di un oggetto. Le correzioni dello stato offrono l'opportunità di correggere condizioni dello stato errate.
+        statusInfo: "Nuovi stati per modifiche dello stato ammessi:"
+        noNextStates: Nessuno (stato finale)
+        statusLabel: Nuovo stato
+        submitChangeLabel: Modifica stato
+        submitCorrectionLabel: Correggi stato
+        correctionDropTitle: Informazioni relative allo stato necessarie per una correzione
+        changeDropTitle: Informazioni relative allo stato necessarie per una modifica
+        confirmCorrection: Conferma correzione dello stato
+        confirmChange: Conferma modifica dello stato
+        cancel: Annulla
+
+      issues: "Pendenze in sospeso per {modelName} {modelId}"
+      noIssues: "Nessuna pendenza in sospeso per {modelName} {modelId}"
+      linkIssues: "Vai all'elenco completo delle pendenze per il progetto di costruzione {projectId}"
+
+    linkStreet:
+      missingLocalityHint: Inserisci dapprima il nome della località.
+      change: Modifica via
+      link: Collega via
+      heading: Collega via
+      search: Cerca via...
+      linkSuccess: Via collegata con successo.
+      linkError: Errore nel tentativo di collegare la via.
+      streetHint: Per registrare un'entrata occorre collegare una via.
+      searchHint: 'Nella casella di ricerca è possibile inserire un asterisco (*) come segnaposto per cercare parti del nome della via.'
+      searchHintExamples: Esempi
+      searchHintExamples1: 'Unter* : Unterfeldweg, Unterschlossweg'
+      searchHintExamples2: '*weg : Waldweg, Unterschlossweg'
+      searchHintExamples3: 'B*strasse : Bernstrasse, Bachstrasse'
+
+    importModal:
+      selectImportData: Seleziona dati da importare
+
+    modelErrors:
+      empty: Nessuna pendenza in sospeso
+
+    streetSearch:
+      requiredInputs: Inserisci dapprima il NPA.

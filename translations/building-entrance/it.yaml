@@ -1,0 +1,58 @@
+ember-gwr:
+  buildingEntrance:
+    title: "Entrata {address}"
+    backToBuilding: Torna a Edificio
+    backToEntrance: Torna a Entrata
+    createNewEntrance: Registra una nuova entrata
+
+    saveError: Errore nel tentativo di salvare l'entrata.
+    saveSuccess: Entrata salvata con successo.
+    loadingError: Errore nel tentativo di caricare l'entrata.
+    localityError: |-
+      Errore nel tentativo di salvare l'entrata. 
+      Verifica la <b>combinazione tra NPA e località</b>, che dovrebbe coincidere
+      con i dati salvati sul <a target="_blank" href="https://map.geo.admin.ch/?lang=it">geoportale federale</a>.
+    street: Via
+    coordinates: Coordinate
+    missingStreetInfo: Collega dapprima una via.
+
+    fields:
+      EDID: EDID
+      EGAID: EGAID
+      EGID: EGID
+      isOfficialAddress: Indirizzo ufficiale
+      buildingEntranceNo: Entrata dell'edificio numero
+      coordinates:
+        east: Coordinata E dell'edificio
+        north: Coordinata N dell'edificio
+        originOfCoordinates: Provenienza delle coordinate
+        originOfCoordinatesPlaceholder: Seleziona la provenienza delle coordinate da...
+        originOfCoordinatesOptions:
+          901: "Misurazione ufficiale, MD.01"
+          902: Derivazione dalla Misurazione ufficiale
+          903: Indicazione della/del geometra revisora/e
+          904: Indicazione domanda di costruzione
+          905: Ufficio federale di statistica (UFS)
+          906: Dati GeoPost
+          909: Altra fonte d'informazione
+      street:
+        ESID: ESID
+        isOfficialDescription: Nome ufficiale della via
+        officialStreetNumber: Numero ufficiale della via
+        streetKind: Genere di via
+        streetKindPlaceholder: Seleziona un genere di via...
+        streetKindOptions:
+          9801: Via (oggetto lineare)
+          9802: Piazza (oggetto puntuale)
+          9803: Zona provvista di denominazione (superficie)
+          9809: Nessuna indicazione relativa alla geometria
+        streetStatus: Stato di avanzamento della via
+        streetGeometry: Geometria della via
+        description:
+          descriptionLong: Nome della via
+      locality:
+        locality: Località
+        swissZipCode: NPA
+        swissZipCodeAddOn: Cifre supplementari del numero postale di avviamento
+        name:
+          nameLong: Nome della località

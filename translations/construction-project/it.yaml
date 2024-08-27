@@ -1,0 +1,434 @@
+ember-gwr:
+  constructionProject:
+    saveError: Errore nel tentativo di salvare il progetto di costruzione.
+    saveSuccess: Progetto di costruzione salvato con successo.
+    missingBuildingError: Crea dapprima un collegamento con un edificio.
+    linkedWithBuilding: Collegamento creato con edificio.
+
+    sections:
+      freeTextFields: Campo libero
+
+    fields:
+      EPROID: EPROID
+      officialConstructionProjectFileNo: Numero ufficiale del dossier di costruzione
+      officialConstructionProjectFileNo.hint: La prima cifra del numero ufficiale del dossier di costruzione non può essere 0 (zero).
+      extensionOfOfficialConstructionProjectFileNo: Suffisso del numero ufficiale del dossier di costruzione
+      constructionProjectDescription: Descrizione del progetto di costruzione
+      constructionSurveyDeptNumber: Numero del servizio d'inchiesta
+      totalCostsOfProject: Costo totale del progetto
+      projectAnnouncementDate: Data della domanda di costruzione
+      buildingPermitIssueDate: Data della licenza di costruzione
+      projectStartDate: Data di inizio dei lavori
+      durationOfConstructionPhase: Durata dei lavori
+      durationOfConstructionPhase.hint: Durata dei lavori in mesi (numero da 1 a 999)
+      projectCompletionDate: Data della fine dei lavori
+      projectSuspensionDate: Data della sospensione
+      constructionAuthorisationDeniedDate: Data del rifiuto
+      cancellationDate: Data di non realizzazione
+      withdrawalDate: Data del ritiro della domanda di costruzione
+      projectFreeText1: Campo libero per il progetto 1
+      projectFreeText2: Campo libero per il progetto 2
+
+      constructionLocalisation:
+        municipalityName: Comune
+
+      realestateIdentification:
+        EGRID: EGRID
+        number: Numero del fondo (numero della particella)
+        subDistrict: Numero del circondario del registro fondiario
+
+      client:
+        identification:
+          personIdentification:
+            officialName: Cognome
+            firstName: Nome
+          organisationIdentification:
+            organisationName: Nome dell'impresa
+            organisationAdditionalName: Complemento al nome dell'impresa
+            localOrganisationId:
+              organisationId: Numero d'identificazione delle imprese
+              organisationIdCategory: Categoria
+        address:
+          street: Via
+          houseNumber: Numero
+          swissZipCode: Numero postale di avviamento
+          swissZipCodeAddOn: Cifre supplementari del numero postale di avviamento
+          foreignZipCode: Numero postale di avviamento estero
+          addressLine2: Complemento all'indirizzo
+          country:
+            countryNameShort: Paese
+            countryNameShortOptions:
+              ad: Andorra
+              ae: Emirati Arabi Uniti
+              af: Afghanistan
+              ag: Antigua e Barbuda
+              ai: Anguilla
+              al: Albania
+              am: Armenia
+              ao: Angola
+              aq: Antartide
+              ar: Argentina
+              as: Samoa Americane
+              at: Austria
+              au: Australia
+              aw: Aruba
+              ax: Isole Åland
+              az: Azerbaigian
+              ba: Bosnia ed Erzegovina
+              bb: Barbados
+              bd: Bangladesh
+              be: Belgio
+              bf: Burkina Faso
+              bg: Bulgaria
+              bh: Bahrain
+              bi: Burundi
+              bj: Benin
+              bl: Saint-Barthélemy
+              bm: Bermuda
+              bn: Brunei
+              bo: Bolivia
+              bq: Isole BES
+              br: Brasile
+              bs: Bahamas
+              bt: Bhutan
+              bv: Isola Bouvet
+              bw: Botswana
+              by: Bielorussia
+              bz: Belize
+              ca: Canada
+              cc: Isole Cocos
+              cd: Repubblica democratica del Congo
+              cf: Repubblica centrafricana
+              cg: Repubblica del Congo
+              ch: Svizzera
+              ci: Costa d'Avorio
+              ck: Isole Cook
+              cl: Cile
+              cm: Camerun
+              cn: Cina
+              co: Colombia
+              cr: Costa Rica
+              cu: Cuba
+              cv: Capo Verde
+              cw: Curaçao
+              cx: Isola di Natale
+              cy: Cipro
+              cz: Repubblica Ceca
+              de: Germania
+              dj: Gibuti
+              dk: Danimarca
+              dm: Dominica
+              do: Repubblica Dominicana
+              dz: Algeria
+              ec: Ecuador
+              ee: Estonia
+              eg: Egitto
+              eh: Sahara Occidentale
+              er: Eritrea
+              es: Spagna
+              et: Etiopia
+              fi: Finlandia
+              fj: Figi
+              fk: Isole Falkland
+              fm: Stati Federati di Micronesia
+              fo: Isole Faroe
+              fr: Francia
+              ga: Gabun
+              gb: Regno Unito
+              gd: Grenada
+              ge: Georgia
+              gf: Guyana francese
+              gg: Guernsey
+              gh: Ghana
+              gi: Gibilterra
+              gl: Groenlandia
+              gm: Gambia
+              gn: Guinea
+              gp: Guadalupa
+              gq: Guinea Equatoriale
+              gr: Grecia
+              gs: Georgia del Sud e Sandwich Australi
+              gt: Guatemala
+              gu: Guam
+              gw: Guinea-Bissau
+              gy: Guyana
+              hk: Hong Kong
+              hm: Isola Heard e Isole McDonald
+              hn: Honduras
+              hr: Croazia
+              ht: Haiti
+              hu: Ungheria
+              id: Indonesia
+              ie: Irlanda
+              il: Israele
+              im: Isola di Man
+              in: India
+              io: Territori Britannici dell'Oceano Indiano
+              iq: Iraq
+              ir: Iran
+              is: Islanda
+              it: Italia
+              je: Jersey
+              jm: Giamaica
+              jo: Giordania
+              jp: Giappone
+              ke: Kenya
+              kg: Kirghizistan
+              kh: Cambogia
+              ki: Kiribati
+              km: Comore
+              kn: Saint Kitts e Nevis
+              kp: Corea del Nord
+              kr: Corea del Sud
+              kw: Kuwait
+              ky: Isole Cayman
+              kz: Kazakistan
+              la: Laos
+              lb: Libano
+              lc: Santa Lucia
+              li: Liechtenstein
+              lk: Sri Lanka
+              lr: Liberia
+              ls: Lesotho
+              lt: Lituania
+              lu: Lussemburgo
+              lv: Lettonia
+              ly: Libia
+              ma: Marocco
+              mc: Monaco
+              md: Moldavia
+              me: Montenegro
+              mf: Saint Martin
+              mg: Madagascar
+              mh: Isole Marshall
+              mk: Macedonia del Nord
+              ml: Mali
+              mm: Myanmar
+              mn: Mongolia
+              mo: Macao
+              mp: Isole Marianne Settentrionali
+              mq: Martinica
+              mr: Mauritania
+              ms: Montserrat
+              mt: Malta
+              mu: Mauritius
+              mv: Maldive
+              mw: Malawi
+              mx: Messico
+              my: Malesia
+              mz: Mozambico
+              na: Namibia
+              nc: Nuova Caledonia
+              ne: Niger
+              nf: Isola Norfolk
+              ng: Nigeria
+              ni: Nicaragua
+              nl: Paesi Bassi
+              no: Norvegia
+              np: Nepal
+              nr: Nauru
+              nu: Niue
+              nz: Nuova Zelanda
+              om: Oman
+              pa: Panama
+              pe: Perù
+              pf: Polinesia Francese
+              pg: Papua Nuova Guinea
+              ph: Filippine
+              pk: Pakistan
+              pl: Polonia
+              pm: Saint-Pierre e Miquelon
+              pn: Isole Pitcairn
+              pr: Porto Rico
+              ps: Palestina
+              pt: Portogallo
+              pw: Palau
+              py: Paraguay
+              qa: Qatar
+              re: La Riunione
+              ro: Romania
+              rs: Serbia
+              ru: Russia
+              rw: Ruanda
+              sa: Arabia Saudita
+              sb: Isole Salomone
+              sc: Seychelles
+              sd: Sudan
+              se: Svezia
+              sg: Singapore
+              sh: "Sant'Elena, Ascensione e Tristan da Cunha"
+              si: Slovenia
+              sj: Svalbard e Jan Mayen
+              sk: Slovacchia
+              sl: Sierra Leone
+              sm: San Marino
+              sn: Senegal
+              so: Somalia
+              sr: Suriname
+              ss: Sudan del Sud
+              st: São Tomé e Príncipe
+              sv: El Salvador
+              sx: Sint Maarten
+              sy: Siria
+              sz: Eswatini
+              tc: Isole Turks e Caicos
+              td: Ciad
+              tf: Terre Australi e Antartiche Francesi
+              tg: Togo
+              th: Thailandia
+              tj: Tagikistan
+              tk: Tokelau
+              tl: Timor Est
+              tm: Turkmenistan
+              tn: Tunisia
+              to: Tonga
+              tr: Turchia
+              tt: Trinidad e Tobago
+              tv: Tuvalu
+              tw: Taiwan
+              tz: Tanzania
+              ua: Ucraina
+              ug: Uganda
+              um: Isole minori esterne degli Stati Uniti d'America
+              us: Stati Uniti d'America
+              uy: Uruguay
+              uz: Uzbekistan
+              va: Città del Vaticano
+              vc: Saint Vincent e Grenadine
+              ve: Venezuela
+              vg: Isole Vergini Britanniche
+              vi: Isole Vergini Americane
+              vn: Vietnam
+              vu: Vanuatu
+              wf: Wallis e Futuna
+              ws: Samoa
+              xk: Kosovo
+              ye: Yemen
+              yt: Mayotte
+              za: Sudafrica
+              zm: Sambia
+              zw: Zimbabwe
+            countryNameShortPlaceholder: Seleziona un Paese...
+
+      typeOfConstructionProject: Genere di opera
+      typeOfConstructionProjectPlaceholder: Seleziona un tipo di opera...
+      typeOfConstructionProjectOptions:
+        6010: Genio civile
+        6011: Edilizia (non genio civile)
+        6012: Costruzione speciale
+
+      typeOfConstruction: Tipo di opera
+      typeOfConstructionPlaceholder: Seleziona un tipo di opera...
+      typeOfConstructionOptions:
+        6211: Impianti di approvvigionamento idrico
+        6212: Centrali e reti elettriche
+        6213: "Officine e reti del gas, impianti chimici"
+        6214: Impianti di teleriscaldamento
+        6219: Altri impianti di approvvigionamento
+        6221: Impianti di smaltimento delle acque
+        6222: Impianti di smaltimento dei rifiuti
+        6223: Altri impianti di smaltimento
+        6231: Strade nazionali
+        6232: Strade cantonali
+        6233: Strade comunali
+        6234: "Altre costruzioni stradali, parcheggi"
+        6235: Autosili
+        6241: Impianti ferroviari
+        6242: Impianti per bus e tram
+        6243: Impianti della navigazione
+        6244: Impianti dei trasporti aerei
+        6245: Impianti di telecomunicazione
+        6249: Altri impianti dei trasporti
+        6251: "Scuole, formazione fino al grado della maturità"
+        6252: Formazione superiore e ricerca
+        6253: Ospedali per casi acuti e di cure generali
+        6254: Istituti della sanità con servizi di cura e/o assistenza
+        6255: Altre istituzioni sanitarie specializzate
+        6256: Impianti per lo svago e il turismo
+        6257: Chiese e altri luoghi di culto
+        6258: "Edifici a scopo culturale compresi musei, biblioteche e monumenti"
+        6259: Impianti e installazioni per lo sport
+        6261: Argini e dighe
+        6262: Opere per la difesa nazionale
+        6269: Altre infrastrutture
+        6271: Case unifamiliari isolate
+        6272: Case unifamiliari contigue
+        6273: Case plurifamiliari (ad uso esclusivamente abitativo)
+        6274: Case con utilizzazione accessoria (comprese le fattorie)
+        6276: Residenze per collettività senza servizi di cura e/o assistenza
+        6278: "Garage, posti di parcheggio annessi a edifici abitativi"
+        6279: Altre costruzioni annesse a edifici abitativi
+        6281: Costruzioni per l'agricoltura
+        6282: Costruzioni per la selvicoltura
+        6283: Bonifiche fondiarie
+        6291: "Fabbriche, officine"
+        6292: "Capannoni, depositi, sili, cisterne"
+        6293: "Edifici amministrativi, uffici"
+        6294: "Edifici commerciali, negozi"
+        6295: "Alberghi, ristoranti"
+        6296: Altre strutture di abitazione turistiche
+        6299: Altre costruzioni destinate ad attività economiche
+
+      typeOfPermit: Base per l'autorizzazione
+      typeOfPermitPlaceholder: Seleziona una base per l'autorizzazione...
+      typeOfPermitOptions:
+        5000: Zona edificabile
+        5001: Edifici di economia rurale per coltivazione dipendente dal suolo
+        5002: "Edifici agricoli per preparazione, immagazzinamento e vendita"
+        5003: Edifici abitativi per l'attività agricola
+        5004: Stalle comuni
+        5005: "Ampliamenti interni per animali (porcili, pollai)"
+        5006: Ampliamenti interni per coltura di verdure e altri vegetali (serre)
+        5007: Edifici conformi in zone agricole speciali
+        5008: Produzione di energia a partire da biomassa
+        5009: Edifici e impianti conformi in zone protette
+        5011: "Edifici e impianti conformi in zone speciali (discariche, sport, ecc. a eccezione di casali e zone degne di conservazione)"
+        5012: "Edifici conformi in zone di casali o degne di conservazione, ecc."
+        5015: Impianti solari
+        5021: Edifici a ubicazione vincolata
+        5022: Modifica totale di destinazione d'uso in aree con insediamenti sparsi
+        5023: Modifica totale di destinazione d'uso di edifici protetti tipici del paesaggio
+        5031: Modifica della destinazione d'uso senza lavori di trasformazione
+        5041: Attività non agricole che assicurano la sussistenza
+        5043: Attività non agricole con stretto legame con l'azienda agricola
+        5044: Attività non agricole in aree sfruttate temporaneamente
+        5051: Trasformazione di edifici non più conformi alla zona
+        5061: Trasformazione di ex abitazioni ad uso agricolo
+        5062: Modifica totale della destinazione d'uso di edifici protetti
+        5063: Impianti esterni per la tenuta di animali a scopo di hobby
+        5064: Tenuta di animali a scopo di hobby in edifici nelle vicinanze
+        5071: Trasformazione di edifici commerciali non più conformi alla zona
+
+      typeOfClient: Tipo di committente
+      typeOfClientPlaceholder: Seleziona il tipo di committente...
+      typeOfClientAlert: |-
+        Per il tipo di committente «Persone private, comprese le comunioni ereditarie»
+        i campi «Nome dell'impresa» e «Complemento al nome dell'impresa»
+        non possono essere compilati. Per altri committenti (organizzazioni) 
+        i campi «Cognome» e «Nome» non possono essere compilati.
+      typeOfClientOptions:
+        6101: FFS (Ferrovie federali svizzere)
+        6103: "DDPS (Dipartimento federale della difesa, della protezione della popolazione e dello sport)"
+        6104: UFCL (Ufficio federale delle costruzioni e della logistica)
+        6105: USTRA (Ufficio federale delle strade)
+        6107: Swisscom
+        6108: La Posta
+        6110: Cantoni (senza le loro aziende pubbliche)
+        6111: Aziende pubbliche di un Cantone (senza le banche cantonali e le assicurazioni fabbricati)
+        6115: "Comuni comprese le loro corporazioni di diritto pubblico (patriziati, corporazioni agricole, ecc.), ma senza le aziende pubbliche"
+        6116: "Aziende pubbliche del comune (aziende dei trasporti, del gas, dell'acqua, elettriche, servizi industriali, ecc.)"
+        6121: "Compagnie di assicurazioni, senza le casse pensioni e le casse malati"
+        6122: Fondazioni di previdenza (casse pensioni)
+        6123: "Casse malati, SUVA"
+        6124: "Banche (Banca nazionale, grandi banche, banche cantonali, banche regionali, casse di risparmio, banche private), fondi immobiliari o holding finanziarie"
+        6131: Aziende elettriche private
+        6132: Aziende del gas private
+        6133: Ferrovie private
+        6141: "Ditte individuali o società di persone (società semplici, in nome collettivo o in accomandita) del settore immobiliare"
+        6142: Cooperative immobiliari i cui membri occupano la maggior parte delle abitazioni dell'edificio
+        6143: "Società di capitali (società anonime, cooperative, SA in accomandita, Sagl) del settore immobiliare"
+        6151: "Ditte individuali o società di persone (società semplici, in nome collettivo o in accomandita) senza il settore immobiliare"
+        6152: "Società di capitali (società anonime, cooperative, SA in accomandita, Sagl) senza il settore immobiliare"
+        6161: "Persone private, comprese le comunioni ereditarie"
+        6162: "Altri committenti privati (chiese comprese le chiese ufficiali, fondazioni che non sono casse pensioni; associazioni, ecc.)"
+        6163: "Organizzazioni internazionali, ambasciate"
