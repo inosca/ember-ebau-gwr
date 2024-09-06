@@ -55,8 +55,8 @@ ember-gwr:
     searchProject: Cerca ed elabora progetti di costruzione
     searchBuilding: Cerca ed elabora edifici
     quarterlyClosure: "Chiusura trimestrale {quarter}"
-    backToGlobal: Ritorna alla panoramica
-    backToSearch: Ritorna alla ricerca
+    backToGlobal: Torna alla panoramica
+    backToSearch: Torna alla ricerca
 
   nav:
     projectDetails: Dettagli del progetto
