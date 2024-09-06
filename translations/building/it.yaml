@@ -159,9 +159,9 @@ ember-gwr:
       number: Numero del fondo (numero della particella)
       subDistrict: Numero del circondario del registro fondiario
 
-    surfaceAreaOfBuilding: Superficie dell'edificio (m2)
+    surfaceAreaOfBuilding: Superficie dell'edificio (m²)
     volume:
-      volume: Volume dell'edificio (m3)
+      volume: Volume dell'edificio (m³)
       norm: Norma
       normPlaceholder: Seleziona una norma...
       normOptions:
@@ -184,7 +184,7 @@ ember-gwr:
     numberOfFloors: Numero di piani
     numberOfSeparateHabitableRooms: Numero di locali abitabili indipendenti
     civilDefenseShelter: Rifugio di protezione civile
-    energyRelevantSurface: Superficie di riferimento energetico (m2)
+    energyRelevantSurface: Superficie di riferimento energetico (m²)
 
     heating:
       heatGeneratorHotWater: Generatore di calore
