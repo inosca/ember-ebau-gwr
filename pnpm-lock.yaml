@@ -63,8 +63,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))(flatpickr@4.6.13)(webpack@5.93.0)
       ember-intl:
-        specifier: ^7.0.3
-        version: 7.0.4(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0)
+        specifier: ^7.0.6
+        version: 7.0.6(@ember/test-helpers@3.3.1(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))(webpack@5.93.0))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0)
       ember-modify-based-class-resource:
         specifier: ^1.1.0
         version: 1.1.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-resources@7.0.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0)))(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))
@@ -3529,12 +3529,15 @@ packages:
     peerDependencies:
       ember-source: ^3.16.0 || ^4.0.0 || ^5.0.0
 
-  ember-intl@7.0.4:
-    resolution: {integrity: sha512-EKIEV24BiUTx05+zi1Y37+qaOwVO/bFMZtsHPzndMDJcj6wjC1e3aMm5nvs4+jldh1TVwnIMVs9ivEoUNeijHQ==}
+  ember-intl@7.0.6:
+    resolution: {integrity: sha512-56RDyd+xlp9Apmy6hKgMEt99PbsL0r9qvm9ogb5nwe5QSRret2f22P3oi9vqGCgs7ZfP23x6EXTp8HX43E4z5g==}
     engines: {node: 18.* || >= 20}
     peerDependencies:
+      '@ember/test-helpers': ^2.9.4 || ^3.2.0 || ^4.0.0
       typescript: ^5.0.0
     peerDependenciesMeta:
+      '@ember/test-helpers':
+        optional: true
       typescript:
         optional: true
 
@@ -12269,7 +12272,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-intl@7.0.4(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0):
+  ember-intl@7.0.6(@ember/test-helpers@3.3.1(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))(webpack@5.93.0))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.93.0):
     dependencies:
       '@babel/core': 7.25.2
       '@formatjs/icu-messageformat-parser': 2.7.8
@@ -12289,6 +12292,7 @@ snapshots:
       js-yaml: 4.1.0
       json-stable-stringify: 1.1.1
     optionalDependencies:
+      '@ember/test-helpers': 3.3.1(@babel/core@7.25.2)(@glint/template@1.4.0)(ember-source@5.10.2(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.93.0))(webpack@5.93.0)
       typescript: 5.5.4
     transitivePeerDependencies:
       - '@glint/template'
