@@ -3,9 +3,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import BuildingWork from "ember-ebau-gwr/models/building-work";
 
-// Remove the state "Neubau" from the array since you cant link
-// existing buildings as "Neubau".
-const KIND_OF_WORK_OPTIONS = BuildingWork.kindOfWorkOptions.slice(1);
+const KIND_OF_WORK_OPTIONS = BuildingWork.kindOfWorkOptions;
 
 export default class LinkBuildingModalComponent extends Component {
   @service config;

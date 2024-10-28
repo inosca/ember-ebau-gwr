@@ -150,10 +150,17 @@
           {{t "ember-gwr.building.buildingEntrance.info"}}
         </small>
         <Field
+          @attr="building.buildingEntrance.locality.name.nameLong"
+          @required={{true}}
+          @label="ember-gwr.buildingEntrance.fields.locality.name.nameLong"
+          @disabled={{true}}
+        />
+        <Field
           @attr="building.buildingEntrance.locality.swissZipCode"
           @type="number"
           @label="ember-gwr.buildingEntrance.fields.locality.swissZipCode"
           @required={{true}}
+          @disabled={{true}}
         />
         <Field
           @attr="building.buildingEntrance.locality.street"
@@ -165,11 +172,6 @@
             )
           }}
           @on-update={{fn this.syncLocalityWithStreet changeset}}
-          @disabled={{not
-            (changeset-get
-              changeset "building.buildingEntrance.locality.swissZipCode"
-            )
-          }}
           @required={{true}}
         />
         <Field

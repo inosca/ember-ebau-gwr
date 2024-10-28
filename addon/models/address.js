@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import XMLModel from "./xml-model";
 
 export class Country extends XMLModel {
-  @tracked countryNameShort;
+  @tracked countryNameShort = "ch";
 
   constructor(...args) {
     super(...args);
