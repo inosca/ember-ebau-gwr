@@ -1,3 +1,10 @@
+## [8.0.2](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.1...v8.0.2) (2024-10-28)
+
+
+### Bug Fixes
+
+* **entrance:** ensure street is set for building creation ([b2e175a](https://github.com/inosca/ember-ebau-gwr/commit/b2e175ac624c18c9954e839d642fd506047d0abc))
+
 ## [8.0.1](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.0...v8.0.1) (2024-08-27)
 
 
