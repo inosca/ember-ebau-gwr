@@ -114,6 +114,7 @@ export default class BuildingFormController extends ImportController {
       "building.buildingEntrance.locality.swissZipCodeAddOn",
       streetList.locality.swissZipCodeAddOn,
     );
+    changeset.set("building.buildingEntrance.street", streetList);
   }
 
   @dropTask

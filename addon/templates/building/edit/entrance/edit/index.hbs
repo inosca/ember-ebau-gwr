@@ -27,13 +27,13 @@
       {{/unless}}
       <Field
         @attr="locality.name.nameLong"
-        @disabled={{not this.buildingEntrance.isNew}}
+        @disabled={{true}}
         @required={{true}}
       />
       <Field
         @attr="locality.swissZipCode"
         @type="number"
-        @disabled={{not this.buildingEntrance.isNew}}
+        @disabled={{true}}
         @required={{true}}
       />
       {{#if this.buildingEntrance.isNew}}
@@ -47,11 +47,6 @@
             )
           }}
           @on-update={{fn this.syncLocalityWithSelectedStreet changeset}}
-          @disabled={{not
-            (changeset-get
-              changeset "locality.swissZipCode"
-            )
-          }}
           @required={{true}}
         />
       {{else}}
