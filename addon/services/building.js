@@ -30,7 +30,7 @@ export default class BuildingService extends GwrService {
       throw errors;
     }
     // Refresh cache after removing the building
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     await this.constructionProject.get(EPROID);
   }
 
@@ -55,7 +55,7 @@ export default class BuildingService extends GwrService {
       throw errors;
     }
     // Update cache
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     this.constructionProject.get(EPROID);
 
     const xml = await response.text();

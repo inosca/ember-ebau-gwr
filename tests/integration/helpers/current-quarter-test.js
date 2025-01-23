@@ -1,8 +1,9 @@
 import { render } from "@ember/test-helpers";
-import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { Settings } from "luxon";
 import { module, test } from "qunit";
+
+import { setupRenderingTest } from "dummy/tests/helpers";
 
 module("Integration | Helper | current-quarter", function (hooks) {
   setupRenderingTest(hooks);

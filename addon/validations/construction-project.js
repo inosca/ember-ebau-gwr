@@ -9,7 +9,6 @@ import realestateIdentification from "./realestate-identification";
 
 export default {
   officialConstructionProjectFileNo: [
-    /* eslint-disable-next-line  no-useless-escape   */
     validateFormat({
       regex: "^(s+[^0]|[^s0]).*$",
       allowBlank: true,

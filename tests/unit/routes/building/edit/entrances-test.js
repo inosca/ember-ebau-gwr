@@ -1,5 +1,6 @@
-import { setupTest } from "dummy/tests/helpers";
 import { module, test } from "qunit";
+
+import { setupTest } from "dummy/tests/helpers";
 
 module("Unit | Route | building/edit/entrances", function (hooks) {
   setupTest(hooks);
