@@ -7,7 +7,7 @@ import {
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
 
-import { setupRenderingTest } from "dummy/tests/helpers";
+import { setupRenderingTest } from "test-app/tests/helpers";
 
 module("Integration | Component | search-street", function (hooks) {
   setupRenderingTest(hooks);

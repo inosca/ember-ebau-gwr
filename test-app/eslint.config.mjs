@@ -6,7 +6,7 @@ export default [
   {
     plugins: { ember },
     settings: {
-      "import/internal-regex": "^(camac-ng|dummy)/",
+      "import/internal-regex": "^(camac-ng|test-app)/",
     },
 
     rules: {

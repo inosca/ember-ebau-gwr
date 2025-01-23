@@ -2,7 +2,7 @@ import { render } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { module, todo } from "qunit";
 
-import { setupRenderingTest } from "dummy/tests/helpers";
+import { setupRenderingTest } from "test-app/tests/helpers";
 
 module("Integration | Component | Search", function (hooks) {
   setupRenderingTest(hooks);

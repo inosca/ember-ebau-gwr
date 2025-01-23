@@ -1,0 +1,38 @@
+<div class="ember-view">
+  {{! template-lint-disable no-bare-strings}}
+  <ul>
+    <li>
+      <LinkTo @route="gwr-global">
+        Globale Ansicht
+      </LinkTo>
+    </li>
+    {{#if (eq this.canton "SZ")}}
+      <li>
+        <LinkTo @route="gwr" @model={{1}}>
+          Dossier 1
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="gwr" @model={{2}}>
+          Dossier 2
+        </LinkTo>
+      </li>
+    {{else if (eq this.canton "BE")}}
+      <li>
+        <LinkTo @route="gwr" @model={{3}}>
+          Dossier 3
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="gwr" @model={{4}}>
+          Dossier 4
+        </LinkTo>
+      </li>
+    {{/if}}
+  </ul>
+
+  <div id="modal-container"></div>
+  <div class="uk-padding uk-container">
+    {{outlet}}
+  </div>
+</div>

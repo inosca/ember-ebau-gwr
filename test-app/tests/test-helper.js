@@ -4,8 +4,8 @@ import { loadTests } from "ember-qunit/test-loader";
 import * as QUnit from "qunit";
 import { setup } from "qunit-dom";
 
-import Application from "dummy/app";
-import config from "dummy/config/environment";
+import Application from "test-app/app";
+import config from "test-app/config/environment";
 
 setApplication(Application.create(config.APP));
 
