@@ -101,7 +101,7 @@ export default class DwellingService extends GwrService {
     }
 
     // Refresh building cache after adding a dwelling
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     await this.building.get(EGID);
 
     const xml = await response.text();
@@ -129,7 +129,7 @@ export default class DwellingService extends GwrService {
       throw errors;
     }
     // Refresh cache after removing the building
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     await this.building.get(EGID);
   }
 

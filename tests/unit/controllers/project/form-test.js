@@ -1,6 +1,7 @@
+import { module, test } from "qunit";
+
 import { setupTest } from "dummy/tests/helpers";
 import DataImportStub from "dummy/tests/helpers/data-import-stub";
-import { module, test } from "qunit";
 
 module("Unit | Controller | project/form", function (hooks) {
   setupTest(hooks);

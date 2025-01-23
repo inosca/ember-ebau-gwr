@@ -85,7 +85,7 @@ export default class BuildingEntranceService extends GwrService {
     }
 
     // Refresh building cache after adding a entrance
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     await this.building.get(EGID);
 
     const xml = await response.text();
@@ -113,7 +113,7 @@ export default class BuildingEntranceService extends GwrService {
       throw errors;
     }
     // Refresh cache after removing the building
-    /* eslint-disable-next-line ember/classic-decorator-no-classic-methods */
+
     await this.building.get(EGID);
   }
 

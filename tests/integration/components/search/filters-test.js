@@ -1,8 +1,9 @@
 import { click, render } from "@ember/test-helpers";
-import { setupRenderingTest } from "dummy/tests/helpers";
 import { Changeset } from "ember-changeset";
 import { hbs } from "ember-cli-htmlbars";
 import { module, test } from "qunit";
+
+import { setupRenderingTest } from "dummy/tests/helpers";
 
 module("Integration | Component | search/filters", function (hooks) {
   setupRenderingTest(hooks);

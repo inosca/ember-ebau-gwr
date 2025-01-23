@@ -1,5 +1,4 @@
 import { render } from "@ember/test-helpers";
-import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { selectChoose } from "ember-power-select/test-support";
 import {
@@ -7,6 +6,8 @@ import {
   clickTrigger,
 } from "ember-power-select/test-support/helpers";
 import { module, test } from "qunit";
+
+import { setupRenderingTest } from "dummy/tests/helpers";
 
 module("Integration | Component | search-street", function (hooks) {
   setupRenderingTest(hooks);

@@ -1,6 +1,7 @@
+import { module, test } from "qunit";
+
 import { setupTest } from "dummy/tests/helpers";
 import SessionStub from "dummy/tests/helpers/session-stub";
-import { module, test } from "qunit";
 
 module("Unit | Service | auth-fetch", function (hooks) {
   setupTest(hooks);
