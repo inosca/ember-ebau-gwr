@@ -229,17 +229,17 @@ importers:
         specifier: 24.2.1
         version: 24.2.1(typescript@5.5.4)
       stylelint:
-        specifier: 16.14.0
-        version: 16.14.0(typescript@5.5.4)
+        specifier: 16.14.1
+        version: 16.14.1(typescript@5.5.4)
       stylelint-config-standard-scss:
         specifier: 14.0.0
-        version: 14.0.0(postcss@8.5.1)(stylelint@16.14.0(typescript@5.5.4))
+        version: 14.0.0(postcss@8.5.2)(stylelint@16.14.1(typescript@5.5.4))
       stylelint-prettier:
         specifier: 5.0.3
-        version: 5.0.3(prettier@3.4.2)(stylelint@16.14.0(typescript@5.5.4))
+        version: 5.0.3(prettier@3.4.2)(stylelint@16.14.1(typescript@5.5.4))
       stylelint-scss:
         specifier: 6.10.1
-        version: 6.10.1(stylelint@16.14.0(typescript@5.5.4))
+        version: 6.10.1(stylelint@16.14.1(typescript@5.5.4))
       uikit:
         specifier: 3.22.3
         version: 3.22.3
@@ -4168,8 +4168,8 @@ packages:
     resolution: {integrity: sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==}
     engines: {node: '>= 4.9.1'}
 
-  fastq@1.18.0:
-    resolution: {integrity: sha512-QKHXPW0hD8g4UET03SdOdunzSouc9N4AuHdsX8XNcTsuz+yYFILVNIX4l9yHABMhiEI9Db0JTTIpu0wB+Y1QQw==}
+  fastq@1.19.0:
+    resolution: {integrity: sha512-7SFSRCNjBQIZH/xZR3iy5iQYR8aGBE0h3VG6/cwlbrpdciNYBMotQav8c1XI3HjHH+NikUpP53nPdlZSdWmFzA==}
 
   faye-websocket@0.11.4:
     resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
@@ -4190,8 +4190,8 @@ packages:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
     engines: {node: '>=18'}
 
-  file-entry-cache@10.0.5:
-    resolution: {integrity: sha512-umpQsJrBNsdMDgreSryMEXvJh66XeLtZUwA8Gj7rHGearGufUFv6rB/bcXRFsiGWw/VeSUgUofF4Rf2UKEOrTA==}
+  file-entry-cache@10.0.6:
+    resolution: {integrity: sha512-0wvv16mVo9nN0Md3k7DMjgAPKG/TY4F/gYMBVb/wMThFRJvzrpaqBFqF6km9wf8QfYTN+mNg5aeaBLfy8k35uA==}
 
   file-entry-cache@8.0.0:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
@@ -4292,8 +4292,8 @@ packages:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}
     engines: {node: '>=16'}
 
-  flat-cache@6.1.5:
-    resolution: {integrity: sha512-QR+2kN38f8nMfiIQ1LHYjuDEmZNZVjxuxY+HufbS3BW0EX01Q5OnH7iduOYRutmgiXb797HAKcXUeXrvRjjgSQ==}
+  flat-cache@6.1.6:
+    resolution: {integrity: sha512-F+CKgSwp0pzLx67u+Zy1aCueVWFAHWbXepvXlZ+bWVTaASbm5SyCnSJ80Fp1ePEmS57wU+Bf6cx6525qtMZ4lQ==}
 
   flatpickr@4.6.13:
     resolution: {integrity: sha512-97PMG/aywoYpB4IvbvUJi0RQi8vearvU0oov1WW3k0WZPBMrTQVqekSX5CjSG/M4Q3i6A/0FKXC7RyAoAUUSPw==}
@@ -4586,6 +4586,10 @@ packages:
     resolution: {integrity: sha512-s3Fq41ZVh7vbbe2PN3nrW7yC7U7MFVc5c98/iTl9c2GawNMKx/J648KQRW6WKkuU8GIbbh2IXfIRQjOZnXcTnw==}
     engines: {node: '>=18'}
 
+  globby@14.1.0:
+    resolution: {integrity: sha512-0Ia46fDOaT7k4og1PDW4YbodWWr3scS2vAr2lTbsplOt2WkKp0vQbkI9wKis/T5LV/dqPjO3bpS/z6GTJB82LA==}
+    engines: {node: '>=18'}
+
   globjoin@0.1.4:
     resolution: {integrity: sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==}
 
@@ -4801,6 +4805,10 @@ packages:
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
+    engines: {node: '>=6'}
+
+  import-fresh@3.3.1:
+    resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
     engines: {node: '>=6'}
 
   import-from-esm@2.0.0:
@@ -5406,6 +5414,7 @@ packages:
 
   lodash.omit@4.5.0:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
+    deprecated: This package is deprecated. Use destructuring assignment syntax instead.
 
   lodash.snakecase@4.1.1:
     resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
@@ -6191,6 +6200,10 @@ packages:
     resolution: {integrity: sha512-5HviZNaZcfqP95rwpv+1HDgUamezbqdSYTyzjTvwtJSnIH+3vnbmWsItli8OFEndS984VT55M3jduxZbX351gg==}
     engines: {node: '>=12'}
 
+  path-type@6.0.0:
+    resolution: {integrity: sha512-Vj7sf++t5pBD637NSfkxpHSMfWaeig5+DKWLhcqIYx6mWQz5hdJTGDVMQiJcw1ZYkhs7AazKDGpRVji1LJCZUQ==}
+    engines: {node: '>=18'}
+
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
@@ -6294,11 +6307,15 @@ packages:
     resolution: {integrity: sha512-9RbEr1Y7FFfptd/1eEdntyjMwLeghW1bHX9GWjXo19vx4ytPQhANltvVxDggzJl7mnWM+dX28kb6cyS/4iQjlQ==}
     engines: {node: '>=4'}
 
+  postcss-selector-parser@7.1.0:
+    resolution: {integrity: sha512-8sLjZwK0R+JlxlYcTuVnyT2v+htpdrjDOKuMcOVdYjt52Lh8hWRYpxBPoKx/Zg+bcjc3wx6fmQevMmUztS/ccA==}
+    engines: {node: '>=4'}
+
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.1:
-    resolution: {integrity: sha512-6oz2beyjc5VMn/KV1pPw8fliQkhBXrVn1Z3TVyqZxU8kZpzEKhBdmCFqI6ZbmGtamQvQGuU1sgPTk8ZrXDD7jQ==}
+  postcss@8.5.2:
+    resolution: {integrity: sha512-MjOadfU3Ys9KYoX0AdkBlFEF1Vx37uCCeN4ZHnmwm9FfpbsGWMZeBLMmmpY+6Ocqod7mkdZ0DT31OlbsFrLlkA==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -7155,8 +7172,8 @@ packages:
     peerDependencies:
       stylelint: ^16.0.2
 
-  stylelint@16.14.0:
-    resolution: {integrity: sha512-orePw2dKxzXC0hd1VmxrDBqgf1KUV9DYsZY4guKLE9XcQD7m0BxVnWMaoQqMNsQIG14MyyTHf6zoajvOnDra8g==}
+  stylelint@16.14.1:
+    resolution: {integrity: sha512-oqCL7AC3786oTax35T/nuLL8p2C3k/8rHKAooezrPGRvUX0wX+qqs5kMWh5YYT4PHQgVDobHT4tw55WgpYG6Sw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -7183,8 +7200,8 @@ packages:
     resolution: {integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==}
     engines: {node: '>=10'}
 
-  supports-hyperlinks@3.1.0:
-    resolution: {integrity: sha512-2rn0BZ+/f7puLOHZm1HOJfwBggfaHXUpPUSSG/SWM4TWp5KCfmNYwnC3hruy2rZlMnmWZ+QAGpZfchu3f3695A==}
+  supports-hyperlinks@3.2.0:
+    resolution: {integrity: sha512-zFObLMyZeEwzAoKCyu1B91U79K2t7ApXuQfo8OuxwXLDgcKxuwM+YvcbIhm6QWqz7mHUH1TVytR1PwVVjEuMig==}
     engines: {node: '>=14.18'}
 
   supports-preserve-symlinks-flag@1.0.0:
@@ -8703,9 +8720,9 @@ snapshots:
       '@csstools/css-parser-algorithms': 3.0.4(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-tokenizer': 3.0.3
 
-  '@csstools/selector-specificity@5.0.0(postcss-selector-parser@7.0.0)':
+  '@csstools/selector-specificity@5.0.0(postcss-selector-parser@7.1.0)':
     dependencies:
-      postcss-selector-parser: 7.0.0
+      postcss-selector-parser: 7.1.0
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
@@ -9396,7 +9413,7 @@ snapshots:
   '@nodelib/fs.walk@1.2.8':
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.18.0
+      fastq: 1.19.0
 
   '@octokit/auth-token@5.1.1': {}
 
@@ -9622,7 +9639,7 @@ snapshots:
       aggregate-error: 5.0.0
       debug: 4.4.0
       dir-glob: 3.0.1
-      globby: 14.0.2
+      globby: 14.1.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       issue-parser: 7.0.1
@@ -9644,7 +9661,7 @@ snapshots:
       aggregate-error: 5.0.0
       debug: 4.4.0
       dir-glob: 3.0.1
-      globby: 14.0.2
+      globby: 14.1.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
       issue-parser: 7.0.1
@@ -11322,7 +11339,7 @@ snapshots:
   cosmiconfig@9.0.0(typescript@5.5.4):
     dependencies:
       env-paths: 2.2.1
-      import-fresh: 3.3.0
+      import-fresh: 3.3.1
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
@@ -11352,13 +11369,13 @@ snapshots:
 
   css-loader@5.2.7(webpack@5.97.1):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.1)
+      icss-utils: 5.1.0(postcss@8.5.2)
       loader-utils: 2.0.4
-      postcss: 8.5.1
-      postcss-modules-extract-imports: 3.1.0(postcss@8.5.1)
-      postcss-modules-local-by-default: 4.2.0(postcss@8.5.1)
-      postcss-modules-scope: 3.2.1(postcss@8.5.1)
-      postcss-modules-values: 4.0.0(postcss@8.5.1)
+      postcss: 8.5.2
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.2)
+      postcss-modules-local-by-default: 4.2.0(postcss@8.5.2)
+      postcss-modules-scope: 3.2.1(postcss@8.5.2)
+      postcss-modules-values: 4.0.0(postcss@8.5.2)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.3
@@ -13273,7 +13290,7 @@ snapshots:
 
   fastest-levenshtein@1.0.16: {}
 
-  fastq@1.18.0:
+  fastq@1.19.0:
     dependencies:
       reusify: 1.0.4
 
@@ -13297,9 +13314,9 @@ snapshots:
     dependencies:
       is-unicode-supported: 2.1.0
 
-  file-entry-cache@10.0.5:
+  file-entry-cache@10.0.6:
     dependencies:
-      flat-cache: 6.1.5
+      flat-cache: 6.1.6
 
   file-entry-cache@8.0.0:
     dependencies:
@@ -13446,7 +13463,7 @@ snapshots:
       flatted: 3.3.2
       keyv: 4.5.4
 
-  flat-cache@6.1.5:
+  flat-cache@6.1.6:
     dependencies:
       cacheable: 1.8.8
       flatted: 3.3.2
@@ -13829,6 +13846,15 @@ snapshots:
       slash: 5.1.0
       unicorn-magic: 0.1.0
 
+  globby@14.1.0:
+    dependencies:
+      '@sindresorhus/merge-streams': 2.3.0
+      fast-glob: 3.3.3
+      ignore: 7.0.3
+      path-type: 6.0.0
+      slash: 5.1.0
+      unicorn-magic: 0.3.0
+
   globjoin@0.1.4: {}
 
   globrex@0.1.2: {}
@@ -14043,9 +14069,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.5.1):
+  icss-utils@5.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
   ieee754@1.2.1: {}
 
@@ -14056,6 +14082,11 @@ snapshots:
   immutable@5.0.3: {}
 
   import-fresh@3.3.0:
+    dependencies:
+      parent-module: 1.0.1
+      resolve-from: 4.0.0
+
+  import-fresh@3.3.1:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
@@ -14739,7 +14770,7 @@ snapshots:
       cli-table3: 0.6.5
       marked: 12.0.2
       node-emoji: 2.2.0
-      supports-hyperlinks: 3.1.0
+      supports-hyperlinks: 3.2.0
 
   marked@12.0.2: {}
 
@@ -15330,6 +15361,8 @@ snapshots:
 
   path-type@5.0.0: {}
 
+  path-type@6.0.0: {}
+
   performance-now@2.1.0: {}
 
   picocolors@1.1.1: {}
@@ -15379,45 +15412,50 @@ snapshots:
 
   postcss-media-query-parser@0.2.3: {}
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.5.1):
+  postcss-modules-extract-imports@3.1.0(postcss@8.5.2):
     dependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
-  postcss-modules-local-by-default@4.2.0(postcss@8.5.1):
+  postcss-modules-local-by-default@4.2.0(postcss@8.5.2):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.1)
-      postcss: 8.5.1
-      postcss-selector-parser: 7.0.0
+      icss-utils: 5.1.0(postcss@8.5.2)
+      postcss: 8.5.2
+      postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.1(postcss@8.5.1):
+  postcss-modules-scope@3.2.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.5.1
-      postcss-selector-parser: 7.0.0
+      postcss: 8.5.2
+      postcss-selector-parser: 7.1.0
 
-  postcss-modules-values@4.0.0(postcss@8.5.1):
+  postcss-modules-values@4.0.0(postcss@8.5.2):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.1)
-      postcss: 8.5.1
+      icss-utils: 5.1.0(postcss@8.5.2)
+      postcss: 8.5.2
 
   postcss-resolve-nested-selector@0.1.6: {}
 
-  postcss-safe-parser@7.0.1(postcss@8.5.1):
+  postcss-safe-parser@7.0.1(postcss@8.5.2):
     dependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
-  postcss-scss@4.0.9(postcss@8.5.1):
+  postcss-scss@4.0.9(postcss@8.5.2):
     dependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
   postcss-selector-parser@7.0.0:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
+  postcss-selector-parser@7.1.0:
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.1:
+  postcss@8.5.2:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
@@ -16392,39 +16430,39 @@ snapshots:
 
   styled_string@0.0.1: {}
 
-  stylelint-config-recommended-scss@14.1.0(postcss@8.5.1)(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-config-recommended-scss@14.1.0(postcss@8.5.2)(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
-      postcss-scss: 4.0.9(postcss@8.5.1)
-      stylelint: 16.14.0(typescript@5.5.4)
-      stylelint-config-recommended: 14.0.1(stylelint@16.14.0(typescript@5.5.4))
-      stylelint-scss: 6.10.1(stylelint@16.14.0(typescript@5.5.4))
+      postcss-scss: 4.0.9(postcss@8.5.2)
+      stylelint: 16.14.1(typescript@5.5.4)
+      stylelint-config-recommended: 14.0.1(stylelint@16.14.1(typescript@5.5.4))
+      stylelint-scss: 6.10.1(stylelint@16.14.1(typescript@5.5.4))
     optionalDependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
-  stylelint-config-recommended@14.0.1(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-config-recommended@14.0.1(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.14.0(typescript@5.5.4)
+      stylelint: 16.14.1(typescript@5.5.4)
 
-  stylelint-config-standard-scss@14.0.0(postcss@8.5.1)(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-config-standard-scss@14.0.0(postcss@8.5.2)(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.14.0(typescript@5.5.4)
-      stylelint-config-recommended-scss: 14.1.0(postcss@8.5.1)(stylelint@16.14.0(typescript@5.5.4))
-      stylelint-config-standard: 36.0.1(stylelint@16.14.0(typescript@5.5.4))
+      stylelint: 16.14.1(typescript@5.5.4)
+      stylelint-config-recommended-scss: 14.1.0(postcss@8.5.2)(stylelint@16.14.1(typescript@5.5.4))
+      stylelint-config-standard: 36.0.1(stylelint@16.14.1(typescript@5.5.4))
     optionalDependencies:
-      postcss: 8.5.1
+      postcss: 8.5.2
 
-  stylelint-config-standard@36.0.1(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-config-standard@36.0.1(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.14.0(typescript@5.5.4)
-      stylelint-config-recommended: 14.0.1(stylelint@16.14.0(typescript@5.5.4))
+      stylelint: 16.14.1(typescript@5.5.4)
+      stylelint-config-recommended: 14.0.1(stylelint@16.14.1(typescript@5.5.4))
 
-  stylelint-prettier@5.0.3(prettier@3.4.2)(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-prettier@5.0.3(prettier@3.4.2)(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
       prettier: 3.4.2
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.14.0(typescript@5.5.4)
+      stylelint: 16.14.1(typescript@5.5.4)
 
-  stylelint-scss@6.10.1(stylelint@16.14.0(typescript@5.5.4)):
+  stylelint-scss@6.10.1(stylelint@16.14.1(typescript@5.5.4)):
     dependencies:
       css-tree: 3.1.0
       is-plain-object: 5.0.0
@@ -16434,14 +16472,14 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.0.0
       postcss-value-parser: 4.2.0
-      stylelint: 16.14.0(typescript@5.5.4)
+      stylelint: 16.14.1(typescript@5.5.4)
 
-  stylelint@16.14.0(typescript@5.5.4):
+  stylelint@16.14.1(typescript@5.5.4):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.4(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-tokenizer': 3.0.3
       '@csstools/media-query-list-parser': 4.0.2(@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3))(@csstools/css-tokenizer@3.0.3)
-      '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.0.0)
+      '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.1.0)
       '@dual-bundle/import-meta-resolve': 4.1.0
       balanced-match: 2.0.0
       colord: 2.9.3
@@ -16451,7 +16489,7 @@ snapshots:
       debug: 4.4.0
       fast-glob: 3.3.3
       fastest-levenshtein: 1.0.16
-      file-entry-cache: 10.0.5
+      file-entry-cache: 10.0.6
       global-modules: 2.0.0
       globby: 11.1.0
       globjoin: 0.1.4
@@ -16465,14 +16503,14 @@ snapshots:
       micromatch: 4.0.8
       normalize-path: 3.0.0
       picocolors: 1.1.1
-      postcss: 8.5.1
+      postcss: 8.5.2
       postcss-resolve-nested-selector: 0.1.6
-      postcss-safe-parser: 7.0.1(postcss@8.5.1)
-      postcss-selector-parser: 7.0.0
+      postcss-safe-parser: 7.0.1(postcss@8.5.2)
+      postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
       string-width: 4.2.3
-      supports-hyperlinks: 3.1.0
+      supports-hyperlinks: 3.2.0
       svg-tags: 1.0.0
       table: 6.9.0
       write-file-atomic: 5.0.1
@@ -16503,7 +16541,7 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  supports-hyperlinks@3.1.0:
+  supports-hyperlinks@3.2.0:
     dependencies:
       has-flag: 4.0.0
       supports-color: 7.2.0
