@@ -76,6 +76,8 @@ export default class BuildingEditEntranceLinkStreetController extends Controller
         this.model.buildingId,
       );
       entrance.street = street;
+      // sync locality with selected street
+      entrance.locality = street.locality;
       await this.buildingEntrance.setStreet(
         this.model.entranceId,
         this.model.buildingId,
