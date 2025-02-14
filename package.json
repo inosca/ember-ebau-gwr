@@ -74,7 +74,7 @@
     "@babel/plugin-proposal-decorators": "7.25.9",
     "@ember-data/model": "5.3.9",
     "@ember/optional-features": "2.2.0",
-    "@ember/test-helpers": "5.0.0",
+    "@ember/test-helpers": "5.1.0",
     "@embroider/test-setup": "4.0.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "broccoli-asset-rev": "3.0.0",
