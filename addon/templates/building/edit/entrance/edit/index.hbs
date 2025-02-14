@@ -19,7 +19,7 @@
       @showImport={{this.showImport}}
       @importIndex={{this.importIndex}}
       @disabled={{this.hasNoStreet}}
-      as |Field changeset|
+      as |Field changeset import invalidSubmit|
     >
       {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" @type="number" @disabled={{true}} />
@@ -45,9 +45,11 @@
             locality=(changeset-get
               changeset "locality"
             )
+            validationPath="street.description.descriptionLong"
           }}
           @on-update={{fn this.syncLocalityWithSelectedStreet changeset}}
           @required={{true}}
+          @invalidSubmit={{invalidSubmit}}
         />
       {{else}}
         <Field
