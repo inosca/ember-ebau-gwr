@@ -1,4 +1,4 @@
-import { action } from "@ember/object";
+import { action, get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { isBlank } from "@ember/utils";
 import { tracked } from "@glimmer/tracking";
@@ -11,6 +11,22 @@ export default class SearchStreetComponent extends ValidatedInput {
   @service intl;
 
   @tracked searchTerm = "";
+
+  get errors() {
+    const errors =
+      (this.args.model &&
+        get(
+          this.args.model,
+          `error.${this.args.options.validationPath}.validation`,
+        )) ??
+      [];
+
+    if (!Array.isArray(errors)) {
+      return [errors];
+    }
+
+    return errors;
+  }
 
   get swissZipCode() {
     return this.args.options.locality.swissZipCode;
