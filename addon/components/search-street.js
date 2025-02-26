@@ -13,13 +13,14 @@ export default class SearchStreetComponent extends ValidatedInput {
   @tracked searchTerm = "";
 
   get errors() {
-    const errors =
-      (this.args.model &&
-        get(
-          this.args.model,
-          `error.${this.args.options.validationPath}.validation`,
-        )) ??
-      [];
+    if (!this.args.model) {
+      return [];
+    }
+
+    const errors = get(
+      this.args.model,
+      `error.${this.args.options.validationPath}.validation`,
+    );
 
     if (!Array.isArray(errors)) {
       return [errors];

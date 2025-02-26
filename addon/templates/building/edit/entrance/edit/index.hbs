@@ -19,7 +19,7 @@
       @showImport={{this.showImport}}
       @importIndex={{this.importIndex}}
       @disabled={{this.hasNoStreet}}
-      as |Field changeset import invalidSubmit|
+      as |Field changeset _ invalidSubmit|
     >
       {{#unless this.buildingEntrance.isNew}}
         <Field @attr="EDID" @type="number" @disabled={{true}} />
