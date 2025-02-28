@@ -50,5 +50,7 @@
       }}</small>
     <br />
   {{/if}}
-  {{component @errorComponent errors=this.errors}}
+  {{#if (and @invalidSubmit this.errors)}}
+    {{component @errorComponent errors=this.errors id=this.errorId}}
+  {{/if}}
 </div>

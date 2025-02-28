@@ -11,6 +11,13 @@ export default {
       validatePresence(true),
       validateNumber({ integer: true, gte: 1000, lte: 9699 }),
     ],
-    street: [validatePresence(true)],
+    name: {
+      nameLong: validatePresence(true),
+    },
+  },
+  street: {
+    description: {
+      descriptionLong: validatePresence(true),
+    },
   },
 };

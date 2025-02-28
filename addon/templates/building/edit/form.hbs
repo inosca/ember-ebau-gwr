@@ -35,7 +35,7 @@
       @getCorrectionParameters={{this.getCorrectionParameters}}
       @getChangeHint={{fn this.gwr.getChangeHint this.buildingAPI.cacheClass}}
       @modelStatusField="buildingStatus"
-      as |Field changeset import|
+      as |Field changeset import invalidSubmit|
     >
       {{#unless this.hasNoProject}}
         {{#unless this.buildingWork.isNew}}
@@ -163,16 +163,18 @@
           @disabled={{true}}
         />
         <Field
-          @attr="building.buildingEntrance.locality.street"
+          @attr="building.buildingEntrance.street"
           @label="ember-gwr.buildingEntrance.fields.street.description.descriptionLong"
           @inputComponent="search-street"
           @options={{hash
             locality=(changeset-get
               changeset "building.buildingEntrance.locality"
             )
+            validationPath="street.description.descriptionLong"
           }}
           @on-update={{fn this.syncLocalityWithStreet changeset}}
           @required={{true}}
+          @invalidSubmit={{invalidSubmit}}
         />
         <Field
           @attr="building.buildingEntrance.buildingEntranceNo"
