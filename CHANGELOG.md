@@ -1,3 +1,12 @@
+## [8.0.3](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.2...v8.0.3) (2025-03-03)
+
+
+### Bug Fixes
+
+* **link-street:** update linked locality after street selection ([ab351ca](https://github.com/inosca/ember-ebau-gwr/commit/ab351caefb12bee1be4f842b7fb808705f5e2753))
+* minor coding style improvements ([69abac3](https://github.com/inosca/ember-ebau-gwr/commit/69abac3594cab30c85824c03584cd68f6bde1687))
+* **street-search:** validation structure and error display ([c40e43d](https://github.com/inosca/ember-ebau-gwr/commit/c40e43d31eaeb97e0248c4b17f58f0ce2077a5fe))
+
 ## [8.0.2](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.1...v8.0.2) (2024-10-28)
 
 
