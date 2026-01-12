@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.3...v8.1.0) (2026-01-12)
+
+
+### Features
+
+* **config:** add Aargau municipalities ([c3250de](https://github.com/inosca/ember-ebau-gwr/commit/c3250dec851f9bf658a5b66aa2e9b3564ecd38b1))
+
 ## [8.0.3](https://github.com/inosca/ember-ebau-gwr/compare/v8.0.2...v8.0.3) (2025-03-03)
 
 
