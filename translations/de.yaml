@@ -347,3 +347,7 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Bitte geben Sie zuerst Ihre PLZ an.
+
+    removeModal:
+      save: Speichern
+      cancel: Abbrechen

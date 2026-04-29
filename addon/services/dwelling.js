@@ -108,12 +108,8 @@ export default class DwellingService extends GwrService {
     return this.createAndCache(xml);
   }
 
-  async deactivate(EGID, EWID) {
-    const body = this.xml.buildXMLRequest(
-      "deactivateDwelling",
-      null,
-      "Remove Dwelling",
-    );
+  async deactivate(EGID, EWID, reason) {
+    const body = this.xml.buildXMLRequest("deactivateDwelling", null, reason);
     const response = await this.authFetch.fetch(
       `/buildings/${EGID}/dwellings/${EWID}`,
       {

@@ -1,6 +1,7 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 
 export default class BuildingEditDwellingsController extends Controller {
@@ -8,6 +9,8 @@ export default class BuildingEditDwellingsController extends Controller {
   @service dwelling;
   @service intl;
   @service notification;
+
+  @tracked dwellingToRemove;
 
   @task
   *fetchDwellings() {
@@ -28,13 +31,24 @@ export default class BuildingEditDwellingsController extends Controller {
   }
 
   @action
-  async removeDwelling(dwelling) {
+  confirmRemoveDwelling(dwelling) {
+    this.dwellingToRemove = dwelling.EWID;
+  }
+
+  @action
+  async removeDwelling(formValues) {
     try {
-      await this.dwelling.deactivate(this.model, dwelling.EWID);
+      await this.dwelling.deactivate(
+        this.model,
+        this.dwellingToRemove,
+        formValues.get("removeReason"),
+      );
       await this.fetchDwellings.perform();
       this.notification.success(
         this.intl.t("ember-gwr.building.dwellings.removeLinkSuccess"),
       );
+      // Closes modal on success
+      this.dwellingToRemove = null;
     } catch (error) {
       console.error(error);
       this.notification.danger(

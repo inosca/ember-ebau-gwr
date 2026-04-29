@@ -6,7 +6,7 @@
       @models={{this.fetchDwellings.lastSuccessful.value}}
       @modelName="dwelling"
       @newRoute="building.edit.dwelling.new"
-      @removeLink={{this.removeDwelling}}
+      @removeLink={{this.confirmRemoveDwelling}}
     >
       <:list as |model|>
         <td class="uk-table-shrink">
@@ -52,3 +52,13 @@
     </LinkedModels>
   {{/if}}
 </div>
+
+<RemoveModal
+  @visible={{this.dwellingToRemove}}
+  @onHide={{fn (mut this.dwellingToRemove) null}}
+  @model={{@model}}
+  @on-submit={{this.removeDwelling}}
+  @title={{t "ember-gwr.building.dwellings.removeModalTitle" }}
+  @label={{t "ember-gwr.building.dwellings.removeModalLabel" }}
+  @hint={{t "ember-gwr.building.dwellings.removeModalHint" }}
+/>
