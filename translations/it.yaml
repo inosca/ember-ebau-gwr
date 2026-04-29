@@ -345,3 +345,7 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Inserisci dapprima il NPA.
+
+    removeModal:
+      save: Salva
+      cancel: Annulla

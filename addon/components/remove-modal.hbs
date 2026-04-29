@@ -1,0 +1,40 @@
+<UkModal
+  @visible={{@visible}}
+  @onHide={{@onHide}}
+  @container={{this.config.modalContainer}}
+  as |Modal|
+>
+  <ValidatedForm
+    @model={{changeset @model this.RemoveModalValidations}}
+    @on-submit={{@on-submit}}
+    @on-invalid-submit={{@on-invalid-submit}}
+    ...attributes
+    as |Form|
+  >
+    <Modal.header>
+      <h2 class="uk-modal-title">
+        {{@title}}
+      </h2>
+    </Modal.header>
+    <Modal.body class="uk-overflow-auto">
+      <Form.input
+        @type="textarea"
+        @label={{@label}}
+        @name="removeReason"
+        @rows="10"
+        @required={{true}}
+        @hint={{@hint}}
+        @errorComponent={{component "validated-form-error"}}
+      />
+    </Modal.body>
+    <Modal.footer class="uk-text-right">
+      <Form.button
+        @label={{t "ember-gwr.components.removeModal.cancel" }}
+        class="uk-modal-close"
+      />
+      <Form.submit
+        @label={{t "ember-gwr.components.removeModal.save" }}
+      />
+    </Modal.footer>
+  </ValidatedForm>
+</UkModal>

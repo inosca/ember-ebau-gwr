@@ -41,6 +41,9 @@ ember-gwr:
       cellar: "{number}e sous-sol"
       floor: "{number}e étage"
       error: Une erreur s'est produite lors du chargement des logements.
+      removeModalTitle: Supprimer le lien
+      removeModalLabel: Motif de la suppression
+      removeModalHint: Veuillez indiquer la motif de la suppression du lien.
       removeLinkError: Une erreur s'est produite lors de la suppression du lien.
       removeLinkSuccess: "Votre demande a été enregistrée par l'OFS. L'équipe de support traitera votre demande et vous contactera si nécessaire. Téléphone: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
     sections:

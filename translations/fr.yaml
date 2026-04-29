@@ -347,3 +347,7 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Veuillez d'abord entrer votre code postal.
+
+    removeModal:
+      save: Enregistrer
+      cancel: Interrompre

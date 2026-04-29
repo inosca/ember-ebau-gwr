@@ -40,6 +40,9 @@ ember-gwr:
       cellar: "{number}° piano interrato"
       floor: "{number}° piano"
       error: Errore nel tentativo di caricare le abitazioni.
+      removeModalTitle: Elimina collegamento
+      removeModalLabel: Motivo della eliminazione
+      removeModalHint: Si prega di indicare il motivo della eliminazione del collegamento.
       removeLinkError: Errore nel tentativo di eliminare il collegamento.
       removeLinkSuccess: "L'UFS ha registrato la sua richiesta. Il team di supporto procederà all'elaborazione della richiesta e, se necessario, si metterà in contatto con lei. Telefono: 0800 866 600 e-mail: housing-stat@bfs.admin.ch"
     sections:
