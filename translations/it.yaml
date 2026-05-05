@@ -240,6 +240,10 @@ ember-gwr:
 
     logout: Logout
 
+    modal:
+      save: Salva
+      cancel: Annulla
+
     modelForm:
       save: Salva
       cancelImport: Annulla import
@@ -298,7 +302,6 @@ ember-gwr:
 
     linkBuildingModal:
       linkBuilding: Collega edificio
-      cancel: Annulla
 
     header:
       status:
@@ -345,7 +348,3 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Inserisci dapprima il NPA.
-
-    removeModal:
-      save: Salva
-      cancel: Annulla
