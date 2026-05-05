@@ -240,6 +240,10 @@ ember-gwr:
 
     logout: Se déconnecter
 
+    modal:
+      save: Enregistrer
+      cancel: Interrompre
+
     modelForm:
       save: Enregistrer
       cancelImport: Interrompre l'import
@@ -299,7 +303,6 @@ ember-gwr:
 
     linkBuildingModal:
       linkBuilding: Lier un bâtiment
-      cancel: Interrompre
 
     header:
       status:
@@ -347,7 +350,3 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Veuillez d'abord entrer votre code postal.
-
-    removeModal:
-      save: Enregistrer
-      cancel: Interrompre

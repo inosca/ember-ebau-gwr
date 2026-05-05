@@ -240,6 +240,10 @@ ember-gwr:
 
     logout: Abmelden
 
+    modal:
+      save: Speichern
+      cancel: Abbrechen
+
     modelForm:
       save: Speichern
       cancelImport: Import abbrechen
@@ -299,7 +303,6 @@ ember-gwr:
 
     linkBuildingModal:
       linkBuilding: Gebäude verknüpfen
-      cancel: Abbrechen
 
     header:
       status:
@@ -347,7 +350,3 @@ ember-gwr:
 
     streetSearch:
       requiredInputs: Bitte geben Sie zuerst Ihre PLZ an.
-
-    removeModal:
-      save: Speichern
-      cancel: Abbrechen
