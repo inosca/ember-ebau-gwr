@@ -78,7 +78,7 @@ export default function (config) {
           },
         ).then((response) => response.json());
 
-        tokenResponse = { token, municipality };
+        tokenResponse = { username, token, municipality };
 
         return tokenResponse;
       });
