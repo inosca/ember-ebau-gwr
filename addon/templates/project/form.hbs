@@ -296,7 +296,7 @@
         @attr="typeOfClient"
         @gwrEnumOptions={{this.choiceOptions.typeOfClientOptions}}
       />
-      {{#if (compute this.isClientMismatch changeset)}}
+      {{#if (this.isClientMismatch changeset)}}
         <div class="uk-alert uk-alert-danger">
           {{t "ember-gwr.constructionProject.fields.typeOfClientAlert"}}
         </div>

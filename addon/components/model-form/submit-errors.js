@@ -5,6 +5,12 @@ import { tracked } from "@glimmer/tracking";
 export default class ModelFormSubmitErrorsComponent extends Component {
   @tracked errorIndex = 0;
 
+  getErrorObject = (index) => this.args.errors[index];
+
+  get visualErrorIndex() {
+    return this.errorIndex + 1;
+  }
+
   @action
   updateCurrentIndex() {
     if (this.args.errors.length) {

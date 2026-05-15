@@ -98,7 +98,7 @@
         <TableRowColumn @attr="officialConstructionProjectFileNo" />
         <TableRowColumn @attr="constructionProjectDescription" />
         <TableRowColumn @attr="EPROID" as |value|>
-          <InstanceLink @links={{filter-by "eproid" value this.links}} />
+          <InstanceLink @links={{this.getEproidLinks value}} />
         </TableRowColumn>
         <TableRowColumn @attr="projectStatus" as |value|>
           {{#if value}}

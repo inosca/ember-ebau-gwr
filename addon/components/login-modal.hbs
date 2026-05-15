@@ -40,7 +40,7 @@
               @renderInPlace={{true}}
               @triggerClass="uk-select"
               @options={{this.sortedMunicipalities}}
-              @selected={{find-by "id" this.municipality this.municipalities}}
+              @selected={{this.getMunicipality this.municipality}}
               @placeholder={{t "ember-gwr.components.loginModal.municipality"}}
               @searchEnabled={{true}}
               @searchField="name"
@@ -79,7 +79,7 @@
           "ember-gwr.components.loginModal.loginInfo"
           user=this.authFetch.username
           municipality=(get
-            (find-by "id" this.authFetch.municipality this.municipalities)
+            (this.getMunicipality this.authFetch.municipality)
             "name"
           )
           htmlSafe=true

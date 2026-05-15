@@ -16,6 +16,13 @@ export default class LoginModalComponent extends Component {
     return municipalities[this.config.cantonAbbreviation];
   }
 
+  getMunicipality = (id) => {
+    const municipalityItem = this.municipalities.find(
+      (municipality) => municipality.id === parseInt(id),
+    );
+    return municipalityItem;
+  };
+
   @action
   async login() {
     const token = await this.authFetch.housingStatToken.perform(

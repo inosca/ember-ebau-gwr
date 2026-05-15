@@ -59,6 +59,8 @@ export default class ModelFormHeaderStatusSelectorComponent extends Component {
     }));
   }
 
+  isIndexNotLast = (index) => index !== this.args.nextValidStates.length - 1;
+
   get isValidStatusChange() {
     return (
       this.modelStatus && this.args.nextValidStates.includes(this.newStatus)

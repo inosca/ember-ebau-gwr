@@ -20,7 +20,7 @@
     class="uk-alert-danger uk-text-small uk-flex-1 uk-margin-remove-bottom"
     uk-alert
   >
-    {{object-at 0 @errors}}
+    {{this.getErrorObject 0}}
   </div>
 {{else if (gt @errors.length 1)}}
   <button
@@ -31,14 +31,14 @@
   >
     <div class="uk-flex-inline uk-flex-middle">
       <div class="uk-text-small uk-margin-small-right">
-        {{inc this.errorIndex}}
+        {{this.visualErrorIndex}}
         <span>
           /
         </span>
         {{@errors.length}}
       </div>
       <div>
-        {{object-at this.errorIndex @errors}}
+        {{this.getErrorObject this.errorIndex}}
       </div>
     </div>
   </button>

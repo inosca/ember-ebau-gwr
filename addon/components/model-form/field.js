@@ -118,5 +118,11 @@ export default class ModelFormFieldComponent extends Component {
         this.args.resolveDiff(this.args.attr);
       }
     }
+
+    const onUpdate = this.args["on-update"];
+
+    if (onUpdate) {
+      onUpdate(eventOrValue);
+    }
   }
 }

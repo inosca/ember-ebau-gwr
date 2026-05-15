@@ -32,11 +32,7 @@
         )
       )
       promptIsSelectable=true
-      on-update=(if
-        @on-update
-        (queue this.updateModelField @on-update)
-        this.updateModelField
-      )
+      on-update=this.updateModelField
       renderComponent=(component
         this.fieldComponent
         horizontal=this.isHorizontal

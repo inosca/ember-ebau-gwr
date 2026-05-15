@@ -165,7 +165,7 @@
             {{#if
               (and
                 this.loadBuildingPreview.isRunning
-                (call (fn this.isCurrentlySelectedBuilding data))
+                (this.isCurrentlySelectedBuilding data)
               )
             }}
               <UkSpinner />

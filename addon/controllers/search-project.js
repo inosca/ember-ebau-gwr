@@ -33,6 +33,11 @@ export default class SearchProjectController extends Controller {
     }));
   }
 
+  @action
+  getEproidLinks(eproid) {
+    return this.links.filter((link) => link.eproid === eproid);
+  }
+
   @lastValue("fetchInstanceLinks") links;
   @dropTask
   *fetchInstanceLinks(projects) {

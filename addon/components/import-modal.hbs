@@ -22,7 +22,7 @@
               (concat "ember-gwr.models." @modelName)
               count=1
             }}
-            {{inc index}}</a>
+            {{this.getVisualIndex index}}</a>
           <div class="uk-accordion-content">
             {{component
               (concat "import-modal/" @modelName "-data")

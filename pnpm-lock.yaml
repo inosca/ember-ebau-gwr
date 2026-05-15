@@ -29,9 +29,6 @@ importers:
       '@glimmer/tracking':
         specifier: ^1.1.2
         version: 1.1.2
-      '@nullvoxpopuli/ember-composable-helpers':
-        specifier: ^5.3.2
-        version: 5.3.2(@babel/core@7.26.7)
       ember-auto-import:
         specifier: ^2.10.0
         version: 2.10.0(@glint/template@1.4.0)(webpack@5.98.0)
@@ -2194,9 +2191,6 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
-
-  '@nullvoxpopuli/ember-composable-helpers@5.3.2':
-    resolution: {integrity: sha512-ABqoeTFyh57tiTQ6X4/9agduYeY82lAGQ+Vva7RK3w9fPXeMRxtxk6AFoOF2PWzTsYrZrGZ7ZmZtVvfhCALNYg==}
 
   '@octokit/auth-token@5.1.1':
     resolution: {integrity: sha512-rh3G3wDO8J9wSjfI436JUKzHIxq8NaiL0tVeB2aXmG6p/9859aUOAjA9pmSPNGGZxfwmaJ9ozOJImuNVJdpvbA==}
@@ -11994,14 +11988,6 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
-
-  '@nullvoxpopuli/ember-composable-helpers@5.3.2(@babel/core@7.26.7)':
-    dependencies:
-      '@embroider/addon-shim': 1.9.0
-      decorator-transforms: 2.3.0(@babel/core@7.26.7)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - supports-color
 
   '@octokit/auth-token@5.1.1': {}
 

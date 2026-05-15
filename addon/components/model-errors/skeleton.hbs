@@ -1,7 +1,7 @@
 <UkSwitcher class="uk-margin-small-top uk-animation-fade" as |switcher|>
   <switcher.nav @type="subnav" as |nav|>
     <nav.component uk-switcher @divider={{true}} as |tab|>
-      {{#each (repeat 3)}}
+      {{#each (array 1 2 3)}}
         <tab.item>
           <div
             class="ember-ebau-gwr-label-width ember-ebau-gwr-label-height uk-background-muted"
@@ -11,7 +11,7 @@
     </nav.component>
   </switcher.nav>
   <switcher.content as |content|>
-    {{#each (repeat 3)}}
+    {{#each (array 1 2 3)}}
       <content.item>
         <ModelErrors::SkeletonErrors />
       </content.item>
