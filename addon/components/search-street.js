@@ -22,11 +22,7 @@ export default class SearchStreetComponent extends ValidatedInput {
       `error.${this.args.options.validationPath}.validation`,
     );
 
-    if (!Array.isArray(errors)) {
-      return [errors];
-    }
-
-    return errors;
+    return errors ? [errors] : [];
   }
 
   get swissZipCode() {
