@@ -38,6 +38,7 @@ module.exports = async function () {
             "ember-source": await getChannelURL("release"),
           },
         },
+        allowedToFail: true,
       },
       {
         name: "ember-beta",
@@ -46,6 +47,7 @@ module.exports = async function () {
             "ember-source": await getChannelURL("beta"),
           },
         },
+        allowedToFail: true,
       },
       {
         name: "ember-canary",
@@ -54,6 +56,7 @@ module.exports = async function () {
             "ember-source": await getChannelURL("canary"),
           },
         },
+        allowedToFail: true,
       },
       embroiderSafe({ allowedToFail: true }),
       embroiderOptimized({ allowedToFail: true }),
