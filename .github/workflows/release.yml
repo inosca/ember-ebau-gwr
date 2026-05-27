@@ -2,6 +2,9 @@ name: Release
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write # to enable use of OIDC for trusted publishing and npm provenance
+
 jobs:
   build:
     name: Release
