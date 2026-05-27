@@ -18,6 +18,7 @@ module.exports = EngineAddon.extend({
     app.options["ember-validated-form"] = {
       theme: "uikit",
       defaults: {
+        ...app.options["ember-validated-form"]?.defaults,
         "types/date": "ember-ebau-gwr/components/model-form/date",
       },
     };
