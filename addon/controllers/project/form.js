@@ -220,8 +220,8 @@ export default class ProjectFormController extends ImportController {
   }
 
   @action
-  updateWork(work, attr, value) {
-    work[attr] = value;
+  updateWork(work, value) {
+    work.kindOfWork = value;
   }
 
   @action
