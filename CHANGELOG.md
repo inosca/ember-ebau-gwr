@@ -1,3 +1,22 @@
+# [9.0.0](https://github.com/inosca/ember-ebau-gwr/compare/v8.1.3...v9.0.0) (2026-08-19)
+
+
+### chore
+
+* bump minimum required node version to 20 ([ade5dfe](https://github.com/inosca/ember-ebau-gwr/commit/ade5dfec812de6e0f4baa2448eb8324d4bcafa85))
+
+
+### Features
+
+* **dwellings:** add character length validation with whitespace cleanup ([7088e99](https://github.com/inosca/ember-ebau-gwr/commit/7088e99195912813de37a21c88322e908b607949))
+* **dwellings:** add mandatory reason for removing dwellings ([40b9a86](https://github.com/inosca/ember-ebau-gwr/commit/40b9a86bf4895cc3a13cc47b6280f6c941c0f6a5))
+* **translations:** use global translations for common modal terms ([6c2929d](https://github.com/inosca/ember-ebau-gwr/commit/6c2929d2f783ee6e93e1b563735b235eb35a1509))
+
+
+### BREAKING CHANGES
+
+* bump required node version to v20
+
 ## [8.1.3](https://github.com/inosca/ember-ebau-gwr/compare/v8.1.2...v8.1.3) (2026-06-09)
 
 
