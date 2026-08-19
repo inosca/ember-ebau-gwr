@@ -86,7 +86,7 @@
     "ember-cli-sri": "2.1.1",
     "ember-cli-terser": "4.0.2",
     "ember-data": "5.3.9",
-    "ember-engines": "0.11.0",
+    "ember-engines": "0.13.1",
     "ember-inflector": "^6.0.0",
     "ember-mirage": "^0.4.3",
     "ember-qunit": "9.0.1",
