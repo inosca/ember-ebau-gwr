@@ -283,7 +283,12 @@
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
       </h3>
-      <Field @attr="realestateIdentification.number" />
+      <Field
+        @attr="realestateIdentification.number"
+        @hint={{t
+          "ember-gwr.constructionProject.fields.realestateIdentification.number.hint"
+        }}
+      />
       <Field @attr="realestateIdentification.EGRID" />
       <Field @type="number" @attr="realestateIdentification.subDistrict" />
       <h3>
