@@ -1,3 +1,11 @@
+## [9.0.1](https://github.com/inosca/ember-ebau-gwr/compare/v9.0.0...v9.0.1) (2026-10-22)
+
+
+### Bug Fixes
+
+* **dwellings:** add validation for apartment number ([0993844](https://github.com/inosca/ember-ebau-gwr/commit/099384488d22449aad4fce853ab8958527e5b4c6))
+* **project:** add validation for realestateIdentification number ([945e413](https://github.com/inosca/ember-ebau-gwr/commit/945e41323826db72765c193df780b4eedbd0b52c))
+
 # [9.0.0](https://github.com/inosca/ember-ebau-gwr/compare/v8.1.3...v9.0.0) (2026-08-19)
 
 
