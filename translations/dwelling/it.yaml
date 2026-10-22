@@ -82,8 +82,8 @@ ember-gwr:
       remark: Commento sul tipo di utilizzazione
       personWithMainResidence: Persona/e con domicilio principale
       personWithSecondaryResidence: Persona/e con domicilio secondario
-      mainAndSecondaryResidenceInfoHeading: 'Informazione relativa a «Persona/e con domicilio principale» e «Persona/e con domicilio secondario»'
-      mainAndSecondaryResidenceInfo: 'Per «Persona/e con domicilio principale» e «Persona/e con domicilio secondario» l''aggiornamento nel REA federale è automatico e si basa sulla relazione dei dati del REA federale con i dati dei registri delle persone.'
+      mainAndSecondaryResidenceInfoHeading: "Informazione relativa a «Persona/e con domicilio principale» e «Persona/e con domicilio secondario»"
+      mainAndSecondaryResidenceInfo: "Per «Persona/e con domicilio principale» e «Persona/e con domicilio secondario» l'aggiornamento nel REA federale è automatico e si basa sulla relazione dei dati del REA federale con i dati dei registri delle persone."
       dateFirstOccupancy: Data della prima occupazione
       dateLastOccupancy: Data dell'ultima occupazione
 

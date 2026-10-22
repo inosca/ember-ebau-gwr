@@ -6,113 +6,113 @@
   />
   <div class="uk-flex uk-flex-bottom uk-flex-column-reverse">
     {{#if (and @modelHasImport @import)}}
-    <div class="uk-flex uk-flex-wrap uk-flex-right">
-      {{#if (and @import.originalData.length (is-unset @import.index))}}
-        <LinkTo
-          class="uk-button uk-button-default uk-flex-none"
-          @query={{hash index=null}}
-        >
-          {{t "ember-gwr.components.importModal.selectImportData"}}
-        </LinkTo>
-      {{else}}
-        <button
-          class="uk-button uk-button-default uk-flex-none uk-margin-small-left
-            {{if (is-unset @import.index) 'uk-margin-small-right'}}"
-          type="button"
-          {{on "click" @importAllData}}
-        >
-          {{t "ember-gwr.components.modelForm.applyAll"}}
-        </button>
-        {{#if (and @import @import.originalData.length)}}
+      <div class="uk-flex uk-flex-wrap uk-flex-right">
+        {{#if (and @import.originalData.length (is-unset @import.index))}}
+          <LinkTo
+            class="uk-button uk-button-default uk-flex-none"
+            @query={{hash index=null}}
+          >
+            {{t "ember-gwr.components.importModal.selectImportData"}}
+          </LinkTo>
+        {{else}}
           <button
-            class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
+            class="uk-button uk-button-default uk-flex-none uk-margin-small-left
+              {{if (is-unset @import.index) 'uk-margin-small-right'}}"
             type="button"
-            disabled={{@disabled}}
+            {{on "click" @importAllData}}
           >
-            <span class="uk-icon" uk-icon="more-vertical"></span>
+            {{t "ember-gwr.components.modelForm.applyAll"}}
           </button>
-          <div
-            uk-dropdown="mode: click; pos: bottom-right; offset: 20"
-            class="uk-padding-small"
-          >
-            <ul
-              class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
+          {{#if (and @import @import.originalData.length)}}
+            <button
+              class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
+              type="button"
+              disabled={{@disabled}}
             >
-              <li>
-                <LinkTo
-                  class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
-                  @query={{hash index=null}}
-                >
-                  {{t "ember-gwr.components.importModal.selectImportData"}}
-                </LinkTo>
-              </li>
-            </ul>
-          </div>
+              <span class="uk-icon" uk-icon="more-vertical"></span>
+            </button>
+            <div
+              uk-dropdown="mode: click; pos: bottom-right; offset: 20"
+              class="uk-padding-small"
+            >
+              <ul
+                class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
+              >
+                <li>
+                  <LinkTo
+                    class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
+                    @query={{hash index=null}}
+                  >
+                    {{t "ember-gwr.components.importModal.selectImportData"}}
+                  </LinkTo>
+                </li>
+              </ul>
+            </div>
+          {{/if}}
         {{/if}}
-      {{/if}}
-      <LinkTo
-        @query={{hash import=false index=undefined}}
-        class="uk-button uk-button-default uk-flex-none uk-margin-small-left"
-      >
-        {{t "ember-gwr.components.modelForm.cancelImport"}}
-      </LinkTo>
-    </div>
-    {{/if}}
-    <div class="uk-margin-small-bottom uk-margin-small-left">
-    {{#let @submit as |Submit|}}
-      <Submit />
-    {{/let}}
-    {{#if (or @modelHasImport @statusConfiguration)}}
-      <button
-        class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
-        type="button"
-        disabled={{@disabled}}
-      >
-        <span class="uk-icon" uk-icon="more-vertical"></span>
-      </button>
-      <div
-        uk-dropdown="mode: click; pos: bottom-right; offset: 20"
-        class="uk-padding-small"
-      >
-        <ul
-          class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
+        <LinkTo
+          @query={{hash import=false index=undefined}}
+          class="uk-button uk-button-default uk-flex-none uk-margin-small-left"
         >
-          {{#if @modelHasImport}}
-            <li>
-              <LinkTo
-                @disabled={{or @import @import.error}}
-                @query={{hash import=true}}
-                class="uk-button uk-text-left uk-highlight-hover
-                  {{if
-                    (or @import this.importState.hasError)
-                    'uk-text-muted'
-                    'uk-text-secondary'
-                  }}
-                  uk-width-1-1 uk-background-default uk-padding-remove"
-                uk-tooltip="title: {{if
-                  @import.error
-                  (t 'ember-gwr.components.modelForm.importError')
-                }}; container: {{this.config.modalContainer}}"
-              >
-                {{t "ember-gwr.components.modelForm.importFromCaluma"}}
-              </LinkTo>
-            </li>
-          {{/if}}
-          {{#if @statusConfiguration}}
-            <li>
-              <a
-                href="#ember-ebau-gwr-status"
-                uk-scroll
-                class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
-                {{on "click" @openStatus}}
-              >
-                {{t "ember-gwr.components.modelForm.changeStatus"}}
-              </a>
-            </li>
-          {{/if}}
-        </ul>
+          {{t "ember-gwr.components.modelForm.cancelImport"}}
+        </LinkTo>
       </div>
     {{/if}}
+    <div class="uk-margin-small-bottom uk-margin-small-left">
+      {{#let @submit as |Submit|}}
+        <Submit />
+      {{/let}}
+      {{#if (or @modelHasImport @statusConfiguration)}}
+        <button
+          class="uk-button uk-button-default uk-flex-none uk-padding-small uk-padding-remove-vertical"
+          type="button"
+          disabled={{@disabled}}
+        >
+          <span class="uk-icon" uk-icon="more-vertical"></span>
+        </button>
+        <div
+          uk-dropdown="mode: click; pos: bottom-right; offset: 20"
+          class="uk-padding-small"
+        >
+          <ul
+            class="uk-nav uk-dropdown-nav uk-list uk-list-divider uk-list-collapse"
+          >
+            {{#if @modelHasImport}}
+              <li>
+                <LinkTo
+                  @disabled={{or @import @import.error}}
+                  @query={{hash import=true}}
+                  class="uk-button uk-text-left uk-highlight-hover
+                    {{if
+                      (or @import this.importState.hasError)
+                      'uk-text-muted'
+                      'uk-text-secondary'
+                    }}
+                    uk-width-1-1 uk-background-default uk-padding-remove"
+                  uk-tooltip="title: {{if
+                    @import.error
+                    (t 'ember-gwr.components.modelForm.importError')
+                  }}; container: {{this.config.modalContainer}}"
+                >
+                  {{t "ember-gwr.components.modelForm.importFromCaluma"}}
+                </LinkTo>
+              </li>
+            {{/if}}
+            {{#if @statusConfiguration}}
+              <li>
+                <a
+                  href="#ember-ebau-gwr-status"
+                  uk-scroll
+                  class="uk-button uk-text-left uk-highlight-hover uk-text-secondary uk-width-1-1 uk-background-default uk-padding-remove"
+                  {{on "click" @openStatus}}
+                >
+                  {{t "ember-gwr.components.modelForm.changeStatus"}}
+                </a>
+              </li>
+            {{/if}}
+          </ul>
+        </div>
+      {{/if}}
     </div>
   </div>
   <div class="uk-margin-small-top uk-flex uk-flex-right">
