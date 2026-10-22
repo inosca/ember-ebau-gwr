@@ -35,6 +35,7 @@ ember-gwr:
       realestateIdentification:
         EGRID: EGRID
         number: Numéro de parcelle
+        number.hint: Le numéro de parcelle ne doit pas commencer par 0 (zéro).
         subDistrict: Numéro de secteur du registre foncier
 
       client:

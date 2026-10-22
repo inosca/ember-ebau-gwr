@@ -160,6 +160,7 @@ ember-gwr:
     realestateIdentification:
       EGRID: EGRID
       number: Numero del fondo (numero della particella)
+      number.hint: La prima cifra del numero del fondo (numero della particella) non può essere 0 (zero).
       subDistrict: Numero del circondario del registro fondiario
 
     surfaceAreaOfBuilding: Superficie dell'edificio (m²)

@@ -35,6 +35,7 @@ ember-gwr:
       realestateIdentification:
         EGRID: EGRID
         number: Grundstücksnummer (Parzellennummer)
+        number.hint: Grundstücksnummer (Parzellennummer) darf nicht mit 0 (Null) beginnen.
         subDistrict: Grundbuchkreisnummer
 
       client:

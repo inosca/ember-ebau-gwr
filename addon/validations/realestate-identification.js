@@ -1,7 +1,8 @@
 import {
+  validateFormat,
   validateLength,
-  validatePresence,
   validateNumber,
+  validatePresence,
 } from "ember-changeset-validations/validators";
 
 export function realestateIdentificationValidation(path = "") {
@@ -23,6 +24,10 @@ export function realestateIdentificationValidation(path = "") {
         validatePresence({
           presence: true,
           on: [EGRIDPath, subDistrictPath],
+        }),
+        validateFormat({
+          regex: "^(s+[^0]|[^s0]).*$",
+          allowBlank: true,
         }),
         validateLength({ min: 1, max: 12, allowBlank: true }),
       ],

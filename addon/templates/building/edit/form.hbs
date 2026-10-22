@@ -259,7 +259,10 @@
       <h3>
         {{t "ember-gwr.components.modelForm.realEstateHeading"}}
       </h3>
-      <Field @attr="building.realestateIdentification.number" />
+      <Field
+        @attr="building.realestateIdentification.number"
+        @hint={{t "ember-gwr.building.realestateIdentification.number.hint"}}
+      />
       <Field @attr="building.realestateIdentification.EGRID" />
       <Field
         @type="number"
