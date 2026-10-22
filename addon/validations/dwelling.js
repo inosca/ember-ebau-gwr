@@ -1,8 +1,9 @@
 import {
-  validatePresence,
-  validateNumber,
-  validateLength,
   validateDate,
+  validateFormat,
+  validateLength,
+  validateNumber,
+  validatePresence,
 } from "ember-changeset-validations/validators";
 import validatePresenceState from "ember-ebau-gwr/validators/presence-state";
 import validateRangeState from "ember-ebau-gwr/validators/range-state";
@@ -16,8 +17,20 @@ const yearValidation = {
 };
 
 export default {
-  administrativeDwellingNo: validateLength({ max: 12, allowBlank: true }),
-  physicalDwellingNo: validateLength({ max: 12, allowBlank: true }),
+  administrativeDwellingNo: [
+    validateFormat({
+      regex: "^(s+[^0]|[^s0]).*$",
+      allowBlank: true,
+    }),
+    validateLength({ max: 12, allowBlank: true }),
+  ],
+  physicalDwellingNo: [
+    validateFormat({
+      regex: "^(s+[^0]|[^s0]).*$",
+      allowBlank: true,
+    }),
+    validateLength({ max: 12, allowBlank: true }),
+  ],
   floorType: validatePresence(true),
   floorNumber: [
     validatePresenceState({

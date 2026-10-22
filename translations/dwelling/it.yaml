@@ -27,6 +27,7 @@ ember-gwr:
       sul quale si situa l'entrata (principale) dell'abitazione.
     multipleFloor: Abitazione su più piani
     physicalDwellingNo: Numero fisico dell'abitazione
+    physicalDwellingNo.hint: La prima cifra del numero fisico dell'abitazione non può essere 0 (zero).
     dwellingStatus: Stato dell'abitazione
     dwellingStatusPlaceholder: Seleziona uno stato dell'abitazione...
     dwellingStatusOptions:
@@ -38,6 +39,7 @@ ember-gwr:
       3007: Eliminato
       3008: Non realizzato
     administrativeDwellingNo: Numero amministrativo dell'abitazione
+    administrativeDwellingNo.hint: La prima cifra del numero amministrativo dell'abitazione non può essere 0 (zero).
     yearOfConstruction: Anno di costruzione dell'abitazione
     yearOfDemolition: Anno di demolizione dell'abitazione
     noOfHabitableRooms: Numero di locali
