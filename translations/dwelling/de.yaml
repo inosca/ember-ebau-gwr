@@ -27,6 +27,7 @@ ember-gwr:
       auf dem sich der (Haupt-)Eingang der Wohnung befindet.
     multipleFloor: Mehrgeschossige Wohnung
     physicalDwellingNo: Physische Wohnungsnummer
+    physicalDwellingNo.hint: Physische Wohnungsnummer darf nicht mit 0 (Null) beginnen.
     dwellingStatus: Wohnungsstatus
     dwellingStatusPlaceholder: Wählen Sie einen Status aus...
     dwellingStatusOptions:
@@ -38,6 +39,7 @@ ember-gwr:
       3007: Aufgehoben
       3008: Nicht realisiert
     administrativeDwellingNo: Administrative Wohnungsnummer
+    administrativeDwellingNo.hint: Administrative Wohnungsnummer darf nicht mit 0 (Null) beginnen.
     yearOfConstruction: Baujahr der Wohnung
     yearOfDemolition: Abbruchjahr der Wohnung
     noOfHabitableRooms: Anzahl Zimmer

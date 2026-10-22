@@ -54,8 +54,14 @@
       {{/if}}
 
       <Field @attr="multipleFloor" @type="checkbox" @required={{true}} />
-      <Field @attr="physicalDwellingNo" />
-      <Field @attr="administrativeDwellingNo" />
+      <Field
+        @attr="physicalDwellingNo"
+        @hint={{t "ember-gwr.dwelling.physicalDwellingNo.hint"}}
+      />
+      <Field
+        @attr="administrativeDwellingNo"
+        @hint={{t "ember-gwr.dwelling.administrativeDwellingNo.hint"}}
+      />
       <Field @attr="noOfHabitableRooms" @type="number" @min="1" />
       <Field @attr="locationOfDwellingOnFloor" />
       <Field
@@ -99,7 +105,9 @@
       />
       <div uk-alert>
         <div class="uk-text-bold">
-          {{t "ember-gwr.dwelling.dwellingUsage.mainAndSecondaryResidenceInfoHeading"}}
+          {{t
+            "ember-gwr.dwelling.dwellingUsage.mainAndSecondaryResidenceInfoHeading"
+          }}
         </div>
         <div>
           {{t "ember-gwr.dwelling.dwellingUsage.mainAndSecondaryResidenceInfo"}}
