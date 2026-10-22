@@ -42,9 +42,7 @@
           @label="ember-gwr.buildingEntrance.fields.street.description.descriptionLong"
           @inputComponent="search-street"
           @options={{hash
-            locality=(changeset-get
-              changeset "locality"
-            )
+            locality=(changeset-get changeset "locality")
             validationPath="street.description.descriptionLong"
           }}
           @on-update={{fn this.syncLocalityWithSelectedStreet changeset}}

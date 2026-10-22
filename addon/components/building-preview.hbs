@@ -23,8 +23,7 @@
       @model.buildingCategory
       (t
         (concat
-          "ember-gwr.building.buildingCategoryOptions."
-          @model.buildingCategory
+          "ember-gwr.building.buildingCategoryOptions." @model.buildingCategory
         )
       )
       "-"
@@ -38,9 +37,7 @@
     {{if
       @model.buildingClass
       (t
-        (concat
-          "ember-gwr.building.buildingClassOptions." @model.buildingClass
-        )
+        (concat "ember-gwr.building.buildingClassOptions." @model.buildingClass)
       )
       "-"
     }}

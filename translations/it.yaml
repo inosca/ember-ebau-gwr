@@ -308,8 +308,7 @@ ember-gwr:
         label: Stato
         placeholder: TODO
       statusSelector:
-        actionInfo:
-          Le modifiche dello stato rappresentano un passaggio naturale all'interno del ciclo di vita di un oggetto. Le correzioni dello stato offrono l'opportunità di correggere condizioni dello stato errate.
+        actionInfo: Le modifiche dello stato rappresentano un passaggio naturale all'interno del ciclo di vita di un oggetto. Le correzioni dello stato offrono l'opportunità di correggere condizioni dello stato errate.
         statusInfo: "Nuovi stati per modifiche dello stato ammessi:"
         noNextStates: Nessuno (stato finale)
         statusLabel: Nuovo stato
@@ -334,11 +333,11 @@ ember-gwr:
       linkSuccess: Via collegata con successo.
       linkError: Errore nel tentativo di collegare la via.
       streetHint: Per registrare un'entrata occorre collegare una via.
-      searchHint: 'Nella casella di ricerca è possibile inserire un asterisco (*) come segnaposto per cercare parti del nome della via.'
+      searchHint: "Nella casella di ricerca è possibile inserire un asterisco (*) come segnaposto per cercare parti del nome della via."
       searchHintExamples: Esempi
-      searchHintExamples1: 'Unter* : Unterfeldweg, Unterschlossweg'
-      searchHintExamples2: '*weg : Waldweg, Unterschlossweg'
-      searchHintExamples3: 'B*strasse : Bernstrasse, Bachstrasse'
+      searchHintExamples1: "Unter* : Unterfeldweg, Unterschlossweg"
+      searchHintExamples2: "*weg : Waldweg, Unterschlossweg"
+      searchHintExamples3: "B*strasse : Bernstrasse, Bachstrasse"
 
     importModal:
       selectImportData: Seleziona dati da importare

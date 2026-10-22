@@ -104,7 +104,11 @@
             {{t "ember-gwr.components.modelForm.cancelImport"}}
           </LinkTo>
         {{/if}}
-        {{#if (or (and f.model.isInvalid f.model.isDirty this.invalidSubmit) @errors)}}
+        {{#if
+          (or
+            (and f.model.isInvalid f.model.isDirty this.invalidSubmit) @errors
+          )
+        }}
           <div class="uk-margin-left uk-flex-inline">
             <SubmitErrors />
           </div>

@@ -26,7 +26,7 @@ ember-gwr:
     backToProject: Torna a progetto di costruzione
 
     saveError: Errore nel tentativo di salvare l'edificio.
-    forbiddenBuildingClassError: 'La classe di edificio «Fabbricati rurali non residenziali» non può più essere attribuita alle nuove registrazioni (nuova costruzione). Seleziona invece una delle seguenti classi di edificio: «Edifici per la tenuta di animali», «Edifici per le colture vegetali» e «Altri fabbricati rurali non residenziali».'
+    forbiddenBuildingClassError: "La classe di edificio «Fabbricati rurali non residenziali» non può più essere attribuita alle nuove registrazioni (nuova costruzione). Seleziona invece una delle seguenti classi di edificio: «Edifici per la tenuta di animali», «Edifici per le colture vegetali» e «Altri fabbricati rurali non residenziali»."
     saveSuccess: Edificio salvato con successo.
     entrances:
       error: Errore nel tentativo di caricare le entrate.

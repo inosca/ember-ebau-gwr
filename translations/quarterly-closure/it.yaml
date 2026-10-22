@@ -55,8 +55,7 @@ ember-gwr:
       projectErrors:
         error: Errore nel tentativo di consultare l'elenco degli errori dei progetti.
         title: Progetti di costruzione
-        infoText:
-          "Di seguito trova un elenco dei progetti di costruzione registrati dal servizio di rilevazione e che contengono ancora degli errori. Clicchi sul singolo progetto di costruzione per visualizzare gli errori relativi a edifici, abitazioni ed entrate."
+        infoText: "Di seguito trova un elenco dei progetti di costruzione registrati dal servizio di rilevazione e che contengono ancora degli errori. Clicchi sul singolo progetto di costruzione per visualizzare gli errori relativi a edifici, abitazioni ed entrate."
       departmentErrors:
         error: Errore nel tentativo di consultare l'elenco degli errori del servizio di rilevazione.
         title: Servizio di rilevazione
