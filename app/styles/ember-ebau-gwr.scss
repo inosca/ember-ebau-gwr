@@ -155,3 +155,13 @@ $ember-ebau-gwr-required-color: $alert-danger-color !default;
 .margin-right-xs {
   margin-right: 5px;
 }
+
+.uk-alert-danger .ember-ebau-gwr-submit-error-link {
+  color: inherit;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+  }
+}
