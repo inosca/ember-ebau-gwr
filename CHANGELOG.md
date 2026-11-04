@@ -1,3 +1,10 @@
+## [9.0.2](https://github.com/inosca/ember-ebau-gwr/compare/v9.0.1...v9.0.2) (2026-11-04)
+
+
+### Bug Fixes
+
+* improve submit error link contrast ([6ba591a](https://github.com/inosca/ember-ebau-gwr/commit/6ba591a22f9dc315defd6bbcc78a3149420d836a))
+
 ## [9.0.1](https://github.com/inosca/ember-ebau-gwr/compare/v9.0.0...v9.0.1) (2026-10-22)
 
 
