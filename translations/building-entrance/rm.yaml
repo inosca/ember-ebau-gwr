@@ -1,0 +1,61 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+ember-gwr:
+  buildingEntrance:
+    title: Eingang {address}
+    backToBuilding: Zurück zum Gebäude
+    backToEntrance: Zurück zum Eingang
+    createNewEntrance: Neuen Eingang erfassen
+
+    saveError: Beim Speichern des Eingangs ist ein Fehler aufgetreten.
+    saveSuccess: Eingang erfolgreich gespeichert.
+    loadingError: Beim Laden des Eingangs ist ein Fehler aufgetreten.
+    localityError: |-
+      Beim Speichern des Eingangs ist ein Fehler aufgetreten.
+      Bitte überprüfen Sie die <b>Kombination aus PLZ und Ortsname</b>, diese sollten exakt
+      mit den hinterlegten Daten auf der <a target="_blank" href="https://map.geo.admin.ch/?lang=de">eidgenössischen Kartenplattform</a>
+      übereinstimmen.
+    street: Strasse
+    coordinates: Koordinaten
+    missingStreetInfo: Bitte verknüpfen Sie zuerst eine Strasse.
+
+    fields:
+      EDID: EDID
+      EGAID: EGAID
+      EGID: EGID
+      isOfficialAddress: Offizielle Adresse
+      buildingEntranceNo: Gebäudeeingang Nummer
+      coordinates:
+        east: E-Gebäudekoordinate
+        north: N-Gebäudekoordinate
+        originOfCoordinates: Koordinatenherkunft
+        originOfCoordinatesPlaceholder: Wählen Sie die Koordinatenherkunft aus...
+        originOfCoordinatesOptions:
+          901: Amtliche Vermessung, DM.01
+          902: Aus amtlicher Vermessung hergeleitet
+          903: Angabe Nachführungsgeometer
+          904: Angabe Baugesuch
+          905: Bundesamt für Statistik (BFS)
+          906: Datensatz GeoPost
+          909: Andere Datenquelle
+      street:
+        ESID: ESID
+        isOfficialDescription: Strassenbezeichnung offiziell
+        officialStreetNumber: Amtliche Strassennummer
+        streetKind: Art der Strasse
+        streetKindPlaceholder: Wählen Sie eine Art aus...
+        streetKindOptions:
+          9801: Strasse (Linienobjekt)
+          9802: Platz (Punktobjekt)
+          9803: Benanntes Gebiet (Flächenobjekt)
+          9809: Keine Angabe zur Geometrie
+        streetStatus: Realisierungsstand der Strasse
+        streetGeometry: Strassengeometrie
+        description:
+          descriptionLong: Strassenname
+      locality:
+        locality: Ortschaft
+        swissZipCode: PLZ
+        swissZipCodeAddOn: Postleitzahl-Zusatzziffer
+        name:
+          nameLong: Ortsname

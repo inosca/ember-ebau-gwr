@@ -1,0 +1,9 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+ember-gwr:
+  locality:
+    # Model Fields
+    name:
+      nameLong: Ortsname
+    swissZipCode: Postleitzahl
+    swissZipCodeAddOn: Postleitzahl-Zusatzziffer
