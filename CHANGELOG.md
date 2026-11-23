@@ -1,3 +1,11 @@
+# [9.1.0](https://github.com/inosca/ember-ebau-gwr/compare/v9.0.2...v9.1.0) (2026-11-23)
+
+
+### Features
+
+* add canton sg municipalities ([7a3ab74](https://github.com/inosca/ember-ebau-gwr/commit/7a3ab74829271722dce5646ce303764b68422d85))
+* **config:** add BE entry for new Gemeinde Clairval. ([db8b6c9](https://github.com/inosca/ember-ebau-gwr/commit/db8b6c939edfe5ff96eba110fe52bef4a106cad9))
+
 ## [9.0.2](https://github.com/inosca/ember-ebau-gwr/compare/v9.0.1...v9.0.2) (2026-11-04)
 
 
