@@ -1,0 +1,354 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+ember-gwr:
+  close: "Schliessen"
+  previousMonth: "Vorheriger Monat"
+  nextMonth: "Nächster Monat"
+
+  models:
+    building: |-
+      {count, plural,
+        one {Gebäude}
+        other {Gebäude}
+      }
+    building-work: |-
+      {count, plural,
+        one {Arbeit}
+        other {Arbeiten}
+      }
+    project: |-
+      {count, plural,
+        one {Projekt}
+        other {Projekte}
+      }
+    entrance: |-
+      {count, plural,
+        one {Eingang}
+        other {Eingänge}
+      }
+    dwelling: |-
+      {count, plural,
+        one {Wohnung}
+        other {Wohnungen}
+      }
+
+  generalErrors:
+    searchError: Bei der Suche ist ein Fehler aufgetreten.
+    loginError: Bei der Anmeldung an der GWR-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmal.
+    logoutError: Bei der Abmeldung von der GWR-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie es nochmal.
+    genericFormError: Es ist ein Fehler bei der Bearbeitung ihrer Anfrage aufgetreten. Bitte überprüfen Sie die Angaben.
+
+  general:
+    or: oder
+
+  projectLandingPage:
+    heading: Dieses Dossier ist noch nicht mit einem GWR Projekt verknüpft
+    infoText: Es ist noch kein bestehendes GWR Bauprojekt verknüpft. Sie können entweder mit diesem Formular ein neues erstellen oder ein bestehendes verknüpfen.
+    createNewProject: Neues Projekt erfassen
+    linkExistingProject: Bestehendes Projekt verknüpfen
+
+  globalLandingPage:
+    heading: GWR
+    infoText: |-
+      Im GWR-Modul können Sie existierende Projekte und Gebäude im GWR suchen
+      und Anpassungen vornehmen. Zudem kann der Quartalsabschluss vollzogen werden.
+      GWR-Bauprojekte, die bereits mit einem eBau-Dossier verknüpft sind, können auch
+      unter dem entsprechenden eBau-Dossier eingesehen werden.
+    searchProject: Bauprojekte suchen und bearbeiten
+    searchBuilding: Gebäude suchen und bearbeiten
+    quarterlyClosure: Quartalsabschluss {quarter}
+    backToGlobal: Zurück zur Übersicht
+    backToSearch: Zurück zur Suche
+
+  nav:
+    projectDetails: Projektdetails
+    linkedBuildings: Verknüpfte Gebäude
+    housingStatInfo: Die Verwaltung von Strassen kann im Housing-Stat des BFS gemacht werden.
+    housingStatLink: Zum Housing-Stat
+    deletionInfo: "Um Daten in den Formularen zu löschen, bitte das BFS kontaktieren: Telefon: 0800 866 600 E-mail: housing-stat@bfs.admin.ch"
+
+  linkedBuildings:
+    error: Beim Laden der Projektdaten ist ein Fehler aufgetreten.
+    removeLinkError: Beim Entfernen der Verknüpfung ist ein Fehler aufgetreten.
+    buildingDisabledForInfrastructure: |-
+      Für Tiefbauprojekte sind keine Gebäude zugelassen.
+      Die Art der Arbeiten werden direkt auf dem Projekt erfasst.
+    superstructureInfo: |-
+      Für Hochbauprojekte werden die Art der Arbeiten gebäudebezogen gemeldet.
+    specialstructureInfo: |-
+      Für Sonderbauprojekte sind ausschliesslich Gebäude der Gebäudekategorie Sonderbau zugelassen.
+    buildingDisabledForNewProject: Während des Erstellens eines Projektes können noch keine Gebäude erfasst werden.
+
+  search:
+    hasError: Fehlerstatus
+    hasErrorPlaceholder: Alle
+    minFilterError: Es muss mindestens 1 Filter gesetzt sein.
+    loadMoreResults: mehr Ergebnisse laden
+    hasErrorOptions:
+      true: Nur mit Fehler
+      false: Nur ohne Fehler
+
+  searchBuilding:
+    heading: Existierendes Gebäude verknüpfen
+    headingGlobal: Gebäude im GWR suchen
+    search: Gebäude suchen
+    entrances: Gebäudeeingänge
+
+    previewBuilding: Gebäudedaten anzeigen
+    previewBuildingError: Beim Laden der Gebäudedaten ist ein Fehler aufgetreten.
+
+    linkSuccess: Gebäude wurde erfolgreich verknüpft.
+    linkError: Bei der Verknüpfung des Gebäudes ist ein Fehler aufgetreten.
+
+  searchProject:
+    heading: Existierendes Bauprojekt verknüpfen
+    searchGlobal: Bauprojekt im GWR suchen
+    search: Projekte suchen
+    alreadyLinkedInfo: Dieses Bauprojekt ist bereits mit dem aktuellen eBau-Dossier verknüpft.
+
+    EPROID: EPROID
+    projectStatus: Projektstatus
+    projectStatusPlaceholder: Alle
+    projectStatusOptions:
+      6701: Baugesuch eingereicht
+      6702: Baubewilligung erteilt (rechtswirksam)
+      6703: Baubegonnen
+      6704: Abgeschlossen
+      6706: Projekt sistiert
+      6707: Baugesuch abgelehnt (rechtswirksam)
+      6708: Nicht realisiert
+      6709: Zurückgezogen
+
+    instanceIds: Verknüpfte eBau-Dossiers
+
+    hasError: Fehlerstatus
+
+    realestateIdentification:
+      number: Grundstücksnummer (Parzellennummer)
+
+  issues:
+    nav: Offene Pendenzen
+    infoAlert: In diesem Bauprojekt sind {count} Problem(e) vorhanden, welche die weitere Bearbeitung des Bauprojektes verhindern.
+    infoSuccess: In diesem Bauprojekt ist alles in Ordnung.
+    info: Die roten Kästchen geben an, wie viele offene Pendenzen bei welchen Objekten vorhanden sind.
+    switcher:
+      issues: Pendenzen
+      entrances: Verknüpfte Eingänge
+      dwellings: Verknüpfte Wohnungen
+
+  lifeCycles:
+    noStatus: Keine Statusangabe
+    cascadeOption: Verknüpfte Gebäude und/oder Wohnungen automatisch setzen?
+
+    project:
+      statusOptions:
+        6701: Baugesuch eingereicht
+        6702: Baubewilligung erteilt (rechtswirksam)
+        6703: Baubegonnen
+        6704: Abgeschlossen
+        6706: Projekt sistiert
+        6707: Baugesuch abgelehnt (rechtswirksam)
+        6708: Nicht realisiert
+        6709: Zurückgezogen
+
+    building:
+      statusOptions:
+        1001: Projektiert
+        1002: Bewilligt
+        1003: Im Bau
+        1004: Bestehend
+        1005: Nicht nutzbar
+        1007: Abgebrochen
+        1008: Nicht realisiert
+
+    dwelling:
+      statusOptions:
+        3001: Projektiert
+        3002: Bewilligt
+        3003: Im Bau
+        3004: Bestehend
+        3005: Nicht nutzbar
+        3007: Aufgehoben
+        3008: Nicht realisiert
+
+    statusErrorBuilding: Gebäude {buildingId}
+    statusErrorDwelling: Wohnung {dwellingId} im Gebäude {buildingId}
+    statusError: muss im Status {states} sein.
+
+    states:
+      6701: projektiert
+      6702: bewilligt
+      6703: im Bau
+      6704: abgeschlossen
+      6706: sistiert
+      6707: abgelehnt
+      6708: nicht realisiert
+      6709: zurückgezogen
+
+      1001: projektiert
+      1002: bewilligt
+      1003: im Bau
+      1004: bestehend
+      1005: nicht nutzbar
+      1007: abgebrochen
+      1008: nicht realisiert
+
+      3001: projektiert
+      3002: bewilligt
+      3003: im Bau
+      3004: bestehend
+      3005: nicht nutzbar
+      3007: aufgehoben
+      3008: nicht realisiert
+
+  components:
+    search:
+      loading: Laden...
+      noResults: Wir haben keine Ergebnisse für die ausgewählten Suchkriterien gefunden.
+      validation:
+        realestateIdentification: Bei erweiterter Suche muss die Grundstücksnummer gesetzt werden.
+        bothDatesSet: Es müssen beide Daten gesetzt sein.
+
+      realestateIdentificationHeading: Grundstücksidentifikation
+      realestateIdentification:
+        EGRID: EGRID
+        number: Grundstücksnummer (Parzellennummer)
+        subDistrict: Grundbuchkreisnummer
+
+      createDateHeading: Erstellungszeitraum
+      createDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      modifyDateHeading: Bearbeitungszeitraum
+      modifyDate:
+        dateFrom: "Von"
+        dateTo: "Bis"
+
+      extendedSearch:
+        extend: Erweiterte Filter einblenden
+        collapse: Erweiterte Filter ausblenden
+
+    loginModal:
+      header: Im GWR anmelden
+      login: Anmelden
+      password: Passwort...
+      username: Benutzername...
+      municipality: Wählen Sie Ihre Gemeinde aus...
+      municipalitySearch: Gemeinde suchen...
+      municipalityNoneFound: Es wurde keine Gemeinde gefunden
+      loginInfo: "<b>{user}</b> angemeldet in <b>{municipality}</b>"
+      loginIssueContact: "<b>Falls Sie sich nicht anmelden können, melden Sie sich direkt bei...</b><br><br>Hotline<br>housing-stat@bfs.admin.ch<br>0800 866 600<br>Von Montag bis Freitag<br>08:30-11:30 und 14:00-16:00"
+
+    logout: Abmelden
+
+    modal:
+      save: Speichern
+      cancel: Abbrechen
+
+    modelForm:
+      save: Speichern
+      cancelImport: Import abbrechen
+      applyAll: Alles übernehmen
+      importFromCaluma: Baugesuchsdaten importieren
+      noImportData: Es existieren keine Daten zum importieren.
+      changeStatus: Status ändern
+      dates: Daten
+      datePlaceholder: Wählen Sie ein Datum...
+      title: Bauprojekt {id}
+      realEstateHeading: Grundstücksidentifikation
+      clientHeading: Auftraggeber
+      validationError: Im Formular sind Eingabefehler vorhanden. Bitte korrigieren.
+      importError: Beim Importieren ist ein Fehler aufgetreten. Die Daten können zurzeit nicht übernommen werden.
+
+      diff:
+        existingData: Existierende Daten im GWR
+        importedData: Importierte Daten
+        apply: Übernehmen
+        resolved: Alle Konflikte sind gelöst. Klicken Sie Speichern um die Änderungen zu übernehmen!
+        cancel: Verwerfen
+
+      project:
+        title: Bauprojekt {id}
+        titleNew: Neues Projekt erfassen
+
+      building:
+        title: Gebäude {id}
+        titleNew: Neues Gebäude erfassen
+
+      entrance:
+        title: Eingang {modelDescription}
+        titleNew: Neuen Eingang erfassen
+
+      dwelling:
+        title: Wohnung {id}
+        titleNew: Neue Wohnung erfassen
+
+    linkedModels:
+      linkedEntries: Verknüpfte {modelName}
+      noLinkedEntries: Es sind noch keine {modelName} verknüpft
+      linkEntry: "{modelName} verknüpfen"
+      linkExistingBuilding: Bestehendes Gebäude verknüpfen (Umbau / Abbruch)
+      createEntry: |-
+        {modelName} erfassen
+        {model, select,
+          building {(Neubau)}
+          dwelling {(Neubau)}
+          entrance {(Neubau)}
+          other {}
+        }
+      or: oder
+      removeLink: Verknüpfung aufheben
+      buildingInfo: |-
+        Um ein bestehendes Gebäude welches sich nicht im GWR befindet nachzutragen,
+        wenden Sie sich bitte an das Housing-Stat Portal.
+
+    linkBuildingModal:
+      linkBuilding: Gebäude verknüpfen
+
+    header:
+      status:
+        label: Status
+        placeholder: TODO
+      statusSelector:
+        actionInfo:
+          Statusänderungen stellen einen natürlichen Übergang innerhalb eines Lebenszyklus eines Objektes dar.
+          Statuskorrekturen bieten die Möglichkeit falsche Statuszustände zu korrigieren.
+        statusInfo: "Zulässige neue Stati für Statusänderungen:"
+        noNextStates: Keine (Endstatus)
+        statusLabel: Neuer Status
+        submitChangeLabel: Status ändern
+        submitCorrectionLabel: Status korrigieren
+        correctionDropTitle: Benötigte Status Informationen für eine Korrektur
+        changeDropTitle: Benötigte Status Informationen für eine Änderung
+        confirmCorrection: Statuskorrektur bestätigen
+        confirmChange: Statusänderung bestätigen
+        cancel: Abbrechen
+
+      issues: Offene Pendenzen für {modelName} {modelId}
+      noIssues: Keine offenen Pendenzen für {modelName} {modelId}
+      linkIssues: Zur kompletten Pendenzenliste für Bauprojekt {projectId}
+
+    linkStreet:
+      missingLocalityHint: Bitte geben Sie zuerst einen Ortsnamen ein.
+      change: Strasse ändern
+      link: Strasse verknüpfen
+      heading: Strasse verknüpfen
+      search: Strasse suchen...
+      linkSuccess: Strasse erfolgreich verknüpft.
+      linkError: Bei der Verknüpfung der Strasse ist ein Fehler aufgetreten.
+      streetHint: Um einen Eingang zu erfassen müssen Sie eine Strasse verknüpfen.
+      searchHint: "Ein Stern (*) kann in der Suche als Platzhalter verwendet werden, um nach Teilen eines Strassennamens zu suchen."
+      searchHintExamples: Beispiele
+      searchHintExamples1: "Unter* : Unterfeldweg, Unterschlossweg"
+      searchHintExamples2: "*weg : Waldweg, Unterschlossweg"
+      searchHintExamples3: "B*strasse : Bernstrasse, Bachstrasse"
+
+    importModal:
+      selectImportData: Importdaten auswählen
+
+    modelErrors:
+      empty: Keine offenen Pendenzen
+
+    streetSearch:
+      requiredInputs: Bitte geben Sie zuerst Ihre PLZ an.

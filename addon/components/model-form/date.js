@@ -3,11 +3,17 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { DateTime } from "luxon";
 
+import flatpickrRm from "ember-ebau-gwr/locales/flatpickr-rm";
+
 export default class ModelFormDateComponent extends Component {
   @service intl;
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];
+  }
+
+  get flatpickrLocale() {
+    return this.locale === "rm" ? flatpickrRm : this.locale;
   }
 
   get minDate() {

@@ -1,0 +1,8 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+ember-gwr:
+  street:
+    # Model Fields
+    ESID: ESID
+    description:
+      descriptionLong: Strassenname

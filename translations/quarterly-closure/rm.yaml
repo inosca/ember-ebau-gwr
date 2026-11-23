@@ -1,0 +1,72 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+ember-gwr:
+  quarterlyClosure:
+    needsCorrection: |-
+      Der Quartalsabschluss konnte aufgrund von bestehenden Fehlern nicht abgeschlossen
+      werden. Bitte ergänzen Sie fehlende Daten und beheben Sie verbleibende
+      Unstimmigkeiten.
+
+    closure:
+      close: Quartalsabschluss melden
+      closeInfo: |-
+        Der Quartalsabschluss kann bei Quartalsende dem BfS gemeldet werden, welche daraufhin Qualitätskontrollen
+        auf den eingetragenen Daten durchführt. Weitere Änderungen an den Daten sind in dieser Zeit nicht mehr
+        möglich, bis allfällige weitere Datenkorrekture nötig sind oder der Quartalsabschluss abgeschlossen wurde.
+        Nach Datenkorrekturen kann der Quartalsabschluss erneut gemeldet werden.
+
+      error: Beim Melden des Quartalsabschlusses ist ein Fehler aufgetreten.
+
+    status:
+      pollError: Beim Abrufen des Erhebungsstatus ist ein Fehler aufgetreten. Nächster Versuch in einer Minute.
+      label: Status
+      loading: Aktueller Status wird abgerufen...
+      processing: Die Anfrage für den Quartalsabschluss ist noch nicht verarbeitet
+      610: Datenerhebung initialisiert
+      620: Erhebung initialisiert
+      630: Formeller Abschluss wurde nicht erteilt
+      640: Formeller Abschluss wurde nicht erteilt
+      650: Formeller Abschluss wurde nicht erteilt
+      651: Formeller Abschluss wurde nicht erteilt
+      660: Formeller Abschluss durch die Gemeinde gemacht
+      661: Abschluss der Erhebung durch Gemeinde erteilt
+      662: Formeller Abschluss erteilt. Automatische Anpassung nach 7 Tagen oder manuelle Anpassung des Status
+      663: Definitiver Abschluss nicht bestätigt
+      665: Definitiver Abschluss nicht bestätigt
+      667: Abschluss der Erhebung durch Gemeinde
+      670: Kontrollliste erstellen und Qualitätskontrollen durchführen
+      680: Definitiver Abschluss bestätigt
+      690: Kopieren der Daten in den Snapshot
+      691: Erzwungener Abschluss von BFS
+      short:
+        processing: Anfrage noch nicht verarbeitet
+        610: Quartalsabschluss initialisiert
+        620: Abschluss erforderlich
+        630: Fehler müssen korrigiert werden
+        640: Fehler müssen korrigiert werden
+        650: Fehler müssen korrigiert werden
+        651: Fehler müssen korrigiert werden
+        660: Qualitätskontrolle des BFS
+        661: Qualitätskontrolle des BFS
+        662: Qualitätskontrolle des BFS
+        663: Fehler müssen korrigiert werden
+        665: Fehler müssen korrigiert werden
+        667: Qualitätskontrolle des BFS
+        670: Qualitätskontrolle des BFS
+        680: Finale Qualitätskontrolle des BFS
+        690: Abgeschlossen
+        691: Erzwungener Abschluss von BFS
+
+    components:
+      projectErrors:
+        error: Beim Abrufen der Fehlerliste der Projekte ist ein Fehler aufgetreten.
+        title: Bauprojekte
+        infoText:
+          Nachfolgend finden Sie eine Liste der Bauprojekte, die durch die Erhebungsstelle erfasst wurden
+          und noch Fehler beinhalten. Um die Fehler auf den Gebäuden, Wohnungen und Eingängen einzusehen,
+          wählen Sie bitte das entsprechende Bauprojekt an.
+      departmentErrors:
+        error: Beim Abrufen der Fehlerliste der Erhebungsstelle ist ein Fehler aufgetreten.
+        title: Erhebungsstelle
+        infoText: Nachfolgend finden Sie die offenen Pendenzen der Erhebungsstelle.
+        maintenanceCost: Die Ausgaben für den Unterhalt an eigenen Bauwerken müssen im 1. Quartal im Housing-Stat gesetzt werden.
