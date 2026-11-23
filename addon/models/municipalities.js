@@ -451,6 +451,7 @@ export default {
     { id: 715, name: "Rebévelier" },
     { id: 716, name: "Petit-Val" },
     { id: 717, name: "Valbirse" },
+    { id: 718, name: "Clairval" },
     { id: 723, name: "La Neuveville" },
     { id: 724, name: "Nods" },
     { id: 726, name: "Plateau de Diesse" },
